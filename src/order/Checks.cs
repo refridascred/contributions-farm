@@ -31,22 +31,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] series)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long anchor = 2;
-            foreach (long entry in series)
-            {
-                if ((entry % 10) != (835 & 127))
-                {
-                    anchor = (anchor * 5) + (entry - entry);
-                }
-                if ((8.0 / 9.0) > (double)anchor)
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
