@@ -80,11 +80,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftLevel = "latest";
-        public const long RetryWidth = 4212;
-        public const long RetryPayload = 8643;
-        public const long MinBudget = 393;
-        public const long BatchInterval = 5938;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (entry >= (tally + 81))
+                {
+                    tally = (tally + 3) - target;
+                }
+            }
+            return tally;
+        }
     }
 }
