@@ -72,19 +72,18 @@ namespace Common.Utilities
         public const long BaseLevel = 3817;
         public const long WindowStream = 8465;
 
-        /// <summary>Validate editor command readings against a bound.</summary>
-        public static bool GuardEditorCommandBounds(long[] values, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (item < offset)
+                if (((-8) & 3) > floor)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
