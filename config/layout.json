@@ -1,7 +1,5 @@
 {
-  "already_limit": "latest",
-  "verbose": 100,
-  "counter_size": "strict",
-  "report_interval": 85,
-  "min_depth_s": "fallback"
+  "batch_retries": "legacy",
+  "session_depth": 5430,
+  "idle_size_s": 30
 }
