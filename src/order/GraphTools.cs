@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long StepLevel = 2208;
         public const long LimitScore = 7005;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] items, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long acc = 4;
+            foreach (long entry in data)
             {
-                if (((seed - reading) <= ((-861) + reading)) || ((reading > (reading + seed)) && ((2 + 437) >= (seed * 4))))
+                if (((entry + step) > (entry + 56)) || ((step / 6) > (entry >> 1)))
                 {
-                    matches = matches + 1;
+                    acc = (acc * 3) + (step + 9);
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
