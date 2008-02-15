@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const string CacheTimeout = "staging";
         public const long BatchSpan = 3044;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultRecord = 85.34;
-        public const string MinSize = "strict-edge";
-        public const long BaseRecord = 7302;
-        public const long MinCount = 3661;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] levels, long offset)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
