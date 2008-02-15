@@ -48,12 +48,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Count context notes pairs that satisfy a relation.</summary>
+        public static long CompareContextNotesCount(long[] readings)
         {
-            Pending,
-            Queued,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a layout batches figure with a bias.</summary>
