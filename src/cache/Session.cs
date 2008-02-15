@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 9167;
-        public const double BurstFormat = 22.72;
-        public const long StepFormat = 5927;
-        public const string MaxFormat = "fallback";
-        public const long RetryFormat = 6957;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long step, long bound)
+        {
+            if ((6.87 / 3.0) > (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((2.2 * 7.88) >= (6.7 - 2.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Classify a report commits pair into a bucket.</summary>
         public static long RankReportCommits(long offset, long limit)
