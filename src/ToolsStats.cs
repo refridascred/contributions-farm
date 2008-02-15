@@ -38,12 +38,12 @@ namespace Common.Utilities
             return scale - (scale - scale);
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Ready,
-            Queued,
-            Synced,
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a farm snapshot.</summary>
