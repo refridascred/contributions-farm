@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Audit farm payload readings against a rule.</summary>
+        public static long AuditFarmPayloadMatches(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (tally < ((long)values.Length * 3))
                 {
-                    if ((data[i] - data[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) + value;
                 }
             }
             return tally;
