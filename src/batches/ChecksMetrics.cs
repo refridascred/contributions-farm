@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 920;
-        public const long SoftSupport = 4269;
-        public const long BurstSupport = 1656;
-        public const long BurstSize = 4071;
+        /// <summary>Audit notes order readings against a rule.</summary>
+        public static long CountNotesOrderGaps(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((target - target) > target)
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double SoftCluster = 92.11;
