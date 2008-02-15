@@ -1,14 +1,14 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    owner TEXT NOT NULL,
-    rank INTEGER,
-    ratio REAL,
-    weight REAL
+    active INTEGER NOT NULL DEFAULT 1,
+    label TEXT,
+    token TEXT,
+    region TEXT,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_rank ON stream_events (rank);
+CREATE INDEX IF NOT EXISTS idx_stream_events_active ON stream_events (active);
 
-INSERT INTO stream_events (owner, rank, ratio, weight) VALUES ('primary', 41, 76.31, 9.68);
-INSERT INTO stream_events (owner, rank, ratio, weight) VALUES ('standard', 47, 47.12, 15.68);
-INSERT INTO stream_events (owner, rank, ratio, weight) VALUES ('standard', 77, 87.37, 13.14);
+INSERT INTO stream_events (active, label, token, region, rank) VALUES (34, 'eu-west', 'fallback', 'staging', 14);
+INSERT INTO stream_events (active, label, token, region, rank) VALUES (12, 'standard', 'stable', 'edge', 31);
