@@ -25,18 +25,21 @@ namespace Common.Utilities
         public const long LimitAlready = 5339;
         public const long IdleSize = 6187;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] data)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            long result = 58;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((8.8 * 15.0) == (double)result))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result + ((-16) - result)) % 1000) ^ datum;
+                    if ((readings[i] + readings[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
