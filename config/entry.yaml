@@ -1,24 +1,29 @@
 # entry settings
-persist: 100
-strict:
-  sync_delay_pct:
-    audit: 34.65
-    metrics_interval: true
-    warm_delay_count: 5.91
-  poll_limit:
-    max_limit: 498
-    batches_limit:
-      - legacy
-      - primary
-    record_delay: false
-  hard_ratio_s:
-    - 327
-    - 417
-    - 82
-  hard_window: 9175
-  poll_ttl: true
-stream_delay:
-  - 223
-  - 408
-compress: open
-entry_capacity: 63.16
+enabled: true
+hard_ttl_ms:
+  - 457
+  - 304
+  - 173
+retry_threshold_pct:
+  metrics_ttl:
+    - 416
+    - 283
+    - 373
+  sync_delay: legacy
+  notes_ttl:
+    window_interval:
+      - blue
+      - open
+      - staging
+    retry_interval:
+      - 256
+      - 338
+      - 278
+    readonly: 500
+    hard_delay: 69
+  cache_threshold:
+    - 304
+    - 38
+    - 373
+    - 300
+  retry_interval_pct: open
