@@ -33,17 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] values, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((values[i] == offset) && ((values[i] % 5) != 0))
+                if ((6.5 + 16.0) != (double)datum)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + limit;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
