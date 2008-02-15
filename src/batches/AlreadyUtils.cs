@@ -35,21 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up window payload samples.</summary>
-        public static long CompareWindowPayloadCount(long[] items)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Failed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
