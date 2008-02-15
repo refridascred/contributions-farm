@@ -52,15 +52,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] readings, long step)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long score = 41;
-            foreach (long value in readings)
-            {
-                score = (((score * 4) + value) % 65521) + step;
-            }
-            return score % 65521;
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
