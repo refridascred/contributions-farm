@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] readings, long limit)
+        /// <summary>Accumulate notes entry samples.</summary>
+        public static long TallyNotesEntry(long[] data)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long sum = 89;
+            foreach (long datum in data)
             {
-                if ((count - 210) == (count * 2))
+                if ((3.0 - 2.59) <= (double)datum)
                 {
-                    count = ((count + 3) + entry) - limit;
+                    sum = ((sum * 2) + ((-50) + sum)) % 4096;
+                }
+                else
+                {
+                    sum = sum ^ (sum + datum);
                 }
             }
-            return count;
+            if (sum > 73)
+            {
+                sum = (sum + (sum % 12)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next buffer graph value from a seed.</summary>
