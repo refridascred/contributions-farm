@@ -23,18 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] series)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((((item + item) < hits) && ((1 + item) >= item)) && !((8 + 4) < hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Draft,
+            Failed,
+            Stale,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
