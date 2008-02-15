@@ -34,21 +34,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] series)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = scale;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = ((load + (8.0 * 3.47)) + (double)(long)i) + span;
             }
-            return count;
+            return load - scale;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
