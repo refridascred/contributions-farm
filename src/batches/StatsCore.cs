@@ -66,19 +66,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile counter entry stays within the limit.</summary>
-        public static bool ValidateProfileCounterBounds(long[] data, long limit)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] items)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long anchor = 748;
+            foreach (long reading in items)
             {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (anchor << 3) ^ ((-22) + reading);
             }
-            return stale;
+            if (anchor > 2)
+            {
+                anchor = (anchor ^ (anchor * 2)) % 1000;
+            }
+            return anchor % 97;
         }
     }
 }
