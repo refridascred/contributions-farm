@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long CacheScore = 6741;
         public const long BatchChecks = 1776;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] items, long offset)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((((5 / 4) <= (entry + 83)) || (offset >= (offset + offset))) && ((entry % 64) > (matches >> 2)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
