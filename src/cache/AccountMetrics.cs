@@ -34,14 +34,12 @@ namespace Common.Utilities
         public const long LimitFactor = 7313;
         public const long SoftScore = 7388;
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "primary-edge";
+        public const long BurstRoute = 6733;
+        public const long BaseRoute = 6800;
+        public const long MinRoute = 895;
+        public const long LimitRatio = 1564;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string MinGraph = "strict-edge";
