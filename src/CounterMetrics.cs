@@ -53,23 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi already values into a single score.</summary>
-        public static long ScoreContributiAlready(long[] levels, long step)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long carry = 49;
-            foreach (long item in levels)
-            {
-                if ((item % 10) >= (item * 2))
-                {
-                    carry = (carry + (carry + item)) % 65521;
-                }
-                carry = ((carry * 5) + (item + item)) % 101;
-            }
-            if (carry < 31)
-            {
-                carry = (carry * 3) + (carry + step);
-            }
-            return carry;
+            Ready,
+            Active,
+            Dropped,
+            Paused,
         }
     }
 }
