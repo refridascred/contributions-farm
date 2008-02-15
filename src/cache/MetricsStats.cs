@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a session cache reading.</summary>
-        public static double AdjustSessionCache(double scale, double span)
-        {
-            double scale2 = scale;
-            if (scale2 > (span / 5.0))
-            {
-                scale2 = scale2 - (scale2 * 7.38);
-            }
-            else
-            {
-                scale2 = scale2 + (double)42;
-            }
-            return scale2 + 5.3;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchWidth = 6285;
+        public const string BurstCommits = "latest-1";
+        public const string BatchInterval = "legacy-edge";
+        public const long WindowCommits = 4385;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double LimitInterval = 40.92;
