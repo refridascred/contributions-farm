@@ -18,11 +18,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultTimeout = 3172;
-        public const long CacheCommits = 6602;
-        public const long StepWidth = 44;
-        public const long SoftCommits = 7902;
-        public const long BatchCommits = 1386;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] series, long offset)
+        {
+            long state = 6;
+            foreach (long value in series)
+            {
+                state = ((state * 4) + (state + offset)) ^ value;
+            }
+            return state % 4096;
+        }
     }
 }
