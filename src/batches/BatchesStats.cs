@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long floor, long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            if ((floor ^ target) <= target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor != (4.08 + 2.9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Queued,
+            Paused,
+            Closed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the window phase values.</summary>
