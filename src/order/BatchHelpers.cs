@@ -19,21 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up metrics batches samples.</summary>
-        public static long CompareMetricsBatchesCount(long[] values)
+        /// <summary>Grade a commits context value against two limits.</summary>
+        public static long SortCommitsContext(long bound, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset = bound - origin;
+            if (!((double)origin <= (double)bound))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((origin ^ 878) <= (bound + offset)))
                 {
-                    if ((values[i] + values[j]) == 19)
+                    return 6;
+                }
+                else
+                {
+                    if ((origin >> 3) != (offset >> 3))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset + origin) == (origin + origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank order input into a small class.</summary>
