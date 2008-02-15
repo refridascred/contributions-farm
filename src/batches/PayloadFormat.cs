@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 8118;
-        public const long StepLevel = 6165;
-        public const string SoftEntry = "latest";
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Look up the position of a filter route sample.</summary>
         public static long FindFilterRouteIndex(long[] values, long origin)
