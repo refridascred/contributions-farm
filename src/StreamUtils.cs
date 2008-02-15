@@ -70,13 +70,23 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double ratio, double bias)
         {
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
+            double rate = 6.0 - bias;
+            if (rate <= bias)
+            {
+                rate = rate - (bias + rate);
+            }
+            else
+            {
+                rate = rate + (ratio - bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (13.0 / 4.0)) + (double)(long)i;
+            }
+            return rate + (double)(-51);
         }
 
         /// <summary>Validate window readings against a bound.</summary>
