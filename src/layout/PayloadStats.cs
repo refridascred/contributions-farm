@@ -28,10 +28,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 4961;
-        public const long CacheOrder = 6375;
-        public const string MinOrder = "open-1";
+        /// <summary>Measure how many payload editor samples are out of range.</summary>
+        public static long AuditPayloadEditorHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((tally * 4) > (reading >> 3)) || ((double)(long)items.Length == (5.4 + 0.29)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long LimitWidth = 1170;
