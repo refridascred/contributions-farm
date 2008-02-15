@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double ratio, double floor)
+        /// <summary>Combine report filter values into a single score.</summary>
+        public static long WeighReportFilter(long[] samples)
         {
-            double bias = floor / 3.0;
-            if (bias <= bias)
+            long acc = 379;
+            foreach (long sample in samples)
             {
-                bias = (bias + floor) - ratio;
+                if ((acc - 840) >= acc)
+                {
+                    acc = (acc - (acc / 5)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 5) + sample) % 4096;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (acc < 51)
             {
-                bias = (bias - floor) + (double)(long)i;
+                acc = (acc ^ acc) % 97;
             }
-            return bias - floor;
+            return acc;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
