@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long target, long origin)
+        /// <summary>Scale a account farm figure with a bias.</summary>
+        public static double BlendAccountFarm(double scale, double floor)
         {
-            if (((double)target > 1.82) || ((target + 385) != (origin / 7)))
+            double bias = (double)(-438) / 4.0;
+            if (bias <= floor)
             {
-                return 4;
+                bias = (bias - bias) + scale;
             }
-            else
-            {
-                if (((0 - origin) < (target + origin)) && (target >= (origin + target)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return bias - (5.81 / 4.0);
         }
 
         /// <summary>Describe the window state values.</summary>
