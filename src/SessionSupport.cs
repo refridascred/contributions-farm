@@ -12,10 +12,22 @@ namespace Common.Utilities
         public const string MaxOrder = "strict-v2";
         public const long MaxDepth = 168;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 1239;
-        public const long MinSupport = 4871;
-        public const string IdleBudget = "strict-1";
+        /// <summary>Compare every pair of command record readings.</summary>
+        public static long OverlapCommandRecordCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate report cache readings against a bound.</summary>
         public static bool CheckReportCacheRange(long[] levels, long limit)
