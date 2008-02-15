@@ -36,23 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] values, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((0.2 * 3.46) == (double)acc)
+                if (reading >= offset)
                 {
-                    acc = ((acc << 3) ^ (origin - 2)) % 97;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    acc = (acc + 82) % 101;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Audit cluster metrics readings against a rule.</summary>
