@@ -1,14 +1,11 @@
 # Command notes
 
-Use order settings to tune how often support data is refreshed.
-Run the commits check before changing any report limits.
-Defaults for payload live in the config folder and can be overridden per environment.
-
-Run the filter check before changing any command limits.
-The commits module keeps stats values in sync with the stream cache.
+Defaults for format live in the config folder and can be overridden per environment.
+A channel that stays idle for too long is moved to the notes list.
+Run the command check before changing any token limits.
 
 ## Guidelines
 
-- Validate queue input early
-- Review entry limits each release
-- Keep batches values small
+- Validate schema input early
+- Log every cache change
+- Review payload limits each release
