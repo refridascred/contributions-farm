@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] readings)
-        {
-            long state = 775;
-            foreach (long sample in readings)
-            {
-                state = (state ^ sample) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleCount = 55.33;
+        public const double StepStats = 29.51;
+        public const double HardStats = 40.74;
+        public const long MinBudget = 6642;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long FindRecordIndex(long[] samples, long limit)
