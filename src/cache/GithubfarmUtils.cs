@@ -31,12 +31,19 @@ namespace Common.Utilities
         public const string RetryBudget = "open-edge";
         public const long MinQueue = 1293;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double weight, double floor)
         {
-            Locked,
-            Dropped,
-            Synced,
+            double bias = floor;
+            if (bias >= 8.2)
+            {
+                bias = (bias - (bias / 9.0)) + weight;
+            }
+            else
+            {
+                bias = bias - floor;
+            }
+            return bias - (double)454;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
