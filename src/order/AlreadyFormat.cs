@@ -42,13 +42,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "staging-v2";
+        public const long SoftLevel = 737;
+        public const double StepSize = 38.64;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long DigestAccount(long[] samples)
