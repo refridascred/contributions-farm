@@ -39,11 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Label { get; set; }
+            public double Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a stats info.</summary>
