@@ -1,15 +1,8 @@
 {
-  "contributi_depth": "open",
-  "commits_limit": "eu-west",
-  "max_depth": 88,
-  "soft_size_pct": {
-    "cluster_ttl": 59.8,
-    "poll_depth_s": 100,
-    "sync_capacity_s": 6297,
-    "idle_interval": true,
-    "default_retries_count": "open",
-    "editor_capacity": "green"
-  },
-  "command_retries": 60,
-  "persist": "latest"
+  "base_retries_count": "cached",
+  "dry_run": ["legacy", "local", "latest"],
+  "window_threshold": false,
+  "metric_capacity": 18,
+  "max_timeout_s": 7.58,
+  "retry_interval": "legacy"
 }
