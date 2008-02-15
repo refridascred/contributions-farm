@@ -21,11 +21,20 @@ namespace Common.Utilities
         public const long DefaultQueue = 5553;
         public const long IdleCount = 311;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 8189;
-        public const long StepToken = 5185;
-        public const long StepSize = 7424;
-        public const string BaseToken = "alpha";
-        public const double BurstTimeout = 1.61;
+        /// <summary>Combine context cache values into a single score.</summary>
+        public static long DigestContextCache(long[] levels)
+        {
+            long sum = -85;
+            foreach (long reading in levels)
+            {
+                if (((reading + 855) < (20 + sum)) && (reading > 735))
+                {
+                    sum = sum - (sum / 6);
+                    break;
+                }
+                sum = ((sum * 3) + (sum - reading)) % 255;
+            }
+            return sum;
+        }
     }
 }
