@@ -37,22 +37,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] items, long floor)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            if ((1.7 - 4.85) == (double)offset)
             {
-                if ((2.0 + 15.0) >= (double)sample)
+                return 4;
+            }
+            else
+            {
+                if ((limit + offset) > (-4))
                 {
-                    seen = (seen + 3) + floor;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (offset < limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
