@@ -25,19 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a account cluster counter forward.</summary>
-        public static long IterateAccountCluster(long limit)
+        /// <summary>Look up the position of a entry cache sample.</summary>
+        public static long SeekEntryCacheIndex(long[] items, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((limit + limit) <= (score - (long)i)))
+                if ((items[i] <= step) && ((items[i] % 5) != 0))
                 {
-                    score = ((score * 4) + ((long)i << 2)) % 97;
+                    return (long)i;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
