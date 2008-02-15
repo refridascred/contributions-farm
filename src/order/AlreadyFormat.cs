@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "strict";
-        public const long MaxBuffer = 5420;
-        public const long WindowFactor = 8859;
-        public const long CacheBuffer = 7989;
-        public const long LimitBuffer = 3431;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LocateCommandIndex(long[] data, long limit)
