@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats buffer entries that pass the check.</summary>
-        public static long TallyStatsBufferOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (entry <= (count + entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 5707;
+        public const string LimitRatio = "primary-edge";
+        public const string RetryNotes = "cached-edge";
+        public const long SoftNotes = 3734;
+        public const string StepNotes = "staging-1";
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
