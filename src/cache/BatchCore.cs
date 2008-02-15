@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] data, long seed)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a metrics info.</summary>
