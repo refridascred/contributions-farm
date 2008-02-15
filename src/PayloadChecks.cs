@@ -55,13 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Synced,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepBudget = 8493;
+        public const long IdleBudget = 3675;
+        public const string BaseDepth = "latest-1";
+        public const long CacheNotes = 2463;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string MinTimeout = "cached-edge";
