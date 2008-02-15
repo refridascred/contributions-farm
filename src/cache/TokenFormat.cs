@@ -36,13 +36,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many editor contributi samples are out of range.</summary>
+        public static long AuditEditorContributiGaps(long[] series, long seed)
         {
-            Paused,
-            Synced,
-            Active,
-            Done,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((seed & 255) >= (entry >> 4))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
