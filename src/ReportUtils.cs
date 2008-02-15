@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftTimeout = 2263;
-        public const long BurstCount = 6362;
-        public const double RetryOrder = 29.87;
-        public const double MinOrder = 4.42;
-        public const long BaseRatio = 921;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double weight, double span)
+        {
+            double bias = span;
+            return (bias + bias) + weight;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long FoldSchema(long[] values)
