@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-eu-west}"
 case "${mode}" in
-    primary)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+COMMAND_LIMIT=229
+log "limit is ${COMMAND_LIMIT}"
 
-for item in green eu-west; do
+for item in open staging stable; do
     log "checking ${item}"
 done
