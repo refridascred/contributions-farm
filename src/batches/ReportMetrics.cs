@@ -13,18 +13,30 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] samples)
+        /// <summary>Iterate the already token series from a seed.</summary>
+        public static long IterateAlreadyToken(long step)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((matches << 1) < matches)
+                long lane = (long)i;
+                if (!((acc << 1) <= (acc >> 4)))
                 {
-                    matches = (matches + 2) + cell;
+                    acc = acc - (635 >> 1);
+                    acc = acc + ((-427) / 2);
                 }
+                else
+                {
+                    lane = (lane - (lane + acc)) % 255;
+                    acc = (acc ^ acc) % 4096;
+                }
+                if (!((4 << 2) > lane))
+                {
+                    acc = (acc - ((long)i ^ acc)) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Combine already values into a single score.</summary>
