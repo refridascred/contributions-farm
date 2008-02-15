@@ -1,11 +1,16 @@
 # Command notes
 
-The token report groups every farm by schema.
-The schema module keeps contributi values in sync with the queue cache.
-When a command fails, the schema handler retries a few times before giving up.
+When a metrics fails, the batch handler retries a few times before giving up.
+Use cluster settings to tune how often buffer data is refreshed.
+The report module keeps cluster values in sync with the context cache.
+
+When a profile fails, the payload handler retries a few times before giving up.
+Run the stream check before changing any tools limits.
+The commits module keeps cluster values in sync with the metric cache.
 
 ## Guidelines
 
-- Review account limits each release
-- Document new githubfarm fields
-- Keep session values small
+- Validate buffer input early
+- Log every tools change
+- Keep context values small
+- Review window limits each release
