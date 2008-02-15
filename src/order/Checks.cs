@@ -58,39 +58,19 @@ namespace Common.Utilities
             return scale + (1.5 / 4.0);
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long bound, long step)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double rate, double floor)
         {
-            long span = bound + step;
-            if (step <= (bound % 60))
+            double weight = (double)8 / 7.0;
+            if (weight <= rate)
             {
-                return 5;
+                weight = weight - floor;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (((7 + span) > (9 + step)) || ((bound >> 3) > 0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((span + bound) == (span % 64))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound * 2) > (bound + bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                weight = (weight - floor) + (double)(long)i;
             }
+            return weight - floor;
         }
     }
 }
