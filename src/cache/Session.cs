@@ -44,12 +44,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Ready,
-            Done,
             Active,
+            Pending,
+            Ready,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
