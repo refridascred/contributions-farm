@@ -34,31 +34,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long target, long bound)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            if ((bound % 10) > ((-2) & 127))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(bound <= (50 ^ bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.36 * 8.51) == (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
     }
 }
