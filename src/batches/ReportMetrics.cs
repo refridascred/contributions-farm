@@ -29,18 +29,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] readings)
-        {
-            long mix = 3;
-            foreach (long item in readings)
-            {
-                if ((double)item < 6.0)
-                {
-                    mix = (mix ^ (mix - mix)) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 5138;
+        public const string BaseContext = "standard-1";
+        public const long MinContext = 1457;
+        public const long DefaultContext = 3044;
+        public const long MaxDepth = 1107;
     }
 }
