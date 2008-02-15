@@ -1,6 +1,5 @@
 {
-  "burst_capacity_s": "latest",
-  "readonly": "strict",
-  "max_timeout_pct": 63.95,
-  "max_interval": "blue"
+  "readonly": 500,
+  "enabled": 98,
+  "cache_limit": 250
 }
