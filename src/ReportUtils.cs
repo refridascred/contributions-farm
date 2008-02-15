@@ -88,12 +88,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Dropped,
-            Failed,
-            Pending,
+            public double Limit { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
