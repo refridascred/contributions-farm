@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Queued,
+            Paused,
+            Synced,
+            Ready,
+            New,
         }
 
         /// <summary>Accumulate support samples.</summary>
