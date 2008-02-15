@@ -74,13 +74,29 @@ namespace Common.Utilities
         public const long WindowSpan = 5684;
         public const long MinWidth = 1614;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] samples, long offset)
         {
-            Synced,
-            Stale,
-            Draft,
-            Idle,
+            long score = 821;
+            foreach (long sample in samples)
+            {
+                if (!((offset % 12) <= (score >> 4)))
+                {
+                    score = score ^ (sample << 1);
+                    score = ((score << 3) ^ (score + offset)) % 65521;
+                }
+                if ((score % 8) >= (offset >> 1))
+                {
+                    score = (score ^ (offset / 7)) % 255;
+                    score = (score << 3) ^ (offset & 63);
+                    continue;
+                }
+                if (!((22 + sample) <= ((-60) + score)))
+                {
+                    score = score - (score % 97);
+                }
+            }
+            return score;
         }
     }
 }
