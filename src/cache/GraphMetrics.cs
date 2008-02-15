@@ -42,15 +42,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] samples)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long acc = 2;
-            foreach (long reading in samples)
-            {
-                acc = ((acc - (137 << 2)) % 4096) ^ reading;
-            }
-            return acc;
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
