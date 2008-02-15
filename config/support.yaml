@@ -1,34 +1,9 @@
 # support settings
-sync_limit:
-  warm_ttl_s:
-    max_retries_count: 1024
-    record_window: 97.74
-    burst_threshold:
-      - fallback
-      - edge
-      - strict
-    soft_interval_pct: 34.29
-  compress: 29.66
-  channel_interval:
-    metrics_delay: 74.74
-    payload_threshold: 9.5
-    cache_size_count: 74
-    max_threshold_s: false
-  idle_threshold: 2181
-  idle_ratio_count: 3295
-  session_ratio:
-    soft_size: 23
-    sync_interval_s: 100
-    soft_threshold_ms: fallback
-audit:
-  - blue
-  - fallback
-  - cached
-soft_ttl_pct: strict
-profile_limit:
-  - edge
-  - local
-readonly:
-  - stable
-  - primary
-report_threshold: 100
+farm_depth:
+  verbose: primary
+  report_limit: 80.7
+  dry_run: 83.13
+poll_capacity_pct: 8171
+commits_size: true
+max_retries_ms: false
+base_size_s: standard
