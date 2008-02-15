@@ -1,17 +1,6 @@
 {
-  "default_depth": {
-    "soft_ttl_count": 234,
-    "retry_interval_pct": 250,
-    "idle_limit_count": "fallback",
-    "persist": [143, 370, 210],
-    "batch_limit_s": "stable"
-  },
-  "default_retries_count": false,
-  "format_retries": {
-    "compress": 500,
-    "schema_ratio": "edge",
-    "base_depth_s": ["blue", "blue", "edge"],
-    "soft_window": 32.92,
-    "idle_interval_ms": true
-  }
+  "stream_ttl": 49.11,
+  "already_retries": 52.36,
+  "flush_ratio": 1024,
+  "poll_window_count": 60
 }
