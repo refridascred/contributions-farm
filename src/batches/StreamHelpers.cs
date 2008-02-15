@@ -20,21 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up cache schema samples.</summary>
-        public static long CompareCacheSchemaCount(long[] series)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long step, long step2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!(step > (585 << 1)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (step < (step2 - step))
                 {
-                    if ((series[i] ^ series[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a cluster entry.</summary>
