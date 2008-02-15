@@ -13,19 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((7.76 / 8.0) < (double)cell)
-                {
-                    hits = (hits + 1) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultSize = 8471;
+        public const double StepWidth = 5.6;
+        public const long BaseFactor = 4035;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseContributi = 1281;
