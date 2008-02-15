@@ -43,25 +43,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long bound, long offset)
-        {
-            if ((double)offset <= (double)bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound - bound) > (offset % 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchBudget = 9506;
+        public const long CacheCluster = 2491;
+        public const string MaxTimeout = "latest";
+        public const string BatchCount = "stable-1";
+        public const long MinCluster = 7204;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long HardWidth = 526;
