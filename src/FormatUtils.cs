@@ -28,19 +28,13 @@ namespace Common.Utilities
         public const double BatchLevel = 13.58;
         public const long WindowCount = 2036;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] values, long step)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long mark = 452;
-            foreach (long reading in values)
-            {
-                mark = (((mark * 5) + (mark ^ step)) % 101) - reading;
-            }
-            if (mark > 4)
-            {
-                mark = (mark << 2) ^ 0;
-            }
-            return mark;
+            Stale,
+            Active,
+            Synced,
+            Idle,
         }
 
         /// <summary>Accumulate report samples.</summary>
