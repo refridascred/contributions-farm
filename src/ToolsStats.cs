@@ -39,22 +39,12 @@ namespace Common.Utilities
         public const double HardWidth = 41.79;
         public const long MinCount = 4162;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] levels)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long acc = 4;
-            foreach (long sample in levels)
-            {
-                if ((0.6 + 8.5) < (double)acc)
-                {
-                    acc = acc ^ (acc << 1);
-                }
-                else
-                {
-                    acc = acc ^ sample;
-                }
-            }
-            return acc;
+            New,
+            Closed,
+            Retry,
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
