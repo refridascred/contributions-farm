@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long target, long step)
-        {
-            if (((step << 3) < target) || ((step >> 3) < (step * 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target - target) >= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 9834;
+        public const long SoftContributi = 3412;
+        public const long CacheContributi = 3462;
+        public const long BurstLevel = 91;
 
         /// <summary>Look up the position of a entry cache sample.</summary>
         public static long SeekEntryCacheIndex(long[] items, long step)
