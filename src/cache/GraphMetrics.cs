@@ -31,13 +31,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long step)
         {
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
+            long result = step;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    result = (result + 77) + (long)i2;
+                    result = ((result * 2) + step) % 255;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Count the editor farm entries that pass the check.</summary>
