@@ -40,11 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double ratio, double span)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] data, long step)
         {
-            double drift = (double)98 - (span + ratio);
-            return drift + (ratio + 5.0);
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
