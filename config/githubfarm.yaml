@@ -1,5 +1,4 @@
 # githubfarm settings
-strict: primary
-flush_ratio_count: staging
-session_ttl: 91.45
-audit: eu-west
+persist: local
+max_window_ms: stable
+min_threshold_ms: 65.28
