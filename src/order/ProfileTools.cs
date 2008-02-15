@@ -41,14 +41,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Accumulate contributi route samples.</summary>
+        public static long FoldContributiRoute(long[] series, long floor)
         {
-            Pending,
-            Dropped,
-            Ready,
-            Done,
-            Stale,
+            long sum = 8;
+            foreach (long item in series)
+            {
+                if (((item / 5) > 519) && ((sum / 3) < item))
+                {
+                    sum = (sum << 3) ^ floor;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
