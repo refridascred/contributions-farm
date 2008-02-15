@@ -18,16 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long target)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long target, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
+            long bound2 = target ^ bound;
+            if ((double)target == (2.6 + 7.81))
             {
-                state = state ^ (long)i;
-                state = ((state * 4) + (long)i) % 65521;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((920 - bound) > bound2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)target > (2.0 + 5.19)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a counter reading by value.</summary>
