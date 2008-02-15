@@ -49,13 +49,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Paused,
-            Pending,
-            Retry,
-            Ready,
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
