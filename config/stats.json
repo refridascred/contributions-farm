@@ -1,18 +1,11 @@
 {
-  "retry_limit": "local",
-  "context_ttl": "standard",
-  "audit": 93,
-  "context_capacity": true,
-  "checks_interval": 48.82,
-  "batch_threshold": {
-    "compress": 27,
-    "default_ttl_pct": {
-      "entry_size": 7428,
-      "flush_interval_s": 1024,
-      "warm_retries_count": 3856,
-      "hard_interval_ms": 1024,
-      "profile_delay": [159, 448, 447]
-    },
-    "default_window": 66.75
-  }
+  "base_interval": {
+    "strict": "green",
+    "verbose": 100,
+    "stats_ratio": "staging",
+    "hard_timeout": 250
+  },
+  "burst_threshold_s": 1024,
+  "dry_run": 1904,
+  "support_capacity": ["stable", "stable", "strict", "open"]
 }
