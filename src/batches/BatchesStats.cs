@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long floor, long target)
         {
-            Ready,
-            Active,
-            Draft,
-            Failed,
-            Stale,
+            if ((floor ^ target) <= target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)floor != (4.08 + 2.9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the window phase values.</summary>
