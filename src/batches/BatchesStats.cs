@@ -31,15 +31,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Queued,
-            Locked,
-            Draft,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 8551;
+        public const long WindowCount = 1206;
+        public const long SoftSize = 7610;
+        public const string BatchLevel = "standard-edge";
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long DeriveMetric(long limit)
