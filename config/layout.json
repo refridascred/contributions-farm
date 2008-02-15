@@ -1,8 +1,6 @@
 {
-  "tools_retries": "blue",
-  "min_ttl_pct": 8.26,
-  "max_interval_count": "green",
-  "enabled": true,
-  "idle_threshold_pct": 46,
-  "verbose": "primary"
+  "min_retries": "green",
+  "enabled": 7489,
+  "cache_capacity_count": 30,
+  "min_ratio_pct": true
 }
