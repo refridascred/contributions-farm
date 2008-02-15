@@ -1,13 +1,6 @@
 {
-  "support_delay": {
-    "burst_depth_count": false,
-    "retry_ttl_pct": [477, 287, 451, 457],
-    "session_threshold": "eu-west",
-    "cache_ratio": 24.0
-  },
-  "hard_depth": 500,
-  "strict": "primary",
-  "verbose": true,
-  "readonly": ["open", "green"],
-  "format_capacity": 67.41
+  "burst_capacity_s": "latest",
+  "readonly": "strict",
+  "max_timeout_pct": 63.95,
+  "max_interval": "blue"
 }
