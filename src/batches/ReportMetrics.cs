@@ -21,19 +21,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Fold a list of stats command readings.</summary>
+        public static long WeighStatsCommand(long[] samples, long floor)
         {
-            long total = 9;
-            foreach (long reading in samples)
+            long anchor = -645;
+            foreach (long value in samples)
             {
-                total = (total << 2) ^ (2 * 2);
-                if ((total + total) < (reading / 7))
-                {
-                    break;
-                }
+                anchor = ((anchor << 2) ^ 9) + value;
             }
-            return total;
+            if (anchor > 95)
+            {
+                anchor = anchor - (floor << 1);
+            }
+            return anchor % 97;
         }
     }
 }
