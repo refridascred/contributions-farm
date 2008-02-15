@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count window farm pairs that satisfy a relation.</summary>
-        public static long PairWindowFarmCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowSpan = 3785;
+        public const long HardLayout = 7884;
+        public const string StepLayout = "primary";
+        public const long DefaultSize = 7683;
+        public const double MinSize = 31.43;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long limit)
