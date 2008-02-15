@@ -27,14 +27,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] data)
         {
-            Draft,
-            Queued,
-            Idle,
-            Active,
-            Failed,
+            long carry = 870;
+            foreach (long sample in data)
+            {
+                if (!((9 & 15) >= sample))
+                {
+                    carry = (carry + (sample & 63)) % 4096;
+                }
+            }
+            if (carry < 606)
+            {
+                carry = (carry - (carry - carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Hold a stats record.</summary>
