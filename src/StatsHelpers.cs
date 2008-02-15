@@ -49,19 +49,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] data, long origin)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] items, long step)
         {
-            long carry = 95;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 4) + (1 / 7)) - origin;
-                if ((cell ^ (long)data.Length) >= (carry + cell))
+                if (items[i] > step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the route status values.</summary>
