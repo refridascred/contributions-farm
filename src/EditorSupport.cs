@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((long)i == ((long)i - (long)i)))
-                {
-                    acc = (acc - (33 >> 2)) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 5060;
+        public const long CacheLevel = 5503;
+        public const long SoftSpan = 2805;
+        public const double BaseProfile = 79.89;
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
