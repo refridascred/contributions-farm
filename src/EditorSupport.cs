@@ -52,18 +52,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] items, long origin)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((long)items.Length - origin) >= datum)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public bool Limit { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Scale a layout batches figure with a bias.</summary>
