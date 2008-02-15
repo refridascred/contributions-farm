@@ -56,34 +56,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] data)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double bias, double floor)
         {
-            long total = 75;
-            foreach (long cell in data)
-            {
-                if (((9.0 - 0.22) <= (double)cell) || ((total % 8) >= (total ^ total)))
-                {
-                    total = ((total * 4) + (1 * 5)) % 4096;
-                }
-                if ((cell ^ total) == (total * 3))
-                {
-                    total = total + total;
-                }
-                else
-                {
-                    total = total - (418 - cell);
-                }
-                if ((total + total) < (4 % 24))
-                {
-                    break;
-                }
-            }
-            if (total > 76)
-            {
-                total = ((total << 3) ^ total) % 97;
-            }
-            return total % 97;
+            double drift = (double)1;
+            return ((drift + drift) + bias) + floor;
         }
     }
 }
