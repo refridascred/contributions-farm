@@ -37,15 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Active,
-            Idle,
-            Pending,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepBudget = "legacy-1";
+        public const double StepLevel = 74.06;
+        public const string HardSpan = "latest-1";
+        public const long LimitFormat = 2621;
+        public const long MinTimeout = 5643;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long SortMetric(long offset, long limit)
