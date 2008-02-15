@@ -44,18 +44,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate contributi route samples.</summary>
-        public static long FoldContributiRoute(long[] series, long floor)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long bound, long offset)
         {
-            long sum = 8;
-            foreach (long item in series)
+            if ((89 + offset) < bound)
             {
-                if (((item / 5) > 519) && ((sum / 3) < item))
+                return 1;
+            }
+            else
+            {
+                if ((offset * 4) <= offset)
                 {
-                    sum = (sum << 3) ^ floor;
+                    return 2;
+                }
+                else
+                {
+                    if ((272 < bound) || (9.41 <= (double)offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound >= (offset - 271)) && ((offset / 2) >= offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
