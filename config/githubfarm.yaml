@@ -1,11 +1,12 @@
 # githubfarm settings
-persist:
-  - staging
-  - edge
-  - staging
-  - eu-west
-base_threshold_count: 6692
-audit:
-  - 417
-  - 85
-  - 409
+burst_capacity_count: false
+idle_interval:
+  checks_depth:
+    - 397
+    - 287
+    - 57
+  burst_window: 47.21
+  notes_size: 46.12
+  warm_interval_ms: green
+  enabled: 23
+idle_size_pct: 91.95
