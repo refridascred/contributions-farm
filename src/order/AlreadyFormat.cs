@@ -15,22 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] readings)
+        /// <summary>Blend two already graph measurements.</summary>
+        public static double ProjectAlreadyGraph(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            double scale = ratio;
+            if (scale < bias)
             {
-                if ((matches + 7) == (matches ^ (-28)))
-                {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = scale - bias;
             }
-            return matches;
+            return scale + (bias + bias);
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
