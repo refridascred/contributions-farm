@@ -22,12 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long seed)
         {
-            Closed,
-            Done,
-            Paused,
+            long state = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((seed >> 3) <= state))
+                {
+                    state = state - (9 % 5);
+                    state = (state << 3) ^ (1 + 228);
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
