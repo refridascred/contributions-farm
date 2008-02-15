@@ -35,16 +35,11 @@ namespace Common.Utilities
             return scale + (bias - scale);
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
-            {
-                result = result - (target * 3);
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
