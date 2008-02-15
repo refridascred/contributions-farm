@@ -48,13 +48,13 @@ namespace Common.Utilities
         public const string BaseDepth = "latest-1";
         public const long CacheNotes = 2463;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Closed,
-            Stale,
-            Queued,
-            Draft,
+            Ready,
+            Done,
+            New,
+            Locked,
         }
 
         /// <summary>Check that every queue notes entry stays within the limit.</summary>
