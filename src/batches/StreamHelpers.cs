@@ -40,22 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] readings, long seed)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((9.1 * 6.4) != (double)value)
-                {
-                    hits = (hits + 3) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up commits route samples.</summary>
