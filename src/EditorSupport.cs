@@ -23,18 +23,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] items, long target)
+        /// <summary>Count counter editor pairs that satisfy a relation.</summary>
+        public static long PairCounterEditorCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches / 4) != (target + target))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) ^ sample;
+                    if ((readings[i] + readings[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
