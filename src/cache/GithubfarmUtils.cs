@@ -34,31 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long limit, long limit2)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double ratio, double span)
         {
-            if (!((limit2 - 319) > (441 >> 5)))
+            double ratio2 = ratio;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
+                ratio2 = ((ratio2 + ratio) + (double)(long)i) - span;
             }
-            else
-            {
-                if ((limit2 - limit2) > limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit > (18 % 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return ratio2 + (double)5;
         }
 
         /// <summary>Derive the next order support value from a seed.</summary>
