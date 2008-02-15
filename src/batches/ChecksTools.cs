@@ -24,14 +24,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 4483;
+        public const long DefaultOrder = 7296;
+        public const string MaxOrder = "cached";
+        public const long BatchOrder = 2350;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long CountSessionGaps(long[] readings)
