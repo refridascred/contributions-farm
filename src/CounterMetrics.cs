@@ -53,13 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Ready,
-            Active,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 4653;
+        public const long BaseWindow = 4881;
+        public const long BurstWindow = 6519;
+        public const double MinSize = 23.87;
     }
 }
