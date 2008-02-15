@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long StepLevel = 2208;
         public const long LimitScore = 7005;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] items, long seed)
         {
-            Dropped,
-            Ready,
-            Closed,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((seed - reading) <= ((-861) + reading)) || ((reading > (reading + seed)) && ((2 + 437) >= (seed * 4))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
