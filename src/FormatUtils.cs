@@ -34,13 +34,24 @@ namespace Common.Utilities
         public const long LimitContributi = 571;
         public const double WindowContributi = 59.2;
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long seed, long seed2)
         {
-            Closed,
-            Failed,
-            Dropped,
-            Synced,
+            if ((seed + seed2) < (671 + seed2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed > (2.27 + 5.71))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
