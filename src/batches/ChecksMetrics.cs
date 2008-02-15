@@ -65,19 +65,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] levels, long target)
-        {
-            long acc = 4;
-            foreach (long item in levels)
-            {
-                acc = (acc + item) - target;
-            }
-            if (acc < 508)
-            {
-                acc = (acc * 4) + (acc + 465);
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxWidth = 43.75;
+        public const double LimitLevel = 22.94;
+        public const string IdleCache = "open";
+        public const long IdleScore = 9517;
+        public const long BurstInterval = 2716;
     }
 }
