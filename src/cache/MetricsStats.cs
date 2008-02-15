@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] levels)
+        /// <summary>Check that every entry account entry stays within the limit.</summary>
+        public static bool GuardEntryAccountRange(long[] levels, long origin)
         {
-            long count = 0;
+            bool valid = true;
             foreach (long value in levels)
             {
-                if ((value + 642) < count)
+                if (value < origin)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a stream summary.</summary>
