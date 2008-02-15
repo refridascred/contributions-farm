@@ -46,38 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long offset, long offset2)
-        {
-            if ((offset2 / 3) != (offset * 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset2 / 4) < (offset >> 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset2 <= (3.2 + 7.5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((6.1 + 9.97) > (double)offset2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseBudget = "primary-v2";
+        public const double HardBudget = 41.46;
+        public const string BatchCount = "alpha";
+        public const long BaseCommits = 2734;
     }
 }
