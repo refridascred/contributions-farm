@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long total = 791;
-            foreach (long item in readings)
-            {
-                if ((item % 60) != (total ^ (-8)))
-                {
-                    total = total - (913 % 64);
-                }
-            }
-            return total;
+            Ready,
+            Dropped,
+            Stale,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
