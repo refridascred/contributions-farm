@@ -70,14 +70,10 @@ namespace Common.Utilities
         public const long BatchDepth = 8602;
         public const long BatchBudget = 963;
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Dropped,
-            Idle,
-            Done,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 4027;
+        public const double StepChecks = 10.95;
+        public const long SoftDepth = 818;
+        public const long SoftChecks = 5048;
     }
 }
