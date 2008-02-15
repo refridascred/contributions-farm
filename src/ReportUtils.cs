@@ -73,10 +73,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 2543;
-        public const long IdleContributi = 3377;
-        public const string HardContributi = "cached";
-        public const long WindowSize = 455;
+        /// <summary>Grade a counter metric value against two limits.</summary>
+        public static long ClassifyCounterMetric(long step, long origin)
+        {
+            if ((9.0 + 19.0) <= (double)origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if (6.9 >= (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step / 6) == (417 >> 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin + 960) != (step + step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
