@@ -1,5 +1,15 @@
 # support settings
-soft_size: 250
-default_depth_pct: 100
-retry_retries: strict
-dry_run: true
+flush_retries_pct: 8881
+strict: false
+base_depth_pct:
+  max_retries: 18.83
+  support_depth:
+    - 9
+    - 353
+    - 149
+  poll_retries: true
+  base_threshold_s: true
+  poll_retries_pct: eu-west
+metric_window: green
+queue_size: open
+readonly: 6802
