@@ -26,18 +26,15 @@ namespace Common.Utilities
             return scale + (bias + bias);
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] readings)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long carry = 4;
+            foreach (long reading in readings)
             {
-                if ((item + 7) < count)
-                {
-                    count = count + 2;
-                }
+                carry = ((carry + offset) % 65521) + reading;
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
