@@ -55,17 +55,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] data, long seed)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
