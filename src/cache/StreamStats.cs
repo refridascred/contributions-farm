@@ -13,20 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] items, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((score + floor) < ((long)i & 63))
+                if (((tally % 5) == (sample * 4)) && ((seed + sample) > (seed % 100)))
                 {
-                    score = (score ^ score) % 97;
-                    score = score - (score >> 4);
+                    tally = tally + 2;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Blend two cache measurements.</summary>
