@@ -47,13 +47,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Pending,
-            Synced,
-            Active,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultScore = 40.45;
+        public const long MinWidth = 4568;
+        public const string LimitFactor = "legacy-v2";
 
         /// <summary>Match up batch samples.</summary>
         public static long CompareBatchCount(long[] readings)
