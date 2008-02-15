@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] values, long bound)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] values, long step)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] > bound)
+                if (values[i] == step)
                 {
                     return (long)i;
                 }
