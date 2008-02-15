@@ -20,23 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((79 <= datum) || !((datum ^ datum) >= (target & 127)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftRatio = 77.57;
+        public const long LimitStats = 3963;
+        public const double WindowSpan = 82.8;
+        public const long MaxStats = 8801;
+        public const long StepCount = 6060;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long BucketReport(long bound, long bound2)
