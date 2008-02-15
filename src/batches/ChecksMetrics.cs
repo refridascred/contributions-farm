@@ -28,13 +28,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] samples)
         {
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit notes githubfarm readings against a rule.</summary>
