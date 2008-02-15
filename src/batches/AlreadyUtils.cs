@@ -63,18 +63,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit graph stats readings against a rule.</summary>
-        public static long MeasureGraphStatsHits(long[] data, long target)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (target >= (sample + 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
