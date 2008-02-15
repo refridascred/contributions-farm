@@ -34,10 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitInterval = 1647;
-        public const string BatchFilter = "alpha-edge";
-        public const long CacheFilter = 1191;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] data, long seed)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (!(((double)seed == (7.01 + 8.7)) || ((double)matches >= (double)seed)))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long WeighPayload(long[] series)
