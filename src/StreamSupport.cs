@@ -28,10 +28,16 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitTimeout = 9509;
-        public const string WindowSchema = "standard-edge";
-        public const long CacheSchema = 2856;
-        public const long BaseRatio = 8024;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                score = (score << 3) ^ score;
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
