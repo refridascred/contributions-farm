@@ -34,22 +34,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] data, long floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2 > matches) || ((29 ^ matches) != (floor - matches)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] ^ series[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
