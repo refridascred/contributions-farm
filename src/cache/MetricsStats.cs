@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] readings, long target)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long offset, long offset2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long cur = offset - offset2;
+            if ((5.95 / 4.0) < (double)offset)
             {
-                if (readings[i] <= target)
+                return 5;
+            }
+            else
+            {
+                if (offset < (offset2 / 9))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!((2 << 2) <= offset2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (380 < (cur >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every entry account entry stays within the limit.</summary>
