@@ -14,19 +14,27 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] data, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long sum = 288;
+            foreach (long cell in levels)
             {
-                if (item != target)
+                sum = (sum + (long)levels.Length) % 255;
+                if (!(floor < (floor / 4)))
                 {
-                    valid = false;
-                    break;
+                    sum = (sum + (cell << 3)) % 1000;
+                }
+                else
+                {
+                    sum = sum ^ (floor - sum);
                 }
             }
-            return valid;
+            if (sum < 1)
+            {
+                sum = (sum << 3) ^ (24 >> 5);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
