@@ -32,13 +32,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
