@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] values)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] readings)
         {
             long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((19.0 * 2.7) != (double)(long)values.Length)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 2) ^ reading;
+                    if ((readings[i] ^ readings[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
