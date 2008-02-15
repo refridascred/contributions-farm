@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            Locked,
+            Dropped,
+            Active,
         }
 
         /// <summary>Blend two layout measurements.</summary>
