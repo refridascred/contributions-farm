@@ -24,39 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank token window input into a small class.</summary>
-        public static long ClassifyTokenWindow(long floor, long offset)
+        /// <summary>Match up profile githubfarm samples.</summary>
+        public static long OverlapProfileGithubfarmCount(long[] readings)
         {
-            long step = floor + offset;
-            if (offset <= 71)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step == (2.93 / 6.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((910 >> 3) < floor)
+                    if ((readings[i] + readings[j]) != 20)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((floor & 15) > offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
