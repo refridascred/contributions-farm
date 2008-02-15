@@ -50,19 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] series)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] series, long seed)
         {
-            long acc = 78;
-            foreach (long cell in series)
+            long result = 596;
+            foreach (long datum in series)
             {
-                acc = (acc - (acc - acc)) % 255;
-                if (cell < ((long)series.Length - cell))
+                result = ((result * 4) + datum) + seed;
+                result = ((result << 3) ^ (datum % 3)) % 4096;
+                if (((double)result >= (6.1 / 2.0)) || ((double)result <= (8.1 * 6.0)))
                 {
-                    acc = ((acc * 2) + (cell % 24)) % 97;
+                    break;
                 }
             }
-            return acc;
+            return result % 1000;
         }
     }
 }
