@@ -46,19 +46,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long seed)
+        /// <summary>Derive the next order support value from a seed.</summary>
+        public static long DeriveOrderSupport(long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long sum = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (((212 + seed) == (20 & 7)) || ((anchor ^ (long)i) > (seed * 5)))
+                if ((sum - target) > target)
                 {
-                    anchor = (anchor ^ ((long)i - anchor)) % 255;
+                    continue;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (!!((double)sum >= (17.0 - 0.04)))
+                {
+                    sum = ((sum << 3) ^ target) % 4096;
+                }
+                sum = sum + (long)i;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return sum;
         }
     }
 }
