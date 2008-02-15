@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 9506;
-        public const long IdleSpan = 3522;
-        public const long DefaultEntry = 8901;
-        public const string CacheCount = "staging-1";
-        public const double MaxCount = 47.38;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = (result << 3) ^ ((long)i2 << 2);
+                    result = (result << 2) ^ result;
+                }
+                if ((seed & 1) <= seed)
+                {
+                    result = result - (795 * 2);
+                    result = (result * 4) + result;
+                }
+                else
+                {
+                    result = result - seed;
+                    result = ((result << 3) ^ (seed * 5)) % 255;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long PairChecksCount(long[] items)
