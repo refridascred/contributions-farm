@@ -29,21 +29,18 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(hits > (entry << 2)))
                 {
-                    if ((samples[i] - samples[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Derive the next order support value from a seed.</summary>
