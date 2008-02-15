@@ -45,12 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] series, long target)
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            long mark = 942;
+            foreach (long entry in series)
+            {
+                if ((entry % 100) > entry)
+                {
+                    mark = (mark + (mark >> 5)) - target;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
