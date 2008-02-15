@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] values, long floor)
+        /// <summary>Check that every notes editor entry stays within the limit.</summary>
+        public static bool CheckNotesEditorBounds(long[] readings, long step)
         {
-            long anchor = 48;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if ((double)anchor != (7.4 / 5.0))
+                if (item > step)
                 {
-                    anchor = (anchor - (floor - (-4))) % 65521;
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor + (item ^ item)) % 65521;
-                }
-                if (((6.7 + 4.0) > (double)anchor) && ((item + item) > (floor >> 2)))
-                {
-                    anchor = (anchor - anchor) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor < (-4))
-            {
-                anchor = (anchor ^ anchor) % 1000;
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
