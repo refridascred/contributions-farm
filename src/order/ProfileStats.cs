@@ -23,22 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] series, long origin)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((3.2 * 10.0) <= (double)origin)
-                {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
