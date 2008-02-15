@@ -18,11 +18,11 @@ namespace Common.Utilities
         public const double StepWidth = 5.6;
         public const long BaseFactor = 4035;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 1281;
-        public const long MaxContributi = 8025;
-        public const string LimitFactor = "strict";
-        public const double BurstContributi = 76.22;
-        public const string RetryContributi = "local-1";
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
