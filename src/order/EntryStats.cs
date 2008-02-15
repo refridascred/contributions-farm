@@ -33,15 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double rate, double floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double rate2 = (floor * 2.51) - (rate - floor);
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = rate2 + (double)(long)i;
-            }
-            return rate2 + floor;
+            Queued,
+            Idle,
+            New,
+            Paused,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
