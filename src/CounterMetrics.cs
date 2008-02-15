@@ -12,17 +12,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] values, long origin)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
