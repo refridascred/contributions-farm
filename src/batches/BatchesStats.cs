@@ -20,22 +20,21 @@ namespace Common.Utilities
         public const long BaseBudget = 815;
         public const long IdleScore = 2814;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] series, long floor)
+        /// <summary>Match up report batch samples.</summary>
+        public static long MatchReportBatchCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)matches <= 17.0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = ((matches + 3) ^ reading) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
