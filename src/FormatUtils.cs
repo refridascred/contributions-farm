@@ -60,21 +60,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)sum == (9.29 - 2.0))
                 {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = sum - (long)i;
                 }
+                sum = (sum + (sum + 65)) % 101;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
     }
 }
