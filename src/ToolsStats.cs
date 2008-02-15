@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            New,
-            Synced,
-            Closed,
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Project the next batch value.</summary>
