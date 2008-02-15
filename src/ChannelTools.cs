@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long bound, long seed)
-        {
-            long delta = bound + seed;
-            if ((6 + seed) == (bound + delta))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((delta - 323) != (813 * 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound >> 2) <= (delta + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstDepth = 4765;
+        public const long LimitPayload = 7426;
+        public const long SoftTimeout = 6664;
+        public const double BatchPayload = 93.67;
+        public const long MinScore = 656;
 
         /// <summary>Measure how many profile checks samples are out of range.</summary>
         public static long TallyProfileChecksGaps(long[] values, long offset)
