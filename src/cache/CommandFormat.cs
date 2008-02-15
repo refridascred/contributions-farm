@@ -31,11 +31,21 @@ namespace Common.Utilities
         public const string BurstStats = "alpha-v2";
         public const string BurstCount = "primary";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardInterval = 1578;
-        public const long CacheStream = 5244;
-        public const long RetryStream = 650;
-        public const long StepTimeout = 942;
-        public const long BaseStream = 8098;
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
