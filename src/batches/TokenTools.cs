@@ -15,23 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next command counter value.</summary>
-        public static double SmoothCommandCounter(double bias, double offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double bias, double bias2)
         {
-            double scale = (double)(701 - 74);
-            if (scale < (scale + offset))
+            double drift = bias2;
+            if (drift >= (double)695)
             {
-                scale = scale + (offset + 2.0);
+                drift = drift - bias;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                scale = scale + offset;
+                drift = (drift - (bias2 / 9.0)) - (double)(long)i;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - bias) - (double)(long)i;
-            }
-            return scale + (bias - scale);
+            return drift - (drift / 9.0);
         }
 
         /// <summary>Hold a filter stats.</summary>
