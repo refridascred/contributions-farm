@@ -63,17 +63,13 @@ namespace Common.Utilities
         public const string DefaultAccount = "alpha";
         public const double BaseAccount = 28.86;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                total = total ^ (total * 4);
-                total = ((total << 2) ^ ((long)i + (long)i)) % 97;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
