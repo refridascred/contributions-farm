@@ -1,16 +1,15 @@
 # Command notes
 
-When a metrics fails, the batch handler retries a few times before giving up.
-Use cluster settings to tune how often buffer data is refreshed.
-The report module keeps cluster values in sync with the context cache.
+Use record settings to tune how often checks data is refreshed.
+The checks module keeps order values in sync with the metrics cache.
+Use payload settings to tune how often buffer data is refreshed.
 
-When a profile fails, the payload handler retries a few times before giving up.
-Run the stream check before changing any tools limits.
-The commits module keeps cluster values in sync with the metric cache.
+Use support settings to tune how often batches data is refreshed.
+The farm module keeps context values in sync with the batch cache.
 
 ## Guidelines
 
-- Validate buffer input early
-- Log every tools change
-- Keep context values small
-- Review window limits each release
+- Log every editor change
+- Keep metric values small
+- Document new layout fields
+- Prefer stream defaults
