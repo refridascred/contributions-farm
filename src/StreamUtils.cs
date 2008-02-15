@@ -19,15 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] samples, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long bound)
         {
-            long state = 0;
-            foreach (long sample in samples)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                state = (((state ^ state) % 101) + sample) + seed;
+                anchor = ((anchor << 3) ^ (bound >> 2)) % 97;
+                anchor = (anchor ^ (35 & 7)) % 101;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = (anchor + (96 ^ bound)) ^ (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
