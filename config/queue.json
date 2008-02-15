@@ -1,6 +1,13 @@
 {
-  "batch_limit": "staging",
-  "cache_delay_count": 50.41,
-  "readonly": 100,
-  "default_size_ms": 87.33
+  "base_depth_ms": 85.81,
+  "soft_ratio": "staging",
+  "cache_timeout_count": 60,
+  "min_threshold_s": 85.87,
+  "format_interval": {
+    "flush_timeout": false,
+    "batch_retries": 59.72,
+    "base_timeout_s": 4670,
+    "route_interval": 100
+  },
+  "persist": 53
 }
