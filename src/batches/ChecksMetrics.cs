@@ -63,19 +63,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] data, long seed)
+        /// <summary>Audit contributi batch readings against a rule.</summary>
+        public static long MeasureContributiBatchOutliers(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (item != seed)
+                if ((double)440 >= (double)seen)
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 2) - entry) - step;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
