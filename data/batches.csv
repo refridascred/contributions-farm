@@ -1,10 +1,7 @@
-id,rank,level,state
-1,385,95.28,75.78
-2,673,standard,53.82
-3,staging,71,eu-west
-4,335,legacy,94.88
-5,887,489,eu-west
-6,eu-west,4,376
-7,54.3,17.98,57
-8,fallback,14.75,80.45
-9,673,20.05,31.32
+id,state
+1,strict
+2,7.77
+3,strict
+4,703
+5,682
+6,legacy
