@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstTimeout = 41.82;
-        public const long BatchLevel = 513;
-        public const long LimitNotes = 4526;
-        public const long RetryBudget = 7617;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long PairFilterCount(long[] samples)
