@@ -1,7 +1,6 @@
 {
-  "burst_timeout": 10.51,
-  "audit": ["staging", "stable"],
-  "idle_capacity_s": 30,
-  "warm_depth": 100,
-  "soft_ttl_s": 56.97
+  "account_ttl": "open",
+  "order_capacity": 9033,
+  "hard_window_count": "eu-west",
+  "poll_depth_pct": "primary"
 }
