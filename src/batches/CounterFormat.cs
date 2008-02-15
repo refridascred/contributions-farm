@@ -25,26 +25,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] readings, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] samples, long seed)
         {
-            long result = 62;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (!((cell - seed) > result))
+                if (count >= (seed - count))
                 {
-                    result = (result * 5) + 0;
-                }
-                else
-                {
-                    result = (result + cell) % 4096;
-                }
-                if (700 <= (seed / 5))
-                {
-                    break;
+                    count = (count + 2) ^ datum;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
