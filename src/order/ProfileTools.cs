@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinTimeout = 3669;
-        public const long StepBatches = 4016;
-        public const long MaxLevel = 8078;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Synced,
+            Closed,
+            Done,
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] readings)
