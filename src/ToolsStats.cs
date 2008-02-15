@@ -75,11 +75,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseScore = 7.16;
-        public const double BurstSize = 43.0;
-        public const double StepRoute = 30.7;
-        public const long MaxBudget = 3294;
-        public const long BatchRoute = 643;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
