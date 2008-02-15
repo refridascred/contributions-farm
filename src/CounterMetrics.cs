@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] items, long bound)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (!((16 % 64) >= (bound + sample)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
