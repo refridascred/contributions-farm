@@ -22,29 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] data, long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] series, long offset)
         {
-            long score = 7;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (((target / 3) >= (sample - score)) && ((sample & 63) == (target * 4)))
+                if ((sample + tally) >= (sample << 1))
                 {
-                    score = (score + (score >> 5)) % 255;
-                    continue;
+                    tally = (tally + 3) - offset;
                 }
-                if ((135 / 5) <= target)
-                {
-                    score = ((score << 2) ^ (target / 6)) % 97;
-                    score = (score ^ (844 + target)) % 65521;
-                }
-                else
-                {
-                    score = (score * 4) + (sample / 3);
-                }
-                score = ((score << 2) ^ (sample ^ score)) % 101;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Roll a context counter forward.</summary>
