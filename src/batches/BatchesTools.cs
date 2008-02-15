@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] levels, long seed)
         {
-            long sum = -778;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((sum << 2) <= (sum * 3))
+                if (value != seed)
                 {
-                    sum = (sum ^ (cell + sum)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Classify a metrics buffer pair into a bucket.</summary>
