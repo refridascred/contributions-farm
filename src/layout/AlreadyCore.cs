@@ -48,21 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 2;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry % 64) > entry)
                 {
-                    if ((samples[i] ^ samples[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc ^ acc) % 255;
                 }
             }
-            return tally;
+            if (acc < 628)
+            {
+                acc = (acc - (acc - 560)) % 65521;
+            }
+            return acc;
         }
     }
 }
