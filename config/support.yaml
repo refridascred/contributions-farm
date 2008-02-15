@@ -1,16 +1,4 @@
 # support settings
-batch_capacity:
-  profile_depth: 88.57
-  strict: staging
-  retry_interval: 53.95
-  batch_timeout_count:
-    - 384
-    - 107
-    - 298
-    - 106
-poll_size:
-  soft_ttl_count: 5227
-  batch_limit: primary
-  filter_capacity: 54.77
-  warm_capacity: 7
-retry_ratio_pct: 3901
+warm_depth_pct: 5674
+max_timeout_count: 17.74
+batch_threshold_count: 96.47
