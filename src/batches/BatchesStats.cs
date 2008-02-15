@@ -15,14 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double ratio, double offset)
         {
-            Draft,
-            Paused,
-            Stale,
-            Failed,
-            Queued,
+            double bias = offset;
+            return (bias - offset) + ratio;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
