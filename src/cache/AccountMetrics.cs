@@ -54,17 +54,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] series, long target)
+        /// <summary>Roll a commits already counter forward.</summary>
+        public static long RollCommitsAlready(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((series[i] < target) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Accumulate entry samples.</summary>
