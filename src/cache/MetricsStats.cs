@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] readings, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] levels)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (reading >= floor)
+                if ((value + 642) < count)
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Measure how many checks token samples are out of range.</summary>
