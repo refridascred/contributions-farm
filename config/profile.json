@@ -1,13 +1,5 @@
 {
-  "notes_limit": 46,
-  "default_window": "latest",
-  "retry_limit": ["local", "green", "blue"],
-  "max_threshold_ms": {
-    "max_ttl_count": "stable",
-    "burst_depth_pct": "cached",
-    "audit": "legacy",
-    "max_capacity_ms": 60,
-    "graph_ratio": [169, 328]
-  },
-  "batch_depth": 100
+  "session_capacity": 1024,
+  "flush_threshold": 39.1,
+  "hard_threshold_s": "fallback"
 }
