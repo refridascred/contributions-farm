@@ -22,20 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long seed)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                long step = seed;
-                if (!((step + step) > (9 & 255)))
-                {
-                    step = (step - (acc & 7)) % 65521;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
