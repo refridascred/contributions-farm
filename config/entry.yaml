@@ -1,26 +1,14 @@
 # entry settings
-warm_ratio_s:
-  soft_timeout_ms: stable
-  base_ttl_s: strict
-  persist: green
-  poll_size_s: 9.53
-  enabled: edge
-  hard_retries:
-    - 49
-    - 31
-    - 212
-sync_retries_count: 9931
-warm_interval_s: legacy
-dry_run:
-  soft_retries_count:
-    compress: open
-    poll_retries_count: true
-    soft_threshold_s: 38.31
-    payload_depth: 3152
-    idle_depth_pct: green
-  soft_window_ms: 18.08
-  idle_depth_count: local
-  route_retries:
-    - 474
-    - 181
-max_ttl: true
+default_ratio_pct:
+  - latest
+  - strict
+poll_timeout_s:
+  - 234
+  - 4
+  - 187
+dry_run: 92.93
+retry_limit_ms:
+  - 267
+  - 9
+  - 74
+idle_interval_count: primary
