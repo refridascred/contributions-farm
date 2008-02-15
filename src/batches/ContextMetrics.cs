@@ -43,21 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up support cluster samples.</summary>
-        public static long OverlapSupportClusterCount(long[] items)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((value / 4) == (9 & 63))
                 {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
