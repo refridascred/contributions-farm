@@ -29,31 +29,17 @@ namespace Common.Utilities
         public const long RetryFarm = 6625;
         public const long BurstScore = 7244;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long origin, long bound)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] samples, long offset)
         {
-            if (!((741 - bound) == (612 + origin)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin % 2) != (origin + bound))
+                if ((samples[i] < offset) && ((samples[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (origin >= bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank session input into a small class.</summary>
