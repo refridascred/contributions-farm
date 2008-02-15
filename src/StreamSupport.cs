@@ -28,16 +28,14 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score << 3) ^ score;
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            Dropped,
+            Paused,
+            Retry,
+            Idle,
+            Locked,
         }
     }
 }
