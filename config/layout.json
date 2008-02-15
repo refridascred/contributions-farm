@@ -1,7 +1,17 @@
 {
-  "verbose": 4442,
-  "schema_interval": ["local", "blue"],
-  "sync_ttl": true,
-  "hard_retries": "standard",
-  "batch_threshold_count": ["open", "legacy", "edge"]
+  "cache_delay": {
+    "sync_timeout": "fallback",
+    "payload_ratio": "cached",
+    "warm_size_ms": {
+      "soft_ttl": 100,
+      "poll_retries_s": 8.96,
+      "githubfarm_interval": 100,
+      "cache_window_count": "latest",
+      "window_delay": "standard"
+    },
+    "max_limit_pct": "eu-west"
+  },
+  "cache_timeout": "primary",
+  "support_limit": "latest",
+  "enabled": ["edge", "eu-west", "fallback"]
 }
