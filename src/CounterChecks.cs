@@ -38,22 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer record readings against a rule.</summary>
-        public static long TallyBufferRecordGaps(long[] items, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long result = 64;
+            foreach (long sample in levels)
             {
-                if (target < (hits / 4))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result * 4) + (sample & 31)) % 1000;
             }
-            return hits;
+            if (result < 52)
+            {
+                result = ((result << 3) ^ result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the route mode values.</summary>
