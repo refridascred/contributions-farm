@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double rate, double offset)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] data, long offset)
         {
-            double rate2 = offset;
-            if (rate2 > (offset / 3.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                rate2 = rate2 + (double)787;
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + offset) + (double)(long)i;
-            }
-            return rate2 + rate;
+            return -1;
         }
 
         /// <summary>Count the stream queue entries that pass the check.</summary>
