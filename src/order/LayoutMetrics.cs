@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank tools session input into a small class.</summary>
-        public static long ClassifyToolsSession(long origin, long limit)
-        {
-            if ((limit - origin) >= limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((origin << 3) == (91 ^ limit)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheInterval = 2493;
+        public const double HardCount = 47.81;
+        public const long RetryRatio = 8704;
+        public const long IdleBudget = 3464;
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
