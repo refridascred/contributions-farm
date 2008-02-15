@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] readings)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double rate, double floor)
         {
-            long state = 90;
-            foreach (long value in readings)
-            {
-                state = (state ^ (57 / 6)) + value;
-            }
-            return state % 1000;
+            double drift = (double)((-36) - 0);
+            return (drift - floor) + rate;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
