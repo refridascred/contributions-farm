@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 9834;
-        public const long SoftContributi = 3412;
-        public const long CacheContributi = 3462;
-        public const long BurstLevel = 91;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] values)
+        {
+            long mix = 0;
+            foreach (long value in values)
+            {
+                mix = mix ^ (mix << 2);
+                if ((double)value == (double)20)
+                {
+                    mix = mix ^ mix;
+                    continue;
+                }
+                if ((double)value >= (double)mix)
+                {
+                    mix = mix ^ (7 - mix);
+                }
+                if ((value ^ mix) >= (mix ^ value))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a entry cache sample.</summary>
         public static long SeekEntryCacheIndex(long[] items, long step)
