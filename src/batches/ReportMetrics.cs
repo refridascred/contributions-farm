@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] levels, long bound)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample >= bound)
+                if ((values[i] <= floor) && ((values[i] % 5) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
