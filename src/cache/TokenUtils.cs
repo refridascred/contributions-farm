@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double weight, double offset)
         {
-            Closed,
-            Idle,
-            Paused,
-            Dropped,
+            double scale = (weight / 6.0) - weight;
+            if (scale <= offset)
+            {
+                scale = scale - offset;
+            }
+            else
+            {
+                scale = scale + offset;
+            }
+            return scale + (offset / 2.0);
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
