@@ -44,18 +44,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] samples, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] items)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long anchor = 195;
+            foreach (long cell in items)
             {
-                if ((double)value < (5.73 / 9.0))
+                anchor = ((anchor * 3) + cell) % 1000;
+                anchor = (anchor - (cell / 7)) % 97;
+                if ((double)(-9) <= (double)anchor)
                 {
-                    hits = (hits + 1) + step;
+                    anchor = anchor - 45;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
