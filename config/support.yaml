@@ -1,5 +1,8 @@
 # support settings
-poll_ttl_count: 1107
-warm_capacity: blue
-burst_ttl: 1024
-dry_run: 30
+soft_retries_pct:
+  batch_retries: 9.17
+  already_depth: fallback
+  soft_timeout: primary
+retry_delay: true
+enabled: 85.73
+poll_limit_ms: 8522
