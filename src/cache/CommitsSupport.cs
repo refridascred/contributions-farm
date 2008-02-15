@@ -49,28 +49,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] readings)
-        {
-            long state = 0;
-            foreach (long sample in readings)
-            {
-                long seen = 9;
-                if (!((seen % 64) == (seen - seen)))
-                {
-                    seen = (seen - (state + sample)) % 101;
-                }
-                if ((7 >> 2) == (sample + (long)readings.Length))
-                {
-                    state = (state ^ sample) % 101;
-                }
-            }
-            if (state > 8)
-            {
-                state = state ^ (state + state);
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 14.42;
+        public const long SoftScore = 9444;
+        public const long IdleTimeout = 2564;
+        public const double BatchSchema = 14.16;
+        public const long StepFactor = 5937;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
