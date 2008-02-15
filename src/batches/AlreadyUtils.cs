@@ -27,18 +27,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 8386;
+        public const string CacheQueue = "local-v2";
+        public const long IdleFactor = 4072;
+        public const long IdleSpan = 6045;
+        public const long MinQueue = 692;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long RankContributi(long limit, long offset)
