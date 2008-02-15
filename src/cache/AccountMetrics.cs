@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchSchema = "fallback";
-        public const long RetryCount = 4228;
-        public const long LimitSize = 8581;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long target, long step)
+        {
+            if ((target % 7) > (148 & 255))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-776) + 7) <= (step >> 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target << 1) > (step % 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step ^ 7) >= step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long CountCounterOutliers(long[] items, long origin)
