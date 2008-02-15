@@ -35,19 +35,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double weight, double span)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double scale = (double)3 + weight;
-            if (scale <= (weight / 5.0))
-            {
-                scale = scale + 0.35;
-            }
-            else
-            {
-                scale = scale - span;
-            }
-            return scale - weight;
+            New,
+            Done,
+            Failed,
         }
 
         /// <summary>Match up support cluster samples.</summary>
