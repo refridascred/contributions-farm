@@ -29,11 +29,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public bool Total { get; set; }
-            public double Owner { get; set; }
+            Failed,
+            Draft,
+            Closed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
