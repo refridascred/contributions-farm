@@ -30,18 +30,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long offset)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                result = (result * 2) + (result * 5);
-                result = (result << 2) ^ (result + 4);
-                result = (result + ((long)i >> 4)) % 97;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Done,
+            Closed,
+            Queued,
+            Active,
+            Draft,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
