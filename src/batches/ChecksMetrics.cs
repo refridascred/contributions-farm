@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const double MaxAccount = 76.45;
         public const long BaseAccount = 791;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] levels, long origin)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Accumulate cache samples.</summary>
