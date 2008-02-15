@@ -30,12 +30,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowLevel = "primary-1";
-        public const long LimitWidth = 2582;
-        public const string DefaultSize = "local-1";
-        public const long BurstFactor = 506;
-        public const long HardContributi = 6601;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Locked,
+            Paused,
+            Draft,
+            Dropped,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double IdleBudget = 6.27;
