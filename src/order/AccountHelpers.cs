@@ -75,13 +75,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public bool Mode { get; set; }
-            public bool Token { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardWidth = 526;
+        public const double StepEntry = 87.12;
+        public const double IdleEntry = 40.72;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool ValidateBufferBounds(long[] readings, long seed)
