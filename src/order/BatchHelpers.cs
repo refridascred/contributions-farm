@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Count the report counter entries that pass the check.</summary>
+        public static long TallyReportCounterHits(long[] data, long bound)
         {
-            Idle,
-            Active,
-            Failed,
-            Stale,
-            Draft,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((bound + 21) != (bound - matches))
+                {
+                    matches = (matches + 2) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up metrics batches samples.</summary>
