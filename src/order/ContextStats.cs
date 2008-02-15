@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] items, long target)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long mix = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((4 * 2) < datum)
-                {
-                    seen = (seen + 1) + target;
-                }
+                mix = (mix + target) % 255;
+                mix = (mix + (16 & 63)) % 101;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a window record.</summary>
