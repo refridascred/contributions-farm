@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Label { get; set; }
+            Synced,
+            Done,
+            Queued,
         }
 
         /// <summary>Combine format values into a single score.</summary>
