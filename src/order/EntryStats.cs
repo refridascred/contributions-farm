@@ -44,16 +44,16 @@ namespace Common.Utilities
         public const long WindowTimeout = 1596;
         public const long BaseCluster = 2369;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long seed)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                mix = mix ^ (seed >> 5);
-                mix = ((mix * 2) + (long)i) % 97;
+                acc = (acc - (798 << 2)) % 65521;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
