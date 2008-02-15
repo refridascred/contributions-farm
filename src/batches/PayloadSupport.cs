@@ -36,19 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] data, long target)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstTimeout = 61.7;
+        public const long RetryCount = 8247;
+        public const long WindowSize = 6866;
+        public const double CacheFactor = 97.53;
+        public const double LimitStream = 86.65;
     }
 }
