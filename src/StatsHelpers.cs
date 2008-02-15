@@ -67,12 +67,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Idle,
-            Closed,
             Failed,
+            Closed,
+            Queued,
+            Paused,
+            Synced,
         }
     }
 }
