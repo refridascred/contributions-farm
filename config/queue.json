@@ -1,11 +1,17 @@
 {
-  "max_retries_pct": 36.24,
-  "soft_size_ms": "legacy",
-  "min_threshold_ms": {
-    "max_depth_ms": true,
-    "channel_depth": [156, 493, 447],
-    "notes_ratio": "standard"
+  "default_depth": {
+    "soft_ttl_count": 234,
+    "retry_interval_pct": 250,
+    "idle_limit_count": "fallback",
+    "persist": [143, 370, 210],
+    "batch_limit_s": "stable"
   },
-  "report_threshold": 91,
-  "burst_capacity_count": "open"
+  "default_retries_count": false,
+  "format_retries": {
+    "compress": 500,
+    "schema_ratio": "edge",
+    "base_depth_s": ["blue", "blue", "edge"],
+    "soft_window": 32.92,
+    "idle_interval_ms": true
+  }
 }
