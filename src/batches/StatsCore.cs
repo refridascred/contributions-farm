@@ -52,17 +52,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] series, long target)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (series[i] == target)
+                if (item > limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the notes mode values.</summary>
