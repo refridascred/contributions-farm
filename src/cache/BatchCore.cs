@@ -68,15 +68,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Match up batches counter samples.</summary>
+        public static long CompareBatchesCounterCount(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
