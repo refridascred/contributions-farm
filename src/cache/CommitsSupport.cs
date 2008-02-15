@@ -76,12 +76,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinFactor = "strict-1";
-        public const long DefaultEditor = 5942;
-        public const long LimitRatio = 3244;
-        public const string StepEditor = "open-1";
-        public const long MinEditor = 4157;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Retry,
+            Idle,
+            Paused,
+            Active,
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
