@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitDepth = 841;
-        public const string BurstEditor = "standard-1";
-        public const long HardEditor = 7297;
-        public const string RetryEditor = "fallback";
-        public const long RetryCount = 4287;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] items, long limit)
+        {
+            long total = 16;
+            foreach (long entry in items)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    total = (total - ((long)i ^ (-4))) % 97;
+                }
+                total = (total << 2) ^ (entry - total);
+            }
+            if (total < 49)
+            {
+                total = (total + (total - limit)) % 65521;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Adjust a batch token reading.</summary>
         public static double BlendBatchToken(double bias, double floor)
