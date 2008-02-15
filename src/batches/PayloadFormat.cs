@@ -12,16 +12,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a stats metric counter forward.</summary>
-        public static long SeriesStatsMetric(long seed)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long state = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                state = (state ^ (seed % 2)) % 65521;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Done,
+            Stale,
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
