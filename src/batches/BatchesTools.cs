@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Active,
-            Pending,
-            Failed,
-            Closed,
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
