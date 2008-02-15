@@ -25,18 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cluster buffer sample.</summary>
-        public static long LocateClusterBufferIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleContributi = 45.16;
+        public const double DefaultContributi = 63.62;
+        public const long BaseLevel = 16;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseInterval = 8857;
