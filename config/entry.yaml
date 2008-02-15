@@ -1,12 +1,24 @@
 # entry settings
-metric_threshold: true
-cache_delay_pct: standard
-warm_capacity: primary
-report_delay:
-  verbose: 28.92
-  metrics_ratio: latest
-  burst_retries_s:
-    cluster_window: latest
-    verbose: green
-    support_timeout: cached
-    audit: cached
+persist: 100
+strict:
+  sync_delay_pct:
+    audit: 34.65
+    metrics_interval: true
+    warm_delay_count: 5.91
+  poll_limit:
+    max_limit: 498
+    batches_limit:
+      - legacy
+      - primary
+    record_delay: false
+  hard_ratio_s:
+    - 327
+    - 417
+    - 82
+  hard_window: 9175
+  poll_ttl: true
+stream_delay:
+  - 223
+  - 408
+compress: open
+entry_capacity: 63.16
