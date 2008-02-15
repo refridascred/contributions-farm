@@ -61,17 +61,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long step)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] samples)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
+            long total = 173;
+            foreach (long value in samples)
             {
-                result = (result + result) % 1000;
-                result = result + step;
-                result = ((result * 3) + (long)i) % 4093;
+                if ((4 - value) >= (total & 1))
+                {
+                    total = total ^ (26 ^ value);
+                    break;
+                }
+                if ((total >> 2) >= (99 % 5))
+                {
+                    total = total - 945;
+                }
             }
-            return result;
+            if (total > 3)
+            {
+                total = ((total << 2) ^ (total << 1)) % 97;
+            }
+            return total;
         }
     }
 }
