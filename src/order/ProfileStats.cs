@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long floor, long target)
-        {
-            long lane = floor - target;
-            if (floor <= (lane - target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((lane ^ floor) <= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((target - target) <= (floor / 9)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 8358;
+        public const long BaseTimeout = 8109;
+        public const double HardSession = 59.69;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long ClassifySession(long limit, long offset)
