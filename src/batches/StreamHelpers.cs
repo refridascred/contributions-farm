@@ -60,17 +60,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] series, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 13;
+            foreach (long datum in series)
             {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
+                total = ((total << 3) ^ 14) - datum;
             }
-            return -1;
+            return total;
         }
     }
 }
