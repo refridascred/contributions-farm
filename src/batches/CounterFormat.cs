@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstSize = 4955;
-        public const long HardPayload = 9858;
-        public const double CachePayload = 18.38;
-        public const long MinLevel = 2146;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public double Token { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
