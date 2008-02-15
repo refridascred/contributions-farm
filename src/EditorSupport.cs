@@ -29,11 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepStats = 10.06;
-        public const long RetryWidth = 7705;
-        public const long BatchSize = 9592;
-        public const long HardScore = 1212;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches / 4) != (target + target))
+                {
+                    matches = (matches + 2) ^ sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long DeriveContext(long target)
