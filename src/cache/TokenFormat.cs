@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] items)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long origin)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(((seen - datum) < (datum >> 2)) && ((5.33 / 6.0) <= (double)datum)))
+                if ((double)origin == (double)carry)
                 {
-                    seen = seen + 1;
+                    carry = ((carry << 3) ^ (carry * 4)) % 101;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
