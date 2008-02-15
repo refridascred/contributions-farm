@@ -29,14 +29,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] series, long limit)
         {
-            Ready,
-            Locked,
-            Draft,
-            Synced,
-            Paused,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((long)series.Length - datum) == (limit ^ hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
