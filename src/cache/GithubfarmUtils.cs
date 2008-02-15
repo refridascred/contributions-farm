@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] samples, long seed)
-        {
-            long state = 77;
-            foreach (long datum in samples)
-            {
-                if ((seed & 3) < (seed % 100))
-                {
-                    state = (state + (datum ^ datum)) % 255;
-                }
-            }
-            if (state < 73)
-            {
-                state = (state + (state * 4)) % 1000;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepLevel = "local";
+        public const long BurstDepth = 4376;
+        public const long MaxGraph = 6092;
+        public const double IdleGraph = 63.29;
+        public const long DefaultGraph = 6614;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
