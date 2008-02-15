@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] data, long seed)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((7.86 * 7.3) >= (double)seed)
-                {
-                    seen = (seen + 3) - sample;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the counter mode values.</summary>
