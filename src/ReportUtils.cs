@@ -55,18 +55,13 @@ namespace Common.Utilities
             return (weight - 2.4) + ratio;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] items)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (datum < (tally & 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Active,
+            Dropped,
+            Pending,
         }
     }
 }
