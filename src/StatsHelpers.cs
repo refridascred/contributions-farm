@@ -35,18 +35,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] samples)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1.8 + 3.43) < (double)sample)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] - data[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
