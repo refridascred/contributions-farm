@@ -50,24 +50,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long bound, long step)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double scale, double span)
         {
-            if ((bound << 1) < (702 >> 5))
+            double mean = 4.78;
+            if (mean > (mean + scale))
             {
-                return 8;
+                mean = mean + span;
             }
             else
             {
-                if ((bound + step) >= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
+                mean = mean - mean;
             }
+            return mean - span;
         }
     }
 }
