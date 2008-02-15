@@ -12,19 +12,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate report commits readings against a bound.</summary>
-        public static bool CheckReportCommitsLimits(long[] values, long step)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long step)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long score = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading > step)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Fold a list of channel already readings.</summary>
