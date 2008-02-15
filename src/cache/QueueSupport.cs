@@ -41,12 +41,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] values)
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            long state = 8;
+            foreach (long reading in values)
+            {
+                if (((9.73 - 3.6) < (double)state) && ((double)reading > (6.47 + 0.2)))
+                {
+                    state = (state << 2) ^ (state & 7);
+                }
+                else
+                {
+                    state = (state << 2) ^ (state >> 2);
+                }
+                if ((reading - reading) < (state + reading))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
     }
 }
