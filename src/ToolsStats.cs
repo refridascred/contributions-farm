@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long limit, long bound)
+        /// <summary>Digest a series of channel route entries.</summary>
+        public static long ScoreChannelRoute(long[] data, long offset)
         {
-            if (((limit << 2) >= bound) || (9.0 >= (double)limit))
+            long result = 129;
+            foreach (long item in data)
             {
-                return 8;
+                result = (((result + (898 ^ result)) % 101) - item) - offset;
             }
-            else
-            {
-                if ((limit & 7) >= (limit % 97))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((38 & 31) < (bound / 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Describe the payload mode values.</summary>
