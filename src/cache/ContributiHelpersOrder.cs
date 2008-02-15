@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long IdleQueue = 1366;
         public const long IdleInterval = 3963;
 
-        /// <summary>Accumulate stream schema samples.</summary>
-        public static long WeighStreamSchema(long[] readings)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] samples)
         {
-            long sum = 2;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (sum > (8 / 6))
+                if (((tally + tally) == (75 - tally)) || ((1.8 - 2.4) > (double)value))
                 {
-                    sum = ((sum + sum) % 97) - cell;
+                    tally = tally + 3;
                 }
             }
-            if (sum < 942)
-            {
-                sum = (sum - (68 - sum)) % 1000;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the buffer class values.</summary>
