@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long floor, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = floor - target;
+            if (floor <= (lane - target))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((lane ^ floor) <= target)
                 {
-                    if ((levels[i] ^ levels[j]) != 18)
+                    return 0;
+                }
+                else
+                {
+                    if (!((target - target) <= (floor / 9)))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank session input into a small class.</summary>
