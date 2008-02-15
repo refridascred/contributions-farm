@@ -34,12 +34,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepFilter = 68.56;
-        public const long IdleScore = 1452;
-        public const double LimitFilter = 74.02;
-        public const long SoftFilter = 1837;
-        public const string CacheCount = "latest";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitWidth = "standard";
+        public const string IdleInterval = "strict-v2";
+        public const long RetryChannel = 5553;
+        public const double WindowCount = 58.59;
 
         /// <summary>Count command report pairs that satisfy a relation.</summary>
         public static long MatchCommandReportCount(long[] levels)
