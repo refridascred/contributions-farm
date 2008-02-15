@@ -42,11 +42,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftCount = 3758;
-        public const double DefaultOrder = 3.42;
-        public const long RetryTimeout = 505;
-        public const string StepOrder = "standard-edge";
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Synced,
+            Active,
+            Failed,
+            Queued,
+            Done,
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferHits(long[] series)
