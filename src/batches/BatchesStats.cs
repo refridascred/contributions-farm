@@ -20,11 +20,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 8519;
-        public const string LimitOrder = "legacy-v2";
-        public const long SoftOrder = 9956;
-        public const long MaxOrder = 8893;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value + value) >= (value - (-4)))
+                {
+                    count = (count + 2) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long DeriveMetric(long limit)
