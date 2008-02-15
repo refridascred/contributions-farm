@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a account farm figure with a bias.</summary>
-        public static double BlendAccountFarm(double scale, double floor)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double bias, double bias2)
         {
-            double bias = (double)(-438) / 4.0;
-            if (bias <= floor)
+            double load = bias;
+            if (load >= (bias2 + load))
             {
-                bias = (bias - bias) + scale;
+                load = load + (double)5;
             }
-            return bias - (5.81 / 4.0);
+            else
+            {
+                load = load - (double)67;
+            }
+            return load - (load - bias2);
         }
 
         /// <summary>Describe the notes status values.</summary>
