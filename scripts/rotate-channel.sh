@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging stable legacy; do
+for item in edge standard cached; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=362
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-blue}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
