@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const long RetryCount = 4228;
         public const long LimitSize = 8581;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 38.17;
-        public const string CacheBuffer = "stable-v2";
-        public const long BurstTimeout = 5079;
-        public const long StepLevel = 6649;
-        public const double WindowBuffer = 68.84;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((origin % 5) < origin)
+                {
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long MeasureRecordHits(long[] series)
