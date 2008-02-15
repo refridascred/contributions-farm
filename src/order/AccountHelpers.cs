@@ -16,22 +16,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many record payload samples are out of range.</summary>
-        public static long MeasureRecordPayloadMatches(long[] readings, long seed)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((double)hits > (double)2)
-                {
-                    hits = ((hits + 2) - value) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next batch value.</summary>
