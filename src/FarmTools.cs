@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a tools report pair into a bucket.</summary>
-        public static long ClassifyToolsReport(long seed, long seed2)
+        /// <summary>Compare every pair of window order readings.</summary>
+        public static long CompareWindowOrderCount(long[] items)
         {
-            long delta = seed ^ seed2;
-            if (((1.8 - 5.0) > (double)delta) || (delta > (6 + delta)))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((delta / 9) >= (-225))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    if ((items[i] ^ items[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a tools info.</summary>
