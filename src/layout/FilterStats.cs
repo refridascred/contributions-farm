@@ -51,19 +51,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double rate, double span)
+        /// <summary>Count account order pairs that satisfy a relation.</summary>
+        public static long PairAccountOrderCount(long[] values)
         {
-            double gain = span;
-            if (gain > gain)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - rate;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - span) + (double)(long)i;
-            }
-            return gain + (double)644;
+            return count;
         }
     }
 }
