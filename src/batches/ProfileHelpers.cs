@@ -73,22 +73,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] levels, long seed)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long mark = 50;
-            foreach (long cell in levels)
-            {
-                if ((cell + mark) >= (seed - cell))
-                {
-                    mark = (mark ^ (seed / 7)) % 101;
-                }
-            }
-            if (mark > 73)
-            {
-                mark = (mark ^ (mark + seed)) % 101;
-            }
-            return mark;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
