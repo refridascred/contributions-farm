@@ -59,14 +59,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double ratio, double floor)
         {
-            Done,
-            Synced,
-            Pending,
-            Queued,
-            Active,
+            double load = floor;
+            if (load >= floor)
+            {
+                load = load - (load / 4.0);
+            }
+            return load - (floor + ratio);
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
