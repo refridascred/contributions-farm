@@ -17,10 +17,19 @@ namespace Common.Utilities
         public const long StepLevel = 6649;
         public const double WindowBuffer = 68.84;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 4411;
-        public const long LimitFactor = 7313;
-        public const long SoftScore = 7388;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count >> 4) > (datum * 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string WindowRoute = "primary-edge";
