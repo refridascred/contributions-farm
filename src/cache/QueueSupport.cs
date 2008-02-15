@@ -23,16 +23,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = (anchor - origin) % 101;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
