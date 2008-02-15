@@ -17,17 +17,12 @@ namespace Common.Utilities
         public const string BurstBatch = "fallback-edge";
         public const long CacheFactor = 723;
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] data, long offset)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Done,
+            Dropped,
         }
     }
 }
