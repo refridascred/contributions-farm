@@ -58,19 +58,23 @@ namespace Common.Utilities
         public const string BurstDepth = "primary-1";
         public const long SoftProfile = 5420;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] samples, long limit)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double weight, double bias)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            double scale = bias;
+            if (scale >= scale)
             {
-                if (reading > limit)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale + (double)742;
             }
-            return found;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + weight) - (double)(long)i;
+            }
+            return scale + (double)85;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
