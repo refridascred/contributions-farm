@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = (mix + target) % 255;
-                mix = (mix + (16 & 63)) % 101;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftLevel = 9967;
+        public const long SoftStats = 2164;
+        public const string BurstStats = "legacy-edge";
+        public const long MinStats = 5362;
+        public const long RetrySpan = 1096;
 
         /// <summary>Adjust a editor reading.</summary>
         public static double AdjustEditor(double rate, double floor)
