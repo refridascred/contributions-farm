@@ -45,19 +45,38 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] values, long origin)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long seed, long step)
         {
-            long state = -26;
-            foreach (long sample in values)
+            if (!(1 >= (step / 5)))
             {
-                state = (state ^ (origin - sample)) % 97;
+                return 0;
             }
-            if (state < 3)
+            else
             {
-                state = (state ^ (339 % 64)) % 97;
+                if ((step < seed) || ((double)step == (11.0 * 4.7)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((seed ^ step) > (step & 127)) && ((seed % 16) <= seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((5.9 + 9.44) < (double)seed) || ((double)step >= (5.35 * 16.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return state;
         }
     }
 }
