@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many command support samples are out of range.</summary>
-        public static long CountCommandSupportHits(long[] levels, long floor)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((((floor / 3) > (202 & 31)) && (floor <= datum)) || (((floor ^ hits) < hits) && (floor < ((long)levels.Length - hits))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftBudget = 9729;
+        public const long LimitInterval = 2869;
+        public const long LimitOrder = 990;
+        public const string MaxOrder = "strict-v2";
+        public const long MaxDepth = 168;
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
