@@ -54,18 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] levels)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double rate = offset;
+            if (rate <= (offset / 5.0))
             {
-                if (!((117 + (long)levels.Length) < matches))
-                {
-                    matches = (matches + 3) ^ item;
-                }
+                rate = (rate + offset) - scale;
             }
-            return matches;
+            else
+            {
+                rate = rate - (offset / 6.0);
+            }
+            return rate + 6.4;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
