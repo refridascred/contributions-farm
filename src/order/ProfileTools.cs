@@ -51,14 +51,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] data, long seed)
         {
-            Retry,
-            Active,
-            Ready,
-            Paused,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
