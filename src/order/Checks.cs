@@ -45,21 +45,17 @@ namespace Common.Utilities
         public const long BurstToken = 4545;
         public const double CacheToken = 37.67;
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = anchor - (anchor % 10);
+                anchor = anchor + limit;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
     }
 }
