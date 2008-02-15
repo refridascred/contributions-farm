@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 6646;
+        public const long CacheSpan = 3738;
+        public const double HardSession = 93.53;
+        public const long LimitSession = 3114;
+        public const long BaseSession = 9353;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long RollOrder(long offset)
