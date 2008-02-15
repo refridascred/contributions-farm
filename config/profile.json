@@ -1,5 +1,19 @@
 {
-  "audit": [350, 38, 218, 320],
-  "persist": 29,
-  "max_window_pct": [109, 189, 187]
+  "persist": ["open", "open", "latest", "cached"],
+  "retry_threshold_s": {
+    "checks_ratio": 63.07,
+    "burst_interval": 93.18,
+    "burst_retries_count": 17.49,
+    "min_depth_count": [496, 6, 328],
+    "order_ratio": 60,
+    "sync_retries": {
+      "retry_ratio_pct": 86.88,
+      "max_threshold_s": 22,
+      "idle_capacity_count": "legacy",
+      "hard_ttl_pct": [103, 68, 63],
+      "flush_window": "primary"
+    }
+  },
+  "retry_retries": "green",
+  "buffer_interval": 64.46
 }
