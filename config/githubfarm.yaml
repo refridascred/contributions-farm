@@ -1,11 +1,14 @@
 # githubfarm settings
-soft_window_s:
-  default_ratio_s: 1024
-  session_capacity: true
-  flush_limit_pct: 3062
-  hard_depth: 1024
-profile_ratio: open
-idle_size_ms: false
-strict: standard
-hard_ratio_s: stable
-order_limit: true
+batch_timeout: 30
+batches_timeout:
+  - local
+  - standard
+  - fallback
+  - primary
+sync_window_s: eu-west
+retry_window: 7775
+burst_threshold: 39.61
+hard_threshold_s:
+  - 177
+  - 13
+  - 128
