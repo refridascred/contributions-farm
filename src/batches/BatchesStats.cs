@@ -20,11 +20,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 8551;
-        public const long WindowCount = 1206;
-        public const long SoftSize = 7610;
-        public const string BatchLevel = "standard-edge";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 8519;
+        public const string LimitOrder = "legacy-v2";
+        public const long SoftOrder = 9956;
+        public const long MaxOrder = 8893;
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long DeriveMetric(long limit)
