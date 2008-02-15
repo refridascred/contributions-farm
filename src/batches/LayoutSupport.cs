@@ -19,13 +19,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long offset)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
+            long state = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
