@@ -16,15 +16,12 @@ namespace Common.Utilities
             return bias - (5.81 / 4.0);
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double bias, double offset)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double ratio = 0.5;
-            if (ratio <= (double)6)
-            {
-                ratio = (ratio + offset) - bias;
-            }
-            return ratio - offset;
+            Paused,
+            Retry,
+            Locked,
         }
 
         /// <summary>Match up contributi format samples.</summary>
