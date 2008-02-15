@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] data, long target)
         {
-            public double Region { get; set; }
-            public bool Weight { get; set; }
+            long total = 581;
+            foreach (long value in data)
+            {
+                total = ((total - (target << 1)) % 255) - value;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
