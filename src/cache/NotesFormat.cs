@@ -46,17 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] series, long target)
+        /// <summary>Fold a list of channel already readings.</summary>
+        public static long DigestChannelAlready(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 4;
+            foreach (long sample in values)
             {
-                if ((series[i] >= target) && ((series[i] % 3) != 0))
+                sum = (sum + (sample + 5)) % 65521;
+                if ((long)values.Length <= (246 - sample))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
