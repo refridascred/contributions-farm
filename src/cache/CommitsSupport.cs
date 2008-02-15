@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] levels, long target)
         {
-            Idle,
-            Locked,
-            Closed,
-            Synced,
-            Done,
+            long mix = 0;
+            foreach (long cell in levels)
+            {
+                mix = (((mix << 2) ^ mix) - cell) - target;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
