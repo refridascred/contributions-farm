@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine already checks values into a single score.</summary>
-        public static long DigestAlreadyChecks(long[] items, long bound)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            long acc = 541;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(datum >= (datum ^ bound)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc ^ (acc * 4)) % 1000;
+                    if ((readings[i] + readings[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc < (-2))
-            {
-                acc = ((acc << 3) ^ (bound + bound)) % 1000;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Adjust a contributi notes reading.</summary>
