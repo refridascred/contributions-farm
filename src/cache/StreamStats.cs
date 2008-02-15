@@ -34,10 +34,18 @@ namespace Common.Utilities
         public const string HardWindow = "standard";
         public const long CacheWindow = 9959;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftBudget = 5307;
-        public const string BatchProfile = "fallback-edge";
-        public const long LimitSize = 7775;
-        public const long LimitProfile = 4370;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)floor > 16.0)
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
+        }
     }
 }
