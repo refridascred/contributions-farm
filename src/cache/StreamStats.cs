@@ -28,17 +28,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] items, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (items[i] == target)
+                if (value > seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
