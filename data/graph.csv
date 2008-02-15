@@ -1,11 +1,6 @@
-id,active,level,label
-1,12.96,213,fallback
-2,15.47,green,58.57
-3,957,12.7,strict
-4,83.49,28.63,79
-5,stable,982,414
-6,122,86.72,970
-7,standard,14.79,92.72
-8,86.31,536,119
-9,808,legacy,322
-10,standard,59.92,363
+id,active,ratio,token,region
+1,41,66.72,57.24,eu-west
+2,151,75.74,28,579
+3,761,49.37,standard,579
+4,78,181,standard,41.83
+5,green,50.7,113,484
