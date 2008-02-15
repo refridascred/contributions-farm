@@ -27,10 +27,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 6697;
-        public const double MinContext = 35.09;
-        public const long DefaultContext = 578;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] series)
+        {
+            long total = 16;
+            foreach (long reading in series)
+            {
+                if (!((total - total) > (total << 1)))
+                {
+                    total = ((total << 2) ^ reading) % 1000;
+                }
+                if (!((total % 12) != (21 ^ reading)))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
