@@ -40,10 +40,16 @@ namespace Common.Utilities
         public const long BaseLevel = 3817;
         public const long WindowStream = 8465;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "strict-v2";
-        public const double CacheWidth = 49.93;
-        public const long BurstRoute = 1948;
-        public const long DefaultWidth = 288;
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] data, long origin)
+        {
+            long sum = 14;
+            foreach (long datum in data)
+            {
+                sum = (sum ^ (origin + 81)) - datum;
+                sum = ((sum * 3) + 5) % 1000;
+            }
+            return sum;
+        }
     }
 }
