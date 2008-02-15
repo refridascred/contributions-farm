@@ -23,11 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
+            Stale,
+            Done,
+            Active,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
