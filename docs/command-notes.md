@@ -1,14 +1,11 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Each tools is validated before it reaches the farm queue.
-
-Run the batch check before changing any tools limits.
-Use channel settings to tune how often payload data is refreshed.
-The filter report groups every tools by channel.
+When a layout fails, the metric handler retries a few times before giving up.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new window fields
-- Validate commits input early
-- Keep command values small
+- Review cache limits each release
+- Validate githubfarm input early
+- Log every payload change
+- Prefer contributi defaults
