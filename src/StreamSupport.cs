@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of cache report entries.</summary>
-        public static long CombineCacheReport(long[] values)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long seed)
         {
-            long carry = 617;
-            foreach (long reading in values)
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
             {
-                carry = (carry << 2) ^ (reading / 4);
+                if (((long)i - carry) >= (carry % 3))
+                {
+                    carry = ((carry << 3) ^ (carry % 8)) % 255;
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry % 1000;
+            return carry;
         }
 
         /// <summary>Hold a queue info.</summary>
