@@ -19,24 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] levels)
         {
-            long carry = -710;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 8; i++)
+                if ((double)entry < (4.89 * 10.0))
                 {
-                    carry = ((carry << 3) ^ cell) + (long)i;
-                }
-                carry = carry + carry;
-                carry = carry + 954;
-                if ((cell / 7) > (65 & 255))
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
