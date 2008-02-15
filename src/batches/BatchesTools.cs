@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double gain, double span)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            double weight = span;
-            if (weight >= (double)47)
+            long sum = -778;
+            foreach (long cell in data)
             {
-                weight = (weight + 5.8) + gain;
+                if ((sum << 2) <= (sum * 3))
+                {
+                    sum = (sum ^ (cell + sum)) % 1000;
+                }
             }
-            return weight - (double)(-36);
+            return sum;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
