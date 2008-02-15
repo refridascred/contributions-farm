@@ -37,21 +37,15 @@ namespace Common.Utilities
         public const string HardWindow = "standard";
         public const long CacheWindow = 9959;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
     }
 }
