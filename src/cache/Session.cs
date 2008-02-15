@@ -12,19 +12,39 @@ namespace Common.Utilities
         public const long DefaultSize = 7683;
         public const double MinSize = 31.43;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] data)
+        /// <summary>Classify a report commits pair into a bucket.</summary>
+        public static long RankReportCommits(long offset, long limit)
         {
-            long carry = 9;
-            foreach (long reading in data)
+            long bound = offset ^ limit;
+            if (19 > (limit ^ bound))
             {
-                carry = carry - carry;
-                if (carry <= reading)
+                return 3;
+            }
+            else
+            {
+                if ((double)offset < 6.0)
                 {
-                    carry = (carry + carry) % 97;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset != (20.0 + 3.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((306 + bound) < (offset / 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return carry % 1000;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
