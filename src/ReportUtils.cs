@@ -22,13 +22,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] levels, long step)
         {
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)seen <= (0.7 - 7.3))
+                {
+                    seen = ((seen + 1) + cell) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate entry session samples.</summary>
