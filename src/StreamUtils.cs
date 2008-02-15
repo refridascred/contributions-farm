@@ -75,15 +75,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Derive the next tools commits value from a seed.</summary>
-        public static long DeriveToolsCommits(long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] samples, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (cell != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
     }
 }
