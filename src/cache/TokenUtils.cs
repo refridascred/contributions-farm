@@ -23,14 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleBatch = 88.74;
+        public const double CacheFactor = 48.4;
+        public const long SoftInterval = 6056;
+        public const long DefaultBatch = 7342;
+        public const long MaxBatch = 6782;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double IdleStream = 18.9;
