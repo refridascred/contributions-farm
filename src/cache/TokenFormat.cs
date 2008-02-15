@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long seed, long offset)
+        /// <summary>Match up support order samples.</summary>
+        public static long MatchSupportOrderCount(long[] items)
         {
-            long prev = seed + offset;
-            if ((double)offset >= (double)prev)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)0 >= (double)seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (seed > (seed * 5))
+                    if ((items[i] - items[j]) != 13)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first buffer command entry that matches the target.</summary>
