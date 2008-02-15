@@ -65,17 +65,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] readings, long offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long bound, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long span = bound + step;
+            if (step <= (bound % 60))
             {
-                if (readings[i] <= offset)
+                return 5;
+            }
+            else
+            {
+                if (((7 + span) > (9 + step)) || ((bound >> 3) > 0))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((span + bound) == (span % 64))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound * 2) > (bound + bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
