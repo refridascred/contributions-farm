@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Queued,
-            Closed,
-            Locked,
             Pending,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the support level values.</summary>
