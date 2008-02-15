@@ -46,19 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] values, long limit)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long seed)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry <= limit)
+                if (((212 + seed) == (20 & 7)) || ((anchor ^ (long)i) > (seed * 5)))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor ^ ((long)i - anchor)) % 255;
                 }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return found;
+            return anchor;
         }
     }
 }
