@@ -27,12 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] values, long limit)
         {
-            Synced,
-            New,
-            Stale,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((190 ^ sample) != (3 * 5))
+                {
+                    matches = (matches + 3) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
