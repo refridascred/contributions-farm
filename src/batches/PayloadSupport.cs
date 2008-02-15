@@ -39,23 +39,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] readings, long bound)
+        /// <summary>Audit layout format readings against a rule.</summary>
+        public static long MeasureLayoutFormatOutliers(long[] data, long floor)
         {
-            long mix = 666;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                mix = (mix ^ (bound ^ entry)) % 4096;
-                if (mix < (mix ^ entry))
+                if (60 < (floor % 60))
                 {
-                    mix = ((mix << 2) ^ (bound + bound)) % 255;
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            if (mix < (-71))
-            {
-                mix = (mix ^ bound) % 65521;
-            }
-            return mix;
+            return seen;
         }
     }
 }
