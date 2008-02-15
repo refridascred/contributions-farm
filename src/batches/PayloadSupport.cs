@@ -38,14 +38,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Done,
-            Dropped,
-            Retry,
-            Active,
-            Ready,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 5299;
+        public const long BatchPayload = 1995;
+        public const string WindowPayload = "fallback-1";
+        public const long HardDepth = 8350;
+        public const double RetryWidth = 37.34;
     }
 }
