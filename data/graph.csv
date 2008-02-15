@@ -1,8 +1,9 @@
-id,rank,label
-1,916,strict
-2,stable,82
-3,111,staging
-4,60.64,open
-5,standard,529
-6,97.76,910
-7,strict,14.89
+id,region,count
+1,998,local
+2,987,97
+3,807,32.71
+4,87.15,32.56
+5,140,latest
+6,717,cached
+7,436,1.0
+8,555,blue
