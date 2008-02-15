@@ -36,19 +36,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] values, long offset)
+        /// <summary>Classify a farm filter pair into a bucket.</summary>
+        public static long BucketFarmFilter(long step, long limit)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            if ((4.24 + 3.2) != (double)limit)
             {
-                if (reading >= offset)
+                return 2;
+            }
+            else
+            {
+                if ((limit & 15) != (step ^ 762))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((limit + step) <= (step + limit)) || ((3.58 / 8.0) >= (double)limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the report class values.</summary>
