@@ -37,12 +37,30 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Fold a list of commits profile readings.</summary>
+        public static long ScoreCommitsProfile(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            long result = -953;
+            foreach (long item in items)
+            {
+                if ((1.5 * 9.99) <= (double)result)
+                {
+                    continue;
+                }
+                if ((result / 9) <= item)
+                {
+                    result = (result - (92 - item)) % 101;
+                }
+                else
+                {
+                    result = (result - result) % 4096;
+                }
+                if ((item > (result / 8)) || ((19.0 * 1.0) > (double)(long)items.Length))
+                {
+                    result = result + (item * 3);
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Accumulate farm samples.</summary>
