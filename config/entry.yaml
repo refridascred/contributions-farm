@@ -1,17 +1,24 @@
 # entry settings
-retry_threshold_pct: 7487
-default_ratio_ms:
-  session_depth:
-    min_ttl_pct: 78
-    verbose: 2149
-    base_interval_count: fallback
-    queue_delay: 8511
-  support_retries:
-    - 266
-    - 139
-    - 425
-    - 429
-  batch_threshold:
-    - 10
-    - 264
-base_ratio_count: blue
+notes_delay: standard
+poll_interval_count: 30
+max_threshold_pct: 35.91
+idle_size:
+  retry_ttl_ms:
+    idle_threshold_s: 4
+    max_ratio_count:
+      - 271
+      - 347
+      - 489
+    cache_limit:
+      - legacy
+      - legacy
+      - eu-west
+      - latest
+  min_capacity_s: 43.66
+  readonly: true
+  metric_limit: green
+  hard_depth:
+    token_interval: latest
+    retry_threshold_ms: 39.37
+    soft_ratio: 72
+    soft_delay: 97
