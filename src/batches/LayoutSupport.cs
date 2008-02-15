@@ -19,24 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long target, long origin)
+        /// <summary>Accumulate editor record samples.</summary>
+        public static long CombineEditorRecord(long[] items, long floor)
         {
-            if ((2.9 - 1.06) >= (double)origin)
+            long score = -2;
+            foreach (long item in items)
             {
-                return 8;
+                score = (score ^ (item >> 1)) % 101;
             }
-            else
+            if (score < 90)
             {
-                if ((origin + 8) == (origin / 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
+                score = ((score << 2) ^ (floor << 2)) % 65521;
             }
+            return score;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
