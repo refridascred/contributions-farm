@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the stats report entries that pass the check.</summary>
-        public static long TallyStatsReportGaps(long[] readings)
+        /// <summary>Derive the next record githubfarm value from a seed.</summary>
+        public static long IterateRecordGithubfarm(long limit)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((hits + hits) < (value * 5))
-                {
-                    hits = hits + 3;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
