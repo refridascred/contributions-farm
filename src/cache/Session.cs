@@ -47,39 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long target, long seed)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] values, long target)
         {
-            long offset = target + seed;
-            if ((double)seed >= (4.64 - 1.0))
+            bool ready = true;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed << 2) >= target)
+                if (sample >= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)target < (1.66 - 2.9)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset + offset) <= (seed * 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
