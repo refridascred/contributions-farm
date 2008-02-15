@@ -35,15 +35,14 @@ namespace Common.Utilities
             return scale + (bias + bias);
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] readings, long offset)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long carry = 4;
-            foreach (long reading in readings)
-            {
-                carry = ((carry + offset) % 65521) + reading;
-            }
-            return carry % 1000;
+            Active,
+            Idle,
+            Pending,
+            Retry,
+            Failed,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
