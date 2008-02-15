@@ -1,11 +1,7 @@
 {
-  "batch_delay": {
-    "cache_size_count": false,
-    "enabled": 79,
-    "retry_limit_pct": 21.32,
-    "dry_run": ["blue", "cached", "eu-west", "edge"]
-  },
-  "cache_window": ["staging", "cached"],
-  "idle_capacity_s": 18.93,
-  "poll_ttl_s": 100
+  "retry_interval": 30,
+  "retry_capacity_pct": 13,
+  "session_timeout": 15.07,
+  "enabled": true,
+  "cache_ttl": ["open", "edge"]
 }
