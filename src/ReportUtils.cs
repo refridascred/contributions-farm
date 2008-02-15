@@ -51,11 +51,13 @@ namespace Common.Utilities
         public const long HardFarm = 4011;
         public const long IdleCount = 1976;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double ratio, double floor)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double weight = floor;
-            return (weight - 2.4) + ratio;
+            Queued,
+            Synced,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the payload status values.</summary>
