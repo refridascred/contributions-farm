@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long limit, long offset)
-        {
-            if (offset < 8)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit & 63) < (limit ^ offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset >> 4) > limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (16.0 + 11.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowWidth = 5.49;
+        public const long MinNotes = 369;
+        public const long HardNotes = 234;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] items, long offset)
