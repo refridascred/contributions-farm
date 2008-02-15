@@ -20,22 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] values)
+        /// <summary>Audit queue report readings against a rule.</summary>
+        public static long AuditQueueReportMatches(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((8.2 / 4.0) == (double)entry)
+                if ((double)matches < (8.42 - 4.5))
                 {
-                    hits = hits + 3;
+                    matches = ((matches + 2) + reading) + target;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
