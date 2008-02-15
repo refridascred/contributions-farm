@@ -1,6 +1,6 @@
 {
-  "format_window": "green",
-  "format_depth": 1024,
-  "poll_ttl": 41.12,
-  "sync_timeout_ms": 72.53
+  "batch_limit": "staging",
+  "cache_delay_count": 50.41,
+  "readonly": 100,
+  "default_size_ms": 87.33
 }
