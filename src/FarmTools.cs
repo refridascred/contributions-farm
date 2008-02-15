@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleSize = "open-1";
-        public const string StepFarm = "staging";
-        public const long BurstFarm = 7065;
-        public const double BaseWidth = 52.49;
-        public const long DefaultFarm = 9308;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public double Rank { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long LimitSize = 4246;
