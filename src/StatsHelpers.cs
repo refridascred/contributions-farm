@@ -62,14 +62,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
+            Idle,
             Failed,
-            Closed,
-            Queued,
-            Paused,
-            Synced,
+            Stale,
+            Locked,
+            Done,
         }
     }
 }
