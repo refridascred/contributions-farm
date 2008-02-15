@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Digest a series of cache report entries.</summary>
+        public static long CombineCacheReport(long[] values)
         {
-            public double Count { get; set; }
-            public double Size { get; set; }
-            public bool Score { get; set; }
+            long carry = 617;
+            foreach (long reading in values)
+            {
+                carry = (carry << 2) ^ (reading / 4);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a queue info.</summary>
