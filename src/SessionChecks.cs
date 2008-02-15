@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] data, long step)
         {
-            Paused,
-            Locked,
-            Draft,
-            Closed,
+            long total = 0;
+            foreach (long entry in data)
+            {
+                total = (total ^ (entry & 7)) % 101;
+                total = (total - step) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Accumulate already samples.</summary>
