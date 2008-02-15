@@ -20,15 +20,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of editor window entries.</summary>
-        public static long CombineEditorWindow(long[] readings)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long acc = 61;
-            foreach (long sample in readings)
-            {
-                acc = acc ^ (sample + (-42));
-            }
-            return acc % 1000;
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the cluster level values.</summary>
