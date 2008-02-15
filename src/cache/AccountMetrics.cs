@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long RetryCount = 4228;
         public const long LimitSize = 8581;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 38.17;
+        public const string CacheBuffer = "stable-v2";
+        public const long BurstTimeout = 5079;
+        public const long StepLevel = 6649;
+        public const double WindowBuffer = 68.84;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long HardRoute = 4411;
