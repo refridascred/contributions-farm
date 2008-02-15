@@ -1,5 +1,5 @@
 {
-  "poll_capacity_pct": "eu-west",
-  "max_threshold": 9123,
-  "profile_timeout": ["stable", "strict"]
+  "flush_limit_pct": "local",
+  "token_interval": 98.71,
+  "githubfarm_ttl": [310, 23, 22, 42]
 }
