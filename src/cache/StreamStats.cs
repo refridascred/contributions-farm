@@ -38,19 +38,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] readings, long limit)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] samples)
         {
-            long mark = 370;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark + (datum + mark)) % 255;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark < 8)
-            {
-                mark = ((mark * 4) + (mark + limit)) % 101;
-            }
-            return mark;
+            return count;
         }
     }
 }
