@@ -43,9 +43,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstLevel = "primary-v2";
-        public const long WindowCommits = 2314;
-        public const long BurstCommits = 2389;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!((origin - 591) != (seen & 7)) || ((seen << 1) >= (seen + 0)))
+                {
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
