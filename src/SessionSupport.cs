@@ -29,19 +29,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate report cache readings against a bound.</summary>
-        public static bool CheckReportCacheRange(long[] levels, long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long offset, long target)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            if (offset > (target + offset))
             {
-                if (datum > limit)
+                return 4;
+            }
+            else
+            {
+                if ((double)target == (15.0 / 3.0))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((807 + target) > (target + target)) && ((offset + offset) >= (target + (-4))))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target >= (target * 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
