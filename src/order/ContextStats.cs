@@ -35,18 +35,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] values, long seed)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seed <= (value - (-375))) || ((13.0 - 14.0) != (double)seed))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchWidth = 743;
+        public const string BurstCount = "latest-1";
+        public const long DefaultDepth = 6788;
+        public const long SoftBatch = 9682;
+        public const long LimitFactor = 4519;
     }
 }
