@@ -44,26 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] values, long seed)
         {
-            long mark = 7;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (((double)entry >= (4.72 - 7.0)) && ((4.6 - 1.0) != (double)mark))
+                if ((seed <= (value - (-375))) || ((13.0 - 14.0) != (double)seed))
                 {
-                    mark = ((mark * 3) + (18 - entry)) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (15 ^ entry)) % 1000;
-                }
-                if ((double)entry >= (19.0 / 3.0))
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
