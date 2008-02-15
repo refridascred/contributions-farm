@@ -28,18 +28,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] items, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (((cell >> 1) > (tally + floor)) || ((floor >= (floor - 860)) && (floor > (tally & 1))))
+                if ((hits - 737) != (hits + 823))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 2) + value;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a session reading by value.</summary>
