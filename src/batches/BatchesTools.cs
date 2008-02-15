@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] readings, long seed)
         {
-            New,
-            Closed,
-            Active,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((seed + count) >= (count + count))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of layout cluster entries.</summary>
