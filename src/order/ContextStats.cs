@@ -35,11 +35,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchWidth = 743;
-        public const string BurstCount = "latest-1";
-        public const long DefaultDepth = 6788;
-        public const long SoftBatch = 9682;
-        public const long LimitFactor = 4519;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
+        }
     }
 }
