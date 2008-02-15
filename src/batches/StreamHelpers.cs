@@ -27,17 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a contributi checks reading by value.</summary>
-        public static long LookupContributiChecksIndex(long[] samples, long offset)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Idle,
+            Active,
         }
 
         /// <summary>Define support limits and defaults.</summary>
