@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 523;
-        public const double StepBuffer = 4.28;
-        public const double BaseCount = 34.44;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstQueue = 37.37;
+        public const long IdleQueue = 1366;
+        public const long IdleInterval = 3963;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
