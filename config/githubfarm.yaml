@@ -1,23 +1,5 @@
 # githubfarm settings
-enabled: primary
-default_ttl_s:
-  cache_limit: 1538
-  idle_size: edge
-  strict: false
-  cache_ttl:
-    base_size_ms: blue
-    hard_threshold_pct: 3182
-    default_size: stable
-    command_timeout: 86
-    enabled: 30
-min_threshold_pct:
-  payload_limit: true
-  audit:
-    max_retries_count: 87
-    min_timeout: legacy
-    enabled: cached
-    retry_interval: 2871
-    stats_window: 26.6
-  record_limit: 68
-  persist: 30
-hard_depth_pct: stable
+strict: primary
+flush_ratio_count: staging
+session_ttl: 91.45
+audit: eu-west
