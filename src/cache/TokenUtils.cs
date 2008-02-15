@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] values, long target)
+        /// <summary>Check that every batches format entry stays within the limit.</summary>
+        public static bool ValidateBatchesFormatLimits(long[] series, long offset)
         {
-            long sum = 4;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if ((sample / 9) > sum)
+                if (datum < offset)
                 {
-                    sum = sum - (target & 3);
+                    stale = false;
+                    break;
                 }
             }
-            if (sum < 515)
-            {
-                sum = (sum ^ (target + sum)) % 97;
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
