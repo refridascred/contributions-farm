@@ -1,7 +1,8 @@
-id,owner,token,region
-1,standard,85.11,cached
-2,428,839,155
-3,fallback,654,80.89
-4,830,397,edge
-5,969,560,fallback
-6,604,509,567
+id,count,score
+1,921,stable
+2,917,415
+3,703,green
+4,eu-west,912
+5,green,279
+6,stable,73.24
+7,98.84,4.31
