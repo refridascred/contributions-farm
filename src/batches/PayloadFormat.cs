@@ -34,18 +34,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the graph batches entries that pass the check.</summary>
-        public static long MeasureGraphBatchesOutliers(long[] values)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((double)matches != (double)127)
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
+            Done,
+            Idle,
+            Failed,
+            Draft,
         }
     }
 }
