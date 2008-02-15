@@ -26,12 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFactor = 43.36;
-        public const string BaseFilter = "fallback-v2";
-        public const double DefaultRatio = 11.25;
-        public const string BatchFilter = "legacy-edge";
-        public const long BurstInterval = 2827;
+        /// <summary>Look up the position of a filter entry sample.</summary>
+        public static long SeekFilterEntryIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double StepFilter = 68.56;
