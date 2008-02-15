@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] readings)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((bound + bound) <= (192 % 60))
                 {
-                    if ((readings[i] + readings[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) ^ value;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of record readings.</summary>
