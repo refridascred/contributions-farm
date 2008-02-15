@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 6555;
-        public const long LimitReport = 7500;
-        public const long RetryDepth = 5771;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Ready,
+            Active,
+            Draft,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
