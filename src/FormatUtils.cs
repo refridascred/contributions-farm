@@ -20,15 +20,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Idle,
-            Queued,
-            Failed,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 9133;
+        public const long HardMetrics = 2903;
+        public const long DefaultMetrics = 5336;
+        public const double CacheMetrics = 67.55;
+        public const double BurstMetrics = 66.34;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long CacheContributi = 5355;
