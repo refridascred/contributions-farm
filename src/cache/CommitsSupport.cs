@@ -49,18 +49,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] samples)
+        /// <summary>Grade a entry cache value against two limits.</summary>
+        public static long BucketEntryCache(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if ((6.91 - 6.9) >= (double)floor)
             {
-                if ((matches - datum) != (matches * 4))
+                return 0;
+            }
+            else
+            {
+                if ((floor & 3) == (origin % 8))
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((11 * 4) == (floor & 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
