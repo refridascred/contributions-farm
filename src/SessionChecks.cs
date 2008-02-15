@@ -43,13 +43,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Pending,
-            Active,
-            New,
-            Failed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstLevel = "primary-v2";
+        public const long WindowCommits = 2314;
+        public const long BurstCommits = 2389;
     }
 }
