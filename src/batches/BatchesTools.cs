@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Locked,
-            Draft,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinTimeout = 92.03;
+        public const long RetryOrder = 1889;
+        public const double HardOrder = 66.03;
+        public const long DefaultOrder = 8579;
+        public const long IdleOrder = 5987;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportGaps(long[] series, long seed)
