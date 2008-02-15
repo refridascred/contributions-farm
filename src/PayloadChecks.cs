@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many support notes samples are out of range.</summary>
-        public static long CountSupportNotesHits(long[] samples)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double rate = 8.51;
+            if (rate > (double)2)
             {
-                if ((double)hits <= (5.2 - 4.3))
-                {
-                    hits = (hits + 2) + entry;
-                }
+                rate = ((rate - (rate - 3.61)) - bias) - floor;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (rate * 18.0)) + (double)(long)i;
+            }
+            return rate - 12.0;
         }
 
         /// <summary>Hold a order entry.</summary>
