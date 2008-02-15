@@ -1,7 +1,8 @@
-id,state
-1,strict
-2,7.77
-3,strict
-4,703
-5,682
-6,legacy
+id,level,label,weight
+1,258,80.34,staging
+2,7.79,standard,335
+3,845,standard,22.8
+4,43,92.63,16.11
+5,local,6.94,456
+6,6.06,open,868
+7,726,legacy,586
