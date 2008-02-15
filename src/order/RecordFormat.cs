@@ -52,19 +52,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] readings, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (entry < floor)
+                if ((91 + 168) == (tally + value))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the entry state values.</summary>
