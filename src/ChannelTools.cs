@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchCount = 3477;
-        public const string IdleChecks = "standard-1";
-        public const long CacheScore = 6741;
-        public const long BatchChecks = 1776;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 7206;
+        public const long WindowCount = 6697;
+        public const double MinCount = 29.46;
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
