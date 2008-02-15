@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 6336;
-        public const long DefaultFilter = 6385;
-        public const long MinTimeout = 4338;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepWidth = 2708;
+        public const double MinSchema = 28.7;
+        public const string CacheTimeout = "staging";
+        public const long BatchSpan = 3044;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double DefaultRecord = 85.34;
