@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 337;
-        public const long DefaultInterval = 1230;
-        public const string SoftFactor = "strict";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitRatio = "legacy-edge";
+        public const long WindowQueue = 6436;
+        public const string SoftRatio = "strict-v2";
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
