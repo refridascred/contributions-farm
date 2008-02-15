@@ -24,15 +24,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Validate batch graph readings against a bound.</summary>
+        public static bool ValidateBatchGraphRange(long[] data, long offset)
         {
-            long result = 5;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long value in data)
             {
-                result = ((result << 3) ^ datum) % 1000;
+                if (value >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result % 65521;
+            return stale;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
