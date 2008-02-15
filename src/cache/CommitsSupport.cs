@@ -46,31 +46,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long step, long target)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            if (!((double)step == (9.05 / 6.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((962 ^ step) > (22 + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((9 ^ 75) <= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
