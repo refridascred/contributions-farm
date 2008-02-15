@@ -19,18 +19,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the metric already entries that pass the check.</summary>
-        public static long AuditMetricAlreadyGaps(long[] values)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell > (4.82 / 3.0))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
