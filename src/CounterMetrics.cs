@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 5736;
-        public const long BaseWidth = 9773;
-        public const double DefaultInterval = 40.06;
-        public const long MaxWidth = 1379;
-        public const double StepToken = 9.18;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            New,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long SeekCacheIndex(long[] values, long origin)
