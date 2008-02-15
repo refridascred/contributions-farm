@@ -53,24 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long floor, long offset)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double gain, double span)
         {
-            if ((27 << 2) > (floor & 127))
+            double mean = gain;
+            if (mean > gain)
             {
-                return 1;
+                mean = mean + (double)328;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((offset < ((-631) + offset)) && ((63 << 1) <= offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
+                mean = (mean - gain) - (double)(long)i;
             }
+            return mean + (gain + span);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
