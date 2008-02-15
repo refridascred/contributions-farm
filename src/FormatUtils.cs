@@ -38,18 +38,11 @@ namespace Common.Utilities
             return load - (double)382;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] samples, long step)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell == (5.0 / 2.0))
-                {
-                    matches = (matches + 3) - step;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define layout limits and defaults.</summary>
