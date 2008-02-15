@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardTools = "legacy-1";
-        public const long MinSpan = 9619;
-        public const double StepTools = 24.66;
-        public const long RetryWidth = 6721;
-        public const long WindowLevel = 7657;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Failed,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
