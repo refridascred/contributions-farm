@@ -21,21 +21,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up notes editor samples.</summary>
-        public static long PairNotesEditorCount(long[] items)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a session record.</summary>
