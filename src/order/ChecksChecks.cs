@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit cluster support readings against a rule.</summary>
-        public static long AuditClusterSupportHits(long[] readings, long target)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((target >> 4) < (target >> 1))
-                {
-                    count = (count + 3) ^ cell;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the report status values.</summary>
