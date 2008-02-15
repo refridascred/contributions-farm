@@ -66,22 +66,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] series, long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long mark = 50;
+            foreach (long cell in levels)
             {
-                if ((seed / 7) == ((long)series.Length + seen))
+                if ((cell + mark) >= (seed - cell))
                 {
-                    seen = (seen + 2) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mark = (mark ^ (seed / 7)) % 101;
                 }
             }
-            return seen;
+            if (mark > 73)
+            {
+                mark = (mark ^ (mark + seed)) % 101;
+            }
+            return mark;
         }
     }
 }
