@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const string MaxOrder = "strict-v2";
         public const long MaxDepth = 168;
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] data, long origin)
         {
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((datum > (seen << 3)) || ((0 + origin) == (origin / 4)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of format entries.</summary>
