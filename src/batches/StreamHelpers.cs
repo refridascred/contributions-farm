@@ -35,19 +35,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] items, long offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double weight, double floor)
         {
-            long acc = 49;
-            foreach (long reading in items)
+            double gain = weight / 9.0;
+            for (int i = 0; i < 8; i++)
             {
-                acc = ((acc + (acc + offset)) % 65521) ^ reading;
+                gain = (gain + (weight / 8.0)) + (double)(long)i;
             }
-            if (acc < 946)
-            {
-                acc = ((acc * 4) + (offset - offset)) % 65521;
-            }
-            return acc % 4096;
+            return gain + floor;
         }
 
         /// <summary>Count the format stream entries that pass the check.</summary>
