@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] series, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((7.1 / 2.0) > (double)tally)
                 {
-                    result = (result << 3) ^ ((long)i2 << 2);
-                    result = (result << 2) ^ result;
-                }
-                if ((seed & 1) <= seed)
-                {
-                    result = result - (795 * 2);
-                    result = (result * 4) + result;
+                    tally = ((tally + 3) ^ cell) + floor;
                 }
                 else
                 {
-                    result = result - seed;
-                    result = ((result << 3) ^ (seed * 5)) % 255;
+                    tally = tally - 1;
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
