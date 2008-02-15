@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long step, long seed)
+        /// <summary>Look up the position of a route token sample.</summary>
+        public static long LookupRouteTokenIndex(long[] readings, long floor)
         {
-            long step2 = step ^ seed;
-            if (!((step2 % 2) == (47 >> 3)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step2 - step) != (seed ^ 0))
+                if (readings[i] > floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step2 ^ step2) < (83 % 64))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the account phase values.</summary>
