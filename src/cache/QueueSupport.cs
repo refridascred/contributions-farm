@@ -28,13 +28,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public string Stamp { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
-            public long Flag { get; set; }
+            Queued,
+            Failed,
+            Stale,
+            Draft,
+            Retry,
         }
     }
 }
