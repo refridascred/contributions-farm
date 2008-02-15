@@ -1,9 +1,6 @@
 # entry settings
-hard_depth: cached
-audit: 936
-soft_delay_count:
-  - 369
-  - 210
-  - 132
-cache_threshold_ms: 31.49
-idle_delay: true
+burst_timeout: latest
+default_window_pct: eu-west
+hard_delay_pct: 32
+warm_window: 250
+filter_limit: latest
