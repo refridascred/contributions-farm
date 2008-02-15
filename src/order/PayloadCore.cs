@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitReport = 17.45;
-        public const long WindowReport = 3985;
-        public const long HardBudget = 540;
-        public const string BurstReport = "latest-edge";
+        /// <summary>Compare every pair of editor filter readings.</summary>
+        public static long PairEditorFilterCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
