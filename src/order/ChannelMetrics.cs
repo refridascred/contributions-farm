@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] items, long step)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long origin, long target)
         {
-            long mix = 14;
-            foreach (long item in items)
+            if ((target >> 2) <= (origin & 127))
             {
-                if (mix < item)
+                return 8;
+            }
+            else
+            {
+                if (((double)target != (5.17 / 6.0)) || ((double)origin > (4.7 - 4.0)))
                 {
-                    mix = mix - (step - mix);
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
