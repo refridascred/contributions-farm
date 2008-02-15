@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate payload order samples.</summary>
-        public static long ScorePayloadOrder(long[] levels)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long mark = 22;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mark = (mark + 14) - (long)i;
-                }
-                mark = ((mark * 2) + (563 - mark)) % 65521;
-                mark = mark - (reading ^ reading);
-            }
-            if (mark > 97)
-            {
-                mark = (mark - (94 >> 1)) % 97;
-            }
-            return mark;
+            Done,
+            Idle,
+            Pending,
+            Draft,
+            Retry,
         }
 
         /// <summary>Check that every token githubfarm entry stays within the limit.</summary>
