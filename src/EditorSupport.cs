@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] data, long offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long step)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long acc = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (item <= offset)
+                if (!((long)i == ((long)i - (long)i)))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc - (33 >> 2)) % 255;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Hold a context entry.</summary>
