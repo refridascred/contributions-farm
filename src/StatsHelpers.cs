@@ -69,12 +69,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            Idle,
+            Closed,
+            Failed,
         }
     }
 }
