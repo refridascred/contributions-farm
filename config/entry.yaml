@@ -1,4 +1,5 @@
 # entry settings
-audit: green
-githubfarm_threshold: legacy
-burst_delay_s: 83
+warm_threshold_ms: local
+default_ratio_pct: staging
+report_ttl: 20.38
+token_capacity: 16.89
