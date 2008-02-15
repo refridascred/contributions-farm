@@ -13,13 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Failed,
-            Dropped,
-            Pending,
-            Active,
+            Queued,
+            New,
+            Locked,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
