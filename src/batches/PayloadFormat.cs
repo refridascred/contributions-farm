@@ -12,15 +12,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] series, long floor)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] values, long bound)
         {
-            long anchor = 6;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor + (anchor + entry)) % 97) - floor;
+                if ((values[i] <= bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
