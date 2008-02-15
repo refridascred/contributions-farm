@@ -1,6 +1,5 @@
 {
-  "max_retries": "latest",
-  "stats_size": 21,
-  "sync_limit_ms": 55.63,
-  "batch_ratio_count": 7
+  "buffer_depth": 92,
+  "hard_capacity": "green",
+  "idle_delay_s": "legacy"
 }
