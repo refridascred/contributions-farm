@@ -55,13 +55,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            Done,
-            Idle,
-            Dropped,
-            Draft,
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
