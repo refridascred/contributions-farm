@@ -48,15 +48,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Blend two route cache measurements.</summary>
-        public static double AdjustRouteCache(double ratio, double offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long step)
         {
-            double scale = offset;
-            if (scale >= (offset * 1.66))
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                scale = scale + (ratio / 6.0);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return scale + scale;
+            return acc;
         }
     }
 }
