@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitWidth = "stable-1";
-        public const long LimitCluster = 9567;
-        public const double StepCluster = 71.95;
-        public const double RetrySize = 47.2;
-        public const long BatchCluster = 5196;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] samples, long limit)
+        {
+            long sum = 340;
+            foreach (long value in samples)
+            {
+                if ((limit % 7) <= (sum / 7))
+                {
+                    sum = sum - (sum / 8);
+                }
+                else
+                {
+                    sum = (sum ^ (limit >> 4)) % 1000;
+                }
+                if ((value - sum) < (sum + 165))
+                {
+                    break;
+                }
+            }
+            if (sum < 498)
+            {
+                sum = sum + limit;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
