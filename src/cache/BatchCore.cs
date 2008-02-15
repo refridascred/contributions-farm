@@ -20,12 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftRatio = 77.57;
-        public const long LimitStats = 3963;
-        public const double WindowSpan = 82.8;
-        public const long MaxStats = 8801;
-        public const long StepCount = 6060;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long offset, long bound)
+        {
+            long next = offset ^ bound;
+            if (((offset - offset) < (offset % 64)) && ((bound / 6) <= (bound << 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((offset + 62) >= next))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long BucketReport(long bound, long bound2)
