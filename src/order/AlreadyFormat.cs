@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long floor)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
