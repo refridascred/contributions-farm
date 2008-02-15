@@ -28,12 +28,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] data)
         {
-            public double Total { get; set; }
-            public double Level { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
