@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up channel record samples.</summary>
-        public static long CompareChannelRecordCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitTimeout = 84.99;
+        public const string IdleScore = "cached-1";
+        public const long BatchLevel = 8281;
+        public const long MaxCluster = 4431;
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
