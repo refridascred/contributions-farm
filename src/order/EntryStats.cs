@@ -37,11 +37,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "stable-v2";
-        public const long StepBudget = 9240;
-        public const long WindowTimeout = 1596;
-        public const long BaseCluster = 2369;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] levels, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (seen < ((long)levels.Length ^ cell))
+                {
+                    seen = (seen + 3) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double ScalePayload(double rate, double floor)
