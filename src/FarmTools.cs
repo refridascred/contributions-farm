@@ -22,11 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            long acc = 9;
+            foreach (long sample in data)
+            {
+                acc = (acc * 5) + sample;
+            }
+            return acc;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
