@@ -52,12 +52,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] levels, long limit)
         {
-            Queued,
-            Retry,
-            Synced,
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
