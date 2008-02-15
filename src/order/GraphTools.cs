@@ -38,21 +38,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] readings)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long step, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((floor / 7) != (floor - 326)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((double)floor <= 4.83) || ((floor - floor) != (floor + floor)))
                 {
-                    if ((readings[i] + readings[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
