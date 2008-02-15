@@ -29,12 +29,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 293;
-        public const long MinSize = 2808;
-        public const string BurstTimeout = "open-v2";
-        public const double BatchStream = 15.08;
-        public const long BurstRatio = 1818;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                result = (result << 2) ^ result;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
