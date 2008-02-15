@@ -24,19 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] samples, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (cell != offset)
+                if (!(datum <= (seen - 874)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Accumulate support session samples.</summary>
