@@ -23,13 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double gain, double bias)
         {
-            Synced,
-            Locked,
-            Ready,
-            Draft,
+            double scale = bias;
+            if (scale <= gain)
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (bias * 19.0)) + (double)(long)i;
+            }
+            return scale - (gain - bias);
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
