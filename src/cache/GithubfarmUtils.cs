@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] items)
+        /// <summary>Digest a series of cluster editor entries.</summary>
+        public static long DigestClusterEditor(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long score = 56;
+            foreach (long datum in levels)
             {
-                if (((89 ^ hits) == (hits & 63)) && ((hits % 3) < hits))
+                if ((score & 3) < score)
                 {
-                    hits = (hits + 1) ^ cell;
+                    score = (score + (datum << 2)) % 255;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = score ^ (20 & 1);
             }
-            return hits;
+            if (score > 10)
+            {
+                score = score + bound;
+            }
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
