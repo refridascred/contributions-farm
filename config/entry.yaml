@@ -1,9 +1,25 @@
 # entry settings
-readonly: true
-githubfarm_window:
-  - standard
-  - stable
-  - stable
-  - fallback
-soft_window_pct: 60
-warm_depth_pct: true
+layout_size: true
+session_depth: false
+dry_run: true
+warm_timeout_s: 3024
+poll_size: false
+report_delay:
+  channel_window: 66.34
+  max_size_pct:
+    - blue
+    - primary
+    - strict
+  retry_threshold:
+    - 253
+    - 245
+  max_limit_s: green
+  channel_depth:
+    commits_capacity: 91.75
+    persist: strict
+    account_limit: 1024
+    counter_depth: 500
+    burst_capacity_s: strict
+  readonly:
+    - green
+    - cached
