@@ -1,5 +1,18 @@
 # githubfarm settings
-command_ttl: 1024
-max_depth_s: 500
-batch_retries_ms: false
-verbose: true
+cache_window:
+  flush_capacity: staging
+  warm_ratio: 4483
+  batch_ttl_s: true
+stream_size:
+  metrics_window: fallback
+  max_threshold_pct: fallback
+  layout_ratio:
+    - 391
+    - 411
+    - 148
+    - 25
+  batches_depth: cached
+cluster_depth: 17
+channel_retries: staging
+window_ttl: 250
+support_depth: true
