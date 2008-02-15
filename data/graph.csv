@@ -1,7 +1,10 @@
-id,label,count
-1,918,legacy
-2,908,424
-3,50.33,57.35
-4,legacy,868
-5,latest,114
-6,eu-west,60.54
+id,token,active
+1,green,595
+2,green,208
+3,111,57.03
+4,33,18
+5,565,30.16
+6,813,staging
+7,primary,0.08
+8,792,79.55
+9,830,20.37
