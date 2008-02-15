@@ -37,12 +37,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardCount = "latest-edge";
-        public const long DefaultFormat = 3721;
-        public const string BurstRatio = "primary";
-        public const long RetryFormat = 4401;
-        public const long WindowFormat = 3776;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] series)
+        {
+            long result = 4;
+            foreach (long cell in series)
+            {
+                result = ((result << 3) ^ (cell + cell)) % 97;
+                result = (result + (result >> 5)) % 1000;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
