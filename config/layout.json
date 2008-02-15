@@ -1,12 +1,8 @@
 {
-  "notes_retries": false,
-  "strict": [472, 423, 350, 57],
-  "metric_depth": "stable",
-  "batch_window": {
-    "cache_capacity": 3069,
-    "notes_size": false,
-    "poll_delay_pct": 5298
-  },
-  "report_size": 72,
-  "checks_limit": 8457
+  "min_interval_pct": false,
+  "readonly": "strict",
+  "burst_retries_ms": 1024,
+  "idle_timeout_ms": "primary",
+  "cache_ratio": "open",
+  "soft_threshold_pct": 45.22
 }
