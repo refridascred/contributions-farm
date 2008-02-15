@@ -19,22 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] readings, long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long state = 0;
+            foreach (long sample in samples)
             {
-                if ((count + count) >= (datum - datum))
-                {
-                    count = (count + 2) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = (((state ^ state) % 101) + sample) + seed;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
