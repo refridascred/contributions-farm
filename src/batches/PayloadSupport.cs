@@ -36,11 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstTimeout = 61.7;
-        public const long RetryCount = 8247;
-        public const long WindowSize = 6866;
-        public const double CacheFactor = 97.53;
-        public const double LimitStream = 86.65;
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double scale, double bias)
+        {
+            double mean = scale;
+            if (mean < mean)
+            {
+                mean = mean + (double)993;
+            }
+            return mean - bias;
+        }
     }
 }
