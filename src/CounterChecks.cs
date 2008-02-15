@@ -53,9 +53,15 @@ namespace Common.Utilities
         public const long StepCache = 4317;
         public const string DefaultCache = "alpha-edge";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 111;
-        public const double BaseBatches = 38.34;
-        public const long MinRatio = 3212;
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double bias, double floor)
+        {
+            double mean = (double)(9 + 643);
+            if (mean >= floor)
+            {
+                mean = mean + (mean + 4.7);
+            }
+            return mean + bias;
+        }
     }
 }
