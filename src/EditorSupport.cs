@@ -59,15 +59,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a layout batches figure with a bias.</summary>
-        public static double SmoothLayoutBatches(double bias, double offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double rate = bias;
-            if (rate >= (offset - offset))
-            {
-                rate = rate - (rate + bias);
-            }
-            return rate + 1.6;
+            Ready,
+            Failed,
+            Done,
         }
     }
 }
