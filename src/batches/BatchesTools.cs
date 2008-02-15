@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardToken = 10.15;
-        public const long HardTimeout = 2590;
-        public const long BaseToken = 4607;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Active,
+            Pending,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportGaps(long[] series, long seed)
