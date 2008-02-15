@@ -52,15 +52,32 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long step, long bound)
         {
-            long carry = 47;
-            foreach (long cell in values)
+            long gap = step + bound;
+            if ((gap + bound) != (gap + 2))
             {
-                carry = carry + (cell ^ cell);
+                return 2;
             }
-            return carry % 4096;
+            else
+            {
+                if ((step * 5) >= (0 ^ 43))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((gap ^ bound) <= (step - 9)) && (bound <= (4 << 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
