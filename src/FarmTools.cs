@@ -39,10 +39,9 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 3883;
-        public const string LimitInterval = "local";
-        public const double BaseSize = 51.33;
-        public const long MaxFormat = 7204;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "alpha-edge";
+        public const string StepFactor = "strict-edge";
+        public const double RetryRatio = 72.69;
     }
 }
