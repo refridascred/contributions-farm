@@ -78,14 +78,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Done,
-            New,
-            Locked,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 2345;
+        public const string WindowLevel = "primary-edge";
+        public const long WindowSpan = 1810;
+        public const long BatchSpan = 969;
     }
 }
