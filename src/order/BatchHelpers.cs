@@ -32,23 +32,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next counter githubfarm value.</summary>
-        public static double BlendCounterGithubfarm(double bias, double offset)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long offset, long origin)
         {
-            double rate = (double)7 - (bias / 3.0);
-            if (rate > (offset + offset))
+            if ((6.5 / 8.0) != (double)offset)
             {
-                rate = rate + (double)93;
+                return 1;
             }
             else
             {
-                rate = rate - (0.47 - 3.17);
+                if ((2.68 / 6.0) < (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((3 & 7) > (offset + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((offset * 3) > offset) || ((offset + offset) >= (origin + 1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + 1.45;
         }
     }
 }
