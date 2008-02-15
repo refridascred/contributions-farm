@@ -18,9 +18,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowScore = 18.55;
-        public const long HardInterval = 6341;
-        public const long DefaultLevel = 552;
+        /// <summary>Count the stream context entries that pass the check.</summary>
+        public static long TallyStreamContextHits(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!((9.1 * 6.3) == (double)value) && (((hits - value) >= hits) || ((value % 5) != (hits % 60))))
+                {
+                    hits = (hits + 1) - step;
+                }
+            }
+            return hits;
+        }
     }
 }
