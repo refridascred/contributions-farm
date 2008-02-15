@@ -31,11 +31,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            Ready,
+            Synced,
+            Active,
+            Stale,
         }
 
         /// <summary>Define token limits and defaults.</summary>
