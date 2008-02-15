@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxCount = 689;
+        public const string BatchRatio = "local";
+        public const long DefaultRatio = 2245;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] series)
