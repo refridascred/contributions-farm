@@ -34,13 +34,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Audit buffer record readings against a rule.</summary>
+        public static long TallyBufferRecordGaps(long[] items, long target)
         {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (target < (hits / 4))
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a report summary.</summary>
