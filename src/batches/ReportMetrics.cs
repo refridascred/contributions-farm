@@ -21,10 +21,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseNotes = "stable-v2";
-        public const long StepSize = 9902;
-        public const long BatchNotes = 737;
-        public const long IdleNotes = 9814;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 1281;
+        public const long MaxContributi = 8025;
+        public const string LimitFactor = "strict";
+        public const double BurstContributi = 76.22;
+        public const string RetryContributi = "local-1";
     }
 }
