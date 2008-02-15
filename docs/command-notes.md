@@ -1,13 +1,13 @@
 # Command notes
 
-When a command fails, the graph handler retries a few times before giving up.
-A support that stays idle for too long is moved to the command list.
+The report module keeps editor values in sync with the entry cache.
+Defaults for already live in the config folder and can be overridden per environment.
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-The counter helpers are pure functions, so they are safe to call from any thread.
+Use already settings to tune how often filter data is refreshed.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep order values small
-- Review batches limits each release
-- Validate report input early
+- Validate support input early
+- Review route limits each release
+- Document new order fields
