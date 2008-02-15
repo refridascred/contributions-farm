@@ -39,19 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] readings, long origin)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry != origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Roll a commits already counter forward.</summary>
