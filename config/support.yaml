@@ -1,12 +1,9 @@
 # support settings
-dry_run: green
-max_threshold_pct:
-  context_ttl: false
-  min_depth_count: 37.08
-  cluster_ratio: local
-  enabled:
-    - 267
-    - 27
-    - 393
-tools_window: edge
-base_retries_s: 60
+warm_ratio: 41.14
+default_ratio: 1024
+compress: open
+min_ratio_ms:
+  - 94
+  - 144
+  - 107
+min_delay_ms: strict
