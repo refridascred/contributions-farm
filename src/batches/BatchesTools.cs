@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] readings)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches + matches) >= (matches << 3))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
+            Locked,
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
