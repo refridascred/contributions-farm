@@ -32,18 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks token samples are out of range.</summary>
-        public static long AuditChecksTokenOutliers(long[] data, long floor)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (floor <= (floor >> 5))
-                {
-                    tally = (tally + 3) - cell;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
