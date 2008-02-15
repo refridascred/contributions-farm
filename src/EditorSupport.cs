@@ -52,12 +52,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 77.57;
-        public const long BaseEditor = 1281;
-        public const string IdleRatio = "local-edge";
-        public const long DefaultEditor = 9020;
-        public const long IdleTimeout = 5346;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Closed,
+            Done,
+            Retry,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Scale a layout batches figure with a bias.</summary>
         public static double SmoothLayoutBatches(double bias, double offset)
