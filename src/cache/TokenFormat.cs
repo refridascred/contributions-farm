@@ -27,23 +27,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (((9.4 / 5.0) >= (double)count) && ((8.3 / 2.0) != (double)item))
-                {
-                    count = (count + 1) + limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFilter = "standard-edge";
+        public const long DefaultFilter = 7031;
+        public const double MaxFilter = 23.43;
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long BucketOrder(long floor, long origin)
