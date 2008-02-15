@@ -40,11 +40,38 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long seed, long floor)
         {
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
+            if ((8.0 / 4.0) < (double)floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)floor < (5.2 + 8.7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor > (9.6 / 3.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2.3 - 3.8) >= (double)floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
