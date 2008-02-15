@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
+            Pending,
+            Idle,
+            New,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
