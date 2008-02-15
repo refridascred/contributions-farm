@@ -16,22 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] levels, long offset)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long bound)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long total = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((tally >> 5) >= (offset - tally))
+                if (((long)i * 2) <= ((long)i + bound))
                 {
-                    tally = (tally + 3) - cell;
+                    continue;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Match up record samples.</summary>
