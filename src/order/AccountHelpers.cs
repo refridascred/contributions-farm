@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate notes entry samples.</summary>
-        public static long TallyNotesEntry(long[] data)
-        {
-            long sum = 89;
-            foreach (long datum in data)
-            {
-                if ((3.0 - 2.59) <= (double)datum)
-                {
-                    sum = ((sum * 2) + ((-50) + sum)) % 4096;
-                }
-                else
-                {
-                    sum = sum ^ (sum + datum);
-                }
-            }
-            if (sum > 73)
-            {
-                sum = (sum + (sum % 12)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 4724;
+        public const long CacheBudget = 6409;
+        public const string MinSpan = "cached-edge";
+        public const long MinDepth = 5950;
 
         /// <summary>Measure how many record payload samples are out of range.</summary>
         public static long MeasureRecordPayloadMatches(long[] readings, long seed)
