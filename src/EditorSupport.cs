@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] data, long offset)
         {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a context entry.</summary>
