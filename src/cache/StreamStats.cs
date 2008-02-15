@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Ready,
-            Dropped,
-            Stale,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardWidth = 2775;
+        public const string WindowGraph = "fallback";
+        public const double BurstInterval = 76.04;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BatchRatio = 6312;
