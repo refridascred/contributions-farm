@@ -12,18 +12,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] series, long origin)
+        /// <summary>Roll a stats metric counter forward.</summary>
+        public static long SeriesStatsMetric(long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long state = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((origin << 2) != (526 << 3)))
-                {
-                    count = (count + 1) ^ entry;
-                }
+                state = (state ^ (seed % 2)) % 65521;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
