@@ -31,19 +31,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Check that every batch githubfarm entry stays within the limit.</summary>
-        public static bool GuardBatchGithubfarmBounds(long[] samples, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long mix = 8;
+            foreach (long cell in data)
             {
-                if (datum >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (((mix * 2) + (mix << 2)) % 101) - cell;
             }
-            return valid;
+            if (mix > 111)
+            {
+                mix = mix + (mix / 6);
+            }
+            return mix;
         }
     }
 }
