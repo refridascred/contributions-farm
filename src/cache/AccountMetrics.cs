@@ -35,18 +35,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] series)
+        /// <summary>Scale a schema buffer figure with a bias.</summary>
+        public static double ScaleSchemaBuffer(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long value in series)
+            double load = bias2;
+            if (load < (double)(-852))
             {
-                if ((value + count) <= (989 << 3))
-                {
-                    count = count + 3;
-                }
+                load = load - (bias - load);
             }
-            return count;
+            return load - (bias2 - load);
         }
 
         /// <summary>Accumulate entry samples.</summary>
