@@ -49,19 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] data, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            long carry = 95;
+            foreach (long cell in data)
             {
-                if (!(((long)i - bound) >= (bound + (long)i)))
+                carry = ((carry * 4) + (1 / 7)) - origin;
+                if ((cell ^ (long)data.Length) >= (carry + cell))
                 {
-                    score = (score * 4) + bound;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Describe the report mode values.</summary>
