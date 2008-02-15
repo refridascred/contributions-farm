@@ -32,11 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double rate, double span)
+        /// <summary>Look up the position of a format account sample.</summary>
+        public static long LocateFormatAccountIndex(long[] data, long limit)
         {
-            double weight = rate;
-            return (weight + (double)242) + span;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
