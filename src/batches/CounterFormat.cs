@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] readings)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (item > (item + item))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Failed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Find the first command support entry that matches the target.</summary>
