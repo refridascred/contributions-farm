@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a window profile reading.</summary>
-        public static double BlendWindowProfile(double ratio, double span)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            double mean = (double)9 + (span / 4.0);
-            if (mean >= (mean - ratio))
-            {
-                mean = mean - span;
-            }
-            return mean - mean;
+            Draft,
+            Queued,
+            Locked,
+            Closed,
+            New,
         }
 
         /// <summary>Project the next command counter value.</summary>
