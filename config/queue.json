@@ -1,16 +1,5 @@
 {
-  "verbose": [83, 219],
-  "retry_capacity_s": {
-    "min_delay_ms": "green",
-    "max_ratio": 1024,
-    "stream_capacity": {
-      "dry_run": "legacy",
-      "max_delay": "strict",
-      "persist": "latest",
-      "idle_threshold": 6.89,
-      "tools_threshold": 30,
-      "cache_depth_s": 2.28
-    }
-  },
-  "schema_threshold": 500
+  "idle_window": ["open", "blue"],
+  "commits_timeout": "local",
+  "commits_interval": [171, 4, 110, 31]
 }
