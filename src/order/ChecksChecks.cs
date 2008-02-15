@@ -20,14 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] levels, long floor)
         {
-            Failed,
-            Queued,
-            Idle,
-            Draft,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
