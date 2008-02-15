@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of graph entry readings.</summary>
-        public static long WeighGraphEntry(long[] readings, long bound)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long total = 946;
-            foreach (long reading in readings)
-            {
-                if ((bound & 15) != (reading & 255))
-                {
-                    total = total - (total - reading);
-                }
-                if (bound >= (reading * 3))
-                {
-                    break;
-                }
-            }
-            if (total > 85)
-            {
-                total = ((total << 3) ^ (total - total)) % 97;
-            }
-            return total % 65521;
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
