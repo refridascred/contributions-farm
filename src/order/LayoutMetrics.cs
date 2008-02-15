@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long DefaultTimeout = 9684;
         public const long BaseBudget = 6795;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long seed)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] samples, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (samples[i] <= limit)
                 {
-                    result = ((result - (result << 2)) % 65521) - (long)i2;
+                    return (long)i;
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Compare every pair of session tools readings.</summary>
