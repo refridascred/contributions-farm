@@ -30,13 +30,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Active,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "latest-edge";
+        public const string SoftCache = "latest-edge";
+        public const long RetryCache = 9100;
+        public const double IdleBudget = 30.61;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long TallyFarmMatches(long[] values)
