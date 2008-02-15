@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] series, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] samples)
         {
-            long mark = 942;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((entry % 100) > entry)
+                if ((double)entry > 7.92)
                 {
-                    mark = (mark + (mark >> 5)) - target;
+                    count = count + 2;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
