@@ -12,13 +12,24 @@ namespace Common.Utilities
             return (load + (gain - load)) + span;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Classify a filter support pair into a bucket.</summary>
+        public static long RankFilterSupport(long offset, long offset2)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public string Flag { get; set; } = "";
+            if ((9.0 / 3.0) <= (double)offset2)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset >= (5.31 * 3.7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
