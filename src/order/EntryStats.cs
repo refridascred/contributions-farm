@@ -50,20 +50,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] data, long step)
-        {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "stable-v2";
+        public const long StepBudget = 9240;
+        public const long WindowTimeout = 1596;
+        public const long BaseCluster = 2369;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long SeriesOrder(long seed)
