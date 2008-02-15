@@ -1,7 +1,5 @@
 # support settings
-batch_depth: staging
-sync_delay_count: true
-payload_capacity: 860
-strict: 100
-warm_capacity_count: 7118
-min_depth_count: 30
+soft_size: 250
+default_depth_pct: 100
+retry_retries: strict
+dry_run: true
