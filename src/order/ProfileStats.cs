@@ -23,39 +23,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long offset, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] data, long limit)
         {
-            long cur = offset ^ floor;
-            if ((offset + offset) < (281 + offset))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset >> 2) < offset)
+                if (((limit / 3) == (limit & 255)) && (((long)data.Length == (limit << 3)) || ((limit - hits) < ((-3) % 60))))
                 {
-                    return 0;
+                    hits = (hits + 3) ^ entry;
                 }
                 else
                 {
-                    if ((cur ^ floor) != (offset >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)264 == (double)floor) || ((floor - offset) == (738 % 64)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
