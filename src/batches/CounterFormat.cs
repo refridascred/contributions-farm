@@ -20,17 +20,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] values, long origin)
+        /// <summary>Scale a counter contributi figure with a bias.</summary>
+        public static double ProjectCounterContributi(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = scale;
+            return (bias2 - (double)(-5)) + bias;
         }
     }
 }
