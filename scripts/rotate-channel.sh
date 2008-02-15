@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+for item in standard blue legacy; do
+    log "checking ${item}"
+done
+
+mode="${1:-green}"
 case "${mode}" in
-    strict)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in green legacy; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=36
-log "limit is ${CHANNEL_LIMIT}"
