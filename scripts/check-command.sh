@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=105
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
 
-for item in standard green staging; do
+for item in cached eu-west legacy open; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=212
+log "limit is ${COMMAND_LIMIT}"
