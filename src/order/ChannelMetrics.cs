@@ -15,19 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] items, long origin)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] series)
         {
-            long mark = 937;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark - 861) % 255) - sample;
-                if (mark < (origin / 8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark ^ 83) % 4096;
+                    if ((series[i] - series[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
