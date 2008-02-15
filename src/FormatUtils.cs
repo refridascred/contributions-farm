@@ -26,13 +26,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Dropped,
-            Retry,
-            Locked,
-            Failed,
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
