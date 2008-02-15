@@ -35,13 +35,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
-            public double Weight { get; set; }
+            Synced,
+            Closed,
+            Paused,
+            Failed,
         }
     }
 }
