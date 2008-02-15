@@ -23,19 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] data, long origin)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
