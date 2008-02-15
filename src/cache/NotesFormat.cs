@@ -18,22 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] samples)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long target)
         {
-            long result = 29;
-            foreach (long cell in samples)
+            long state = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((1.2 + 0.53) < (double)cell))
-                {
-                    result = ((result << 2) ^ (result + 3)) % 1000;
-                }
+                state = state ^ (long)i;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            if (result < 439)
-            {
-                result = (result ^ ((long)samples.Length + 4)) % 97;
-            }
-            return result % 1000;
+            return state;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
