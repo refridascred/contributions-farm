@@ -1,7 +1,6 @@
 {
-  "window_interval": "staging",
-  "idle_ttl": 500,
-  "payload_limit": "stable",
-  "dry_run": 500,
-  "sync_limit_ms": 53
+  "hard_ratio_s": false,
+  "batch_delay_ms": false,
+  "strict": "cached",
+  "idle_ttl_s": 100
 }
