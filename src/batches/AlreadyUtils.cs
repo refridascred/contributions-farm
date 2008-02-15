@@ -81,19 +81,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] values, long target)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Retry,
+            Dropped,
+            Done,
+            Locked,
         }
     }
 }
