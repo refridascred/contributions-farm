@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two command queue measurements.</summary>
-        public static double ProjectCommandQueue(double scale, double span)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] items)
         {
-            double scale2 = (4.8 / 6.0) / 3.0;
-            if (scale2 > scale)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                scale2 = (scale2 + scale) - span;
+                if ((seen % 7) < (entry + (-4)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                scale2 = scale2 - (6.2 * 6.6);
-            }
-            return scale2 + scale2;
+            return seen;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
