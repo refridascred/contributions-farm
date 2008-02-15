@@ -13,12 +13,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchRatio = 6312;
-        public const long WindowTimeout = 907;
-        public const long BatchPayload = 621;
-        public const double BasePayload = 41.35;
-        public const long RetryBudget = 3120;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinInterval = 31.06;
+        public const long BatchCounter = 709;
+        public const string WindowCounter = "strict-v2";
+        public const long SoftCounter = 2116;
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
