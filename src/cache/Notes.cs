@@ -43,19 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command window entry stays within the limit.</summary>
-        public static bool GuardCommandWindowRange(long[] items, long seed)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (value <= seed)
+                if (entry > limit)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Count the graph counter entries that pass the check.</summary>
