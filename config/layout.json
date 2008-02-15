@@ -1,8 +1,14 @@
 {
-  "report_size": "local",
-  "counter_ttl": 51.7,
-  "retry_ratio": ["eu-west", "latest", "cached", "latest"],
-  "payload_interval": "legacy",
-  "sync_ratio": "blue",
-  "farm_timeout": true
+  "burst_interval_ms": 1024,
+  "default_ttl_s": 47,
+  "idle_size": false,
+  "format_delay": {
+    "max_size_s": ["legacy", "blue"],
+    "strict": 48,
+    "soft_timeout": 1562,
+    "batch_ratio_ms": 8325,
+    "base_size_pct": 65.81,
+    "persist": "stable"
+  },
+  "hard_limit_count": 74.23
 }
