@@ -29,19 +29,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowScore = 18.55;
+        public const long HardInterval = 6341;
+        public const long DefaultLevel = 552;
     }
 }
