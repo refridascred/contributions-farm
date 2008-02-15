@@ -38,19 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate support session samples.</summary>
-        public static long TotalSupportSession(long[] readings, long seed)
+        /// <summary>Count schema layout pairs that satisfy a relation.</summary>
+        public static long PairSchemaLayoutCount(long[] data)
         {
-            long result = 937;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result + (sample * 4)) % 101) + seed;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result > 59)
-            {
-                result = (result * 3) + (result / 3);
-            }
-            return result;
+            return count;
         }
     }
 }
