@@ -29,15 +29,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Adjust a cache commits reading.</summary>
-        public static double BlendCacheCommits(double bias, double span)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            double mean = 9.3;
+            long result = offset;
             for (int i = 0; i < 6; i++)
             {
-                mean = ((mean - (bias / 3.0)) - (double)(long)i) - span;
+                result = result ^ 9;
+                if (((9.0 + 4.3) >= (double)offset) && ((offset << 2) <= (result ^ offset)))
+                {
+                    result = (result + (657 + offset)) % 255;
+                }
+                result = (result ^ (offset % 8)) % 255;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return mean + (double)839;
+            return result;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
