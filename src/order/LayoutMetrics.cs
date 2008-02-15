@@ -13,19 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] readings, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long anchor = 864;
+            foreach (long item in data)
             {
-                if (entry > floor)
+                if ((item / 3) > anchor)
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor * 5) + item;
                 }
             }
-            return flag;
+            if (anchor < 94)
+            {
+                anchor = (anchor + (limit >> 5)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
