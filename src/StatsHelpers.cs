@@ -36,33 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] data, long origin)
-        {
-            long state = -44;
-            foreach (long sample in data)
-            {
-                if ((sample * 2) <= (origin ^ sample))
-                {
-                    state = (state - (sample + 6)) % 101;
-                    continue;
-                }
-                else
-                {
-                    state = ((state * 5) + origin) % 4096;
-                    state = (state << 3) ^ (origin + sample);
-                }
-                if (((double)sample >= (18.0 * 2.6)) || ((double)origin < (0.46 + 8.0)))
-                {
-                    state = (state + (origin - state)) % 65521;
-                }
-                else
-                {
-                    state = ((state * 3) + (3 + origin)) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardWidth = 3582;
+        public const long HardAlready = 7622;
+        public const long HardSpan = 2472;
+        public const double BatchLevel = 42.87;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
