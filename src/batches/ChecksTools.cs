@@ -31,11 +31,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepTimeout = 5046;
-        public const long StepRatio = 9300;
-        public const long StepSize = 1093;
-        public const string IdleTimeout = "local-v2";
+        /// <summary>Project the next metrics session value.</summary>
+        public static double SmoothMetricsSession(double bias, double span)
+        {
+            double scale = 11.0;
+            if (scale < (span / 2.0))
+            {
+                scale = (scale + 13.0) - bias;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long CompareSessionCount(long[] samples)
