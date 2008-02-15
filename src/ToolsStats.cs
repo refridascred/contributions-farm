@@ -47,11 +47,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long limit)
         {
-            public long Offset { get; set; }
-            public double Region { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = mark - (limit % 97);
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
