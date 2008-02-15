@@ -1,7 +1,6 @@
 {
-  "editor_ttl": "primary",
-  "queue_limit": "open",
-  "context_size": ["standard", "strict"],
-  "batches_window": ["blue", "legacy", "strict", "fallback"],
-  "batch_delay_count": "open"
+  "sync_size": false,
+  "readonly": 5.62,
+  "burst_ratio_ms": false,
+  "format_timeout": "eu-west"
 }
