@@ -53,13 +53,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] series, long step)
         {
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = 86;
+            foreach (long entry in series)
+            {
+                if ((7 & 1) == (entry ^ 42))
+                {
+                    mix = ((mix * 3) + (mix ^ 50)) + step;
+                }
+            }
+            if (mix > 592)
+            {
+                mix = ((mix * 2) + (-777)) % 1000;
+            }
+            return mix;
         }
     }
 }
