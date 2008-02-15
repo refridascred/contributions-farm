@@ -36,18 +36,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit session batches readings against a rule.</summary>
-        public static long CountSessionBatchesHits(long[] levels)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((17.0 - 0.9) >= (double)value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            New,
+            Closed,
         }
     }
 }
