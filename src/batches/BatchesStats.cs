@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheBudget = 4678;
-        public const long MinSpan = 8638;
-        public const string SoftContributi = "local";
-        public const long BaseBudget = 815;
-        public const long IdleScore = 2814;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinCount = 957;
+        public const double BaseSpan = 84.57;
+        public const string BasePayload = "local-edge";
+        public const long IdlePayload = 6796;
+        public const string BurstPayload = "alpha-v2";
 
         /// <summary>Match up report batch samples.</summary>
         public static long MatchReportBatchCount(long[] samples)
