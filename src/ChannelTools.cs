@@ -18,11 +18,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultTimeout = 3172;
+        public const long CacheCommits = 6602;
+        public const long StepWidth = 44;
+        public const long SoftCommits = 7902;
+        public const long BatchCommits = 1386;
     }
 }
