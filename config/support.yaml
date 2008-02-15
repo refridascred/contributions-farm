@@ -1,9 +1,12 @@
 # support settings
-farm_depth:
-  verbose: primary
-  report_limit: 80.7
-  dry_run: 83.13
-poll_capacity_pct: 8171
-commits_size: true
-max_retries_ms: false
-base_size_s: standard
+dry_run: green
+max_threshold_pct:
+  context_ttl: false
+  min_depth_count: 37.08
+  cluster_ratio: local
+  enabled:
+    - 267
+    - 27
+    - 393
+tools_window: edge
+base_retries_s: 60
