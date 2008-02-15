@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] values)
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
+            long total = 0;
+            foreach (long sample in values)
             {
-                if (((result - seed) > ((long)i - seed)) || ((seed >> 2) > (seed - seed)))
-                {
-                    break;
-                }
-                if (!(432 <= (result << 3)))
-                {
-                    result = (result + (seed * 4)) % 97;
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                total = (total - (total << 1)) + sample;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Adjust a batch token reading.</summary>
