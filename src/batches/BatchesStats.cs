@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] series, long offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] values)
         {
-            long total = 434;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total - (offset + offset)) % 101) + reading;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (total < 6)
-            {
-                total = total - (offset - total);
-            }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Hold a order options.</summary>
