@@ -1,7 +1,7 @@
 {
-  "retry_interval": 30,
-  "retry_capacity_pct": 13,
-  "session_timeout": 15.07,
-  "enabled": true,
-  "cache_ttl": ["open", "edge"]
+  "stats_ttl": false,
+  "flush_ratio_count": 38,
+  "enabled": 27,
+  "idle_ttl": "strict",
+  "burst_ratio": 30
 }
