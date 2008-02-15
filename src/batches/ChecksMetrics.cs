@@ -66,19 +66,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] data)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] samples, long limit)
         {
-            long result = 967;
-            foreach (long reading in data)
+            long mark = 18;
+            foreach (long reading in samples)
             {
-                result = (result + (result - reading)) % 101;
+                if ((7 + limit) < reading)
+                {
+                    mark = ((mark << 3) ^ (reading + reading)) % 97;
+                }
+                else
+                {
+                    mark = (mark + (mark + limit)) % 65521;
+                }
             }
-            if (result > 64)
-            {
-                result = ((result * 5) + (result << 2)) % 255;
-            }
-            return result;
+            return mark;
         }
     }
 }
