@@ -12,38 +12,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long floor, long limit)
+        /// <summary>Validate report commits readings against a bound.</summary>
+        public static bool CheckReportCommitsLimits(long[] values, long step)
         {
-            if (!((double)floor > (7.0 + 4.4)))
+            bool ready = true;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor >> 5) != (floor ^ floor))
+                if (reading > step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor ^ floor) < limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor >= (limit + limit)) || ((double)floor <= (0.2 + 3.83)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Fold a list of channel already readings.</summary>
