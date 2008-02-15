@@ -55,17 +55,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] items, long target)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double ratio, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = floor;
+            if (bias >= (bias - bias))
             {
-                if ((items[i] == target) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias + (11.0 / 2.0)) - ratio;
             }
-            return -1;
+            return bias - (floor * 14.0);
         }
     }
 }
