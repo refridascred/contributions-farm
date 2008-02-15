@@ -53,19 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi context readings against a bound.</summary>
-        public static bool ValidateContributiContextLimits(long[] readings, long bound)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
