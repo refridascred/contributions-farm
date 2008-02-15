@@ -34,24 +34,18 @@ namespace Common.Utilities
         public const long LimitContributi = 571;
         public const double WindowContributi = 59.2;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long seed, long seed2)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] samples, long step)
         {
-            if ((seed + seed2) < (671 + seed2))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed > (2.27 + 5.71))
+                if ((double)cell == (5.0 / 2.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    matches = (matches + 3) - step;
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
