@@ -1,8 +1,7 @@
 {
-  "min_interval_pct": false,
-  "readonly": "strict",
-  "burst_retries_ms": 1024,
-  "idle_timeout_ms": "primary",
-  "cache_ratio": "open",
-  "soft_threshold_pct": 45.22
+  "batches_threshold": 6465,
+  "sync_limit": false,
+  "poll_limit_s": "standard",
+  "idle_capacity_ms": [75, 156, 70],
+  "persist": 2493
 }
