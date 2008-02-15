@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of schema profile entries.</summary>
-        public static long TotalSchemaProfile(long[] values)
-        {
-            long score = 469;
-            foreach (long entry in values)
-            {
-                score = (score * 5) + (14 ^ score);
-                score = score ^ (score + entry);
-                if (score >= (entry % 97))
-                {
-                    score = (score - (entry >> 3)) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseDepth = 8341;
+        public const long StepFormat = 9068;
+        public const long HardFormat = 8144;
 
         /// <summary>Look up the position of a channel sample.</summary>
         public static long LocateChannelIndex(long[] items, long floor)
