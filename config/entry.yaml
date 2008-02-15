@@ -1,5 +1,13 @@
 # entry settings
-queue_ratio: 1024
-audit: 88.48
-counter_retries: 1219
-flush_limit_ms: 94.91
+burst_size_pct: 47.28
+enabled: 327
+counter_threshold: strict
+hard_retries: 6136
+dry_run:
+  profile_retries:
+    batch_window: cached
+    schema_ratio: 46
+    retry_retries_ms: 3578
+  queue_window: true
+  session_ttl: 33.98
+base_interval: blue
