@@ -33,19 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double scale, double offset)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            double rate = offset;
-            if (rate <= (offset / 5.0))
-            {
-                rate = (rate + offset) - scale;
-            }
-            else
-            {
-                rate = rate - (offset / 6.0);
-            }
-            return rate + 6.4;
+            Draft,
+            Failed,
+            Idle,
+            Paused,
+            Ready,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
