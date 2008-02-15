@@ -25,9 +25,20 @@ namespace Common.Utilities
             return ((rate - (double)5) + bias) + bias2;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleTimeout = 4016;
-        public const long LimitRecord = 739;
-        public const long StepInterval = 9638;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark + (mark << 3)) % 4096;
+                if ((bound + 32) >= mark)
+                {
+                    mark = (mark * 5) + (mark * 5);
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
