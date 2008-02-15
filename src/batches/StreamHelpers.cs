@@ -20,21 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up graph stream samples.</summary>
-        public static long PairGraphStreamCount(long[] readings)
+        /// <summary>Match up cache schema samples.</summary>
+        public static long CompareCacheSchemaCount(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) < 7)
+                    if ((series[i] ^ series[j]) < 18)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a cluster entry.</summary>
