@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
+            Queued,
+            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Describe the record status values.</summary>
