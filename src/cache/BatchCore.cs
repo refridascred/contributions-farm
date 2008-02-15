@@ -55,12 +55,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Active,
-            Retry,
-            Locked,
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
