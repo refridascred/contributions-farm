@@ -38,22 +38,11 @@ namespace Common.Utilities
         public const string RetryStream = "open-edge";
         public const long BurstStream = 1572;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] levels, long target)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long result = 90;
-            foreach (long value in levels)
-            {
-                if ((0.37 / 8.0) > (double)result)
-                {
-                    result = (((result << 3) ^ (414 - target)) % 1000) + value;
-                }
-            }
-            if (result > 735)
-            {
-                result = result ^ (972 * 4);
-            }
-            return result;
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
