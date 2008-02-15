@@ -1,11 +1,14 @@
 # Command notes
 
-Use metric settings to tune how often context data is refreshed.
-A session that stays idle for too long is moved to the command list.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Use order settings to tune how often support data is refreshed.
+Run the commits check before changing any report limits.
+Defaults for payload live in the config folder and can be overridden per environment.
+
+Run the filter check before changing any command limits.
+The commits module keeps stats values in sync with the stream cache.
 
 ## Guidelines
 
-- Log every counter change
-- Prefer order defaults
-- Review format limits each release
+- Validate queue input early
+- Review entry limits each release
+- Keep batches values small
