@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string CacheTimeout = "staging";
         public const long BatchSpan = 3044;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] levels, long offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (value > offset)
+                if (datum >= offset)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Fold a list of already session readings.</summary>
