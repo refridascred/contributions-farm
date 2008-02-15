@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] data, long offset)
         {
-            long score = 515;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                score = score ^ (sample - sample);
-                score = (score + (sample - 55)) % 97;
-                score = (score * 3) + (sample + sample);
+                if (sample != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (score < 554)
-            {
-                score = (score - (score - 4)) % 97;
-            }
-            return score % 1000;
+            return ok;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
