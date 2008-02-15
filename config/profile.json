@@ -1,20 +1,5 @@
 {
-  "account_timeout": 56.23,
-  "readonly": "primary",
-  "batch_timeout": "eu-west",
-  "batch_capacity_ms": {
-    "min_ttl_pct": 7789,
-    "readonly": {
-      "batches_capacity": "staging",
-      "layout_limit": 9,
-      "max_limit": "green",
-      "verbose": true,
-      "sync_threshold": 41.87,
-      "retry_window": 49
-    },
-    "batch_capacity": [74, 355, 367, 137],
-    "cluster_depth": "latest",
-    "support_ratio": false
-  },
-  "persist": 56.42
+  "format_capacity": "standard",
+  "retry_interval": true,
+  "strict": "latest"
 }
