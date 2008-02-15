@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] data, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (sample != offset)
+                if ((79 <= datum) || !((datum ^ datum) >= (target & 127)))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
