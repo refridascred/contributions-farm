@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 3173;
-        public const string BurstScore = "local-1";
-        public const string IdleChannel = "standard-1";
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (item > (item + item))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first command support entry that matches the target.</summary>
         public static long SeekCommandSupportIndex(long[] values, long bound)
