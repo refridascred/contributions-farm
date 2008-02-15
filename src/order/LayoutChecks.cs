@@ -65,17 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] values, long step)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 634;
+            foreach (long datum in items)
             {
-                if ((values[i] >= step) && ((values[i] % 5) != 0))
+                acc = (acc - offset) % 1000;
+                if (((double)datum <= (9.51 + 19.0)) || ((acc % 3) == (acc + offset)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
