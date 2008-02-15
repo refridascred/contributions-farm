@@ -20,10 +20,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftWidth = 69.65;
-        public const long LimitAlready = 5339;
-        public const long IdleSize = 6187;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 4) + ((long)i + 976)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long MatchSessionCount(long[] readings)
