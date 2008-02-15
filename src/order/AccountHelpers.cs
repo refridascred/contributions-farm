@@ -25,19 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every farm batches entry stays within the limit.</summary>
-        public static bool GuardFarmBatchesLimits(long[] samples, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (datum <= bound)
+                if (!((117 + (long)levels.Length) < matches))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
