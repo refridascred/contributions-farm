@@ -1,6 +1,21 @@
 {
-  "account_ttl": "open",
-  "order_capacity": 9033,
-  "hard_window_count": "eu-west",
-  "poll_depth_pct": "primary"
+  "default_depth_pct": {
+    "report_capacity": true,
+    "cache_depth": false,
+    "base_size": 30,
+    "retry_ttl_count": true,
+    "default_window_count": 28.31,
+    "token_capacity": ["latest", "cached", "primary"]
+  },
+  "dry_run": 24,
+  "cache_limit": 5753,
+  "max_threshold": 7988,
+  "strict": {
+    "default_ratio_pct": true,
+    "base_depth": 500,
+    "audit": 60.75,
+    "commits_window": ["stable", "latest", "local", "strict"],
+    "stream_delay": "eu-west",
+    "compress": "primary"
+  }
 }
