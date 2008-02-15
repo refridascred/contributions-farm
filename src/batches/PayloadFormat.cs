@@ -33,14 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] readings)
         {
-            Active,
-            Dropped,
-            Synced,
-            Ready,
-            Stale,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (51 >= (matches + value))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
