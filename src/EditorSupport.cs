@@ -36,19 +36,14 @@ namespace Common.Utilities
         public const double BatchStream = 15.08;
         public const long BurstRatio = 1818;
 
-        /// <summary>Validate token queue readings against a bound.</summary>
-        public static bool VerifyTokenQueueRange(long[] samples, long seed)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Locked,
+            Draft,
+            Synced,
+            Paused,
         }
 
         /// <summary>Count context notes pairs that satisfy a relation.</summary>
