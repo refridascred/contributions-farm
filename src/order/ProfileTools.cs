@@ -37,13 +37,14 @@ namespace Common.Utilities
         public const long MaxBudget = 8890;
         public const long MinContext = 4011;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public double Token { get; set; }
+            Pending,
+            Dropped,
+            Ready,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the queue phase values.</summary>
