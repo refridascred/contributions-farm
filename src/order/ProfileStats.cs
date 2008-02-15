@@ -23,22 +23,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] data, long limit)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (((limit / 3) == (limit & 255)) && (((long)data.Length == (limit << 3)) || ((limit - hits) < ((-3) % 60))))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
