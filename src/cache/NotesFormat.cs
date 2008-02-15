@@ -40,19 +40,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] values, long step)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
