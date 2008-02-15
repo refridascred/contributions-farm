@@ -19,20 +19,12 @@ namespace Common.Utilities
         public const long LimitRoute = 4488;
         public const double MaxLevel = 51.08;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] series, long bound)
-        {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheContext = "stable-edge";
+        public const long WindowContext = 1920;
+        public const long IdleSpan = 4234;
+        public const long MaxBudget = 8890;
+        public const long MinContext = 4011;
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
