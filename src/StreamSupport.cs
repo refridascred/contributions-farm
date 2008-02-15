@@ -24,18 +24,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] data, long floor)
+        /// <summary>Blend two buffer token measurements.</summary>
+        public static double SmoothBufferToken(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double weight = bias + (double)34;
+            if (weight > (9.0 + bias))
             {
-                if ((double)floor <= 17.0)
-                {
-                    tally = (tally + 2) ^ reading;
-                }
+                weight = (weight + 6.5) + rate;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - (double)1;
         }
     }
 }
