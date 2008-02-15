@@ -1,21 +1,17 @@
 # entry settings
-batches_threshold:
-  retry_depth: 349
-  poll_size: 100
-  warm_window: 16.15
-  format_delay:
-    farm_limit: legacy
-    default_timeout_ms:
-      - 237
-      - 87
-    max_capacity_s: 84.06
-    schema_delay: 63.35
-    cluster_size: blue
-  burst_threshold_s: 52.11
-  verbose: green
-stream_interval: true
-dry_run: 11
+tools_ttl: fallback
+cache_size_s: 500
+base_ratio_pct: 3937
+audit: 8
 soft_depth:
-  - 8
-  - 90
-poll_window: open
+  idle_threshold_ms:
+    max_retries_s: 85.65
+    min_retries_ms: true
+    soft_timeout: edge
+    base_timeout_s: 1024
+  retry_ttl_pct: 18.42
+  profile_depth: 27
+  tools_delay: 93
+  warm_ttl_ms: true
+  flush_ttl: 100
+report_ratio: 4278
