@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            Stale,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
