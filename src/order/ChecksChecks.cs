@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long origin)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Stale,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
