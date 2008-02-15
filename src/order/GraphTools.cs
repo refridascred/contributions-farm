@@ -30,19 +30,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] values, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell & 1) < (limit * 5))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstLevel = 7844;
+        public const long MaxBudget = 4936;
+        public const double MaxCounter = 28.14;
 
         /// <summary>Classify a batch support pair into a bucket.</summary>
         public static long BucketBatchSupport(long bound, long limit)
