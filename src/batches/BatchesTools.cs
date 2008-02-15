@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] readings)
         {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((matches + matches) >= (matches << 3))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
