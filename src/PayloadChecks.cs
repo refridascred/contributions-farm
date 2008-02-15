@@ -50,19 +50,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every queue notes entry stays within the limit.</summary>
-        public static bool CheckQueueNotesLimits(long[] data, long bound)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
