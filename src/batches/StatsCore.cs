@@ -77,13 +77,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            Draft,
-            New,
+            Stale,
+            Failed,
+            Retry,
             Done,
-            Closed,
+            Draft,
         }
     }
 }
