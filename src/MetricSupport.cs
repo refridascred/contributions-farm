@@ -38,9 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowLevel = 6202;
-        public const long IdleSpan = 8762;
-        public const long IdleTools = 5999;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricMatches(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (item >= (item << 3))
+                {
+                    seen = (seen + 3) - floor;
+                }
+            }
+            return seen;
+        }
     }
 }
