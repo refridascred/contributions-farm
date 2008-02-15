@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] samples)
+        /// <summary>Find the first order commits entry that matches the target.</summary>
+        public static long LookupOrderCommitsIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (seen >= (seen >> 5))
+                if (values[i] > origin)
                 {
-                    seen = (seen + 1) + item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
