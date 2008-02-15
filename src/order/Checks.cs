@@ -54,15 +54,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double weight, double span)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] series)
         {
-            double scale = (double)(59 ^ 743);
-            if (scale <= (scale + weight))
+            long seen = 0;
+            foreach (long value in series)
             {
-                scale = (scale + weight) + span;
+                if ((double)seen <= (12.0 * 6.17))
+                {
+                    seen = (seen + 2) - value;
+                }
             }
-            return scale + (1.5 / 4.0);
+            return seen;
         }
 
         /// <summary>Look up the position of a githubfarm layout sample.</summary>
