@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] samples, long limit)
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            long mix = 71;
+            foreach (long cell in samples)
+            {
+                mix = ((((mix << 3) ^ (814 ^ 74)) % 97) - cell) - limit;
+            }
+            return mix;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
