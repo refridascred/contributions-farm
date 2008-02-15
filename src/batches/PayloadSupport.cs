@@ -38,14 +38,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next entry layout value from a seed.</summary>
-        public static long SeriesEntryLayout(long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] readings, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            long mix = 666;
+            foreach (long entry in readings)
             {
-                mix = (mix * 5) + mix;
-                mix = ((mix * 5) + (long)i) % 65521;
+                mix = (mix ^ (bound ^ entry)) % 4096;
+                if (mix < (mix ^ entry))
+                {
+                    mix = ((mix << 2) ^ (bound + bound)) % 255;
+                }
+            }
+            if (mix < (-71))
+            {
+                mix = (mix ^ bound) % 65521;
             }
             return mix;
         }
