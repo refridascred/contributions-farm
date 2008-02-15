@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ratio2 - bias;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] readings, long limit)
         {
-            Closed,
-            New,
-            Synced,
-            Idle,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate payload graph samples.</summary>
