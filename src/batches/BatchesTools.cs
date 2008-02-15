@@ -28,39 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long target, long limit)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long gap = target + limit;
-            if ((limit ^ target) > gap)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((limit & 255) <= (limit + limit)) && ((target >> 4) == ((-42) & 15)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit * 2) > limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((0.42 / 7.0) != (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public double Level { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
