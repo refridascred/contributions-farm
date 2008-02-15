@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const double MinSize = 72.69;
         public const string WindowChecks = "fallback-v2";
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            Dropped,
-            Synced,
-            Stale,
-            Locked,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
