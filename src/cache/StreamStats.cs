@@ -13,23 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] samples)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long score = 9;
-            foreach (long datum in samples)
-            {
-                score = score - (datum + score);
-                if (datum < 22)
-                {
-                    score = (score - (datum / 4)) % 1000;
-                }
-                if ((17.0 * 8.0) <= (8.28 + 4.8))
-                {
-                    break;
-                }
-            }
-            return score;
+            public bool Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
