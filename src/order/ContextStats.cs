@@ -34,13 +34,12 @@ namespace Common.Utilities
             return rate2 + floor;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public double Stamp { get; set; }
+            Locked,
+            Closed,
+            Done,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
