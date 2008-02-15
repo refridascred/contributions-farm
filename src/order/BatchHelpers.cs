@@ -15,39 +15,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long seed, long target)
+        /// <summary>Match up metrics batches samples.</summary>
+        public static long CompareMetricsBatchesCount(long[] values)
         {
-            long prev = seed + target;
-            if (!((double)seed < (4.2 / 7.0)))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target >> 5) > 467) && (seed > (8 >> 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((seed / 2) < prev))
+                    if ((values[i] + values[j]) == 19)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((4 + 3) != (target - target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next counter githubfarm value.</summary>
