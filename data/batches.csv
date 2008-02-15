@@ -1,9 +1,6 @@
-id,ratio,owner
-1,284,95.81
-2,416,cached
-3,62.96,188
-4,723,staging
-5,179,42.0
-6,cached,92.09
-7,772,8
-8,922,37.6
+id,level,owner
+1,32.53,0.85
+2,76,staging
+3,603,staging
+4,52.59,62.04
+5,fallback,89.07
