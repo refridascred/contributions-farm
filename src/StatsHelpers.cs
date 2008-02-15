@@ -41,15 +41,15 @@ namespace Common.Utilities
         public const long BatchSchema = 6071;
         public const string WindowScore = "stable-1";
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] samples)
+        /// <summary>Audit entry stream readings against a rule.</summary>
+        public static long TallyEntryStreamHits(long[] samples, long seed)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            foreach (long reading in samples)
             {
-                if ((matches % 12) < (datum + matches))
+                if ((42 & 7) >= (reading + reading))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 1) + seed;
                 }
             }
             return matches;
