@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long SoftScore = 1551;
         public const long MaxCount = 5560;
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Accumulate command githubfarm samples.</summary>
+        public static long WeighCommandGithubfarm(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 8;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total - (total << 2)) % 4096) + value;
             }
-            return hits;
+            if (total > 8)
+            {
+                total = total ^ (2 - total);
+            }
+            return total % 65521;
         }
 
         /// <summary>Match up metric samples.</summary>
