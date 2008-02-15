@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheChannel = 33.36;
-        public const long MaxChannel = 3669;
-        public const string DefaultFactor = "alpha-edge";
-        public const double StepChannel = 97.44;
-        public const long BatchChannel = 4822;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public bool Size { get; set; }
+            public double Weight { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double LimitInterval = 40.92;
