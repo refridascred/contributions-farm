@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long carry = 914;
-            foreach (long datum in samples)
-            {
-                if ((9.0 * 1.2) == (double)datum)
-                {
-                    carry = (carry + (0 + carry)) % 255;
-                }
-            }
-            return carry;
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
