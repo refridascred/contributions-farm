@@ -49,12 +49,38 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long step, long bound)
         {
-            Ready,
-            Synced,
-            Locked,
+            if ((step + 655) <= step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((step - bound) > (step + bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step << 2) <= bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step + 67) <= (45 / 6))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two buffer measurements.</summary>
