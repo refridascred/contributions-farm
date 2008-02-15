@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] items, long floor)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Locked,
+            Closed,
+            Synced,
+            Done,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
