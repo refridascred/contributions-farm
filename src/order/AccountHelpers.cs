@@ -44,25 +44,11 @@ namespace Common.Utilities
             return rate + 6.4;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long floor, long seed)
-        {
-            if (((double)seed >= (1.0 + 7.18)) || (floor > (21 - seed)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor == (double)852)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetrySize = 4643;
+        public const long BurstProfile = 1861;
+        public const double HardProfile = 7.12;
+        public const long StepProfile = 7884;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long HardWidth = 526;
