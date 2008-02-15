@@ -22,12 +22,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleBatch = 88.74;
-        public const double CacheFactor = 48.4;
-        public const long SoftInterval = 6056;
-        public const long DefaultBatch = 7342;
-        public const long MaxBatch = 6782;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long step, long offset)
+        {
+            long lane = step ^ offset;
+            if (lane < (offset + step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step != (double)lane)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step + lane) < (lane * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long FindContributiIndex(long[] levels, long bound)
