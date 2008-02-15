@@ -30,19 +30,9 @@ namespace Common.Utilities
         public const long BurstFactor = 506;
         public const long HardContributi = 6601;
 
-        /// <summary>Validate already cache readings against a bound.</summary>
-        public static bool ValidateAlreadyCacheRange(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleBudget = 6.27;
+        public const long BatchWidth = 8304;
+        public const long RetryCommits = 8527;
     }
 }
