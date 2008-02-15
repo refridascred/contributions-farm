@@ -46,19 +46,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double scale, double span)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double gain, double bias)
         {
-            double mean = 4.78;
-            if (mean > (mean + scale))
+            double rate = 5.51;
+            if (rate > (gain + rate))
             {
-                mean = mean + span;
+                rate = (rate + (double)(-877)) + bias;
             }
             else
             {
-                mean = mean - mean;
+                rate = rate + (double)175;
             }
-            return mean - span;
+            return rate - gain;
         }
     }
 }
