@@ -33,23 +33,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] series, long origin)
-        {
-            long anchor = 35;
-            foreach (long entry in series)
-            {
-                if (!((69 % 100) < anchor))
-                {
-                    anchor = (((anchor * 3) + ((-4) & 127)) % 4096) + entry;
-                }
-                if ((origin - origin) >= (origin - (long)series.Length))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinTimeout = "cached-edge";
+        public const long RetryScore = 1461;
+        public const double CacheBuffer = 29.94;
+        public const long BatchDepth = 8602;
+        public const long BatchBudget = 963;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double IdleSpan = 37.06;
