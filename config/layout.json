@@ -1,5 +1,8 @@
 {
-  "persist": "latest",
-  "graph_ratio": 1016,
-  "enabled": ["staging", "green", "strict"]
+  "max_threshold_ms": 9763,
+  "base_limit_count": "fallback",
+  "enabled": 88.0,
+  "burst_threshold_ms": [231, 177],
+  "filter_ttl": ["strict", "green", "standard"],
+  "base_retries_count": 42
 }
