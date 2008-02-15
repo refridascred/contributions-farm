@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const long BatchLevel = 8281;
         public const long MaxCluster = 4431;
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public long Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 5084;
+        public const double MaxSize = 30.75;
+        public const long RetryCount = 3070;
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
