@@ -10,23 +10,13 @@ namespace Common.Utilities
         public const long DefaultInterval = 1230;
         public const string SoftFactor = "strict";
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double ratio, double floor)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            double mean = floor;
-            if (mean > 5.73)
-            {
-                mean = (mean - (double)47) + ratio;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean + mean;
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
