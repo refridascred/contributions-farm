@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Pending,
-            Stale,
-            Closed,
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
