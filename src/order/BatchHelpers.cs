@@ -15,19 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples)
-        {
-            long mix = 98;
-            foreach (long datum in samples)
-            {
-                if ((datum + mix) >= (mix % 12))
-                {
-                    mix = mix + (1 / 9);
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSession = "fallback";
+        public const long LimitSize = 8134;
+        public const long CacheTimeout = 231;
+        public const double DefaultSession = 77.93;
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
