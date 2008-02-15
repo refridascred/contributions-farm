@@ -23,21 +23,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count already profile pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyProfileCount(long[] data)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum << 2) ^ (66 & 127)) % 4096;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
