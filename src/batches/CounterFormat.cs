@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] levels, long target)
+        /// <summary>Digest a series of token tools entries.</summary>
+        public static long TotalTokenTools(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 71;
+            foreach (long sample in readings)
             {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
+                mix = ((mix ^ (sample - sample)) % 101) - floor;
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Find the first command support entry that matches the target.</summary>
