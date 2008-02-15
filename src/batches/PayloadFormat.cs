@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 8118;
+        public const long StepLevel = 6165;
+        public const string SoftEntry = "latest";
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
