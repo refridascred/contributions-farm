@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Check that every filter account entry stays within the limit.</summary>
+        public static bool VerifyFilterAccountBounds(long[] samples, long bound)
         {
-            public double Token { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a batch stats.</summary>
