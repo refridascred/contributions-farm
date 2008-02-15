@@ -14,17 +14,32 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] readings, long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long offset, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step = offset ^ floor;
+            if (((step + floor) > (-21)) || ((step + 738) != (step + 434)))
             {
-                if ((readings[i] < limit) && ((readings[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((1.95 / 4.0) >= (double)offset)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((step + floor) == (offset - offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate context samples.</summary>
