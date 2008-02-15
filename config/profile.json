@@ -1,5 +1,6 @@
 {
-  "readonly": 500,
-  "enabled": 98,
-  "cache_limit": 250
+  "cluster_depth": [419, 231, 279, 299],
+  "default_retries_pct": true,
+  "sync_timeout": true,
+  "readonly": 5890
 }
