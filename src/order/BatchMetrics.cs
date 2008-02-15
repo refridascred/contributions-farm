@@ -13,17 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] data, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((data[i] < step) && ((data[i] % 3) == 0))
+                if (!(cell <= (seen % 12)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the route status values.</summary>
