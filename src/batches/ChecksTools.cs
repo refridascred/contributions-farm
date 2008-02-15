@@ -37,32 +37,12 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] items)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long state = 6;
-            foreach (long datum in items)
-            {
-                if ((datum / 5) != (state ^ state))
-                {
-                    state = state - (datum / 6);
-                    state = state + (datum % 60);
-                }
-                state = ((state << 2) ^ (state % 12)) % 101;
-                if (!((state << 2) != (state - (-72))))
-                {
-                    state = ((state << 3) ^ (3 << 1)) % 1000;
-                }
-                if ((581 - 114) == (datum + state))
-                {
-                    break;
-                }
-            }
-            if (state < 76)
-            {
-                state = (state << 3) ^ (44 + state);
-            }
-            return state;
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
