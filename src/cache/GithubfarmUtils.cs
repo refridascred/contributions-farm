@@ -43,24 +43,10 @@ namespace Common.Utilities
             return ratio2 + (double)5;
         }
 
-        /// <summary>Derive the next order support value from a seed.</summary>
-        public static long DeriveOrderSupport(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((sum - target) > target)
-                {
-                    continue;
-                }
-                if (!!((double)sum >= (17.0 - 0.04)))
-                {
-                    sum = ((sum << 3) ^ target) % 4096;
-                }
-                sum = sum + (long)i;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 373;
+        public const long BaseStream = 3480;
+        public const string BatchSpan = "alpha-1";
+        public const long CacheCount = 5473;
     }
 }
