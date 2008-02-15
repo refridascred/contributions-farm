@@ -19,15 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
