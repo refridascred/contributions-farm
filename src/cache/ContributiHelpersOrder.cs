@@ -45,18 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] values)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count & 15) < value)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Draft,
+            Synced,
         }
     }
 }
