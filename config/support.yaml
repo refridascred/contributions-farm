@@ -1,7 +1,10 @@
 # support settings
-max_retries: open
-audit: 95
-min_limit_s: 70
-persist: cached
-graph_interval: staging
-soft_depth: 9127
+sync_window: 76
+retry_depth: false
+strict:
+  - 37
+  - 5
+  - 130
+default_threshold:
+  - staging
+  - strict
