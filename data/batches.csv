@@ -1,10 +1,7 @@
-id,token,level,rank
-1,49.19,strict,25.39
-2,standard,98.86,39.64
-3,6.46,997,12.3
-4,32.45,green,edge
-5,334,primary,83
-6,9.49,139,53.52
-7,legacy,edge,34.78
-8,standard,79.49,standard
-9,79.56,59.51,622
+id,active,count,token
+1,263,10.92,971
+2,215,53,281
+3,57.87,edge,edge
+4,stable,blue,8.16
+5,48.14,495,9.55
+6,legacy,5.55,blue
