@@ -49,12 +49,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultStream = "local-edge";
-        public const long SoftStream = 5329;
-        public const double StepStream = 10.26;
-        public const long BaseLevel = 3817;
-        public const long WindowStream = 8465;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Rank { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
