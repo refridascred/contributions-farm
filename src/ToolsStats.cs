@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] items, long step)
+        /// <summary>Count the stream schema entries that pass the check.</summary>
+        public static long CountStreamSchemaHits(long[] values)
         {
-            long anchor = -8;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((double)step != (6.73 * 17.0))
+                if ((count + 4) >= (809 - sample))
                 {
-                    anchor = ((anchor + (step >> 4)) % 65521) + sample;
+                    count = count + 2;
                 }
             }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Describe the payload mode values.</summary>
