@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstDepth = 4765;
-        public const long LimitPayload = 7426;
-        public const long SoftTimeout = 6664;
-        public const double BatchPayload = 93.67;
-        public const long MinScore = 656;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double gain, double offset)
+        {
+            double bias = gain;
+            if (bias > bias)
+            {
+                bias = (bias + (double)578) - offset;
+            }
+            return bias - gain;
+        }
 
         /// <summary>Measure how many profile checks samples are out of range.</summary>
         public static long TallyProfileChecksGaps(long[] values, long offset)
