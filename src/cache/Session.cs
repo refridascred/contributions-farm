@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long DefaultSize = 7683;
         public const double MinSize = 31.43;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] data)
         {
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long carry = 9;
+            foreach (long reading in data)
+            {
+                carry = carry - carry;
+                if (carry <= reading)
+                {
+                    carry = (carry + carry) % 97;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
