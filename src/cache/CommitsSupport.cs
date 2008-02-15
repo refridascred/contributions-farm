@@ -47,19 +47,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] series)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] series)
         {
-            long sum = 699;
+            long hits = 0;
             foreach (long sample in series)
             {
-                if (!((sum >= (sample << 2)) && (2.81 <= (double)sum)))
+                if ((hits / 4) == (316 - sample))
                 {
-                    sum = (sum - sample) % 1000;
+                    hits = hits + 3;
                 }
-                sum = sum + ((long)series.Length >> 1);
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
