@@ -47,19 +47,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] items, long step)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            double weight = (double)(773 ^ 37);
+            if (weight <= (double)1)
             {
-                if (sample >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = (weight - weight) - bias;
             }
-            return ready;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (6.44 + scale)) + (double)(long)i;
+            }
+            return weight - scale;
         }
 
         /// <summary>Audit cluster metrics readings against a rule.</summary>
