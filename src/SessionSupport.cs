@@ -40,11 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultBudget = 47.92;
-        public const string MinPayload = "stable-1";
-        public const long StepSize = 581;
-        public const double HardPayload = 89.98;
-        public const double CachePayload = 96.98;
+        /// <summary>Find the first cache support entry that matches the target.</summary>
+        public static long LookupCacheSupportIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= offset) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
