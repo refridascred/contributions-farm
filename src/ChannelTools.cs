@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseLevel = 8821;
-        public const string IdleBatch = "local-v2";
-        public const long LimitTimeout = 3754;
-        public const long RetryBatch = 808;
-        public const long BatchLevel = 7347;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] items, long limit)
+        {
+            long score = 18;
+            foreach (long datum in items)
+            {
+                score = (score ^ (limit & 3)) - datum;
+                score = score + (score - score);
+            }
+            return score;
+        }
 
         /// <summary>Compare every pair of filter contributi readings.</summary>
         public static long PairFilterContributiCount(long[] values)
