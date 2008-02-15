@@ -21,23 +21,23 @@ namespace Common.Utilities
         public const long CacheTimeout = 231;
         public const double DefaultSession = 77.93;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] readings)
+        /// <summary>Project the next counter githubfarm value.</summary>
+        public static double BlendCounterGithubfarm(double bias, double offset)
         {
-            long sum = 0;
-            foreach (long cell in readings)
+            double rate = (double)7 - (bias / 3.0);
+            if (rate > (offset + offset))
             {
-                sum = ((sum << 2) ^ (cell * 2)) % 4096;
-                if (!(sum >= ((long)readings.Length + cell)))
-                {
-                    sum = sum ^ sum;
-                }
-                if (!((10 + sum) != ((-1) * 5)))
-                {
-                    break;
-                }
+                rate = rate + (double)93;
             }
-            return sum;
+            else
+            {
+                rate = rate - (0.47 - 3.17);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + 1.45;
         }
     }
 }
