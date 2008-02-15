@@ -29,23 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double ratio, double span)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            double weight = span * 5.5;
-            if (weight > (weight / 5.0))
-            {
-                weight = weight + (weight - ratio);
-            }
-            else
-            {
-                weight = weight - (double)0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - span) + (double)(long)i;
-            }
-            return weight - span;
+            Idle,
+            Draft,
+            Retry,
+            Stale,
         }
     }
 }
