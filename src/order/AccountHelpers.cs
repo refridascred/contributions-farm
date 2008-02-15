@@ -48,11 +48,25 @@ namespace Common.Utilities
             return rate + 6.4;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetrySize = 4643;
-        public const long BurstProfile = 1861;
-        public const double HardProfile = 7.12;
-        public const long StepProfile = 7884;
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long bound, long offset)
+        {
+            if ((double)offset <= (double)bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound - bound) > (offset % 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long HardWidth = 526;
