@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stats stream entry stays within the limit.</summary>
-        public static bool ValidateStatsStreamLimits(long[] readings, long seed)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
