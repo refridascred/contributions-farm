@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            Locked,
-            Active,
-            Dropped,
-            Failed,
+            long carry = 914;
+            foreach (long datum in samples)
+            {
+                if ((9.0 * 1.2) == (double)datum)
+                {
+                    carry = (carry + (0 + carry)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
