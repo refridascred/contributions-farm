@@ -25,13 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Look up the position of a cluster buffer sample.</summary>
+        public static long LocateClusterBufferIndex(long[] series, long bound)
         {
-            New,
-            Stale,
-            Paused,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit buffer record readings against a rule.</summary>
