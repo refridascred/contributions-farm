@@ -33,14 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Draft,
-            Failed,
-            Idle,
+            Done,
             Paused,
-            Ready,
+            Stale,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
