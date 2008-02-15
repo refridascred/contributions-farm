@@ -34,21 +34,32 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] data, long origin)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long floor, long limit)
         {
-            long state = 296;
-            foreach (long datum in data)
+            long edge = floor + limit;
+            if ((edge + floor) > (floor * 5))
             {
-                if (((origin >> 5) < (origin * 3)) || (state <= (origin ^ origin)))
-                {
-                    state = (((state * 2) + (state << 1)) % 255) + datum;
-                    state = ((state * 2) + origin) % 4096;
-                }
-                state = ((state * 4) + origin) % 97;
-                state = ((state * 5) + 0) % 65521;
+                return 1;
             }
-            return state % 65521;
+            else
+            {
+                if (!((double)limit == (3.4 - 5.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((2.72 * 17.0) >= (double)limit) && ((623 ^ floor) != (9 / 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
