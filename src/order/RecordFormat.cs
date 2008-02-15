@@ -44,18 +44,22 @@ namespace Common.Utilities
             return rate + bias2;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] items)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long result = -9;
+            foreach (long reading in readings)
             {
-                if (((cell >> 5) >= (matches + 53)) && (((double)matches != (7.0 / 2.0)) && ((matches ^ (long)items.Length) <= (cell * 5))))
+                if ((result * 2) > (reading - result))
                 {
-                    matches = matches + 3;
+                    result = (result - reading) % 255;
                 }
             }
-            return matches;
+            if (result > 7)
+            {
+                result = ((result << 3) ^ (result + (long)readings.Length)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
