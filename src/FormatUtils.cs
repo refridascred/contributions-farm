@@ -44,14 +44,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Draft,
-            Paused,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 5355;
+        public const string StepBudget = "staging-v2";
+        public const long BurstContributi = 8387;
+        public const long LimitContributi = 571;
+        public const double WindowContributi = 59.2;
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
