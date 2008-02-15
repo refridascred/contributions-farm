@@ -1,11 +1,15 @@
 # Command notes
 
-The filter report groups every record by window.
-The editor module keeps entry values in sync with the entry cache.
+Keep layout and report names short and lowercase.
+Run the session check before changing any support limits.
+Run the session check before changing any channel limits.
+
+The token module keeps route values in sync with the route cache.
+Use githubfarm settings to tune how often account data is refreshed.
+When a metrics fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review cache limits each release
-- Prefer session defaults
-- Document new schema fields
-- Log every tools change
+- Log every counter change
+- Keep order values small
+- Document new window fields
