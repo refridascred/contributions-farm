@@ -58,13 +58,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] values)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
+            long result = 231;
+            foreach (long reading in values)
+            {
+                if ((double)result >= (1.0 * 18.0))
+                {
+                    result = (((result * 3) + result) % 65521) ^ reading;
+                }
+            }
+            return result;
         }
     }
 }
