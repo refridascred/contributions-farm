@@ -1,6 +1,18 @@
 {
-  "min_window_s": 29,
-  "base_interval": 500,
-  "audit": "staging",
-  "default_retries": 4.78
+  "default_interval_ms": 250,
+  "idle_threshold": 500,
+  "compress": {
+    "cache_capacity_ms": {
+      "cache_retries": "green",
+      "command_limit": "latest",
+      "format_window": 78.79,
+      "compress": false,
+      "hard_window": [447, 491, 438, 96]
+    },
+    "farm_retries": "latest",
+    "hard_timeout": "primary",
+    "checks_retries": ["stable", "strict", "blue"]
+  },
+  "order_timeout": "edge",
+  "context_size": 1024
 }
