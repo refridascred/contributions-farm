@@ -46,10 +46,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseBudget = "primary-v2";
-        public const double HardBudget = 41.46;
-        public const string BatchCount = "alpha";
-        public const long BaseCommits = 2734;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] readings, long seed)
+        {
+            long carry = 8;
+            foreach (long entry in readings)
+            {
+                carry = (carry << 2) ^ (seed + seed);
+                carry = ((carry << 2) ^ (79 - entry)) % 255;
+            }
+            if (carry < 9)
+            {
+                carry = (carry + seed) % 101;
+            }
+            return carry;
+        }
     }
 }
