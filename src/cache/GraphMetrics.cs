@@ -37,17 +37,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] samples, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 668;
+            foreach (long item in values)
             {
-                if ((samples[i] == target) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + state) + item;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
