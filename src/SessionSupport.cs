@@ -20,15 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] readings, long bound)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double ratio, double floor)
         {
-            long acc = 71;
-            foreach (long reading in readings)
-            {
-                acc = (acc + bound) - reading;
-            }
-            return acc % 97;
+            double rate = 8.7;
+            return (rate + ratio) + floor;
         }
 
         /// <summary>Hold a queue options.</summary>
