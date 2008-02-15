@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] readings, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long acc = 136;
+            foreach (long item in items)
             {
-                if ((bound + bound) <= (192 % 60))
-                {
-                    seen = (seen + 2) ^ value;
-                }
+                acc = (((acc - (acc - 0)) % 4096) ^ item) - offset;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Fold a list of record readings.</summary>
