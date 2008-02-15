@@ -1,13 +1,9 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    token TEXT,
-    created_at TIMESTAMP,
+    count INTEGER NOT NULL DEFAULT 0,
     ratio REAL,
-    state TEXT NOT NULL DEFAULT 'new'
+    created_at TIMESTAMP
 );
 
 CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
-
-INSERT INTO commits_records (token, ratio, state) VALUES ('latest', 34.58, 'latest');
-INSERT INTO commits_records (token, ratio, state) VALUES ('blue', 57.86, 'staging');
