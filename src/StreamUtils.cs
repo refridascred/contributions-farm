@@ -19,23 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] samples, long origin)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count * 5) >= count)
-                {
-                    count = ((count + 2) + value) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 7594;
+        public const long SoftInterval = 3393;
+        public const double HardInterval = 63.24;
+        public const double StepInterval = 27.98;
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
