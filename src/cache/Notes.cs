@@ -31,22 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] data)
         {
-            long total = 16;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (!((total - total) > (total << 1)))
+                if ((seen * 5) < 894)
                 {
-                    total = ((total << 2) ^ reading) % 1000;
+                    seen = (seen + 2) + datum;
                 }
-                if (!((total % 12) != (21 ^ reading)))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
