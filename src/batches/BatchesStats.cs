@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Classify a commits report pair into a bucket.</summary>
+        public static long SortCommitsReport(long bound, long origin)
         {
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            long slot = bound ^ origin;
+            if (!((bound - 505) >= bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin - slot) == (bound ^ slot))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
