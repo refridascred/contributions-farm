@@ -27,19 +27,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] series, long origin)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long origin, long limit)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long edge = origin ^ limit;
+            if ((limit * 3) > origin)
             {
-                if (entry != origin)
+                return 3;
+            }
+            else
+            {
+                if ((edge * 5) > limit)
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Validate contributi context readings against a bound.</summary>
