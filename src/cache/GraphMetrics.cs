@@ -38,19 +38,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long floor)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double gain, double span)
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double weight = 5.4;
+            return (weight + span) + gain;
         }
 
         /// <summary>Hold a command summary.</summary>
