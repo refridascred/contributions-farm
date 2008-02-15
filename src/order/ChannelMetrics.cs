@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCount = 8908;
-        public const double MinDepth = 8.98;
-        public const string IdleCommits = "standard";
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Ready,
+            Synced,
+            New,
+            Pending,
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MaxSession = 6646;
