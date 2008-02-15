@@ -72,13 +72,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double gain, double floor)
         {
-            Draft,
-            Idle,
-            Retry,
-            Active,
+            double drift = (double)7;
+            if (drift < (gain / 4.0))
+            {
+                drift = drift + (gain / 9.0);
+            }
+            else
+            {
+                drift = drift + floor;
+            }
+            return drift + drift;
         }
     }
 }
