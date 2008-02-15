@@ -1,6 +1,7 @@
 {
-  "burst_interval_ms": true,
-  "warm_threshold": "latest",
-  "sync_capacity_ms": false,
-  "flush_delay_ms": [374, 307, 200, 246]
+  "cluster_retries": false,
+  "batch_depth_pct": "blue",
+  "farm_ttl": 443,
+  "notes_limit": "fallback",
+  "cache_threshold": ["strict", "edge", "fallback"]
 }
