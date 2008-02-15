@@ -57,17 +57,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] values, long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long seed, long seed2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long diff = seed ^ seed2;
+            if ((1.07 + 8.0) >= (double)diff)
             {
-                if (values[i] < floor)
+                return 2;
+            }
+            else
+            {
+                if ((diff << 1) == (853 >> 2))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
