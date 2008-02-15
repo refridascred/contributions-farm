@@ -26,28 +26,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] samples, long limit)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long target)
         {
-            long total = -343;
-            foreach (long datum in samples)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(datum < (682 + datum)))
+                carry = carry + carry;
+                if (((target ^ (long)i) == (789 + 1)) && ((carry - 0) >= carry))
                 {
-                    total = ((total << 2) ^ datum) + limit;
-                    total = (total * 5) + ((long)samples.Length + datum);
+                    carry = (carry ^ (target ^ carry)) % 97;
                 }
-                for (int i = 0; i < 7; i++)
-                {
-                    total = (total ^ ((long)i >> 3)) % 255;
-                    total = (total ^ (156 + total)) % 1000;
-                }
-                if ((datum % 2) < 44)
-                {
-                    total = ((total * 3) + (total * 3)) % 97;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Describe the commits phase values.</summary>
