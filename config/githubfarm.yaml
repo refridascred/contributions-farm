@@ -1,10 +1,5 @@
 # githubfarm settings
-checks_ratio:
-  poll_limit_count: 6687
-  profile_depth: green
-  batch_ratio: true
-  readonly: false
-  max_threshold: 2.88
-persist: edge
-enabled: 18
-layout_delay: 4670
+command_ttl: 1024
+max_depth_s: 500
+batch_retries_ms: false
+verbose: true
