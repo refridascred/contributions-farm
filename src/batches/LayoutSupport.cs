@@ -58,13 +58,9 @@ namespace Common.Utilities
         public const string DefaultAccount = "alpha";
         public const double BaseAccount = 28.86;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 768;
+        public const long StepRoute = 6783;
+        public const string RetryFactor = "stable-v2";
     }
 }
