@@ -36,12 +36,12 @@ namespace Common.Utilities
         public const long StepInterval = 808;
         public const long BatchSize = 9071;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Synced,
-            Active,
-            Idle,
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a farm stats.</summary>
