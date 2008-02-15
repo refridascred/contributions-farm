@@ -60,18 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] readings, long bound)
+        /// <summary>Audit cluster metrics readings against a rule.</summary>
+        public static long MeasureClusterMetricsGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (hits >= 7)
+                if (matches > (datum % 8))
                 {
-                    hits = ((hits + 2) - cell) - bound;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
