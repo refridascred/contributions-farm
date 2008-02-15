@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] levels, long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long state = 77;
+            foreach (long datum in samples)
             {
-                if (value <= floor)
+                if ((seed & 3) < (seed % 100))
                 {
-                    ready = false;
-                    break;
+                    state = (state + (datum ^ datum)) % 255;
                 }
             }
-            return ready;
+            if (state < 73)
+            {
+                state = (state + (state * 4)) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the profile level values.</summary>
