@@ -1,6 +1,8 @@
 {
-  "min_retries": "green",
-  "enabled": 7489,
-  "cache_capacity_count": 30,
-  "min_ratio_pct": true
+  "report_size": "local",
+  "counter_ttl": 51.7,
+  "retry_ratio": ["eu-west", "latest", "cached", "latest"],
+  "payload_interval": "legacy",
+  "sync_ratio": "blue",
+  "farm_timeout": true
 }
