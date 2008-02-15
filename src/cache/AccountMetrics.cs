@@ -44,29 +44,17 @@ namespace Common.Utilities
         public const long WindowSpan = 5684;
         public const long MinWidth = 1614;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] samples, long offset)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] data, long target)
         {
-            long score = 821;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((offset % 12) <= (score >> 4)))
+                if ((data[i] < target) && ((data[i] % 5) == 0))
                 {
-                    score = score ^ (sample << 1);
-                    score = ((score << 3) ^ (score + offset)) % 65521;
-                }
-                if ((score % 8) >= (offset >> 1))
-                {
-                    score = (score ^ (offset / 7)) % 255;
-                    score = (score << 3) ^ (offset & 63);
-                    continue;
-                }
-                if (!((22 + sample) <= ((-60) + score)))
-                {
-                    score = score - (score % 97);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
