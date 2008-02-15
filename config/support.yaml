@@ -1,9 +1,6 @@
 # support settings
-idle_size_ms: 62.13
-soft_size_pct: 3720
-batch_interval_ms:
-  - eu-west
-  - fallback
-  - stable
-  - eu-west
-batch_threshold: legacy
+warm_ttl: false
+strict: 18.12
+persist: standard
+readonly: fallback
+verbose: staging
