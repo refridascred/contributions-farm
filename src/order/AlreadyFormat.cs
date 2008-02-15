@@ -26,21 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = carry + carry;
-                if (((target ^ (long)i) == (789 + 1)) && ((carry - 0) >= carry))
-                {
-                    carry = (carry ^ (target ^ carry)) % 97;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 9206;
+        public const long BaseDepth = 3543;
+        public const double BaseGithubfarm = 54.6;
+        public const double RetryGithubfarm = 27.98;
+        public const double StepGithubfarm = 68.74;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string BurstCounter = "staging-v2";
