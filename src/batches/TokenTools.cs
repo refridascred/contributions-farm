@@ -16,24 +16,23 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long limit, long step)
+        /// <summary>Project the next command counter value.</summary>
+        public static double SmoothCommandCounter(double bias, double offset)
         {
-            if ((double)step != (double)limit)
+            double scale = (double)(701 - 74);
+            if (scale < (scale + offset))
             {
-                return 6;
+                scale = scale + (offset + 2.0);
             }
             else
             {
-                if ((double)step == (double)5)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
+                scale = scale + offset;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - bias) - (double)(long)i;
+            }
+            return scale + (bias - scale);
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
