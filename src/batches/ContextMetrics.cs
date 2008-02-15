@@ -29,13 +29,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] levels)
         {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((tally >> 1) <= tally) && !((double)90 < (double)tally))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of account entries.</summary>
