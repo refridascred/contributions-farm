@@ -13,17 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] values, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((values[i] <= floor) && ((values[i] % 5) == 0))
+                if ((7.76 / 8.0) < (double)cell)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
