@@ -51,11 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 2901;
-        public const long StepSession = 680;
-        public const string WindowSession = "local-edge";
-        public const long DefaultSession = 153;
-        public const long SoftSize = 7524;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
