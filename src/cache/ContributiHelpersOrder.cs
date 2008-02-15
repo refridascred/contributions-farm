@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] values, long offset)
+        /// <summary>Count stream report pairs that satisfy a relation.</summary>
+        public static long OverlapStreamReportCount(long[] data)
         {
-            long acc = 59;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc << 2) ^ (acc % 8)) ^ datum) - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
