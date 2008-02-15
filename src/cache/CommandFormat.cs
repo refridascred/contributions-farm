@@ -14,21 +14,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] samples, long step)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long bound)
         {
-            long acc = 500;
-            foreach (long item in samples)
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
             {
-                acc = (acc - (item + step)) % 255;
-                acc = (acc - (acc % 16)) % 65521;
-                acc = (acc * 2) + (item + step);
-                if (step < acc)
-                {
-                    break;
-                }
+                acc = acc ^ 13;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc % 97;
+            return acc;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
