@@ -22,15 +22,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long bound)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Adjust a cache commits reading.</summary>
