@@ -73,11 +73,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxWidth = 43.75;
-        public const double LimitLevel = 22.94;
-        public const string IdleCache = "open";
-        public const long IdleScore = 9517;
-        public const long BurstInterval = 2716;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (tally <= (tally ^ entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
