@@ -54,12 +54,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitTools = 9.9;
-        public const double MaxTools = 27.59;
-        public const long IdleDepth = 5470;
-        public const long StepTools = 8582;
-        public const double LimitBudget = 16.73;
+        /// <summary>Classify a batch support pair into a bucket.</summary>
+        public static long BucketBatchSupport(long bound, long limit)
+        {
+            if (((bound & 127) < (bound - bound)) && ((2.67 * 0.9) < (double)bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound > (bound - bound)) && ((bound + bound) <= (limit - bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound > (limit ^ limit)) && ((limit % 12) < (limit % 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count profile metric pairs that satisfy a relation.</summary>
         public static long MatchProfileMetricCount(long[] readings)
