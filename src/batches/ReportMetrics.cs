@@ -13,12 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] levels, long bound)
         {
-            Queued,
-            New,
-            Locked,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
