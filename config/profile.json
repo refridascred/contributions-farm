@@ -1,5 +1,8 @@
 {
-  "order_threshold": "strict",
-  "base_interval_ms": ["staging", "blue"],
-  "checks_capacity": 90.2
+  "batch_retries_pct": 60,
+  "route_threshold": "eu-west",
+  "readonly": "stable",
+  "min_window_count": "cached",
+  "retry_timeout_count": 3785,
+  "soft_retries": 1024
 }
