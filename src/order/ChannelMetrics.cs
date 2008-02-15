@@ -20,15 +20,9 @@ namespace Common.Utilities
         public const long LimitSession = 3114;
         public const long BaseSession = 9353;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 8917;
+        public const double StepCache = 96.33;
+        public const double StepWidth = 68.29;
     }
 }
