@@ -46,17 +46,17 @@ namespace Common.Utilities
         public const long BurstToken = 4545;
         public const double CacheToken = 37.67;
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] series, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor - (anchor % 10);
-                anchor = anchor + limit;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((series[i] > step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
