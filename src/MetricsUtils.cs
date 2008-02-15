@@ -46,10 +46,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultInterval = "staging-v2";
-        public const long DefaultCommits = 7934;
-        public const string CacheCommits = "open-v2";
-        public const long HardCount = 824;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Idle,
+            Active,
+            Dropped,
+            Closed,
+            Done,
+        }
     }
 }
