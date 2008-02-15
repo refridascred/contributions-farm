@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] items, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((floor >= score) && ((score / 7) == (score + floor)))
+                if ((4 * 2) < datum)
                 {
-                    score = (score * 5) + floor;
-                    continue;
+                    seen = (seen + 1) + target;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a window record.</summary>
