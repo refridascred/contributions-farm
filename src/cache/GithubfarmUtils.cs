@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] data, long bound)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Idle,
+            Synced,
+            Ready,
+            Draft,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
