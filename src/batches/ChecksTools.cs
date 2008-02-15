@@ -24,11 +24,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 4483;
-        public const long DefaultOrder = 7296;
-        public const string MaxOrder = "cached";
-        public const long BatchOrder = 2350;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long offset, long step)
+        {
+            if (!((step ^ step) > (step * 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(step < (offset % 7)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step << 3) < (step & 15))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((18.0 - 8.81) < (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long CountSessionGaps(long[] readings)
