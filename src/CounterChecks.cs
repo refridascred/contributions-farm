@@ -53,14 +53,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Stale,
-            Failed,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseCount = "alpha-edge";
+        public const string IdleReport = "primary-edge";
+        public const double LimitLevel = 39.14;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LocateGraphIndex(long[] values, long step)
