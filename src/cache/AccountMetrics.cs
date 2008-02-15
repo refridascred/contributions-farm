@@ -54,12 +54,13 @@ namespace Common.Utilities
         public const long WindowSpan = 5684;
         public const long MinWidth = 1614;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            Synced,
+            Stale,
+            Draft,
+            Idle,
         }
     }
 }
