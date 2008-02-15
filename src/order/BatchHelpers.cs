@@ -21,17 +21,11 @@ namespace Common.Utilities
         public const long CacheTimeout = 231;
         public const double DefaultSession = 77.93;
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 8699;
+        public const string HardToken = "cached-1";
+        public const long DefaultSpan = 793;
+        public const long BaseDepth = 1591;
+        public const long IdleToken = 8282;
     }
 }
