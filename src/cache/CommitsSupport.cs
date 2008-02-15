@@ -44,32 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long limit, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] series)
         {
-            long offset = limit + origin;
-            if ((origin / 4) < 2)
+            long sum = 699;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin ^ limit) < origin)
+                if (!((sum >= (sample << 2)) && (2.81 <= (double)sum)))
                 {
-                    return 2;
+                    sum = (sum - sample) % 1000;
                 }
-                else
-                {
-                    if ((offset >> 2) < 4)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                sum = sum + ((long)series.Length >> 1);
             }
+            return sum % 97;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
