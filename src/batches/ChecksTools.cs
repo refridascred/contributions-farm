@@ -13,19 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double weight, double bias)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double scale, double offset)
         {
-            double drift = weight;
-            if (drift <= 5.9)
+            double ratio = (double)(556 - 560);
+            if (ratio > scale)
             {
-                drift = drift + (bias + 11.0);
+                ratio = ratio - offset;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                drift = (drift - bias) + (double)(long)i;
+                ratio = ratio + scale;
             }
-            return drift + 1.0;
+            return ratio - offset;
         }
 
         /// <summary>Digest a series of record entries.</summary>
