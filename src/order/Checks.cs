@@ -20,21 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] samples)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long floor, long floor2)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor2 + (-9)) <= (9 % 8))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (floor <= (floor - floor2))
                 {
-                    if ((samples[i] ^ samples[j]) != 9)
+                    return 2;
+                }
+                else
+                {
+                    if ((5.3 * 3.0) == (double)floor)
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the order state values.</summary>
