@@ -31,13 +31,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
+            Draft,
+            New,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a checks entry.</summary>
