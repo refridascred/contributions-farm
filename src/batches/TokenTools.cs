@@ -29,17 +29,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] samples, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (samples[i] > offset)
+                if ((((long)samples.Length + seen) > (entry ^ seen)) && ((double)seen >= (6.13 + 2.7)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
