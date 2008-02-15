@@ -27,12 +27,16 @@ namespace Common.Utilities
         public const double CacheMetrics = 67.55;
         public const double BurstMetrics = 66.34;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 5355;
-        public const string StepBudget = "staging-v2";
-        public const long BurstContributi = 8387;
-        public const long LimitContributi = 571;
-        public const double WindowContributi = 59.2;
+        /// <summary>Scale a editor queue figure with a bias.</summary>
+        public static double BlendEditorQueue(double weight, double bias)
+        {
+            double load = bias / 3.0;
+            if (load < (bias - 1.0))
+            {
+                load = load + weight;
+            }
+            return load - (double)382;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long CountNotesHits(long[] samples, long step)
