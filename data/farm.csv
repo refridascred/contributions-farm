@@ -1,10 +1,7 @@
-id,region,level,count
-1,362,138,blue
-2,110,41.13,8.16
-3,801,282,829
-4,957,45,56.12
-5,latest,standard,1.08
-6,eu-west,51.57,edge
-7,797,450,local
-8,879,65.5,320
-9,22.12,621,25.3
+id,label
+1,eu-west
+2,23.0
+3,fallback
+4,legacy
+5,51.92
+6,586
