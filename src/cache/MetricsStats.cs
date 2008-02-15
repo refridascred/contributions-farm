@@ -46,12 +46,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] items)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((item ^ item) <= (tally * 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
