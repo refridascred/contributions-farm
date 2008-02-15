@@ -1,10 +1,10 @@
 # Command notes
 
-Use session settings to tune how often report data is refreshed.
-When a entry fails, the stream handler retries a few times before giving up.
+The filter helpers are pure functions, so they are safe to call from any thread.
+When a cache fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Review farm limits each release
-- Validate record input early
+- Review context limits each release
+- Validate profile input early
+- Prefer route defaults
