@@ -36,13 +36,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            Paused,
+            New,
+            Queued,
+            Ready,
         }
     }
 }
