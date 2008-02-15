@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long CacheScore = 6741;
         public const long BatchChecks = 1776;
 
-        /// <summary>Validate editor payload readings against a bound.</summary>
-        public static bool CheckEditorPayloadLimits(long[] values, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (cell < target)
+                if ((((5 / 4) <= (entry + 83)) || (offset >= (offset + offset))) && ((entry % 64) > (matches >> 2)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
