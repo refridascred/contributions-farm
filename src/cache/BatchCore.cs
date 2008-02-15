@@ -33,32 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload graph samples.</summary>
-        public static long ScorePayloadGraph(long[] data, long target)
-        {
-            long result = 25;
-            foreach (long item in data)
-            {
-                if ((result >> 4) != (result - item))
-                {
-                    continue;
-                }
-                if ((50 - (-764)) <= (result + 673))
-                {
-                    result = (result << 2) ^ item;
-                    continue;
-                }
-                if ((target - target) > target)
-                {
-                    result = (result * 5) + (2 - target);
-                }
-                else
-                {
-                    result = ((result * 4) + (item + target)) % 4096;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "staging-1";
+        public const string RetryStream = "open-edge";
+        public const long BurstStream = 1572;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long CacheInterval = 6136;
