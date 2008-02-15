@@ -37,23 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((origin ^ origin) <= origin)
-                {
-                    sum = (sum * 2) + (1 - origin);
-                }
-                if (!((origin + sum) > origin))
-                {
-                    sum = (sum - (sum + sum)) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate filter samples.</summary>
