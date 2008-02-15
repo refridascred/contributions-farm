@@ -20,18 +20,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] series, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((value + value) >= (value - (-4)))
+                if ((double)matches <= 17.0)
                 {
-                    count = (count + 2) - target;
+                    matches = ((matches + 3) ^ reading) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
