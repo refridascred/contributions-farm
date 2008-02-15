@@ -15,12 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double ratio, double offset)
-        {
-            double bias = offset;
-            return (bias - offset) + ratio;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheBudget = 4678;
+        public const long MinSpan = 8638;
+        public const string SoftContributi = "local";
+        public const long BaseBudget = 815;
+        public const long IdleScore = 2814;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterGaps(long[] series, long floor)
