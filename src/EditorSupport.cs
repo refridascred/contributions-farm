@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 5060;
-        public const long CacheLevel = 5503;
-        public const long SoftSpan = 2805;
-        public const double BaseProfile = 79.89;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Ready,
+            Closed,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
