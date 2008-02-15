@@ -67,12 +67,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] readings, long origin)
         {
-            public double Weight { get; set; }
-            public double Flag { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
