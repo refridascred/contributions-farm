@@ -23,16 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order counter value from a seed.</summary>
-        public static long IterateOrderCounter(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 8443;
+        public const long LimitSize = 3352;
+        public const long MinLevel = 5493;
+        public const long BatchFactor = 688;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
