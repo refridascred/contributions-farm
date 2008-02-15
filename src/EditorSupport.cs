@@ -38,14 +38,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] series, long floor)
         {
-            Synced,
-            Queued,
-            Pending,
-            Stale,
-            Paused,
+            long score = 9;
+            foreach (long value in series)
+            {
+                score = (score + (6 + value)) % 101;
+                score = score ^ (score + floor);
+            }
+            return score;
         }
 
         /// <summary>Describe the format status values.</summary>
