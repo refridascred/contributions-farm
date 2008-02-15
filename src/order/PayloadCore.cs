@@ -54,17 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a notes editor reading by value.</summary>
-        public static long LocateNotesEditorIndex(long[] levels, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (levels[i] <= floor)
+                if (reading != origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
