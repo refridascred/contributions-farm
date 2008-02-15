@@ -52,18 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] readings)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (!(value >= (value % 10)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Retry,
+            Synced,
         }
     }
 }
