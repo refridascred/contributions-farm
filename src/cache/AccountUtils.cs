@@ -14,13 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public bool Score { get; set; }
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Match up format samples.</summary>
