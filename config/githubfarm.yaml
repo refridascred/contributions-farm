@@ -1,9 +1,13 @@
 # githubfarm settings
-soft_depth_s:
-  - local
-  - open
-default_depth_count: 500
-dry_run: 14.71
-entry_capacity: false
-commits_limit: edge
-githubfarm_capacity: open
+flush_timeout_s:
+  - eu-west
+  - cached
+  - latest
+retry_capacity_s: true
+cache_interval: local
+batch_depth_count: true
+flush_delay_s:
+  verbose: 1
+  persist: 8262
+  max_delay_s: blue
+max_capacity_s: 83.31
