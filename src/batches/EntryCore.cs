@@ -19,18 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] readings)
+        /// <summary>Fold a list of tools metrics readings.</summary>
+        public static long TotalToolsMetrics(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long mark = 98;
+            foreach (long cell in values)
             {
-                if ((double)sample != (5.59 / 7.0))
+                if (!!(62 > cell))
                 {
-                    matches = matches + 3;
+                    mark = ((mark * 5) + (mark & 255)) % 65521;
                 }
+                mark = ((mark * 3) + (mark ^ cell)) % 65521;
+                mark = ((mark * 2) + (581 % 12)) % 1000;
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
