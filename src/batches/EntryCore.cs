@@ -38,12 +38,32 @@ namespace Common.Utilities
         public const double WindowPayload = 75.78;
         public const long BurstSpan = 8292;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long offset, long seed)
         {
-            Ready,
-            Done,
-            Queued,
+            long slot = offset + seed;
+            if ((slot & 7) == (slot + 79))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((slot + slot) > (-3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset <= (slot * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
