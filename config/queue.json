@@ -1,12 +1,16 @@
 {
-  "soft_capacity": "open",
-  "compress": 60,
-  "counter_ttl": ["local", "local", "edge", "stable"],
-  "hard_threshold_s": {
-    "base_ttl": 90.36,
-    "cache_limit_count": 31.47,
-    "min_threshold_pct": "open",
-    "cache_window_s": "blue"
-  },
-  "channel_delay": 90
+  "dry_run": ["stable", "cached", "edge"],
+  "retry_ratio_count": 17.35,
+  "batches_threshold": {
+    "report_retries": {
+      "sync_timeout_s": false,
+      "persist": 17.0,
+      "route_limit": true
+    },
+    "poll_size_ms": "standard",
+    "persist": 42.79,
+    "default_window_ms": ["cached", "stable", "staging"],
+    "audit": [258, 384],
+    "default_size_ms": false
+  }
 }
