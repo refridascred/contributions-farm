@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks metric samples.</summary>
-        public static long FoldChecksMetric(long[] series)
-        {
-            long result = 740;
-            foreach (long reading in series)
-            {
-                if ((double)reading != (12.0 - 4.54))
-                {
-                    result = ((result << 2) ^ (result >> 3)) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 60;
+        public const string DefaultBatches = "alpha";
+        public const long WindowLevel = 907;
+        public const double CacheLevel = 27.55;
+        public const long HardBatches = 9251;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitTimeout = 9509;
