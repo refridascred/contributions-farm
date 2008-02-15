@@ -40,10 +40,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstLevel = 7844;
-        public const long MaxBudget = 4936;
-        public const double MaxCounter = 28.14;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Pending,
+            Ready,
+            Draft,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Classify a batch support pair into a bucket.</summary>
         public static long BucketBatchSupport(long bound, long limit)
