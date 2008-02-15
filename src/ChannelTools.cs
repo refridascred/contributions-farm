@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long WindowCount = 6697;
         public const double MinCount = 29.46;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] readings, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (entry <= step)
+                if ((51 + limit) <= 8)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
