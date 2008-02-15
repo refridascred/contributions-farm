@@ -59,11 +59,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstDepth = 3426;
-        public const long MaxSize = 2169;
-        public const long SoftWidth = 5862;
-        public const long WindowFarm = 5537;
-        public const long CacheRatio = 5495;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] values, long bound)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits + (long)values.Length) < reading)
+                {
+                    hits = (hits + 3) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
