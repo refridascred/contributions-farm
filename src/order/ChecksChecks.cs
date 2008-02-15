@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] values, long offset)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long origin)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)tally <= 5.1)
-                {
-                    tally = ((tally + 2) + datum) - offset;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
