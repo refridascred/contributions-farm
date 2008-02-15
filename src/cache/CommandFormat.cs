@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Queued,
+            Retry,
+            Failed,
+            Locked,
             Synced,
-            Pending,
             New,
         }
 
