@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine graph tools values into a single score.</summary>
-        public static long WeighGraphTools(long[] values, long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            long carry = 4;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry + carry) <= entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry - seed;
+                    if ((levels[i] ^ levels[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > 3)
-            {
-                carry = (carry + (carry / 4)) % 97;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Rank session input into a small class.</summary>
