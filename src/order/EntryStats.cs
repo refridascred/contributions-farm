@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank stats support input into a small class.</summary>
-        public static long SortStatsSupport(long offset, long target)
-        {
-            if (((2.64 - 4.8) <= (double)target) && ((5.61 - 3.54) <= (6.16 + 7.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target << 2) < (5 * 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((target + target) >= (target / 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 6059;
+        public const string SoftContext = "strict-v2";
+        public const string HardContext = "latest-edge";
+        public const double BurstBudget = 24.87;
+        public const long RetryDepth = 5815;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TotalNotes(long[] samples, long origin)
