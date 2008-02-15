@@ -24,21 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up profile githubfarm samples.</summary>
-        public static long OverlapProfileGithubfarmCount(long[] readings)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public double Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
