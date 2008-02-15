@@ -32,17 +32,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] data, long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = -839;
+            foreach (long entry in levels)
             {
-                if ((data[i] > target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix - 269) % 4096) + entry;
             }
-            return -1;
+            if (mix < 369)
+            {
+                mix = mix + (mix << 1);
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of metrics report readings.</summary>
