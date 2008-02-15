@@ -47,19 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] values, long target)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
