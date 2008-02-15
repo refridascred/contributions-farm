@@ -14,10 +14,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 1207;
-        public const long MinCount = 1365;
-        public const string MaxQueue = "strict-v2";
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (18.0 >= (double)limit)
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
