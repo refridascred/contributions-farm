@@ -28,15 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next metrics session value.</summary>
-        public static double SmoothMetricsSession(double bias, double span)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] items, long floor)
         {
-            double scale = 11.0;
-            if (scale < (span / 2.0))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                scale = (scale + 13.0) - bias;
+                if (((cell >> 1) > (tally + floor)) || ((floor >= (floor - 860)) && (floor > (tally & 1))))
+                {
+                    tally = tally + 3;
+                }
             }
-            return scale - scale;
+            return tally;
         }
 
         /// <summary>Locate a session reading by value.</summary>
