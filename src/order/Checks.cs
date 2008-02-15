@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinTimeout = "legacy-edge";
+        public const long BaseStream = 3631;
+        public const long DefaultStream = 8786;
+        public const double MaxStream = 97.04;
+        public const double SoftFactor = 39.1;
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long SortFilter(long floor, long floor2)
