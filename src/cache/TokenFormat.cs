@@ -27,19 +27,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] series, long limit)
         {
-            long result = 2;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long item in series)
             {
-                result = (result ^ datum) % 101;
-                if (!(4.42 < (double)datum))
+                if (((9.4 / 5.0) >= (double)count) && ((8.3 / 2.0) != (double)item))
                 {
-                    result = (result - (datum - datum)) % 1000;
+                    count = (count + 1) + limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
