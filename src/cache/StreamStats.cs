@@ -13,19 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] items, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((tally % 5) == (sample * 4)) && ((seed + sample) > (seed % 100)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchRatio = 6312;
+        public const long WindowTimeout = 907;
+        public const long BatchPayload = 621;
+        public const double BasePayload = 41.35;
+        public const long RetryBudget = 3120;
 
         /// <summary>Blend two cache measurements.</summary>
         public static double AdjustCache(double bias, double floor)
