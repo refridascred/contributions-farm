@@ -31,13 +31,25 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long step, long origin)
         {
-            Draft,
-            New,
-            Synced,
-            Queued,
+            long gap = step + origin;
+            if (44 >= (gap / 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (gap >= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a checks entry.</summary>
