@@ -1,18 +1,7 @@
 {
-  "profile_ttl": 34,
-  "min_limit_pct": "local",
-  "flush_depth_s": {
-    "max_threshold_s": {
-      "sync_window_ms": 500,
-      "flush_ttl_s": 8386,
-      "poll_timeout": "local",
-      "poll_delay_s": "edge"
-    },
-    "stream_ratio": 34,
-    "route_delay": 800,
-    "entry_timeout": 7281,
-    "batch_window": "stable"
-  },
-  "burst_capacity_s": 30,
-  "poll_retries": ["strict", "fallback", "legacy", "staging"]
+  "dry_run": true,
+  "batch_retries": 85.43,
+  "cache_retries": 17.14,
+  "report_threshold": 4487,
+  "burst_capacity_ms": [164, 407, 470, 333]
 }
