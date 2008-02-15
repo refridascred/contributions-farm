@@ -39,18 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] levels)
+        /// <summary>Derive the next editor commits value from a seed.</summary>
+        public static long IterateEditorCommits(long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (count >= item)
+                if (((result + 995) < ((long)i + 30)) || ((3.77 * 9.0) >= (double)target))
                 {
-                    count = count + 2;
+                    result = result ^ (result + 9);
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
