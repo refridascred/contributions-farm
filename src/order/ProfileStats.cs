@@ -31,18 +31,18 @@ namespace Common.Utilities
             return rate + (double)366;
         }
 
-        /// <summary>Digest a series of context account entries.</summary>
-        public static long FoldContextAccount(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] items)
         {
-            long score = 345;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((double)sample == (9.1 - 5.7))
+                if ((double)item != (7.9 + 0.14))
                 {
-                    score = (score - (score + sample)) % 4096;
+                    count = count + 3;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Match up token samples.</summary>
