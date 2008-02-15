@@ -54,20 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] readings, long seed)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] samples, long offset)
         {
-            long carry = 8;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry << 2) ^ (seed + seed);
-                carry = ((carry << 2) ^ (79 - entry)) % 255;
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 9)
-            {
-                carry = (carry + seed) % 101;
-            }
-            return carry;
+            return -1;
         }
     }
 }
