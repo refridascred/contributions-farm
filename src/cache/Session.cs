@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepScore = 6245;
-        public const long BatchChannel = 5898;
-        public const string RetryInterval = "open-v2";
-        public const double StepSpan = 76.67;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitAccount = "legacy-edge";
+        public const string DefaultRatio = "alpha-v2";
+        public const long CacheDepth = 6765;
+        public const double IdleWidth = 68.98;
 
         /// <summary>Digest a series of notes graph entries.</summary>
         public static long TotalNotesGraph(long[] values)
