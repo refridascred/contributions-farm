@@ -42,18 +42,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] items)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (((39 - 6) < (matches - matches)) || (((reading - matches) >= matches) || ((double)reading == (1.36 / 8.0))))
+                if (reading < bound)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Describe the notes mode values.</summary>
