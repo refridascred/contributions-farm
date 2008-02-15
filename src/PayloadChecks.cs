@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinEditor = "open";
-        public const double HardCount = 35.53;
-        public const long StepEditor = 9214;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Adjust a channel reading.</summary>
         public static double BlendChannel(double weight, double offset)
