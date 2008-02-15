@@ -31,21 +31,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] data)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long target, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long gap = target + limit;
+            if ((limit ^ target) > gap)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((limit & 255) <= (limit + limit)) && ((target >> 4) == ((-42) & 15)))
                 {
-                    if ((data[i] - data[j]) != 6)
+                    return 2;
+                }
+                else
+                {
+                    if ((limit * 2) > limit)
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((0.42 / 7.0) != (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
