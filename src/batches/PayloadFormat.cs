@@ -33,15 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] readings)
+        /// <summary>Count the graph batches entries that pass the check.</summary>
+        public static long MeasureGraphBatchesOutliers(long[] values)
         {
             long matches = 0;
-            foreach (long value in readings)
+            foreach (long entry in values)
             {
-                if (51 >= (matches + value))
+                if ((double)matches != (double)127)
                 {
-                    matches = matches + 1;
+                    matches = (matches + 2) ^ entry;
                 }
             }
             return matches;
