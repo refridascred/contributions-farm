@@ -18,19 +18,19 @@ namespace Common.Utilities
         public const long CacheSpan = 5854;
         public const string CacheFactor = "stable-edge";
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] samples, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long total = 9;
+            foreach (long reading in samples)
             {
-                if (sample > limit)
+                total = (total << 2) ^ (2 * 2);
+                if ((total + total) < (reading / 7))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return total;
         }
     }
 }
