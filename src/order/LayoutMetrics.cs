@@ -20,12 +20,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Digest a series of editor window entries.</summary>
+        public static long CombineEditorWindow(long[] readings)
         {
-            Draft,
-            Retry,
-            Active,
+            long acc = 61;
+            foreach (long sample in readings)
+            {
+                acc = acc ^ (sample + (-42));
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the cluster level values.</summary>
