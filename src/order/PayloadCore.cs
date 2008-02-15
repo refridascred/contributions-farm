@@ -51,18 +51,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit cluster metrics readings against a rule.</summary>
-        public static long MeasureClusterMetricsGaps(long[] levels)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (matches > (datum % 8))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Retry,
+            Paused,
+            Queued,
+            Draft,
+            Active,
         }
     }
 }
