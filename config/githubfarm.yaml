@@ -1,12 +1,9 @@
 # githubfarm settings
-burst_capacity_count: false
-idle_interval:
-  checks_depth:
-    - 397
-    - 287
-    - 57
-  burst_window: 47.21
-  notes_size: 46.12
-  warm_interval_ms: green
-  enabled: 23
-idle_size_pct: 91.95
+strict: 1024
+hard_timeout_s:
+  poll_capacity_pct:
+    - 288
+    - 403
+  soft_ratio_s: 70
+  readonly: 71
+enabled: 61.39
