@@ -52,23 +52,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of metrics report readings.</summary>
-        public static long FoldMetricsReport(long[] series)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long origin)
         {
-            long total = 294;
-            foreach (long sample in series)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                total = (total + (total ^ sample)) % 101;
-                for (int i = 0; i < 8; i++)
+                if (!(acc > origin))
                 {
-                    total = (total ^ (long)i) % 4096;
+                    acc = (acc ^ 4) % 97;
+                    acc = (acc - (origin >> 2)) % 97;
                 }
-                if ((sample / 7) == (sample << 2))
-                {
-                    total = ((total << 3) ^ total) % 255;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return total % 97;
+            return acc;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
