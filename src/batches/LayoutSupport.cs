@@ -48,12 +48,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] series, long seed)
         {
-            Queued,
-            Ready,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
