@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] levels, long target)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long score = 432;
-            foreach (long value in levels)
-            {
-                if ((value & 7) > 2)
-                {
-                    score = ((score * 3) + (486 << 2)) + target;
-                }
-            }
-            return score % 65521;
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
