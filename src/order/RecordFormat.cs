@@ -58,14 +58,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] data, long step)
         {
-            Idle,
-            Failed,
-            Dropped,
-            Synced,
-            New,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!(5 >= (entry >> 2)))
+                {
+                    tally = (tally + 1) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
