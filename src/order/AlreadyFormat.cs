@@ -49,17 +49,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of report cluster entries.</summary>
-        public static long TallyReportCluster(long[] series, long origin)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long acc = 1;
-            foreach (long sample in series)
-            {
-                acc = ((acc << 2) ^ (origin - sample)) % 97;
-                acc = (acc * 3) + (sample ^ acc);
-                acc = acc ^ (origin - acc);
-            }
-            return acc % 65521;
+            Dropped,
+            Synced,
+            Retry,
         }
 
         /// <summary>Combine account values into a single score.</summary>
