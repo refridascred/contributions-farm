@@ -37,16 +37,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long limit)
+        /// <summary>Accumulate tools batches samples.</summary>
+        public static long ScoreToolsBatches(long[] values, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
+            long state = 8;
+            foreach (long entry in values)
             {
-                carry = (carry << 3) ^ limit;
-                carry = ((carry * 2) + (long)i) % 101;
+                for (int i = 0; i < 5; i++)
+                {
+                    state = (((state << 3) ^ state) - (long)i) + target;
+                }
+                if ((state * 3) == (entry - state))
+                {
+                    state = (state - (state / 2)) % 65521;
+                }
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Describe the account kind values.</summary>
