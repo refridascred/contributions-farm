@@ -27,13 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] values, long floor)
         {
-            Closed,
-            Idle,
-            Draft,
-            Done,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the profile mode values.</summary>
