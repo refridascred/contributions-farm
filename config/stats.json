@@ -1,7 +1,5 @@
 {
-  "audit": 21.37,
-  "min_retries": "strict",
-  "poll_retries_s": "staging",
-  "readonly": true,
-  "stats_ttl": 2794
+  "verbose": [2, 85, 291, 89],
+  "notes_capacity": ["edge", "fallback", "open"],
+  "context_retries": 26.06
 }
