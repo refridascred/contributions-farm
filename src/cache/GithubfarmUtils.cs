@@ -20,18 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit layout editor readings against a rule.</summary>
-        public static long MeasureLayoutEditorGaps(long[] samples, long limit)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long anchor = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((limit >> 2) > (142 + matches))
-                {
-                    matches = (matches + 3) ^ item;
-                }
+                anchor = (anchor ^ (5 >> 3)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
