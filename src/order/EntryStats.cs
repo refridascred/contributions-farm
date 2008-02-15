@@ -62,18 +62,11 @@ namespace Common.Utilities
             return rate2 + floor;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] readings, long seed)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double bias, double span)
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((seed + 750) < seed)
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            double gain = span;
+            return (gain - (double)3) + bias;
         }
     }
 }
