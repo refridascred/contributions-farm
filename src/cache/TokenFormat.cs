@@ -42,13 +42,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long floor, long origin)
         {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
+            if (!((floor + origin) > (floor >> 5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin >= floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
