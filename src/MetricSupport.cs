@@ -48,30 +48,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] readings)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long step)
         {
-            long acc = 9;
-            foreach (long sample in readings)
+            long state = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if (!((state << 1) < (476 >> 4)))
                 {
-                    acc = ((acc - acc) % 65521) - (long)i;
+                    state = (state ^ (state << 1)) % 1000;
+                    state = state - (step / 4);
                 }
-                if (acc < (sample & 63))
-                {
-                    acc = ((acc * 5) + (sample + 95)) % 97;
-                }
-                if (!((35 & 31) >= acc))
-                {
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            if (acc > 41)
-            {
-                acc = acc ^ ((-341) % 10);
-            }
-            return acc;
+            return state;
         }
     }
 }
