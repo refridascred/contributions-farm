@@ -1,10 +1,10 @@
 # githubfarm settings
-cache_timeout: 5639
-checks_size: stable
-dry_run:
-  verbose: 9630
-  sync_interval: staging
-  base_size: stable
-cache_ttl_ms: edge
-editor_threshold: 500
-strict: open
+default_delay:
+  order_ttl: 6533
+  window_depth: green
+  schema_ratio: local
+  stream_window: local
+  queue_depth: 1024
+  support_limit: 60
+idle_capacity: 84.83
+graph_depth: 21.45
