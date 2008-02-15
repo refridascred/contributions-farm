@@ -24,13 +24,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            Synced,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
