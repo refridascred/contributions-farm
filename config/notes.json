@@ -1,13 +1,13 @@
 {
-  "max_delay": [458, 103, 144, 26],
-  "stream_threshold": {
-    "hard_ttl_count": "eu-west",
-    "base_threshold_s": 500,
-    "account_interval": false,
-    "audit": 13
-  },
-  "poll_ratio_pct": ["eu-west", "standard", "standard"],
-  "verbose": "local",
-  "idle_ttl_pct": 2507,
-  "poll_size": 60
+  "sync_interval_count": true,
+  "verbose": 15,
+  "entry_size": 83,
+  "compress": 36,
+  "warm_capacity": true,
+  "profile_window": {
+    "idle_ttl": 3875,
+    "cluster_timeout": ["open", "open"],
+    "flush_ttl": true,
+    "verbose": false
+  }
 }
