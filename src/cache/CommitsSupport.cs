@@ -53,10 +53,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 2345;
-        public const string WindowLevel = "primary-edge";
-        public const long WindowSpan = 1810;
-        public const long BatchSpan = 969;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] values)
+        {
+            long carry = 47;
+            foreach (long cell in values)
+            {
+                carry = carry + (cell ^ cell);
+            }
+            return carry % 4096;
+        }
     }
 }
