@@ -44,18 +44,11 @@ namespace Common.Utilities
         public const string HardBudget = "open-1";
         public const string MaxPayload = "staging";
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] items)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((item ^ item) <= (tally * 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public double Score { get; set; }
         }
     }
 }
