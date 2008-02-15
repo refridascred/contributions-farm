@@ -56,19 +56,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate command record readings against a bound.</summary>
-        public static bool VerifyCommandRecordRange(long[] series, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (item != floor)
+                if ((seed + 750) < seed)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
