@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 8103;
-        public const long SoftAlready = 79;
-        public const long CacheCount = 7224;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 9506;
+        public const long IdleSpan = 3522;
+        public const long DefaultEntry = 8901;
+        public const string CacheCount = "staging-1";
+        public const double MaxCount = 47.38;
 
         /// <summary>Blend two tools measurements.</summary>
         public static double SmoothTools(double bias, double offset)
