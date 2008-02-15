@@ -49,12 +49,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            Paused,
+            Pending,
+            Retry,
+            Ready,
         }
     }
 }
