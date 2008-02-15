@@ -35,19 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] items, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (cell <= offset)
+                if (datum >= limit)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
