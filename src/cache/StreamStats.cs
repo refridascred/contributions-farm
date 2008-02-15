@@ -34,9 +34,10 @@ namespace Common.Utilities
         public const string HardWindow = "standard";
         public const long CacheWindow = 9959;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 5945;
-        public const long WindowAccount = 8390;
-        public const string MinScore = "local-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftBudget = 5307;
+        public const string BatchProfile = "fallback-edge";
+        public const long LimitSize = 7775;
+        public const long LimitProfile = 4370;
     }
 }
