@@ -52,13 +52,18 @@ namespace Common.Utilities
             return scale - (double)(-4);
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] series, long offset)
         {
-            Locked,
-            Idle,
-            Dropped,
-            Done,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((offset / 7) >= 48)
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
     }
 }
