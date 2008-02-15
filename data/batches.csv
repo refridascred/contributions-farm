@@ -1,7 +1,8 @@
-id,owner
-1,83
-2,581
-3,blue
-4,134
-5,56.13
-6,stable
+id,region,level
+1,372,fallback
+2,standard,76.45
+3,218,49.94
+4,551,17.7
+5,cached,949
+6,534,21.6
+7,37.47,legacy
