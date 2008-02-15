@@ -19,9 +19,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleChannel = "alpha-edge";
-        public const string StepFactor = "strict-edge";
-        public const double RetryRatio = 72.69;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+        }
     }
 }
