@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleDepth = 7058;
+        public const long RetrySize = 6778;
+        public const double BurstLevel = 54.2;
+        public const long DefaultTimeout = 9684;
+        public const long BaseBudget = 6795;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long DigestPayload(long[] values, long seed)
