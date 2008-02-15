@@ -20,13 +20,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] values, long seed)
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
-            public bool Limit { get; set; }
+            long mix = 22;
+            foreach (long reading in values)
+            {
+                if ((7.0 + 5.2) == (double)seed)
+                {
+                    mix = (((mix * 4) + (seed - 67)) % 255) + reading;
+                }
+                mix = (mix << 2) ^ seed;
+            }
+            return mix;
         }
 
         /// <summary>Describe the cluster level values.</summary>
