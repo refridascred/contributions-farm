@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardWidth = 2775;
-        public const string WindowGraph = "fallback";
-        public const double BurstInterval = 76.04;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BatchRatio = 6312;
