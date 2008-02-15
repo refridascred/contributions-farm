@@ -1,11 +1,7 @@
 # support settings
-audit: false
-sync_threshold_ms: 500
-base_depth_count:
-  - 447
-  - 141
-  - 62
-record_ttl:
-  - blue
-  - green
-route_interval: 36.91
+profile_limit: false
+filter_limit: 4.77
+stats_ttl: open
+min_retries_s: 7.24
+readonly: 250
+base_ttl_s: primary
