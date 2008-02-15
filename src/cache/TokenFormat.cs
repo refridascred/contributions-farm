@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate notes command readings against a bound.</summary>
-        public static bool ValidateNotesCommandLimits(long[] samples, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] items)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (entry != target)
+                if (!(((seen - datum) < (datum >> 2)) && ((5.33 / 6.0) <= (double)datum)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the editor mode values.</summary>
