@@ -43,18 +43,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] items, long floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + seen) <= (floor / 4))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every queue notes entry stays within the limit.</summary>
