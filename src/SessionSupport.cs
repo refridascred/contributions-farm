@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit command batch readings against a rule.</summary>
