@@ -14,22 +14,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] items, long origin)
+        /// <summary>Measure how many batch commits samples are out of range.</summary>
+        public static long MeasureBatchCommitsMatches(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((origin % 5) < origin)
+                if ((datum + bound) > (bound - datum))
                 {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
