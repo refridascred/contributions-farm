@@ -43,13 +43,18 @@ namespace Common.Utilities
             return (weight + span) + gain;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Measure how many commits record samples are out of range.</summary>
+        public static long AuditCommitsRecordHits(long[] series, long floor)
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((double)datum > (9.04 / 9.0)) || !((double)floor <= (4.2 + 19.0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
