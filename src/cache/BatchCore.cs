@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((seed / 3) > (88 + seed))
-                {
-                    score = ((score * 2) + (64 & 31)) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Locate a channel tools reading by value.</summary>
