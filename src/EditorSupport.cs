@@ -45,21 +45,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count context notes pairs that satisfy a relation.</summary>
-        public static long CompareContextNotesCount(long[] readings)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Queued,
+            Pending,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the format status values.</summary>
