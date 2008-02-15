@@ -31,21 +31,17 @@ namespace Common.Utilities
         public const string BurstStats = "alpha-v2";
         public const string BurstCount = "primary";
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long bound)
         {
-            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] > bound) && ((readings[i] % 5) == 0))
                 {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
