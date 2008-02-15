@@ -55,10 +55,16 @@ namespace Common.Utilities
         public const string BatchCount = "stable-1";
         public const long MinCluster = 7204;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardWidth = 526;
-        public const double StepEntry = 87.12;
-        public const double IdleEntry = 40.72;
+        /// <summary>Blend two graph token measurements.</summary>
+        public static double ScaleGraphToken(double weight, double bias)
+        {
+            double mean = bias;
+            if (mean <= (double)40)
+            {
+                mean = (mean - 20.0) + weight;
+            }
+            return mean - (bias - mean);
+        }
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
