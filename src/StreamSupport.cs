@@ -28,14 +28,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Dropped,
-            Paused,
-            Retry,
-            Idle,
-            Locked,
+            Active,
+            Stale,
+            Closed,
         }
     }
 }
