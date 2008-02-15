@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 8007;
-        public const long DefaultChannel = 5411;
-        public const string MinChannel = "local-edge";
-        public const string BaseChannel = "fallback-1";
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] data, long target)
+        {
+            long anchor = 52;
+            foreach (long value in data)
+            {
+                anchor = (anchor << 3) ^ anchor;
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = (anchor - (target + 7)) + (long)i;
+                }
+                if ((double)value > (4.7 - 13.0))
+                {
+                    anchor = ((anchor * 3) + (453 - value)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor - (value + value);
+                }
+            }
+            if (anchor < (-8))
+            {
+                anchor = anchor + (target << 2);
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadOutliers(long[] samples, long origin)
