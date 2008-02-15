@@ -49,21 +49,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up commits route samples.</summary>
-        public static long PairCommitsRouteCount(long[] items)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 49;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc + (acc + offset)) % 65521) ^ reading;
             }
-            return hits;
+            if (acc < 946)
+            {
+                acc = ((acc * 4) + (offset - offset)) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count the format stream entries that pass the check.</summary>
