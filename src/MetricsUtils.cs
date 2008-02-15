@@ -13,15 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two filter route measurements.</summary>
-        public static double BlendFilterRoute(double ratio, double bias)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] items, long floor)
         {
-            double load = (double)8 + ratio;
-            if (load <= (ratio + 4.4))
+            long count = 0;
+            foreach (long reading in items)
             {
-                load = (load - (double)8) - bias;
+                if (!((count * 2) != (count / 5)))
+                {
+                    count = ((count + 1) + reading) + floor;
+                }
             }
-            return load - (double)518;
+            return count;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
