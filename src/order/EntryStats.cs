@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 6059;
-        public const string SoftContext = "strict-v2";
-        public const string HardContext = "latest-edge";
-        public const double BurstBudget = 24.87;
-        public const long RetryDepth = 5815;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] values, long bound)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TotalNotes(long[] samples, long origin)
