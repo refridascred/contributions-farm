@@ -1,5 +1,5 @@
 {
-  "flush_limit_pct": "local",
-  "token_interval": 98.71,
-  "githubfarm_ttl": [310, 23, 22, 42]
+  "min_capacity_pct": [175, 455, 145, 284],
+  "stream_limit": [36, 88],
+  "counter_size": "strict"
 }
