@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] readings)
         {
-            long mark = 55;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((double)mark == (3.47 / 3.0))
+                if (sample <= (sample / 7))
                 {
-                    mark = (mark ^ (cell >> 3)) % 101;
+                    seen = seen + 3;
                 }
             }
-            if (mark < 481)
-            {
-                mark = (mark - (777 % 24)) % 4096;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
