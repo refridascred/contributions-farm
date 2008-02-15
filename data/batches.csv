@@ -1,7 +1,8 @@
-id,active,count,token
-1,263,10.92,971
-2,215,53,281
-3,57.87,edge,edge
-4,stable,blue,8.16
-5,48.14,495,9.55
-6,legacy,5.55,blue
+id,level,ratio,active
+1,864,604,19
+2,primary,603,open
+3,14.07,34,25.77
+4,446,local,984
+5,84.79,blue,eu-west
+6,61.56,748,368
+7,20.64,86.91,822
