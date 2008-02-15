@@ -22,12 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 5707;
-        public const string LimitRatio = "primary-edge";
-        public const string RetryNotes = "cached-edge";
-        public const long SoftNotes = 3734;
-        public const string StepNotes = "staging-1";
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
