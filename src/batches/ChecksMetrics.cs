@@ -71,18 +71,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit contributi batch readings against a rule.</summary>
-        public static long MeasureContributiBatchOutliers(long[] items, long step)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)440 >= (double)seen)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = ((seen + 2) - entry) - step;
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
