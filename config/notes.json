@@ -1,6 +1,12 @@
 {
-  "hard_ratio_s": false,
-  "batch_delay_ms": false,
-  "strict": "cached",
-  "idle_ttl_s": 100
+  "idle_window_ms": {
+    "warm_threshold_pct": true,
+    "base_window": 31,
+    "audit": 1688,
+    "idle_ratio_ms": ["stable", "open", "staging"],
+    "idle_depth": true,
+    "poll_ttl_pct": false
+  },
+  "hard_ttl": true,
+  "githubfarm_limit": 1024
 }
