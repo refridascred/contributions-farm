@@ -52,21 +52,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] levels)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry < floor)
                 {
-                    if ((levels[i] - levels[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Describe the entry state values.</summary>
