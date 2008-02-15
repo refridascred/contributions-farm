@@ -14,11 +14,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] values)
         {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            long total = 8;
+            foreach (long value in values)
+            {
+                total = ((total * 5) + 18) % 255;
+                for (int i = 0; i < 2; i++)
+                {
+                    total = ((total ^ value) % 101) ^ (long)i;
+                    total = ((total * 2) + (total % 12)) % 101;
+                }
+                if ((4.4 * 15.0) > (double)total)
+                {
+                    total = ((total * 2) + ((-866) % 2)) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Match up format samples.</summary>
