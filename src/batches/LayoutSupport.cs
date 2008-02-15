@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] series)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((5.45 - 5.41) == (double)count)
+                {
+                    count = (count + 3) - entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
