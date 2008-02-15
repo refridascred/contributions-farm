@@ -77,13 +77,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] readings, long seed)
         {
-            Draft,
-            Stale,
-            Queued,
-            New,
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
