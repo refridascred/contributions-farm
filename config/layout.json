@@ -1,12 +1,12 @@
 {
-  "audit": {
-    "poll_ratio_pct": 32.22,
-    "min_delay_count": "strict",
-    "base_delay_count": 23.05,
-    "default_ratio_s": "eu-west",
-    "flush_interval": 8412
+  "notes_retries": false,
+  "strict": [472, 423, 350, 57],
+  "metric_depth": "stable",
+  "batch_window": {
+    "cache_capacity": 3069,
+    "notes_size": false,
+    "poll_delay_pct": 5298
   },
-  "poll_ratio": 8167,
-  "verbose": "open",
-  "layout_threshold": 6594
+  "report_size": 72,
+  "checks_limit": 8457
 }
