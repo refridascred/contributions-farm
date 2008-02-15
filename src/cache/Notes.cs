@@ -83,19 +83,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double weight, double floor)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            double mean = 3.32;
-            if (mean <= (9.8 - mean))
-            {
-                mean = mean - (double)52;
-            }
-            else
-            {
-                mean = mean - weight;
-            }
-            return mean + floor;
+            public double Weight { get; set; }
+            public double Flag { get; set; }
+            public long Score { get; set; }
         }
     }
 }
