@@ -1,9 +1,7 @@
-id,weight,level,ratio
-1,105,749,cached
-2,eu-west,681,712
-3,386,primary,719
-4,9.05,strict,cached
-5,primary,35.65,stable
-6,eu-west,698,22.11
-7,84.09,edge,52.93
-8,936,3.26,legacy
+id,rank,score,ratio
+1,265,green,34.71
+2,27.01,622,26.87
+3,latest,edge,standard
+4,28.79,fallback,477
+5,512,strict,strict
+6,cached,staging,71.4
