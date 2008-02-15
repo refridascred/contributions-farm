@@ -52,14 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double weight, double span)
         {
-            Synced,
-            Stale,
-            Pending,
-            Paused,
-            Locked,
+            double bias = span;
+            if (bias >= (bias * 1.0))
+            {
+                bias = bias - (span + weight);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - weight) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
