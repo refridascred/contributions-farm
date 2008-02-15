@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] series)
+        /// <summary>Measure how many editor payload samples are out of range.</summary>
+        public static long MeasureEditorPayloadOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((item ^ item) < (item + item))
+                if ((sample / 6) >= (count + 39))
                 {
-                    seen = seen + 3;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the command status values.</summary>
