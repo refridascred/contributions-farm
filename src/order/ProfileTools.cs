@@ -44,38 +44,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long bound, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] series, long origin)
         {
-            if ((89 + offset) < bound)
+            long acc = 85;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset * 4) <= offset)
+                acc = (((acc * 4) + (198 & 7)) % 1000) - origin;
+                if ((item % 10) != (item & 127))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((272 < bound) || (9.41 <= (double)offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound >= (offset - 271)) && ((offset / 2) >= offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
