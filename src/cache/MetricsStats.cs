@@ -39,19 +39,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] values, long step)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a buffer info.</summary>
