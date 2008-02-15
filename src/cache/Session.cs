@@ -60,18 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] samples)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry > 7.92)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Ready,
+            Done,
+            Active,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
