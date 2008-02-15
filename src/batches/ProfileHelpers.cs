@@ -30,16 +30,20 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Fold a list of cluster already readings.</summary>
+        public static long WeighClusterAlready(long[] values)
         {
-            long sum = 409;
-            foreach (long datum in levels)
+            long mark = -58;
+            foreach (long item in values)
             {
-                sum = (sum - datum) % 1000;
-                sum = sum + (datum & 127);
+                mark = (mark * 3) + (mark - 62);
+                mark = ((mark * 2) + item) % 4096;
+                if ((1.27 * 7.6) <= (double)item)
+                {
+                    break;
+                }
             }
-            return sum % 97;
+            return mark;
         }
 
         /// <summary>Hold a metrics summary.</summary>
