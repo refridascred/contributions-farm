@@ -47,19 +47,19 @@ namespace Common.Utilities
         public const long HardFarm = 4011;
         public const long IdleCount = 1976;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] values, long floor)
+        /// <summary>Digest a series of cluster buffer entries.</summary>
+        public static long TotalClusterBuffer(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long result = 729;
+            foreach (long sample in series)
             {
-                if (reading > floor)
+                result = (((result << 3) ^ (4 << 1)) % 97) + offset;
+                if ((result - 45) != (result << 3))
                 {
-                    ready = false;
-                    break;
+                    result = (result - sample) % 97;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
