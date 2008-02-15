@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftFactor = 66.33;
-        public const long BurstFactor = 7648;
-        public const long IdleWidth = 9011;
-        public const long DefaultTimeout = 5158;
-        public const long BurstLayout = 6394;
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TotalNotes(long[] samples, long origin)
