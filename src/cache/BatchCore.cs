@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] values, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                state = state ^ (855 + state);
-                state = ((state * 4) + (long)i) % 101;
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Accumulate stream samples.</summary>
