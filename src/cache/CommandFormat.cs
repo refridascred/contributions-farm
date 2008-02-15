@@ -20,17 +20,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                state = (state * 2) + (limit + limit);
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleSpan = "alpha-edge";
+        public const string BurstStats = "alpha-v2";
+        public const string BurstCount = "primary";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long HardInterval = 1578;
