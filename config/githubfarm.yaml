@@ -1,5 +1,11 @@
 # githubfarm settings
-strict: latest
-warm_depth_ms: standard
-hard_window_ms: 39.99
-default_window_s: green
+soft_window_s:
+  default_ratio_s: 1024
+  session_capacity: true
+  flush_limit_pct: 3062
+  hard_depth: 1024
+profile_ratio: open
+idle_size_ms: false
+strict: standard
+hard_ratio_s: stable
+order_limit: true
