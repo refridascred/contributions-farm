@@ -20,22 +20,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] levels, long seed)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double rate, double floor)
         {
-            long anchor = 91;
-            foreach (long entry in levels)
+            double weight = (double)(841 - 311);
+            if (weight > weight)
             {
-                if ((74 + anchor) >= (seed + entry))
-                {
-                    anchor = (anchor ^ entry) % 65521;
-                }
+                weight = (weight + (rate * 8.69)) - floor;
             }
-            if (anchor > 230)
+            else
             {
-                anchor = anchor - anchor;
+                weight = weight - rate;
             }
-            return anchor;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + rate) + (double)(long)i;
+            }
+            return weight - 5.0;
         }
     }
 }
