@@ -1,5 +1,6 @@
 {
-  "profile_ttl": 81.75,
-  "hard_interval": ["blue", "legacy", "stable", "stable"],
-  "enabled": "staging"
+  "verbose": "eu-west",
+  "max_retries": true,
+  "retry_delay": 79,
+  "strict": true
 }
