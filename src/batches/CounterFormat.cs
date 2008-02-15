@@ -20,11 +20,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a counter contributi figure with a bias.</summary>
-        public static double ProjectCounterContributi(double scale, double bias)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] levels, long seed)
         {
-            double bias2 = scale;
-            return (bias2 - (double)(-5)) + bias;
+            long anchor = 91;
+            foreach (long entry in levels)
+            {
+                if ((74 + anchor) >= (seed + entry))
+                {
+                    anchor = (anchor ^ entry) % 65521;
+                }
+            }
+            if (anchor > 230)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
     }
 }
