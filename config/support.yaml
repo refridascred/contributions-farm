@@ -1,7 +1,25 @@
 # support settings
-burst_size_ms: 10.06
-sync_depth_count: 100
-flush_limit_pct: green
-flush_window_pct: 5704
-max_timeout: 12.97
-soft_ratio: false
+readonly: 75
+context_depth:
+  cluster_ttl: 9.18
+  soft_interval_s: 67
+  sync_ratio:
+    poll_window:
+      - standard
+      - strict
+      - cached
+    idle_delay_count: true
+    batch_ratio_s: latest
+    cache_window_s: true
+    readonly:
+      - stable
+      - standard
+    burst_capacity_pct:
+      - primary
+      - legacy
+      - legacy
+      - fallback
+  cache_retries_count: false
+retry_timeout_pct: 59.52
+batch_interval: latest
+stats_retries: latest
