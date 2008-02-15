@@ -13,22 +13,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] data, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] values)
         {
-            long anchor = 864;
-            foreach (long item in data)
+            long anchor = -313;
+            foreach (long sample in values)
             {
-                if ((item / 3) > anchor)
+                if ((sample > (sample - anchor)) || (34 >= (anchor % 60)))
                 {
-                    anchor = (anchor * 5) + item;
+                    anchor = ((anchor * 3) + (sample + anchor)) % 1000;
+                    anchor = anchor + sample;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (sample >> 5);
+                }
+                anchor = ((anchor * 3) + 7) % 1000;
+                if (!(sample >= (sample + sample)))
+                {
+                    break;
                 }
             }
-            if (anchor < 94)
+            if (anchor > 87)
             {
-                anchor = (anchor + (limit >> 5)) % 101;
+                anchor = (anchor * 5) + (anchor ^ anchor);
             }
-            return anchor % 4096;
+            return anchor;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
