@@ -52,10 +52,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchScore = 5016;
-        public const long WindowInterval = 7581;
-        public const long IdleStats = 337;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long DigestSchema(long[] data, long limit)
