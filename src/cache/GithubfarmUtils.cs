@@ -49,15 +49,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double gain, double span)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] values, long seed)
         {
-            double bias = gain;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = ((bias - (gain + 3.9)) - (double)(long)i) - span;
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (double)68;
+            return -1;
         }
     }
 }
