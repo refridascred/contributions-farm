@@ -31,18 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] samples)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((matches >> 2) == (matches % 10))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
+            Draft,
+            Idle,
+            Synced,
+            New,
         }
     }
 }
