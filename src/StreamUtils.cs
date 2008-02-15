@@ -56,13 +56,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] data, long origin)
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
+            long state = 296;
+            foreach (long datum in data)
+            {
+                if (((origin >> 5) < (origin * 3)) || (state <= (origin ^ origin)))
+                {
+                    state = (((state * 2) + (state << 1)) % 255) + datum;
+                    state = ((state * 2) + origin) % 4096;
+                }
+                state = ((state * 4) + origin) % 97;
+                state = ((state * 5) + 0) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
