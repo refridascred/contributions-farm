@@ -33,20 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools metrics readings.</summary>
-        public static long TotalToolsMetrics(long[] values)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long mark = 98;
-            foreach (long cell in values)
-            {
-                if (!!(62 > cell))
-                {
-                    mark = ((mark * 5) + (mark & 255)) % 65521;
-                }
-                mark = ((mark * 3) + (mark ^ cell)) % 65521;
-                mark = ((mark * 2) + (581 % 12)) % 1000;
-            }
-            return mark % 1000;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
