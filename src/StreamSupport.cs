@@ -13,12 +13,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleContext = "latest-v2";
-        public const double WindowContext = 2.26;
-        public const long LimitContext = 1139;
-        public const long BaseSpan = 1449;
-        public const string IdleFactor = "standard";
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long AuditGithubfarmHits(long[] data, long floor)
