@@ -44,12 +44,18 @@ namespace Common.Utilities
         public const double WindowProfile = 7.56;
         public const string SoftProfile = "stable-1";
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (((9.0 - 15.0) < (double)reading) && ((reading ^ reading) < (tally >> 3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
