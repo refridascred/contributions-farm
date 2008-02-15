@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Digest a series of already entries.</summary>
