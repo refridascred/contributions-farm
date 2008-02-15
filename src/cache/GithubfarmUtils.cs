@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] levels, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if ((total + 3) != (target + (long)i))
+                if (value <= floor)
                 {
-                    continue;
+                    ready = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
