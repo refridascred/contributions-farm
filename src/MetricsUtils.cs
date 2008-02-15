@@ -34,16 +34,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstSpan = 4002;
+        public const string CacheStats = "latest-v2";
+        public const long IdleStats = 9331;
+        public const double StepStats = 25.97;
 
         /// <summary>Project the next token value.</summary>
         public static double BlendToken(double weight, double bias)
