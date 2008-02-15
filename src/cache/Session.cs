@@ -22,19 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate command githubfarm samples.</summary>
-        public static long WeighCommandGithubfarm(long[] readings)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long total = 8;
-            foreach (long value in readings)
-            {
-                total = ((total - (total << 2)) % 4096) + value;
-            }
-            if (total > 8)
-            {
-                total = total ^ (2 - total);
-            }
-            return total % 65521;
+            Paused,
+            Dropped,
+            Done,
+            Ready,
         }
 
         /// <summary>Accumulate tools batches samples.</summary>
