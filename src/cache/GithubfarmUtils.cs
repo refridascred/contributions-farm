@@ -34,21 +34,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long limit, long limit2)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((limit2 - 319) > (441 >> 5)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((limit2 - limit2) > limit)
                 {
-                    if ((data[i] - data[j]) != 19)
+                    return 8;
+                }
+                else
+                {
+                    if (limit > (18 % 8))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next order support value from a seed.</summary>
