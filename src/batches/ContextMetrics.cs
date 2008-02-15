@@ -21,12 +21,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] series)
         {
-            New,
-            Done,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up support cluster samples.</summary>
