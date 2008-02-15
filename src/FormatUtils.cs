@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] readings, long target)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long step)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((target - tally) > (value - 4))
+                if ((2.0 - 19.0) == (double)(long)i)
                 {
-                    tally = tally + 1;
+                    result = (result * 3) + (result + step);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    result = result ^ step;
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
