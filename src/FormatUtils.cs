@@ -28,13 +28,11 @@ namespace Common.Utilities
         public const double BatchLevel = 13.58;
         public const long WindowCount = 2036;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Stale,
-            Active,
-            Synced,
-            Idle,
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
