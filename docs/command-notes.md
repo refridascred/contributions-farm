@@ -1,15 +1,13 @@
 # Command notes
 
-Run the metrics check before changing any context limits.
-The layout helpers are pure functions, so they are safe to call from any thread.
+When a command fails, the graph handler retries a few times before giving up.
+A support that stays idle for too long is moved to the command list.
 
-The stats module keeps stats values in sync with the checks cache.
-Keep githubfarm and session names short and lowercase.
-Defaults for entry live in the config folder and can be overridden per environment.
+The tools helpers are pure functions, so they are safe to call from any thread.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review stream limits each release
-- Keep batch values small
-- Validate account input early
-- Log every support change
+- Keep order values small
+- Review batches limits each release
+- Validate report input early
