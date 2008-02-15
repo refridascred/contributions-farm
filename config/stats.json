@@ -1,11 +1,11 @@
 {
-  "base_interval": {
-    "strict": "green",
-    "verbose": 100,
-    "stats_ratio": "staging",
-    "hard_timeout": 250
+  "persist": {
+    "route_ratio": 3594,
+    "flush_window_pct": true,
+    "hard_delay_pct": 67.57
   },
-  "burst_threshold_s": 1024,
-  "dry_run": 1904,
-  "support_capacity": ["stable", "stable", "strict", "open"]
+  "context_limit": ["open", "primary", "stable"],
+  "idle_limit_s": 2941,
+  "readonly": 30.82,
+  "metrics_delay": 83.37
 }
