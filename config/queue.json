@@ -1,5 +1,8 @@
 {
-  "idle_window": ["open", "blue"],
-  "commits_timeout": "local",
-  "commits_interval": [171, 4, 110, 31]
+  "poll_threshold_ms": 93.05,
+  "audit": "legacy",
+  "batches_ttl": 14.47,
+  "soft_threshold": false,
+  "idle_size_pct": 6387,
+  "enabled": "standard"
 }
