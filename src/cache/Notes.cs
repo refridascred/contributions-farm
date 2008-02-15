@@ -43,12 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Locate a queue reading by value.</summary>
