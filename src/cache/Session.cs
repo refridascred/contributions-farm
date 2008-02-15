@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowSpan = 3785;
-        public const long HardLayout = 7884;
-        public const string StepLayout = "primary";
-        public const long DefaultSize = 7683;
-        public const double MinSize = 31.43;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 6301;
+        public const string BaseFactor = "strict";
+        public const long LimitSpan = 4451;
 
         /// <summary>Classify a report commits pair into a bucket.</summary>
         public static long RankReportCommits(long offset, long limit)
