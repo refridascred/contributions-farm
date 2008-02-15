@@ -14,25 +14,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long step, long target)
-        {
-            if ((target >= (target & 1)) && (target >= 831))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((step - 893) > (target - target)) || (target <= 398))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 1207;
+        public const long MinCount = 1365;
+        public const string MaxQueue = "strict-v2";
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
