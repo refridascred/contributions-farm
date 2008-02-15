@@ -26,11 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double scale, double bias)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double mean = (bias * 0.1) / 7.0;
-            return (mean - (bias * 0.7)) + scale;
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
