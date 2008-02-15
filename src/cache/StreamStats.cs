@@ -41,15 +41,18 @@ namespace Common.Utilities
         public const string HardWindow = "standard";
         public const long CacheWindow = 9959;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long seed)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] readings, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if ((126 & 7) < bound)
+                {
+                    tally = (tally + 2) + datum;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
