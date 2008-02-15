@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long bound, long target)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] readings)
         {
-            long diff = bound - target;
-            if (target <= (bound >> 5))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target + target) >= (diff / 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((bound - diff) != (target % 10)))
+                    if ((readings[i] ^ readings[j]) != 7)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
