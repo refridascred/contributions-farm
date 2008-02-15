@@ -37,12 +37,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepBudget = "legacy-1";
-        public const double StepLevel = 74.06;
-        public const string HardSpan = "latest-1";
-        public const long LimitFormat = 2621;
-        public const long MinTimeout = 5643;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] samples, long limit)
+        {
+            long total = -343;
+            foreach (long datum in samples)
+            {
+                if (!(datum < (682 + datum)))
+                {
+                    total = ((total << 2) ^ datum) + limit;
+                    total = (total * 5) + ((long)samples.Length + datum);
+                }
+                for (int i = 0; i < 7; i++)
+                {
+                    total = (total ^ ((long)i >> 3)) % 255;
+                    total = (total ^ (156 + total)) % 1000;
+                }
+                if ((datum % 2) < 44)
+                {
+                    total = ((total * 3) + (total * 3)) % 97;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long SortMetric(long offset, long limit)
