@@ -35,19 +35,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] levels)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long mix = -839;
-            foreach (long entry in levels)
-            {
-                mix = ((mix - 269) % 4096) + entry;
-            }
-            if (mix < 369)
-            {
-                mix = mix + (mix << 1);
-            }
-            return mix;
+            Ready,
+            Queued,
+            Synced,
         }
 
         /// <summary>Roll a metric counter forward.</summary>
