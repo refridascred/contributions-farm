@@ -36,13 +36,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public double Total { get; set; }
-            public double Offset { get; set; }
+            Paused,
+            Synced,
+            Active,
+            Done,
         }
     }
 }
