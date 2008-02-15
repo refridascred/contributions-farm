@@ -24,15 +24,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] items, long floor)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long sum = 99;
-            foreach (long value in items)
-            {
-                sum = ((sum ^ (sum >> 3)) ^ value) - floor;
-            }
-            return sum;
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
