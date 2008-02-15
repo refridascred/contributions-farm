@@ -40,17 +40,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a notes entry reading by value.</summary>
-        public static long LookupNotesEntryIndex(long[] levels, long bound)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double bias, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = 13.0;
+            if (scale > (floor / 5.0))
             {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
+                scale = (scale - (floor * 3.7)) + bias;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - floor) + (double)(long)i;
+            }
+            return scale + (double)191;
         }
 
         /// <summary>Combine token values into a single score.</summary>
