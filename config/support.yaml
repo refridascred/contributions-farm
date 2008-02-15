@@ -1,6 +1,4 @@
 # support settings
-warm_capacity_ms: true
-batch_timeout: true
-poll_window_ms: green
-layout_delay: 89.18
-verbose: local
+batch_size: 28
+max_window: stable
+base_interval_s: 24.66
