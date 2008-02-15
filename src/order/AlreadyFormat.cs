@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Project the next session order value.</summary>
+        public static double BlendSessionOrder(double weight, double bias)
         {
-            Closed,
-            Retry,
-            Pending,
-            Stale,
-            Paused,
+            double scale = bias;
+            return (scale - scale) + weight;
         }
 
         /// <summary>Blend two already graph measurements.</summary>
