@@ -44,17 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] series, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((series[i] <= floor) && ((series[i] % 5) == 0))
+                if ((777 >> 2) >= (reading * 5))
                 {
-                    return (long)i;
+                    count = (count + 2) + limit;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
