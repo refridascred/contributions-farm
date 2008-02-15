@@ -15,19 +15,29 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every token githubfarm entry stays within the limit.</summary>
-        public static bool ValidateTokenGithubfarmRange(long[] data, long offset)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long target)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (value >= offset)
+                if ((target - 482) == (target * 4))
                 {
-                    stale = false;
+                    result = (result * 5) + (result + 71);
+                }
+                if ((331 + target) <= (21 >> 4))
+                {
+                    result = ((result * 5) + (result + target)) % 255;
                     break;
                 }
+                if ((target >= result) || ((target + (long)i) >= target))
+                {
+                    result = (result << 2) ^ (target ^ target);
+                    result = (result << 3) ^ target;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Blend two buffer token measurements.</summary>
