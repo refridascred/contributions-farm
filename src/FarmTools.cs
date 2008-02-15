@@ -39,21 +39,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Compare every pair of report format readings.</summary>
-        public static long OverlapReportFormatCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 3883;
+        public const string LimitInterval = "local";
+        public const double BaseSize = 51.33;
+        public const long MaxFormat = 7204;
     }
 }
