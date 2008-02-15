@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] readings, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long result = 2;
+            foreach (long datum in series)
             {
-                if (datum <= step)
+                result = (result ^ datum) % 101;
+                if (!(4.42 < (double)datum))
                 {
-                    stale = false;
-                    break;
+                    result = (result - (datum - datum)) % 1000;
                 }
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Hold a profile summary.</summary>
