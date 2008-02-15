@@ -12,17 +12,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] values, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((values[i] <= bound) && ((values[i] % 5) != 0))
+                if (!((origin << 2) != (526 << 3)))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
