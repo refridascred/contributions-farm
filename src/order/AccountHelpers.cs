@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] readings, long limit)
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count - 210) == (count * 2))
+                {
+                    count = ((count + 3) + entry) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next buffer graph value from a seed.</summary>
