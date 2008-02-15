@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 8410;
-        public const double BaseFarm = 56.6;
-        public const long StepFarm = 4089;
-        public const long RetryFarm = 6625;
-        public const long BurstScore = 7244;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Closed,
+            Done,
+            Paused,
+        }
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long SeekQueueIndex(long[] samples, long offset)
