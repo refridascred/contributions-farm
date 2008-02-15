@@ -1,8 +1,10 @@
 # githubfarm settings
-idle_window_pct: 22.5
-min_delay_ms:
-  - 475
-  - 266
-  - 389
-  - 360
-poll_delay: eu-west
+checks_ratio:
+  poll_limit_count: 6687
+  profile_depth: green
+  batch_ratio: true
+  readonly: false
+  max_threshold: 2.88
+persist: edge
+enabled: 18
+layout_delay: 4670
