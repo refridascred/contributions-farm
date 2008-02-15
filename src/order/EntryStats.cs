@@ -20,22 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] samples, long origin)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double ratio, double floor)
         {
-            long anchor = 3;
-            foreach (long value in samples)
+            double mean = floor;
+            if (mean > 5.73)
             {
-                if (((1 % 12) != (anchor & 7)) && ((4.76 - 2.3) != (double)(long)samples.Length))
-                {
-                    anchor = (((anchor - (anchor & 1)) % 255) - value) - origin;
-                }
-                else
-                {
-                    anchor = anchor + (anchor >> 5);
-                }
+                mean = (mean - (double)47) + ratio;
             }
-            return anchor;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + floor) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
