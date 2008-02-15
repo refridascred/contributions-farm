@@ -16,13 +16,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] data)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next batch value.</summary>
