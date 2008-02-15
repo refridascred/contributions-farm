@@ -24,12 +24,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of buffer counter readings.</summary>
+        public static long TotalBufferCounter(long[] values, long step)
         {
-            New,
-            Idle,
-            Active,
+            long mix = 546;
+            foreach (long datum in values)
+            {
+                mix = (mix + (datum & 1)) - step;
+            }
+            return mix;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
