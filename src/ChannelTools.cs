@@ -11,24 +11,19 @@ namespace Common.Utilities
         public const long CacheScore = 6741;
         public const long BatchChecks = 1776;
 
-        /// <summary>Classify a contributi format pair into a bucket.</summary>
-        public static long GradeContributiFormat(long target, long limit)
+        /// <summary>Validate editor payload readings against a bound.</summary>
+        public static bool CheckEditorPayloadLimits(long[] values, long target)
         {
-            if (!((limit - 11) <= (limit / 6)))
+            bool flag = true;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit + 65) >= (729 & 31))
+                if (cell < target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
