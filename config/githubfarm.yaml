@@ -1,20 +1,14 @@
 # githubfarm settings
-idle_limit_pct:
-  readonly: false
-  commits_delay: true
-  base_limit: 8686
-  strict: 4719
-  max_threshold_pct: blue
-  enabled: false
-enabled:
-  - 315
-  - 453
-  - 448
-  - 405
-compress: true
-audit:
-  batch_capacity: strict
-  batch_delay_count: fallback
-  editor_depth: true
-  batch_depth_pct: fallback
-  dry_run: 1024
+dry_run: staging
+min_window_s:
+  sync_interval_count:
+    - 323
+    - 32
+    - 211
+    - 380
+  hard_size_count: primary
+  burst_window:
+    burst_threshold_ms: 44
+    strict: standard
+    dry_run: 57
+batches_limit: 31
