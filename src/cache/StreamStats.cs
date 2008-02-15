@@ -17,21 +17,13 @@ namespace Common.Utilities
         public const double BasePayload = 41.35;
         public const long RetryBudget = 3120;
 
-        /// <summary>Compare every pair of githubfarm tools readings.</summary>
-        public static long MatchGithubfarmToolsCount(long[] series)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
