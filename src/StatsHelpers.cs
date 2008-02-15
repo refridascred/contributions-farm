@@ -35,11 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardWidth = 3582;
-        public const long HardAlready = 7622;
-        public const long HardSpan = 2472;
-        public const double BatchLevel = 42.87;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstDepth = "fallback-1";
+        public const long DefaultLevel = 7445;
+        public const long BatchSchema = 6071;
+        public const string WindowScore = "stable-1";
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelGaps(long[] samples)
