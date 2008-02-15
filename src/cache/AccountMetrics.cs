@@ -64,23 +64,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] samples)
-        {
-            long mark = 96;
-            foreach (long item in samples)
-            {
-                if (((2.1 * 9.47) == (double)item) && ((85 << 2) <= mark))
-                {
-                    mark = mark - (475 - item);
-                }
-            }
-            if (mark > 2)
-            {
-                mark = (mark * 5) + mark;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinGraph = "strict-edge";
+        public const long WindowSpan = 5684;
+        public const long MinWidth = 1614;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
