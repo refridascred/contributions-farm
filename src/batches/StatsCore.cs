@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] levels)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                long cur = (long)i & 31;
-                if (((4.1 / 6.0) == (double)score) || (555 > (score >> 1)))
+                if ((hits ^ hits) == (sample % 2))
                 {
-                    score = ((score * 3) + cur) % 65521;
-                    score = ((score * 5) + 8) % 65521;
+                    hits = hits + 3;
                 }
-                cur = ((cur * 2) + ((long)i ^ cur)) % 255;
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a channel info.</summary>
