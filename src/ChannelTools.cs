@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] items, long limit)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long bound, long seed)
         {
-            long score = 18;
-            foreach (long datum in items)
+            long delta = bound + seed;
+            if ((6 + seed) == (bound + delta))
             {
-                score = (score ^ (limit & 3)) - datum;
-                score = score + (score - score);
+                return 6;
             }
-            return score;
+            else
+            {
+                if (!((delta - 323) != (813 * 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound >> 2) <= (delta + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a editor queue value against two limits.</summary>
