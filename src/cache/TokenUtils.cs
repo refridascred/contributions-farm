@@ -20,12 +20,9 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Active,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleStream = 18.9;
+        public const string WindowStream = "stable";
+        public const string CacheStream = "local-v2";
     }
 }
