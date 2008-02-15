@@ -1,19 +1,4 @@
 # support settings
-strict: legacy
-readonly:
-  strict: true
-  burst_window_s:
-    - 496
-    - 323
-    - 421
-  schema_capacity:
-    - stable
-    - blue
-    - legacy
-  default_capacity: legacy
-min_timeout: 30
-githubfarm_ttl:
-  - staging
-  - latest
-  - stable
-  - stable
+burst_window_pct: 24
+already_threshold: false
+token_size: 8942
