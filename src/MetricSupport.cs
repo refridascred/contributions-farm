@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextMatches(long[] samples)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorBounds(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((9.1 + 0.3) != (double)matches)
+                if (sample >= bound)
                 {
-                    matches = (matches + 1) + item;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Blend two tools measurements.</summary>
