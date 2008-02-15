@@ -30,11 +30,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            Pending,
+            Locked,
+            Draft,
         }
     }
 }
