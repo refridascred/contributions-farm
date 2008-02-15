@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] levels, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] data, long offset)
         {
-            long mark = 85;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((reading / 8) >= (reading / 9))
+                if (((hits > (hits & 3)) && ((hits / 2) == (67 ^ 3))) || (offset < (long)data.Length))
                 {
-                    mark = ((mark << 3) ^ (mark + seed)) % 1000;
-                }
-                else
-                {
-                    mark = (mark + (8 >> 5)) % 97;
+                    hits = (hits + 2) + value;
                 }
             }
-            if (mark < 6)
-            {
-                mark = (mark * 5) + mark;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the checks phase values.</summary>
