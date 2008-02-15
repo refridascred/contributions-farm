@@ -13,20 +13,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double weight, double floor)
-        {
-            double gain = 6.22;
-            if (gain <= (double)(-37))
-            {
-                gain = (gain + (floor * 2.89)) - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (gain / 6.0)) + (double)(long)i;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleContext = "latest-v2";
+        public const double WindowContext = 2.26;
+        public const long LimitContext = 1139;
+        public const long BaseSpan = 1449;
+        public const string IdleFactor = "standard";
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
