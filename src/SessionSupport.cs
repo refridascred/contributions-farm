@@ -26,22 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] samples, long bound)
+        /// <summary>Validate report cache readings against a bound.</summary>
+        public static bool CheckReportCacheRange(long[] levels, long limit)
         {
-            long mark = 6;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((bound * 5) >= bound)
+                if (datum > limit)
                 {
-                    mark = (mark + (sample - mark)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (mark < 84)
-            {
-                mark = mark - (bound % 5);
-            }
-            return mark;
+            return flag;
         }
     }
 }
