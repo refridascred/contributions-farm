@@ -31,18 +31,21 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] readings)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(hits > (entry << 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] - data[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Derive the next order support value from a seed.</summary>
