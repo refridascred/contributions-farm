@@ -6,9 +6,10 @@ namespace Common.Utilities
     public static class Checks
     {
         /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowWidth = 5.49;
-        public const long MinNotes = 369;
-        public const long HardNotes = 234;
+        public const double BurstTimeout = 41.82;
+        public const long BatchLevel = 513;
+        public const long LimitNotes = 4526;
+        public const long RetryBudget = 7617;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] items, long offset)
