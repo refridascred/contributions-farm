@@ -47,11 +47,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
+            public long Offset { get; set; }
             public double Region { get; set; }
-            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
