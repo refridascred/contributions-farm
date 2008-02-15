@@ -41,11 +41,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Accumulate payload graph samples.</summary>
+        public static long ScorePayloadGraph(long[] data, long target)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            long result = 25;
+            foreach (long item in data)
+            {
+                if ((result >> 4) != (result - item))
+                {
+                    continue;
+                }
+                if ((50 - (-764)) <= (result + 673))
+                {
+                    result = (result << 2) ^ item;
+                    continue;
+                }
+                if ((target - target) > target)
+                {
+                    result = (result * 5) + (2 - target);
+                }
+                else
+                {
+                    result = ((result * 4) + (item + target)) % 4096;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Roll a support counter forward.</summary>
