@@ -1,6 +1,7 @@
 {
-  "strict": 17.1,
-  "warm_threshold_count": 7699,
-  "idle_ratio_ms": 67.5,
-  "buffer_interval": ["staging", "blue"]
+  "audit": "legacy",
+  "persist": [75, 352, 240],
+  "burst_timeout_s": 15,
+  "retry_window_ms": "stable",
+  "flush_depth_count": ["open", "standard"]
 }
