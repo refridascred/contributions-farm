@@ -39,17 +39,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] levels, long step)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((levels[i] > step) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (long)i) % 4096;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
     }
 }
