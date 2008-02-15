@@ -24,16 +24,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Roll a batch format counter forward.</summary>
-        public static long IterateBatchFormat(long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long result = 5;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor << 3) ^ (anchor << 3)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                result = ((result << 3) ^ datum) % 1000;
             }
-            return anchor;
+            return result % 65521;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
