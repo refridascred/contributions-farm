@@ -27,17 +27,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] samples, long floor)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long target, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit - 806) == ((-300) / 8))
             {
-                if (samples[i] <= floor)
+                return 6;
+            }
+            else
+            {
+                if (limit < (limit & 31))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (target <= (-42))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
