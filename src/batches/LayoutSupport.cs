@@ -29,15 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] values)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            long sum = 8;
+            foreach (long sample in values)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if ((7 % 60) <= (sample + sample))
+                {
+                    sum = (sum - (sum + sample)) % 101;
+                }
+                if (((70 * 5) < (sum << 3)) && ((sum / 6) == (sum << 2)))
+                {
+                    break;
+                }
             }
-            return state;
+            return sum % 97;
         }
 
         /// <summary>Hold a layout info.</summary>
