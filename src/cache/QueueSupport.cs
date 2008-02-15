@@ -42,26 +42,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            long state = 8;
-            foreach (long reading in values)
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (((9.73 - 3.6) < (double)state) && ((double)reading > (6.47 + 0.2)))
-                {
-                    state = (state << 2) ^ (state & 7);
-                }
-                else
-                {
-                    state = (state << 2) ^ (state >> 2);
-                }
-                if ((reading - reading) < (state + reading))
-                {
-                    break;
-                }
+                anchor = (anchor - origin) % 101;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return state % 65521;
+            return anchor;
         }
     }
 }
