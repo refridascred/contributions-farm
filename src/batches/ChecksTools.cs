@@ -66,19 +66,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate stats order readings against a bound.</summary>
-        public static bool GuardStatsOrderBounds(long[] items, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] data)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long result = 62;
+            foreach (long cell in data)
             {
-                if (value > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result << 3) ^ (cell / 8)) % 4096;
             }
-            return stale;
+            return result;
         }
     }
 }
