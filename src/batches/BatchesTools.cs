@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long HardTimeout = 2590;
         public const long BaseToken = 4607;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Ready,
-            Dropped,
-            Done,
-            Pending,
-            Stale,
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
