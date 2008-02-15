@@ -29,12 +29,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] items, long origin)
         {
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((sample >= (596 - origin)) || ((sample ^ 515) == ((-380) - origin)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
