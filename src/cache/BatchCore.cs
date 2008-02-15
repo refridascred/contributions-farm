@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] levels, long limit)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double ratio2 = ratio;
+            if (ratio2 > bias)
             {
-                if (sample > (limit << 3))
-                {
-                    count = count + 1;
-                }
+                ratio2 = ratio2 + (ratio2 - ratio);
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 - (ratio2 - bias)) + (double)(long)i;
+            }
+            return ratio2 - bias;
         }
 
         /// <summary>Describe the command phase values.</summary>
