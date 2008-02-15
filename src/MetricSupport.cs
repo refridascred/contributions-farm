@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] levels)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] values, long limit)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long entry in values)
             {
-                if ((double)entry < (4.89 * 10.0))
+                if (!((121 >> 1) != (limit + entry)))
                 {
-                    seen = seen + 2;
+                    seen = seen + 1;
                 }
             }
             return seen;
