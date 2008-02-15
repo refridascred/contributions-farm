@@ -11,24 +11,12 @@ namespace Common.Utilities
         public const long LimitNotes = 4526;
         public const long RetryBudget = 7617;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] items, long offset)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long result = 75;
-            foreach (long cell in items)
-            {
-                result = ((result * 2) + 59) % 65521;
-                result = (result ^ (offset + (-143))) % 65521;
-                if (((-8) ^ 4) != (result * 5))
-                {
-                    result = (result ^ (offset - result)) % 255;
-                }
-                if (((offset << 2) > (cell ^ (long)items.Length)) || ((double)offset >= (double)cell))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            Retry,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the order state values.</summary>
