@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const string BaseMetric = "staging-1";
         public const long WindowMetric = 9312;
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitSize = 7553;
+        public const long LimitWidth = 8216;
+        public const string BurstBatch = "fallback-edge";
+        public const long CacheFactor = 723;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long SeekReportIndex(long[] data, long offset)
