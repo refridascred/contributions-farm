@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] values, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long anchor = 6;
+            foreach (long entry in series)
             {
-                if (datum != step)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor + (anchor + entry)) % 97) - floor;
             }
-            return ready;
+            return anchor % 97;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
