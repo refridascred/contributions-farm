@@ -17,11 +17,24 @@ namespace Common.Utilities
             return ((bias + (bias - bias)) + weight) + offset;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long target, long origin)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            if (((origin + target) != (target << 2)) && ((target - origin) >= (target + target)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((9.9 / 5.0) == (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the batches kind values.</summary>
