@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] values, long step)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
