@@ -15,11 +15,40 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSession = "fallback";
-        public const long LimitSize = 8134;
-        public const long CacheTimeout = 231;
-        public const double DefaultSession = 77.93;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long seed, long target)
+        {
+            long prev = seed + target;
+            if (!((double)seed < (4.2 / 7.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target >> 5) > 467) && (seed > (8 >> 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((seed / 2) < prev))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((4 + 3) != (target - target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next counter githubfarm value.</summary>
         public static double BlendCounterGithubfarm(double bias, double offset)
