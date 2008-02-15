@@ -27,31 +27,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long target, long limit)
+        /// <summary>Measure how many record payload samples are out of range.</summary>
+        public static long MeasureRecordPayloadMatches(long[] readings, long seed)
         {
-            if ((limit - 806) == ((-300) / 8))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit < (limit & 31))
+                if ((double)hits > (double)2)
                 {
-                    return 0;
+                    hits = ((hits + 2) - value) + seed;
                 }
                 else
                 {
-                    if (target <= (-42))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next batch value.</summary>
