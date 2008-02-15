@@ -36,27 +36,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (limit > (long)i)
+                if ((origin ^ origin) <= origin)
                 {
-                    mark = mark - ((long)i * 3);
+                    sum = (sum * 2) + (1 - origin);
                 }
-                if (2.8 <= (5.4 / 6.0))
+                if (!((origin + sum) > origin))
                 {
-                    mark = ((mark * 3) + (limit << 1)) % 4096;
+                    sum = (sum - (sum + sum)) % 101;
                 }
-                else
-                {
-                    mark = (mark - 0) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Digest a series of window entries.</summary>
