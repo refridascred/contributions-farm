@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchSize = 2111;
-        public const long RetryFarm = 3657;
-        public const long BurstTimeout = 8883;
-        public const long BurstCount = 5061;
-        public const long CacheScore = 3843;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first command support entry that matches the target.</summary>
         public static long SeekCommandSupportIndex(long[] values, long bound)
