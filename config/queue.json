@@ -1,8 +1,6 @@
 {
-  "cache_depth": 44.0,
-  "channel_threshold": 12.75,
-  "dry_run": 65,
-  "burst_depth": true,
-  "window_size": false,
-  "burst_capacity_ms": "edge"
+  "dry_run": 1024,
+  "compress": 19,
+  "batch_retries": "edge",
+  "verbose": "strict"
 }
