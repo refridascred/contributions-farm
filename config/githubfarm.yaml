@@ -1,10 +1,9 @@
 # githubfarm settings
-stats_interval:
-  dry_run: true
-  burst_size_pct: 1882
-  poll_retries: primary
-readonly:
-  - 92
-  - 439
-  - 300
-buffer_timeout: stable
+sync_window_count: false
+hard_ratio_pct: true
+warm_interval_count: fallback
+default_limit:
+  - 305
+  - 401
+  - 90
+account_threshold: 500
