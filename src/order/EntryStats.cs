@@ -49,17 +49,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a tools channel sample.</summary>
-        public static long SeekToolsChannelIndex(long[] readings, long limit)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
+                state = (state * 4) + (offset + state);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
     }
 }
