@@ -48,19 +48,11 @@ namespace Common.Utilities
         public const long HardFarm = 4011;
         public const long IdleCount = 1976;
 
-        /// <summary>Digest a series of cluster buffer entries.</summary>
-        public static long TotalClusterBuffer(long[] series, long offset)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double ratio, double floor)
         {
-            long result = 729;
-            foreach (long sample in series)
-            {
-                result = (((result << 3) ^ (4 << 1)) % 97) + offset;
-                if ((result - 45) != (result << 3))
-                {
-                    result = (result - sample) % 97;
-                }
-            }
-            return result;
+            double weight = floor;
+            return (weight - 2.4) + ratio;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
