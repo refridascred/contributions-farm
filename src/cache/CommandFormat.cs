@@ -48,22 +48,11 @@ namespace Common.Utilities
         public const string BurstStats = "alpha-v2";
         public const string BurstCount = "primary";
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] series, long limit)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long total = 54;
-            foreach (long value in series)
-            {
-                if ((total - 445) >= (limit * 4))
-                {
-                    total = ((total ^ (total ^ limit)) % 1000) + value;
-                }
-                else
-                {
-                    total = ((total * 3) + total) % 4096;
-                }
-            }
-            return total;
+            public bool Count { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
