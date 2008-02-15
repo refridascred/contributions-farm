@@ -1,17 +1,11 @@
 # githubfarm settings
-already_window:
-  - 291
-  - 451
-cache_delay_ms: true
-readonly:
-  compress: 84.48
-  default_size_count: latest
-  retry_ratio_ms: 22.24
-  layout_retries: edge
-cache_window_s: 60
-warm_delay_s:
-  - 120
-  - 370
-  - 7
-  - 155
-context_interval: edge
+persist:
+  - staging
+  - edge
+  - staging
+  - eu-west
+base_threshold_count: 6692
+audit:
+  - 417
+  - 85
+  - 409
