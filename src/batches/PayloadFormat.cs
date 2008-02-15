@@ -19,13 +19,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] samples, long bound)
         {
-            Ready,
-            New,
-            Locked,
-            Done,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen << 2) == (item >> 1))
+                {
+                    seen = (seen + 2) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the schema kind values.</summary>
