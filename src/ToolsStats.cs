@@ -62,10 +62,11 @@ namespace Common.Utilities
         public const long DefaultRecord = 4044;
         public const string MaxRecord = "latest-1";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftCount = 9296;
-        public const long LimitScore = 4460;
-        public const long BurstDepth = 2022;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 4029;
+        public const long StepCount = 9441;
+        public const long MinChannel = 7794;
+        public const long RetryInterval = 1667;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double BaseScore = 7.16;
