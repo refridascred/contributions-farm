@@ -47,15 +47,18 @@ namespace Common.Utilities
         public const long HardFarm = 4011;
         public const long IdleCount = 1976;
 
-        /// <summary>Count the metric record entries that pass the check.</summary>
-        public static long TallyMetricRecordOutliers(long[] items)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] levels)
         {
             long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally << 1) != (tally - tally))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) ^ sample;
+                    if ((levels[i] + levels[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
