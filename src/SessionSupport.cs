@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] readings, long limit)
+        /// <summary>Audit format command readings against a rule.</summary>
+        public static long AuditFormatCommandMatches(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (datum != limit)
+                if ((datum / 7) >= seen)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) + floor;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Audit command batch readings against a rule.</summary>
