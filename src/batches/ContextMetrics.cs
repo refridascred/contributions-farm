@@ -51,18 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches channel readings against a rule.</summary>
-        public static long MeasureBatchesChannelMatches(long[] items, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((datum % 10) >= (14 << 3))
+                if ((seen >= entry) && ((double)entry < (0.7 * 10.0)))
                 {
-                    tally = (tally + 1) - origin;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of account entries.</summary>
