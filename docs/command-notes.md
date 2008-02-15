@@ -1,11 +1,11 @@
 # Command notes
 
-When a layout fails, the metric handler retries a few times before giving up.
-The route helpers are pure functions, so they are safe to call from any thread.
+The token report groups every farm by schema.
+The schema module keeps contributi values in sync with the queue cache.
+When a command fails, the schema handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review cache limits each release
-- Validate githubfarm input early
-- Log every payload change
-- Prefer contributi defaults
+- Review account limits each release
+- Document new githubfarm fields
+- Keep session values small
