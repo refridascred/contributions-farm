@@ -1,11 +1,6 @@
 {
-  "order_window": true,
-  "readonly": false,
-  "base_ttl_ms": "stable",
-  "payload_interval": 13,
-  "verbose": {
-    "idle_delay_ms": true,
-    "poll_size": 56.06,
-    "burst_capacity": 93.87
-  }
+  "order_ratio": "latest",
+  "idle_depth": 98.76,
+  "cache_ttl_pct": true,
+  "cache_capacity": 95
 }
