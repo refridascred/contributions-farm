@@ -38,11 +38,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleCount = 5497;
-        public const string BaseCount = "latest-1";
-        public const long RetryChecks = 1147;
-        public const long BurstChecks = 1220;
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long ClassifyBatch(long offset, long seed)
