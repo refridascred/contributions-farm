@@ -46,14 +46,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            Idle,
-            Active,
-            Dropped,
-            Closed,
-            Done,
+            long score = 48;
+            foreach (long item in levels)
+            {
+                score = score ^ (score - item);
+                score = ((score * 2) + (item >> 5)) % 101;
+            }
+            return score % 97;
         }
     }
 }
