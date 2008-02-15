@@ -38,18 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout format readings against a rule.</summary>
-        public static long MeasureLayoutFormatOutliers(long[] data, long floor)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (60 < (floor % 60))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public double Region { get; set; }
         }
     }
 }
