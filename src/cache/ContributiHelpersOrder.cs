@@ -35,12 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double rate, double bias)
         {
-            Locked,
-            Draft,
-            Synced,
+            double gain = (double)444 + 8.95;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = ((gain - (bias / 2.0)) - (double)(long)i) - rate;
+            }
+            return gain + gain;
         }
     }
 }
