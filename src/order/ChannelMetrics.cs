@@ -25,25 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long floor, long step)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double gain, double bias)
         {
-            long gap = floor + step;
-            if (gap >= (floor + (-62)))
+            double drift = bias;
+            if (drift <= (double)400)
             {
-                return 7;
+                drift = drift - (drift - gain);
             }
-            else
-            {
-                if (!((step >> 2) > floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return drift + bias;
         }
 
         /// <summary>Match up stream samples.</summary>
