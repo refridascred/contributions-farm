@@ -73,13 +73,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Done,
-            Paused,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 111;
+        public const double BaseBatches = 38.34;
+        public const long MinRatio = 3212;
     }
 }
