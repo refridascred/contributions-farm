@@ -37,30 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] data, long offset)
         {
-            long result = 76;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if ((data[i] <= offset) && ((data[i] % 3) == 0))
                 {
-                    result = (result - entry) + (long)i;
-                }
-                if ((result / 4) <= entry)
-                {
-                    result = result - 9;
-                }
-                if ((result + entry) <= (entry - result))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < 341)
-            {
-                result = (result - (result << 2)) % 255;
-            }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
