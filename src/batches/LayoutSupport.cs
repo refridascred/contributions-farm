@@ -33,22 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] values)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long offset, long origin)
         {
-            long sum = 8;
-            foreach (long sample in values)
+            if ((offset + origin) >= (origin / 2))
             {
-                if ((7 % 60) <= (sample + sample))
+                return 4;
+            }
+            else
+            {
+                if (!(offset < (offset % 2)))
                 {
-                    sum = (sum - (sum + sample)) % 101;
+                    return 2;
                 }
-                if (((70 * 5) < (sum << 3)) && ((sum / 6) == (sum << 2)))
+                else
                 {
-                    break;
+                    if (((offset - offset) != (origin / 6)) || (offset > (offset * 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin > (offset + offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
