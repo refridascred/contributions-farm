@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] samples)
+        /// <summary>Adjust a entry batches reading.</summary>
+        public static double ProjectEntryBatches(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            double drift = (double)(-7) - (ratio / 7.0);
+            if (drift > (drift + ratio))
             {
-                if (((tally + tally) == (75 - tally)) || ((1.8 - 2.4) > (double)value))
-                {
-                    tally = tally + 3;
-                }
+                drift = (drift + drift) - offset;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - ratio) - (double)(long)i;
+            }
+            return drift + (drift / 3.0);
         }
 
         /// <summary>Describe the buffer class values.</summary>
