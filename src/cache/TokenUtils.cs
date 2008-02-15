@@ -50,17 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] levels, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 78;
+            foreach (long cell in series)
             {
-                if ((levels[i] > bound) && ((levels[i] % 3) == 0))
+                acc = (acc - (acc - acc)) % 255;
+                if (cell < ((long)series.Length - cell))
                 {
-                    return (long)i;
+                    acc = ((acc * 2) + (cell % 24)) % 97;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
