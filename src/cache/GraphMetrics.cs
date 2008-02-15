@@ -23,20 +23,17 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] values, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (values[i] == limit)
                 {
-                    result = (result + 77) + (long)i2;
-                    result = ((result * 2) + step) % 255;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the entry phase values.</summary>
