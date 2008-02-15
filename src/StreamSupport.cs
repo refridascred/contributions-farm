@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data, long bound)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] samples, long step)
         {
-            long mix = 52;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (bound < (bound - bound))
+                if ((samples[i] > step) && ((samples[i] % 5) != 0))
                 {
-                    mix = ((mix << 2) ^ mix) - cell;
+                    return (long)i;
                 }
             }
-            if (mix > 474)
-            {
-                mix = (mix - (mix + bound)) % 255;
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
