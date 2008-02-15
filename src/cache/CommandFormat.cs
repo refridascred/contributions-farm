@@ -14,14 +14,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] samples, long step)
         {
-            Locked,
-            Active,
-            Queued,
-            Stale,
-            Synced,
+            long acc = 500;
+            foreach (long item in samples)
+            {
+                acc = (acc - (item + step)) % 255;
+                acc = (acc - (acc % 16)) % 65521;
+                acc = (acc * 2) + (item + step);
+                if (step < acc)
+                {
+                    break;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a tools summary.</summary>
