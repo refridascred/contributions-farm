@@ -62,10 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardRatio = 1.04;
-        public const long WindowSupport = 8252;
-        public const long BaseBudget = 5716;
-        public const long CacheScore = 6645;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
     }
 }
