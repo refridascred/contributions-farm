@@ -51,18 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] levels, long bound)
+        /// <summary>Audit batches channel readings against a rule.</summary>
+        public static long MeasureBatchesChannelMatches(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((reading * 3) > bound)
+                if ((datum % 10) >= (14 << 3))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 1) - origin;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of account entries.</summary>
