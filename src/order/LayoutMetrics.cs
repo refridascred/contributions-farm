@@ -25,21 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of session tools readings.</summary>
-        public static long PairSessionToolsCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheWidth = 6382;
+        public const double BatchFormat = 58.82;
+        public const long IdleFormat = 93;
     }
 }
