@@ -1,9 +1,7 @@
 # support settings
-warm_ratio: 41.14
-default_ratio: 1024
-compress: open
-min_ratio_ms:
-  - 94
-  - 144
-  - 107
-min_delay_ms: strict
+batch_depth: staging
+sync_delay_count: true
+payload_capacity: 860
+strict: 100
+warm_capacity_count: 7118
+min_depth_count: 30
