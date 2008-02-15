@@ -36,27 +36,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine support payload values into a single score.</summary>
-        public static long DigestSupportPayload(long[] readings, long seed)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] samples, long offset)
         {
-            long anchor = 90;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                long delta = (seed / 9) + ((-62) >> 3);
-                if (!((double)seed >= (double)delta))
+                if (samples[i] > offset)
                 {
-                    delta = (delta + (sample ^ anchor)) % 255;
-                }
-                if ((double)anchor != (15.0 - 5.0))
-                {
-                    anchor = (anchor ^ sample) % 1000;
-                }
-                if ((double)sample != (double)758)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
