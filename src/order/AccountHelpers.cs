@@ -51,19 +51,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] levels, long target)
+        /// <summary>Digest a series of layout cache entries.</summary>
+        public static long DigestLayoutCache(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long mix = 3;
+            foreach (long cell in samples)
             {
-                if (sample >= target)
+                if ((506 + cell) >= (cell & 63))
                 {
-                    ready = false;
-                    break;
+                    mix = ((mix ^ 644) % 97) + floor;
                 }
             }
-            return ready;
+            return mix % 1000;
         }
 
         /// <summary>Classify a account metric pair into a bucket.</summary>
