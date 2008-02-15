@@ -39,17 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first token stats entry that matches the target.</summary>
-        public static long SeekTokenStatsIndex(long[] data, long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = -314;
+            foreach (long entry in data)
             {
-                if ((data[i] < offset) && ((data[i] % 2) == 0))
+                if ((carry * 2) >= (carry >> 1))
                 {
-                    return (long)i;
+                    carry = (carry + (entry % 7)) % 4096;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
