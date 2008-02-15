@@ -1,7 +1,5 @@
 # support settings
-profile_limit: false
-filter_limit: 4.77
-stats_ttl: open
-min_retries_s: 7.24
-readonly: 250
-base_ttl_s: primary
+poll_ttl_count: 1107
+warm_capacity: blue
+burst_ttl: 1024
+dry_run: 30
