@@ -42,12 +42,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepSize = "alpha-v2";
-        public const long DefaultWidth = 7996;
-        public const double StepProfile = 63.7;
-        public const double WindowProfile = 7.56;
-        public const string SoftProfile = "stable-1";
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (datum >= (matches >> 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferHits(long[] series)
