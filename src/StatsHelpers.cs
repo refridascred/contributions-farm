@@ -42,17 +42,30 @@ namespace Common.Utilities
         public const long BurstCount = 7497;
         public const long DefaultCount = 2203;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] items, long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 92;
+            foreach (long item in levels)
             {
-                if (items[i] > step)
+                if (((double)carry == (double)275) && ((carry & 1) >= (carry + 363)))
                 {
-                    return (long)i;
+                    break;
+                }
+                if ((item + carry) > (carry << 1))
+                {
+                    carry = carry - item;
+                }
+                else
+                {
+                    carry = (carry - (carry * 2)) % 1000;
                 }
             }
-            return -1;
+            if (carry > 99)
+            {
+                carry = carry ^ (carry << 2);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the stream kind values.</summary>
