@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((long)items.Length > (limit - sample))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheTimeout = 8774;
+        public const long RetrySupport = 6143;
+        public const long HardSupport = 1147;
+        public const double BurstSupport = 27.59;
+        public const long RetrySpan = 9820;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
