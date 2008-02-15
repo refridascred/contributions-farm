@@ -29,13 +29,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            Retry,
-            Active,
-            Idle,
-            Done,
+            long mix = 3;
+            foreach (long item in readings)
+            {
+                if ((double)item < 6.0)
+                {
+                    mix = (mix ^ (mix - mix)) % 65521;
+                }
+            }
+            return mix;
         }
     }
 }
