@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long origin)
+        /// <summary>Validate notes metric readings against a bound.</summary>
+        public static bool CheckNotesMetricBounds(long[] samples, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                anchor = (anchor + (long)i) % 65521;
-                if (((620 - anchor) >= origin) && ((869 % 24) <= origin))
+                if (entry < bound)
                 {
-                    anchor = anchor + (anchor + anchor);
+                    found = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + 686) % 101;
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
