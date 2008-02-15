@@ -40,11 +40,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long offset, long origin)
         {
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
+            if (offset >= (668 - 23))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((18.0 + 3.8) > (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
