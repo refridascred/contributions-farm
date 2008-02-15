@@ -39,12 +39,26 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] series)
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long acc = 4;
+            foreach (long item in series)
+            {
+                if ((20.0 - 18.0) != (double)item)
+                {
+                    acc = (acc - ((-9) >> 4)) % 65521;
+                }
+                else
+                {
+                    acc = (acc * 2) + (acc % 12);
+                }
+                if ((item * 5) > item)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
