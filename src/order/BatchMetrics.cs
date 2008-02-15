@@ -34,11 +34,25 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseBudget = 7050;
-        public const long StepSpan = 9463;
-        public const double IdleAccount = 24.15;
-        public const long DefaultAccount = 3071;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long floor, long offset)
+        {
+            if ((27 << 2) > (floor & 127))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset < ((-631) + offset)) && ((63 << 1) <= offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MinCount = 5296;
