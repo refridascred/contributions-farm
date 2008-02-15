@@ -1,12 +1,20 @@
 {
-  "session_size": 60,
-  "profile_depth": {
-    "batch_threshold_pct": 56.15,
-    "cluster_delay": 30,
-    "min_interval_s": 57
+  "enabled": 10.02,
+  "context_depth": {
+    "cache_window": ["green", "green", "blue", "stable"],
+    "retry_depth_count": [166, 198, 68, 273],
+    "base_interval_count": true,
+    "token_size": {
+      "dry_run": [61, 188],
+      "soft_limit": 100,
+      "hard_ttl": false
+    },
+    "min_interval_count": {
+      "min_size_s": "local",
+      "persist": [407, 479],
+      "soft_size_count": 42.98,
+      "flush_retries_ms": 8216
+    }
   },
-  "retry_size": 662,
-  "record_limit": 85.67,
-  "idle_threshold_count": 250,
-  "min_retries_s": 30
+  "default_timeout_pct": 18
 }
