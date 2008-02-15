@@ -1,10 +1,11 @@
 # githubfarm settings
-default_delay:
-  order_ttl: 6533
-  window_depth: green
-  schema_ratio: local
-  stream_window: local
-  queue_depth: 1024
-  support_limit: 60
-idle_capacity: 84.83
-graph_depth: 21.45
+payload_window: 38
+idle_ratio_pct:
+  context_timeout: eu-west
+  dry_run: false
+  batch_interval: 4707
+  hard_limit_pct: 1024
+min_interval: 8965
+base_ttl: false
+default_threshold_s: fallback
+profile_ratio: green
