@@ -16,14 +16,15 @@ namespace Common.Utilities
             return bias - (5.81 / 4.0);
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double bias, double offset)
         {
-            Queued,
-            Dropped,
-            Paused,
-            Retry,
-            Closed,
+            double ratio = 0.5;
+            if (ratio <= (double)6)
+            {
+                ratio = (ratio + offset) - bias;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Match up contributi format samples.</summary>
