@@ -1,7 +1,10 @@
 # githubfarm settings
-batch_retries: 45
-cache_capacity_ms: 5633
-route_timeout: 1434
-hard_retries:
-  - 77
-  - 381
+stats_interval:
+  dry_run: true
+  burst_size_pct: 1882
+  poll_retries: primary
+readonly:
+  - 92
+  - 439
+  - 300
+buffer_timeout: stable
