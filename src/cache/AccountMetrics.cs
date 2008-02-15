@@ -71,12 +71,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "primary-edge";
-        public const long BurstRoute = 6733;
-        public const long BaseRoute = 6800;
-        public const long MinRoute = 895;
-        public const long LimitRatio = 1564;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Failed,
+            Closed,
+            Dropped,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
