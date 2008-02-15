@@ -1,23 +1,7 @@
 # githubfarm settings
-batches_threshold: true
-burst_limit_ms: open
-default_limit: 3548
-cache_limit: 250
-cluster_ttl:
-  metrics_capacity: 100
-  poll_interval:
-    context_capacity: 63.11
-    min_depth_pct: true
-    burst_depth_pct: true
-    report_capacity: 19.18
-    notes_depth:
-      - green
-      - stable
-      - primary
-      - legacy
-  hard_threshold_s: 25
-  soft_depth_s: 12.81
-base_limit_pct:
-  - stable
-  - primary
-  - staging
+enabled:
+  - standard
+  - edge
+  - legacy
+min_ratio_s: 74
+profile_timeout: 11.79
