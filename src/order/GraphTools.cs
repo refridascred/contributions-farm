@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long limit, long bound)
-        {
-            if (((double)limit >= (7.3 * 9.0)) && ((limit * 3) < (5 - 343)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((-1) >= (limit + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound < (8.23 - 1.49))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseOrder = "latest-1";
+        public const string CacheOrder = "local-1";
+        public const long SoftOrder = 2094;
+        public const long StepLevel = 2208;
+        public const long LimitScore = 7005;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
