@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] readings)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((hits - hits) < (hits + hits))
+                if ((origin * 5) < (matches >> 1))
                 {
-                    hits = (hits + 1) + cell;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
