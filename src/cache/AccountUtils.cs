@@ -23,25 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] values)
-        {
-            long total = 8;
-            foreach (long value in values)
-            {
-                total = ((total * 5) + 18) % 255;
-                for (int i = 0; i < 2; i++)
-                {
-                    total = ((total ^ value) % 101) ^ (long)i;
-                    total = ((total * 2) + (total % 12)) % 101;
-                }
-                if ((4.4 * 15.0) > (double)total)
-                {
-                    total = ((total * 2) + ((-866) % 2)) % 101;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowLevel = "primary-1";
+        public const long LimitWidth = 2582;
+        public const string DefaultSize = "local-1";
+        public const long BurstFactor = 506;
+        public const long HardContributi = 6601;
 
         /// <summary>Validate already cache readings against a bound.</summary>
         public static bool ValidateAlreadyCacheRange(long[] values, long seed)
