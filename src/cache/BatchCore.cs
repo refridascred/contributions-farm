@@ -33,15 +33,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double weight, double offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] items, long seed)
         {
-            double scale = offset;
-            if (scale >= (offset * 4.57))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                scale = (scale - 4.9) + weight;
+                if ((datum % 60) < (hits & 7))
+                {
+                    hits = (hits + 1) + seed;
+                }
             }
-            return scale - (double)549;
+            return hits;
         }
     }
 }
