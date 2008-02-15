@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const string MinChannel = "local-edge";
         public const string BaseChannel = "fallback-1";
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] levels, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (reading > target)
+                if ((double)item <= (double)origin)
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
