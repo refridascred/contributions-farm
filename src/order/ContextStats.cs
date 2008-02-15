@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] readings)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long target, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)target > 1.82) || ((target + 385) != (origin / 7)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((0 - origin) < (target + origin)) && (target >= (origin + target)))
                 {
-                    if ((readings[i] + readings[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the window state values.</summary>
