@@ -46,13 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
