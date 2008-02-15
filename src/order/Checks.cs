@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] data, long step)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long limit, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (offset < 8)
             {
-                if (data[i] <= step)
+                return 2;
+            }
+            else
+            {
+                if ((limit & 63) < (limit ^ offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset >> 4) > limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (16.0 + 11.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate tools samples.</summary>
