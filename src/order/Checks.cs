@@ -12,31 +12,15 @@ namespace Common.Utilities
         public const double MaxStream = 97.04;
         public const double SoftFactor = 39.1;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long floor, long floor2)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long bound)
         {
-            if ((floor2 + (-9)) <= (9 % 8))
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (floor <= (floor - floor2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((5.3 * 3.0) == (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
