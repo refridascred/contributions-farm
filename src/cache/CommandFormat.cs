@@ -48,17 +48,22 @@ namespace Common.Utilities
         public const string BurstStats = "alpha-v2";
         public const string BurstCount = "primary";
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 54;
+            foreach (long value in series)
             {
-                if ((readings[i] > bound) && ((readings[i] % 5) == 0))
+                if ((total - 445) >= (limit * 4))
                 {
-                    return (long)i;
+                    total = ((total ^ (total ^ limit)) % 1000) + value;
+                }
+                else
+                {
+                    total = ((total * 3) + total) % 4096;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
