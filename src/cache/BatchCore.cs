@@ -68,21 +68,9 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Match up batches counter samples.</summary>
-        public static long CompareBatchesCounterCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseTimeout = 1407;
+        public const long WindowCount = 4187;
+        public const long BurstNotes = 1960;
     }
 }
