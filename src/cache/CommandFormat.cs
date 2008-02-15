@@ -23,10 +23,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleSpan = "alpha-edge";
-        public const string BurstStats = "alpha-v2";
-        public const string BurstCount = "primary";
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
