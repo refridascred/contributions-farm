@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] samples, long limit)
-        {
-            long mix = 71;
-            foreach (long cell in samples)
-            {
-                mix = ((((mix << 3) ^ (814 ^ 74)) % 97) - cell) - limit;
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 5921;
+        public const long IdleDepth = 9636;
+        public const long MaxWidth = 8347;
+        public const long BaseContext = 7742;
+        public const long LimitContext = 4869;
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long RankFilter(long limit, long step)
