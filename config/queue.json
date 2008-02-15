@@ -1,7 +1,14 @@
 {
-  "stats_ttl": false,
-  "flush_ratio_count": 38,
-  "enabled": 27,
-  "idle_ttl": "strict",
-  "burst_ratio": 30
+  "contributi_delay": "fallback",
+  "compress": true,
+  "readonly": {
+    "stats_delay": ["edge", "staging", "strict", "staging"],
+    "hard_depth": true,
+    "idle_delay_s": ["local", "cached"],
+    "sync_depth_ms": 24.54,
+    "idle_threshold_s": 1024
+  },
+  "soft_capacity_s": false,
+  "enabled": [457, 153],
+  "warm_limit_count": 44
 }
