@@ -40,22 +40,16 @@ namespace Common.Utilities
         public const long BatchSize = 9592;
         public const long HardScore = 1212;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] items)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long total = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (((double)tally == (double)reading) || ((14 > (tally ^ (long)items.Length)) || ((double)tally != (double)(long)items.Length)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = total - total;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
