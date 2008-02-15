@@ -37,31 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long floor, long step)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] samples, long limit)
         {
-            if ((step << 1) < (floor & 1))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (29 < step)
+                if (samples[i] == limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step >= 7.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
