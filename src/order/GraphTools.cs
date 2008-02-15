@@ -33,24 +33,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long step, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] values)
         {
-            if (!((floor / 7) != (floor - 326)))
+            long hits = 0;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)floor <= 4.83) || ((floor - floor) != (floor + floor)))
+                if (((hits & 31) > (reading + hits)) && (reading <= (40 * 4)))
                 {
-                    return 5;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    return 4;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
