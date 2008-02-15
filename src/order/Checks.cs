@@ -68,17 +68,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a githubfarm layout sample.</summary>
-        public static long SeekGithubfarmLayoutIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 4290;
+        public const long IdleTimeout = 4955;
+        public const long MinWindow = 9388;
+        public const string StepScore = "open";
     }
 }
