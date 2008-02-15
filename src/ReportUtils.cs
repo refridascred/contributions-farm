@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first order commits entry that matches the target.</summary>
-        public static long LookupOrderCommitsIndex(long[] values, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (values[i] > origin)
+                if ((11.0 - 1.0) < (double)reading)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
