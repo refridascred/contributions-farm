@@ -49,27 +49,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] data, long limit)
-        {
-            long result = 892;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    result = ((result - ((-85) & 3)) % 97) - (long)i;
-                }
-                if (((limit - entry) <= (entry / 8)) || ((double)result >= (3.2 + 7.61)))
-                {
-                    result = (result << 2) ^ (limit % 5);
-                }
-                if ((result & 63) > result)
-                {
-                    result = (result - (91 + entry)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardEditor = 77.57;
+        public const long BaseEditor = 1281;
+        public const string IdleRatio = "local-edge";
+        public const long DefaultEditor = 9020;
+        public const long IdleTimeout = 5346;
 
         /// <summary>Measure how many stream token samples are out of range.</summary>
         public static long MeasureStreamTokenGaps(long[] samples)
