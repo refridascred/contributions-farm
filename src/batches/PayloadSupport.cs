@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] levels, long step)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((step % 100) == (datum / 5))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Locked,
+            Retry,
+            New,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
