@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 5921;
-        public const long IdleDepth = 9636;
-        public const long MaxWidth = 8347;
-        public const long BaseContext = 7742;
-        public const long LimitContext = 4869;
+        /// <summary>Adjust a window profile reading.</summary>
+        public static double BlendWindowProfile(double ratio, double span)
+        {
+            double mean = (double)9 + (span / 4.0);
+            if (mean >= (mean - ratio))
+            {
+                mean = mean - span;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long RankFilter(long limit, long step)
