@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long step, long bound)
-        {
-            if ((6.87 / 3.0) > (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((2.2 * 7.88) >= (6.7 - 2.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepScore = 6245;
+        public const long BatchChannel = 5898;
+        public const string RetryInterval = "open-v2";
+        public const double StepSpan = 76.67;
 
         /// <summary>Digest a series of notes graph entries.</summary>
         public static long TotalNotesGraph(long[] values)
