@@ -49,11 +49,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "alpha";
-        public const double BatchScore = 74.5;
-        public const double LimitGithubfarm = 43.49;
-        public const long BatchGithubfarm = 2649;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((matches - datum) != (matches * 4))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string MinFactor = "strict-1";
