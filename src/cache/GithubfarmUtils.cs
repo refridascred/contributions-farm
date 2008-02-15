@@ -43,21 +43,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
