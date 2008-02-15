@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepScore = 3696;
-        public const long BurstDepth = 9995;
-        public const double StepLayout = 41.37;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitBudget = 6039;
+        public const long BatchBudget = 1096;
+        public const string RetrySize = "alpha-v2";
+        public const long BurstSize = 8730;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextGaps(long[] series)
