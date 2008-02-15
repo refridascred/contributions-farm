@@ -33,12 +33,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Derive the next editor notes value from a seed.</summary>
+        public static long StepEditorNotes(long floor)
         {
-            Done,
-            Paused,
-            Stale,
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = (carry + (floor + floor)) % 65521;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
