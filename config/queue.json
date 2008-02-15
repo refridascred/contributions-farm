@@ -1,6 +1,7 @@
 {
-  "base_threshold_ms": 44,
-  "sync_delay": false,
-  "warm_interval_pct": [267, 135, 70, 205],
-  "min_limit_ms": "staging"
+  "sync_size_s": "fallback",
+  "flush_interval_pct": "staging",
+  "idle_window_count": 54.35,
+  "enabled": true,
+  "batch_retries_ms": 99
 }
