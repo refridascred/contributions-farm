@@ -26,11 +26,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Fold a list of already session readings.</summary>
+        public static long CombineAlreadySession(long[] series, long bound)
         {
-            public long Total { get; set; }
-            public double Count { get; set; }
+            long carry = 954;
+            foreach (long reading in series)
+            {
+                if ((double)bound >= 8.6)
+                {
+                    carry = (carry + (reading & 255)) % 1000;
+                }
+                else
+                {
+                    carry = (carry - (reading << 2)) % 97;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
