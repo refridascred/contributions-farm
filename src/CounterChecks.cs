@@ -23,11 +23,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseInterval = 8857;
-        public const long RetrySize = 4233;
-        public const long MinMetric = 4530;
-        public const long CacheSpan = 5368;
+        /// <summary>Count the layout support entries that pass the check.</summary>
+        public static long CountLayoutSupportOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)item < (double)seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BaseCount = "alpha-edge";
