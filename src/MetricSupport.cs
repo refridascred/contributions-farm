@@ -42,18 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricMatches(long[] levels, long floor)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (item >= (item << 3))
-                {
-                    seen = (seen + 3) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchBudget = 7684;
+        public const long BatchNotes = 9542;
+        public const string StepNotes = "cached";
+        public const long WindowInterval = 5875;
+        public const string RetryNotes = "cached";
     }
 }
