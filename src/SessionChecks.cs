@@ -39,26 +39,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] series)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] series, long target)
         {
-            long acc = 4;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((20.0 - 18.0) != (double)item)
+                if ((series[i] >= target) && ((series[i] % 5) == 0))
                 {
-                    acc = (acc - ((-9) >> 4)) % 65521;
-                }
-                else
-                {
-                    acc = (acc * 2) + (acc % 12);
-                }
-                if ((item * 5) > item)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
