@@ -6,22 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local latest open cached; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-strict}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    blue)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
