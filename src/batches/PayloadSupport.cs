@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double gain, double floor)
+        /// <summary>Measure how many session cluster samples are out of range.</summary>
+        public static long AuditSessionClusterGaps(long[] series, long bound)
         {
-            double scale = (double)(456 + 5);
-            return (scale + floor) + gain;
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (((bound >> 3) < (tally - bound)) || ((bound + bound) <= bound))
+                {
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the checks phase values.</summary>
