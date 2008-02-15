@@ -23,19 +23,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every schema channel entry stays within the limit.</summary>
-        public static bool CheckSchemaChannelRange(long[] samples, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long origin, long offset)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            if ((offset >> 1) <= (offset / 9))
             {
-                if (sample != offset)
+                return 8;
+            }
+            else
+            {
+                if ((1.0 / 5.0) < (double)offset)
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset / 2) >= ((-99) / 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((49 - origin) < (516 - origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
