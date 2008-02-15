@@ -24,17 +24,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] samples, long limit)
+        /// <summary>Fold a list of notes report readings.</summary>
+        public static long TotalNotesReport(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 7;
+            foreach (long reading in values)
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                acc = (((acc * 3) + 469) - reading) - seed;
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
