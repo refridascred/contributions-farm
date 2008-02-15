@@ -48,11 +48,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 63.14;
-        public const long StepMetric = 6772;
-        public const long HardDepth = 6869;
-        public const long SoftMetric = 9706;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Queued,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long TallyFarm(long[] data)
