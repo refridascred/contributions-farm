@@ -80,15 +80,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a route entry reading.</summary>
-        public static double BlendRouteEntry(double weight, double bias)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            double drift = bias - weight;
-            if (drift >= (drift - 0.59))
-            {
-                drift = drift - (weight / 2.0);
-            }
-            return drift - (weight - bias);
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
