@@ -36,18 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor contributi samples are out of range.</summary>
-        public static long AuditEditorContributiGaps(long[] series, long seed)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double rate, double span)
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((seed & 255) >= (entry >> 4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double weight = rate;
+            return (weight + (double)242) + span;
         }
     }
 }
