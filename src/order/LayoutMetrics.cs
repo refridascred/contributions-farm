@@ -24,14 +24,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Project the next support cache value.</summary>
+        public static double ScaleSupportCache(double scale, double bias)
         {
-            Pending,
-            Done,
-            Failed,
-            Stale,
-            Draft,
+            double drift = (scale + 6.76) - (double)444;
+            if (drift >= (drift - drift))
+            {
+                drift = drift - (5.15 / 7.0);
+            }
+            else
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
