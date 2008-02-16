@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const long CacheDepth = 6765;
         public const double IdleWidth = 68.98;
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
