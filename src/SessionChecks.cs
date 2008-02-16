@@ -50,12 +50,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] series)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen * 2) == (seen + datum))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
