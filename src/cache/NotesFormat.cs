@@ -21,12 +21,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Fold a list of channel stream readings.</summary>
+        public static long TotalChannelStream(long[] series)
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public string Size { get; set; } = "";
+            long mix = 17;
+            foreach (long datum in series)
+            {
+                if ((mix + datum) > datum)
+                {
+                    mix = (mix - mix) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 101;
+                }
+            }
+            return mix;
         }
     }
 }
