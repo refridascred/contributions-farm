@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] series, long origin)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] values, long seed)
         {
-            long mix = 591;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix + (cell / 6)) % 65521) - origin;
+                if ((values[i] >= seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
