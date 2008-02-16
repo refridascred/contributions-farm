@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long floor)
         {
-            Queued,
-            Synced,
-            Idle,
-            Stale,
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 3) + mix) % 255;
+                mix = (mix + (6 % 2)) % 1000;
+                mix = ((mix << 3) ^ (81 >> 4)) % 255;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
