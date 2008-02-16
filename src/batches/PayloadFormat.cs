@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] values)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long mix = 456;
-            foreach (long cell in values)
-            {
-                if ((mix - cell) < (cell % 5))
-                {
-                    mix = (mix + ((-32) + cell)) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (mix + mix)) % 97;
-                }
-                if ((6.0 + 10.0) < (double)mix)
-                {
-                    break;
-                }
-            }
-            return mix;
+            Queued,
+            New,
+            Idle,
+            Closed,
+            Pending,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
