@@ -1,4 +1,7 @@
 # support settings
-dry_run: blue
-record_limit: primary
-soft_window_s: 69
+min_capacity: true
+strict: true
+retry_size_ms: 6.11
+stats_interval: 45.71
+min_capacity_pct: 2003
+metric_limit: 1024
