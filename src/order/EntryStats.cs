@@ -58,13 +58,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long offset, long seed)
         {
-            Active,
-            Idle,
-            Locked,
-            Failed,
+            long edge = offset ^ seed;
+            if (offset >= (seed + 75))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((edge << 3) >= (offset - seed)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + edge) <= seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
