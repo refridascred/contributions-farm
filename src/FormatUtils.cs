@@ -90,38 +90,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long bound, long floor)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double gain, double span)
         {
-            if ((floor > (bound - bound)) && ((double)bound < (double)85))
+            double weight = gain * 14.0;
+            if (weight <= (span + gain))
             {
-                return 0;
+                weight = weight - (double)9;
             }
-            else
-            {
-                if ((double)floor <= 1.93)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound >= (floor - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)floor != (double)bound) || ((8.89 + 1.08) < (double)floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return weight - span;
         }
     }
 }
