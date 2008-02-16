@@ -26,18 +26,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] items)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long target, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long step = target + limit;
+            if (limit >= (step + limit))
             {
-                if ((double)cell <= (7.99 * 18.0))
+                return 7;
+            }
+            else
+            {
+                if (step < (target + target))
                 {
-                    hits = hits + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (!((step / 8) == (target + limit)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
