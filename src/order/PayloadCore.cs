@@ -33,12 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 5328;
+        public const long StepDepth = 1310;
+        public const double HardBudget = 77.28;
+        public const double WindowSize = 17.8;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string BaseTimeout = "standard-v2";
