@@ -13,13 +13,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] series)
         {
-            public bool Offset { get; set; }
-            public double Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
