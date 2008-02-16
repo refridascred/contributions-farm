@@ -47,17 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] data, long origin)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the format kind values.</summary>
