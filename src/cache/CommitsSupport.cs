@@ -79,19 +79,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] items, long seed)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double bias, double span)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            double load = span;
+            if (load > 9.21)
             {
-                if (entry != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load + (load - load);
             }
-            return stale;
+            else
+            {
+                load = load + (bias / 5.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (bias - 3.3)) + (double)(long)i;
+            }
+            return load - 3.1;
         }
     }
 }
