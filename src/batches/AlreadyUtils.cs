@@ -43,18 +43,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] series, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long state = 16;
+            foreach (long value in levels)
             {
-                if (4 <= (matches / 2))
+                if (limit > (86 & 1))
                 {
-                    matches = ((matches + 3) + datum) - step;
+                    state = ((state << 3) ^ (value + state)) % 65521;
                 }
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Adjust a format reading.</summary>
