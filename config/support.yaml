@@ -1,8 +1,11 @@
 # support settings
-burst_interval_count:
-  report_retries: false
-  sync_retries: stable
-  route_capacity: 38.24
-  retry_size_s: 30
-sync_ttl_ms: false
-hard_depth_s: primary
+enabled:
+  order_limit: blue
+  warm_ratio_ms: 76.41
+  route_timeout: false
+  batch_interval_pct: 93
+  audit: 6.84
+metric_interval: 60
+idle_ttl:
+  - eu-west
+  - edge
