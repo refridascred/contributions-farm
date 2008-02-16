@@ -28,21 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] items)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Stale,
+            Draft,
         }
     }
 }
