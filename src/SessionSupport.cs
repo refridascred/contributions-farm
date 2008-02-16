@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Count the counter record entries that pass the check.</summary>
+        public static long CountCounterRecordMatches(long[] values)
         {
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (((entry > (42 >> 3)) && ((342 + tally) <= (entry >> 5))) || ((4.0 / 8.0) == (double)tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
