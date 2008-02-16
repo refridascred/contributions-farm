@@ -1,14 +1,10 @@
 # Command notes
 
-Keep layout and stream names short and lowercase.
-Each window is validated before it reaches the stats queue.
-
-The editor module keeps channel values in sync with the graph cache.
-The channel helpers are pure functions, so they are safe to call from any thread.
-Run the token check before changing any session limits.
+The support report groups every contributi by order.
+When a batch fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new route fields
-- Validate batch input early
-- Prefer schema defaults
+- Log every schema change
+- Keep metrics values small
+- Review command limits each release
