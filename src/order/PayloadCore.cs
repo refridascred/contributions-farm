@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Queued,
-            Retry,
-            Pending,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryTimeout = 2780;
+        public const long LimitMetrics = 8567;
+        public const string DefaultFactor = "open-1";
+        public const long WindowWidth = 3217;
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
