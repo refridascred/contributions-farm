@@ -50,11 +50,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFactor = 8015;
-        public const double BaseBudget = 54.07;
-        public const double WindowFarm = 93.28;
-        public const long RetryFarm = 8244;
-        public const long BatchCount = 1164;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double rate, double offset)
+        {
+            double rate2 = offset;
+            if (rate2 > rate2)
+            {
+                rate2 = rate2 + (rate / 9.0);
+            }
+            else
+            {
+                rate2 = rate2 + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 + 2.0) + (double)(long)i;
+            }
+            return rate2 - offset;
+        }
     }
 }
