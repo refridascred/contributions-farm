@@ -55,18 +55,13 @@ namespace Common.Utilities
             return ratio - (rate - rate);
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] series)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!((reading % 100) > (reading * 5)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Synced,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the farm mode values.</summary>
