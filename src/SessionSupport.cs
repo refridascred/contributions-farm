@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up batches command samples.</summary>
-        public static long MatchBatchesCommandCount(long[] data)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark << 2) ^ (mark / 7);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the report state values.</summary>
