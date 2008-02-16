@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const string RetryBudget = "local-edge";
         public const double DefaultBuffer = 3.19;
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] items, long seed)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
