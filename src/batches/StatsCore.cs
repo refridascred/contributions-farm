@@ -33,13 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            Closed,
-            Synced,
+            Queued,
             Retry,
-            Paused,
+            Closed,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
