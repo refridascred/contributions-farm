@@ -25,26 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] items)
         {
-            long score = -376;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (((sample - sample) == (score + sample)) && ((score * 5) <= score))
+                if (!((sample >> 2) > (sample ^ sample)))
                 {
-                    score = (score + (score + sample)) % 65521;
-                }
-                else
-                {
-                    score = score - (score << 3);
+                    seen = seen + 1;
                 }
             }
-            if (score > 378)
-            {
-                score = (score ^ (669 * 4)) % 65521;
-            }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
