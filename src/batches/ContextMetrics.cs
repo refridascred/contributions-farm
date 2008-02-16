@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] levels, long floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] levels)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (cell < floor)
+                if ((double)datum <= (double)count)
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
