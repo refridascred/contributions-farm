@@ -46,12 +46,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] items)
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value < (value ^ value)) && !((double)value != (7.6 * 10.0)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
