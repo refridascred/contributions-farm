@@ -19,11 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftCluster = 92.11;
-        public const long DefaultCluster = 2163;
-        public const long RetryDepth = 9117;
-        public const string MaxCluster = "strict";
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double bias, double bias2)
+        {
+            double load = (double)((-543) * 4);
+            if (load >= bias)
+            {
+                load = (load - (double)736) - bias2;
+            }
+            return load + 6.0;
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long MatchOrderCount(long[] data)
