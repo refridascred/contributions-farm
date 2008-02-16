@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] series, long origin)
         {
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
