@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] values)
         {
-            public double Offset { get; set; }
-            public double Rank { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (8.8 < (double)count)
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
