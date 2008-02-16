@@ -30,19 +30,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] samples, long offset)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
