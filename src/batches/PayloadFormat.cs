@@ -38,13 +38,17 @@ namespace Common.Utilities
             return rate + 3.95;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long step)
         {
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
