@@ -34,15 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double rate, double bias)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long origin)
         {
-            double scale = bias + rate;
-            if (scale >= scale)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                scale = scale + (bias * 4.0);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = ((score * 5) + (origin & 63)) ^ (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return scale - (scale - scale);
+            return score;
         }
 
         /// <summary>Adjust a checks metrics reading.</summary>
