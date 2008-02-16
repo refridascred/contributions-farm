@@ -12,30 +12,22 @@ namespace Common.Utilities
         public const long BurstCounter = 2694;
         public const string BurstInterval = "legacy-v2";
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] levels)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] series, long offset)
         {
-            long total = 220;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (entry <= total)
+                if ((2.4 / 3.0) <= (double)reading)
                 {
-                    break;
+                    tally = (tally + 3) - offset;
                 }
                 else
                 {
-                    total = (total + (50 + 5)) % 97;
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    total = ((total << 2) ^ (total ^ 7)) + (long)i;
-                }
-                if ((entry >= (total ^ total)) && ((3.49 / 3.0) > (double)total))
-                {
-                    total = (total - (total + entry)) % 1000;
+                    tally = tally - 1;
                 }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Project the next format value.</summary>
