@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxTimeout = 9334;
-        public const long BatchAccount = 2067;
-        public const double BaseTimeout = 34.43;
-        public const long LimitWidth = 650;
-        public const double IdleLevel = 56.39;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Paused,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] samples)
