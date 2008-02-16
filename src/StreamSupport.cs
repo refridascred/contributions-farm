@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] items)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double rate, double span)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double gain = rate;
+            if (gain < gain)
             {
-                if ((cell - cell) < 0)
-                {
-                    count = count + 3;
-                }
+                gain = (gain + 10.0) + span;
             }
-            return count;
+            else
+            {
+                gain = gain - rate;
+            }
+            return gain - 9.91;
         }
 
         /// <summary>Hold a channel header.</summary>
