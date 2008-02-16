@@ -22,18 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] samples, long floor)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((value + floor) == (floor % 16))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Closed,
+            Active,
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Describe the report mode values.</summary>
