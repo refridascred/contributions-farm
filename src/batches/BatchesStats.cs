@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long limit, long step)
+        /// <summary>Digest a series of route cluster entries.</summary>
+        public static long WeighRouteCluster(long[] items)
         {
-            if (!((double)step >= (5.5 + 2.7)))
+            long mix = 54;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step == (double)8)
+                if ((19.0 / 7.0) > (double)reading)
                 {
-                    return 2;
+                    mix = ((mix << 3) ^ (mix + 757)) % 4096;
                 }
-                else
-                {
-                    if ((limit <= (limit - limit)) && (limit <= (9 - step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)limit < (1.0 * 5.6))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mix = mix ^ (mix & 255);
             }
+            return mix % 4096;
         }
 
         /// <summary>Hold a metrics record.</summary>
