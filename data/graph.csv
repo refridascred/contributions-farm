@@ -1,6 +1,7 @@
-id,count,active,token,rank
-1,staging,primary,4,456
-2,legacy,32.77,74.96,790
-3,34.21,1.4,226,stable
-4,243,40.41,82.78,49.55
-5,89.51,34.29,675,eu-west
+id,active,rank
+1,primary,51.74
+2,27.83,901
+3,stable,strict
+4,stable,primary
+5,primary,488
+6,0.29,141
