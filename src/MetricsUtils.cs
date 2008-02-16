@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long limit, long offset)
-        {
-            if ((18.0 - 4.7) < (double)limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit * 4) <= ((-8) % 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset >> 5) > (limit + limit)) && ((limit % 64) <= offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset + 834) <= 42) || ((limit ^ limit) <= (limit / 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryOrder = "fallback";
+        public const string IdleOrder = "local-edge";
+        public const long SoftOrder = 7099;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
