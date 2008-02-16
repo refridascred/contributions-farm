@@ -41,12 +41,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheSize = "stable-1";
-        public const string HardTimeout = "standard-1";
-        public const string MinRatio = "legacy-1";
-        public const long DefaultChannel = 7858;
-        public const long BatchChannel = 406;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] samples, long offset)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
