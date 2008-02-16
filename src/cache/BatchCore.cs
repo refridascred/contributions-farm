@@ -46,17 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first route format entry that matches the target.</summary>
-        public static long FindRouteFormatIndex(long[] samples, long target)
+        /// <summary>Measure how many metric record samples are out of range.</summary>
+        public static long TallyMetricRecordOutliers(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
+                if (51 <= (reading * 2))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + floor;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
