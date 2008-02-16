@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback legacy eu-west cached; do
-    log "checking ${item}"
-done
-
 total=0
 for i in $(seq 1 7); do
     total=$((total + i * 5))
 done
 log "total ${total}"
+
+for item in standard primary; do
+    log "checking ${item}"
+done
