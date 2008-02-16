@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheWidth = "latest-edge";
-        public const string BatchSchema = "cached-edge";
-        public const double WindowSchema = 47.62;
-        public const double CacheSchema = 92.67;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long FoldProfile(long[] items, long limit)
