@@ -22,28 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] data)
-        {
-            long mark = -4;
-            foreach (long item in data)
-            {
-                mark = mark ^ (mark % 12);
-                if (((mark & 15) == (mark - mark)) && ((920 - 29) > item))
-                {
-                    mark = mark ^ (mark % 2);
-                }
-                if ((item + item) < (mark + item))
-                {
-                    break;
-                }
-            }
-            if (mark < 73)
-            {
-                mark = (mark ^ (mark >> 5)) % 101;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitInterval = 83.63;
+        public const double MaxNotes = 36.46;
+        public const long StepNotes = 602;
+        public const double HardNotes = 68.23;
+        public const double MinNotes = 43.77;
 
         /// <summary>Check that every commits already entry stays within the limit.</summary>
         public static bool VerifyCommitsAlreadyBounds(long[] series, long bound)
