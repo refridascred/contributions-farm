@@ -22,12 +22,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Idle,
-            Failed,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftFactor = 8966;
+        public const long StepEntry = 4921;
+        public const long RetryEntry = 7079;
     }
 }
