@@ -25,21 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload cache samples.</summary>
-        public static long ComparePayloadCacheCount(long[] data)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = rate;
+            if (gain > bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain - (double)390;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + (double)434;
         }
 
         /// <summary>Describe the support state values.</summary>
