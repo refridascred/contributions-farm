@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Grade a buffer session value against two limits.</summary>
+        public static long SortBufferSession(long limit, long limit2)
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
+            long step = limit ^ limit2;
+            if (((double)limit != (double)limit2) && (limit2 < (9 ^ 2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((-8) ^ limit) >= ((-7) & 63))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step << 1) != (limit2 << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((5.1 * 2.7) < (double)limit) || (9 < (limit + limit2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
