@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchRatio = 9210;
-        public const long BaseContext = 9016;
-        public const long MinCount = 572;
-        public const string WindowContext = "legacy-edge";
-        public const long HardTimeout = 7833;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Queued,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long target)
