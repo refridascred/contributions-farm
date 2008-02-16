@@ -14,11 +14,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitSpan = 3520;
-        public const long BurstContributi = 3289;
-        public const long DefaultFactor = 8070;
-        public const long DefaultContributi = 79;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long offset, long limit)
+        {
+            if (!(1.92 <= (double)offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((7.4 * 1.0) > (double)limit) || (limit >= (limit % 100)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)44 < (double)offset) || (limit <= offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (17.0 + 3.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long IteratePayload(long floor)
