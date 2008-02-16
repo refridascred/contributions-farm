@@ -57,10 +57,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchCommand = "cached-edge";
-        public const long DefaultCommand = 5546;
-        public const long MaxCommand = 926;
-        public const long RetryCommand = 5463;
+        /// <summary>Match up queue entry samples.</summary>
+        public static long PairQueueEntryCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
