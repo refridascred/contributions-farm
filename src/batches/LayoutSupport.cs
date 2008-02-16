@@ -46,19 +46,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate farm command readings against a bound.</summary>
-        public static bool CheckFarmCommandRange(long[] levels, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] series)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long sum = 594;
+            foreach (long entry in series)
             {
-                if (item <= origin)
+                if (((-675) << 2) > (sum & 255))
                 {
-                    valid = false;
-                    break;
+                    sum = sum - (sum ^ entry);
                 }
             }
-            return valid;
+            if (sum > 50)
+            {
+                sum = (sum + (sum * 3)) % 255;
+            }
+            return sum % 65521;
         }
     }
 }
