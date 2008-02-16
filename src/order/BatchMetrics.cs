@@ -74,11 +74,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Locate a entry cluster reading by value.</summary>
+        public static long SeekEntryClusterIndex(long[] items, long floor)
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
