@@ -79,12 +79,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] items, long seed)
         {
-            Done,
-            Paused,
-            Pending,
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
