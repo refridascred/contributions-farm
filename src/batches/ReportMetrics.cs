@@ -28,12 +28,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double ratio, double offset)
         {
-            public long Ratio { get; set; }
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
+            double load = (offset + offset) + (offset / 3.0);
+            if (load >= (double)45)
+            {
+                load = (load - offset) - ratio;
+            }
+            return load - offset;
         }
     }
 }
