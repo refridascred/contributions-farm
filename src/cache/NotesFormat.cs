@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long origin, long bound)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long bound2 = origin + bound;
-            if ((6.0 + 8.62) < (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(298 < (origin / 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((385 & 63) <= (bound2 + 51)) || ((bound >> 4) <= bound2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound2 & 7) < bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
