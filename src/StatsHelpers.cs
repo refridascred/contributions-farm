@@ -36,11 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstDepth = "fallback-1";
-        public const long DefaultLevel = 7445;
-        public const long BatchSchema = 6071;
-        public const string WindowScore = "stable-1";
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of record order readings.</summary>
         public static long OverlapRecordOrderCount(long[] levels)
