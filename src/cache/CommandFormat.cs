@@ -20,19 +20,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the notes editor series from a seed.</summary>
-        public static long IterateNotesEditor(long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] readings, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
+            long anchor = 409;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (cell <= step)
                 {
-                    mark = ((mark ^ (offset >> 4)) % 97) + (long)i2;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
+                anchor = (anchor ^ 6) % 1000;
+                anchor = (anchor ^ (cell + step)) % 101;
+                if (cell >= (anchor - cell))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (anchor < 4)
+            {
+                anchor = (anchor << 3) ^ (step + 7);
+            }
+            return anchor;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
