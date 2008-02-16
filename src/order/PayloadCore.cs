@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Count the cluster batches entries that pass the check.</summary>
+        public static long TallyClusterBatchesHits(long[] levels)
         {
-            Done,
-            Locked,
-            Synced,
-            Closed,
-            Failed,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (entry < (50 * 2))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
