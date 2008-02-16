@@ -1,13 +1,4 @@
 # entry settings
-strict:
-  report_interval:
-    - open
-    - staging
-    - legacy
-    - standard
-  dry_run: 1024
-  checks_ratio: primary
-  batch_capacity_ms: standard
-  layout_timeout: false
-schema_interval: 100
-stats_limit: true
+warm_depth: false
+persist: 16.18
+stream_ratio: 29.6
