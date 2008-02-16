@@ -33,19 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double bias, double bias2)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] data, long seed)
         {
-            double rate = (double)(-1) + (bias - bias);
-            if (rate <= (double)58)
+            long matches = 0;
+            foreach (long item in data)
             {
-                rate = rate + (double)701;
+                if ((77 & 7) >= (8 ^ (long)data.Length))
+                {
+                    matches = ((matches + 1) + item) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + bias2) + (double)(long)i;
-            }
-            return rate - rate;
+            return matches;
         }
     }
 }
