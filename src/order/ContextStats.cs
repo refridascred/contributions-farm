@@ -25,22 +25,12 @@ namespace Common.Utilities
         public const string RetryMetrics = "fallback";
         public const long SoftMetrics = 2580;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 5346;
+        public const long DefaultCount = 6787;
+        public const long SoftCount = 7719;
+        public const long BurstContributi = 1715;
+        public const long WindowSize = 1187;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double MinFilter = 95.73;
