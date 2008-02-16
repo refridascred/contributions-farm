@@ -1,10 +1,15 @@
 # Command notes
 
-The support report groups every contributi by order.
-When a batch fails, the command handler retries a few times before giving up.
+Keep notes and cache names short and lowercase.
+Keep tools and command names short and lowercase.
+The graph helpers are pure functions, so they are safe to call from any thread.
+
+When a contributi fails, the record handler retries a few times before giving up.
+A schema that stays idle for too long is moved to the buffer list.
+A tools that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Log every schema change
-- Keep metrics values small
-- Review command limits each release
+- Keep layout values small
+- Validate entry input early
+- Review counter limits each release
