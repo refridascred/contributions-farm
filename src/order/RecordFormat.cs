@@ -58,12 +58,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 6531;
-        public const long HardScore = 1847;
-        public const long CacheSize = 370;
-        public const double CacheTimeout = 30.02;
-        public const long DefaultCluster = 5418;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result - result) % 1000;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long BucketAlready(long step, long seed)
