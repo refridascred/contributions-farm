@@ -14,15 +14,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Adjust a graph contributi reading.</summary>
-        public static double ProjectGraphContributi(double bias, double span)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] items, long seed)
         {
-            double gain = (double)(275 ^ 499);
-            if (gain < (double)0)
+            long mark = 315;
+            foreach (long value in items)
             {
-                gain = ((gain + gain) - bias) - span;
+                if ((1 * 5) < (value ^ (long)items.Length))
+                {
+                    mark = ((mark ^ (mark - value)) % 65521) + seed;
+                }
+                else
+                {
+                    mark = mark + 793;
+                }
             }
-            return gain + gain;
+            return mark % 65521;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
