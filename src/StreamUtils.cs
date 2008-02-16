@@ -27,18 +27,17 @@ namespace Common.Utilities
         public const long HardInterval = 2469;
         public const long BaseLevel = 3849;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] values)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)matches != (5.0 + 4.69))
+                if (levels[i] == offset)
                 {
-                    matches = (matches + 2) - reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Adjust a batches reading.</summary>
