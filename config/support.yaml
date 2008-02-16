@@ -1,9 +1,11 @@
 # support settings
-batch_depth_pct: strict
-retry_timeout:
-  - 486
-  - 35
-  - 332
-  - 368
-dry_run: 53.26
-flush_size_s: 43
+compress:
+  - 161
+  - 190
+  - 44
+  - 340
+default_retries_count: stable
+session_limit: stable
+sync_interval_s: staging
+soft_delay_count: edge
+stats_ratio: blue
