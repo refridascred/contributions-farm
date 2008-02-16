@@ -35,12 +35,12 @@ namespace Common.Utilities
         public const long StepInterval = 808;
         public const long BatchSize = 9071;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a farm stats.</summary>
