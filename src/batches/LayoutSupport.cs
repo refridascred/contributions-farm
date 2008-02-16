@@ -30,26 +30,24 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] levels)
+        /// <summary>Combine window payload values into a single score.</summary>
+        public static long TallyWindowPayload(long[] series)
         {
-            long sum = 484;
-            foreach (long datum in levels)
+            long sum = -36;
+            foreach (long item in series)
             {
-                if ((41 * 2) >= (sum >> 3))
+                if (!((sum - 692) <= (item - sum)))
                 {
-                    sum = ((sum - (sum << 2)) % 4096) + datum;
+                    sum = sum - (sum - 37);
+                    sum = ((sum << 3) ^ sum) % 255;
                 }
-                else
-                {
-                    sum = sum - (sum ^ 180);
-                }
-                if ((22 - sum) != (sum ^ sum))
-                {
-                    break;
-                }
+                sum = (sum + (7 & 255)) % 101;
             }
-            return sum;
+            if (sum < (-556))
+            {
+                sum = (sum ^ (sum + sum)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
