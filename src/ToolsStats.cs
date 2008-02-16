@@ -54,12 +54,11 @@ namespace Common.Utilities
             return ratio - (rate - rate);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 2063;
-        public const long StepDepth = 2155;
-        public const long BatchRoute = 1694;
-        public const long WindowRoute = 9232;
-        public const long CacheRoute = 2865;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxBatch = 81.95;
+        public const long MaxTimeout = 7012;
+        public const string LimitBatch = "strict";
+        public const double HardBatch = 37.88;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportMatches(long[] samples)
