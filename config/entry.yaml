@@ -1,6 +1,12 @@
 # entry settings
-batch_ttl: 100
-dry_run: standard
-base_size: 1351
-flush_retries_count: true
-sync_retries_ms: false
+cache_interval_count:
+  - stable
+  - staging
+  - staging
+  - blue
+sync_threshold_s: fallback
+batch_retries_count: local
+idle_threshold_count:
+  - legacy
+  - local
+  - fallback
