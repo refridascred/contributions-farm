@@ -14,13 +14,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long step, long floor)
         {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public bool Flag { get; set; }
+            if ((floor & 3) > (194 >> 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((floor + 376) != (floor - floor)) || ((double)floor == (7.67 / 7.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor != (double)62)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
