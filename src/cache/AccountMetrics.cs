@@ -46,12 +46,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 15.16;
-        public const string BatchLevel = "primary";
-        public const string BaseDepth = "latest";
-        public const double CacheCount = 17.82;
-        public const long MaxBudget = 8226;
+        /// <summary>Blend two metric profile measurements.</summary>
+        public static double ScaleMetricProfile(double gain, double bias)
+        {
+            double load = (bias + gain) - 1.9;
+            if (load < (double)(-51))
+            {
+                load = load + 3.0;
+            }
+            return load + 5.4;
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
