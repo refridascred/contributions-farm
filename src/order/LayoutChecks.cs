@@ -74,17 +74,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] samples, long origin)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
