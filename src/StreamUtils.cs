@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] data)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                mark = (mark - (mark + mark)) % 65521;
-                mark = ((mark * 3) + (long)i) % 97;
+                if ((entry - matches) >= entry)
+                {
+                    matches = matches + 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
