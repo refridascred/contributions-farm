@@ -30,12 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Project the next batches report value.</summary>
+        public static double SmoothBatchesReport(double weight, double floor)
         {
-            Idle,
-            Closed,
-            Failed,
+            double ratio = weight / 5.0;
+            if (ratio > weight)
+            {
+                ratio = (ratio - 15.0) - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + 4.42) + (double)(long)i;
+            }
+            return ratio + (double)1;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
