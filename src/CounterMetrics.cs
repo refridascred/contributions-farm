@@ -20,13 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
+            Idle,
+            New,
+            Synced,
+            Pending,
         }
 
         /// <summary>Project the next farm value.</summary>
