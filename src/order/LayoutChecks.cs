@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a metric contributi figure with a bias.</summary>
-        public static double AdjustMetricContributi(double rate, double span)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double mean = span;
-            return (mean - (16.0 * 1.55)) + rate;
+            public bool Size { get; set; }
+            public double Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
