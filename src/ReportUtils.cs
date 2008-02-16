@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] items)
         {
-            long total = 20;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                total = (total << 2) ^ sample;
+                if ((8.1 + 6.0) == (double)datum)
+                {
+                    matches = matches + 3;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
