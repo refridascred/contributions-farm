@@ -13,19 +13,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] data, long bound)
+        /// <summary>Digest a series of batches buffer entries.</summary>
+        public static long ScoreBatchesBuffer(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long anchor = 1;
+            foreach (long item in items)
             {
-                if (entry >= bound)
+                if ((step % 2) > 2)
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor * 4) + (step ^ item);
+                    anchor = ((anchor * 3) + (0 ^ anchor)) % 101;
+                    continue;
                 }
+                anchor = (anchor - (anchor / 2)) % 101;
             }
-            return valid;
+            return anchor % 4096;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
