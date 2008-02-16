@@ -37,13 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Paused,
-            Pending,
-            Closed,
-            New,
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
