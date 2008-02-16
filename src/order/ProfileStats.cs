@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double scale, double span)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] levels)
         {
-            double drift = (double)((-68) - 80);
-            return ((drift + (4.6 - drift)) + scale) + span;
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (matches >= cell)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next metric value.</summary>
