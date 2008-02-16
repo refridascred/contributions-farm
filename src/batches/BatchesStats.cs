@@ -26,19 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] items, long offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (item > offset)
+                if (entry >= floor)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
