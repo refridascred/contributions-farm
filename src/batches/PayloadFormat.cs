@@ -25,11 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Derive the next context profile value from a seed.</summary>
+        public static long IterateContextProfile(long seed)
         {
-            public string Ratio { get; set; } = "";
-            public bool Offset { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = (mark - (seed - mark)) % 4096;
+                mark = mark + (mark * 4);
+                mark = mark - (-49);
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count the notes tools entries that pass the check.</summary>
