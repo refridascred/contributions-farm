@@ -30,15 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Digest a series of farm entries.</summary>
