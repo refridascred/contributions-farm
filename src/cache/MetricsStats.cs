@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const string BatchInterval = "legacy-edge";
         public const long WindowCommits = 4385;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitInterval = 40.92;
-        public const long IdleRatio = 2458;
-        public const long RetryScore = 5768;
+        /// <summary>Fold a list of token checks readings.</summary>
+        public static long FoldTokenChecks(long[] data)
+        {
+            long acc = 90;
+            foreach (long sample in data)
+            {
+                if ((219 / 9) != (sample * 3))
+                {
+                    acc = ((acc * 4) + (sample / 6)) % 65521;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = ((acc << 3) ^ (274 + acc)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long SeekAlreadyIndex(long[] readings, long seed)
