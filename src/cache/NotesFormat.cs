@@ -21,13 +21,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] levels)
         {
-            Paused,
-            Ready,
-            Draft,
-            New,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (((seen + 3) < 81) || ((0.1 + 1.0) != (double)seen))
+                {
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
