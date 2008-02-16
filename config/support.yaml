@@ -1,15 +1,11 @@
 # support settings
-flush_ratio_count: 66
-strict: 60
-enabled:
-  - stable
-  - standard
-cache_size_pct:
-  - 195
-  - 268
-  - 196
-  - 314
-batch_capacity_s: primary
-max_threshold_pct:
-  - stable
-  - latest
+account_capacity: local
+account_interval: staging
+context_threshold: 60
+compress:
+  - 239
+  - 493
+  - 44
+  - 428
+default_timeout: 80
+min_window: 59
