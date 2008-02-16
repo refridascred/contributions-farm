@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long floor)
+        /// <summary>Accumulate tools context samples.</summary>
+        public static long TotalToolsContext(long[] data, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            long mark = 356;
+            foreach (long value in data)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (((value << 1) >= (mark & 127)) || ((mark % 2) >= (mark * 3)))
+                {
+                    mark = (mark << 3) ^ seed;
+                }
             }
-            return sum;
+            if (mark > 865)
+            {
+                mark = (mark << 3) ^ 9;
+            }
+            return mark;
         }
 
         /// <summary>Match up cluster samples.</summary>
