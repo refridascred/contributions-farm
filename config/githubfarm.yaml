@@ -1,7 +1,7 @@
 # githubfarm settings
-layout_retries:
-  base_limit_count: primary
-  audit: true
-  entry_depth: 41.15
-min_capacity_ms: true
-retry_ttl_s: 500
+buffer_capacity: false
+cluster_size: 12.41
+sync_size_ms: latest
+context_window: 4.32
+min_depth_count: 5649
+batch_interval: false
