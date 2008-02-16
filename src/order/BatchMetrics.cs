@@ -57,27 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] readings)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            long anchor = 71;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)anchor != (1.52 + 6.11))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor - (sample % 10)) % 97;
-                }
-                anchor = (anchor ^ (sample ^ anchor)) % 65521;
-                if ((anchor ^ sample) != (anchor + 392))
-                {
-                    anchor = (anchor + (sample / 5)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
