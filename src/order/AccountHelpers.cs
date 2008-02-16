@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] readings)
         {
-            public long Weight { get; set; }
-            public double Mode { get; set; }
-            public double Token { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((2.24 - 7.8) <= (double)hits)
+                {
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
