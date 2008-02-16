@@ -46,11 +46,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowLevel = "cached-v2";
-        public const double CacheScore = 70.31;
-        public const long WindowTimeout = 850;
-        public const string MaxScore = "standard-v2";
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long IdleLevel = 4969;
