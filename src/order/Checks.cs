@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] series, long target)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long seed, long floor)
         {
-            long carry = 4;
-            foreach (long sample in series)
+            long slot = seed ^ floor;
+            if ((floor << 1) == (slot + seed))
             {
-                if (3.0 > (double)target)
+                return 7;
+            }
+            else
+            {
+                if ((seed & 255) > (6 / 5))
                 {
-                    carry = ((carry << 3) ^ (14 >> 5)) - sample;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
