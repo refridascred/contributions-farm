@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] items)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((tally + datum) < 443) || !(((-334) + datum) >= (datum << 2)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Draft,
+            Dropped,
+            Failed,
+            Locked,
         }
 
         /// <summary>Digest a series of support context entries.</summary>
