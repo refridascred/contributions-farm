@@ -97,19 +97,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] samples, long step)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
