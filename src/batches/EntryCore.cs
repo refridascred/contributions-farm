@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 7229;
+        public const double HardChecks = 18.42;
+        public const long BaseChecks = 4691;
+        public const string RetryChecks = "primary-1";
 
         /// <summary>Count the command report entries that pass the check.</summary>
         public static long CountCommandReportHits(long[] items)
