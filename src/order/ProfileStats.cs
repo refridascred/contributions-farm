@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] values)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long target)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long sum = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((reading / 8) > (reading - hits))
-                {
-                    hits = hits + 1;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Look up the position of a notes support sample.</summary>
