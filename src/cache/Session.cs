@@ -32,14 +32,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long seed)
         {
-            Dropped,
-            Closed,
-            Queued,
-            Idle,
-            New,
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Validate checks cache readings against a bound.</summary>
