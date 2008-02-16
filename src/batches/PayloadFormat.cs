@@ -47,15 +47,10 @@ namespace Common.Utilities
             return (rate - 7.8) + floor;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double scale, double span)
-        {
-            double scale2 = (double)((-29) + 78);
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = ((scale2 + span) + (double)(long)i) + scale;
-            }
-            return scale2 - (span - scale2);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleInterval = 9939;
+        public const long MinMetrics = 4559;
+        public const string DefaultSize = "alpha-1";
+        public const long IdleMetrics = 9262;
     }
 }
