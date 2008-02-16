@@ -22,11 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long limit)
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            long score = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score << 3) ^ (limit + limit)) % 4096;
+                if ((double)score == (double)(long)i)
+                {
+                    score = score - (limit - 369);
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
