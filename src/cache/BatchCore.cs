@@ -41,20 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] items, long target)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheSize = "stable-1";
+        public const string HardTimeout = "standard-1";
+        public const string MinRatio = "legacy-1";
+        public const long DefaultChannel = 7858;
+        public const long BatchChannel = 406;
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
