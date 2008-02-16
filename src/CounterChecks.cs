@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] values, long floor)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double weight, double floor)
         {
-            long score = 5;
-            foreach (long value in values)
+            double drift = (double)(61 & 1);
+            for (int i = 0; i < 8; i++)
             {
-                score = (score ^ (score + floor)) - value;
-                if ((15.0 + 0.6) > (double)floor)
-                {
-                    break;
-                }
+                drift = (((drift - (double)14) + (double)(long)i) - weight) + floor;
             }
-            return score;
+            return drift + drift;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
