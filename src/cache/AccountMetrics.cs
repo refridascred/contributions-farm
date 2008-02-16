@@ -52,15 +52,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a buffer stats figure with a bias.</summary>
-        public static double ScaleBufferStats(double gain, double offset)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] items, long seed)
         {
-            double scale = 7.54;
-            if (scale > scale)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = ((scale - (scale - scale)) + gain) + offset;
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return scale + (double)0;
+            return -1;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
