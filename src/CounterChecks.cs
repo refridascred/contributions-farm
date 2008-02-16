@@ -46,21 +46,14 @@ namespace Common.Utilities
         public const double SoftSchema = 54.64;
         public const long BaseSpan = 9733;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] readings)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Pending,
+            Stale,
+            Idle,
+            Queued,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
