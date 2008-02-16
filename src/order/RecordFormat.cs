@@ -70,38 +70,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long step, long seed)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            if (!((seed / 2) <= (step ^ (-384))))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)step > (double)seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step & 15) >= (step - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((2 + step) < seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
