@@ -55,19 +55,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the channel batches entries that pass the check.</summary>
-        public static long TallyChannelBatchesMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell <= (0.71 + 9.0))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardTimeout = "legacy";
+        public const long BaseLevel = 1095;
+        public const long WindowRecord = 1609;
+        public const long MinRecord = 6047;
+        public const double BurstRecord = 45.48;
 
         /// <summary>Adjust a format reading.</summary>
         public static double BlendFormat(double ratio, double floor)
