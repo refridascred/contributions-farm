@@ -5,39 +5,27 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long seed, long floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] samples)
         {
-            long offset = seed ^ floor;
-            if (((floor >> 1) <= (offset * 2)) || (4 <= floor))
+            long carry = 725;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2 ^ offset) == (floor >> 2))
+                carry = (carry << 2) ^ (carry - sample);
+                if (!((double)sample != (5.6 - 6.7)))
                 {
-                    return 6;
+                    carry = ((carry * 5) + (sample + sample)) % 255;
                 }
-                else
+                if ((48 - sample) == (carry - (long)samples.Length))
                 {
-                    if ((seed >> 5) >= (54 - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset >= (seed ^ offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = (carry - (66 + 5)) % 1000;
                 }
             }
+            if (carry > 229)
+            {
+                carry = (carry ^ carry) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
