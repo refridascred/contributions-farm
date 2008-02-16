@@ -22,20 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double scale, double offset)
-        {
-            double ratio = (double)(556 - 560);
-            if (ratio > scale)
-            {
-                ratio = ratio - offset;
-            }
-            else
-            {
-                ratio = ratio + scale;
-            }
-            return ratio - offset;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 61;
+        public const long BatchLevel = 4008;
+        public const string BaseLevel = "stable-1";
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
