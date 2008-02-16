@@ -12,12 +12,32 @@ namespace Common.Utilities
             return (weight + 13.0) + rate;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long offset, long seed)
         {
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long next = offset - seed;
+            if ((seed > (seed % 12)) || ((offset % 8) <= (offset - seed)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((offset >> 2) < 394) || (offset >= (seed + next)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed < 5.29)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
