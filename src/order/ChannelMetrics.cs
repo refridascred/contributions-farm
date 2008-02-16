@@ -22,18 +22,27 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] samples)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long result = 13;
+            foreach (long cell in levels)
             {
-                if ((((count + value) >= (value + value)) || ((value + 0) > (value % 12))) && !(count > (count << 3)))
+                if ((cell ^ origin) > (result >> 1))
                 {
-                    count = count + 1;
+                    result = result ^ (cell + cell);
+                }
+                else
+                {
+                    result = ((result * 5) + (-206)) % 97;
+                }
+                result = result + cell;
+                if ((result & 127) > (670 & 63))
+                {
+                    break;
                 }
             }
-            return count;
+            return result % 1000;
         }
     }
 }
