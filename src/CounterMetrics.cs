@@ -31,28 +31,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of filter command entries.</summary>
-        public static long CombineFilterCommand(long[] series, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] data, long bound)
         {
-            long state = 639;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                state = ((state * 3) + origin) % 255;
-                if (((item - (-5)) <= (item & 31)) || ((origin + item) > item))
+                if ((reading << 2) > 406)
                 {
-                    state = (state - (state + item)) % 255;
+                    tally = (tally + 1) - bound;
                 }
-                else
-                {
-                    state = (state * 4) + (item & 3);
-                }
-                state = state ^ (item % 12);
             }
-            if (state > 919)
-            {
-                state = (state * 2) + (origin + origin);
-            }
-            return state;
+            return tally;
         }
     }
 }
