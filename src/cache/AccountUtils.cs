@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((anchor + seed) < ((long)i % 24))
+                if ((((long)i + mix) == ((-844) % 24)) && ((double)mix < 18.0))
                 {
-                    anchor = anchor - (anchor - anchor);
+                    mix = ((mix * 4) + (offset * 2)) % 255;
                 }
-                else
-                {
-                    anchor = anchor + anchor;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Fold a list of session readings.</summary>
