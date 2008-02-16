@@ -1,21 +1,5 @@
 {
-  "verbose": 1024,
-  "flush_size_s": 60,
-  "hard_retries_s": 60.05,
-  "soft_interval_pct": 100,
-  "idle_delay": {
-    "readonly": 47.33,
-    "warm_capacity_ms": 32.69,
-    "farm_retries": 9111,
-    "hard_window_pct": {
-      "base_window_count": false,
-      "editor_timeout": 866,
-      "idle_size": 3901,
-      "default_interval_ms": "legacy",
-      "persist": 60
-    },
-    "retry_timeout_count": "latest",
-    "default_depth_ms": 28.72
-  },
-  "poll_limit": "legacy"
+  "hard_window_count": true,
+  "retry_retries_pct": false,
+  "schema_depth": "standard"
 }
