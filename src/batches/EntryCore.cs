@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a stats window figure with a bias.</summary>
-        public static double BlendStatsWindow(double rate, double offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double bias = rate;
-            if (bias < (double)675)
-            {
-                bias = bias - (bias - 7.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - 0.91) + (double)(long)i;
-            }
-            return bias - (2.5 + offset);
+            Queued,
+            Locked,
+            Idle,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
