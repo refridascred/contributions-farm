@@ -43,17 +43,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] readings, long target)
+        /// <summary>Count the order buffer entries that pass the check.</summary>
+        public static long TallyOrderBufferGaps(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (readings[i] >= target)
+                if (matches < (matches / 7))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) - entry) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a entry account pair into a bucket.</summary>
