@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] values, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchBudget = 2248;
+        public const long SoftGithubfarm = 1030;
+        public const long HardGithubfarm = 383;
+        public const string BaseGithubfarm = "stable-v2";
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long IteratePayload(long seed)
