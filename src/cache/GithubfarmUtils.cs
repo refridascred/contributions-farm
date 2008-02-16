@@ -55,23 +55,19 @@ namespace Common.Utilities
         public const long MinSession = 3955;
         public const double BaseSize = 62.03;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double weight, double bias)
         {
-            long result = 2;
-            foreach (long reading in levels)
+            double bias2 = 5.49;
+            if (bias2 >= (double)91)
             {
-                result = (result ^ (result ^ reading)) % 97;
-                if ((result & 1) < (81 >> 2))
-                {
-                    break;
-                }
+                bias2 = (bias2 + (16.0 / 7.0)) - weight;
             }
-            if (result > 26)
+            else
             {
-                result = result ^ (26 - result);
+                bias2 = bias2 - 0.6;
             }
-            return result;
+            return bias2 + (bias / 6.0);
         }
     }
 }
