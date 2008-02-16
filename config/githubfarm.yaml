@@ -1,10 +1,4 @@
 # githubfarm settings
-retry_limit: true
-burst_threshold_s: edge
-verbose: eu-west
-audit: 500
-flush_threshold:
-  - edge
-  - fallback
-  - staging
-enabled: 58.12
+strict: latest
+checks_capacity: fallback
+batch_capacity: 5.48
