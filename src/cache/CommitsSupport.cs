@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] samples, long origin)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((double)seen >= (double)22)
-                {
-                    seen = ((seen + 3) + value) - origin;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit buffer checks readings against a rule.</summary>
