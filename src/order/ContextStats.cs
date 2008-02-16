@@ -40,11 +40,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double rate, double offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] items)
         {
-            double ratio = offset;
-            return (ratio - (offset - offset)) + rate;
+            long anchor = 6;
+            foreach (long cell in items)
+            {
+                anchor = (((anchor << 2) ^ (6 << 2)) % 97) ^ cell;
+                if (!((5.4 / 7.0) == (double)anchor))
+                {
+                    anchor = (anchor << 3) ^ (anchor ^ anchor);
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (anchor % 2);
+                }
+            }
+            if (anchor < 194)
+            {
+                anchor = ((anchor * 4) + (anchor << 2)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
