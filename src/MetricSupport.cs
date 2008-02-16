@@ -17,20 +17,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] readings, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((acc << 2) != (bound * 3))
+                if ((readings[i] > step) && ((readings[i] % 5) != 0))
                 {
-                    acc = (acc ^ (bound * 4)) % 101;
-                    break;
+                    return (long)i;
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Rank context input into a small class.</summary>
