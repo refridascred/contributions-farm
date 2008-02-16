@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of token tools entries.</summary>
-        public static long TotalTokenTools(long[] readings, long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long offset)
         {
-            long mix = 71;
-            foreach (long sample in readings)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                mix = ((mix ^ (sample - sample)) % 101) - floor;
+                sum = ((sum << 3) ^ offset) % 1000;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return mix % 97;
+            return sum;
         }
 
         /// <summary>Describe the support kind values.</summary>
