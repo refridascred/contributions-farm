@@ -18,12 +18,22 @@ namespace Common.Utilities
         public const string RetryMetrics = "fallback";
         public const long SoftMetrics = 2580;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 5346;
-        public const long DefaultCount = 6787;
-        public const long SoftCount = 7719;
-        public const long BurstContributi = 1715;
-        public const long WindowSize = 1187;
+        /// <summary>Compare every pair of batches githubfarm readings.</summary>
+        public static long MatchBatchesGithubfarmCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long TotalCommand(long[] levels, long offset)
