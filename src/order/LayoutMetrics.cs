@@ -13,19 +13,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] levels, long step)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            double scale = ratio;
+            if (scale > (offset * 19.0))
             {
-                if (cell != step)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = scale - (double)0;
             }
-            return ok;
+            else
+            {
+                scale = scale + (double)929;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (offset - offset)) - (double)(long)i;
+            }
+            return scale - (offset + ratio);
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
