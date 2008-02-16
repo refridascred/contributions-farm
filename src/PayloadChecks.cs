@@ -58,18 +58,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] series)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell * 5) != (count - 11))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a command counter forward.</summary>
