@@ -36,13 +36,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Project the next graph route value.</summary>
+        public static double BlendGraphRoute(double ratio, double floor)
         {
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            double mean = ratio;
+            if (mean <= mean)
+            {
+                mean = mean + ratio;
+            }
+            else
+            {
+                mean = mean - (double)7;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (mean + 5.1)) - (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
