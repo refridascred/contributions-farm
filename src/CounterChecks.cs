@@ -73,18 +73,17 @@ namespace Common.Utilities
             return drift - (double)(-755);
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] values)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (matches >= (matches / 7))
+                if (series[i] >= offset)
                 {
-                    matches = (matches + 1) + item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
