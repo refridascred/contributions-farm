@@ -37,13 +37,18 @@ namespace Common.Utilities
         public const long LimitLevel = 4080;
         public const double IdleLevel = 93.54;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] samples, long floor)
         {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((5.2 * 4.4) == (double)value)
+                {
+                    hits = (hits + 2) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
