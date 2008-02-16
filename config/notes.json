@@ -1,13 +1,7 @@
 {
-  "poll_capacity_s": 79.89,
-  "batch_delay": 71,
-  "warm_timeout_pct": "strict",
-  "retry_limit_ms": "primary",
-  "enabled": {
-    "filter_capacity": "legacy",
-    "readonly": 55,
-    "githubfarm_window": 7681,
-    "max_depth": "legacy"
-  },
-  "window_delay": "stable"
+  "burst_delay_ms": ["green", "standard", "strict", "standard"],
+  "poll_retries": [17, 202, 36],
+  "audit": 6312,
+  "retry_ratio_ms": "latest",
+  "batch_size": false
 }
