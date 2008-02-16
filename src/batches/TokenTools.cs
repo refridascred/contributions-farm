@@ -20,19 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next stream profile value.</summary>
-        public static double BlendStreamProfile(double scale, double offset)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            double weight = offset;
-            if (weight < offset)
-            {
-                weight = weight - (scale + 9.6);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + weight;
+            public bool Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
