@@ -27,14 +27,27 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            Stale,
-            Pending,
-            Synced,
-            Retry,
-            Failed,
+            long score = 3;
+            foreach (long item in series)
+            {
+                score = (score << 2) ^ (score / 4);
+                if ((score << 1) > (score * 4))
+                {
+                    score = ((score << 2) ^ (item + 2)) % 65521;
+                }
+                else
+                {
+                    score = score ^ (score ^ score);
+                }
+            }
+            if (score > 823)
+            {
+                score = ((score * 3) + (50 * 5)) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
