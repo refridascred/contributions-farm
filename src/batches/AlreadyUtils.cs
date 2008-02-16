@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long target, long target2)
         {
-            Synced,
-            Done,
-            Queued,
+            if ((target ^ target2) >= target2)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target / 7) <= (target - target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(9.9 >= (double)target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit report queue readings against a rule.</summary>
