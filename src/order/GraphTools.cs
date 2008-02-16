@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] samples)
         {
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!((sample + sample) < sample))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
