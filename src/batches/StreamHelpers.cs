@@ -69,38 +69,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a entry account pair into a bucket.</summary>
-        public static long BucketEntryAccount(long target, long floor)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            if ((6 + floor) > (floor / 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((3 + floor) < floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)target < (double)287) || ((floor << 1) == (target - target)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((9 <= (floor + floor)) && ((target % 97) >= (floor % 7)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Active,
+            Closed,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
