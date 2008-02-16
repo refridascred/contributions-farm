@@ -14,19 +14,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Adjust a graph contributi reading.</summary>
+        public static double ProjectGraphContributi(double bias, double span)
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
+            double gain = (double)(275 ^ 499);
+            if (gain < (double)0)
             {
-                if ((((long)i + mix) == ((-844) % 24)) && ((double)mix < 18.0))
-                {
-                    mix = ((mix * 4) + (offset * 2)) % 255;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
+                gain = ((gain + gain) - bias) - span;
             }
-            return mix;
+            return gain + gain;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
