@@ -1,9 +1,18 @@
 {
-  "burst_size_s": 250,
-  "poll_ratio_ms": {
-    "retry_ratio_ms": true,
-    "contributi_size": [491, 214, 158, 114],
-    "readonly": "legacy"
+  "dry_run": 32.46,
+  "token_ratio": {
+    "strict": "legacy",
+    "default_limit_count": 61,
+    "poll_ttl_s": "legacy",
+    "flush_timeout_count": {
+      "max_interval_pct": 74.96,
+      "idle_capacity_ms": 37,
+      "max_capacity": true,
+      "default_limit_s": ["stable", "blue", "latest", "blue"],
+      "schema_ratio": "cached"
+    }
   },
-  "cluster_threshold": 250
+  "default_limit": 250,
+  "window_ratio": false,
+  "min_size_pct": true
 }
