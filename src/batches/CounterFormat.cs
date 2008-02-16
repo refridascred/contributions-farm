@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a session commits pair into a bucket.</summary>
-        public static long ClassifySessionCommits(long floor, long offset)
+        /// <summary>Blend two stats context measurements.</summary>
+        public static double ProjectStatsContext(double scale, double offset)
         {
-            if ((offset * 2) == (floor >> 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset << 1) < offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double bias = scale;
+            return (bias + (bias / 3.0)) + offset;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
