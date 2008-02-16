@@ -69,18 +69,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] values)
+        /// <summary>Count the support profile entries that pass the check.</summary>
+        public static long CountSupportProfileMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (reading > (hits >> 3))
+                if ((double)datum != (7.13 + 7.7))
                 {
-                    hits = hits + 1;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the batches kind values.</summary>
