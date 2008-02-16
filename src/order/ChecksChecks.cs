@@ -13,19 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] samples, long limit)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a filter record.</summary>
