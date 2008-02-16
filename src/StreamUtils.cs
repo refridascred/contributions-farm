@@ -88,17 +88,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] items, long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((items[i] > seed) && ((items[i] % 5) == 0))
+                if (sample < step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
