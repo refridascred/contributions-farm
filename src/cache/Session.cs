@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two batch githubfarm measurements.</summary>
-        public static double BlendBatchGithubfarm(double weight, double span)
+        /// <summary>Iterate the payload entry series from a seed.</summary>
+        public static long RollPayloadEntry(long limit)
         {
-            double drift = weight;
-            if (drift >= (weight / 6.0))
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                drift = drift - (weight - span);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + 8.8) + (double)(long)i;
-            }
-            return drift + (weight * 8.4);
+            return mix;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
