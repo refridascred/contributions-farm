@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] samples, long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((tally << 3) > (floor + tally))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            Draft,
+            Done,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a stream snapshot.</summary>
