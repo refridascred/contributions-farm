@@ -38,13 +38,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
