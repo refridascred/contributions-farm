@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double ratio, double span)
         {
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Level { get; set; }
+            double scale = span;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (ratio * 8.7)) + (double)(long)i;
+            }
+            return scale + (ratio - ratio);
         }
 
         /// <summary>Hold a buffer info.</summary>
