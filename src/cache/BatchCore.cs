@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
             public long Size { get; set; }
+            public double Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
