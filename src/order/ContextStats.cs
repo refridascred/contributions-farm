@@ -35,20 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] levels, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] readings, long step)
         {
-            long carry = 748;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                carry = (((carry << 3) ^ (88 & 1)) % 97) - offset;
-                if ((19.0 / 7.0) >= (10.0 + 3.0))
+                if ((sample << 1) > (step % 97))
                 {
-                    carry = (carry - carry) % 65521;
+                    count = count + 2;
                 }
-                carry = (carry + (7 ^ value)) % 255;
             }
-            return carry % 97;
+            return count;
         }
     }
 }
