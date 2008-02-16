@@ -16,22 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] levels, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((double)seen <= (0.7 - 7.3))
+                if ((value * 4) >= 3)
                 {
-                    seen = ((seen + 1) + cell) - step;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
