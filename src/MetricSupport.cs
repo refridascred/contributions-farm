@@ -17,17 +17,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] readings, long step)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long step, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)step < (3.37 / 6.0))
             {
-                if ((readings[i] > step) && ((readings[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if (!((step + 5) > step))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank context input into a small class.</summary>
