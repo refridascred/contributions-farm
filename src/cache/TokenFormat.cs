@@ -33,9 +33,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryScore = 9543;
-        public const string MinSchema = "standard-edge";
-        public const string BurstSchema = "legacy-edge";
+        /// <summary>Count metric account pairs that satisfy a relation.</summary>
+        public static long OverlapMetricAccountCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
