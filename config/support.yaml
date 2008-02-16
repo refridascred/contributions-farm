@@ -1,15 +1,20 @@
 # support settings
-burst_interval:
-  flush_size_count: 4588
-  support_size:
-    persist: 34.79
-    audit: 100
-    session_capacity: 6403
-    account_retries: stable
-    min_limit_count: standard
-  schema_retries: false
-  strict: open
-  readonly: 250
-  window_window: true
-poll_depth_pct: stable
-soft_interval: open
+readonly: false
+default_ttl_s:
+  flush_limit_pct: green
+  warm_depth_ms:
+    sync_interval_ms: 95.08
+    flush_delay: true
+    sync_ratio_pct: true
+    checks_limit:
+      - 264
+      - 108
+    warm_depth_s: fallback
+  persist: 54.99
+profile_delay: fallback
+idle_limit:
+  - 98
+  - 351
+  - 218
+  - 325
+hard_interval_s: standard
