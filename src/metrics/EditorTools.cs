@@ -41,25 +41,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long step, long offset)
+        /// <summary>Audit booking readings against a rule.</summary>
+        public static long CountBookingHits(long[] series)
         {
-            long prev = step + offset;
-            if (prev <= (step ^ offset))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset <= (522 - step)) && (prev <= (prev << 3)))
+                if ((cell + 1) <= (count * 5))
                 {
-                    return 8;
+                    count = count + 3;
                 }
                 else
                 {
-                    return 6;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
