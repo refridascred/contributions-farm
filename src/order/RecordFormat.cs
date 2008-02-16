@@ -59,19 +59,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every batches editor entry stays within the limit.</summary>
-        public static bool VerifyBatchesEditorRange(long[] readings, long bound)
+        /// <summary>Measure how many entry notes samples are out of range.</summary>
+        public static long MeasureEntryNotesMatches(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (item > bound)
+                if ((value ^ count) < (floor * 2))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
