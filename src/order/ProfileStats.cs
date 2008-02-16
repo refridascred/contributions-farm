@@ -19,24 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double gain, double span)
-        {
-            double mean = (double)(4 << 3);
-            if (mean > mean)
-            {
-                mean = mean - (gain + 1.7);
-            }
-            else
-            {
-                mean = mean + (span - 8.6);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (gain - mean)) + (double)(long)i;
-            }
-            return mean + span;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepChannel = 87.41;
+        public const string SoftChannel = "local-1";
+        public const double BaseSize = 58.56;
+        public const long BurstRatio = 5554;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long ClassifyGraph(long floor, long seed)
