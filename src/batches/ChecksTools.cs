@@ -40,12 +40,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 4904;
+        public const long StepTools = 3268;
+        public const long HardTools = 2266;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
