@@ -1,4 +1,8 @@
 # support settings
-verbose: 5058
-readonly: true
-default_threshold_count: 34
+cache_depth_count: true
+verbose: false
+readonly: latest
+queue_interval:
+  - eu-west
+  - eu-west
+flush_timeout_count: open
