@@ -28,12 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Measure how many queue metric samples are out of range.</summary>
+        public static long AuditQueueMetricMatches(long[] readings, long limit)
         {
-            Pending,
-            Ready,
-            Paused,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry << 3) > entry)
+                {
+                    hits = (hits + 2) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
