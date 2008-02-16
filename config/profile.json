@@ -1,5 +1,6 @@
 {
-  "max_ratio_s": 62.42,
-  "notes_ttl": [131, 499],
-  "verbose": "eu-west"
+  "burst_ratio_pct": 57.14,
+  "hard_depth_ms": 250,
+  "order_size": 3775,
+  "batch_ttl": true
 }
