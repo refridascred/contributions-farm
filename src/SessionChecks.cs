@@ -35,12 +35,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long offset)
         {
-            public long Size { get; set; }
-            public double Limit { get; set; }
-            public long Rank { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
