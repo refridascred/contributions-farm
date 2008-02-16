@@ -13,21 +13,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] readings)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((origin / 4) >= 845)
                 {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Locate a layout cluster reading by value.</summary>
