@@ -27,28 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = ((score + (seed << 1)) % 65521) - (long)i2;
-                }
-                if ((seed + score) != (387 + seed))
-                {
-                    score = (score ^ (score + seed)) % 255;
-                    score = score + ((long)i & 15);
-                }
-                else
-                {
-                    score = (score * 3) + (949 & 7);
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
