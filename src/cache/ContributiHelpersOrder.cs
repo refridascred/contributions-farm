@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count stream report pairs that satisfy a relation.</summary>
-        public static long OverlapStreamReportCount(long[] data)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Ready,
+            Stale,
+            Closed,
+            Locked,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
