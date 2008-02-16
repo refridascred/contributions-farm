@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit notes order readings against a rule.</summary>
-        public static long CountNotesOrderGaps(long[] values, long target)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long limit, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if (!(limit <= target))
             {
-                if ((target - target) > target)
+                return 6;
+            }
+            else
+            {
+                if (((limit * 5) < (limit + limit)) || (limit > (target + limit)))
                 {
-                    hits = (hits + 1) ^ entry;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two context measurements.</summary>
