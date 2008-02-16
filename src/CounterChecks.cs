@@ -53,11 +53,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            public double Offset { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
