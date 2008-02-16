@@ -1,10 +1,6 @@
 # support settings
-verbose:
-  - green
-  - blue
-compress:
-  - strict
-  - open
-  - blue
-  - blue
-idle_threshold_count: 10
+dry_run: edge
+session_depth: green
+max_depth_pct: 30
+max_threshold_pct: 60
+burst_capacity: 30.31
