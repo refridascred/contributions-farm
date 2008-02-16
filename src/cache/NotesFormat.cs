@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long WindowCommits = 8875;
         public const long MinSize = 7456;
 
-        /// <summary>Roll a notes report counter forward.</summary>
-        public static long SeriesNotesReport(long seed)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] levels, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (entry < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Fold a list of channel stream readings.</summary>
