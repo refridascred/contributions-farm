@@ -1,14 +1,14 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-Each counter is validated before it reaches the checks queue.
+Each graph is validated before it reaches the batch queue.
+A filter that stays idle for too long is moved to the report list.
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-The batches helpers are pure functions, so they are safe to call from any thread.
-A session that stays idle for too long is moved to the cache list.
+Keep farm and session names short and lowercase.
+Use command settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Review cache limits each release
-- Validate batches input early
-- Prefer context defaults
+- Review checks limits each release
+- Keep farm values small
+- Prefer githubfarm defaults
+- Document new buffer fields
