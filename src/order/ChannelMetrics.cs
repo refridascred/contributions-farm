@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long result = 940;
-            foreach (long sample in data)
-            {
-                if ((sample < (-2)) && ((double)result <= 8.0))
-                {
-                    result = (result + (sample ^ sample)) % 97;
-                }
-            }
-            if (result > 84)
-            {
-                result = ((result << 3) ^ (result ^ result)) % 65521;
-            }
-            return result;
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
