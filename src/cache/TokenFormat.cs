@@ -33,13 +33,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] levels)
         {
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
+            long anchor = 975;
+            foreach (long cell in levels)
+            {
+                anchor = ((anchor - (anchor << 2)) % 255) - cell;
+            }
+            return anchor % 1000;
         }
     }
 }
