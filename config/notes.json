@@ -1,5 +1,7 @@
 {
-  "notes_interval": "open",
-  "retry_size_s": "legacy",
-  "retry_capacity": 29.48
+  "default_limit_pct": "stable",
+  "warm_depth": 45.56,
+  "flush_retries_pct": "staging",
+  "payload_capacity": 6,
+  "default_retries_s": 73
 }
