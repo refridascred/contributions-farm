@@ -47,10 +47,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardInterval = "primary";
-        public const long RetryWindow = 9545;
-        public const long SoftScore = 3368;
-        public const string BaseWindow = "standard-edge";
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((target / 6) == ((long)i ^ mix)) && ((double)target <= (1.0 / 8.0)))
+                {
+                    mix = (mix + mix) % 97;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
