@@ -1,20 +1,9 @@
 # support settings
-readonly: false
-default_ttl_s:
-  flush_limit_pct: green
-  warm_depth_ms:
-    sync_interval_ms: 95.08
-    flush_delay: true
-    sync_ratio_pct: true
-    checks_limit:
-      - 264
-      - 108
-    warm_depth_s: fallback
-  persist: 54.99
-profile_delay: fallback
-idle_limit:
-  - 98
-  - 351
-  - 218
-  - 325
-hard_interval_s: standard
+batch_depth_pct: strict
+retry_timeout:
+  - 486
+  - 35
+  - 332
+  - 368
+dry_run: 53.26
+flush_size_s: 43
