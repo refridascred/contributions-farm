@@ -15,12 +15,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 8512;
-        public const string DefaultCounter = "local";
-        public const long RetryCounter = 2807;
-        public const double SoftCounter = 41.93;
-        public const long WindowCounter = 6225;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
