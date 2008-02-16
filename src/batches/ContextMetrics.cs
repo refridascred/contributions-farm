@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next buffer graph value from a seed.</summary>
-        public static long IterateBufferGraph(long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] levels, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                sum = (sum * 4) + (sum >> 4);
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((seen << 2) < datum)
+                {
+                    seen = (seen + 3) - origin;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Blend two editor measurements.</summary>
