@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const double MinBudget = 56.61;
         public const string DefaultInterval = "fallback-edge";
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] levels)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((5 - 302) >= matches)
+                if (entry > bound)
                 {
-                    matches = (matches + 1) - sample;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the contributi state values.</summary>
