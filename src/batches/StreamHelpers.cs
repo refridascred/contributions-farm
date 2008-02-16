@@ -42,12 +42,38 @@ namespace Common.Utilities
         public const long BaseFactor = 9856;
         public const long BatchSize = 1098;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Classify a entry account pair into a bucket.</summary>
+        public static long BucketEntryAccount(long target, long floor)
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            if ((6 + floor) > (floor / 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((3 + floor) < floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)target < (double)287) || ((floor << 1) == (target - target)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((9 <= (floor + floor)) && ((target % 97) >= (floor % 7)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate context samples.</summary>
