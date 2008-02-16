@@ -17,15 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] values, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if ((double)reading == (5.8 / 7.0))
+                {
+                    tally = (tally + 3) - offset;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
