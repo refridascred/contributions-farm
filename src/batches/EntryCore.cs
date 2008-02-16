@@ -42,15 +42,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double rate, double offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] readings)
         {
-            double rate2 = offset - (rate + offset);
-            if (rate2 <= (rate2 / 3.0))
+            long anchor = -97;
+            foreach (long cell in readings)
             {
-                rate2 = rate2 - rate2;
+                if ((cell >> 2) < anchor)
+                {
+                    anchor = anchor - (long)readings.Length;
+                }
             }
-            return rate2 - rate;
+            if (anchor < 0)
+            {
+                anchor = (anchor * 2) + 9;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
