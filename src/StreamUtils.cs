@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit queue channel readings against a rule.</summary>
-        public static long AuditQueueChannelMatches(long[] items)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((28 % 60) <= (cell - 284))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] + samples[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
