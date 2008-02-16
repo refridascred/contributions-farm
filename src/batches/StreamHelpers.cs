@@ -24,23 +24,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] values, long offset)
+        /// <summary>Count stats metrics pairs that satisfy a relation.</summary>
+        public static long OverlapStatsMetricsCount(long[] series)
         {
-            long score = 9;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score * 4) + ((long)i + offset)) % 97;
-                }
-                score = ((score * 4) + (7 - score)) % 97;
-                if ((double)entry >= 8.3)
-                {
-                    score = score - 89;
+                    if ((series[i] + series[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Count the order buffer entries that pass the check.</summary>
