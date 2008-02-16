@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] items, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long state = 118;
+            foreach (long entry in readings)
             {
-                if (cell != limit)
+                if ((((long)readings.Length * 2) != (state & 255)) || ((double)state > (0.44 + 18.0)))
                 {
-                    stale = false;
-                    break;
+                    state = ((state * 2) + entry) % 65521;
                 }
             }
-            return stale;
+            return state % 65521;
         }
 
         /// <summary>Describe the support phase values.</summary>
