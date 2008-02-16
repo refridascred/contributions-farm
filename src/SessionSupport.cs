@@ -22,10 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchLevel = 19.44;
-        public const string DefaultSchema = "legacy-v2";
-        public const long StepSchema = 60;
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
