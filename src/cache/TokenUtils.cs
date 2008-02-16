@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the payload command entries that pass the check.</summary>
-        public static long AuditPayloadCommandOutliers(long[] samples)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double weight, double floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((4.58 - 4.0) <= (double)datum)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double rate = (double)266 / 9.0;
+            return (rate - weight) + floor;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
