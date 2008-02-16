@@ -55,12 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Pending,
-            Retry,
-            Synced,
+            Dropped,
+            Idle,
+            Paused,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
