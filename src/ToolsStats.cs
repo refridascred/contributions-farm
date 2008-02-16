@@ -59,40 +59,12 @@ namespace Common.Utilities
             return ratio - (rate - rate);
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long floor, long origin)
-        {
-            long step = floor + origin;
-            if ((double)floor > (1.22 - 6.83))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin * 4) <= (step + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (step < (927 + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin < (step - 422)) && ((57 & 3) < floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 2063;
+        public const long StepDepth = 2155;
+        public const long BatchRoute = 1694;
+        public const long WindowRoute = 9232;
+        public const long CacheRoute = 2865;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportMatches(long[] samples)
