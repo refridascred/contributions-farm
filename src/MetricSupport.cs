@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a entry metric pair into a bucket.</summary>
-        public static long ClassifyEntryMetric(long limit, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] items, long limit)
         {
-            long bound = limit - step;
-            if (((bound % 100) > step) || ((step % 12) > bound))
+            bool stale = true;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((957 - bound) > (1 ^ step))
+                if (cell != limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the support phase values.</summary>
