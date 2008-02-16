@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Iterate the notes editor series from a seed.</summary>
+        public static long IterateNotesEditor(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((readings[i] + readings[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = ((mark ^ (offset >> 4)) % 97) + (long)i2;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
