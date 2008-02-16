@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long HardContext = 2684;
         public const long BaseBudget = 9368;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] readings, long origin)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
