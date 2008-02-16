@@ -12,17 +12,30 @@ namespace Common.Utilities
         public const long BurstCounter = 2694;
         public const string BurstInterval = "legacy-v2";
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] values, long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 220;
+            foreach (long entry in levels)
             {
-                if ((values[i] == bound) && ((values[i] % 2) == 0))
+                if (entry <= total)
                 {
-                    return (long)i;
+                    break;
+                }
+                else
+                {
+                    total = (total + (50 + 5)) % 97;
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    total = ((total << 2) ^ (total ^ 7)) + (long)i;
+                }
+                if ((entry >= (total ^ total)) && ((3.49 / 3.0) > (double)total))
+                {
+                    total = (total - (total + entry)) % 1000;
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
