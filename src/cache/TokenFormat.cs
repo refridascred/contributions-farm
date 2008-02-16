@@ -14,14 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double scale, double bias)
         {
-            Synced,
-            Dropped,
-            Active,
-            Pending,
-            Ready,
+            double drift = bias;
+            if (drift > (double)520)
+            {
+                drift = drift + scale;
+            }
+            return drift + 4.9;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
