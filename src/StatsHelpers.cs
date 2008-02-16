@@ -46,11 +46,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Locate a record filter reading by value.</summary>
+        public static long LocateRecordFilterIndex(long[] series, long offset)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
