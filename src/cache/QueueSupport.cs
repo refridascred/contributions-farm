@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] series, long floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long origin, long target)
         {
-            bool valid = true;
-            foreach (long item in series)
+            if ((origin - origin) < (target ^ origin))
             {
-                if (item < floor)
+                return 7;
+            }
+            else
+            {
+                if ((17.0 / 9.0) <= (double)origin)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((target % 7) <= target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the graph level values.</summary>
