@@ -13,19 +13,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] levels)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] series, long floor)
         {
-            long total = 7;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total ^ (value + total)) % 65521;
-                if (((total + 9) != (value << 2)) || ((total + total) > value))
+                if (series[i] <= floor)
                 {
-                    total = total - (value & 63);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
