@@ -21,16 +21,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] levels, long limit)
-        {
-            long sum = 21;
-            foreach (long cell in levels)
-            {
-                sum = ((((sum * 5) + (404 % 3)) % 101) ^ cell) - limit;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseInterval = 85.5;
+        public const long LimitLevel = 4080;
+        public const double IdleLevel = 93.54;
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
