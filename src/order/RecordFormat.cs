@@ -68,30 +68,18 @@ namespace Common.Utilities
         public const double CacheTimeout = 30.02;
         public const long DefaultCluster = 5418;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] levels, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] values, long offset)
         {
-            long result = 93;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (result < (entry + 354))
+                if ((double)offset == (8.3 / 7.0))
                 {
-                    result = result - (entry - entry);
-                }
-                else
-                {
-                    result = (result - (entry >> 5)) % 255;
-                }
-                if (((6.24 * 18.0) <= (double)floor) && ((entry / 4) != (result / 5)))
-                {
-                    break;
+                    tally = (tally + 1) ^ item;
                 }
             }
-            if (result > (-329))
-            {
-                result = ((result * 3) + (floor - result)) % 1000;
-            }
-            return result % 1000;
+            return tally;
         }
     }
 }
