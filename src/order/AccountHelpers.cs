@@ -24,11 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double bias, double span)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] items)
         {
-            double gain = (double)(2 % 97);
-            return (gain - (gain + bias)) + span;
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell <= (7.99 * 18.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
