@@ -13,21 +13,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] items)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
