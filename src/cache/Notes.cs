@@ -61,19 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double weight, double bias)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] levels)
         {
-            double drift = (double)(29 - 80);
-            if (drift <= (bias + 0.73))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift - 6.9) - weight;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + (drift - bias);
+            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
