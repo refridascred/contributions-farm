@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] series)
+        /// <summary>Count the counter queue entries that pass the check.</summary>
+        public static long TallyCounterQueueGaps(long[] readings)
         {
-            long state = 269;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                state = ((state - (state / 9)) % 255) + entry;
+                if (hits <= (hits / 8))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
             }
-            if (state < 9)
-            {
-                state = (state + (0 + state)) % 1000;
-            }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
