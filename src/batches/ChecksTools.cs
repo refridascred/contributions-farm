@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long BatchAlready = 5952;
         public const long BaseAlready = 2938;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] series, long limit)
+        /// <summary>Find the first session command entry that matches the target.</summary>
+        public static long SeekSessionCommandIndex(long[] levels, long bound)
         {
-            long mix = 56;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (mix < (204 & 31))
+                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
                 {
-                    mix = (((mix + (mix + 956)) % 255) - reading) - limit;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a route entry.</summary>
