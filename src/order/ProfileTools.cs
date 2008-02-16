@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream checks entry stays within the limit.</summary>
-        public static bool ValidateStreamChecksRange(long[] series, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (item <= target)
+                if (((double)target < 7.0) && ((double)entry <= (2.47 - 2.69)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Roll a support token counter forward.</summary>
