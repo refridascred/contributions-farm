@@ -1,16 +1,7 @@
 {
-  "sync_capacity_count": 90,
-  "min_ratio": {
-    "profile_size": {
-      "verbose": "fallback",
-      "sync_window": [449, 297, 500, 117],
-      "base_delay_count": [477, 423, 153, 468]
-    },
-    "warm_retries_pct": 96.75,
-    "flush_threshold_count": 100
-  },
-  "warm_retries_ms": "fallback",
-  "min_interval_pct": 1,
-  "warm_timeout_pct": 1024,
-  "readonly": 13
+  "batch_depth": [182, 105],
+  "dry_run": 93.26,
+  "hard_interval_ms": 4484,
+  "route_limit": 54.23,
+  "batch_limit": false
 }
