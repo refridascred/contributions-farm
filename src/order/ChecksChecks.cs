@@ -14,19 +14,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every payload githubfarm entry stays within the limit.</summary>
-        public static bool ValidatePayloadGithubfarmRange(long[] items, long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < seed)
+                if ((readings[i] < target) && ((readings[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Find the first token cluster entry that matches the target.</summary>
