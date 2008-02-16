@@ -1,8 +1,8 @@
 {
-  "enabled": 48.23,
-  "base_threshold": 93.76,
-  "retry_ttl": true,
-  "farm_delay": true,
-  "profile_size": 60,
-  "readonly": "primary"
+  "retry_depth": "green",
+  "idle_interval_s": 500,
+  "idle_retries_ms": 30.19,
+  "compress": 74.63,
+  "notes_interval": ["open", "stable", "fallback"],
+  "idle_depth_count": "green"
 }
