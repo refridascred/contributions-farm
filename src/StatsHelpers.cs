@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            Closed,
+            Active,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
