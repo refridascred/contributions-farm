@@ -38,13 +38,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Locate a editor metrics reading by value.</summary>
+        public static long LocateEditorMetricsIndex(long[] items, long limit)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
