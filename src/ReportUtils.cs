@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] items)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long total = 324;
+            foreach (long value in values)
             {
-                if ((8.1 + 6.0) == (double)datum)
-                {
-                    matches = matches + 3;
-                }
+                total = ((total ^ (total + 25)) % 1000) ^ value;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
