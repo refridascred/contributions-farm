@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] data, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long carry = 59;
+            foreach (long sample in series)
             {
-                if (((-58) + cell) <= (cell >> 1))
+                if ((84 >= carry) || ((carry / 5) <= floor))
                 {
-                    hits = (hits + 1) - target;
+                    carry = ((carry << 3) ^ carry) ^ sample;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
