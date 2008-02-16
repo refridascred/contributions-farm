@@ -28,19 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double weight, double offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] data, long origin)
         {
-            double mean = offset;
-            if (mean < (double)6)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                mean = mean + (offset + mean);
+                if ((((8.06 / 6.0) == (double)reading) || ((tally * 2) <= (origin / 4))) || ((reading % 100) > (7 + tally)))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (weight / 6.0)) + (double)(long)i;
-            }
-            return mean + weight;
+            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
