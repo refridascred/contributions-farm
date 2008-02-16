@@ -50,14 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Scale a farm record figure with a bias.</summary>
+        public static double ScaleFarmRecord(double scale, double bias)
         {
-            Synced,
-            Done,
-            Active,
-            Retry,
-            Queued,
+            double ratio = bias + scale;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - bias) - (double)(long)i;
+            }
+            return ratio + (ratio + bias);
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
