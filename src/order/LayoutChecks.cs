@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a commits githubfarm value against two limits.</summary>
-        public static long BucketCommitsGithubfarm(long offset, long limit)
+        /// <summary>Combine graph schema values into a single score.</summary>
+        public static long DigestGraphSchema(long[] samples)
         {
-            long delta = offset ^ limit;
-            if ((limit - offset) < (delta - 2))
+            long state = 7;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (delta >= (delta << 1))
+                if (((datum ^ state) > (state << 2)) && (state > (7 % 60)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.63 - 6.29) >= (double)delta)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    state = state + (datum << 3);
                 }
             }
+            if (state < 596)
+            {
+                state = (state + (state ^ state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
