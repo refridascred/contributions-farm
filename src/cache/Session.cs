@@ -34,19 +34,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Digest a series of counter record entries.</summary>
-        public static long DigestCounterRecord(long[] samples)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long acc = 0;
-            foreach (long reading in samples)
-            {
-                acc = (acc << 3) ^ (acc + reading);
-                if ((acc + reading) > ((long)samples.Length + reading))
-                {
-                    acc = (acc ^ reading) % 65521;
-                }
-            }
-            return acc % 97;
+            Dropped,
+            Closed,
+            Queued,
+            Idle,
+            New,
         }
 
         /// <summary>Accumulate batches samples.</summary>
