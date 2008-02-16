@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Draft,
-            Closed,
-            Synced,
-            Idle,
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
