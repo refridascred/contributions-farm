@@ -38,12 +38,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Check that every command layout entry stays within the limit.</summary>
+        public static bool CheckCommandLayoutRange(long[] series, long offset)
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
