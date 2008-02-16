@@ -32,13 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Closed,
-            Retry,
-            Active,
-            Paused,
+            public double Ratio { get; set; }
+            public double Token { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
