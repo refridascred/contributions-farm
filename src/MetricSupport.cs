@@ -22,15 +22,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long origin)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double rate, double floor)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            double mean = rate;
+            if (mean >= 5.0)
             {
-                result = ((result * 4) + (long)i) % 97;
+                mean = mean + (mean / 8.0);
             }
-            return result;
+            else
+            {
+                mean = mean - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + 3.04) + (double)(long)i;
+            }
+            return mean - 5.05;
         }
     }
 }
