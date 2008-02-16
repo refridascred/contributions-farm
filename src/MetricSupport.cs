@@ -17,17 +17,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((items[i] == offset) && ((items[i] % 3) != 0))
+                if ((acc << 2) != (bound * 3))
                 {
-                    return (long)i;
+                    acc = (acc ^ (bound * 4)) % 101;
+                    break;
                 }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of format entries.</summary>
