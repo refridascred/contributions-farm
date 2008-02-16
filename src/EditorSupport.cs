@@ -46,24 +46,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long offset, long step)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] items)
         {
-            if ((step << 1) > offset)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset / 5) <= (6 << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    if ((items[i] + items[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
