@@ -28,18 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue metric samples are out of range.</summary>
-        public static long AuditQueueMetricMatches(long[] readings, long limit)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double rate = floor;
+            if (rate > (floor * 18.0))
             {
-                if ((entry << 3) > entry)
-                {
-                    hits = (hits + 2) - limit;
-                }
+                rate = rate - (rate - floor);
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + scale) + (double)(long)i;
+            }
+            return rate + (floor * 4.49);
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
