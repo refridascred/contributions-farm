@@ -33,22 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] data, long seed)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((77 & 7) >= (8 ^ (long)data.Length))
-                {
-                    matches = ((matches + 1) + item) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Draft,
+            Stale,
+            Queued,
         }
     }
 }
