@@ -50,10 +50,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstCounter = "staging-v2";
-        public const long SoftLevel = 737;
-        public const double StepSize = 38.64;
+        /// <summary>Roll a metrics context counter forward.</summary>
+        public static long SeriesMetricsContext(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = ((score + (79 - 401)) % 65521) - (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long SortStats(long floor, long step)
