@@ -30,19 +30,17 @@ namespace Common.Utilities
         public const long SoftLevel = 4810;
         public const long StepContext = 3273;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] items, long limit)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry <= limit)
+                if (samples[i] < offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
