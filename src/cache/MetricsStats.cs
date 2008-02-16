@@ -61,19 +61,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every notes cache entry stays within the limit.</summary>
-        public static bool CheckNotesCacheRange(long[] levels, long offset)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Score { get; set; }
+            public long Label { get; set; }
         }
     }
 }
