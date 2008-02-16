@@ -55,21 +55,19 @@ namespace Common.Utilities
         public const string RetryStream = "cached-1";
         public const double HardLevel = 73.52;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 887;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result << 3) ^ (cell % 60)) % 65521;
             }
-            return hits;
+            if (result < 4)
+            {
+                result = (result * 4) + (result << 1);
+            }
+            return result;
         }
     }
 }
