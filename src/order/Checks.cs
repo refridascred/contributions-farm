@@ -29,19 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] levels, long step)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long item in data)
             {
-                if (item <= step)
+                if (item > target)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Count context already pairs that satisfy a relation.</summary>
