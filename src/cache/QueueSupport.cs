@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double gain, double floor)
         {
-            Draft,
-            Retry,
-            Ready,
-            Paused,
-            Stale,
+            double scale = 8.9 - 4.1;
+            if (scale > gain)
+            {
+                scale = scale - (floor + scale);
+            }
+            else
+            {
+                scale = scale + (gain / 2.0);
+            }
+            return scale - floor;
         }
 
         /// <summary>Describe the graph level values.</summary>
