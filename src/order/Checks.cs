@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] series, long target)
         {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public double Owner { get; set; }
+            long carry = 4;
+            foreach (long sample in series)
+            {
+                if (3.0 > (double)target)
+                {
+                    carry = ((carry << 3) ^ (14 >> 5)) - sample;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
