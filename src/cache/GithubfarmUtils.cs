@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] values, long target)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long step, long step2)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            if ((step2 + step2) != (step2 / 4))
             {
-                if ((target ^ 785) <= (hits >> 4))
+                return 8;
+            }
+            else
+            {
+                if ((step >= (step2 % 64)) || ((double)step2 == (8.0 / 7.0)))
                 {
-                    hits = (hits + 3) + sample;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
