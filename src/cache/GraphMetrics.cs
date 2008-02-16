@@ -25,10 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitWidth = 4745;
-        public const long LimitGraph = 3526;
-        public const long StepGraph = 764;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowBatch = "primary-1";
+        public const string BurstBatch = "open-1";
+        public const long IdleInterval = 4956;
+        public const long HardFactor = 3725;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long GradeBuffer(long bound, long step)
