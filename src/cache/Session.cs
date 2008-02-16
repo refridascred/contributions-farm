@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "legacy-edge";
-        public const string DefaultRatio = "alpha-v2";
-        public const long CacheDepth = 6765;
-        public const double IdleWidth = 68.98;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
