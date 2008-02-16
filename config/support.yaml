@@ -1,15 +1,4 @@
 # support settings
-flush_threshold_ms: 60
-min_capacity: open
-cluster_ttl: 5295
-strict:
-  hard_delay: 11.34
-  hard_window_ms: false
-  sync_retries: true
-  base_timeout: 24
-  checks_ratio: true
-  context_interval: 74
-base_capacity:
-  - 89
-  - 39
-max_ratio: primary
+verbose: 5058
+readonly: true
+default_threshold_count: 34
