@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] data)
         {
-            Synced,
-            Locked,
-            Closed,
-            Done,
-            Active,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((75 - count) > (count >> 5))
+                {
+                    count = (count + 2) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
