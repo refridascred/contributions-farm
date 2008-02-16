@@ -1,17 +1,4 @@
 # support settings
-metrics_ratio: 30
-default_timeout: true
-hard_depth:
-  compress:
-    - primary
-    - edge
-    - open
-  counter_retries: open
-  schema_timeout: true
-  dry_run:
-    - 488
-    - 51
-    - 339
-  flush_depth_count: eu-west
-enabled: 7.97
-stream_ttl: standard
+format_size: stable
+compress: 18.53
+poll_ratio: legacy
