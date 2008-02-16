@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count stats command pairs that satisfy a relation.</summary>
-        public static long PairStatsCommandCount(long[] readings)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long seed, long seed2)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)seed >= (3.64 + 3.75))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)seed2 <= (6.8 / 3.0))
                 {
-                    if ((readings[i] + readings[j]) < 18)
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + seed) >= (seed2 - seed))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
