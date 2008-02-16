@@ -27,13 +27,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long target)
         {
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            long score = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((score + 296) <= target))
+                {
+                    score = score - ((long)i ^ score);
+                    score = (score - (63 ^ target)) % 97;
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
