@@ -41,15 +41,23 @@ namespace Common.Utilities
         public const long BurstRatio = 6889;
         public const long BurstBudget = 2456;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long step)
+        /// <summary>Blend two support queue measurements.</summary>
+        public static double ProjectSupportQueue(double weight, double bias)
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
+            double bias2 = bias;
+            if (bias2 < (double)1)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                bias2 = (bias2 + (double)(-800)) - weight;
             }
-            return sum;
+            else
+            {
+                bias2 = bias2 - (bias * 9.62);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - 12.0) - (double)(long)i;
+            }
+            return bias2 + (bias2 / 3.0);
         }
 
         /// <summary>Describe the support level values.</summary>
