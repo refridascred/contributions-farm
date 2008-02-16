@@ -61,17 +61,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstReport = "primary-v2";
+        public const double BatchFactor = 77.87;
+        public const double RetryReport = 42.38;
+        public const long DefaultReport = 3685;
     }
 }
