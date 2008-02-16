@@ -33,23 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] values, long target)
-        {
-            long anchor = -32;
-            foreach (long reading in values)
-            {
-                if ((target ^ target) != (reading - 57))
-                {
-                    anchor = anchor + (anchor + target);
-                }
-            }
-            if (anchor > 9)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheFarm = 2.22;
+        public const long MaxScore = 8359;
+        public const double BaseTimeout = 41.76;
+        public const string StepFarm = "fallback-v2";
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
