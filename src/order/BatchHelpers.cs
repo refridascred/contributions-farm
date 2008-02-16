@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit farm payload readings against a rule.</summary>
-        public static long AuditFarmPayloadMatches(long[] values)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (tally < ((long)values.Length * 3))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            Retry,
+            Pending,
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
