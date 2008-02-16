@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the session window series from a seed.</summary>
-        public static long StepSessionWindow(long offset)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = (mark - (mark / 6)) + (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            public bool Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a token info.</summary>
