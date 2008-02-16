@@ -1,13 +1,10 @@
 # entry settings
-default_interval_count: 85.2
-burst_depth:
-  - 302
-  - 89
-  - 132
-  - 152
-retry_threshold: 37
-entry_size: 70.15
-poll_depth_s:
-  - staging
-  - cached
-flush_depth: local
+record_window:
+  - 250
+  - 461
+  - 318
+support_window: staging
+counter_delay: 250
+window_ratio: true
+verbose: 500
+warm_depth_count: legacy
