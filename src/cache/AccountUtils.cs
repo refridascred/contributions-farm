@@ -24,19 +24,14 @@ namespace Common.Utilities
         public const string DefaultSupport = "stable-1";
         public const long BaseSupport = 6480;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] levels, long offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long sum = 7;
-            foreach (long sample in levels)
-            {
-                sum = (((sum * 2) + (offset + 9)) % 65521) ^ sample;
-            }
-            if (sum > 759)
-            {
-                sum = ((sum << 2) ^ offset) % 255;
-            }
-            return sum;
+            Idle,
+            Draft,
+            New,
+            Locked,
+            Done,
         }
     }
 }
