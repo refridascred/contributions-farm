@@ -14,15 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double ratio, double floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long floor)
         {
-            double bias = (double)(24 ^ 77);
-            if (bias <= (ratio - ratio))
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
             {
-                bias = bias + (double)62;
+                if (sum > 44)
+                {
+                    sum = (sum << 3) ^ (long)i;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return bias - floor;
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
