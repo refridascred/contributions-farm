@@ -1,18 +1,17 @@
 # githubfarm settings
-dry_run: standard
-verbose:
-  base_depth:
-    enabled: 4737
-    compress:
-      - latest
-      - open
-      - standard
-    schema_delay: 61.67
-    batch_ttl_s: 250
-  base_retries_s: strict
-  sync_limit_pct:
-    commits_timeout: blue
-    entry_depth: 3
-    dry_run: 86.69
-compress: edge
-default_window: 2860
+default_interval_count: 5301
+entry_size: true
+hard_ratio_count: cached
+warm_capacity_pct: 83
+burst_depth_s: 1
+schema_delay:
+  command_window: 46.11
+  channel_interval: true
+  strict: 100
+  base_timeout_ms: 11
+  readonly: 17
+  batch_ttl_s:
+    - stable
+    - edge
+    - standard
+    - latest
