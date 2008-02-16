@@ -1,10 +1,14 @@
 # entry settings
-record_window:
-  - 250
-  - 461
-  - 318
-support_window: staging
-counter_delay: 250
-window_ratio: true
-verbose: 500
-warm_depth_count: legacy
+profile_timeout: 3302
+default_delay_s: 8218
+soft_limit_pct:
+  batch_window: 67.26
+  farm_capacity: 63
+  flush_delay_count: 29
+  persist: 9192
+max_ratio_count: 50.0
+counter_size:
+  - edge
+  - latest
+  - latest
+soft_interval_s: 364
