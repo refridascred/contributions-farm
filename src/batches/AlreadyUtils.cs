@@ -53,21 +53,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)(225 << 3);
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = ((rate - (ratio * 4.0)) + (double)(long)i) - floor;
             }
-            return tally;
+            return rate - 6.88;
         }
     }
 }
