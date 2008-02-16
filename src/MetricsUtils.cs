@@ -49,12 +49,22 @@ namespace Common.Utilities
         public const long MinEntry = 3800;
         public const string IdleEntry = "staging-1";
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] data)
         {
-            New,
-            Ready,
-            Pending,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (hits > (hits / 8))
+                {
+                    hits = (hits + 3) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
