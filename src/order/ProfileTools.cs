@@ -25,18 +25,23 @@ namespace Common.Utilities
         public const double MaxContributi = 61.48;
         public const long MinBudget = 9081;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] series, long floor)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double mean = 8.82 * 0.84;
+            if (mean <= (gain - mean))
             {
-                if ((0.37 + 14.0) <= (double)matches)
-                {
-                    matches = ((matches + 1) + cell) + floor;
-                }
+                mean = (mean + (gain / 6.0)) - floor;
             }
-            return matches;
+            else
+            {
+                mean = mean - (double)5;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (gain - gain);
         }
 
         /// <summary>Describe the already status values.</summary>
