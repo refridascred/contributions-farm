@@ -20,15 +20,13 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
