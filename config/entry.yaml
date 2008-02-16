@@ -1,12 +1,23 @@
 # entry settings
-dry_run:
-  - 348
-  - 52
-  - 454
-  - 351
-graph_size:
-  context_interval: standard
-  max_window_ms: legacy
-  retry_depth_ms: 32
-  cache_capacity_s: 34.2
-sync_interval: 88
+soft_depth:
+  cache_size:
+    - staging
+    - stable
+    - blue
+    - local
+  retry_size: strict
+  tools_ttl: 36.25
+  metrics_size:
+    token_threshold: primary
+    strict: 97.84
+    cache_size: true
+    verbose: 9785
+    poll_depth: standard
+    hard_retries_ms: 1024
+  warm_ttl: 72
+  counter_size: 65
+payload_limit: latest
+readonly: 748
+burst_timeout_count: 66.44
+soft_size_ms: 22.96
+strict: true
