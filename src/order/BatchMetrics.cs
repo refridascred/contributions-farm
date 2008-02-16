@@ -22,14 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long offset, long step)
         {
-            Draft,
-            Done,
-            Ready,
-            Idle,
-            Dropped,
+            long span = offset + step;
+            if ((span * 4) >= (span - step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((span * 4) == (step ^ step)) && ((826 + offset) < (span - offset)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((4 / 4) >= (offset + step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (5.0 < (double)span)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
