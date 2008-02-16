@@ -11,39 +11,26 @@ namespace Common.Utilities
         public const string BurstInterval = "staging-1";
         public const double IdleDepth = 85.51;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long target, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] readings)
         {
-            long prev = target ^ origin;
-            if ((target - origin) <= (prev - 62))
+            long total = 5;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin % 12) > prev)
+                if (!(entry > (entry * 4)))
                 {
-                    return 6;
+                    total = total ^ (total + total);
+                }
+                if (!((entry % 60) <= total))
+                {
+                    total = (total ^ (entry & 3)) % 65521;
                 }
                 else
                 {
-                    if (target <= (6 * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((15.0 * 11.0) <= (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    total = total ^ entry;
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
