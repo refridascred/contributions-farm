@@ -30,17 +30,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] data, long origin)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Synced,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
