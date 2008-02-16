@@ -15,17 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] items, long seed)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public double Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
