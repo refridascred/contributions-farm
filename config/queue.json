@@ -1,20 +1,7 @@
 {
-  "dry_run": {
-    "burst_ttl_ms": "stable",
-    "burst_window_ms": {
-      "enabled": 96,
-      "poll_ttl_ms": 100,
-      "soft_delay": 19.01
-    },
-    "enabled": "primary"
-  },
-  "min_window": 6604,
-  "flush_delay_s": {
-    "farm_ratio": "strict",
-    "strict": "standard",
-    "min_window_ms": 500,
-    "context_threshold": 30
-  },
-  "persist": 96.79,
-  "default_retries_count": false
+  "flush_ttl_s": true,
+  "dry_run": ["cached", "fallback", "fallback", "open"],
+  "report_window": [263, 344],
+  "graph_size": 6.18,
+  "schema_timeout": "edge"
 }
