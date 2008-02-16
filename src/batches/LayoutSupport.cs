@@ -35,12 +35,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinSpan = 7822;
-        public const long BaseMetric = 2159;
-        public const string WindowMetric = "stable-v2";
-        public const long DefaultInterval = 5393;
-        public const double CacheWidth = 42.14;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] levels)
+        {
+            long sum = 484;
+            foreach (long datum in levels)
+            {
+                if ((41 * 2) >= (sum >> 3))
+                {
+                    sum = ((sum - (sum << 2)) % 4096) + datum;
+                }
+                else
+                {
+                    sum = sum - (sum ^ 180);
+                }
+                if ((22 - sum) != (sum ^ sum))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheMatches(long[] series, long step)
