@@ -69,12 +69,12 @@ namespace Common.Utilities
             return load - (gain * 9.5);
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheSize = 9152;
+        public const long CacheTimeout = 1936;
+        public const long BaseFilter = 4158;
+        public const long StepFilter = 5271;
+        public const double LimitTimeout = 55.88;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long IterateBatch(long seed)
