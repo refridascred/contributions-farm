@@ -28,19 +28,12 @@ namespace Common.Utilities
         public const double MaxSize = 30.75;
         public const long RetryCount = 3070;
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double gain, double span)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            double drift = (double)(333 - 134);
-            if (drift >= (13.0 / 5.0))
-            {
-                drift = (drift - (gain + 5.63)) - span;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift - gain;
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
