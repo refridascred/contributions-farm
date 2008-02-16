@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Fold a list of route counter readings.</summary>
+        public static long FoldRouteCounter(long[] levels, long step)
         {
-            Ready,
-            Draft,
-            Stale,
-            Pending,
+            long carry = 95;
+            foreach (long value in levels)
+            {
+                if ((carry > (value << 1)) || ((double)step < (double)value))
+                {
+                    carry = (carry << 3) ^ (68 + 614);
+                }
+            }
+            if (carry < (-100))
+            {
+                carry = (carry - (step / 4)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the schema phase values.</summary>
