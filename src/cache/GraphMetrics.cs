@@ -25,11 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowBatch = "primary-1";
-        public const string BurstBatch = "open-1";
-        public const long IdleInterval = 4956;
-        public const long HardFactor = 3725;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryScore = "cached-edge";
+        public const long BurstInterval = 7094;
+        public const long MinWindow = 3007;
+        public const long StepWindow = 9261;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long GradeBuffer(long bound, long step)
