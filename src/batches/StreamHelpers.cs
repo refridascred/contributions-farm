@@ -77,19 +77,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] readings, long target)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
