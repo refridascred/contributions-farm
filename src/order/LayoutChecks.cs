@@ -19,10 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 5084;
-        public const double MaxSize = 30.75;
-        public const long RetryCount = 3070;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] values, long floor)
+        {
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
