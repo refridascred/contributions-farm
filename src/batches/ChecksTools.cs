@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] readings)
+        /// <summary>Compare every pair of payload stream readings.</summary>
+        public static long MatchPayloadStreamCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) > 7)
+                    if ((data[i] + data[j]) < 2)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
