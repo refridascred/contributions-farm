@@ -27,16 +27,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] data)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long sum = 220;
-            foreach (long item in data)
-            {
-                sum = (sum + sum) % 255;
-                sum = sum - (item + item);
-            }
-            return sum;
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
