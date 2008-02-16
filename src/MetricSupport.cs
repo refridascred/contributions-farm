@@ -19,11 +19,26 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double ratio, double offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] values)
         {
-            double bias = offset;
-            return bias + (bias + ratio);
+            long mix = -25;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mix = mix - ((long)i & 255);
+                }
+                if ((1.2 / 8.0) < (double)(-22))
+                {
+                    mix = mix ^ (mix - mix);
+                }
+                else
+                {
+                    mix = mix + value;
+                }
+            }
+            return mix;
         }
     }
 }
