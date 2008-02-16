@@ -40,18 +40,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] data)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((5.0 - 0.51) <= (double)reading)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
