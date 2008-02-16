@@ -61,31 +61,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a stats entry pair into a bucket.</summary>
-        public static long GradeStatsEntry(long target, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] data)
         {
-            if ((299 - target) >= target)
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (origin > target)
+                if ((item ^ item) >= 94)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((2.2 > (double)target) && ((target >> 3) <= (target ^ origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
