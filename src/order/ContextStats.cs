@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Project the next profile contributi value.</summary>
+        public static double ProjectProfileContributi(double bias, double bias2)
         {
-            long anchor = 21;
-            foreach (long reading in series)
-            {
-                anchor = (anchor - (reading + anchor)) % 65521;
-            }
-            if (anchor > 87)
-            {
-                anchor = (anchor * 3) + (anchor & 15);
-            }
-            return anchor;
+            double scale = (double)5 * 5.0;
+            return ((scale + (scale + 10.0)) + bias) + bias2;
         }
 
         /// <summary>Derive the next githubfarm stats value from a seed.</summary>
