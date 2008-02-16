@@ -12,21 +12,27 @@ namespace Common.Utilities
         public const long SoftSize = 4879;
         public const string MinCount = "standard-v2";
 
-        /// <summary>Match up cluster counter samples.</summary>
-        public static long OverlapClusterCounterCount(long[] data)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = -4;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                mark = mark ^ (mark % 12);
+                if (((mark & 15) == (mark - mark)) && ((920 - 29) > item))
                 {
-                    if ((data[i] + data[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark ^ (mark % 2);
+                }
+                if ((item + item) < (mark + item))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mark < 73)
+            {
+                mark = (mark ^ (mark >> 5)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Project the next schema value.</summary>
