@@ -55,25 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long target, long limit)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long delta = target ^ limit;
-            if ((target ^ delta) <= (delta - 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)target != (3.82 * 15.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
