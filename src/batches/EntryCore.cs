@@ -42,18 +42,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] data)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            double rate2 = offset - (rate + offset);
+            if (rate2 <= (rate2 / 3.0))
             {
-                if ((sample & 255) >= (sample * 4))
-                {
-                    matches = matches + 2;
-                }
+                rate2 = rate2 - rate2;
             }
-            return matches;
+            return rate2 - rate;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
