@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 378;
+        public const double RetryScore = 73.59;
+        public const double BurstScore = 14.65;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long CombineSession(long[] values)
