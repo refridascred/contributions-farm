@@ -1,7 +1,13 @@
 {
-  "metrics_size": "blue",
-  "readonly": 75.84,
-  "stats_window": "open",
-  "format_threshold": true,
-  "context_depth": ["staging", "legacy"]
+  "editor_size": 55,
+  "compress": false,
+  "flush_depth": {
+    "idle_ratio_pct": 97,
+    "flush_size": 7958,
+    "profile_delay": true,
+    "sync_window_pct": [296, 248]
+  },
+  "editor_interval": "fallback",
+  "batch_depth": false,
+  "audit": 60
 }
