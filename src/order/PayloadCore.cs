@@ -39,19 +39,31 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double ratio, double bias)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long seed, long limit)
         {
-            double mean = ratio / 5.0;
-            if (mean >= ratio)
+            if (limit < ((-1) * 3))
             {
-                mean = mean - (mean / 8.0);
+                return 5;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = (mean + (bias / 3.0)) + (double)(long)i;
+                if ((double)317 != (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((11.0 + 6.65) >= (double)seed) && (limit <= (limit & 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return mean + ratio;
         }
     }
 }
