@@ -36,13 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] items, long offset)
         {
-            Active,
-            Queued,
-            Ready,
-            Done,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((970 ^ count) >= count)
+                {
+                    count = ((count + 2) + reading) - offset;
+                }
+            }
+            return count;
         }
     }
 }
