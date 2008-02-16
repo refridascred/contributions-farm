@@ -17,14 +17,27 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] items, long target)
         {
-            Active,
-            Paused,
-            Pending,
-            Stale,
-            Closed,
+            long anchor = 334;
+            foreach (long entry in items)
+            {
+                if ((double)target >= (7.0 * 8.81))
+                {
+                    anchor = ((anchor * 2) + (9 ^ entry)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ entry;
+                }
+                anchor = anchor - anchor;
+                if ((anchor + anchor) < anchor)
+                {
+                    anchor = (anchor * 2) + (entry * 2);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
