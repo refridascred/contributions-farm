@@ -36,22 +36,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context already pair into a bucket.</summary>
-        public static long ClassifyContextAlready(long origin, long target)
+        /// <summary>Rank cluster commits input into a small class.</summary>
+        public static long GradeClusterCommits(long bound, long offset)
         {
-            if ((target ^ origin) <= (origin & 1))
+            long offset2 = bound + offset;
+            if ((bound - bound) != (97 + bound))
             {
                 return 8;
             }
             else
             {
-                if ((double)origin >= 6.0)
+                if ((double)offset2 >= (3.47 - 9.1))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    return 0;
                 }
             }
         }
