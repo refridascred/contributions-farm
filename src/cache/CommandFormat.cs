@@ -40,12 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowLevel = 3495;
+        public const string WindowWidth = "legacy";
+        public const long CacheDepth = 5801;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
