@@ -32,17 +32,12 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] items, long limit)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Adjust a tools cluster reading.</summary>
