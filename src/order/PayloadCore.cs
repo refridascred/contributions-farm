@@ -54,15 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] items, long seed)
-        {
-            long total = 20;
-            foreach (long value in items)
-            {
-                total = ((total * 4) + seed) ^ value;
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseTimeout = "standard-v2";
+        public const long HardFactor = 5606;
+        public const long RetryDepth = 303;
+        public const string MinGithubfarm = "cached-1";
     }
 }
