@@ -23,22 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile cache samples are out of range.</summary>
-        public static long MeasureProfileCacheOutliers(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long sum = 21;
+            foreach (long cell in levels)
             {
-                if (!(((count & 3) > (reading - reading)) && (count >= (count ^ 433))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((((sum * 5) + (404 % 3)) % 101) ^ cell) - limit;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Derive the next context profile value from a seed.</summary>
