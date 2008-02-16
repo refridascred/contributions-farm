@@ -1,31 +1,10 @@
 # support settings
-min_capacity_count: 29
-audit: 53.93
-compress: 250
-max_window_pct:
-  poll_interval: 63
-  hard_limit: true
-  compress:
-    - 349
-    - 153
-    - 277
-  base_limit: 80
-  metrics_size:
-    max_retries_s: 96
-    channel_ttl: 1330
-    max_window_s: local
-    hard_window: 500
-    max_delay: fallback
-    idle_delay_pct: 16.9
-soft_ratio_ms:
-  persist: 60
-  route_limit:
-    - primary
-    - edge
-    - standard
-  strict: 30
-  enabled:
-    compress: 56.22
-    burst_delay: 64
-    max_ttl: primary
-strict: false
+verbose:
+  - green
+  - blue
+compress:
+  - strict
+  - open
+  - blue
+  - blue
+idle_threshold_count: 10
