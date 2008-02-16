@@ -1,6 +1,13 @@
 # payload settings
-flush_threshold: stable
-retry_size_ms: 500
-flush_ttl_ms: stable
-burst_retries: 59.37
-cache_ratio_ms: 1245
+warm_limit_s: 93.3
+retry_ttl: blue
+default_timeout_pct: stable
+soft_window_ms: 44.94
+default_ratio:
+  idle_window_pct: 59.9
+  farm_ttl: 14.18
+  githubfarm_retries: cached
+  hard_ratio: false
+  retry_window_count: green
+  min_size_count: 89.4
+support_capacity: green
