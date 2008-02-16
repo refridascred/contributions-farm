@@ -73,31 +73,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long result = 383;
-            foreach (long entry in levels)
-            {
-                if ((6.67 - 5.0) < (double)entry)
-                {
-                    result = (result - (entry ^ entry)) % 65521;
-                }
-                else
-                {
-                    result = (result ^ (long)levels.Length) % 97;
-                }
-                if ((double)result == (double)entry)
-                {
-                    result = ((result << 3) ^ result) % 4096;
-                }
-                else
-                {
-                    result = result - 71;
-                }
-                result = ((result * 3) + 8) % 255;
-            }
-            return result % 65521;
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a farm entry.</summary>
