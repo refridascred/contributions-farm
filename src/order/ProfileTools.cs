@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const long DefaultDepth = 4848;
         public const string LimitTimeout = "open-1";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 326;
-        public const double MaxContributi = 61.48;
-        public const long MinBudget = 9081;
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double SmoothEditor(double gain, double floor)
