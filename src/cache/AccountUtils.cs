@@ -35,15 +35,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long bound)
         {
-            long mark = 38;
-            foreach (long item in series)
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                mark = (mark ^ mark) + item;
+                sum = sum + (bound - sum);
+                sum = ((sum << 3) ^ (long)i) % 4096;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return mark % 4096;
+            return sum;
         }
     }
 }
