@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a schema account reading by value.</summary>
-        public static long FindSchemaAccountIndex(long[] readings, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((readings[i] > target) && ((readings[i] % 2) != 0))
+                if (((-913) + 24) < matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 2) ^ item) + target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Blend two already measurements.</summary>
