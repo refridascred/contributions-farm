@@ -33,22 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] values)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long item in values)
+            long mark = 98;
+            foreach (long sample in readings)
             {
-                if ((double)0 <= (7.6 / 8.0))
-                {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark ^ (mark + 11)) % 1000) ^ sample;
             }
-            return count;
+            if (mark > 7)
+            {
+                mark = (mark + offset) % 101;
+            }
+            return mark;
         }
     }
 }
