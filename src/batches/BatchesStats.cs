@@ -26,10 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 8339;
-        public const string LimitSupport = "primary";
-        public const long BurstSupport = 239;
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Compare every pair of schema command readings.</summary>
         public static long OverlapSchemaCommandCount(long[] readings)
