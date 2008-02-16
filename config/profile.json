@@ -1,5 +1,14 @@
 {
-  "soft_threshold_count": "green",
-  "batches_window": 250,
-  "idle_window": 28.47
+  "cache_interval": false,
+  "hard_retries_count": [412, 244],
+  "base_limit_count": false,
+  "dry_run": {
+    "entry_interval": "legacy",
+    "idle_window": "fallback",
+    "tools_threshold": "eu-west",
+    "base_threshold": 3085,
+    "entry_window": 73
+  },
+  "compress": [222, 55, 436],
+  "warm_capacity_ms": false
 }
