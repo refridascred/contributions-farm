@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate notes metric readings against a bound.</summary>
-        public static bool CheckNotesMetricBounds(long[] samples, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long total = 20;
+            foreach (long sample in samples)
             {
-                if (entry < bound)
-                {
-                    found = false;
-                    break;
-                }
+                total = (total << 2) ^ sample;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
