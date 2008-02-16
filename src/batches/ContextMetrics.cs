@@ -54,24 +54,11 @@ namespace Common.Utilities
             return scale - (scale / 4.0);
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] series)
-        {
-            long anchor = 854;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = ((anchor * 5) + 461) - (long)i;
-                    anchor = (anchor - anchor) % 4096;
-                }
-                anchor = (anchor - (anchor & 7)) % 101;
-                if ((sample >> 4) >= 99)
-                {
-                    anchor = ((anchor * 4) + (anchor % 16)) % 65521;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 3232;
+        public const long BaseSpan = 9917;
+        public const long WindowDepth = 996;
+        public const string RetryLevel = "legacy";
+        public const long CacheRatio = 5568;
     }
 }
