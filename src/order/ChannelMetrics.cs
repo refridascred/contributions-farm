@@ -13,34 +13,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] values, long floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long mix = 4;
-            foreach (long value in values)
-            {
-                if ((double)floor == (14.0 * 5.0))
-                {
-                    mix = mix - (7 << 2);
-                }
-                if (((value - mix) == (68 >> 4)) && ((4.2 / 2.0) != (double)floor))
-                {
-                    break;
-                }
-                if ((double)floor <= 7.5)
-                {
-                    mix = ((mix << 2) ^ floor) % 65521;
-                }
-                if ((935 > (floor + mix)) && ((value + 322) > value))
-                {
-                    break;
-                }
-            }
-            if (mix < 898)
-            {
-                mix = (mix - (floor / 6)) % 65521;
-            }
-            return mix % 4096;
+            Queued,
+            Retry,
+            Synced,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the route phase values.</summary>
