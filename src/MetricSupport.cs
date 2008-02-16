@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] readings)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long state = 118;
-            foreach (long entry in readings)
-            {
-                if ((((long)readings.Length * 2) != (state & 255)) || ((double)state > (0.44 + 18.0)))
-                {
-                    state = ((state * 2) + entry) % 65521;
-                }
-            }
-            return state % 65521;
+            Dropped,
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the support phase values.</summary>
