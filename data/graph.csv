@@ -1,7 +1,7 @@
-id,rank,score,ratio
-1,265,green,34.71
-2,27.01,622,26.87
-3,latest,edge,standard
-4,28.79,fallback,477
-5,512,strict,strict
-6,cached,staging,71.4
+id,score,token,weight,count
+1,65.87,89.79,134,56.83
+2,latest,961,945,75.32
+3,903,latest,15,1.93
+4,526,5.19,primary,edge
+5,329,fallback,153,primary
+6,963,66.72,84.83,180
