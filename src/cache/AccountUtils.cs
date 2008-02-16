@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double scale, double bias)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long origin)
         {
-            double rate = scale - (double)42;
-            for (int i = 0; i < 5; i++)
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                rate = ((rate + (scale - 19.0)) + (double)(long)i) + bias;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return rate + (double)64;
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
