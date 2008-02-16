@@ -1,8 +1,5 @@
 {
-  "soft_ttl_pct": [335, 258, 464, 158],
-  "audit": 38,
-  "dry_run": ["fallback", "latest"],
-  "sync_interval_count": 5.84,
-  "cache_ratio_s": [441, 341, 364, 445],
-  "burst_window_pct": "staging"
+  "min_ratio_pct": [39, 127],
+  "support_depth": 50.31,
+  "batch_delay": "edge"
 }
