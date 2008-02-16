@@ -28,15 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double scale, double span)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] levels, long floor)
         {
-            double ratio = (span + 1.3) - scale;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                ratio = ratio - (double)(long)i;
+                if ((728 / 5) < (seen - (long)levels.Length))
+                {
+                    seen = ((seen + 3) ^ reading) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio + (scale / 3.0);
+            return seen;
         }
     }
 }
