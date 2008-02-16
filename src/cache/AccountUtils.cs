@@ -36,18 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] items, long offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((970 ^ count) >= count)
+                if (values[i] <= target)
                 {
-                    count = ((count + 2) + reading) - offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
