@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double gain, double floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long floor)
         {
-            double scale = 8.9 - 4.1;
-            if (scale > gain)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale - (floor + scale);
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (gain / 2.0);
-            }
-            return scale - floor;
+            return -1;
         }
 
         /// <summary>Hold a session options.</summary>
