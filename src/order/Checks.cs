@@ -13,15 +13,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] values, long origin)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long bound)
         {
-            long total = 0;
-            foreach (long item in values)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                total = (((total ^ (963 >> 1)) % 4096) ^ item) + origin;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Project the next batches report value.</summary>
