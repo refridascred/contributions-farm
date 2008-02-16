@@ -22,17 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] series, long offset)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Paused,
+            Pending,
+            Stale,
+            Closed,
         }
 
         /// <summary>Digest a series of profile stats entries.</summary>
