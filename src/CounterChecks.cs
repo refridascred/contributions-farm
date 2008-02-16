@@ -41,14 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Synced,
-            Closed,
-            Dropped,
-            Paused,
-            New,
+            public double Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate account samples.</summary>
