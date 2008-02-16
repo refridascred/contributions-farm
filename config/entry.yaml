@@ -1,24 +1,6 @@
 # entry settings
-githubfarm_ratio:
-  - staging
-  - staging
-  - legacy
-  - staging
-flush_interval_s: 500
-farm_retries: 99
-graph_timeout: 30
-payload_retries:
-  - 2
-  - 308
-  - 485
-  - 342
-batch_window:
-  max_limit_pct: true
-  already_timeout: true
-  dry_run:
-    - 245
-    - 167
-    - 148
-  default_limit: 60
-  flush_retries: standard
-  retry_threshold_pct: cached
+min_retries: 1024
+audit: 70.12
+idle_ttl: false
+flush_size_s: 1915
+persist: 9121
