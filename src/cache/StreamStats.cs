@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] data, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (sample != offset)
+                if (((tally + datum) < 443) || !(((-334) + datum) >= (datum << 2)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Digest a series of support context entries.</summary>
