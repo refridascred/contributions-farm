@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double scale, double span)
         {
-            public double Score { get; set; }
-            public bool Mode { get; set; }
+            double drift = scale;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift + (scale / 9.0)) + (double)(long)i) - span;
+            }
+            return drift - (drift - drift);
         }
 
         /// <summary>Audit buffer checks readings against a rule.</summary>
