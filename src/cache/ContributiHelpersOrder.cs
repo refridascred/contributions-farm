@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a account stream figure with a bias.</summary>
-        public static double ScaleAccountStream(double ratio, double floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            double weight = 1.4 + (ratio + floor);
-            if (weight <= (5.4 - ratio))
-            {
-                weight = weight + (ratio - 5.3);
-            }
-            else
-            {
-                weight = weight + 3.41;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (weight - 4.0)) + (double)(long)i;
-            }
-            return weight + floor;
+            public bool Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
