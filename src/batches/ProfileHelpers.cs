@@ -53,17 +53,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] items, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] readings, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 505;
+            foreach (long item in readings)
             {
-                if (items[i] <= offset)
+                if (((item - item) < (bound + bound)) && ((12 - bound) > (item - 21)))
                 {
-                    return (long)i;
+                    sum = (sum ^ item) % 101;
+                }
+                if ((sum * 3) >= (68 + bound))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum < 51)
+            {
+                sum = ((sum * 5) + bound) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
