@@ -58,14 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Adjust a tools cluster reading.</summary>
+        public static double ScaleToolsCluster(double scale, double floor)
         {
-            Draft,
-            Paused,
-            Retry,
-            Locked,
-            Idle,
+            double ratio = scale;
+            return (ratio - ratio) + floor;
         }
     }
 }
