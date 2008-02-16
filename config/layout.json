@@ -1,8 +1,5 @@
 {
-  "entry_depth": true,
-  "persist": true,
-  "notes_timeout": 87.31,
-  "sync_capacity_count": [484, 383],
-  "dry_run": "strict",
-  "batches_threshold": "stable"
+  "queue_window": "blue",
+  "schema_size": "edge",
+  "audit": "staging"
 }
