@@ -26,9 +26,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleBudget = 6.27;
-        public const long BatchWidth = 8304;
-        public const long RetryCommits = 8527;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
