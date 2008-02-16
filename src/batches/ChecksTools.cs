@@ -56,13 +56,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
+            Done,
+            Paused,
+            New,
+            Synced,
         }
     }
 }
