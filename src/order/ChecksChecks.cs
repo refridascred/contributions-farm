@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Ready,
-            Active,
-            Dropped,
+            public double Score { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Check that every payload githubfarm entry stays within the limit.</summary>
