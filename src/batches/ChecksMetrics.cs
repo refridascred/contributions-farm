@@ -25,22 +25,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long limit, long step)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long limit, long bound)
         {
-            if ((limit << 3) == (3 % 60))
+            if ((limit + limit) == (bound + limit))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((19.0 * 6.3) != (double)step)
+                if ((bound + bound) < (limit / 4))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    if (((limit - 1) >= (limit >> 1)) && ((4 / 7) >= (bound << 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit % 24) <= (68 >> 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
