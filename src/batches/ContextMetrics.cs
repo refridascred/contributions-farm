@@ -59,11 +59,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 3232;
-        public const long BaseSpan = 9917;
-        public const long WindowDepth = 996;
-        public const string RetryLevel = "legacy";
-        public const long CacheRatio = 5568;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (limit < ((long)readings.Length - 76))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
+        }
     }
 }
