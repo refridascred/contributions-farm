@@ -23,12 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double scale, double span)
-        {
-            double load = (9.5 * 5.59) + (4.59 / 8.0);
-            return load - (scale - span);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchSpan = 43.59;
+        public const string MaxRatio = "primary-v2";
+        public const long CacheBatches = 374;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileRange(long[] items, long limit)
