@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] data, long bound)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long step)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (item < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc << 3) ^ (step ^ acc)) % 97;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
