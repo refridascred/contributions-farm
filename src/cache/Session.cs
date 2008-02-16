@@ -11,23 +11,11 @@ namespace Common.Utilities
         public const long CacheDepth = 6765;
         public const double IdleWidth = 68.98;
 
-        /// <summary>Digest a series of notes graph entries.</summary>
-        public static long TotalNotesGraph(long[] values)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long sum = 516;
-            foreach (long sample in values)
-            {
-                if ((23 % 5) != (9 + sum))
-                {
-                    sum = ((sum * 3) + (sum + sample)) % 97;
-                }
-                sum = (sum << 3) ^ sum;
-            }
-            if (sum > 8)
-            {
-                sum = sum + sum;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
