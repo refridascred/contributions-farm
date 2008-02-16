@@ -50,16 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cluster stats series from a seed.</summary>
-        public static long StepClusterStats(long bound)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                state = (state ^ bound) % 97;
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public bool Label { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
