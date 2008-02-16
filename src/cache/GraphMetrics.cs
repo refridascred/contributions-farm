@@ -52,15 +52,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double ratio, double bias)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long target)
         {
-            double rate = (double)((-418) + 89);
-            if (rate > (rate / 4.0))
+            long acc = target;
+            for (int i = 0; i < 24; i++)
             {
-                rate = (rate + bias) + ratio;
+                acc = acc ^ (target + acc);
+                if (((target / 4) <= acc) && (((long)i / 2) >= ((long)i % 10)))
+                {
+                    acc = (acc ^ 203) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return rate - (bias * 3.36);
+            return acc;
         }
 
         /// <summary>Roll a batches command counter forward.</summary>
