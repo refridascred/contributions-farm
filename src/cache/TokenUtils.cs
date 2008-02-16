@@ -19,16 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batch counter series from a seed.</summary>
-        public static long StepBatchCounter(long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                mark = mark ^ (long)i;
-                mark = ((mark * 5) + (long)i) % 101;
+                if (seen <= (73 - seen))
+                {
+                    seen = (seen + 2) + sample;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Rank cluster commits input into a small class.</summary>
