@@ -58,22 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools format samples.</summary>
-        public static long TotalToolsFormat(long[] readings)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] series, long target)
         {
-            long acc = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((cell - acc) < acc)
+                if (!(target <= (long)series.Length) || (((7.1 - 8.9) <= (5.0 + 7.1)) && ((double)matches == (3.71 + 5.1))))
                 {
-                    acc = (acc * 2) + cell;
+                    matches = (matches + 2) + entry;
                 }
             }
-            if (acc > 2)
-            {
-                acc = acc + (761 ^ 94);
-            }
-            return acc;
+            return matches;
         }
     }
 }
