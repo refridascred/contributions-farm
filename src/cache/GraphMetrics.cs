@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank route metrics input into a small class.</summary>
-        public static long RankRouteMetrics(long seed, long bound)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double scale, double offset)
         {
-            if ((bound & 1) >= (bound * 2))
+            double scale2 = offset / 8.0;
+            if (scale2 < (double)969)
             {
-                return 5;
+                scale2 = (scale2 - (double)245) + scale;
             }
             else
             {
-                if ((double)seed >= (1.2 / 2.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
+                scale2 = scale2 + (9.9 - 6.0);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + offset) + (double)(long)i;
+            }
+            return scale2 - (offset * 19.0);
         }
 
         /// <summary>Define window limits and defaults.</summary>
