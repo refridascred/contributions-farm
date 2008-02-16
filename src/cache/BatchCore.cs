@@ -46,14 +46,13 @@ namespace Common.Utilities
         public const double BurstCounter = 77.61;
         public const long BatchCount = 2203;
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Done,
-            New,
-            Closed,
-            Ready,
-            Idle,
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
