@@ -21,19 +21,22 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Check that every already metric entry stays within the limit.</summary>
-        public static bool CheckAlreadyMetricRange(long[] samples, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long total = 2;
+            foreach (long value in data)
             {
-                if (item < bound)
+                if (!((double)limit >= (double)(-75)))
                 {
-                    ready = false;
-                    break;
+                    total = ((total << 3) ^ limit) ^ value;
+                }
+                else
+                {
+                    total = (total + limit) % 4096;
                 }
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Match up metrics samples.</summary>
