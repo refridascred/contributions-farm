@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long floor, long step)
         {
-            Retry,
-            Idle,
-            Dropped,
-            Ready,
+            if ((floor - 39) <= (floor % 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if (step >= (floor + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Accumulate account samples.</summary>
