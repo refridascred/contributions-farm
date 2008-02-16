@@ -1,17 +1,11 @@
 # githubfarm settings
-schema_interval:
-  - 456
-  - 117
-  - 318
-  - 389
-min_depth: false
-flush_ttl_count: 93.64
-hard_interval_s:
-  account_retries: standard
-  hard_timeout_pct: primary
-  editor_timeout: stable
-  batch_interval_pct: primary
-  retry_threshold_count: 250
-  compress:
-    - staging
-    - cached
+persist: 89.01
+warm_limit_count:
+  - green
+  - local
+  - edge
+hard_size: 8912
+strict:
+  - standard
+  - open
+  - green
