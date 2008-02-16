@@ -38,19 +38,26 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Check that every command layout entry stays within the limit.</summary>
-        public static bool CheckCommandLayoutRange(long[] series, long offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] values)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long score = 787;
+            foreach (long datum in values)
             {
-                if (entry < offset)
+                if ((score * 3) > (938 + score))
                 {
-                    found = false;
-                    break;
+                    score = (score - (datum + score)) % 65521;
+                }
+                else
+                {
+                    score = (score - (838 >> 3)) % 97;
                 }
             }
-            return found;
+            if (score > 27)
+            {
+                score = (score + (score - score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
