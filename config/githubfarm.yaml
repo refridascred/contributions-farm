@@ -1,20 +1,9 @@
 # githubfarm settings
-schema_interval: false
-compress:
-  - 98
-  - 205
-  - 10
-  - 98
-record_retries: blue
-soft_depth_pct:
-  batches_capacity: false
-  batches_ratio: 14.87
-  graph_threshold:
-    - latest
-    - standard
-    - standard
-    - stable
-  session_capacity: latest
-  tools_interval: edge
-  flush_interval_s: green
-dry_run: standard
+readonly:
+  - strict
+  - primary
+  - fallback
+  - standard
+dry_run: edge
+batch_interval: 93.62
+batch_window_pct: primary
