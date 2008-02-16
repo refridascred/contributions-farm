@@ -34,13 +34,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            New,
-            Retry,
-            Closed,
-            Paused,
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
