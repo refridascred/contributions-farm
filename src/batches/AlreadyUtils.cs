@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report queue readings against a rule.</summary>
-        public static long CountReportQueueGaps(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((offset << 2) == (seen - seen))
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 3310;
+        public const long RetrySize = 729;
+        public const string CacheWindow = "standard-v2";
+        public const long BurstWindow = 29;
 
         /// <summary>Project the next buffer value.</summary>
         public static double BlendBuffer(double weight, double span)
