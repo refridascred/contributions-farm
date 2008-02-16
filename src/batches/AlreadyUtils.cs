@@ -55,19 +55,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] items, long seed)
+        /// <summary>Count the channel batches entries that pass the check.</summary>
+        public static long TallyChannelBatchesMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (cell < seed)
+                if ((double)cell <= (0.71 + 9.0))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Adjust a format reading.</summary>
