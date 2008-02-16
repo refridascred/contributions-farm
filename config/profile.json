@@ -1,8 +1,5 @@
 {
-  "batch_ratio_s": "eu-west",
-  "cache_threshold_pct": "cached",
-  "min_threshold_count": "cached",
-  "enabled": ["fallback", "fallback", "latest", "cached"],
-  "default_retries_count": "cached",
-  "metric_capacity": [258, 57, 402]
+  "retry_depth_count": 60,
+  "schema_depth": false,
+  "soft_limit_s": 65.94
 }
