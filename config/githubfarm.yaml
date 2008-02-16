@@ -1,8 +1,19 @@
 # githubfarm settings
-warm_capacity: blue
-min_ttl_s: legacy
-schema_ttl:
-  - eu-west
+max_size_count: 250
+soft_depth_count: fallback
+order_ttl:
+  sync_delay_ms:
+    - edge
+    - open
+  batch_capacity: true
+  min_window_pct:
+    - standard
+    - strict
+  counter_limit: true
+min_timeout:
+  - fallback
+  - green
+  - legacy
   - open
-  - strict
-  - staging
+layout_interval: primary
+dry_run: eu-west
