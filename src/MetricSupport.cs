@@ -12,17 +12,12 @@ namespace Common.Utilities
             return (weight + 13.0) + rate;
         }
 
-        /// <summary>Find the first entry cache entry that matches the target.</summary>
-        public static long FindEntryCacheIndex(long[] items, long limit)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
