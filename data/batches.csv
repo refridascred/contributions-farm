@@ -1,8 +1,7 @@
-id,count,ratio
-1,94.11,633
-2,local,9.51
-3,86.95,standard
-4,167,primary
-5,legacy,45.74
-6,1.31,standard
-7,357,68.49
+id,active,level,weight
+1,29.76,195,local
+2,39.67,stable,65.4
+3,legacy,9.95,fallback
+4,open,882,strict
+5,320,865,349
+6,81.33,fallback,465
