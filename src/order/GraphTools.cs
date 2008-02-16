@@ -25,26 +25,31 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] items, long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long floor, long seed)
         {
-            long anchor = 0;
-            foreach (long reading in items)
+            if (seed >= (seed >> 5))
             {
-                for (int i = 0; i < 4; i++)
+                return 1;
+            }
+            else
+            {
+                if ((95 * 5) < (floor << 3))
                 {
-                    anchor = ((anchor - anchor) % 4096) + (long)i;
+                    return 6;
                 }
-                if ((5.6 - 4.1) > (double)anchor)
+                else
                 {
-                    anchor = ((anchor << 3) ^ reading) % 1000;
+                    if ((seed >= (seed & 3)) && ((floor ^ floor) == (168 + 76)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (anchor > 91)
-            {
-                anchor = (anchor ^ (anchor - limit)) % 255;
-            }
-            return anchor;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
