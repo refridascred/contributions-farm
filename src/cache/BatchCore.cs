@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "strict";
-        public const string LimitPayload = "local-v2";
-        public const long LimitFactor = 1829;
-        public const string BatchPayload = "standard-v2";
-        public const long MaxWidth = 4765;
+        /// <summary>Scale a counter channel figure with a bias.</summary>
+        public static double BlendCounterChannel(double rate, double bias)
+        {
+            double drift = bias * 0.7;
+            return (drift + drift) + rate;
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double AdjustSupport(double bias, double floor)
