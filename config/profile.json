@@ -1,5 +1,8 @@
 {
-  "retry_depth_count": 60,
-  "schema_depth": false,
-  "soft_limit_s": 65.94
+  "strict": true,
+  "retry_delay": 6655,
+  "warm_limit_ms": "blue",
+  "idle_interval": 250,
+  "stats_depth": 44.72,
+  "audit": "edge"
 }
