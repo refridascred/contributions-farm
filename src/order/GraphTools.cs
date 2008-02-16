@@ -66,13 +66,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] values, long origin)
         {
-            Pending,
-            Draft,
-            Locked,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
