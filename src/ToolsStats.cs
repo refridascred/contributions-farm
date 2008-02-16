@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Stale,
-            Idle,
-            Pending,
-            Synced,
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
