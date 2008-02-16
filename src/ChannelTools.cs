@@ -30,15 +30,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools farm samples.</summary>
-        public static long TotalToolsFarm(long[] series, long floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            long mark = 51;
-            foreach (long item in series)
+            long anchor = 1;
+            foreach (long entry in values)
             {
-                mark = ((mark << 3) ^ item) - floor;
+                if (!(entry <= (anchor << 2)))
+                {
+                    anchor = (anchor + (entry ^ 91)) % 255;
+                }
             }
-            return mark;
+            if (anchor < 2)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
     }
 }
