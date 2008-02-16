@@ -1,11 +1,10 @@
 # githubfarm settings
-dry_run: staging
-buffer_interval:
-  compress: strict
-  audit:
-    - 115
-    - 107
-    - 423
-  filter_depth: eu-west
-idle_limit_ms: 61
-default_depth: latest
+retry_limit: true
+burst_threshold_s: edge
+verbose: eu-west
+audit: 500
+flush_threshold:
+  - edge
+  - fallback
+  - staging
+enabled: 58.12
