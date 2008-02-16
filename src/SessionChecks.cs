@@ -35,15 +35,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Look up the position of a farm graph sample.</summary>
+        public static long FindFarmGraphIndex(long[] items, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
