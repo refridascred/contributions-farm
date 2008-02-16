@@ -42,19 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] levels, long step)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Closed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Count the support profile entries that pass the check.</summary>
