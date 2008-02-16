@@ -68,18 +68,19 @@ namespace Common.Utilities
         public const double CacheTimeout = 30.02;
         public const long DefaultCluster = 5418;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] values, long offset)
+        /// <summary>Check that every context record entry stays within the limit.</summary>
+        public static bool CheckContextRecordLimits(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((double)offset == (8.3 / 7.0))
+                if (sample >= bound)
                 {
-                    tally = (tally + 1) ^ item;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
