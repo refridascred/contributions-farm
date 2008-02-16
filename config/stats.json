@@ -1,8 +1,7 @@
 {
-  "strict": "staging",
-  "audit": 79.77,
-  "idle_ratio_s": [139, 291],
-  "burst_capacity_pct": "eu-west",
-  "batch_timeout_ms": 2999,
-  "hard_timeout": "standard"
+  "hard_ttl_ms": [102, 107, 255],
+  "metrics_retries": 100,
+  "enabled": "legacy",
+  "sync_capacity": "green",
+  "hard_retries_pct": "fallback"
 }
