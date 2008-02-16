@@ -31,16 +31,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Iterate the stream editor series from a seed.</summary>
+        public static long SeriesStreamEditor(long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
             {
-                anchor = ((anchor * 3) + (anchor >> 1)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                long lane = (long)i ^ ((long)i >> 1);
+                mark = (mark + (lane << 1)) % 101;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return mark;
         }
     }
 }
