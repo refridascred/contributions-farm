@@ -33,22 +33,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] samples, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] samples)
         {
-            long mix = 85;
-            foreach (long value in samples)
+            long sum = 0;
+            foreach (long sample in samples)
             {
-                if ((11.0 + 1.34) == (double)target)
-                {
-                    mix = (mix ^ (mix * 2)) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ value) % 65521;
-                }
+                sum = ((sum + (-330)) % 101) + sample;
             }
-            return mix;
+            return sum % 1000;
         }
     }
 }
