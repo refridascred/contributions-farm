@@ -70,22 +70,22 @@ namespace Common.Utilities
             return ratio2 + (ratio2 + ratio);
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] items)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mark = 9;
+            foreach (long entry in readings)
             {
-                if ((count % 16) >= count)
+                long gap = mark;
+                if ((double)gap != (9.74 - 7.62))
                 {
-                    count = (count + 1) ^ value;
+                    mark = (mark + (mark % 97)) - floor;
+                    gap = (gap ^ (942 + entry)) % 65521;
+                    break;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = (mark ^ (entry ^ 27)) % 97;
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
