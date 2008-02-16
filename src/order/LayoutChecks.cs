@@ -68,18 +68,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] samples)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((matches << 2) >= (matches * 5)) && ((double)matches >= (5.85 - 8.8)))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
