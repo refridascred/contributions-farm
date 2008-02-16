@@ -24,11 +24,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 5328;
-        public const long StepDepth = 1310;
-        public const double HardBudget = 77.28;
-        public const double WindowSize = 17.8;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Locked,
+            Dropped,
+            Closed,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string BaseTimeout = "standard-v2";
