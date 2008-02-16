@@ -43,12 +43,19 @@ namespace Common.Utilities
         public const long RetryCache = 9100;
         public const double IdleBudget = 30.61;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double gain, double bias)
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
+            double bias2 = (double)((-29) + 30);
+            if (bias2 < (bias2 * 13.0))
+            {
+                bias2 = (bias2 - (bias2 / 7.0)) + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 - (bias2 + gain);
         }
     }
 }
