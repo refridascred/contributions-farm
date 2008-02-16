@@ -1,12 +1,6 @@
 {
-  "token_threshold": "local",
-  "default_ttl": "stable",
-  "persist": false,
-  "batch_capacity_ms": 79,
-  "base_retries_s": {
-    "strict": false,
-    "base_depth_ms": 25.28,
-    "cache_retries_s": "staging"
-  },
-  "default_delay": 82
+  "window_timeout": 55.7,
+  "verbose": "edge",
+  "batch_limit_s": "staging",
+  "max_ratio": 6879
 }
