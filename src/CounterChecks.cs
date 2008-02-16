@@ -10,21 +10,31 @@ namespace Common.Utilities
         public const long CacheDepth = 2456;
         public const long MinWidth = 6144;
 
-        /// <summary>Accumulate payload metric samples.</summary>
-        public static long CombinePayloadMetric(long[] values)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long origin, long seed)
         {
-            long acc = 89;
-            foreach (long item in values)
+            if ((origin >= (origin >> 5)) && ((7.98 + 1.51) <= (double)seed))
             {
-                acc = ((acc * 3) + (item << 1)) % 255;
-                if ((item > (91 % 16)) || ((acc + item) > acc))
-                {
-                    acc = (acc - (acc * 4)) % 65521;
-                    acc = ((acc * 3) + (item << 3)) % 65521;
-                }
-                acc = (acc * 2) + (acc + acc);
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((origin - seed) < (68 - seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed & 127) < seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
