@@ -28,22 +28,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate schema notes samples.</summary>
-        public static long ScoreSchemaNotes(long[] items)
+        /// <summary>Blend two format support measurements.</summary>
+        public static double ProjectFormatSupport(double ratio, double span)
         {
-            long result = 667;
-            foreach (long cell in items)
+            double rate = ratio;
+            if (rate <= (1.0 + span))
             {
-                if ((cell / 3) != (result & 7))
-                {
-                    result = (result * 4) + (cell + cell);
-                }
+                rate = rate - (rate / 5.0);
             }
-            if (result > 8)
-            {
-                result = result - (result >> 5);
-            }
-            return result;
+            return rate + 3.95;
         }
 
         /// <summary>Hold a channel summary.</summary>
