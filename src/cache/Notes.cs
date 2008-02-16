@@ -34,11 +34,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Rank cache record input into a small class.</summary>
+        public static long BucketCacheRecord(long offset, long floor)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
+            if (1.0 < (double)offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((879 - floor) < (floor - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(4.6 <= (double)floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (7.0 + 7.5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
