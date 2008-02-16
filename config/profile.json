@@ -1,11 +1,6 @@
 {
-  "persist": 100,
-  "schema_interval": true,
-  "audit": [204, 206, 25, 410],
-  "batch_capacity_ms": {
-    "checks_size": "blue",
-    "sync_window_count": ["green", "legacy"],
-    "batch_threshold_s": 45.64
-  },
-  "warm_threshold": true
+  "strict": 5.61,
+  "retry_timeout_count": ["standard", "stable", "fallback"],
+  "min_size_pct": 250,
+  "queue_interval": 44.79
 }
