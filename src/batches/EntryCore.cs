@@ -13,19 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate stream cache readings against a bound.</summary>
-        public static bool GuardStreamCacheRange(long[] values, long origin)
+        /// <summary>Check that every editor order entry stays within the limit.</summary>
+        public static bool VerifyEditorOrderLimits(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (datum > origin)
+                if (datum >= limit)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
