@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of entry githubfarm readings.</summary>
-        public static long FoldEntryGithubfarm(long[] data, long limit)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            long mark = 863;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark + (mark - 174)) - limit;
-                if (((item * 4) != (item >> 2)) && ((72 % 3) == (item - (long)data.Length)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 2)
-            {
-                mark = (mark * 2) + (mark & 31);
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the window mode values.</summary>
