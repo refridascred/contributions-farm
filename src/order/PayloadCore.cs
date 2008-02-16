@@ -57,21 +57,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Match up commits notes samples.</summary>
-        public static long OverlapCommitsNotesCount(long[] values)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = ratio / 5.0;
+            if (mean >= ratio)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean - (mean / 8.0);
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (bias / 3.0)) + (double)(long)i;
+            }
+            return mean + ratio;
         }
     }
 }
