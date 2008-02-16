@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] values)
         {
-            Dropped,
-            Done,
-            Idle,
-            Ready,
-            Synced,
+            long acc = 853;
+            foreach (long value in values)
+            {
+                acc = acc ^ value;
+                if ((value + acc) > ((-1) >> 2))
+                {
+                    acc = ((acc << 3) ^ (acc ^ acc)) % 65521;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
