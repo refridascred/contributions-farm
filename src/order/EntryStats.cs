@@ -44,11 +44,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleDepth = 9444;
-        public const long BurstWindow = 8444;
-        public const long MaxFactor = 7592;
-        public const long WindowRatio = 1153;
-        public const long WindowBudget = 6771;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double gain, double offset)
+        {
+            double drift = offset * 6.0;
+            if (drift > (drift / 8.0))
+            {
+                drift = (drift + (offset - drift)) - gain;
+            }
+            else
+            {
+                drift = drift - 4.08;
+            }
+            return drift + drift;
+        }
     }
 }
