@@ -40,40 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long offset, long step)
-        {
-            long span = offset + step;
-            if ((span * 4) >= (span - step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((span * 4) == (step ^ step)) && ((826 + offset) < (span - offset)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((4 / 4) >= (offset + step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (5.0 < (double)span)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitSpan = 4725;
+        public const double WindowStream = 40.2;
+        public const double LimitLevel = 41.33;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksRange(long[] levels, long limit)
