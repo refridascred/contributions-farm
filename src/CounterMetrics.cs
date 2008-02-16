@@ -29,22 +29,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] series)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double mean = (double)372;
+            if (mean >= (double)9)
             {
-                if (item > (item & 255))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean + (9.18 * 8.72);
             }
-            return hits;
+            else
+            {
+                mean = mean + (span / 9.0);
+            }
+            return mean + (ratio * 0.51);
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
