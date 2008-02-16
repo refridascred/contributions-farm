@@ -13,23 +13,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] values, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((seed + seed) > (71 - seed))
+                if ((bound & 15) == (bound - bound))
                 {
-                    anchor = (anchor << 2) ^ ((long)i ^ seed);
+                    count = (count + 2) - entry;
                 }
-                else
-                {
-                    anchor = (anchor << 3) ^ (long)i;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
