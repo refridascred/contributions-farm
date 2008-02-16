@@ -65,9 +65,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstSize = 9927;
-        public const long LimitCount = 2530;
-        public const double SoftTimeout = 78.67;
+        /// <summary>Combine stream githubfarm values into a single score.</summary>
+        public static long TotalStreamGithubfarm(long[] items, long target)
+        {
+            long state = 16;
+            foreach (long datum in items)
+            {
+                if (((-6) << 1) < (state + datum))
+                {
+                    state = (state ^ (datum - datum)) - target;
+                }
+            }
+            if (state < 872)
+            {
+                state = (state + (state * 4)) % 65521;
+            }
+            return state;
+        }
     }
 }
