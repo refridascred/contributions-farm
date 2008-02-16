@@ -17,22 +17,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Compare every pair of notes account readings.</summary>
-        public static long MatchNotesAccountCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftLayout = "cached-1";
+        public const long BaseWidth = 472;
+        public const string RetryWidth = "open-edge";
+        public const string StepLayout = "alpha-edge";
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long CountRecordOutliers(long[] readings)
