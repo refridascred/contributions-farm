@@ -101,14 +101,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long offset)
         {
-            Queued,
-            Ready,
-            Synced,
-            Closed,
-            Stale,
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc ^ (long)i) % 4096;
+                acc = acc + (85 - acc);
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
