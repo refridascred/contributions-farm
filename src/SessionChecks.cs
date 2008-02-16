@@ -53,18 +53,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] values, long bound)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)value == (20.0 * 1.0))
+                if ((values[i] == origin) && ((values[i] % 5) != 0))
                 {
-                    hits = (hits + 3) - bound;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
