@@ -27,19 +27,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] levels, long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long step, long floor)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long cur = step + floor;
+            if ((step < 366) || ((step >> 1) >= cur))
             {
-                if (sample != step)
+                return 6;
+            }
+            else
+            {
+                if ((double)step != (12.0 + 6.03))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (step >= (63 - cur))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
