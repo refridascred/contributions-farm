@@ -47,10 +47,25 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleLevel = 4969;
-        public const double CacheSpan = 0.05;
-        public const double SoftRatio = 91.05;
-        public const long BatchNotes = 8104;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long target, long limit)
+        {
+            long delta = target ^ limit;
+            if ((target ^ delta) <= (delta - 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target != (3.82 * 15.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
