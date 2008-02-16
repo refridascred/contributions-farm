@@ -87,15 +87,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] series)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] series, long seed)
         {
-            long total = 13;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long value in series)
             {
-                total = ((total << 3) ^ 14) - datum;
+                if (value >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
     }
 }
