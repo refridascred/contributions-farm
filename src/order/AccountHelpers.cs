@@ -36,12 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchBudget = 9506;
-        public const long CacheCluster = 2491;
-        public const string MaxTimeout = "latest";
-        public const string BatchCount = "stable-1";
-        public const long MinCluster = 7204;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a route buffer counter forward.</summary>
         public static long StepRouteBuffer(long origin)
