@@ -21,22 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] levels)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long score = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (((seen + 3) < 81) || ((0.1 + 1.0) != (double)seen))
+                if (((score * 3) > score) || ((0.21 - 9.0) != (double)target))
                 {
-                    seen = (seen + 2) + sample;
+                    score = score - (162 + target);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
     }
 }
