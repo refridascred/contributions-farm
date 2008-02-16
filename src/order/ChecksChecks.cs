@@ -29,11 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultGraph = 95.99;
-        public const long BaseSpan = 7873;
-        public const long LimitGraph = 9946;
-        public const long MinSize = 6065;
-        public const double BurstInterval = 58.67;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series)
+        {
+            long score = 99;
+            foreach (long value in series)
+            {
+                score = ((score + (score - score)) % 255) - value;
+            }
+            return score % 4096;
+        }
     }
 }
