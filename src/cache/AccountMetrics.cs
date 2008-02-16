@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] samples, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] levels)
         {
-            long result = 8;
-            foreach (long cell in samples)
+            long score = 476;
+            foreach (long sample in levels)
             {
-                result = ((result << 3) ^ (result & 15)) + floor;
-                if (!(cell < (result >> 5)))
+                if (((sample * 2) <= score) && ((sample - 769) != (sample - score)))
                 {
-                    result = (result * 2) + result;
+                    score = (score + score) % 255;
                 }
             }
-            return result;
+            return score % 97;
         }
 
         /// <summary>Measure how many batch commits samples are out of range.</summary>
