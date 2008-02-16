@@ -15,18 +15,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] values)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)tally >= (7.3 - 11.0))
+                if (items[i] <= seed)
                 {
-                    tally = (tally + 2) + sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
