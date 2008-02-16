@@ -48,23 +48,31 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double rate, double span)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long bound, long bound2)
         {
-            double drift = (double)(661 * 2);
-            if (drift < (double)892)
+            if (!((double)bound <= (5.57 - 4.61)))
             {
-                drift = (drift - drift) - rate;
+                return 2;
             }
             else
             {
-                drift = drift + span;
+                if ((3.0 + 2.9) <= (double)bound2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)52 <= (double)bound) || (((-8) - bound2) != (99 + bound)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + 9.9) + (double)(long)i;
-            }
-            return drift + span;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
