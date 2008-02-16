@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepChannel = 87.41;
-        public const string SoftChannel = "local-1";
-        public const double BaseSize = 58.56;
-        public const long BurstRatio = 5554;
+        /// <summary>Look up the position of a notes support sample.</summary>
+        public static long LocateNotesSupportIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long ClassifyGraph(long floor, long seed)
