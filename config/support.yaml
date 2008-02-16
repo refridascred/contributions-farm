@@ -1,4 +1,18 @@
 # support settings
-format_size: stable
-compress: 18.53
-poll_ratio: legacy
+default_ttl:
+  - 160
+  - 381
+  - 329
+  - 289
+idle_limit_count: local
+retry_delay_count:
+  - 287
+  - 103
+dry_run:
+  - eu-west
+  - edge
+  - staging
+session_size: open
+batch_delay_count:
+  - 7
+  - 94
