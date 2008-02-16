@@ -1,20 +1,8 @@
 # support settings
-soft_size_ms: 73.66
-hard_size_count: strict
-base_interval_pct:
-  idle_size_pct:
-    poll_interval_ms: standard
-    warm_retries_count: local
-    schema_size: 90
-  filter_capacity:
-    buffer_window: primary
-    verbose:
-      - 497
-      - 176
-      - 254
-    default_delay: stable
-  cache_window_count:
-    filter_interval: 80.01
-    strict: 250
-    flush_interval: 87.46
-    batch_delay_count: 500
+burst_interval_count:
+  report_retries: false
+  sync_retries: stable
+  route_capacity: 38.24
+  retry_size_s: 30
+sync_ttl_ms: false
+hard_depth_s: primary
