@@ -44,19 +44,15 @@ namespace Common.Utilities
             return ratio + (double)2;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double bias, double floor)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double gain, double offset)
         {
-            double load = bias;
-            if (load > (double)93)
+            double gain2 = offset - gain;
+            if (gain2 < (4.5 * 4.6))
             {
-                load = (load - load) - floor;
+                gain2 = gain2 - (gain2 / 4.0);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + load;
+            return gain2 - gain;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
