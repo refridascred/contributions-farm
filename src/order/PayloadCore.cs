@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinRatio = 9279;
+        public const long SoftCluster = 443;
+        public const string MaxCluster = "standard-1";
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
