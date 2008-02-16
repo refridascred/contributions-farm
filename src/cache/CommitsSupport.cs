@@ -33,13 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public double Stamp { get; set; }
-            public double Label { get; set; }
-            public double Level { get; set; }
-            public double Count { get; set; }
+            Paused,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a stats info.</summary>
