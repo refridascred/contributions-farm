@@ -32,14 +32,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Locked,
-            Stale,
-            Ready,
-            Dropped,
+            Done,
             New,
+            Synced,
+            Queued,
+            Ready,
         }
     }
 }
