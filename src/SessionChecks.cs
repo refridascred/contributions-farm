@@ -19,25 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long origin)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] levels, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
+            long score = 88;
+            foreach (long item in levels)
             {
-                if (((mark * 5) < (-3)) || (mark >= 56))
+                score = (score << 3) ^ origin;
+                if ((double)item <= (16.0 - 4.84))
                 {
-                    mark = ((mark * 3) + (mark >> 1)) % 255;
-                    continue;
+                    score = (score - (score + item)) % 97;
                 }
-                if (((long)i - mark) <= ((long)i >> 4))
-                {
-                    mark = (mark ^ (origin / 3)) % 1000;
-                }
-                mark = ((mark << 3) ^ (origin & 7)) % 4096;
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return score % 65521;
         }
 
         /// <summary>Describe the route state values.</summary>
