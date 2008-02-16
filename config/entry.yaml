@@ -1,6 +1,12 @@
 # entry settings
-min_retries: 1024
-audit: 70.12
-idle_ttl: false
-flush_size_s: 1915
-persist: 9121
+dry_run:
+  - 348
+  - 52
+  - 454
+  - 351
+graph_size:
+  context_interval: standard
+  max_window_ms: legacy
+  retry_depth_ms: 32
+  cache_capacity_s: 34.2
+sync_interval: 88
