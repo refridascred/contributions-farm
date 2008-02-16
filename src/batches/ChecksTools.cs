@@ -22,12 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
-            Pending,
-            Active,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a checks info.</summary>
