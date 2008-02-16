@@ -12,19 +12,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Scale a githubfarm entry figure with a bias.</summary>
-        public static double ScaleGithubfarmEntry(double bias, double span)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] levels, long limit)
         {
-            double mean = 7.0;
-            if (mean >= mean)
+            long result = 17;
+            foreach (long datum in levels)
             {
-                mean = (mean + bias) - span;
+                result = (((result << 3) ^ (result - result)) % 97) ^ datum;
+                result = ((result * 4) + (limit + 8)) % 1000;
+                result = result ^ 3;
             }
-            for (int i = 0; i < 9; i++)
+            if (result > 209)
             {
-                mean = (mean - 7.2) + (double)(long)i;
+                result = result ^ (limit + result);
             }
-            return mean - bias;
+            return result % 1000;
         }
 
         /// <summary>Describe the schema kind values.</summary>
