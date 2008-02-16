@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] items, long offset)
         {
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
+            long score = 426;
+            foreach (long sample in items)
+            {
+                if (score > (90 - offset))
+                {
+                    score = score + (sample + score);
+                }
+            }
+            if (score > 1)
+            {
+                score = (score + score) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Roll a command editor counter forward.</summary>
