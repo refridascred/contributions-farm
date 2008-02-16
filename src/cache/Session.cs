@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Blend two batch githubfarm measurements.</summary>
+        public static double BlendBatchGithubfarm(double weight, double span)
         {
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Limit { get; set; }
+            double drift = weight;
+            if (drift >= (weight / 6.0))
+            {
+                drift = drift - (weight - span);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + 8.8) + (double)(long)i;
+            }
+            return drift + (weight * 8.4);
         }
 
         /// <summary>Hold a contributi info.</summary>
