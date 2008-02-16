@@ -80,17 +80,15 @@ namespace Common.Utilities
         public const long WindowSize = 2360;
         public const long StepGithubfarm = 5073;
 
-        /// <summary>Find the first layout graph entry that matches the target.</summary>
-        public static long FindLayoutGraphIndex(long[] data, long bound)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Blend two record measurements.</summary>
