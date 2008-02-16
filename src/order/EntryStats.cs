@@ -54,24 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long target, long origin)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            if (target <= (target / 8))
-            {
-                return 3;
-            }
-            else
-            {
-                if (11.0 <= (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Closed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
