@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultContributi = "local-v2";
-        public const long CacheDepth = 2456;
-        public const long MinWidth = 6144;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheBudget = 1426;
+        public const double CacheFactor = 32.12;
+        public const long MaxInterval = 7147;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long origin, long seed)
