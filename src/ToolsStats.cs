@@ -28,19 +28,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] series, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (value < hits)
                 {
-                    score = ((score * 5) + (origin & 63)) ^ (long)i2;
+                    hits = (hits + 3) + floor;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Adjust a checks metrics reading.</summary>
