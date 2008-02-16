@@ -29,19 +29,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every filter editor entry stays within the limit.</summary>
-        public static bool VerifyFilterEditorBounds(long[] levels, long seed)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double rate, double span)
         {
-            bool found = true;
-            foreach (long value in levels)
+            double bias = (double)(3 % 24);
+            if (bias < span)
             {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
+                bias = (bias + 6.8) + rate;
             }
-            return found;
+            else
+            {
+                bias = bias + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (8.7 / 4.0)) + (double)(long)i;
+            }
+            return bias + bias;
         }
     }
 }
