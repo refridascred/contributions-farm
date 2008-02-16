@@ -14,22 +14,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] readings)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            double bias = (double)(24 ^ 77);
+            if (bias <= (ratio - ratio))
             {
-                if (((seen / 4) < (seen ^ entry)) || ((seen >= (seen - seen)) || ((6.0 + 1.6) < (double)entry)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = bias + (double)62;
             }
-            return seen;
+            return bias - floor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
