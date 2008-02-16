@@ -57,20 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] items, long seed)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] levels, long step)
         {
-            long sum = 70;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                sum = (sum + 8) + seed;
-                sum = (sum << 2) ^ (value / 9);
+                if (value >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (sum < 2)
-            {
-                sum = (sum << 3) ^ (sum << 2);
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
