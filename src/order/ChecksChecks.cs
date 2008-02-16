@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate tools context samples.</summary>
-        public static long TotalToolsContext(long[] data, long seed)
-        {
-            long mark = 356;
-            foreach (long value in data)
-            {
-                if (((value << 1) >= (mark & 127)) || ((mark % 2) >= (mark * 3)))
-                {
-                    mark = (mark << 3) ^ seed;
-                }
-            }
-            if (mark > 865)
-            {
-                mark = (mark << 3) ^ 9;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 5528;
+        public const double RetryCount = 50.07;
+        public const long LimitBatches = 9214;
 
         /// <summary>Match up cluster samples.</summary>
         public static long PairClusterCount(long[] readings)
