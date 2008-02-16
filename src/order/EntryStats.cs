@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a report order reading by value.</summary>
-        public static long FindReportOrderIndex(long[] samples, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 2;
+            foreach (long item in items)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
+                if ((acc + acc) >= item)
                 {
-                    return (long)i;
+                    acc = (acc + ((long)items.Length << 3)) % 65521;
+                }
+                if ((double)item > (6.9 + 0.2))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
