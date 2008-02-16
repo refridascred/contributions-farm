@@ -15,18 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleDepth = 84.39;
+        public const double CacheRatio = 47.3;
+        public const long HardDepth = 6546;
+        public const long HardInterval = 6547;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinFarm = 5249;
