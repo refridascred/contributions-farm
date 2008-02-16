@@ -75,19 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double ratio, double floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] levels, long limit)
         {
-            double ratio2 = (double)5 * 2.17;
-            if (ratio2 > (double)2)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                ratio2 = ratio2 + floor;
+                if (item != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + (ratio / 3.0)) + (double)(long)i;
-            }
-            return ratio2 + (ratio2 + ratio);
+            return flag;
         }
 
         /// <summary>Digest a series of session entries.</summary>
