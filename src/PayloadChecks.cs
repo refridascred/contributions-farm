@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double bias, double floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
-            double rate = 8.51;
-            if (rate > (double)2)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = ((rate - (rate - 3.61)) - bias) - floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (rate * 18.0)) + (double)(long)i;
-            }
-            return rate - 12.0;
+            return hits;
         }
 
         /// <summary>Hold a commits summary.</summary>
