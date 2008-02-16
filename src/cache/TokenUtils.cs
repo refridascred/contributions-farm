@@ -19,21 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Iterate the batch counter series from a seed.</summary>
+        public static long StepBatchCounter(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = mark ^ (long)i;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Rank cluster commits input into a small class.</summary>
