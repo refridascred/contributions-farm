@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double rate, double floor)
-        {
-            double ratio = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (double)(long)i) - rate;
-            }
-            return ratio + 2.28;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 8776;
+        public const long HardContext = 2684;
+        public const long BaseBudget = 9368;
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
