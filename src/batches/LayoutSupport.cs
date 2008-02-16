@@ -57,18 +57,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long step, long floor)
         {
-            long result = 991;
-            foreach (long entry in levels)
+            if ((floor >> 2) < (57 + step))
             {
-                if ((entry % 12) <= (5 / 9))
+                return 7;
+            }
+            else
+            {
+                if (((step - floor) >= (1 * 5)) && ((floor + floor) > floor))
                 {
-                    result = (result + (entry - entry)) % 101;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
