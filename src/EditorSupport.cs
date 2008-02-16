@@ -75,14 +75,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Synced,
-            Idle,
-            Retry,
-            Done,
-            Closed,
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
