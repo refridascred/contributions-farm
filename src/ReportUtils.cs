@@ -41,11 +41,15 @@ namespace Common.Utilities
         public const long BurstRatio = 6889;
         public const long BurstBudget = 2456;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long step)
         {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            long sum = step;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the support level values.</summary>
