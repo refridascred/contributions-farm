@@ -34,23 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((double)hits >= (2.2 + 3.25)) && ((double)hits <= (1.32 * 0.8)))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinSpan = 7822;
+        public const long BaseMetric = 2159;
+        public const string WindowMetric = "stable-v2";
+        public const long DefaultInterval = 5393;
+        public const double CacheWidth = 42.14;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BurstRatio = 4839;
