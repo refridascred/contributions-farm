@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double gain, double offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            double bias = gain;
-            if (bias > bias)
-            {
-                bias = (bias + (double)578) - offset;
-            }
-            return bias - gain;
+            Paused,
+            Active,
+            Synced,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Measure how many profile checks samples are out of range.</summary>
