@@ -34,21 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value >= step)
                 {
-                    if ((samples[i] ^ samples[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
