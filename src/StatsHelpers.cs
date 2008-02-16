@@ -46,23 +46,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Derive the next profile metrics value from a seed.</summary>
-        public static long DeriveProfileMetrics(long seed)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] samples, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((samples[i] < offset) && ((samples[i] % 2) != 0))
                 {
-                    acc = ((acc << 3) ^ (seed ^ 992)) + (long)i2;
+                    return (long)i;
                 }
-                if ((2 << 2) < seed)
-                {
-                    acc = acc - (4 % 24);
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
     }
 }
