@@ -1,7 +1,7 @@
 # entry settings
-cache_delay: staging
-stats_threshold: latest
-warm_depth_count:
-  - edge
-  - open
-  - latest
+flush_ratio_pct:
+  - blue
+  - blue
+notes_delay: false
+strict: 100
+readonly: true
