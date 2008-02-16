@@ -55,19 +55,11 @@ namespace Common.Utilities
         public const long MinSession = 3955;
         public const double BaseSize = 62.03;
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double weight, double bias)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double bias2 = 5.49;
-            if (bias2 >= (double)91)
-            {
-                bias2 = (bias2 + (16.0 / 7.0)) - weight;
-            }
-            else
-            {
-                bias2 = bias2 - 0.6;
-            }
-            return bias2 + (bias / 6.0);
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
