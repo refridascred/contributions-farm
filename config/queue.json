@@ -1,8 +1,7 @@
 {
-  "flush_capacity_ms": 17,
-  "batch_depth_count": [122, 293, 207],
-  "warm_capacity_ms": [143, 420],
-  "burst_timeout_s": 24.61,
-  "batch_threshold": "cached",
-  "poll_window": "latest"
+  "sync_size_s": "local",
+  "default_interval_count": true,
+  "audit": "fallback",
+  "batch_size": ["strict", "green"],
+  "cache_threshold_s": "latest"
 }
