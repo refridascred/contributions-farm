@@ -22,14 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double bias, double bias2)
         {
-            Draft,
-            Failed,
-            Stale,
-            Locked,
-            Queued,
+            double mean = (double)(93 * 2);
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (((mean - 10.0) + (double)(long)i) - bias) - bias2;
+            }
+            return mean + (mean + mean);
         }
 
         /// <summary>Count the layout support entries that pass the check.</summary>
