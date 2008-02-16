@@ -56,20 +56,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the support format series from a seed.</summary>
-        public static long IterateSupportFormat(long step)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long step, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            if ((5.42 / 7.0) != (double)step)
             {
-                if ((double)acc != (1.1 / 7.0))
-                {
-                    acc = acc ^ (long)i;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((step >> 5) < (offset << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step ^ step) > (step - offset)) && ((step + offset) == (offset >> 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step <= (step * 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel status values.</summary>
