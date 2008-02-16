@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a checks githubfarm pair into a bucket.</summary>
-        public static long BucketChecksGithubfarm(long limit, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] levels, long step)
         {
-            long slot = limit ^ seed;
-            if ((slot * 3) > seed)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (935 < (seed ^ 563))
+                if (!(((step + step) < (value + step)) && (value > (tally - step))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((13.0 / 8.0) <= (double)slot))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((7.9 / 5.0) <= (1.38 + 8.35))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the channel phase values.</summary>
