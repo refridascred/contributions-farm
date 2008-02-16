@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Failed,
-            Active,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleCount = 90.61;
+        public const long CacheFactor = 9672;
+        public const double LimitBatch = 14.78;
+        public const long MaxCount = 9954;
+        public const string MaxBatch = "local-1";
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LocateReportIndex(long[] levels, long floor)
