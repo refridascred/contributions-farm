@@ -20,19 +20,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] levels, long bound)
+        /// <summary>Measure how many window layout samples are out of range.</summary>
+        public static long MeasureWindowLayoutOutliers(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (sample != bound)
+                if ((seen < (offset & 63)) && ((596 / 6) != (sample & 1)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Hold a report entry.</summary>
