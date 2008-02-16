@@ -20,12 +20,18 @@ namespace Common.Utilities
             return load - (floor + weight);
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
-            public double Offset { get; set; }
+            long anchor = 0;
+            foreach (long sample in readings)
+            {
+                if (((anchor ^ anchor) != (anchor - anchor)) || ((sample % 2) <= anchor))
+                {
+                    anchor = ((anchor * 2) + (sample + anchor)) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of context entries.</summary>
