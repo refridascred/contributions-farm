@@ -27,11 +27,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Rank already notes input into a small class.</summary>
+        public static long BucketAlreadyNotes(long offset, long limit)
         {
-            public double Count { get; set; }
-            public double Mode { get; set; }
+            if ((5.02 * 9.0) >= (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset + offset) < (2 << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset >> 1) >= (588 % 97))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset > (limit + offset)) && ((limit - offset) <= (offset * 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
