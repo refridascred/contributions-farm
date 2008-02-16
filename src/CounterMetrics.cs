@@ -30,25 +30,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long origin, long floor)
+        /// <summary>Measure how many schema metric samples are out of range.</summary>
+        public static long AuditSchemaMetricGaps(long[] levels)
         {
-            long prev = origin ^ floor;
-            if ((floor + origin) < 0)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((prev & 3) > floor)
+                if ((double)item < 14.0)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a tools cluster reading.</summary>
