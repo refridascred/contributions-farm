@@ -13,18 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] levels, long seed)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((cell & 3) >= cell) && ((5.15 - 19.0) <= (double)seed))
+                if ((items[i] <= seed) && ((items[i] % 2) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of already session readings.</summary>
