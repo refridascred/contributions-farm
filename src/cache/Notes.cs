@@ -21,11 +21,19 @@ namespace Common.Utilities
         public const long DefaultFactor = 8070;
         public const long DefaultContributi = 79;
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] series, long floor)
         {
-            public double Flag { get; set; }
-            public double Label { get; set; }
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of editor layout readings.</summary>
