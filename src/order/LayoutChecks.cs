@@ -65,22 +65,31 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine stream githubfarm values into a single score.</summary>
-        public static long TotalStreamGithubfarm(long[] items, long target)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long step, long floor)
         {
-            long state = 16;
-            foreach (long datum in items)
+            if ((81 > (floor >> 4)) && ((9 << 3) <= (step ^ 7)))
             {
-                if (((-6) << 1) < (state + datum))
+                return 5;
+            }
+            else
+            {
+                if (((step >> 4) >= (step >> 3)) || ((double)floor > (double)5))
                 {
-                    state = (state ^ (datum - datum)) - target;
+                    return 7;
+                }
+                else
+                {
+                    if (((8 % 24) >= (step + floor)) || ((floor * 5) > (floor & 255)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (state < 872)
-            {
-                state = (state + (state * 4)) % 65521;
-            }
-            return state;
         }
     }
 }
