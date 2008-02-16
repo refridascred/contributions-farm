@@ -39,12 +39,20 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Iterate the report layout series from a seed.</summary>
+        public static long IterateReportLayout(long seed)
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public double Stamp { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = (((sum * 2) + sum) % 4096) ^ (long)i2;
+                    sum = sum ^ seed;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
