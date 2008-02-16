@@ -29,13 +29,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitDepth = 2590;
+        public const double DefaultScore = 65.29;
+        public const double BatchRatio = 67.08;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BasePayload = 864;
