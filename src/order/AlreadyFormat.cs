@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a route session sample.</summary>
-        public static long LocateRouteSessionIndex(long[] data, long origin)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] > origin) && ((data[i] % 2) != 0))
+                if ((samples[i] == step) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
