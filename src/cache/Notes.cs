@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
+            Failed,
+            Active,
             Locked,
+            Closed,
             Synced,
-            Ready,
-            Done,
-            Retry,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
