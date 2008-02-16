@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long seed, long target)
-        {
-            if ((seed - target) != (seed << 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed + seed) == (target + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target <= 14.0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "strict";
+        public const string LimitPayload = "local-v2";
+        public const long LimitFactor = 1829;
+        public const string BatchPayload = "standard-v2";
+        public const long MaxWidth = 4765;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double AdjustSupport(double bias, double floor)
