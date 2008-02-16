@@ -45,10 +45,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 9202;
-        public const string WindowMetrics = "alpha-1";
-        public const long SoftInterval = 3489;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 866;
+        public const long MinEntry = 3800;
+        public const string IdleEntry = "staging-1";
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
