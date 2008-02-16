@@ -5,23 +5,36 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a commits report pair into a bucket.</summary>
-        public static long SortCommitsReport(long bound, long origin)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long limit, long step)
         {
-            long slot = bound ^ origin;
-            if (!((bound - 505) >= bound))
+            if (!((double)step >= (5.5 + 2.7)))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((origin - slot) == (bound ^ slot))
+                if ((double)step == (double)8)
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    return 5;
+                    if ((limit <= (limit - limit)) && (limit <= (9 - step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)limit < (1.0 * 5.6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
