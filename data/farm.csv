@@ -1,6 +1,11 @@
-id,count,label,token
-1,fallback,75.9,236
-2,legacy,657,fallback
-3,505,73.45,193
-4,open,29.9,fallback
-5,fallback,3.16,804
+id,state,owner
+1,539,fallback
+2,44,930
+3,legacy,76.79
+4,714,92.71
+5,81.51,21.25
+6,308,690
+7,247,3.16
+8,green,28.78
+9,531,49.24
+10,cached,stable
