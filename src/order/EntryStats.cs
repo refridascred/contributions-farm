@@ -57,18 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((item + item) > (hits >> 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchDepth = 96.23;
+        public const string DefaultCount = "primary";
+        public const double RetryFarm = 97.01;
+        public const long LimitCount = 6281;
+        public const long DefaultFarm = 8340;
     }
 }
