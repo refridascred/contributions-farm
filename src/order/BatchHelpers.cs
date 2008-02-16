@@ -15,13 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Count the support queue entries that pass the check.</summary>
+        public static long AuditSupportQueueHits(long[] items, long offset)
         {
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public double Size { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((80 + 3) <= (item - item))
+                {
+                    count = (count + 3) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
