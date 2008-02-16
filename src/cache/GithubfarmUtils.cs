@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long step, long step2)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long origin, long bound)
         {
-            if ((step2 + step2) != (step2 / 4))
+            long prev = origin - bound;
+            if ((origin & 31) < 670)
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((step >= (step2 % 64)) || ((double)step2 == (8.0 / 7.0)))
+                if ((17.0 > (double)prev) && ((double)prev >= 2.1))
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    return 6;
+                    if ((bound & 255) >= (prev % 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
