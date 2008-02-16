@@ -35,18 +35,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a farm graph sample.</summary>
-        public static long FindFarmGraphIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "strict-edge";
+        public const string LimitCount = "legacy-1";
+        public const string MinBuffer = "alpha-edge";
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
