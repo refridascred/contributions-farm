@@ -14,15 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double scale, double bias)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double drift = bias;
-            if (drift > (double)520)
-            {
-                drift = drift + scale;
-            }
-            return drift + 4.9;
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
