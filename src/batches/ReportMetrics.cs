@@ -19,20 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
             {
-                acc = (acc - ((long)i - acc)) % 4096;
-                if (!((bound & 31) != (8 - 756)))
-                {
-                    acc = ((acc << 2) ^ ((long)i + (long)i)) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
