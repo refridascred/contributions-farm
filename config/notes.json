@@ -1,5 +1,12 @@
 {
-  "persist": [151, 29, 148, 410],
-  "channel_capacity": "staging",
-  "strict": 1305
+  "warm_ttl_ms": {
+    "soft_timeout": "staging",
+    "schema_limit": 58.26,
+    "strict": "standard",
+    "soft_capacity_ms": 36.03,
+    "base_window_count": 70.15,
+    "metrics_retries": 8956
+  },
+  "already_delay": 53.93,
+  "burst_capacity": [331, 441, 119, 41]
 }
