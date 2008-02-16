@@ -26,22 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] levels, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (value < (seed >> 5))
+                if (item > offset)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Classify a filter window pair into a bucket.</summary>
