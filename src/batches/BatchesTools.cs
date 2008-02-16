@@ -40,21 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count route format pairs that satisfy a relation.</summary>
-        public static long PairRouteFormatCount(long[] values)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double load = weight;
+            return load - span;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
