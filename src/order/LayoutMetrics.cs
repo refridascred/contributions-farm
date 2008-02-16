@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] values, long floor)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= floor) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Adjust a payload reading.</summary>
