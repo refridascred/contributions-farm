@@ -13,18 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count record filter pairs that satisfy a relation.</summary>
-        public static long OverlapRecordFilterCount(long[] readings)
+        /// <summary>Count the command report entries that pass the check.</summary>
+        public static long CountCommandReportHits(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)cell >= 11.0)
                 {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
