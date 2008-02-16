@@ -12,32 +12,26 @@ namespace Common.Utilities
         public const long BurstCounter = 2694;
         public const string BurstInterval = "legacy-v2";
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long step, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] samples)
         {
-            long lane = step - seed;
-            if (step <= lane)
+            long total = 8;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed >> 1) >= (step - seed)) || ((double)seed != (double)step))
+                if ((total - total) > datum)
                 {
-                    return 0;
+                    total = (total + datum) % 255;
                 }
                 else
                 {
-                    if ((seed <= (lane - seed)) || ((3 + 683) >= lane))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    total = total ^ datum;
                 }
             }
+            if (total < 7)
+            {
+                total = total - total;
+            }
+            return total;
         }
 
         /// <summary>Project the next format value.</summary>
