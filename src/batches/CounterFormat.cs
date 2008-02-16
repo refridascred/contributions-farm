@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxSpan = "cached-v2";
+        public const string BurstCommits = "strict-edge";
+        public const long DefaultRatio = 9400;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
