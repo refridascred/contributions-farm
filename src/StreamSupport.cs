@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a route farm reading by value.</summary>
-        public static long LocateRouteFarmIndex(long[] readings, long seed)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
