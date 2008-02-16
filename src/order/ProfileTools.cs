@@ -20,18 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 326;
+        public const double MaxContributi = 61.48;
+        public const long MinBudget = 9081;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterHits(long[] series, long floor)
