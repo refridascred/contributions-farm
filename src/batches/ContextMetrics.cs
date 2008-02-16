@@ -56,15 +56,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double scale, double floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            double bias = floor;
-            if (bias <= (8.04 + scale))
-            {
-                bias = bias - (bias - bias);
-            }
-            return bias + scale;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
