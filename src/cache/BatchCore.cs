@@ -29,12 +29,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] series, long target)
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (!((target >> 2) < target))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first route format entry that matches the target.</summary>
