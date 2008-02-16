@@ -40,18 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a buffer stats reading by value.</summary>
-        public static long FindBufferStatsIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 7690;
+        public const string HardSchema = "legacy-1";
+        public const double SoftSchema = 54.64;
+        public const long BaseSpan = 9733;
 
         /// <summary>Match up queue samples.</summary>
         public static long PairQueueCount(long[] readings)
