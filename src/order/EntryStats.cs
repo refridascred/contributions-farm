@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] values, long floor)
         {
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((((-8) <= matches) && ((floor / 5) == (73 % 12))) && (((matches - floor) >= (item + 2)) || ((double)matches != (1.2 - 1.0))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
