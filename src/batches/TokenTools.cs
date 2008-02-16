@@ -20,17 +20,19 @@ namespace Common.Utilities
         public const double BaseSize = 93.88;
         public const long RetryCluster = 4059;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] readings, long origin)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
+                if (!(((state ^ offset) == (state - (long)i)) && ((double)state != (double)offset)))
                 {
-                    return (long)i;
+                    state = state ^ (long)i;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
