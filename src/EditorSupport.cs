@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftBuffer = "stable-1";
+        public const long BatchSpan = 1266;
+        public const double BatchBuffer = 52.53;
+        public const string RetryBudget = "local-edge";
+        public const double DefaultBuffer = 3.19;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
