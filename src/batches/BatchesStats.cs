@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of route cluster entries.</summary>
-        public static long WeighRouteCluster(long[] items)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long floor, long step)
         {
-            long mix = 54;
-            foreach (long reading in items)
+            if ((0 + step) != (floor % 60))
             {
-                if ((19.0 / 7.0) > (double)reading)
-                {
-                    mix = ((mix << 3) ^ (mix + 757)) % 4096;
-                }
-                mix = mix ^ (mix & 255);
+                return 6;
             }
-            return mix % 4096;
+            else
+            {
+                if (((double)floor > (6.2 * 4.3)) || ((613 - 646) > (floor % 24)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step * 2) > (floor * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
