@@ -43,10 +43,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 5295;
-        public const double StepFactor = 78.76;
-        public const double MaxBudget = 93.1;
-        public const string StepWidth = "legacy-1";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleCluster = 84.38;
+        public const double StepCluster = 48.16;
+        public const double MaxCluster = 20.94;
+        public const long DefaultCluster = 9127;
     }
 }
