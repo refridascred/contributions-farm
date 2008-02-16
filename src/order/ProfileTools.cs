@@ -64,13 +64,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public long Level { get; set; }
+            Queued,
+            Failed,
+            Draft,
+            Synced,
         }
     }
 }
