@@ -27,16 +27,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
+            long mix = target;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = ((anchor * 4) + ((long)i + 976)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
