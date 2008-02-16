@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] data, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (reading >= seed)
+                if ((1.39 - 10.0) > (double)sample)
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Digest a series of record entries.</summary>
