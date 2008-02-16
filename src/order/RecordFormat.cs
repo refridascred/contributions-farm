@@ -55,12 +55,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            public string Weight { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
