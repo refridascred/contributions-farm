@@ -44,15 +44,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] samples, long seed)
+        /// <summary>Count context already pairs that satisfy a relation.</summary>
+        public static long OverlapContextAlreadyCount(long[] readings)
         {
-            long mix = 41;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (((mix - (mix * 4)) % 97) ^ sample) - seed;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
