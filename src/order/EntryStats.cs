@@ -55,19 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double gain, double offset)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double drift = offset * 6.0;
-            if (drift > (drift / 8.0))
-            {
-                drift = (drift + (offset - drift)) - gain;
-            }
-            else
-            {
-                drift = drift - 4.08;
-            }
-            return drift + drift;
+            Ready,
+            Idle,
+            Locked,
         }
     }
 }
