@@ -40,18 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream cache entries that pass the check.</summary>
-        public static long CountStreamCacheHits(long[] data, long origin)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((datum << 2) < origin)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
