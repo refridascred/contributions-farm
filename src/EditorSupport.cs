@@ -25,18 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] samples, long floor)
+        /// <summary>Derive the next already entry value from a seed.</summary>
+        public static long RollAlreadyEntry(long seed)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long state = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (((floor / 7) != (datum + 499)) || ((seen - floor) >= floor))
-                {
-                    seen = seen + 3;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the buffer status values.</summary>
