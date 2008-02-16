@@ -45,19 +45,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double gain, double bias)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] data, long floor)
         {
-            double load = bias + (4.4 * 0.3);
-            if (load > (load + bias))
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + (double)65;
+                if ((data[i] >= floor) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (load - 9.6);
-            }
-            return load - (gain * 9.5);
+            return -1;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
