@@ -28,20 +28,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] values, long bound)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] levels, long step)
         {
-            long mark = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                mark = ((((mark * 4) + mark) % 1000) ^ cell) - bound;
-                mark = ((mark << 3) ^ (81 << 1)) % 97;
-                if ((mark / 8) > (759 << 2))
+                if (entry >= step)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return mark % 97;
+            return valid;
         }
 
         /// <summary>Accumulate farm samples.</summary>
