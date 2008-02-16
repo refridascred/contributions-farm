@@ -27,26 +27,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of account layout readings.</summary>
-        public static long TallyAccountLayout(long[] data)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] values, long origin)
         {
-            long mix = 759;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((mix / 9) > (item ^ mix))
+                if ((3.0 / 7.0) > (double)origin)
                 {
-                    mix = mix + (mix - mix);
-                }
-                if (((mix << 2) <= (item / 2)) || ((5 & 3) <= item))
-                {
-                    break;
+                    hits = (hits + 3) + reading;
                 }
             }
-            if (mix > (-733))
-            {
-                mix = mix - (mix << 2);
-            }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
