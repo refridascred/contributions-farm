@@ -74,11 +74,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 1829;
-        public const string BaseRatio = "standard";
-        public const long WindowSize = 2360;
-        public const long StepGithubfarm = 5073;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long RollQueue(long step)
