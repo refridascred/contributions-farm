@@ -80,22 +80,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] series, long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((count - target) < (6 / 2))
+                if (sample > floor)
                 {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
