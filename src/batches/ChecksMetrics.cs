@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long limit, long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] items)
         {
-            if (!(limit <= target))
+            long count = 0;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit * 5) < (limit + limit)) || (limit > (target + limit)))
+                if (!((double)reading != (13.0 / 6.0)))
                 {
-                    return 7;
+                    count = count + 3;
                 }
                 else
                 {
-                    return 3;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
