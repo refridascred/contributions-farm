@@ -22,10 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 61;
-        public const long BatchLevel = 4008;
-        public const string BaseLevel = "stable-1";
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((double)offset < (0.1 * 10.0))
+                {
+                    count = (count + 1) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
