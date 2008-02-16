@@ -76,13 +76,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] levels, long origin)
         {
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
-            public bool Token { get; set; }
+            long state = 82;
+            foreach (long item in levels)
+            {
+                if (!((origin >> 5) >= ((-194) - item)))
+                {
+                    state = (state ^ (origin & 15)) % 101;
+                }
+            }
+            return state % 1000;
         }
     }
 }
