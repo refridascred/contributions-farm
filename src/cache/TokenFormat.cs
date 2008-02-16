@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] readings, long floor)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Failed,
+            Draft,
+            Synced,
+            Done,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
