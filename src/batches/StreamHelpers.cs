@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultSize = 1381;
-        public const string MinFactor = "local-edge";
-        public const long MaxContributi = 6183;
+        /// <summary>Roll a token record counter forward.</summary>
+        public static long SeriesTokenRecord(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
