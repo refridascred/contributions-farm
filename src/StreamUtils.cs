@@ -13,14 +13,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Draft,
-            Active,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardCount = "legacy-edge";
+        public const long IdleWidth = 8936;
+        public const long MaxContributi = 5330;
+        public const long IdleContributi = 6979;
+        public const string StepContributi = "latest-1";
 
         /// <summary>Derive the next notes contributi value from a seed.</summary>
         public static long IterateNotesContributi(long step)
