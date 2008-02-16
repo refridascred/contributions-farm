@@ -29,19 +29,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] levels, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (value > seed)
+                if ((reading >> 3) == (reading - seen))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
