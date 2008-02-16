@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepFactor = "legacy";
+        public const long StepSpan = 3092;
+        public const string CacheTimeout = "primary-1";
 
         /// <summary>Project the next metric value.</summary>
         public static double AdjustMetric(double weight, double offset)
