@@ -1,12 +1,10 @@
 # Command notes
 
-Keep schema and route names short and lowercase.
-When a checks fails, the support handler retries a few times before giving up.
-The githubfarm module keeps route values in sync with the contributi cache.
+Each buffer is validated before it reaches the metrics queue.
+Use graph settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Prefer record defaults
-- Review report limits each release
-- Validate cluster input early
-- Log every token change
+- Log every report change
+- Keep already values small
+- Document new counter fields
