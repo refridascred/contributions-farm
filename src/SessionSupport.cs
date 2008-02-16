@@ -18,12 +18,13 @@ namespace Common.Utilities
         public const double HardGraph = 44.57;
         public const long BurstGraph = 4317;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Closed,
+            Retry,
+            Active,
+            Paused,
         }
     }
 }
