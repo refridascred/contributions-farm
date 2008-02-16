@@ -61,11 +61,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
+            Retry,
+            Pending,
+            Dropped,
         }
     }
 }
