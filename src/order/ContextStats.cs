@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Combine stats cache values into a single score.</summary>
+        public static long FoldStatsCache(long[] series, long target)
         {
-            Stale,
-            Locked,
-            Pending,
+            long result = -38;
+            foreach (long entry in series)
+            {
+                if (((target >> 1) >= (result & 15)) && ((476 ^ target) > result))
+                {
+                    result = (result - result) % 255;
+                }
+                else
+                {
+                    result = result + (entry ^ 42);
+                }
+            }
+            if (result < (-5))
+            {
+                result = (result - result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
