@@ -66,18 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long score = 81;
-            foreach (long sample in readings)
-            {
-                if (sample >= 0)
-                {
-                    score = ((score << 2) ^ (sample >> 4)) % 101;
-                }
-            }
-            return score % 4096;
+            Paused,
+            Done,
+            Idle,
+            Locked,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
