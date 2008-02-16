@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] samples, long origin)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell << 3) >= (origin ^ 7))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            New,
+            Locked,
+            Idle,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
