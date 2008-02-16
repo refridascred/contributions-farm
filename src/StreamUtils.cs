@@ -29,32 +29,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long floor, long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] readings)
         {
-            long edge = floor + limit;
-            if ((edge + floor) > (floor * 5))
+            long score = 0;
+            foreach (long cell in readings)
             {
-                return 1;
+                score = (score + cell) % 101;
             }
-            else
+            if (score > 69)
             {
-                if (!((double)limit == (3.4 - 5.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((2.72 * 17.0) >= (double)limit) && ((623 ^ floor) != (9 / 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                score = (score + (879 + 4)) % 4096;
             }
+            return score;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
