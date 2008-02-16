@@ -21,13 +21,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double ratio, double floor)
         {
-            public bool Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            double gain = 8.8 * 2.0;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (((gain + gain) + (double)(long)i) + ratio) + floor;
+            }
+            return gain - (2.7 + 6.37);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
