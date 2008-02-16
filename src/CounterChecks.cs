@@ -47,10 +47,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseCount = "alpha-edge";
-        public const string IdleReport = "primary-edge";
-        public const double LimitLevel = 39.14;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] levels)
+        {
+            long result = -941;
+            foreach (long reading in levels)
+            {
+                result = (result * 3) + (result - reading);
+            }
+            return result % 1000;
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
