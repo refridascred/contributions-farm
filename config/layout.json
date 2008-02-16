@@ -1,6 +1,7 @@
 {
-  "hard_delay": [33, 249, 293, 493],
-  "burst_size": "local",
-  "compress": "primary",
-  "flush_ratio_count": 13
+  "base_timeout_ms": "standard",
+  "base_retries_count": "stable",
+  "flush_ttl_pct": 100,
+  "retry_threshold": "eu-west",
+  "command_depth": 39
 }
