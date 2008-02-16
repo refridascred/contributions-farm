@@ -1,17 +1,7 @@
 {
-  "strict": "green",
-  "persist": false,
-  "soft_window": "local",
-  "enabled": {
-    "persist": 86.24,
-    "hard_timeout": "standard",
-    "readonly": "staging",
-    "poll_size": {
-      "min_interval": "open",
-      "batch_capacity_pct": true,
-      "cache_depth_s": true
-    }
-  },
-  "stream_capacity": "local",
-  "idle_threshold": "eu-west"
+  "batch_window_pct": 250,
+  "persist": "open",
+  "hard_timeout_ms": 54.87,
+  "flush_timeout_s": "local",
+  "batch_ratio_count": 6428
 }
