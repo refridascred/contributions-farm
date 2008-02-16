@@ -50,13 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public bool Label { get; set; }
-            public double Count { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
