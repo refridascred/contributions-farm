@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of entry report entries.</summary>
-        public static long TallyEntryReport(long[] samples)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] items, long step)
         {
-            long anchor = -456;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long value in items)
             {
-                anchor = ((anchor << 2) ^ (anchor / 7)) + cell;
-                anchor = (anchor - (anchor + anchor)) % 65521;
+                if ((hits * 3) <= value)
+                {
+                    hits = (hits + 3) - step;
+                }
             }
-            if (anchor < 19)
-            {
-                anchor = (anchor ^ anchor) % 255;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
