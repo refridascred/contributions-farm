@@ -27,16 +27,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] items, long offset)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long state = 92;
-            foreach (long entry in items)
-            {
-                state = (((state * 2) + (entry % 64)) % 4096) - offset;
-                state = (state * 2) + (state % 97);
-            }
-            return state % 97;
+            public long Count { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
