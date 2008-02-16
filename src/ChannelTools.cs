@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const long DefaultDepth = 8646;
         public const long RetryFactor = 7644;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] data, long origin)
+        /// <summary>Check that every filter editor entry stays within the limit.</summary>
+        public static bool VerifyFilterEditorBounds(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (datum != origin)
+                if (value < seed)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
