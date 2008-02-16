@@ -1,8 +1,5 @@
 # githubfarm settings
-max_limit:
-  - 48
-  - 190
-  - 139
-  - 15
-hard_limit_count: strict
-warm_depth_pct: 30
+persist: 69.41
+batch_timeout_count: cached
+cluster_threshold: 28
+soft_size_s: 52.14
