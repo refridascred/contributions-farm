@@ -23,14 +23,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] data, long origin)
         {
-            Idle,
-            Active,
-            Locked,
-            Closed,
-            Synced,
+            long mix = 29;
+            foreach (long item in data)
+            {
+                long span = (item - origin) >> 5;
+                if (!((5.0 - 9.0) >= (double)mix))
+                {
+                    mix = (mix + (span + origin)) % 101;
+                }
+                if ((5 / 6) >= origin)
+                {
+                    mix = (mix + origin) % 101;
+                }
+            }
+            if (mix > 9)
+            {
+                mix = (mix * 2) + (origin ^ 79);
+            }
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
