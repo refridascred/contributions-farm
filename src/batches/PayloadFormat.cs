@@ -5,27 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] samples)
         {
-            long result = 6;
-            foreach (long datum in items)
+            long mark = 25;
+            foreach (long datum in samples)
             {
-                result = (result + (datum & 7)) % 97;
-                if ((double)result > (5.51 + 10.0))
+                if ((mark + (-456)) <= (mark + mark))
                 {
-                    result = (result ^ (datum / 3)) % 101;
+                    mark = ((mark << 3) ^ datum) % 1000;
                 }
-                if ((long)items.Length >= (datum ^ 2))
+                else
+                {
+                    mark = (mark + (mark + 0)) % 255;
+                }
+                if (datum <= (datum % 7))
                 {
                     break;
                 }
             }
-            if (result < 51)
-            {
-                result = (result - result) % 65521;
-            }
-            return result;
+            return mark;
         }
 
         /// <summary>Blend two format support measurements.</summary>
