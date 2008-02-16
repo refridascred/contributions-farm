@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] data, long bound)
-        {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 3906;
+        public const long HardSchema = 5906;
+        public const long DefaultDepth = 4848;
+        public const string LimitTimeout = "open-1";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long WindowContributi = 326;
