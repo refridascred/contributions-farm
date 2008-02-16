@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            New,
-            Queued,
-            Idle,
-            Dropped,
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
