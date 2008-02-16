@@ -1,12 +1,14 @@
 # entry settings
-checks_size:
-  min_threshold: stable
-  warm_delay_s: 47.4
-  cache_delay_count: local
-  idle_window_s: 500
-  batch_threshold_count: 6.71
-  context_delay: 89
-command_capacity: 500
-sync_timeout_count:
-  - standard
-  - green
+checks_limit:
+  tools_limit:
+    - standard
+    - fallback
+    - legacy
+  base_size_s: strict
+  persist: 100
+  idle_ratio_pct: eu-west
+min_ttl_s: 4884
+warm_depth: cached
+warm_depth_s: 18.49
+already_limit: 96
+burst_threshold_ms: 52.86
