@@ -21,19 +21,19 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] data)
+        /// <summary>Check that every already metric entry stays within the limit.</summary>
+        public static bool CheckAlreadyMetricRange(long[] samples, long bound)
         {
-            long score = 8;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                score = ((score * 5) + score) + cell;
+                if (item < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (score < 43)
-            {
-                score = (score - ((-997) + score)) % 97;
-            }
-            return score;
+            return ready;
         }
 
         /// <summary>Match up metrics samples.</summary>
