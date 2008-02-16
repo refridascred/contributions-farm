@@ -62,15 +62,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
