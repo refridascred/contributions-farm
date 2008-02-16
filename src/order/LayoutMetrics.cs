@@ -24,23 +24,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next support cache value.</summary>
-        public static double ScaleSupportCache(double scale, double bias)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double drift = (scale + 6.76) - (double)444;
-            if (drift >= (drift - drift))
-            {
-                drift = drift - (5.15 / 7.0);
-            }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - drift;
+            Ready,
+            Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Hold a filter stats.</summary>
