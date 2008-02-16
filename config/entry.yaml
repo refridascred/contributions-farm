@@ -1,25 +1,22 @@
 # entry settings
-farm_timeout: true
-warm_retries_ms: legacy
-readonly:
-  base_retries: stable
-  poll_retries: 20
-  soft_threshold: blue
-  min_threshold_ms: 64
-  verbose: false
-poll_interval_s: 500
-sync_size_count: 30
-metric_delay:
-  metrics_retries:
-    poll_interval: primary
-    sync_limit_s: 25.37
-    notes_window: blue
-    cluster_ttl: 85.61
-    strict: 8298
-  verbose: false
-  profile_ratio: 44.72
-  audit: true
-  sync_capacity:
-    - staging
-    - primary
-  min_retries_s: 23.02
+stream_ratio: false
+batch_interval_count: 65
+dry_run: standard
+soft_timeout: 39.25
+sync_size:
+  batch_timeout:
+    enabled:
+      - 138
+      - 364
+      - 137
+    flush_delay_count: eu-west
+    hard_interval: 2585
+    soft_delay:
+      - 429
+      - 313
+      - 6
+  base_interval_pct: legacy
+  account_ratio: false
+  hard_retries_ms: 12.46
+  readonly: 1024
+  default_retries_ms: 45
