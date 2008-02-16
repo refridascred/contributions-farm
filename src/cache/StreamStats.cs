@@ -39,15 +39,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the stats filter series from a seed.</summary>
-        public static long SeriesStatsFilter(long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] data)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                if ((5.0 - 0.51) <= (double)reading)
+                {
+                    tally = tally + 3;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
