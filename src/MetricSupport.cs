@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] samples, long origin)
         {
-            Dropped,
-            New,
-            Pending,
-            Idle,
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the support phase values.</summary>
