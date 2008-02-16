@@ -52,13 +52,13 @@ namespace Common.Utilities
             return mean + (ratio * 0.51);
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] readings, long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] items, long target)
         {
             bool ready = true;
-            foreach (long datum in readings)
+            foreach (long cell in items)
             {
-                if (datum >= offset)
+                if (cell >= target)
                 {
                     ready = false;
                     break;
