@@ -24,15 +24,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long score = 99;
-            foreach (long value in series)
-            {
-                score = ((score + (score - score)) % 255) - value;
-            }
-            return score % 4096;
+            public double Limit { get; set; }
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
