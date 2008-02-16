@@ -68,13 +68,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] series, long step)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((double)reading < (7.32 / 6.0)))
+                {
+                    tally = (tally + 2) + step;
+                }
+            }
+            return tally;
         }
     }
 }
