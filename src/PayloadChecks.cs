@@ -20,13 +20,12 @@ namespace Common.Utilities
             return rate - 12.0;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
