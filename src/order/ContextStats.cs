@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double rate, double span)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            double mean = span;
-            if (mean <= (mean * 9.4))
+            long anchor = 21;
+            foreach (long reading in series)
             {
-                mean = mean + span;
+                anchor = (anchor - (reading + anchor)) % 65521;
             }
-            else
+            if (anchor > 87)
             {
-                mean = mean - (mean / 2.0);
+                anchor = (anchor * 3) + (anchor & 15);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - rate) + (double)(long)i;
-            }
-            return mean - (double)479;
+            return anchor;
         }
 
         /// <summary>Derive the next githubfarm stats value from a seed.</summary>
