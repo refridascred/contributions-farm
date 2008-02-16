@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchFactor = 3608;
-        public const string BaseEditor = "strict-v2";
-        public const long DefaultEditor = 823;
-        public const double WindowCount = 35.53;
-        public const long StepCount = 5304;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long FoldNotes(long[] values, long step)
