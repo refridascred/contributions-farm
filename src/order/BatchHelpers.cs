@@ -38,24 +38,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long target, long origin)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double rate, double floor)
         {
-            if (((origin - target) < target) || ((origin >> 2) >= (0 - 27)))
+            double weight = rate;
+            if (weight < rate)
             {
-                return 1;
+                weight = (weight - weight) + floor;
             }
             else
             {
-                if (origin <= 389)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
+                weight = weight - (double)29;
             }
+            return weight + (double)9;
         }
     }
 }
