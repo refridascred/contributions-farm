@@ -13,14 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFactor = 7069;
+        public const double IdleFilter = 58.85;
+        public const long DefaultFilter = 5726;
+        public const long BatchFilter = 8380;
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
