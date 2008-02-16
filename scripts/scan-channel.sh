@@ -7,7 +7,7 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 12); do
     total=$((total + i * 5))
 done
 log "total ${total}"
@@ -17,7 +17,3 @@ while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in latest cached; do
-    log "checking ${item}"
-done
