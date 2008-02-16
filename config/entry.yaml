@@ -1,28 +1,7 @@
 # entry settings
-min_depth_pct: 30
-stats_threshold:
-  enabled: staging
-  batch_limit:
-    - edge
-    - standard
-  verbose:
-    default_depth: eu-west
-    contributi_ttl: 27
-    format_threshold: standard
-    burst_capacity_ms: 24.47
-    sync_delay_pct:
-      - 78
-      - 445
-  context_threshold: 58
-  flush_retries_pct: eu-west
-  min_window_pct: staging
-batch_ratio: 1024
-idle_window:
-  sync_size: 63.97
-  burst_depth: stable
-  audit: true
-  counter_timeout: 84.53
-  poll_retries_count: 57.89
-poll_retries:
-  - 227
-  - 451
+cache_delay: staging
+stats_threshold: latest
+warm_depth_count:
+  - edge
+  - open
+  - latest
