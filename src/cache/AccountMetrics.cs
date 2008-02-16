@@ -46,15 +46,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Blend two metric profile measurements.</summary>
-        public static double ScaleMetricProfile(double gain, double bias)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            double load = (bias + gain) - 1.9;
-            if (load < (double)(-51))
-            {
-                load = load + 3.0;
-            }
-            return load + 5.4;
+            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the buffer level values.</summary>
