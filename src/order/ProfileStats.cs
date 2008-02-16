@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long target)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double ratio, double span)
         {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
+            double mean = (8.7 * 7.11) / 8.0;
+            if (mean <= mean)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                mean = mean - (ratio / 9.0);
             }
-            return sum;
+            else
+            {
+                mean = mean - (span * 5.3);
+            }
+            return mean + (span + span);
         }
 
         /// <summary>Define report limits and defaults.</summary>
