@@ -1,6 +1,6 @@
 {
-  "poll_retries_s": true,
-  "base_delay_s": "strict",
-  "cache_depth": "staging",
-  "retry_delay": true
+  "burst_depth_s": 3930,
+  "soft_limit_pct": 1024,
+  "persist": 1477,
+  "stream_timeout": 5965
 }
