@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchTimeout = "standard";
+        public const long SoftBudget = 2541;
+        public const long CacheCounter = 9607;
+        public const long BurstCounter = 2694;
+        public const string BurstInterval = "legacy-v2";
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamRange(long[] samples, long step)
