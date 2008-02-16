@@ -57,12 +57,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Closed,
-            Retry,
-            Draft,
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
