@@ -1,11 +1,6 @@
 {
-  "entry_depth": {
-    "strict": false,
-    "sync_interval_pct": 5.87,
-    "max_delay": "latest",
-    "base_timeout_ms": 62.09,
-    "cache_delay_count": 500
-  },
-  "strict": "blue",
-  "batches_delay": 69
+  "readonly": [448, 235],
+  "compress": true,
+  "flush_window": "green",
+  "default_interval_ms": "blue"
 }
