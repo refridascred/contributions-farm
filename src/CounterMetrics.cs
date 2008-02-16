@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxTimeout = 5160;
+        public const string SoftTimeout = "alpha-1";
+        public const long IdleSize = 2080;
+        public const string MaxMetrics = "standard-edge";
+        public const string LimitMetrics = "stable-edge";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleContext = 3723;
