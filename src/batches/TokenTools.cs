@@ -22,9 +22,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftFactor = 8966;
-        public const long StepEntry = 4921;
-        public const long RetryEntry = 7079;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long step, long origin)
+        {
+            if ((20.0 >= (double)origin) && ((3 + 1) >= origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step ^ 440) >= (step + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin > (2.4 - 5.47))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
