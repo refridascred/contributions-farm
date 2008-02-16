@@ -14,25 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long limit, long floor)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] data, long step)
         {
-            long span = limit ^ floor;
-            if (!((limit - 905) > (span >> 5)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((span * 3) < (floor >> 2))
+                if (data[i] > step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the channel phase values.</summary>
