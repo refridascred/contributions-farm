@@ -32,18 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] series)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((count >> 4) > (datum * 2))
+                if (entry < origin)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the channel state values.</summary>
