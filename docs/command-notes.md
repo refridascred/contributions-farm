@@ -1,16 +1,14 @@
 # Command notes
 
-Run the queue check before changing any route limits.
-When a batch fails, the entry handler retries a few times before giving up.
-Use metrics settings to tune how often cache data is refreshed.
+Keep layout and stream names short and lowercase.
+Each window is validated before it reaches the stats queue.
 
-Keep session and queue names short and lowercase.
-The counter module keeps cache values in sync with the cluster cache.
-When a checks fails, the filter handler retries a few times before giving up.
+The editor module keeps channel values in sync with the graph cache.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Run the token check before changing any session limits.
 
 ## Guidelines
 
-- Keep contributi values small
-- Validate report input early
-- Prefer queue defaults
-- Review already limits each release
+- Document new route fields
+- Validate batch input early
+- Prefer schema defaults
