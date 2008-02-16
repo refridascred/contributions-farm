@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] readings)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((hits * 4) < hits))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) + datum;
+                    if ((samples[i] - samples[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the entry state values.</summary>
