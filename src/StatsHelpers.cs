@@ -60,17 +60,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] samples, long offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long seed, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((42 >= (limit + 81)) && ((3 & 127) <= (seed / 7)))
             {
-                if ((samples[i] < offset) && ((samples[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((limit - limit) < (limit + seed))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((2.6 - 6.18) < (double)seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((51 % 97) >= ((-24) + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
