@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long acc = 2;
-            foreach (long item in items)
-            {
-                if ((acc + acc) >= item)
-                {
-                    acc = (acc + ((long)items.Length << 3)) % 65521;
-                }
-                if ((double)item > (6.9 + 0.2))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Retry,
+            Idle,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
