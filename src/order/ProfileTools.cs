@@ -50,19 +50,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double ratio, double floor)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] readings)
         {
-            double gain = (floor / 8.0) - (ratio + ratio);
-            if (gain > gain)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (0.61 - floor)) + (double)(long)i;
-            }
-            return gain + 7.2;
+            return matches;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
