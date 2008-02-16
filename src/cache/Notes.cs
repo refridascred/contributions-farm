@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long MaxCount = 9954;
         public const string MaxBatch = "local-1";
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] levels, long floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 5) == 0))
+                if ((items[i] > step) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
