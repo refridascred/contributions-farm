@@ -1,8 +1,7 @@
 {
-  "already_capacity": true,
-  "poll_threshold_count": 117,
-  "retry_interval_pct": 61.1,
-  "retry_ttl_s": ["staging", "eu-west"],
-  "warm_size": "edge",
-  "tools_interval": 100
+  "default_ttl_s": [231, 499, 149],
+  "base_depth_s": 61.14,
+  "default_window_count": true,
+  "editor_ratio": 27.72,
+  "dry_run": "eu-west"
 }
