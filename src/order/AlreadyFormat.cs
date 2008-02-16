@@ -32,19 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] series, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (reading >= target)
+                if ((datum + 340) > datum)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
