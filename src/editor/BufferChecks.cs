@@ -43,31 +43,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long target, long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long seed)
         {
-            if (((-2) + target) <= target)
+            long result = seed;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset <= (0.33 / 2.0))
+                long matches = (8 + result) / 6;
+                if (((4 * 2) != (seed % 97)) || ((matches * 5) > (matches * 3)))
                 {
-                    return 1;
+                    result = (result * 3) + (seed % 7);
                 }
-                else
-                {
-                    if (((13.0 + 5.9) > (double)offset) && ((offset & 3) < (target + 492)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Count the metrics commits entries that pass the check.</summary>
