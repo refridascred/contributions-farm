@@ -54,19 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double bias, double floor)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double gain, double bias)
         {
-            double scale = 13.0;
-            if (scale > (floor / 5.0))
+            double load = bias + (4.4 * 0.3);
+            if (load > (load + bias))
             {
-                scale = (scale - (floor * 3.7)) + bias;
+                load = load + (double)65;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                scale = (scale - floor) + (double)(long)i;
+                load = load - (load - 9.6);
             }
-            return scale + (double)191;
+            return load - (gain * 9.5);
         }
 
         /// <summary>Hold a graph snapshot.</summary>
