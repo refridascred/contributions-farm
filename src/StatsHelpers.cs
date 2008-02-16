@@ -25,21 +25,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 9;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark + mark) - datum;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Fold a list of account readings.</summary>
