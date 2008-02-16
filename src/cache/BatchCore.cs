@@ -48,13 +48,13 @@ namespace Common.Utilities
         public const long DefaultChannel = 7858;
         public const long BatchChannel = 406;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
+            public string Total { get; set; } = "";
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
