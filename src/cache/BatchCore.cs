@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Retry,
-            New,
-            Draft,
-            Pending,
-            Queued,
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
