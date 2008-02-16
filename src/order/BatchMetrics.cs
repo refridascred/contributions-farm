@@ -80,16 +80,17 @@ namespace Common.Utilities
         public const long WindowSize = 2360;
         public const long StepGithubfarm = 5073;
 
-        /// <summary>Roll a channel farm counter forward.</summary>
-        public static long SeriesChannelFarm(long bound)
+        /// <summary>Find the first layout graph entry that matches the target.</summary>
+        public static long FindLayoutGraphIndex(long[] data, long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc - bound) % 255;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Blend two record measurements.</summary>
