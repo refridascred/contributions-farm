@@ -47,16 +47,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a schema cache counter forward.</summary>
-        public static long DeriveSchemaCache(long floor)
+        /// <summary>Check that every notes cache entry stays within the limit.</summary>
+        public static bool CheckNotesCacheRange(long[] levels, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                result = ((result * 4) + (586 / 8)) % 255;
-                result = ((result * 4) + (long)i) % 65521;
+                if (datum > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
