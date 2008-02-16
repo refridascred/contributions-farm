@@ -55,18 +55,14 @@ namespace Common.Utilities
         public const long HardSchema = 3336;
         public const double SoftSchema = 50.23;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] data)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((seen & 255) >= (item - (long)data.Length))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Active,
+            Paused,
+            Pending,
+            Retry,
+            Failed,
         }
     }
 }
