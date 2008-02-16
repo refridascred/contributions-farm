@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] data, long seed)
         {
-            long anchor = 779;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (!((double)anchor == (1.6 + 14.0)))
+                if (reading >= seed)
                 {
-                    anchor = (anchor * 4) + (value << 2);
-                }
-                if ((value & 15) != (value - (long)values.Length))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Define window limits and defaults.</summary>
