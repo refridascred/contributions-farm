@@ -25,11 +25,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitRatio = 85.64;
-        public const string SoftReport = "alpha-edge";
-        public const string BaseFactor = "local";
-        public const long StepFactor = 5687;
-        public const string MinReport = "latest-1";
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
