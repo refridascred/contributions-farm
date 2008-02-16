@@ -41,13 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
             Draft,
-            Failed,
-            Paused,
-            New,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
