@@ -1,14 +1,13 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the stream list.
-Each channel is validated before it reaches the already queue.
-Defaults for layout live in the config folder and can be overridden per environment.
+The route module keeps metric values in sync with the graph cache.
+The order helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for report live in the config folder and can be overridden per environment.
-The context module keeps checks values in sync with the githubfarm cache.
+A support that stays idle for too long is moved to the order list.
+Each farm is validated before it reaches the notes queue.
 
 ## Guidelines
 
-- Keep checks values small
-- Document new farm fields
-- Review cluster limits each release
+- Log every session change
+- Keep metric values small
+- Review format limits each release
