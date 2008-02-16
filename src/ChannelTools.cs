@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitInterval = 83.63;
-        public const double MaxNotes = 36.46;
-        public const long StepNotes = 602;
-        public const double HardNotes = 68.23;
-        public const double MinNotes = 43.77;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long TallyCluster(long[] series)
