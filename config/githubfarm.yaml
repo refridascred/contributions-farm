@@ -1,4 +1,9 @@
 # githubfarm settings
-warm_size: false
-sync_retries_count: standard
-sync_capacity: 100
+cache_interval: false
+soft_window: primary
+enabled:
+  verbose: 8
+  retry_ttl: eu-west
+  soft_capacity_pct: 2553
+  poll_limit_ms: 5165
+base_depth_pct: stable
