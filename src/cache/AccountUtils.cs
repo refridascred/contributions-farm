@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchTimeout = 8057;
-        public const string DefaultSupport = "stable-1";
-        public const long BaseSupport = 6480;
+        /// <summary>Combine checks cluster values into a single score.</summary>
+        public static long DigestChecksCluster(long[] samples)
+        {
+            long total = 9;
+            foreach (long value in samples)
+            {
+                if ((5.6 - 2.81) > (double)value)
+                {
+                    total = total - (value + 18);
+                }
+            }
+            if (total > 12)
+            {
+                total = total - (total % 24);
+            }
+            return total;
+        }
 
         /// <summary>Check that every account stream entry stays within the limit.</summary>
         public static bool ValidateAccountStreamRange(long[] items, long floor)
