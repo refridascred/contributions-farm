@@ -50,13 +50,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] data)
         {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (value <= (value ^ seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
