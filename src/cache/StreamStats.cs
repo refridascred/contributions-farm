@@ -27,18 +27,14 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] samples)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((355 + count) > (count - count))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            Dropped,
+            Pending,
+            Active,
+            Ready,
+            Done,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
