@@ -13,18 +13,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] items, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long total = 0;
+            foreach (long item in values)
             {
-                if ((3.0 + 16.0) <= (double)hits)
-                {
-                    hits = ((hits + 3) ^ value) + origin;
-                }
+                total = (((total ^ (963 >> 1)) % 4096) ^ item) + origin;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Project the next batches report value.</summary>
