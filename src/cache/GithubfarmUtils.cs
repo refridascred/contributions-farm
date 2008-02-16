@@ -55,21 +55,23 @@ namespace Common.Utilities
         public const long MinSession = 3955;
         public const double BaseSize = 62.03;
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 2;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result ^ (result ^ reading)) % 97;
+                if ((result & 1) < (81 >> 2))
                 {
-                    if ((samples[i] - samples[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            if (result > 26)
+            {
+                result = result ^ (26 - result);
+            }
+            return result;
         }
     }
 }
