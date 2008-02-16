@@ -18,31 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long origin, long step)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] series)
         {
-            if ((step + step) <= step)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step <= (step - step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step * 3) > (step >> 4))
+                    if ((series[i] ^ series[j]) < 9)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
