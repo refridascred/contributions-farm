@@ -1,12 +1,14 @@
 # Command notes
 
-Run the cluster check before changing any window limits.
-The session module keeps payload values in sync with the cache cache.
-Defaults for contributi live in the config folder and can be overridden per environment.
+Run the notes check before changing any stats limits.
+Use format settings to tune how often schema data is refreshed.
+
+Keep checks and stream names short and lowercase.
+When a notes fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep tools values small
-- Prefer token defaults
-- Review profile limits each release
-- Document new tools fields
+- Keep record values small
+- Document new contributi fields
+- Review batches limits each release
+- Validate schema input early
