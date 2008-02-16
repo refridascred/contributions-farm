@@ -54,13 +54,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double scale, double span)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            double scale2 = (double)((-29) + 78);
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = ((scale2 + span) + (double)(long)i) + scale;
+            }
+            return scale2 - (span - scale2);
         }
     }
 }
