@@ -54,17 +54,24 @@ namespace Common.Utilities
             return scale - (scale / 4.0);
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] levels, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 854;
+            foreach (long sample in series)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 5) + 461) - (long)i;
+                    anchor = (anchor - anchor) % 4096;
+                }
+                anchor = (anchor - (anchor & 7)) % 101;
+                if ((sample >> 4) >= 99)
+                {
+                    anchor = ((anchor * 4) + (anchor % 16)) % 65521;
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
     }
 }
