@@ -1,7 +1,8 @@
 {
-  "order_depth": 71.61,
-  "soft_timeout_s": "open",
-  "stats_retries": "staging",
-  "base_retries_s": 100,
-  "account_interval": true
+  "sync_timeout": 76,
+  "batches_delay": 19,
+  "hard_retries": "eu-west",
+  "hard_ttl": 4015,
+  "readonly": 9639,
+  "batch_delay": false
 }
