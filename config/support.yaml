@@ -1,9 +1,10 @@
 # support settings
-burst_delay_count: eu-west
-dry_run: standard
-notes_threshold: fallback
-soft_timeout_ms:
-  - 231
-  - 248
-  - 344
-  - 465
+persist: false
+verbose: 10
+cache_capacity_count:
+  - 174
+  - 122
+  - 256
+  - 324
+readonly: primary
+cluster_window: 33.03
