@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] data)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen - seen) > (seen * 4))
+                if ((data[i] <= bound) && ((data[i] % 3) != 0))
                 {
-                    seen = (seen + 1) + reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
