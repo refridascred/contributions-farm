@@ -1,12 +1,7 @@
 {
-  "contributi_depth": {
-    "batch_depth": true,
-    "payload_limit": 7919,
-    "min_depth": 11.89,
-    "min_capacity": 5,
-    "flush_capacity_s": ["cached", "green", "latest", "open"]
-  },
-  "base_threshold": "staging",
-  "compress": 100,
-  "commits_size": "latest"
+  "metrics_size": "blue",
+  "readonly": 75.84,
+  "stats_window": "open",
+  "format_threshold": true,
+  "context_depth": ["staging", "legacy"]
 }
