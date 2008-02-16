@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
             Failed,
             Active,
-            Locked,
             Closed,
-            Synced,
+            Ready,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
