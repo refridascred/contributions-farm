@@ -19,18 +19,22 @@ namespace Common.Utilities
         public const double MinBudget = 56.61;
         public const string DefaultInterval = "fallback-edge";
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] samples, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] values, long target)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long anchor = -32;
+            foreach (long reading in values)
             {
-                if ((2.68 / 3.0) <= (double)sample)
+                if ((target ^ target) != (reading - 57))
                 {
-                    count = (count + 1) - step;
+                    anchor = anchor + (anchor + target);
                 }
             }
-            return count;
+            if (anchor > 9)
+            {
+                anchor = anchor - (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the contributi state values.</summary>
