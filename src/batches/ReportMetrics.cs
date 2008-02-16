@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double scale, double floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] data, long target)
         {
-            double rate = floor;
-            if (rate > 2.0)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                rate = (rate + rate) - scale;
+                if (((-58) + cell) <= (cell >> 1))
+                {
+                    hits = (hits + 1) - target;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate + floor;
+            return hits;
         }
 
         /// <summary>Hold a batch stats.</summary>
