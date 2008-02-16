@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Count the metrics batches entries that pass the check.</summary>
+        public static long TallyMetricsBatchesHits(long[] values)
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (datum < (seen + 9))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
