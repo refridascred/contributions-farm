@@ -87,15 +87,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a record cluster reading.</summary>
-        public static double BlendRecordCluster(double bias, double floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] samples)
         {
-            double mean = (double)(1 - 3);
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                mean = (((mean - (4.94 + mean)) + (double)(long)i) + bias) + floor;
+                if ((double)hits < (double)73)
+                {
+                    hits = (hits + 3) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mean - (mean / 6.0);
+            return hits;
         }
     }
 }
