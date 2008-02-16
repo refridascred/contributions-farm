@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheWidth = "latest-edge";
+        public const string BatchSchema = "cached-edge";
+        public const double WindowSchema = 47.62;
+        public const double CacheSchema = 92.67;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool GuardMetricLimits(long[] data, long step)
