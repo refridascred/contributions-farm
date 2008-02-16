@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
-Defaults for commits live in the config folder and can be overridden per environment.
-The buffer report groups every support by stats.
+Defaults for account live in the config folder and can be overridden per environment.
+Use graph settings to tune how often command data is refreshed.
+Each batch is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Log every cache change
-- Validate buffer input early
+- Keep stream values small
+- Validate batch input early
+- Document new entry fields
