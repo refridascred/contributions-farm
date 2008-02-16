@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine contributi githubfarm values into a single score.</summary>
-        public static long TallyContributiGithubfarm(long[] values, long step)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long anchor = 812;
-            foreach (long reading in values)
-            {
-                anchor = (anchor - (anchor * 5)) % 4096;
-                anchor = anchor + (4 & 255);
-                if (!((anchor + step) == (reading + anchor)))
-                {
-                    anchor = ((anchor * 5) + (reading + (long)values.Length)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (step + reading)) % 101;
-                }
-            }
-            if (anchor > 324)
-            {
-                anchor = (anchor - (step % 100)) % 1000;
-            }
-            return anchor % 1000;
+            Paused,
+            Active,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the stream level values.</summary>
