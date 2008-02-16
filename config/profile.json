@@ -1,5 +1,5 @@
 {
-  "readonly": false,
-  "warm_retries": 100,
-  "githubfarm_size": 8068
+  "soft_threshold_count": "green",
+  "batches_window": 250,
+  "idle_window": 28.47
 }
