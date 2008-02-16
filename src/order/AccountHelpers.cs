@@ -77,18 +77,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics buffer readings.</summary>
-        public static long CombineMetricsBuffer(long[] values, long bound)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long total = 9;
-            foreach (long entry in values)
-            {
-                if (((-5) + bound) > (entry & 31))
-                {
-                    total = (total + (bound + bound)) % 255;
-                }
-            }
-            return total;
+            Failed,
+            Queued,
+            Closed,
+            Pending,
+            New,
         }
 
         /// <summary>Adjust a record cluster reading.</summary>
