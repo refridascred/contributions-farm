@@ -33,17 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] samples, long origin)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (double)(-1) + (bias - bias);
+            if (rate <= (double)58)
             {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
+                rate = rate + (double)701;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + bias2) + (double)(long)i;
+            }
+            return rate - rate;
         }
     }
 }
