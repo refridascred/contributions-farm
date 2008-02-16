@@ -37,23 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order buffer entries that pass the check.</summary>
-        public static long TallyOrderBufferGaps(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (matches < (matches / 7))
-                {
-                    matches = ((matches + 1) - entry) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 8408;
+        public const double RetryLevel = 24.62;
+        public const double SoftChannel = 16.46;
 
         /// <summary>Classify a entry account pair into a bucket.</summary>
         public static long BucketEntryAccount(long target, long floor)
