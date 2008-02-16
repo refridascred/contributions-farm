@@ -26,18 +26,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] values, long target)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long state = 6;
+            foreach (long value in series)
             {
-                if ((seen % 10) == (target ^ 24))
+                if (((double)value > (8.29 / 9.0)) || (state > (value + value)))
                 {
-                    seen = (seen + 3) ^ sample;
+                    state = (state * 5) + (limit % 10);
+                    state = ((state * 5) + (value / 7)) % 4096;
+                }
+                if (limit < (6 % 2))
+                {
+                    state = (state << 2) ^ value;
+                }
+                if ((value - limit) <= (value % 8))
+                {
+                    state = state - (limit * 3);
+                }
+                if (!((11.0 / 5.0) <= (double)value))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (state > (-18))
+            {
+                state = state ^ (limit - 29);
+            }
+            return state;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
