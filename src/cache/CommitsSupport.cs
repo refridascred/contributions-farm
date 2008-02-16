@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] samples, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -587;
+            foreach (long entry in readings)
             {
-                if (samples[i] >= bound)
+                if ((mix >> 5) == (61 >> 1))
                 {
-                    return (long)i;
+                    mix = ((mix * 3) + entry) % 97;
                 }
             }
-            return -1;
+            if (mix < 12)
+            {
+                mix = (mix << 3) ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Audit buffer checks readings against a rule.</summary>
