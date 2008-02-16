@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Active,
-            Dropped,
-            Pending,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstLevel = 7883;
+        public const long BatchSize = 8685;
+        public const long BaseMetrics = 5453;
+        public const double IdleMetrics = 80.12;
+        public const long RetryMetrics = 9719;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long OverlapCounterCount(long[] items)
