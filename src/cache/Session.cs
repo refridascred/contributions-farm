@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] readings, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] series, long seed)
         {
-            long score = 219;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((0 + score) >= 8)
+                if (cell != seed)
                 {
-                    score = ((score + (offset / 5)) % 1000) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            if (score > 81)
-            {
-                score = score - (score / 7);
-            }
-            return score % 1000;
+            return valid;
         }
 
         /// <summary>Describe the report mode values.</summary>
