@@ -1,7 +1,16 @@
 {
-  "stats_interval": 5564,
-  "cache_capacity_ms": 89.88,
-  "min_limit_s": ["latest", "open", "cached"],
-  "checks_interval": false,
-  "verbose": "stable"
+  "sync_limit_pct": "cached",
+  "readonly": {
+    "hard_delay": false,
+    "record_depth": {
+      "session_window": "primary",
+      "default_window": "cached",
+      "enabled": "green"
+    },
+    "batch_capacity": ["edge", "cached", "legacy", "green"],
+    "warm_limit": true,
+    "flush_ttl_count": false,
+    "verbose": "blue"
+  },
+  "enabled": [181, 254, 111, 207]
 }
