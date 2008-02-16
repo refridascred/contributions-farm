@@ -40,18 +40,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] values)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double rate, double span)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            double drift = (double)(661 * 2);
+            if (drift < (double)892)
             {
-                if ((double)matches > (8.0 - 2.8))
-                {
-                    matches = (matches + 2) - cell;
-                }
+                drift = (drift - drift) - rate;
             }
-            return matches;
+            else
+            {
+                drift = drift + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + 9.9) + (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Rank token input into a small class.</summary>
