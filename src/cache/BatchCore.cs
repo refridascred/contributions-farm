@@ -46,18 +46,14 @@ namespace Common.Utilities
         public const double BurstCounter = 77.61;
         public const long BatchCount = 2203;
 
-        /// <summary>Measure how many metric record samples are out of range.</summary>
-        public static long TallyMetricRecordOutliers(long[] levels, long floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (51 <= (reading * 2))
-                {
-                    hits = (hits + 2) + floor;
-                }
-            }
-            return hits;
+            Done,
+            New,
+            Closed,
+            Ready,
+            Idle,
         }
     }
 }
