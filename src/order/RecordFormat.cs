@@ -28,16 +28,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long step)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
-            {
-                result = (result << 2) ^ (result + 1);
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
