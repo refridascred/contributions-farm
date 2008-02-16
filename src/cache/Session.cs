@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] series, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (cell != seed)
+                if ((value + floor) == (floor % 16))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Describe the report mode values.</summary>
