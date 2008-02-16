@@ -46,22 +46,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                result = result ^ 9;
-                if (((9.0 + 4.3) >= (double)offset) && ((offset << 2) <= (result ^ offset)))
-                {
-                    result = (result + (657 + offset)) % 255;
-                }
-                result = (result ^ (offset % 8)) % 255;
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 9202;
+        public const string WindowMetrics = "alpha-1";
+        public const long SoftInterval = 3489;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
