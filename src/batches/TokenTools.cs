@@ -23,19 +23,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] values)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double gain, double bias)
         {
-            long state = 38;
-            foreach (long cell in values)
+            double drift = bias - 8.68;
+            if (drift >= (gain - 3.6))
             {
-                state = (((state * 4) + (state + (-656))) % 255) ^ cell;
+                drift = drift - 11.0;
             }
-            if (state < 197)
-            {
-                state = (state + (state << 2)) % 97;
-            }
-            return state;
+            return drift - (drift + gain);
         }
     }
 }
