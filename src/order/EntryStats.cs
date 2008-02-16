@@ -60,11 +60,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchDepth = 96.23;
-        public const string DefaultCount = "primary";
-        public const double RetryFarm = 97.01;
-        public const long LimitCount = 6281;
-        public const long DefaultFarm = 8340;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] items)
+        {
+            long mark = 35;
+            foreach (long reading in items)
+            {
+                mark = (mark - (105 - reading)) % 255;
+            }
+            return mark % 97;
+        }
     }
 }
