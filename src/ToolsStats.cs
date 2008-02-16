@@ -56,11 +56,15 @@ namespace Common.Utilities
             return ratio - (rate - rate);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxBatch = 81.95;
-        public const long MaxTimeout = 7012;
-        public const string LimitBatch = "strict";
-        public const double HardBatch = 37.88;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Paused,
+            Retry,
+            Synced,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportMatches(long[] samples)
