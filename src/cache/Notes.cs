@@ -34,38 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cache record input into a small class.</summary>
-        public static long BucketCacheRecord(long offset, long floor)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double weight, double bias)
         {
-            if (1.0 < (double)offset)
+            double drift = (double)(29 - 80);
+            if (drift <= (bias + 0.73))
             {
-                return 7;
+                drift = (drift - 6.9) - weight;
             }
             else
             {
-                if ((879 - floor) < (floor - offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(4.6 <= (double)floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (7.0 + 7.5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                drift = drift - drift;
             }
+            return drift + (drift - bias);
         }
 
         /// <summary>Define session limits and defaults.</summary>
