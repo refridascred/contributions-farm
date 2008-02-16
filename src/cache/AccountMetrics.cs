@@ -15,18 +15,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many batch commits samples are out of range.</summary>
-        public static long MeasureBatchCommitsMatches(long[] values, long bound)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((datum + bound) > (bound - datum))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Retry,
+            Paused,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a order options.</summary>
