@@ -31,25 +31,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank support metrics input into a small class.</summary>
-        public static long GradeSupportMetrics(long target, long step)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long lane = target ^ step;
-            if (((double)lane == (8.0 - 0.81)) || ((double)step >= (double)lane))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)step > (double)lane) || ((double)target == (8.6 + 5.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Dropped,
+            Pending,
+            Active,
+            Done,
+            Stale,
         }
     }
 }
