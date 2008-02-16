@@ -1,27 +1,4 @@
 # support settings
-warm_delay:
-  audit: false
-  retry_threshold_ms: false
-  readonly:
-    flush_depth_s: staging
-    soft_limit_count: 81
-    base_depth: 2.68
-  graph_window: false
-  soft_retries_pct:
-    - blue
-    - standard
-compress: strict
-retry_ttl:
-  cache_timeout_ms: 9030
-  idle_delay: 19.11
-  idle_ttl: 500
-  audit: 25
-layout_window: 41
-graph_threshold:
-  buffer_window: 250
-  farm_timeout: 1589
-  burst_window_ms: 64
-  enabled:
-    - 219
-    - 454
-  cache_depth: latest
+audit: legacy
+retry_threshold: 49
+buffer_size: strict
