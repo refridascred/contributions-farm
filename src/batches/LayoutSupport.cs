@@ -30,25 +30,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine window payload values into a single score.</summary>
-        public static long TallyWindowPayload(long[] series)
-        {
-            long sum = -36;
-            foreach (long item in series)
-            {
-                if (!((sum - 692) <= (item - sum)))
-                {
-                    sum = sum - (sum - 37);
-                    sum = ((sum << 3) ^ sum) % 255;
-                }
-                sum = (sum + (7 & 255)) % 101;
-            }
-            if (sum < (-556))
-            {
-                sum = (sum ^ (sum + sum)) % 4096;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double WindowContributi = 16.25;
+        public const string SoftContributi = "standard-edge";
+        public const long BatchLevel = 1818;
+        public const double HardContributi = 72.22;
+        public const long DefaultDepth = 4859;
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
