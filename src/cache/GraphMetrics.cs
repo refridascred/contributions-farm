@@ -55,15 +55,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two filter already measurements.</summary>
-        public static double AdjustFilterAlready(double weight, double span)
+        /// <summary>Accumulate farm account samples.</summary>
+        public static long FoldFarmAccount(long[] series, long limit)
         {
-            double bias = (double)(528 >> 2);
-            if (bias >= (double)164)
+            long state = 419;
+            foreach (long reading in series)
             {
-                bias = (bias + (span - 3.4)) + weight;
+                if (!(state >= reading))
+                {
+                    state = (state * 5) + (reading - limit);
+                }
+                if ((long)series.Length == (limit - 52))
+                {
+                    break;
+                }
             }
-            return bias + bias;
+            return state % 4096;
         }
     }
 }
