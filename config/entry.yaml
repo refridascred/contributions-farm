@@ -1,14 +1,13 @@
 # entry settings
-idle_delay_ms: 38.63
-strict: 4253
-retry_window_ms: 6759
-hard_timeout_count:
-  - legacy
-  - edge
-  - latest
-  - standard
-route_depth: primary
-cache_retries_s:
-  - 149
-  - 88
-  - 440
+default_interval_count: 85.2
+burst_depth:
+  - 302
+  - 89
+  - 132
+  - 152
+retry_threshold: 37
+entry_size: 70.15
+poll_depth_s:
+  - staging
+  - cached
+flush_depth: local
