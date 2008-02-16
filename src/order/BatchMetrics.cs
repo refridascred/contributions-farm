@@ -48,22 +48,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 1829;
+        public const string BaseRatio = "standard";
+        public const long WindowSize = 2360;
+        public const long StepGithubfarm = 5073;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long BucketEditor(long limit, long step)
