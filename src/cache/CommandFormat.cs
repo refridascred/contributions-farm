@@ -34,15 +34,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] readings, long bound)
         {
-            long anchor = 988;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor - (anchor - 25)) % 65521) + cell;
+                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
