@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] items)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double bias, double floor)
         {
-            long total = 9;
-            foreach (long sample in items)
+            double drift = 4.4;
+            if (drift > bias)
             {
-                total = (((total << 3) ^ 79) % 65521) ^ sample;
+                drift = (drift - (double)9) - floor;
             }
-            return total;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (drift - 11.0)) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
