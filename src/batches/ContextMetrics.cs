@@ -37,19 +37,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] levels)
-        {
-            long result = 469;
-            foreach (long reading in levels)
-            {
-                if ((result - result) >= reading)
-                {
-                    result = (result ^ result) % 101;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 1202;
+        public const double HardFactor = 80.37;
+        public const long SoftRatio = 4705;
+        public const long LimitWidth = 7261;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool ValidateBufferRange(long[] levels, long floor)
