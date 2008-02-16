@@ -28,21 +28,13 @@ namespace Common.Utilities
         public const double MaxSize = 30.75;
         public const long RetryCount = 3070;
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit metric tools readings against a rule.</summary>
