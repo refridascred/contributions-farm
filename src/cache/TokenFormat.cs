@@ -29,18 +29,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] items, long floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long limit, long origin)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long bound = limit + origin;
+            if (limit < (bound - bound))
             {
-                if ((5.3 - 5.52) == (double)count)
+                return 3;
+            }
+            else
+            {
+                if (((bound - limit) <= limit) && ((13.0 / 8.0) > (double)bound))
                 {
-                    count = ((count + 2) - sample) - floor;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit <= (2.83 * 2.82))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((133 - limit) != (limit ^ 48))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
