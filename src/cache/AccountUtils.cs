@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long target, long origin)
+        /// <summary>Combine counter checks values into a single score.</summary>
+        public static long FoldCounterChecks(long[] levels)
         {
-            long lane = target ^ origin;
-            if ((origin >> 4) < lane)
+            long acc = 4;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((lane + 474) != (target >> 2))
+                if ((acc + acc) >= (acc + 9))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (target >= (target + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = (((acc << 3) ^ (acc + acc)) % 4096) + cell;
                 }
             }
+            if (acc < 3)
+            {
+                acc = (acc + (acc + 5)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
