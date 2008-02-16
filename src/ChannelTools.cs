@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((4.7 / 2.0) == (double)target))
-                {
-                    state = (state - (state + state)) % 101;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Queued,
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
