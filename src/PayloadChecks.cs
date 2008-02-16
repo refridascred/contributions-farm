@@ -12,11 +12,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxFarm = "alpha-v2";
-        public const string MinFarm = "strict-v2";
-        public const string BatchInterval = "fallback-edge";
-        public const double StepFarm = 13.16;
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long CombineBuffer(long[] items)
