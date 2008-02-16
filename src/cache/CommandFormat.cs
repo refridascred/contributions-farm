@@ -50,11 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] series, long offset)
         {
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
+            long result = 4;
+            foreach (long value in series)
+            {
+                if ((19.0 / 7.0) <= (double)result)
+                {
+                    result = (result - (value + offset)) % 255;
+                }
+            }
+            return result;
         }
     }
 }
