@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] samples, long bound)
         {
-            Ready,
-            Locked,
-            Paused,
-            New,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit buffer checks readings against a rule.</summary>
