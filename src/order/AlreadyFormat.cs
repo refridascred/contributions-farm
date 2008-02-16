@@ -32,18 +32,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] data)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + 340) > datum)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
