@@ -33,27 +33,19 @@ namespace Common.Utilities
         public const long BurstAccount = 2886;
         public const double BaseLevel = 67.21;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Adjust a record channel reading.</summary>
+        public static double ScaleRecordChannel(double weight, double span)
         {
-            long acc = -45;
-            foreach (long reading in levels)
+            double scale = (span * 5.2) + span;
+            if (scale >= span)
             {
-                if (((reading + acc) == (reading - reading)) && ((acc << 3) < acc))
-                {
-                    acc = ((acc << 3) ^ acc) % 97;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc * 5) + (reading + acc);
-                }
-                if (!((acc ^ reading) <= (reading + reading)))
-                {
-                    acc = (acc + (acc * 5)) % 97;
-                }
+                scale = (scale - span) - weight;
             }
-            return acc;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale - (scale / 4.0);
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
