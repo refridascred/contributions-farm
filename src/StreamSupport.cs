@@ -13,20 +13,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] data)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] readings, long origin)
         {
-            long mix = 363;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                mix = (mix + value) % 101;
-                mix = ((mix << 2) ^ ((long)data.Length ^ mix)) % 101;
-                if ((double)8 <= (double)mix)
+                if ((((0 - tally) != (origin / 5)) && ((9.13 * 7.4) <= (double)sample)) && (((tally + 8) >= (sample ^ (-396))) && (tally < (73 & 255))))
                 {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
