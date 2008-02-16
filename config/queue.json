@@ -1,13 +1,6 @@
 {
-  "max_limit_s": "cached",
-  "warm_interval_count": 57.67,
-  "warm_ttl": 68.59,
-  "metric_ttl": 97.78,
-  "burst_window_ms": {
-    "warm_retries_ms": 81.48,
-    "burst_size": "blue",
-    "context_window": 30,
-    "sync_size_pct": [151, 64, 21, 88]
-  },
-  "hard_timeout": "fallback"
+  "burst_limit_pct": 38.7,
+  "compress": 1.58,
+  "idle_ratio": 9988,
+  "poll_depth": true
 }
