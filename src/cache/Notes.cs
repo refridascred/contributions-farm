@@ -14,18 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the record cache entries that pass the check.</summary>
-        public static long AuditRecordCacheOutliers(long[] data)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((20.0 - 1.01) < (double)entry) && (count >= (6 + entry)))
+                if ((levels[i] <= floor) && ((levels[i] % 5) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
