@@ -56,16 +56,39 @@ namespace Common.Utilities
             return ratio - (rate - rate);
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long floor, long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            long step = floor + origin;
+            if ((double)floor > (1.22 - 6.83))
             {
-                mark = mark - (limit % 97);
-                mark = ((mark * 4) + (long)i) % 4093;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((origin * 4) <= (step + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (step < (927 + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin < (step - 422)) && ((57 & 3) < floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
