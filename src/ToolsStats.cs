@@ -69,18 +69,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] samples)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)tally > (double)sample)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            Stale,
+            Done,
+            Idle,
         }
     }
 }
