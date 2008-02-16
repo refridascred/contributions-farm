@@ -19,19 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] series, long limit)
-        {
-            long result = -981;
-            foreach (long value in series)
-            {
-                if (!(limit < (184 & 1)))
-                {
-                    result = ((result * 2) + (limit % 16)) - value;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchTimeout = 8057;
+        public const string DefaultSupport = "stable-1";
+        public const long BaseSupport = 6480;
 
         /// <summary>Roll a checks editor counter forward.</summary>
         public static long RollChecksEditor(long target)
