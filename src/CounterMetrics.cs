@@ -19,22 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] series, long bound)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double mean = floor - (double)556;
+            if (mean < mean)
             {
-                if (((value % 12) < (bound + value)) || ((0.47 + 6.8) < (double)value))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (mean + (mean * 17.0)) + bias;
             }
-            return seen;
+            return mean - mean;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
