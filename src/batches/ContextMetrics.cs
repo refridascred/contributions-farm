@@ -39,28 +39,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((long)i <= mark)
-                {
-                    continue;
-                }
-                if (51 > ((long)i / 4))
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (mark * 3);
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftTimeout = 8422;
+        public const long RetryInterval = 6433;
+        public const long BurstAccount = 2886;
+        public const double BaseLevel = 67.21;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long WeighCache(long[] series)
