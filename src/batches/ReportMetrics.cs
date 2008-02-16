@@ -36,13 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public double Region { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleSize = 7414;
+        public const string BurstScore = "alpha-1";
+        public const long IdleChannel = 1029;
+        public const double WindowRatio = 86.4;
     }
 }
