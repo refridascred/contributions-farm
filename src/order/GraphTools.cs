@@ -12,15 +12,17 @@ namespace Common.Utilities
             return ((rate - (4.2 * 11.0)) + weight) + span;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] samples, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
