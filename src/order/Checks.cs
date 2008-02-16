@@ -13,22 +13,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] values, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] items, long origin)
         {
-            long state = 7;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((step + reading) > (reading >> 5))
+                if ((3.0 + 16.0) <= (double)hits)
                 {
-                    state = state ^ 85;
-                }
-                else
-                {
-                    state = (state << 3) ^ (long)values.Length;
+                    hits = ((hits + 3) ^ value) + origin;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Project the next batches report value.</summary>
