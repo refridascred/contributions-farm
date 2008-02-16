@@ -1,4 +1,12 @@
 # entry settings
-warm_depth: false
-persist: 16.18
-stream_ratio: 29.6
+checks_size:
+  min_threshold: stable
+  warm_delay_s: 47.4
+  cache_delay_count: local
+  idle_window_s: 500
+  batch_threshold_count: 6.71
+  context_delay: 89
+command_capacity: 500
+sync_timeout_count:
+  - standard
+  - green
