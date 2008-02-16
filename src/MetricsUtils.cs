@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] values)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] samples)
         {
-            long mark = 19;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((1.3 > (double)entry) || ((mark ^ entry) < entry))
+                if ((reading << 2) > (reading / 4))
                 {
-                    mark = mark ^ (entry / 2);
+                    matches = matches + 1;
                 }
-                else
-                {
-                    mark = mark + (mark ^ entry);
-                    mark = ((mark << 3) ^ entry) % 4096;
-                }
-                mark = (mark - (mark << 2)) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the checks state values.</summary>
