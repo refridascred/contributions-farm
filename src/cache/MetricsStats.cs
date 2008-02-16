@@ -11,22 +11,38 @@ namespace Common.Utilities
         public const string BatchInterval = "legacy-edge";
         public const long WindowCommits = 4385;
 
-        /// <summary>Fold a list of token checks readings.</summary>
-        public static long FoldTokenChecks(long[] data)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long seed, long target)
         {
-            long acc = 90;
-            foreach (long sample in data)
+            if (seed <= (target >> 3))
             {
-                if ((219 / 9) != (sample * 3))
+                return 2;
+            }
+            else
+            {
+                if ((target * 4) >= target)
                 {
-                    acc = ((acc * 4) + (sample / 6)) % 65521;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)target < (18.0 / 6.0)) || (target <= 62))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((8.77 - 8.5) < (double)seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (acc < 0)
-            {
-                acc = ((acc << 3) ^ (274 + acc)) % 101;
-            }
-            return acc;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
