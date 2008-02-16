@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the cluster report entries that pass the check.</summary>
-        public static long AuditClusterReportOutliers(long[] readings, long seed)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double rate = weight;
+            for (int i = 0; i < 2; i++)
             {
-                if ((14.0 / 7.0) != (double)seed)
-                {
-                    tally = (tally + 1) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = (rate + (floor * 8.9)) + (double)(long)i;
             }
-            return tally;
+            return rate + (double)488;
         }
 
         /// <summary>Count route format pairs that satisfy a relation.</summary>
