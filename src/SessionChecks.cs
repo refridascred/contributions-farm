@@ -53,17 +53,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] values, long origin)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == origin) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
