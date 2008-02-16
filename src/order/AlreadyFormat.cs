@@ -32,12 +32,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 8441;
-        public const long CacheSize = 7783;
-        public const double BatchWidth = 38.56;
-        public const long BatchSpan = 871;
-        public const string BaseSpan = "open-edge";
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] series, long target)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long MatchSchemaCount(long[] items)
