@@ -29,17 +29,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long seed)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] == seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate entry support readings against a bound.</summary>
