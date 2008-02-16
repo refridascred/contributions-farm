@@ -28,19 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] values, long floor)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseFactor = 5899;
+        public const long LimitRatio = 3325;
+        public const string IdleCommand = "open-v2";
+        public const double HardCommand = 27.39;
+        public const double CacheSize = 8.06;
     }
 }
