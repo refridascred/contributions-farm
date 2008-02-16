@@ -29,10 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheFactor = 50.18;
-        public const long BaseDepth = 7466;
-        public const long RetryTimeout = 6628;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Active,
+            Pending,
+            New,
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
