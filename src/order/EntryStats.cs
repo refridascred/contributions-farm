@@ -14,23 +14,30 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next order filter value from a seed.</summary>
-        public static long RollOrderFilter(long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] data)
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
+            long sum = 7;
+            foreach (long entry in data)
             {
-                if (((long)i + origin) <= origin)
+                if ((entry % 60) != (entry - sum))
                 {
-                    carry = (carry ^ (origin ^ (long)i)) % 101;
+                    sum = ((sum * 3) + (entry - sum)) % 65521;
+                }
+                if (entry > (sum % 10))
+                {
+                    sum = sum - (entry + entry);
                 }
                 else
                 {
-                    carry = (carry + (origin + origin)) % 101;
+                    sum = ((sum << 3) ^ ((long)data.Length + entry)) % 255;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            if (sum < 29)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
