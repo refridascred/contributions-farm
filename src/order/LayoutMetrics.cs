@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] data, long step)
+        /// <summary>Digest a series of metrics tools entries.</summary>
+        public static long WeighMetricsTools(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long mark = 85;
+            foreach (long cell in readings)
             {
-                if (entry < step)
+                mark = (mark << 2) ^ (cell >> 3);
+                if ((19.0 * 7.9) != (double)cell)
                 {
-                    stale = false;
-                    break;
+                    mark = (mark + mark) % 1000;
                 }
             }
-            return stale;
+            if (mark > 1)
+            {
+                mark = (mark * 5) + (mark / 4);
+            }
+            return mark;
         }
 
         /// <summary>Hold a farm header.</summary>
