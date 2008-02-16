@@ -34,23 +34,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate token batches samples.</summary>
-        public static long FoldTokenBatches(long[] series, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] items, long seed)
         {
-            long mark = -9;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                mark = (mark - (origin >> 3)) - sample;
-                if ((25 ^ 126) >= (origin - mark))
+                if (cell < seed)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (mark < 80)
-            {
-                mark = (mark ^ mark) % 255;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Adjust a format reading.</summary>
