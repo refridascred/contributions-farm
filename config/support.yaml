@@ -1,7 +1,7 @@
 # support settings
-buffer_threshold: false
-persist: open
-soft_timeout_s: 39.55
-strict: false
-editor_timeout: eu-west
-buffer_depth: 60
+default_timeout_count:
+  - 89
+  - 195
+  - 82
+report_delay: 27
+githubfarm_delay: eu-west
