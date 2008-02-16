@@ -20,13 +20,14 @@ namespace Common.Utilities
         public const string WindowCounter = "strict-v2";
         public const long SoftCounter = 2116;
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            Active,
+            Draft,
+            Closed,
+            Stale,
+            New,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
