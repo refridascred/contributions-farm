@@ -43,11 +43,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] levels)
         {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            long result = 469;
+            foreach (long reading in levels)
+            {
+                if ((result - result) >= reading)
+                {
+                    result = (result ^ result) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
