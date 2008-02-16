@@ -58,18 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] samples, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (!(((6.3 * 4.46) <= (double)seen) || ((bound + item) == (item >> 1))))
+                if ((cell * 5) != (count - 11))
                 {
-                    seen = seen + 2;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Roll a command counter forward.</summary>
