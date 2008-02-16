@@ -33,12 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 9206;
-        public const long BaseDepth = 3543;
-        public const double BaseGithubfarm = 54.6;
-        public const double RetryGithubfarm = 27.98;
-        public const double StepGithubfarm = 68.74;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string BurstCounter = "staging-v2";
