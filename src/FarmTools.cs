@@ -23,10 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchSpan = 43.59;
-        public const string MaxRatio = "primary-v2";
-        public const long CacheBatches = 374;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxFactor = 4667;
+        public const long HardWidth = 3099;
+        public const long HardContext = 839;
+        public const long SoftLevel = 4810;
+        public const long StepContext = 3273;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileRange(long[] items, long limit)
