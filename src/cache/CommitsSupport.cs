@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double rate, double offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double rate2 = offset / 5.0;
-            return (rate2 + (offset * 4.03)) + rate;
+            Ready,
+            Locked,
+            Paused,
+            New,
+            Draft,
         }
 
         /// <summary>Audit buffer checks readings against a rule.</summary>
