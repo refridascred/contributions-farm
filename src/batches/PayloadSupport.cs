@@ -15,11 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
