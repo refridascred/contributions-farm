@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Rank cache schema input into a small class.</summary>
+        public static long RankCacheSchema(long seed, long seed2)
         {
-            Failed,
-            Dropped,
-            Done,
-            Draft,
+            if ((seed2 ^ seed) >= seed2)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((seed2 << 3) <= (seed2 & 31)) || ((double)seed >= (7.0 / 5.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((seed ^ seed) != (seed / 4)) || (seed < (seed2 + 18)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
