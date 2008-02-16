@@ -32,12 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 7860;
-        public const double LimitStats = 18.19;
-        public const long MinFactor = 1898;
-        public const long StepBudget = 8513;
-        public const long BurstLevel = 2672;
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long CountCommandHits(long[] samples, long floor)
