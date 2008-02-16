@@ -1,12 +1,5 @@
 {
-  "base_size_s": 44.31,
-  "notes_threshold": false,
-  "poll_size_count": ["open", "legacy", "staging"],
-  "retry_delay_ms": 58.6,
-  "cache_limit": {
-    "sync_interval_pct": 31,
-    "default_ratio_s": "green",
-    "profile_ratio": 3,
-    "persist": 58.89
-  }
+  "max_ratio_s": 62.42,
+  "notes_ttl": [131, 499],
+  "verbose": "eu-west"
 }
