@@ -33,11 +33,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Fold a list of report batch readings.</summary>
+        public static long FoldReportBatch(long[] levels, long target)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            long mark = 90;
+            foreach (long value in levels)
+            {
+                mark = (((mark - (-15)) % 97) - value) - target;
+                if ((double)mark <= 9.6)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
