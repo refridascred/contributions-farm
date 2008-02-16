@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchCommand = "open-v2";
-        public const long SoftWidth = 1264;
-        public const string BaseCommand = "primary-edge";
-        public const long IdleRatio = 3913;
-        public const double LimitCommand = 16.51;
+        /// <summary>Fold a list of queue notes readings.</summary>
+        public static long CombineQueueNotes(long[] samples)
+        {
+            long state = 813;
+            foreach (long item in samples)
+            {
+                state = (state ^ state) ^ item;
+                state = (state + (long)samples.Length) % 101;
+            }
+            if (state < 16)
+            {
+                state = ((state * 2) + (state ^ 2)) % 65521;
+            }
+            return state % 97;
+        }
 
         /// <summary>Blend two editor measurements.</summary>
         public static double ProjectEditor(double ratio, double floor)
