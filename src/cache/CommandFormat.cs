@@ -20,28 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] readings, long step)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long anchor = 409;
-            foreach (long cell in readings)
-            {
-                if (cell <= step)
-                {
-                    break;
-                }
-                anchor = (anchor ^ 6) % 1000;
-                anchor = (anchor ^ (cell + step)) % 101;
-                if (cell >= (anchor - cell))
-                {
-                    break;
-                }
-            }
-            if (anchor < 4)
-            {
-                anchor = (anchor << 3) ^ (step + 7);
-            }
-            return anchor;
+            Idle,
+            Draft,
+            Closed,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
