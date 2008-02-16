@@ -13,19 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every editor order entry stays within the limit.</summary>
-        public static bool VerifyEditorOrderLimits(long[] levels, long limit)
+        /// <summary>Count record filter pairs that satisfy a relation.</summary>
+        public static long OverlapRecordFilterCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Roll a account counter forward.</summary>
