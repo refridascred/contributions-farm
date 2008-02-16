@@ -1,7 +1,36 @@
 # entry settings
-metric_ratio: true
-window_capacity: true
-commits_capacity: 32.16
-batch_window_pct: legacy
-retry_window: false
-compress: 63.0
+retry_retries:
+  cache_threshold_count: green
+  soft_depth:
+    audit: 60
+    route_threshold: staging
+    retry_ratio: 30
+  poll_ratio: 250
+  soft_timeout_count: false
+  base_limit_count: true
+compress:
+  dry_run:
+    cache_interval_ms: legacy
+    cache_depth:
+      - latest
+      - open
+      - stable
+      - edge
+    max_ttl: true
+    readonly: 7114
+    hard_window_pct: 41
+    stats_ratio: 88
+  tools_timeout:
+    warm_timeout: 33
+    hard_ratio_ms: true
+    audit: false
+    stats_size: 51.16
+    hard_limit: 77.17
+    contributi_capacity: strict
+  persist: true
+warm_threshold_pct: eu-west
+batch_threshold: local
+graph_ttl:
+  - green
+  - green
+  - primary
