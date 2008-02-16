@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long offset)
         {
-            Ready,
-            Pending,
-            Active,
-            Synced,
+            long result = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((offset % 2) > offset)
+                {
+                    result = (result ^ (result << 2)) % 65521;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a graph support sample.</summary>
