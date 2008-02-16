@@ -56,14 +56,38 @@ namespace Common.Utilities
         public const long BurstLayout = 2667;
         public const long HardInterval = 8722;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long bound, long floor)
         {
-            Active,
-            Paused,
-            Pending,
-            Retry,
-            Failed,
+            if ((floor > (bound - bound)) && ((double)bound < (double)85))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)floor <= 1.93)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= (floor - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)floor != (double)bound) || ((8.89 + 1.08) < (double)floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
