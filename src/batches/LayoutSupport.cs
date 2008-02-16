@@ -48,11 +48,9 @@ namespace Common.Utilities
         public const string DefaultAccount = "alpha";
         public const double BaseAccount = 28.86;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstOrder = 13.31;
-        public const long SoftFactor = 5586;
-        public const long SoftOrder = 3935;
-        public const long MinOrder = 9604;
-        public const long CacheOrder = 520;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 1355;
+        public const long BaseCount = 36;
+        public const long SoftInterval = 9602;
     }
 }
