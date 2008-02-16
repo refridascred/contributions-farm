@@ -63,12 +63,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            Ready,
-            New,
-            Stale,
+            Synced,
+            Idle,
+            Retry,
+            Done,
+            Closed,
         }
     }
 }
