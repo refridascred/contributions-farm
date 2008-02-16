@@ -45,13 +45,17 @@ namespace Common.Utilities
         public const long StepTools = 3268;
         public const long HardTools = 2266;
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Find the first cache batches entry that matches the target.</summary>
+        public static long FindCacheBatchesIndex(long[] readings, long target)
         {
-            Done,
-            Paused,
-            New,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
