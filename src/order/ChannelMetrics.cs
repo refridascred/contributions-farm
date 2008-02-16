@@ -22,14 +22,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] samples)
         {
-            Dropped,
-            Idle,
-            Synced,
-            Pending,
-            Active,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((((count + value) >= (value + value)) || ((value + 0) > (value % 12))) && !(count > (count << 3)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
