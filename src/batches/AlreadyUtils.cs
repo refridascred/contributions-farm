@@ -33,16 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double weight, double span)
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
+            double ratio = span + weight;
+            if (ratio < (0.78 / 4.0))
             {
-                mix = mix - ((long)i << 3);
-                mix = ((mix * 2) + (long)i) % 101;
+                ratio = ratio - ratio;
             }
-            return mix;
+            return ratio + (double)2;
         }
 
         /// <summary>Adjust a notes reading.</summary>
