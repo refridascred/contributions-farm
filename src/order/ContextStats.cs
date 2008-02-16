@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next profile contributi value.</summary>
-        public static double ProjectProfileContributi(double bias, double bias2)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] data, long origin)
         {
-            double scale = (double)5 * 5.0;
-            return ((scale + (scale + 10.0)) + bias) + bias2;
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next githubfarm stats value from a seed.</summary>
