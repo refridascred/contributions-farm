@@ -46,21 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the notes mode values.</summary>
