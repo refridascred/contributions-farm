@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long floor)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] samples, long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Project the next channel value.</summary>
