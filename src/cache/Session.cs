@@ -22,14 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Closed,
-            Active,
-            Paused,
-            Ready,
-            Retry,
+            public double Size { get; set; }
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
