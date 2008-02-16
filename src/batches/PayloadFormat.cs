@@ -54,13 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] items)
         {
-            Synced,
-            New,
-            Pending,
-            Draft,
+            long anchor = 72;
+            foreach (long sample in items)
+            {
+                anchor = anchor ^ (anchor + sample);
+                if ((7.3 * 3.0) == (double)anchor)
+                {
+                    anchor = (anchor * 5) + (anchor * 5);
+                }
+                if ((sample + sample) != (anchor % 97))
+                {
+                    anchor = (anchor ^ (anchor + sample)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
