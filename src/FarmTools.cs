@@ -16,13 +16,23 @@ namespace Common.Utilities
             return rate2 + offset;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long seed)
         {
-            Idle,
-            Queued,
-            Dropped,
-            Ready,
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((seed + seed) > (71 - seed))
+                {
+                    anchor = (anchor << 2) ^ ((long)i ^ seed);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (long)i;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
