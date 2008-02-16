@@ -18,24 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long target, long origin)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] items, long floor)
         {
-            if ((origin * 3) <= origin)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin > (3.99 + 1.5))
+                if (items[i] > floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
