@@ -1,7 +1,37 @@
 # support settings
-default_timeout_count:
-  - 89
-  - 195
-  - 82
-report_delay: 27
-githubfarm_delay: eu-west
+graph_threshold:
+  - standard
+  - green
+  - primary
+route_timeout:
+  batch_ratio_s:
+    batch_size: 18.55
+    batches_limit: 30
+    persist:
+      - legacy
+      - primary
+    strict:
+      - stable
+      - blue
+      - fallback
+    token_threshold: 55.74
+    default_ratio: true
+  hard_delay_s:
+    - stable
+    - latest
+  sync_threshold: 9162
+  persist:
+    - strict
+    - edge
+    - fallback
+flush_capacity_ms:
+  base_interval_ms:
+    window_size: 9940
+    default_capacity: 91
+    soft_ratio_ms: standard
+    audit: cached
+  batches_ratio: legacy
+  account_interval:
+    - 39
+    - 464
+  already_limit: local
