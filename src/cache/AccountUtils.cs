@@ -23,24 +23,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Roll a command editor counter forward.</summary>
-        public static long IterateCommandEditor(long origin)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] levels, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                double scale = (double)origin / 3.0;
-                if (anchor <= origin)
+                if (levels[i] < limit)
                 {
-                    scale = scale - (scale + scale);
+                    return (long)i;
                 }
-                if ((scale / 9.0) >= (scale - scale))
-                {
-                    anchor = anchor - anchor;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the already status values.</summary>
