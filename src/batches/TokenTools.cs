@@ -35,19 +35,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long offset)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!(((state ^ offset) == (state - (long)i)) && ((double)state != (double)offset)))
-                {
-                    state = state ^ (long)i;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
     }
 }
