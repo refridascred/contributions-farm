@@ -13,19 +13,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] samples, long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long step, long offset)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            if ((step * 4) > (offset + offset))
             {
-                if (sample != bound)
+                return 1;
+            }
+            else
+            {
+                if ((double)offset <= 10.0)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
