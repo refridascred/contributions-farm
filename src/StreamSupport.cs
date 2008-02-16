@@ -27,14 +27,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] series, long offset)
         {
-            Closed,
-            Idle,
-            Retry,
-            Locked,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
