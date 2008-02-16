@@ -44,20 +44,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] readings)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] samples, long seed)
         {
-            long sum = 439;
-            foreach (long cell in readings)
+            long mix = 41;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    sum = ((sum ^ (sum / 5)) ^ (long)i) ^ cell;
-                    sum = (sum - 42) % 1000;
-                }
-                sum = sum - sum;
+                mix = (((mix - (mix * 4)) % 97) ^ sample) - seed;
             }
-            return sum % 4096;
+            return mix;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
