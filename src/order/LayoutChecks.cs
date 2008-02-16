@@ -68,15 +68,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] items, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] samples)
         {
             long matches = 0;
-            foreach (long cell in items)
+            foreach (long item in samples)
             {
-                if ((cell - (-8)) >= matches)
+                if (((matches << 2) >= (matches * 5)) && ((double)matches >= (5.85 - 8.8)))
                 {
-                    matches = (matches + 2) + step;
+                    matches = (matches + 1) + item;
                 }
             }
             return matches;
