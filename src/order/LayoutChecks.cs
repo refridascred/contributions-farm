@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] items, long offset)
+        /// <summary>Scale a metric contributi figure with a bias.</summary>
+        public static double AdjustMetricContributi(double rate, double span)
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (20.0 < (double)tally)
-                {
-                    tally = ((tally + 2) + entry) + offset;
-                }
-            }
-            return tally;
+            double mean = span;
+            return (mean - (16.0 * 1.55)) + rate;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
