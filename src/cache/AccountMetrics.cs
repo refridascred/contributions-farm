@@ -46,20 +46,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultMetric = 15.16;
+        public const string BatchLevel = "primary";
+        public const string BaseDepth = "latest";
+        public const double CacheCount = 17.82;
+        public const long MaxBudget = 8226;
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
