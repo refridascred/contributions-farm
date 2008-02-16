@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of record filter readings.</summary>
-        public static long TallyRecordFilter(long[] readings)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long mark = -578;
-            foreach (long entry in readings)
-            {
-                mark = (mark ^ (5 ^ mark)) + entry;
-                mark = (mark + mark) % 4096;
-            }
-            return mark % 97;
+            Ready,
+            Paused,
+            Draft,
         }
 
         /// <summary>Match up cluster samples.</summary>
