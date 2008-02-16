@@ -31,14 +31,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public double Level { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 404;
+        public const long BurstRatio = 881;
+        public const string CacheBudget = "cached";
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long LocateChannelIndex(long[] values, long seed)
