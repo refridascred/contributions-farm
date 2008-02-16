@@ -27,17 +27,16 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] levels, long offset)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 220;
+            foreach (long item in data)
             {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
+                sum = (sum + sum) % 255;
+                sum = sum - (item + item);
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
