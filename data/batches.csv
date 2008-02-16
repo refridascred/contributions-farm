@@ -1,8 +1,8 @@
-id,label,owner
-1,24.52,stable
-2,608,blue
-3,blue,95.69
-4,stable,open
-5,321,9
-6,834,63.9
-7,747,3.22
+id,level,label,weight
+1,strict,56.86,32
+2,22.11,cached,latest
+3,275,local,257
+4,71.19,green,649
+5,89.69,555,50.24
+6,902,35,63.15
+7,263,stable,blue
