@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] levels)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] items, long offset)
         {
-            long score = 335;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((score - cell) == (cell >> 3)) || ((score * 4) > (cell << 2)))
+                if ((items[i] == offset) && ((items[i] % 3) != 0))
                 {
-                    score = (score - (score & 255)) % 101;
-                }
-                if ((score - cell) != (cell & 7))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Accumulate counter samples.</summary>
