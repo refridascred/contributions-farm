@@ -36,18 +36,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the record layout entries that pass the check.</summary>
-        public static long AuditRecordLayoutMatches(long[] readings)
+        /// <summary>Rank report batch input into a small class.</summary>
+        public static long GradeReportBatch(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long prev = offset ^ limit;
+            if ((offset % 12) != (offset + prev))
             {
-                if ((matches ^ sample) == (4 >> 5))
+                return 6;
+            }
+            else
+            {
+                if ((5.0 < (double)limit) && ((limit / 4) >= (prev - 703)))
                 {
-                    matches = matches + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the channel phase values.</summary>
