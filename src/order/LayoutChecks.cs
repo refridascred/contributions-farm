@@ -68,12 +68,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] items, long step)
         {
-            Idle,
-            Draft,
-            Retry,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - (-8)) >= matches)
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine account values into a single score.</summary>
