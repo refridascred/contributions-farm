@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const long HardInterval = 2469;
         public const long BaseLevel = 3849;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftSize = "staging-v2";
-        public const long RetryBudget = 6017;
-        public const double DefaultSize = 4.82;
-        public const long MaxEntry = 6523;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((((reading - count) < reading) && ((954 ^ reading) == ((long)items.Length ^ 5))) || ((double)reading != (double)(long)items.Length))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
