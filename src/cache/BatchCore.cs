@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public double Level { get; set; }
+            Failed,
+            Locked,
+            New,
+            Stale,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
