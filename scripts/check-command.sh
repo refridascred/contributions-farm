@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local cached; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-local}"
+mode="${1:-strict}"
 case "${mode}" in
-    strict)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in edge cached fallback legacy; do
+    log "checking ${item}"
+done
