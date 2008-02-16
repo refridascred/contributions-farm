@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit window batches readings against a rule.</summary>
-        public static long MeasureWindowBatchesHits(long[] levels)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - count) == (sample % 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Stale,
+            Active,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
