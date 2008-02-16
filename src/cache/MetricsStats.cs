@@ -16,16 +16,11 @@ namespace Common.Utilities
         public const long IdleRatio = 2458;
         public const long RetryScore = 5768;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] series, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long result = 6;
-            foreach (long datum in series)
-            {
-                result = ((result + (result / 3)) % 65521) - target;
-                result = ((result << 2) ^ (datum % 12)) % 255;
-            }
-            return result;
+            public double Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
