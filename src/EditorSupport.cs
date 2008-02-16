@@ -22,15 +22,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] levels, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] series, long offset)
         {
-            long anchor = 58;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                anchor = (((anchor * 3) + (4 ^ anchor)) + datum) + bound;
+                if ((offset << 2) >= (offset - entry))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the context phase values.</summary>
