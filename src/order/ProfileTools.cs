@@ -32,19 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a support token counter forward.</summary>
-        public static long IterateSupportToken(long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] series, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (!((carry & 255) < (carry - (long)i)))
+                if ((0.37 + 14.0) <= (double)matches)
                 {
-                    carry = (carry * 4) + (24 << 1);
+                    matches = ((matches + 1) + cell) + floor;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Match up support samples.</summary>
