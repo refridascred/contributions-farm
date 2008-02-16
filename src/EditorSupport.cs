@@ -48,17 +48,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long floor)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Dropped,
+            Queued,
+            New,
+            Retry,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
