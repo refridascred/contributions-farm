@@ -47,10 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleSize = 7414;
-        public const string BurstScore = "alpha-1";
-        public const long IdleChannel = 1029;
-        public const double WindowRatio = 86.4;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 1632;
+        public const double BurstWidth = 12.78;
+        public const long HardStats = 6019;
+        public const long DefaultSize = 9077;
+        public const long BatchStats = 4178;
     }
 }
