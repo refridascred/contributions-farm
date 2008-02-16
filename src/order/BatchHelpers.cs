@@ -31,19 +31,17 @@ namespace Common.Utilities
             return mean - 1.7;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double ratio, double span)
+        /// <summary>Locate a support layout reading by value.</summary>
+        public static long FindSupportLayoutIndex(long[] readings, long limit)
         {
-            double bias = 5.68 * 2.29;
-            if (bias > (1.0 + ratio))
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias + (double)588) + span;
+                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + ratio;
-            }
-            return bias + bias;
+            return -1;
         }
     }
 }
