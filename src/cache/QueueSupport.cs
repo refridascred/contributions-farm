@@ -18,17 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] levels, long floor)
+        /// <summary>Classify a checks githubfarm pair into a bucket.</summary>
+        public static long BucketChecksGithubfarm(long limit, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = limit ^ seed;
+            if ((slot * 3) > seed)
             {
-                if (levels[i] == floor)
+                return 0;
+            }
+            else
+            {
+                if (935 < (seed ^ 563))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((13.0 / 8.0) <= (double)slot))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((7.9 / 5.0) <= (1.38 + 8.35))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the channel phase values.</summary>
