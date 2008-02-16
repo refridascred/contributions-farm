@@ -54,19 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] items)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long result = 5;
-            foreach (long sample in items)
-            {
-                result = ((result + (0 ^ result)) % 4096) ^ sample;
-            }
-            if (result > 505)
-            {
-                result = ((result * 4) + result) % 97;
-            }
-            return result % 65521;
+            public double Owner { get; set; }
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Count the layout entry entries that pass the check.</summary>
