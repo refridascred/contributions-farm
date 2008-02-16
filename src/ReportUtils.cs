@@ -64,13 +64,20 @@ namespace Common.Utilities
             return bias2 + (bias2 / 3.0);
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Roll a token commits counter forward.</summary>
+        public static long RollTokenCommits(long bound)
         {
-            Locked,
-            Dropped,
-            Active,
-            Retry,
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = ((sum << 3) ^ (88 % 10)) - (long)i2;
+                }
+                sum = (sum ^ bound) % 255;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
