@@ -1,5 +1,26 @@
 {
-  "dry_run": false,
-  "hard_ratio_pct": true,
-  "persist": "eu-west"
+  "compress": {
+    "retry_ratio_pct": {
+      "burst_capacity_pct": [191, 4],
+      "filter_retries": [73, 143, 435],
+      "record_capacity": "primary",
+      "idle_size_ms": [154, 27, 396],
+      "notes_delay": "fallback"
+    },
+    "default_limit_count": 1024,
+    "base_depth": {
+      "record_timeout": "eu-west",
+      "soft_size_pct": [328, 281, 126, 175],
+      "sync_delay": 5562,
+      "persist": false,
+      "sync_threshold_count": "strict",
+      "idle_retries_pct": 60
+    },
+    "warm_delay": 51,
+    "base_size_s": "cached",
+    "readonly": "local"
+  },
+  "flush_interval_ms": 13,
+  "queue_limit": 13,
+  "persist": 379
 }
