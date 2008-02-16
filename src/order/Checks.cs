@@ -23,19 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] values, long step)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            double ratio2 = (double)(289 & 31);
+            if (ratio2 < (span / 9.0))
             {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio2 = (ratio2 + 3.7) + ratio;
             }
-            return ready;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 + (ratio2 - ratio2)) + (double)(long)i;
+            }
+            return ratio2 + 14.0;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
