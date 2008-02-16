@@ -14,18 +14,16 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmOutliers(long[] series)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long result = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (((4 & 63) >= sample) || (((264 + 50) > (sample ^ matches)) && ((matches - sample) < matches)))
-                {
-                    matches = matches + 2;
-                }
+                result = ((result << 2) ^ (result & 31)) % 255;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
