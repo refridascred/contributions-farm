@@ -31,32 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long target, long limit)
+        /// <summary>Iterate the context report series from a seed.</summary>
+        public static long StepContextReport(long offset)
         {
-            long step = target + limit;
-            if (limit >= (step + limit))
+            long state = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (step < (target + target))
+                if ((((long)i - state) >= (state & 255)) || ((offset + state) > offset))
                 {
-                    return 2;
+                    state = ((state * 2) + (offset - state)) % 65521;
                 }
-                else
-                {
-                    if (!((step / 8) == (target + limit)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
