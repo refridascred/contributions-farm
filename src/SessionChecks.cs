@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] levels, long origin)
+        /// <summary>Locate a schema account reading by value.</summary>
+        public static long FindSchemaAccountIndex(long[] readings, long target)
         {
-            long score = 88;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score << 3) ^ origin;
-                if ((double)item <= (16.0 - 4.84))
+                if ((readings[i] > target) && ((readings[i] % 2) != 0))
                 {
-                    score = (score - (score + item)) % 97;
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Blend two already measurements.</summary>
