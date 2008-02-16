@@ -48,12 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 12.32;
-        public const long CacheWindow = 7369;
-        public const string BurstWindow = "primary-edge";
-        public const long BatchWindow = 7214;
-        public const string CacheInterval = "legacy-v2";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] samples, long bound)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (!(((6.3 * 4.46) <= (double)seen) || ((bound + item) == (item >> 1))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
