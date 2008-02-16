@@ -21,23 +21,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double gain, double floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] data)
         {
-            double mean = 8.82 * 0.84;
-            if (mean <= (gain - mean))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                mean = (mean + (gain / 6.0)) - floor;
+                if ((double)704 <= (double)entry)
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                mean = mean - (double)5;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (gain - gain);
+            return matches;
         }
 
         /// <summary>Describe the already status values.</summary>
