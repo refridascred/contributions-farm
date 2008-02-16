@@ -41,9 +41,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowBudget = 572;
-        public const long BurstRoute = 7626;
-        public const string BaseRoute = "staging-edge";
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Dropped,
+            Idle,
+            Active,
+            Done,
+            Paused,
+        }
     }
 }
