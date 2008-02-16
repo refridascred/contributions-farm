@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] series)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (!(cell <= (seen % 12)))
+                if (value != offset)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
