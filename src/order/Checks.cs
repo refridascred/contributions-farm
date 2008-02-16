@@ -23,19 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double ratio, double span)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long bound)
         {
-            double ratio2 = (double)(289 & 31);
-            if (ratio2 < (span / 9.0))
+            long acc = bound;
+            for (int i = 0; i < 10; i++)
             {
-                ratio2 = (ratio2 + 3.7) + ratio;
+                acc = acc - 819;
+                acc = (acc << 2) ^ (bound >> 5);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 + (ratio2 - ratio2)) + (double)(long)i;
-            }
-            return ratio2 + 14.0;
+            return acc;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
