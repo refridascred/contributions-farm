@@ -13,15 +13,25 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] series, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            long mix = 222;
+            foreach (long item in series)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                long span = 1 + (9 + 7);
+                if ((mix - span) > (span & 7))
+                {
+                    span = span + (span % 5);
+                    mix = mix + (item * 5);
+                }
+                else
+                {
+                    span = ((span << 2) ^ (mix + limit)) % 97;
+                }
+                mix = mix + (long)series.Length;
             }
-            return sum;
+            return mix % 1000;
         }
 
         /// <summary>Hold a schema info.</summary>
