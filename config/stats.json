@@ -1,10 +1,15 @@
 {
-  "poll_ttl": true,
-  "batch_interval_pct": 250,
-  "verbose": 3903,
-  "readonly": {
-    "compress": "eu-west",
-    "entry_ratio": "blue",
-    "verbose": 98
+  "schema_ratio": "eu-west",
+  "min_limit_count": [424, 266],
+  "profile_window": {
+    "dry_run": false,
+    "checks_size": false,
+    "cache_window": ["standard", "cached"],
+    "readonly": "local",
+    "idle_ttl": {
+      "verbose": 70,
+      "hard_delay_ms": 100,
+      "enabled": "edge"
+    }
   }
 }
