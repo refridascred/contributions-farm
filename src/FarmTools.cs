@@ -13,14 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double scale, double span)
         {
-            Ready,
-            Locked,
-            Active,
-            Paused,
-            Stale,
+            double load = (9.5 * 5.59) + (4.59 / 8.0);
+            return load - (scale - span);
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
