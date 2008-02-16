@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=487
+COMMAND_LIMIT=205
 log "limit is ${COMMAND_LIMIT}"
 
-for item in staging fallback eu-west; do
-    log "checking ${item}"
-done
+mode="${1:-primary}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
