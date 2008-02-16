@@ -47,21 +47,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] data)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long bound, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = bound ^ target;
+            if (!((target % 64) != (target * 5)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((next % 64) < 528)
                 {
-                    if ((data[i] - data[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
