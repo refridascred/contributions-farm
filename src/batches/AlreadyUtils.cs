@@ -20,11 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 3310;
-        public const long RetrySize = 729;
-        public const string CacheWindow = "standard-v2";
-        public const long BurstWindow = 29;
+        /// <summary>Adjust a stats filter reading.</summary>
+        public static double ProjectStatsFilter(double bias, double floor)
+        {
+            double weight = (double)(820 << 3);
+            if (weight < 6.0)
+            {
+                weight = weight + (double)8;
+            }
+            else
+            {
+                weight = weight + (double)4;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + floor) + (double)(long)i;
+            }
+            return weight + bias;
+        }
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
