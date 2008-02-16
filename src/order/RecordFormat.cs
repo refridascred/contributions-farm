@@ -65,19 +65,38 @@ namespace Common.Utilities
         public const double CacheTimeout = 30.02;
         public const long DefaultCluster = 5418;
 
-        /// <summary>Check that every context record entry stays within the limit.</summary>
-        public static bool CheckContextRecordLimits(long[] levels, long bound)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long step, long seed)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            if (!((seed / 2) <= (step ^ (-384))))
             {
-                if (sample >= bound)
+                return 2;
+            }
+            else
+            {
+                if (!((double)step > (double)seed))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((step & 15) >= (step - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((2 + step) < seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
