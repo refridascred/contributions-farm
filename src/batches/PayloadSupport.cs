@@ -23,22 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] levels)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)sample >= (5.8 - 2.84)) && ((sample - tally) <= 2))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
