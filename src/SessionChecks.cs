@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of farm schema readings.</summary>
-        public static long ScoreFarmSchema(long[] levels)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long acc = 4;
-            foreach (long value in levels)
-            {
-                acc = (acc * 3) + value;
-            }
-            return acc;
+            Retry,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
