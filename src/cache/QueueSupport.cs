@@ -20,12 +20,13 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            New,
-            Retry,
-            Done,
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the channel phase values.</summary>
