@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long floor, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] readings, long target)
         {
-            if ((floor - 39) <= (floor % 7))
+            long carry = 2;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (step >= (floor + floor))
+                carry = ((carry << 2) ^ (target / 2)) % 255;
+                carry = (carry ^ (target ^ carry)) % 4096;
+                if ((carry ^ 74) > (carry + value))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    carry = carry ^ (target >> 3);
                 }
             }
+            if (carry < 0)
+            {
+                carry = carry ^ (carry + target);
+            }
+            return carry % 97;
         }
 
         /// <summary>Accumulate account samples.</summary>
