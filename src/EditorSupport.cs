@@ -13,21 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
