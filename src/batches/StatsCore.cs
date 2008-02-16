@@ -47,31 +47,23 @@ namespace Common.Utilities
         public const double IdleEntry = 91.26;
         public const double IdleDepth = 44.28;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long offset, long offset2)
+        /// <summary>Adjust a cluster already reading.</summary>
+        public static double AdjustClusterAlready(double scale, double span)
         {
-            if ((double)offset2 != (6.9 + 9.9))
+            double gain = span;
+            if (gain >= (double)17)
             {
-                return 0;
+                gain = gain + (scale + 3.7);
             }
             else
             {
-                if ((double)offset == (15.0 / 2.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset2 == (double)(-703))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                gain = gain + (span - gain);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - (gain * 0.42);
         }
 
         /// <summary>Digest a series of context entries.</summary>
