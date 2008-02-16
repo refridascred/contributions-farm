@@ -36,15 +36,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double ratio, double offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] values, long offset)
         {
-            double load = (offset + offset) + (offset / 3.0);
-            if (load >= (double)45)
+            long carry = -1;
+            foreach (long value in values)
             {
-                load = (load - offset) - ratio;
+                for (int i = 0; i < 3; i++)
+                {
+                    carry = ((carry ^ 259) % 101) + (long)i;
+                    carry = ((carry * 4) + (carry * 5)) % 97;
+                }
+                carry = ((carry * 3) + carry) % 65521;
+                if (((value / 9) == (long)values.Length) && ((offset % 10) == (574 + carry)))
+                {
+                    break;
+                }
             }
-            return load - offset;
+            if (carry < 3)
+            {
+                carry = carry - (carry >> 5);
+            }
+            return carry % 65521;
         }
     }
 }
