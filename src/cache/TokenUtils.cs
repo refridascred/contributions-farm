@@ -15,13 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Stale,
-            Pending,
-            Paused,
-            Locked,
+            public double Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
