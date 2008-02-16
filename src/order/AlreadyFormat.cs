@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Validate token commits readings against a bound.</summary>
+        public static bool VerifyTokenCommitsRange(long[] items, long floor)
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
