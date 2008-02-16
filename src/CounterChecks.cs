@@ -56,17 +56,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] series, long offset)
+        /// <summary>Measure how many farm order samples are out of range.</summary>
+        public static long MeasureFarmOrderGaps(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (series[i] >= offset)
+                if (((59 % 8) <= (seen >> 4)) || ((80 / 9) > (85 + seen)))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - sample;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
