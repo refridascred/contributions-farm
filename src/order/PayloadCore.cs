@@ -49,12 +49,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Match up commits notes samples.</summary>
