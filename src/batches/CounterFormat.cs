@@ -17,13 +17,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long limit)
         {
-            Failed,
-            New,
-            Paused,
-            Stale,
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Hold a commits info.</summary>
