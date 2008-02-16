@@ -34,13 +34,13 @@ namespace Common.Utilities
         public const long BaseDepth = 7466;
         public const long RetryTimeout = 6628;
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
+            public double Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
