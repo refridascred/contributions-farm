@@ -16,19 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((double)2 < (double)sample)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 4823;
+        public const string RetryReport = "local-edge";
+        public const long IdleScore = 2067;
+        public const long DefaultScore = 4508;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
