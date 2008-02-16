@@ -31,23 +31,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] samples, long seed)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long mix = -457;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mix = ((((mix * 3) + seed) % 4096) ^ (long)i) - entry;
-                    mix = ((mix << 3) ^ (3 >> 5)) % 97;
-                }
-                if (!((seed + seed) < mix))
-                {
-                    mix = mix ^ 423;
-                }
-            }
-            return mix;
+            public double Level { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
