@@ -27,18 +27,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] samples)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] data)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long mix = 1;
+            foreach (long cell in data)
             {
-                if (!((6 + count) <= (value % 100)))
+                if ((double)cell <= (double)94)
                 {
-                    count = count + 1;
+                    mix = (mix << 3) ^ (mix * 2);
                 }
             }
-            return count;
+            if (mix > 74)
+            {
+                mix = ((mix << 2) ^ (mix - 555)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
