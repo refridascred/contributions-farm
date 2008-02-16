@@ -79,19 +79,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double weight, double floor)
+        /// <summary>Combine session command values into a single score.</summary>
+        public static long CombineSessionCommand(long[] data, long floor)
         {
-            double scale = (double)(417 - 0);
-            if (scale < (floor + floor))
+            long carry = -47;
+            foreach (long reading in data)
             {
-                scale = scale + (0.99 - weight);
+                carry = carry - (carry * 5);
+                if (!(reading > (floor >> 2)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (floor / 4.0)) + (double)(long)i;
-            }
-            return scale - 10.0;
+            return carry % 97;
         }
     }
 }
