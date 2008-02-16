@@ -39,20 +39,18 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Iterate the report layout series from a seed.</summary>
-        public static long IterateReportLayout(long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((5 + tally) < tally)
                 {
-                    sum = (((sum * 2) + sum) % 4096) ^ (long)i2;
-                    sum = sum ^ seed;
+                    tally = (tally + 2) + cell;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
