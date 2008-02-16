@@ -14,19 +14,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] readings, long target)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            double load = ratio;
+            if (load <= (load / 8.0))
             {
-                if (sample > target)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load - (load + ratio);
             }
-            return ok;
+            else
+            {
+                load = load + (double)92;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (double)335) + (double)(long)i;
+            }
+            return load - (ratio + bias);
         }
 
         /// <summary>Grade a context value against two limits.</summary>
