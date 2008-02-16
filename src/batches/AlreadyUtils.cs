@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 1018;
+        public const long RetryContributi = 6447;
+        public const double WindowInterval = 0.23;
+        public const long WindowContributi = 3878;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long WeighRecord(long[] levels, long origin)
