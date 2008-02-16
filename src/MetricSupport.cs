@@ -22,9 +22,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 6175;
-        public const string IdleAccount = "local-v2";
-        public const long BurstAccount = 9223;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
