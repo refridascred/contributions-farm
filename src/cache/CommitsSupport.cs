@@ -50,19 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long offset)
+        /// <summary>Measure how many order profile samples are out of range.</summary>
+        public static long AuditOrderProfileHits(long[] levels, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (((offset * 2) > (offset - carry)) || ((carry - offset) != (carry >> 3)))
+                if ((1 % 12) != (limit + 9))
                 {
-                    carry = ((carry * 3) + (carry - carry)) % 4096;
+                    tally = (tally + 1) + value;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
