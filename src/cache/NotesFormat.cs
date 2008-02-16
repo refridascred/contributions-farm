@@ -29,18 +29,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many filter batches samples are out of range.</summary>
-        public static long MeasureFilterBatchesGaps(long[] series)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((double)(long)series.Length <= (double)item)
+                if ((seed + seen) < seen)
                 {
-                    matches = matches + 3;
+                    seen = (seen + 3) + item;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
