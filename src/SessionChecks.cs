@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleCount = 55.33;
-        public const double StepStats = 29.51;
-        public const double HardStats = 40.74;
-        public const long MinBudget = 6642;
+        /// <summary>Fold a list of farm schema readings.</summary>
+        public static long ScoreFarmSchema(long[] levels)
+        {
+            long acc = 4;
+            foreach (long value in levels)
+            {
+                acc = (acc * 3) + value;
+            }
+            return acc;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string MaxEditor = "standard-1";
