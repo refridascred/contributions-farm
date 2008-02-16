@@ -11,28 +11,11 @@ namespace Common.Utilities
         public const double WindowInterval = 0.23;
         public const long WindowContributi = 3878;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] levels, long origin)
-        {
-            long acc = 510;
-            foreach (long entry in levels)
-            {
-                if (!((acc > (origin >> 5)) && ((entry - acc) >= (acc << 2))))
-                {
-                    acc = (acc + origin) % 101;
-                }
-                acc = acc ^ entry;
-                if ((acc < (acc + entry)) && (7.66 > (double)origin))
-                {
-                    acc = (acc ^ acc) % 4096;
-                }
-                if (entry >= (42 + 60))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftBudget = 4076;
+        public const double BurstSize = 20.77;
+        public const double BaseLevel = 48.94;
+        public const long BurstInterval = 41;
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
