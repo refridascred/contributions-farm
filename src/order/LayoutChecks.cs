@@ -65,31 +65,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long step, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] items)
         {
-            if ((81 > (floor >> 4)) && ((9 << 3) <= (step ^ 7)))
+            long carry = 13;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step >> 4) >= (step >> 3)) || ((double)floor > (double)5))
+                for (int i = 0; i < 5; i++)
                 {
-                    return 7;
+                    carry = (((carry * 3) + carry) % 255) + (long)i;
                 }
-                else
+                if ((carry + carry) != (carry - carry))
                 {
-                    if (((8 % 24) >= (step + floor)) || ((floor * 5) > (floor & 255)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = carry - (value * 5);
                 }
             }
+            return carry;
         }
     }
 }
