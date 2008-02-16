@@ -26,13 +26,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Roll a checks editor counter forward.</summary>
+        public static long RollChecksEditor(long target)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
+            long mix = target;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = mix + mix;
+                if ((4.5 * 6.7) <= (double)target)
+                {
+                    mix = (mix ^ (mix - target)) % 97;
+                    mix = (mix << 3) ^ 69;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
