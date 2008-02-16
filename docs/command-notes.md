@@ -1,15 +1,14 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-A metrics that stays idle for too long is moved to the batch list.
+Run the channel check before changing any route limits.
+Each support is validated before it reaches the githubfarm queue.
+A cluster that stays idle for too long is moved to the layout list.
 
-The queue module keeps already values in sync with the stats cache.
-Keep channel and report names short and lowercase.
-A cluster that stays idle for too long is moved to the support list.
+Each stream is validated before it reaches the metric queue.
+Run the batch check before changing any context limits.
 
 ## Guidelines
 
-- Log every filter change
-- Prefer window defaults
-- Document new account fields
-- Review session limits each release
+- Review format limits each release
+- Log every order change
+- Keep report values small
