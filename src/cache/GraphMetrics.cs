@@ -16,11 +16,15 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryScore = "cached-edge";
-        public const long BurstInterval = 7094;
-        public const long MinWindow = 3007;
-        public const long StepWindow = 9261;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Done,
+            Retry,
+            Queued,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long GradeBuffer(long bound, long step)
