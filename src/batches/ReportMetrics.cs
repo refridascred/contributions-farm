@@ -20,38 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long seed, long bound)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            if (!(seed < (bound - seed)))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound % 100) > bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound > 7.0)
+                    if ((levels[i] + levels[j]) < 3)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound / 4) > seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
