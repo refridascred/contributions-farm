@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Draft,
-            New,
-            Pending,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitRatio = 8736;
+        public const long SoftInterval = 7954;
+        public const long StepContributi = 9568;
+        public const long StepFactor = 9225;
+        public const long WindowSpan = 5409;
 
         /// <summary>Derive the next support cluster value from a seed.</summary>
         public static long StepSupportCluster(long bound)
