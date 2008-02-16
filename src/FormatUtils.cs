@@ -71,11 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
