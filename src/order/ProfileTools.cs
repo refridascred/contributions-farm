@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseDepth = 19.66;
-        public const string WindowWidth = "open-v2";
-        public const long MaxCommand = 6250;
-        public const long LimitCommand = 7752;
-        public const double BaseBudget = 16.73;
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double rate, double offset)
+        {
+            double ratio = rate;
+            if (ratio <= (rate - ratio))
+            {
+                ratio = (ratio + ratio) + offset;
+            }
+            else
+            {
+                ratio = ratio - rate;
+            }
+            return ratio + (double)32;
+        }
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
