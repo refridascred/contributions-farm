@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] values)
+        /// <summary>Validate payload cache readings against a bound.</summary>
+        public static bool GuardPayloadCacheBounds(long[] series, long floor)
         {
-            long mix = 485;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long value in series)
             {
-                mix = ((mix * 3) + (sample << 1)) % 4096;
+                if (value > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
