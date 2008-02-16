@@ -35,13 +35,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long floor, long step)
         {
-            Queued,
-            Idle,
-            New,
-            Paused,
+            if ((floor + 3) <= (step / 9))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor >= (step + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Adjust a cache reading.</summary>
