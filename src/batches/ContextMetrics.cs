@@ -30,15 +30,12 @@ namespace Common.Utilities
             return (load - (double)2) + floor;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] items)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long total = 69;
-            foreach (long value in items)
-            {
-                total = (((total << 3) ^ total) % 1000) + value;
-            }
-            return total;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of account layout readings.</summary>
