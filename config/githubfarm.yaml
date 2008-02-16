@@ -1,10 +1,7 @@
 # githubfarm settings
-notes_window: primary
-filter_capacity:
-  - stable
-  - legacy
-  - local
-  - eu-west
-filter_window: staging
-max_delay_s: 82.72
-idle_retries_ms: false
+idle_limit_count: true
+readonly: edge
+commits_timeout: 4
+audit: 8912
+poll_capacity_pct: 9
+persist: green
