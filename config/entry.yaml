@@ -1,14 +1,25 @@
 # entry settings
-profile_timeout: 3302
-default_delay_s: 8218
-soft_limit_pct:
-  batch_window: 67.26
-  farm_capacity: 63
-  flush_delay_count: 29
-  persist: 9192
-max_ratio_count: 50.0
-counter_size:
-  - edge
-  - latest
-  - latest
-soft_interval_s: 364
+farm_timeout: true
+warm_retries_ms: legacy
+readonly:
+  base_retries: stable
+  poll_retries: 20
+  soft_threshold: blue
+  min_threshold_ms: 64
+  verbose: false
+poll_interval_s: 500
+sync_size_count: 30
+metric_delay:
+  metrics_retries:
+    poll_interval: primary
+    sync_limit_s: 25.37
+    notes_window: blue
+    cluster_ttl: 85.61
+    strict: 8298
+  verbose: false
+  profile_ratio: 44.72
+  audit: true
+  sync_capacity:
+    - staging
+    - primary
+  min_retries_s: 23.02
