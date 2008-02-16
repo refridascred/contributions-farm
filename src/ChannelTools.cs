@@ -17,12 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] values, long bound)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] == bound)
+                if (series[i] == bound)
                 {
                     return (long)i;
                 }
