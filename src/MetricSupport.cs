@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheBudget = "open-v2";
+        public const long MaxSize = 2660;
+        public const long DefaultStream = 7025;
 
         /// <summary>Measure how many already window samples are out of range.</summary>
         public static long MeasureAlreadyWindowMatches(long[] data, long step)
