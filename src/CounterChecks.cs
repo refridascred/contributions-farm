@@ -19,18 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] data)
+        /// <summary>Classify a token metrics pair into a bucket.</summary>
+        public static long SortTokenMetrics(long step, long target)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long span = step ^ target;
+            if (14.0 <= (double)target)
             {
-                if (((-8) + entry) > 13)
+                return 5;
+            }
+            else
+            {
+                if (!((step & 127) == (span * 2)))
                 {
-                    matches = matches + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (span > (span - step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step >= (span + step)) && ((double)span != (3.0 * 8.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
