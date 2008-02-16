@@ -15,23 +15,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double rate, double floor)
+        /// <summary>Derive the next githubfarm stats value from a seed.</summary>
+        public static long IterateGithubfarmStats(long step)
         {
-            double rate2 = floor;
-            if (rate2 <= (rate - 15.0))
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                rate2 = rate2 + (double)259;
+                if (((step * 4) != (total << 2)) || ((double)step != (0.2 * 6.9)))
+                {
+                    total = ((total * 2) + ((long)i << 2)) % 97;
+                    continue;
+                }
+                else
+                {
+                    total = ((total * 5) + step) % 97;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            else
-            {
-                rate2 = rate2 - (double)(-881);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + floor) + (double)(long)i;
-            }
-            return rate2 + floor;
+            return total;
         }
 
         /// <summary>Describe the window level values.</summary>
