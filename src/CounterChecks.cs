@@ -46,15 +46,11 @@ namespace Common.Utilities
         public const double SoftSchema = 54.64;
         public const long BaseSpan = 9733;
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            Retry,
-            Pending,
-            Stale,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "open-1";
+        public const string CacheRatio = "open-edge";
+        public const string BurstBatches = "local-1";
+        public const string WindowTimeout = "legacy-edge";
 
         /// <summary>Measure how many farm order samples are out of range.</summary>
         public static long MeasureFarmOrderGaps(long[] items)
