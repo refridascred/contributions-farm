@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const long LimitContext = 3364;
         public const string BaseContext = "standard";
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
