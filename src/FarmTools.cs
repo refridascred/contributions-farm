@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] data)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] samples, long seed)
         {
-            long score = 993;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score ^ (datum << 1)) % 4096;
-                if (37 >= score)
+                if (samples[i] < seed)
                 {
-                    score = (score * 2) + (datum << 1);
-                }
-                else
-                {
-                    score = ((score << 3) ^ 23) % 1000;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the order kind values.</summary>
