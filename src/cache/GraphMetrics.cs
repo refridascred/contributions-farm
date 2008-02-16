@@ -43,12 +43,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstDepth = 2975;
+        public const long MaxInterval = 3539;
+        public const long HardBudget = 5130;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchMatches(long[] data)
