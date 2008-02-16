@@ -39,20 +39,12 @@ namespace Common.Utilities
         public const long BurstAccount = 2886;
         public const double BaseLevel = 67.21;
 
-        /// <summary>Adjust a record channel reading.</summary>
-        public static double ScaleRecordChannel(double weight, double span)
-        {
-            double scale = (span * 5.2) + span;
-            if (scale >= span)
-            {
-                scale = (scale - span) - weight;
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - (scale / 4.0);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowRatio = "legacy-edge";
+        public const double BatchDepth = 70.38;
+        public const string BaseTools = "open-1";
+        public const long StepLevel = 4067;
+        public const long CacheTimeout = 9741;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long RetryBatches = 3232;
