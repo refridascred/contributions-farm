@@ -20,24 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next githubfarm stats value from a seed.</summary>
-        public static long IterateGithubfarmStats(long step)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((step * 4) != (total << 2)) || ((double)step != (0.2 * 6.9)))
-                {
-                    total = ((total * 2) + ((long)i << 2)) % 97;
-                    continue;
-                }
-                else
-                {
-                    total = ((total * 5) + step) % 97;
-                }
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
