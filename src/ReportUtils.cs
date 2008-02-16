@@ -55,38 +55,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a counter metric value against two limits.</summary>
-        public static long ClassifyCounterMetric(long step, long origin)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            if ((9.0 + 19.0) <= (double)origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if (6.9 >= (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step / 6) == (417 >> 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin + 960) != (step + step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Dropped,
+            Active,
+            Retry,
         }
     }
 }
