@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next support cluster value from a seed.</summary>
-        public static long StepSupportCluster(long bound)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if ((cell >> 3) < (tally >> 3))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
