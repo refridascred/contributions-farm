@@ -1,13 +1,13 @@
 # githubfarm settings
-batch_limit: fallback
-counter_interval: stable
-payload_ratio:
-  - 59
-  - 238
-audit: 1024
-idle_ratio_ms:
-  - fallback
-  - cached
-  - legacy
-  - local
-enabled: local
+tools_ttl:
+  - standard
+  - eu-west
+  - stable
+  - strict
+default_window: 45
+format_window:
+  - green
+  - staging
+  - open
+soft_timeout_pct: edge
+audit: 92.25
