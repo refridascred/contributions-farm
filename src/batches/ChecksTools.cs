@@ -34,19 +34,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a cache batches figure with a bias.</summary>
-        public static double ProjectCacheBatches(double ratio, double bias)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long offset)
         {
-            double drift = (double)(9 - 541);
-            if (drift > (bias + drift))
+            long total = offset;
+            for (int i = 0; i < 13; i++)
             {
-                drift = drift + drift;
+                long tally = total ^ offset;
+                if (!!(((long)i - tally) > offset))
+                {
+                    total = (total << 3) ^ total;
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (ratio - drift);
+            return total;
         }
     }
 }
