@@ -48,19 +48,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] levels)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double bias, double span)
         {
-            long carry = -684;
-            foreach (long cell in levels)
+            double drift = (double)(2 + 0);
+            if (drift <= (drift * 6.0))
             {
-                carry = (carry * 3) + cell;
+                drift = ((drift - (double)1) - bias) - span;
             }
-            if (carry < (-6))
+            else
             {
-                carry = carry - (carry & 31);
+                drift = drift - (double)6;
             }
-            return carry;
+            return drift - (double)(-755);
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
