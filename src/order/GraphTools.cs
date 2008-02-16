@@ -27,15 +27,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] data)
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
