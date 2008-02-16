@@ -25,12 +25,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
