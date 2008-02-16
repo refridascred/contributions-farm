@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] series, long step)
         {
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
+            long mark = 1;
+            foreach (long reading in series)
+            {
+                mark = ((mark ^ step) % 97) + reading;
+            }
+            if (mark < 85)
+            {
+                mark = ((mark * 3) + (mark + step)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Project the next stream profile value.</summary>
