@@ -40,12 +40,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 5644;
-        public const long CacheBuffer = 2715;
-        public const double CacheSize = 27.27;
-        public const long MaxBuffer = 9367;
-        public const long LimitBuffer = 3407;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long MatchFarmCount(long[] levels)
