@@ -1,10 +1,7 @@
 {
-  "poll_timeout": {
-    "sync_interval_ms": 898,
-    "batch_threshold_count": 43,
-    "poll_ratio_ms": 20,
-    "farm_retries": 86.07
-  },
-  "hard_retries_s": 64.19,
-  "burst_depth_ms": "blue"
+  "stats_interval": 5564,
+  "cache_capacity_ms": 89.88,
+  "min_limit_s": ["latest", "open", "cached"],
+  "checks_interval": false,
+  "verbose": "stable"
 }
