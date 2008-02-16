@@ -1,9 +1,8 @@
-id,level,label,ratio,token
-1,30.38,94.92,edge,190
-2,open,87.48,63.89,534
-3,532,legacy,eu-west,46.12
-4,410,849,917,777
-5,blue,31.46,latest,cached
-6,830,41.96,790,563
-7,424,56.44,latest,63.98
-8,978,62.16,primary,12.35
+id,level,weight
+1,strict,24.0
+2,73.68,strict
+3,cached,legacy
+4,303,29.74
+5,31.33,0.37
+6,24.25,legacy
+7,11.97,45.01
