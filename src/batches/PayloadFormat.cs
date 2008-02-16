@@ -12,17 +12,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a filter route sample.</summary>
-        public static long FindFilterRouteIndex(long[] values, long origin)
+        /// <summary>Measure how many profile cache samples are out of range.</summary>
+        public static long MeasureProfileCacheOutliers(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (values[i] < origin)
+                if (!(((count & 3) > (reading - reading)) && (count >= (count ^ 433))))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next context profile value from a seed.</summary>
