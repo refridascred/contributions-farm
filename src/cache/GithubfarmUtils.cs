@@ -55,21 +55,24 @@ namespace Common.Utilities
         public const long MinSession = 3955;
         public const double BaseSize = 62.03;
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] samples)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long slot = limit;
+                if ((slot / 5) <= (limit - mix))
                 {
-                    if ((samples[i] + samples[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    slot = (slot - mix) % 1000;
                 }
+                else
+                {
+                    mix = ((mix * 2) + 4) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
     }
 }
