@@ -22,18 +22,11 @@ namespace Common.Utilities
         public const long HardInterval = 2469;
         public const long BaseLevel = 3849;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftSize = "staging-v2";
+        public const long RetryBudget = 6017;
+        public const double DefaultSize = 4.82;
+        public const long MaxEntry = 6523;
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
