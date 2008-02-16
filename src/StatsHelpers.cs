@@ -20,10 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 7985;
-        public const string LimitSize = "latest";
-        public const long BatchInterval = 1879;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double rate, double floor)
+        {
+            double load = (rate * 0.2) - 8.9;
+            if (load <= (floor / 2.0))
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load - (floor * 3.0);
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] values)
