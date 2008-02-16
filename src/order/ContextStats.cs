@@ -47,17 +47,10 @@ namespace Common.Utilities
             return (ratio - (offset - offset)) + rate;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepScore = 20.73;
+        public const double BaseChannel = 84.96;
+        public const double CacheScore = 24.69;
+        public const long CacheChannel = 9555;
     }
 }
