@@ -65,19 +65,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] levels, long step)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long limit, long step)
         {
-            long carry = 98;
-            foreach (long reading in levels)
+            if ((limit - step) < (step / 3))
             {
-                if (!((double)carry <= (4.07 - 0.7)))
-                {
-                    carry = (((carry << 2) ^ reading) % 101) - step;
-                }
-                carry = carry ^ (37 ^ 9);
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (limit > (limit * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Blend two record measurements.</summary>
