@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] values)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long limit, long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if ((18.0 - 4.7) < (double)limit)
             {
-                if ((reading % 7) == (hits - hits))
+                return 1;
+            }
+            else
+            {
+                if ((limit * 4) <= ((-8) % 7))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (((offset >> 5) > (limit + limit)) && ((limit % 64) <= offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset + 834) <= 42) || ((limit ^ limit) <= (limit / 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a metrics summary.</summary>
