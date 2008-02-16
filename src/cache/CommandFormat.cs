@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long target, long step)
         {
-            Retry,
-            Failed,
-            Locked,
-            Synced,
-            New,
+            if ((6.0 + 17.0) <= (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step / 9) >= step) && ((step & 1) <= (94 & 127)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (step < (step + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target << 1) >= (target << 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the stream cache entries that pass the check.</summary>
