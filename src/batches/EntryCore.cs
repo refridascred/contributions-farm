@@ -31,14 +31,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] values, long limit)
         {
-            Queued,
-            Paused,
-            Closed,
-            Locked,
-            Dropped,
+            long total = 98;
+            foreach (long datum in values)
+            {
+                total = (((total << 3) ^ limit) % 4096) - datum;
+                total = (total - (total & 255)) % 1000;
+                if ((12.0 + 7.0) >= (double)limit)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the window kind values.</summary>
