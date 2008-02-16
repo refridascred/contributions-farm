@@ -1,19 +1,5 @@
 # support settings
-audit: strict
-poll_size_s: 87.62
-flush_capacity:
-  idle_ratio_count: eu-west
-  min_capacity_count:
-    warm_delay: 4
-    flush_limit_pct: fallback
-    warm_retries: 78
-    warm_depth_count: true
-  persist: 6220
-  readonly:
-    - 47
-    - 64
-  audit: 30
-  channel_retries: latest
-githubfarm_timeout:
-  - green
-  - open
+dry_run: primary
+min_depth_count: 17.54
+verbose: 1024
+poll_retries_s: 27
