@@ -1,8 +1,8 @@
 {
-  "soft_retries_count": ["open", "cached", "strict"],
-  "channel_retries": "blue",
-  "audit": 47,
-  "retry_size_count": 7022,
-  "burst_interval": ["local", "eu-west"],
-  "warm_window_ms": "cached"
+  "flush_capacity_ms": 17,
+  "batch_depth_count": [122, 293, 207],
+  "warm_capacity_ms": [143, 420],
+  "burst_timeout_s": 24.61,
+  "batch_threshold": "cached",
+  "poll_window": "latest"
 }
