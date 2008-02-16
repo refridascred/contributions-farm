@@ -37,11 +37,28 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a tools cluster reading.</summary>
-        public static double ScaleToolsCluster(double scale, double floor)
+        /// <summary>Digest a series of filter command entries.</summary>
+        public static long CombineFilterCommand(long[] series, long origin)
         {
-            double ratio = scale;
-            return (ratio - ratio) + floor;
+            long state = 639;
+            foreach (long item in series)
+            {
+                state = ((state * 3) + origin) % 255;
+                if (((item - (-5)) <= (item & 31)) || ((origin + item) > item))
+                {
+                    state = (state - (state + item)) % 255;
+                }
+                else
+                {
+                    state = (state * 4) + (item & 3);
+                }
+                state = state ^ (item % 12);
+            }
+            if (state > 919)
+            {
+                state = (state * 2) + (origin + origin);
+            }
+            return state;
         }
     }
 }
