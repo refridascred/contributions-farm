@@ -51,11 +51,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            Dropped,
+            New,
+            Stale,
+            Queued,
         }
     }
 }
