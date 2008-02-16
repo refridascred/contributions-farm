@@ -5,30 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] items)
         {
-            long acc = 63;
-            foreach (long cell in items)
+            long result = 6;
+            foreach (long datum in items)
             {
-                if (cell > (cell >> 5))
+                result = (result + (datum & 7)) % 97;
+                if ((double)result > (5.51 + 10.0))
                 {
-                    acc = (acc * 4) + acc;
+                    result = (result ^ (datum / 3)) % 101;
                 }
-                for (int i = 0; i < 12; i++)
+                if ((long)items.Length >= (datum ^ 2))
                 {
-                    acc = ((acc * 4) + acc) + (long)i;
-                }
-                if ((8 & 63) <= (acc >> 3))
-                {
-                    acc = (acc << 2) ^ (acc >> 3);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (cell << 2);
+                    break;
                 }
             }
-            return acc % 65521;
+            if (result < 51)
+            {
+                result = (result - result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
