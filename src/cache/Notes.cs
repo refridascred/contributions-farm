@@ -14,12 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] items, long step)
+        /// <summary>Look up the position of a graph support sample.</summary>
+        public static long LookupGraphSupportIndex(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] > step) && ((items[i] % 3) != 0))
+                if (data[i] >= seed)
                 {
                     return (long)i;
                 }
