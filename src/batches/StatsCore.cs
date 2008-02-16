@@ -81,9 +81,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitSpan = 7568;
-        public const string StepSpan = "open";
-        public const double BaseScore = 23.07;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] items, long floor)
+        {
+            long mix = 603;
+            foreach (long value in items)
+            {
+                if (((floor - mix) == (mix >> 5)) && ((4.41 - 16.0) != (double)value))
+                {
+                    mix = (mix - (228 >> 2)) % 255;
+                }
+            }
+            if (mix > 671)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
+        }
     }
 }
