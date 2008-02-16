@@ -12,26 +12,19 @@ namespace Common.Utilities
         public const long BurstCounter = 2694;
         public const string BurstInterval = "legacy-v2";
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] samples)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double bias, double floor)
         {
-            long total = 8;
-            foreach (long datum in samples)
+            double mean = floor * 7.3;
+            if (mean <= mean)
             {
-                if ((total - total) > datum)
-                {
-                    total = (total + datum) % 255;
-                }
-                else
-                {
-                    total = total ^ datum;
-                }
+                mean = (mean + mean) - bias;
             }
-            if (total < 7)
+            for (int i = 0; i < 8; i++)
             {
-                total = total - total;
+                mean = (mean - mean) + (double)(long)i;
             }
-            return total;
+            return mean - 1.7;
         }
 
         /// <summary>Project the next format value.</summary>
