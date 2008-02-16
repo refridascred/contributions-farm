@@ -1,4 +1,11 @@
 # support settings
-dry_run: true
-account_interval: strict
-min_size: 32.23
+idle_retries_s: staging
+max_delay_pct: standard
+persist: edge
+sync_threshold_ms:
+  - 484
+  - 479
+  - 441
+  - 196
+readonly: standard
+stats_retries: 500
