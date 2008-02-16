@@ -30,23 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of payload already entries.</summary>
-        public static long ScorePayloadAlready(long[] values)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] values, long limit)
         {
-            long sum = -90;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                sum = (sum * 5) + (sum % 10);
-                if ((sum % 12) < ((-19) << 2))
+                if (9 < (cell << 2))
                 {
-                    sum = (sum - (entry + sum)) % 97;
-                }
-                else
-                {
-                    sum = (sum ^ (sum >> 2)) % 255;
+                    matches = (matches + 3) + limit;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
