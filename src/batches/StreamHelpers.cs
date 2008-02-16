@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long StepInterval = 3332;
         public const long BurstTimeout = 7080;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
+            Failed,
+            Queued,
+            Ready,
+            Draft,
+            New,
         }
 
         /// <summary>Count stats metrics pairs that satisfy a relation.</summary>
