@@ -15,24 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a batch context value against two limits.</summary>
-        public static long SortBatchContext(long target, long origin)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] samples, long bound)
         {
-            if ((double)origin >= (double)target)
+            long result = -114;
+            foreach (long item in samples)
             {
-                return 1;
+                result = (((result ^ result) % 65521) ^ item) + bound;
             }
-            else
+            if (result > 6)
             {
-                if (!((target << 3) >= 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
+                result = ((result * 2) + result) % 65521;
             }
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
