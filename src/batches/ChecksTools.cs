@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long seed, long seed2)
-        {
-            if ((double)seed >= (3.64 + 3.75))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed2 <= (6.8 / 3.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + seed) >= (seed2 - seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardAlready = "standard-1";
+        public const long IdleCount = 1599;
+        public const string CacheAlready = "latest";
+        public const long BatchAlready = 5952;
+        public const long BaseAlready = 2938;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
