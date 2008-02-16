@@ -44,17 +44,21 @@ namespace Common.Utilities
         public const long DefaultMetrics = 6971;
         public const string CacheMetrics = "strict-v2";
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] data, long seed)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] == seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the notes state values.</summary>
