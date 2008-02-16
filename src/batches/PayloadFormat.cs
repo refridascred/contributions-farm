@@ -43,15 +43,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the notes tools entries that pass the check.</summary>
-        public static long MeasureNotesToolsHits(long[] items)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
             long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > (reading - reading))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((readings[i] + readings[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
