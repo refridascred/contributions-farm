@@ -34,12 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepGraph = 64.58;
-        public const string HardScore = "open-edge";
-        public const long LimitCount = 5723;
-        public const long BurstRatio = 6889;
-        public const long BurstBudget = 2456;
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two support queue measurements.</summary>
         public static double ProjectSupportQueue(double weight, double bias)
