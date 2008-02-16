@@ -54,10 +54,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 4290;
-        public const long IdleTimeout = 4955;
-        public const long MinWindow = 9388;
-        public const string StepScore = "open";
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
