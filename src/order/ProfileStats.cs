@@ -23,12 +23,14 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
+            Locked,
             Stale,
-            Idle,
-            Closed,
+            Synced,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define support limits and defaults.</summary>
