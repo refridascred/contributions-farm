@@ -45,14 +45,17 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] series, long origin)
         {
-            Retry,
-            Failed,
-            Synced,
-            Stale,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a batches command counter forward.</summary>
