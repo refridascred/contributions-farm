@@ -1,11 +1,17 @@
 # support settings
-account_capacity: local
-account_interval: staging
-context_threshold: 60
-compress:
-  - 239
-  - 493
-  - 44
-  - 428
-default_timeout: 80
-min_window: 59
+metrics_ratio: 30
+default_timeout: true
+hard_depth:
+  compress:
+    - primary
+    - edge
+    - open
+  counter_retries: open
+  schema_timeout: true
+  dry_run:
+    - 488
+    - 51
+    - 339
+  flush_depth_count: eu-west
+enabled: 7.97
+stream_ttl: standard
