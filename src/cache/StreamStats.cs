@@ -39,15 +39,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double gain, double bias)
+        /// <summary>Iterate the stats filter series from a seed.</summary>
+        public static long SeriesStatsFilter(long bound)
         {
-            double ratio = gain;
+            long acc = bound;
             for (int i = 0; i < 4; i++)
             {
-                ratio = (ratio + (double)(long)i) - bias;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return ratio - (ratio / 4.0);
+            return acc;
         }
     }
 }
