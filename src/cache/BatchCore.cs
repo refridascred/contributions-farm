@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate order queue readings against a bound.</summary>
-        public static bool VerifyOrderQueueBounds(long[] samples, long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long seed, long target)
         {
-            bool found = true;
-            foreach (long value in samples)
+            if ((seed - target) != (seed << 1))
             {
-                if (value != floor)
+                return 8;
+            }
+            else
+            {
+                if ((seed + seed) == (target + seed))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target <= 14.0)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
