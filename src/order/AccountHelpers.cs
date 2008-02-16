@@ -70,17 +70,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] series, long step)
+        /// <summary>Fold a list of metrics buffer readings.</summary>
+        public static long CombineMetricsBuffer(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 9;
+            foreach (long entry in values)
             {
-                if (series[i] == step)
+                if (((-5) + bound) > (entry & 31))
                 {
-                    return (long)i;
+                    total = (total + (bound + bound)) % 255;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Adjust a record cluster reading.</summary>
