@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
+            Locked,
+            Synced,
+            Ready,
+            Done,
+            Retry,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
