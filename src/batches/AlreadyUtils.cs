@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long target, long target2)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] readings, long origin)
         {
-            if ((target ^ target2) >= target2)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target / 7) <= (target - target))
+                if (138 <= ((long)readings.Length / 4))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(9.9 >= (double)target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = ((hits + 3) + reading) - origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit report queue readings against a rule.</summary>
