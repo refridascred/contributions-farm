@@ -12,22 +12,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxFarm = "alpha-v2";
+        public const string MinFarm = "strict-v2";
+        public const string BatchInterval = "fallback-edge";
+        public const double StepFarm = 13.16;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long CombineBuffer(long[] items)
