@@ -24,12 +24,39 @@ namespace Common.Utilities
             return rate2 - (double)425;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long limit, long floor)
         {
-            Pending,
-            Draft,
-            New,
+            long prev = limit ^ floor;
+            if (((double)floor <= (16.0 - 7.5)) && (limit >= floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(9.36 < (17.0 - 5.07)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((prev + prev) > 79)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((prev <= (floor - floor)) && ((7.0 + 6.0) <= (double)limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
