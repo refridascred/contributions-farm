@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Active,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 5683;
+        public const long LimitInterval = 5724;
+        public const long SoftInterval = 4624;
+        public const long SoftSize = 4879;
+        public const string MinCount = "standard-v2";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string CacheChannel = "strict-1";
