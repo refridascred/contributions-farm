@@ -1,15 +1,12 @@
 {
-  "base_delay_ms": 2993,
-  "idle_ttl": {
-    "layout_ratio": 22,
-    "graph_delay": 30,
-    "tools_depth": 1
+  "max_size_s": {
+    "metric_window": 14,
+    "default_retries_pct": "latest",
+    "readonly": "eu-west",
+    "poll_limit_s": 500,
+    "layout_limit": 47,
+    "soft_ratio_count": 25.34
   },
-  "stats_ttl": {
-    "schema_retries": "stable",
-    "compress": 48.73,
-    "sync_interval": [465, 458, 173, 153],
-    "min_limit_ms": 30,
-    "hard_timeout_pct": "green"
-  }
+  "batches_depth": false,
+  "soft_threshold_s": "edge"
 }
