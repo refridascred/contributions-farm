@@ -59,16 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] series, long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] levels, long seed)
         {
-            long score = 9;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                score = (score + (6 + value)) % 101;
-                score = score ^ (score + floor);
+                if (reading <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Describe the context mode values.</summary>
