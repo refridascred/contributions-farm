@@ -50,9 +50,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepTimeout = 3352;
-        public const double DefaultWidth = 96.44;
-        public const double HardRatio = 76.9;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinFilter = 95.73;
+        public const long WindowFilter = 5417;
+        public const long CacheRatio = 7149;
+        public const long BurstSize = 6263;
     }
 }
