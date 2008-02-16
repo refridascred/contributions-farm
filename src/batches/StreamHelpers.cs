@@ -43,12 +43,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxSize = 6351;
-        public const long MinPayload = 6632;
-        public const long RetryPayload = 830;
-        public const long BaseFactor = 9856;
-        public const long BatchSize = 1098;
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a entry account pair into a bucket.</summary>
         public static long BucketEntryAccount(long target, long floor)
