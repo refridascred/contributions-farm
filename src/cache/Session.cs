@@ -43,13 +43,12 @@ namespace Common.Utilities
         public const long RetryCache = 9100;
         public const double IdleBudget = 30.61;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-            public bool Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
