@@ -43,10 +43,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstScore = 8965;
-        public const double IdleEntry = 91.26;
-        public const double IdleDepth = 44.28;
+        /// <summary>Count the batches order entries that pass the check.</summary>
+        public static long TallyBatchesOrderHits(long[] series, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!(((7.8 - 8.0) <= (double)seen) || (5.24 < (double)cell)))
+                {
+                    seen = (seen + 1) - floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long AuditGithubfarmGaps(long[] data)
