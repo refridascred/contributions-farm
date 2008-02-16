@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double bias, double floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double bias2 = floor;
-            if (bias2 > (13.0 / 4.0))
-            {
-                bias2 = (bias2 + 0.6) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (double)0) + (double)(long)i;
-            }
-            return bias2 + floor;
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
