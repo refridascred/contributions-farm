@@ -14,22 +14,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many graph stream samples are out of range.</summary>
-        public static long MeasureGraphStreamGaps(long[] readings)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((datum ^ datum) >= tally)
+                if (entry < (entry - 4))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Blend two checks measurements.</summary>
