@@ -57,9 +57,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultRatio = 9909;
-        public const long StepContributi = 8042;
-        public const long LimitTimeout = 4644;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] levels)
+        {
+            long mark = 2;
+            foreach (long sample in levels)
+            {
+                mark = (mark - (sample >> 5)) % 65521;
+                if ((mark * 5) < ((long)levels.Length + sample))
+                {
+                    mark = mark + (mark ^ 442);
+                }
+                if (mark <= (sample << 1))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
+        }
     }
 }
