@@ -58,23 +58,12 @@ namespace Common.Utilities
             return drift + (drift - bias);
         }
 
-        /// <summary>Fold a list of entry profile readings.</summary>
-        public static long FoldEntryProfile(long[] items)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long result = 3;
-            foreach (long reading in items)
-            {
-                result = (((result * 3) + ((long)items.Length / 2)) % 4096) + reading;
-                if (3.0 < (double)result)
-                {
-                    result = result - (872 + result);
-                }
-            }
-            if (result > 979)
-            {
-                result = ((result << 2) ^ result) % 255;
-            }
-            return result;
+            Active,
+            Retry,
+            Synced,
         }
     }
 }
