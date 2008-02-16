@@ -52,14 +52,22 @@ namespace Common.Utilities
         public const long MinEntry = 3800;
         public const string IdleEntry = "staging-1";
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Accumulate tools format samples.</summary>
+        public static long TotalToolsFormat(long[] readings)
         {
-            Synced,
-            Draft,
-            Queued,
-            Closed,
-            Pending,
+            long acc = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - acc) < acc)
+                {
+                    acc = (acc * 2) + cell;
+                }
+            }
+            if (acc > 2)
+            {
+                acc = acc + (761 ^ 94);
+            }
+            return acc;
         }
     }
 }
