@@ -34,13 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
             Active,
-            Synced,
-            New,
             Locked,
+            Draft,
+            Stale,
+            Idle,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
