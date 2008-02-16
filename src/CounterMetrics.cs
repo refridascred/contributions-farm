@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((double)step >= (10.0 + 2.0)) || ((double)(long)i == (6.69 + 3.47)))
-                {
-                    continue;
-                }
-                mix = (mix ^ (step + (long)i)) % 97;
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Done,
+            Stale,
+            Active,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the tools level values.</summary>
