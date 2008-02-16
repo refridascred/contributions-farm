@@ -50,11 +50,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftBudget = 4454;
-        public const string DefaultChannel = "local";
-        public const long LimitChannel = 6802;
-        public const long MaxChannel = 8743;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 6917;
+        public const long MinSession = 3955;
+        public const double BaseSize = 62.03;
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
