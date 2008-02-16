@@ -1,19 +1,18 @@
 # githubfarm settings
-max_size_count: 250
-soft_depth_count: fallback
-order_ttl:
-  sync_delay_ms:
-    - edge
-    - open
-  batch_capacity: true
-  min_window_pct:
-    - standard
-    - strict
-  counter_limit: true
-min_timeout:
-  - fallback
-  - green
-  - legacy
-  - open
-layout_interval: primary
-dry_run: eu-west
+dry_run: standard
+verbose:
+  base_depth:
+    enabled: 4737
+    compress:
+      - latest
+      - open
+      - standard
+    schema_delay: 61.67
+    batch_ttl_s: 250
+  base_retries_s: strict
+  sync_limit_pct:
+    commits_timeout: blue
+    entry_depth: 3
+    dry_run: 86.69
+compress: edge
+default_window: 2860
