@@ -13,17 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] items, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((items[i] <= seed) && ((items[i] % 2) == 0))
+                if (34 < (datum - datum))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a already stats.</summary>
