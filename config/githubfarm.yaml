@@ -1,13 +1,22 @@
 # githubfarm settings
-tools_ttl:
-  - standard
-  - eu-west
-  - stable
-  - strict
-default_window: 45
-format_window:
-  - green
-  - staging
-  - open
-soft_timeout_pct: edge
-audit: 92.25
+poll_depth_pct: 3574
+batch_window_s: true
+strict: 100
+entry_window: open
+batch_ratio_pct: 76.93
+account_timeout:
+  report_delay: 100
+  payload_retries: false
+  enabled:
+    - 254
+    - 227
+    - 175
+  max_ratio:
+    hard_window_ms: stable
+    idle_interval_count:
+      - 251
+      - 224
+      - 194
+    command_retries: true
+    readonly: 25
+  graph_threshold: standard
