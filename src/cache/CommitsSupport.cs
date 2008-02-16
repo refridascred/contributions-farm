@@ -12,16 +12,12 @@ namespace Common.Utilities
             return (rate2 + (offset * 4.03)) + rate;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] data)
-        {
-            long state = 28;
-            foreach (long entry in data)
-            {
-                state = (((state << 3) ^ (287 * 5)) % 1000) + entry;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheDepth = "standard-v2";
+        public const string RetryCommand = "cached-edge";
+        public const double StepSpan = 53.6;
+        public const double MinBudget = 56.61;
+        public const string DefaultInterval = "fallback-edge";
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowMatches(long[] levels)
