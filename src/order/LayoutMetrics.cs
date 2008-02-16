@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] items)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value != floor)
                 {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
