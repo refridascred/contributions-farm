@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] items, long offset)
         {
-            Stale,
-            New,
-            Draft,
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
