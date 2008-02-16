@@ -1,5 +1,5 @@
 {
-  "queue_window": "blue",
-  "schema_size": "edge",
-  "audit": "staging"
+  "default_ttl_count": true,
+  "window_window": 78,
+  "soft_delay": ["local", "edge", "latest"]
 }
