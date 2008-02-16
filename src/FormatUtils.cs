@@ -23,18 +23,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] levels)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if (((offset + offset) != (21 >> 5)) && ((double)offset >= 1.85))
             {
-                if (34 < (datum - datum))
+                return 3;
+            }
+            else
+            {
+                if (!(floor < (floor - 0)))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor > 9.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank report batch input into a small class.</summary>
