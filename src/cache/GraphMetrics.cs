@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a stream snapshot.</summary>
