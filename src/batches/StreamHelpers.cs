@@ -31,10 +31,13 @@ namespace Common.Utilities
         public const long BurstLevel = 1521;
         public const double MinLevel = 7.37;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 8408;
-        public const double RetryLevel = 24.62;
-        public const double SoftChannel = 16.46;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public double Offset { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Classify a entry account pair into a bucket.</summary>
         public static long BucketEntryAccount(long target, long floor)
