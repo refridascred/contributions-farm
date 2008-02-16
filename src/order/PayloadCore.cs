@@ -58,18 +58,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] items)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((value < (value ^ value)) && !((double)value != (7.6 * 10.0)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a graph options.</summary>
