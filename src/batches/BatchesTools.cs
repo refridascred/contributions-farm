@@ -23,19 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] values, long offset)
+        /// <summary>Count route format pairs that satisfy a relation.</summary>
+        public static long PairRouteFormatCount(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a buffer stats.</summary>
