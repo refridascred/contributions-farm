@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Derive the next channel already value from a seed.</summary>
+        public static long SeriesChannelAlready(long origin)
         {
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if (carry >= (2 + origin))
+                {
+                    carry = carry + (carry << 2);
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
