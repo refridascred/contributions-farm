@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            New,
             Paused,
-            Retry,
-            Pending,
-            Queued,
+            Ready,
+            Failed,
         }
 
         /// <summary>Scale a batch report figure with a bias.</summary>
