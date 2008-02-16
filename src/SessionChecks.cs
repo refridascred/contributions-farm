@@ -47,12 +47,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] values, long bound)
         {
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((double)value == (20.0 * 1.0))
+                {
+                    hits = (hits + 3) - bound;
+                }
+            }
+            return hits;
         }
     }
 }
