@@ -27,13 +27,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Fold a list of editor layout readings.</summary>
+        public static long TallyEditorLayout(long[] series)
         {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
+            long mark = 9;
+            foreach (long datum in series)
+            {
+                mark = ((mark << 3) ^ (5 * 4)) + datum;
+            }
+            if (mark > 15)
+            {
+                mark = (mark * 2) + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
