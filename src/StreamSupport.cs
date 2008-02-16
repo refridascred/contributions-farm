@@ -13,14 +13,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Count the batches window entries that pass the check.</summary>
+        public static long TallyBatchesWindowOutliers(long[] series)
         {
-            Pending,
-            Failed,
-            Dropped,
-            New,
-            Queued,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits - cell) < (cell / 5))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up metric samples.</summary>
