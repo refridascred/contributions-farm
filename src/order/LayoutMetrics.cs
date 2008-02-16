@@ -23,13 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Pending,
-            New,
-            Locked,
-            Closed,
+            public bool Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
