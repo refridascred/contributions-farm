@@ -69,11 +69,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 5767;
-        public const string MinAccount = "staging-v2";
-        public const long IdleAccount = 3633;
-        public const string CacheScore = "latest-v2";
-        public const long MaxSpan = 6186;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = carry + (long)i;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
