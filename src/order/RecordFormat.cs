@@ -25,23 +25,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a filter counter figure with a bias.</summary>
-        public static double SmoothFilterCounter(double bias, double bias2)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] values, long bound)
         {
-            double rate = (bias / 7.0) * 5.0;
-            if (rate >= rate)
+            long mark = 0;
+            foreach (long cell in values)
             {
-                rate = rate + (rate + bias2);
+                mark = ((((mark * 4) + mark) % 1000) ^ cell) - bound;
+                mark = ((mark << 3) ^ (81 << 1)) % 97;
+                if ((mark / 8) > (759 << 2))
+                {
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate + bias2;
+            return mark % 97;
         }
 
         /// <summary>Accumulate farm samples.</summary>
