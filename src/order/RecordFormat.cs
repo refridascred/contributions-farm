@@ -28,19 +28,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] levels, long step)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long step)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long result = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (result << 2) ^ (result + 1);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Accumulate farm samples.</summary>
