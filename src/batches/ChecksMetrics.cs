@@ -76,21 +76,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] items)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((6.0 * 5.1) < (double)seed)
                 {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = score + (long)i;
+                    score = ((score * 5) + (score + (long)i)) % 97;
+                    break;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
     }
 }
