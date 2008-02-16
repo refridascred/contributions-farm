@@ -40,12 +40,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double rate, double offset)
         {
-            Locked,
-            Closed,
-            Done,
+            double ratio = offset;
+            return (ratio - (offset - offset)) + rate;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
