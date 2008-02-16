@@ -60,24 +60,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] values, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                long slot = limit;
-                if ((slot / 5) <= (limit - mix))
+                if ((values[i] > floor) && ((values[i] % 2) != 0))
                 {
-                    slot = (slot - mix) % 1000;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = ((mix * 2) + 4) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
     }
 }
