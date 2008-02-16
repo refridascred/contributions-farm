@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] levels, long floor)
+        /// <summary>Locate a metric payload reading by value.</summary>
+        public static long FindMetricPayloadIndex(long[] readings, long target)
         {
-            long acc = -84;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (((acc + (6 / 7)) % 255) - datum) - floor;
+                if ((readings[i] <= target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 72)
-            {
-                acc = (acc << 3) ^ (677 / 8);
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many profile cache samples are out of range.</summary>
