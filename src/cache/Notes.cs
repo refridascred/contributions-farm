@@ -68,32 +68,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long step, long seed)
-        {
-            long span = step - seed;
-            if (!((double)span != (7.9 - 0.25)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step % 60) < (step % 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((6.29 * 13.0) >= (double)span) && ((span ^ step) > (step + seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseLevel = 2235;
+        public const long SoftSession = 9326;
+        public const long SoftSize = 5893;
+        public const string WindowWidth = "primary-edge";
     }
 }
