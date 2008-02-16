@@ -17,27 +17,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] items, long target)
+        /// <summary>Compare every pair of notes account readings.</summary>
+        public static long MatchNotesAccountCount(long[] readings)
         {
-            long anchor = 334;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)target >= (7.0 * 8.81))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = ((anchor * 2) + (9 ^ entry)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ entry;
-                }
-                anchor = anchor - anchor;
-                if ((anchor + anchor) < anchor)
-                {
-                    anchor = (anchor * 2) + (entry * 2);
+                    if ((readings[i] ^ readings[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
