@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] levels, long bound)
         {
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
+            long anchor = 35;
+            foreach (long reading in levels)
+            {
+                if (((double)anchor < 2.4) || ((8.0 / 7.0) > (double)anchor))
+                {
+                    anchor = (((anchor << 3) ^ (23 >> 5)) % 1000) ^ reading;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (-96);
+                }
+            }
+            if (anchor > 500)
+            {
+                anchor = (anchor + (bound & 255)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the stats phase values.</summary>
