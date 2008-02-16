@@ -47,10 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 866;
-        public const long MinEntry = 3800;
-        public const string IdleEntry = "staging-1";
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((item / 7) >= item)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate tools format samples.</summary>
         public static long TotalToolsFormat(long[] readings)
