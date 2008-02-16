@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long floor, long origin)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double weight, double span)
         {
-            if (floor <= (452 - 301))
-            {
-                return 5;
-            }
-            else
-            {
-                if (floor >= (floor % 12))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            double rate = 12.0 * 2.8;
+            return ((rate - (4.2 * 11.0)) + weight) + span;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
