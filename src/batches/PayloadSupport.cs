@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
+            Failed,
+            Paused,
+            Active,
+            New,
+            Locked,
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
