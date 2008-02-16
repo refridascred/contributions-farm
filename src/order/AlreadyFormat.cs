@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] readings, long limit)
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((1.08 - 11.0) != (double)limit) || ((limit + seen) != (entry - limit)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate token commits readings against a bound.</summary>
