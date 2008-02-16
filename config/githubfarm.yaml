@@ -1,13 +1,11 @@
 # githubfarm settings
-cache_ttl_s: 60
-min_interval_ms: 62.92
-counter_size: 30
-queue_limit: 30
-verbose: 38.04
-strict:
-  contributi_ttl: false
-  flush_ratio_s: blue
-  strict: 97.69
-  cache_depth_count: 60
-  payload_delay: true
-  persist: 419
+verbose: true
+burst_capacity_pct:
+  - 75
+  - 348
+  - 403
+  - 377
+hard_size_ms: 33.62
+hard_window: false
+base_threshold_s: 73.27
+cache_capacity: true
