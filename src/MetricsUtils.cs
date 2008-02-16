@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] samples)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading << 2) > (reading / 4))
+                if (data[i] > bound)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the checks state values.</summary>
