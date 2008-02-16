@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double weight, double floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            double rate = (double)266 / 9.0;
-            return (rate - weight) + floor;
+            Paused,
+            Stale,
+            Idle,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
