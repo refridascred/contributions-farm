@@ -29,39 +29,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long floor, long bound)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long slot = floor ^ bound;
-            if ((bound * 5) <= (416 + slot))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((slot + floor) >= slot)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor >> 2) <= (-313))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((floor + bound) > (slot - slot)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Locked,
+            Queued,
+            Failed,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
