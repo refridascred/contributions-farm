@@ -24,21 +24,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "latest-1";
+        public const string StepInterval = "legacy-1";
+        public const long MaxBatch = 4457;
+        public const long LimitBatch = 2997;
     }
 }
