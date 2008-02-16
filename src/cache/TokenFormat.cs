@@ -14,19 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] data, long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Dropped,
+            Active,
+            Pending,
+            Ready,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
