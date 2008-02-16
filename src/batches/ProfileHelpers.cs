@@ -83,21 +83,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stats token pairs that satisfy a relation.</summary>
-        public static long OverlapStatsTokenCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 1715;
+        public const long SoftContext = 1923;
+        public const long BaseContext = 8429;
+        public const long RetryLevel = 3051;
+        public const string CacheContext = "strict-v2";
     }
 }
