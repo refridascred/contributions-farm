@@ -13,13 +13,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] series, long target)
         {
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
+            long carry = 10;
+            foreach (long datum in series)
+            {
+                carry = (((carry << 2) ^ datum) % 101) + target;
+            }
+            if (carry < 8)
+            {
+                carry = ((carry * 4) + carry) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
