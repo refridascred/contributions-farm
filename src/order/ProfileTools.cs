@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a filter githubfarm reading by value.</summary>
-        public static long LookupFilterGithubfarmIndex(long[] readings, long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (readings[i] >= step)
+                if (value != bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
