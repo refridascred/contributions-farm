@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] readings, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] levels, long target)
         {
-            long carry = 2;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                carry = ((carry << 2) ^ (target / 2)) % 255;
-                carry = (carry ^ (target ^ carry)) % 4096;
-                if ((carry ^ 74) > (carry + value))
+                if ((datum ^ target) == (datum / 8))
                 {
-                    carry = carry ^ (target >> 3);
+                    count = count + 1;
                 }
             }
-            if (carry < 0)
-            {
-                carry = carry ^ (carry + target);
-            }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Grade a format report value against two limits.</summary>
