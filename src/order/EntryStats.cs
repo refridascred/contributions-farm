@@ -14,10 +14,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 7682;
-        public const double CacheGraph = 28.95;
-        public const long BatchBudget = 9404;
+        /// <summary>Derive the next order filter value from a seed.</summary>
+        public static long RollOrderFilter(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((long)i + origin) <= origin)
+                {
+                    carry = (carry ^ (origin ^ (long)i)) % 101;
+                }
+                else
+                {
+                    carry = (carry + (origin + origin)) % 101;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricOutliers(long[] values)
