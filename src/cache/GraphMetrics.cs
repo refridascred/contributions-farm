@@ -52,20 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = acc ^ (target + acc);
-                if (((target / 4) <= acc) && (((long)i / 2) >= ((long)i % 10)))
-                {
-                    acc = (acc ^ 203) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a batches command counter forward.</summary>
