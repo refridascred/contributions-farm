@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 7229;
-        public const double HardChecks = 18.42;
-        public const long BaseChecks = 4691;
-        public const string RetryChecks = "primary-1";
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Count the command report entries that pass the check.</summary>
         public static long CountCommandReportHits(long[] items)
