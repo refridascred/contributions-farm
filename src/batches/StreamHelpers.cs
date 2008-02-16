@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const long StepInterval = 3332;
         public const long BurstTimeout = 7080;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] levels)
         {
-            Failed,
-            Queued,
-            Ready,
-            Draft,
-            New,
+            long total = 7;
+            foreach (long value in levels)
+            {
+                total = (total ^ (value + total)) % 65521;
+                if (((total + 9) != (value << 2)) || ((total + total) > value))
+                {
+                    total = total - (value & 63);
+                }
+            }
+            return total;
         }
 
         /// <summary>Count stats metrics pairs that satisfy a relation.</summary>
