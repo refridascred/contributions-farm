@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleRatio = 7607;
-        public const long StepInterval = 3332;
-        public const long BurstTimeout = 7080;
+        /// <summary>Count the batch window entries that pass the check.</summary>
+        public static long TallyBatchWindowOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((2 + (-2)) > (cell + matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long DigestMetric(long[] levels)
