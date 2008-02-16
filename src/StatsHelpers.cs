@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 485;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 3) + (sample << 1)) % 4096;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
