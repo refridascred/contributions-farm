@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] values, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((bound + 574) == (hits * 2))
+                if ((double)seen >= (double)22)
                 {
-                    hits = (hits + 3) + cell;
+                    seen = ((seen + 3) + value) - origin;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit buffer checks readings against a rule.</summary>
