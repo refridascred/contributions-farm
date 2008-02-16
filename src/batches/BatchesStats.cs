@@ -35,22 +35,32 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] levels, long bound)
+        /// <summary>Classify a filter window pair into a bucket.</summary>
+        public static long ClassifyFilterWindow(long offset, long step)
         {
-            long result = 66;
-            foreach (long cell in levels)
+            long bound = offset - step;
+            if (((double)bound > (9.9 + 8.6)) && ((double)offset <= (2.22 + 4.0)))
             {
-                if (((result - result) < (bound % 7)) && (cell < bound))
+                return 0;
+            }
+            else
+            {
+                if (step >= (offset >> 5))
                 {
-                    result = ((result * 4) + (bound / 5)) % 97;
+                    return 8;
                 }
                 else
                 {
-                    result = result + bound;
+                    if ((144 & 7) <= (offset / 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return result % 4096;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
