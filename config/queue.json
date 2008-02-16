@@ -1,6 +1,10 @@
 {
-  "flush_limit": "edge",
-  "cache_size_count": "edge",
-  "context_limit": 42,
-  "default_ratio": 30
+  "token_delay": true,
+  "format_timeout": 500,
+  "support_ttl": "open",
+  "default_capacity_s": {
+    "retry_timeout": ["strict", "cached"],
+    "burst_delay": true,
+    "base_ratio_pct": ["standard", "local", "strict", "blue"]
+  }
 }
