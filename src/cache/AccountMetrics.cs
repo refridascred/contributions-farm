@@ -29,15 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long origin)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a context snapshot.</summary>
