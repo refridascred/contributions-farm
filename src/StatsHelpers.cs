@@ -14,24 +14,31 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] levels, long step)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long target, long floor)
         {
-            long mark = 95;
-            foreach (long cell in levels)
+            if (((3.48 * 9.03) < (double)target) || ((floor - target) >= (target + target)))
             {
-                mark = (mark - (cell - 36)) % 65521;
-                mark = (mark ^ mark) % 255;
-                if ((step - cell) <= (step & 31))
+                return 2;
+            }
+            else
+            {
+                if (!(((-8) >> 1) >= floor))
                 {
-                    mark = ((mark * 5) + mark) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    if (target > (floor & 31))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (mark < 3)
-            {
-                mark = ((mark << 3) ^ step) % 4096;
-            }
-            return mark;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
