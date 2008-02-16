@@ -1,5 +1,7 @@
 {
-  "min_ratio_pct": [39, 127],
-  "support_depth": 50.31,
-  "batch_delay": "edge"
+  "audit": "standard",
+  "tools_ttl": ["blue", "staging", "cached"],
+  "base_timeout_count": ["open", "fallback", "standard", "strict"],
+  "readonly": true,
+  "burst_capacity_count": "open"
 }
