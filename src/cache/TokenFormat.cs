@@ -29,39 +29,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long limit, long origin)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long step)
         {
-            long bound = limit + origin;
-            if (limit < (bound - bound))
+            long carry = step;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound - limit) <= limit) && ((13.0 / 8.0) > (double)bound))
+                carry = carry + carry;
+                if ((step * 2) > ((long)i % 8))
                 {
-                    return 0;
+                    carry = ((carry << 2) ^ carry) % 101;
+                    carry = (carry * 5) + (950 % 10);
                 }
-                else
-                {
-                    if ((double)limit <= (2.83 * 2.82))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((133 - limit) != (limit ^ 48))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
+            return carry;
         }
     }
 }
