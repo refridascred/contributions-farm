@@ -70,18 +70,21 @@ namespace Common.Utilities
         public const double CacheTimeout = 30.02;
         public const long DefaultCluster = 5418;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] readings)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)item == (0.3 + 16.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
