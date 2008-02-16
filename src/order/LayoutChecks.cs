@@ -74,18 +74,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] samples, long bound)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (211 >= (bound ^ seen))
+                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
                 {
-                    seen = (seen + 3) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
