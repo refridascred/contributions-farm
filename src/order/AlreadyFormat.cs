@@ -33,22 +33,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((score + 296) <= target))
-                {
-                    score = score - ((long)i ^ score);
-                    score = (score - (63 ^ target)) % 97;
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 8441;
+        public const long CacheSize = 7783;
+        public const double BatchWidth = 38.56;
+        public const long BatchSpan = 871;
+        public const string BaseSpan = "open-edge";
 
         /// <summary>Roll a metrics context counter forward.</summary>
         public static long SeriesMetricsContext(long offset)
