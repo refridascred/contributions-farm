@@ -20,16 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            long state = 47;
+            foreach (long entry in levels)
             {
-                acc = ((acc << 3) ^ (step ^ acc)) % 97;
-                acc = ((acc * 2) + (long)i) % 101;
+                if (((3.18 - 7.0) >= (double)entry) || ((32 >> 3) > entry))
+                {
+                    state = state + (state ^ state);
+                }
             }
-            return acc;
+            if (state < 589)
+            {
+                state = (state - (state % 5)) % 97;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a record record.</summary>
