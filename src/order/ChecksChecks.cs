@@ -40,17 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first token cluster entry that matches the target.</summary>
-        public static long LookupTokenClusterIndex(long[] samples, long offset)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Synced,
+            Retry,
         }
     }
 }
