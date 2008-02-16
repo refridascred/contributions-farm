@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] samples, long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] values, long limit)
         {
-            long state = 37;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((step + step) != (entry / 6))
+                if (sample >= limit)
                 {
-                    state = ((state << 2) ^ 2) % 97;
-                }
-                if ((916 + step) >= entry)
-                {
+                    found = false;
                     break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
