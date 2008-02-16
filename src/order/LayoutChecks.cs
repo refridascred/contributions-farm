@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] samples)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] items, long offset)
         {
-            long sum = 3;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (!(cell >= (sum << 2)))
+                if (20.0 < (double)tally)
                 {
-                    sum = (sum ^ (cell * 4)) % 97;
+                    tally = ((tally + 2) + entry) + offset;
                 }
             }
-            if (sum > 489)
-            {
-                sum = sum ^ (sum * 4);
-            }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
