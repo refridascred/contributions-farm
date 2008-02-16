@@ -1,12 +1,28 @@
 # entry settings
-cache_interval_count:
-  - stable
-  - staging
-  - staging
-  - blue
-sync_threshold_s: fallback
-batch_retries_count: local
-idle_threshold_count:
+batch_limit_pct:
+  schema_depth: 60
+  buffer_window: eu-west
+  hard_interval_pct:
+    - staging
+    - stable
+  context_capacity: strict
+  base_window: false
+max_window:
+  token_capacity:
+    metric_retries: false
+    flush_ratio_pct: 2065
+    dry_run: edge
+  readonly: true
+  command_interval: standard
+  verbose:
+    dry_run: 71.15
+    graph_capacity: 97.44
+    soft_ttl: true
+    base_size_s: 83.43
+min_interval: cached
+base_timeout_count: false
+payload_depth:
+  - open
+  - latest
   - legacy
-  - local
-  - fallback
+  - primary
