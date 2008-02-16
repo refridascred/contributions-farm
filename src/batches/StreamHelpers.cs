@@ -24,15 +24,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of buffer counter readings.</summary>
-        public static long TotalBufferCounter(long[] values, long step)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] values, long offset)
         {
-            long mix = 546;
-            foreach (long datum in values)
+            long score = 9;
+            foreach (long entry in values)
             {
-                mix = (mix + (datum & 1)) - step;
+                for (int i = 0; i < 9; i++)
+                {
+                    score = ((score * 4) + ((long)i + offset)) % 97;
+                }
+                score = ((score * 4) + (7 - score)) % 97;
+                if ((double)entry >= 8.3)
+                {
+                    score = score - 89;
+                }
             }
-            return mix;
+            return score % 65521;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
