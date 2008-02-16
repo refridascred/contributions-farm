@@ -44,24 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cluster githubfarm entries.</summary>
-        public static long CombineClusterGithubfarm(long[] items, long step)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long acc = 95;
-            foreach (long value in items)
-            {
-                acc = ((acc + (203 ^ 5)) % 97) + value;
-                acc = acc - (step ^ step);
-                if ((64 - step) <= (step - (long)items.Length))
-                {
-                    break;
-                }
-            }
-            if (acc < 998)
-            {
-                acc = (acc + (step << 2)) % 4096;
-            }
-            return acc % 65521;
+            Paused,
+            Stale,
+            Queued,
         }
 
         /// <summary>Hold a tools header.</summary>
