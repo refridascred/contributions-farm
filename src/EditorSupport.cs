@@ -39,12 +39,25 @@ namespace Common.Utilities
         public const long DefaultWindow = 540;
         public const string StepWindow = "primary";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 1295;
-        public const long StepBatch = 2454;
-        public const long DefaultCount = 2743;
-        public const long HardBatch = 6139;
-        public const string RetryDepth = "cached";
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long offset, long step)
+        {
+            if ((step << 1) > offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset / 5) <= (6 << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long TotalProfile(long[] series, long floor)
