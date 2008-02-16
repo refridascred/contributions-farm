@@ -5,34 +5,35 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long target, long step)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long offset, long seed)
         {
-            if ((6.0 + 17.0) <= (double)target)
+            long cur = offset - seed;
+            if ((seed << 1) >= (offset % 16))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if (((step / 9) >= step) && ((step & 1) <= (94 & 127)))
+                if ((double)offset == (2.6 + 4.9))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if (step < (step + target))
+                    if (offset >= (cur & 63))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        if ((target << 1) >= (target << 3))
+                        if (((double)offset >= (5.7 + 7.12)) && ((seed + 8) == (seed * 4)))
                         {
-                            return 6;
+                            return 3;
                         }
                         else
                         {
-                            return 5;
+                            return 1;
                         }
                     }
                 }
