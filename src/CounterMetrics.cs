@@ -52,19 +52,18 @@ namespace Common.Utilities
             return mean + (ratio * 0.51);
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] items, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (cell >= target)
+                if ((4.7 / 9.0) <= (double)bound)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
