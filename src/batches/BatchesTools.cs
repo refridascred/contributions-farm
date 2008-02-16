@@ -29,24 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a commits profile pair into a bucket.</summary>
-        public static long SortCommitsProfile(long origin, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] samples)
         {
-            if (origin > (1 / 7))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed <= origin)
+                if ((7.61 - 17.0) >= (double)reading)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
