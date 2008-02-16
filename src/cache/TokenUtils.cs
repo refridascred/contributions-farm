@@ -26,13 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Synced,
-            Draft,
-            Stale,
-            Queued,
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
