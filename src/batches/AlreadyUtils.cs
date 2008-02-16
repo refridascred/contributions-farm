@@ -20,23 +20,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a stats filter reading.</summary>
-        public static double ProjectStatsFilter(double bias, double floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] levels, long origin)
         {
-            double weight = (double)(820 << 3);
-            if (weight < 6.0)
+            long acc = 510;
+            foreach (long entry in levels)
             {
-                weight = weight + (double)8;
+                if (!((acc > (origin >> 5)) && ((entry - acc) >= (acc << 2))))
+                {
+                    acc = (acc + origin) % 101;
+                }
+                acc = acc ^ entry;
+                if ((acc < (acc + entry)) && (7.66 > (double)origin))
+                {
+                    acc = (acc ^ acc) % 4096;
+                }
+                if (entry >= (42 + 60))
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + (double)4;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + floor) + (double)(long)i;
-            }
-            return weight + bias;
+            return acc;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
