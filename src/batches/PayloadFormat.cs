@@ -46,24 +46,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] items)
-        {
-            long anchor = 72;
-            foreach (long sample in items)
-            {
-                anchor = anchor ^ (anchor + sample);
-                if ((7.3 * 3.0) == (double)anchor)
-                {
-                    anchor = (anchor * 5) + (anchor * 5);
-                }
-                if ((sample + sample) != (anchor % 97))
-                {
-                    anchor = (anchor ^ (anchor + sample)) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowLevel = "cached-v2";
+        public const double CacheScore = 70.31;
+        public const long WindowTimeout = 850;
+        public const string MaxScore = "standard-v2";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long IdleLevel = 4969;
