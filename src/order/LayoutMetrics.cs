@@ -14,23 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double ratio, double offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] readings, long step)
         {
-            double scale = ratio;
-            if (scale > (offset * 19.0))
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                scale = scale - (double)0;
+                if (datum < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (double)929;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (offset - offset)) - (double)(long)i;
-            }
-            return scale - (offset + ratio);
+            return stale;
         }
 
         /// <summary>Describe the counter phase values.</summary>
