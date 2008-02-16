@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks cluster values into a single score.</summary>
-        public static long DigestChecksCluster(long[] samples)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] series)
         {
-            long total = 9;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5.6 - 2.81) > (double)value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = total - (value + 18);
+                    if ((series[i] ^ series[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total > 12)
-            {
-                total = total - (total % 24);
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Check that every account stream entry stays within the limit.</summary>
