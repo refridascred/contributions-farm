@@ -46,17 +46,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Locate a record filter reading by value.</summary>
-        public static long LocateRecordFilterIndex(long[] series, long offset)
+        /// <summary>Derive the next profile metrics value from a seed.</summary>
+        public static long DeriveProfileMetrics(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (series[i] <= offset)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ (seed ^ 992)) + (long)i2;
                 }
+                if ((2 << 2) < seed)
+                {
+                    acc = acc - (4 % 24);
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
