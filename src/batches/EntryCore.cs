@@ -50,12 +50,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public bool Offset { get; set; }
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
+            Ready,
+            New,
+            Active,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define command limits and defaults.</summary>
