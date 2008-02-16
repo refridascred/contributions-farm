@@ -63,11 +63,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (matches >= (matches / 7))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
         }
     }
 }
