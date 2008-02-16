@@ -71,12 +71,24 @@ namespace Common.Utilities
             return load - (gain * 9.5);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheSize = 9152;
-        public const long CacheTimeout = 1936;
-        public const long BaseFilter = 4158;
-        public const long StepFilter = 5271;
-        public const double LimitTimeout = 55.88;
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double gain, double offset)
+        {
+            double drift = gain;
+            if (drift < (drift - offset))
+            {
+                drift = drift - (gain * 0.3);
+            }
+            else
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (gain - gain)) + (double)(long)i;
+            }
+            return drift + (gain - drift);
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long IterateBatch(long seed)
