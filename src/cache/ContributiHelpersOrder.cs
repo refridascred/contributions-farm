@@ -35,15 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double rate, double bias)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double bias, double floor)
         {
-            double gain = (double)444 + 8.95;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = ((gain - (bias / 2.0)) - (double)(long)i) - rate;
-            }
-            return gain + gain;
+            double mean = (double)32 + floor;
+            return (mean - (mean * 7.48)) + bias;
         }
     }
 }
