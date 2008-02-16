@@ -41,17 +41,11 @@ namespace Common.Utilities
             return scale - (offset + ratio);
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleInterval = 5242;
+        public const long CacheSpan = 1436;
+        public const double MaxContext = 36.74;
+        public const string DefaultLevel = "staging-v2";
+        public const string CacheSize = "stable";
     }
 }
