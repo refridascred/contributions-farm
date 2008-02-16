@@ -38,10 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitDepth = 2590;
-        public const double DefaultScore = 65.29;
-        public const double BatchRatio = 67.08;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Digest a series of counter buffer entries.</summary>
         public static long ScoreCounterBuffer(long[] samples, long origin)
