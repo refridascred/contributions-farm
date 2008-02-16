@@ -55,12 +55,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Paused,
-            Pending,
-            Queued,
+            public long Owner { get; set; }
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
