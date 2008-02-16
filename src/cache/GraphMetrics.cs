@@ -55,22 +55,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate farm account samples.</summary>
-        public static long FoldFarmAccount(long[] series, long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] levels, long bound)
         {
-            long state = 419;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(state >= reading))
+                if (levels[i] >= bound)
                 {
-                    state = (state * 5) + (reading - limit);
-                }
-                if ((long)series.Length == (limit - 52))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
     }
 }
