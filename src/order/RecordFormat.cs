@@ -68,21 +68,30 @@ namespace Common.Utilities
         public const double CacheTimeout = 30.02;
         public const long DefaultCluster = 5418;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 93;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (result < (entry + 354))
                 {
-                    if ((series[i] ^ series[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    result = result - (entry - entry);
+                }
+                else
+                {
+                    result = (result - (entry >> 5)) % 255;
+                }
+                if (((6.24 * 18.0) <= (double)floor) && ((entry / 4) != (result / 5)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (result > (-329))
+            {
+                result = ((result * 3) + (floor - result)) % 1000;
+            }
+            return result % 1000;
         }
     }
 }
