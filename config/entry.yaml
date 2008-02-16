@@ -1,7 +1,28 @@
 # entry settings
-flush_ratio_pct:
-  - blue
-  - blue
-notes_delay: false
-strict: 100
-readonly: true
+max_retries_count: open
+dry_run:
+  batch_delay:
+    - stable
+    - local
+    - primary
+    - strict
+  compress: 0.6
+  poll_threshold: open
+min_size_pct:
+  - 426
+  - 145
+  - 42
+verbose:
+  max_ttl: 500
+  already_capacity:
+    - 455
+    - 215
+    - 403
+    - 78
+  idle_ratio: 50.39
+  min_delay:
+    - 437
+    - 302
+    - 326
+    - 328
+  verbose: 9168
