@@ -20,18 +20,18 @@ namespace Common.Utilities
         public const string WindowCounter = "strict-v2";
         public const long SoftCounter = 2116;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] data)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((sample >> 5) > (sample * 3))
+                if ((355 + count) > (count - count))
                 {
-                    matches = matches + 3;
+                    count = (count + 2) + sample;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
