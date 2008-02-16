@@ -59,22 +59,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] data, long step)
+        /// <summary>Check that every batches editor entry stays within the limit.</summary>
+        public static bool VerifyBatchesEditorRange(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (!(5 >= (entry >> 2)))
+                if (item > bound)
                 {
-                    tally = (tally + 1) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
