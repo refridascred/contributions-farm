@@ -20,21 +20,22 @@ namespace Common.Utilities
             return drift + (weight * 8.4);
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long bound)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] readings, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            long score = 219;
+            foreach (long cell in readings)
             {
-                if ((long)i <= ((long)i + score))
+                if ((0 + score) >= 8)
                 {
-                    score = ((score << 2) ^ (score << 2)) % 4096;
-                    score = ((score << 2) ^ (score / 6)) % 4096;
+                    score = ((score + (offset / 5)) % 1000) + cell;
                 }
-                score = ((score << 3) ^ (1 * 5)) % 1000;
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            if (score > 81)
+            {
+                score = score - (score / 7);
+            }
+            return score % 1000;
         }
 
         /// <summary>Digest a series of counter record entries.</summary>
