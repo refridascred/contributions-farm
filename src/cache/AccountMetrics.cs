@@ -25,13 +25,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Measure how many tools notes samples are out of range.</summary>
+        public static long MeasureToolsNotesHits(long[] samples, long step)
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((step << 1) >= (step % 3))
+                {
+                    count = (count + 3) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up entry samples.</summary>
