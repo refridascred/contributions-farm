@@ -25,11 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 8443;
-        public const long LimitSize = 3352;
-        public const long MinLevel = 5493;
-        public const long BatchFactor = 688;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Count the notes tools entries that pass the check.</summary>
         public static long MeasureNotesToolsHits(long[] items)
