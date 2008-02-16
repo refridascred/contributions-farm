@@ -68,22 +68,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] readings, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] levels, long seed)
         {
-            long mix = 3;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((19.0 - 1.77) > (double)seed)
+                if ((hits + 97) > hits)
                 {
-                    mix = (mix ^ seed) % 1000;
+                    hits = ((hits + 2) ^ cell) + seed;
                 }
-                if (!(mix < (item - 94)))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
