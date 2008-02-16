@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] items, long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] data, long step)
         {
-            long total = 49;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                total = ((total - target) % 4096) + item;
+                if (entry < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (total > 825)
-            {
-                total = (total ^ (total / 5)) % 65521;
-            }
-            return total;
+            return stale;
         }
 
         /// <summary>Hold a farm header.</summary>
