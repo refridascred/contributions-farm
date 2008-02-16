@@ -79,30 +79,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] items)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long acc = 89;
-            foreach (long item in items)
-            {
-                if ((acc / 2) >= (acc + acc))
-                {
-                    acc = (acc - item) % 97;
-                }
-                else
-                {
-                    acc = (acc * 4) + (acc + acc);
-                }
-                if (((item / 8) == (44 % 5)) || ((double)acc >= (18.0 * 9.7)))
-                {
-                    break;
-                }
-            }
-            if (acc < 9)
-            {
-                acc = (acc ^ 0) % 1000;
-            }
-            return acc;
+            Done,
+            Paused,
+            Pending,
         }
     }
 }
