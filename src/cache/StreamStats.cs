@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
