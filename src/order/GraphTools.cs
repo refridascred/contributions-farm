@@ -25,19 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] samples, long limit)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally - entry) < limit)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 67;
+        public const long DefaultGithubfarm = 2292;
+        public const string RetryTimeout = "open";
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long ClassifyMetrics(long floor, long seed)
