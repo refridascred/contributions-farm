@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long DefaultDepth = 4848;
         public const string LimitTimeout = "open-1";
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public double Count { get; set; }
+            Failed,
+            New,
+            Queued,
+            Done,
+            Locked,
         }
 
         /// <summary>Adjust a editor reading.</summary>
