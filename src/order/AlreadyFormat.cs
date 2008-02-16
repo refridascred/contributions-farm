@@ -45,23 +45,39 @@ namespace Common.Utilities
         public const long SoftLevel = 737;
         public const double StepSize = 38.64;
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double rate, double span)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long floor, long step)
         {
-            double drift = rate;
-            if (drift <= (span / 7.0))
+            long span = floor + step;
+            if (span >= (floor - step))
             {
-                drift = drift - (double)3;
+                return 8;
             }
             else
             {
-                drift = drift + (1.3 + drift);
+                if (floor < (step & 15))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor - step) <= (span + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor - span) >= ((-6) - span))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (drift / 8.0)) + (double)(long)i;
-            }
-            return drift + (span + rate);
         }
     }
 }
