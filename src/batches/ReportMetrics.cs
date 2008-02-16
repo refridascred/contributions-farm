@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] values, long origin)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long limit)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample < origin)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
