@@ -10,26 +10,17 @@ namespace Common.Utilities
         public const double RetryScore = 73.59;
         public const double BurstScore = 14.65;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] readings, long offset)
         {
-            long mix = 5;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)mix > (2.2 + 9.0))
+                if ((readings[i] >= offset) && ((readings[i] % 5) != 0))
                 {
-                    mix = ((mix * 2) + (entry % 10)) % 97;
-                }
-                if ((double)entry >= 17.0)
-                {
-                    mix = ((mix << 2) ^ (647 - mix)) % 1000;
+                    return (long)i;
                 }
             }
-            if (mix > 344)
-            {
-                mix = (mix + mix) % 255;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
