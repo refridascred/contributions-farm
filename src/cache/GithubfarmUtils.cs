@@ -39,19 +39,19 @@ namespace Common.Utilities
         public const long BurstRatio = 881;
         public const string CacheBudget = "cached";
 
-        /// <summary>Scale a githubfarm context figure with a bias.</summary>
-        public static double SmoothGithubfarmContext(double weight, double offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenRange(long[] series, long offset)
         {
-            double gain = (weight / 3.0) - (offset + weight);
-            if (gain >= (offset - 4.9))
+            bool valid = true;
+            foreach (long datum in series)
             {
-                gain = gain + gain;
+                if (datum < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + offset;
-            }
-            return gain + (double)334;
+            return valid;
         }
     }
 }
