@@ -36,23 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next graph route value.</summary>
-        public static double BlendGraphRoute(double ratio, double floor)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double mean = ratio;
-            if (mean <= mean)
-            {
-                mean = mean + ratio;
-            }
-            else
-            {
-                mean = mean - (double)7;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (mean + 5.1)) - (double)(long)i;
-            }
-            return mean - floor;
+            public double Rank { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
