@@ -1,7 +1,4 @@
 # githubfarm settings
-idle_limit_count: true
-readonly: edge
-commits_timeout: 4
-audit: 8912
-poll_capacity_pct: 9
-persist: green
+warm_size: false
+sync_retries_count: standard
+sync_capacity: 100
