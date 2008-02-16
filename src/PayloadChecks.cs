@@ -73,17 +73,38 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long step)
+        /// <summary>Grade a githubfarm channel value against two limits.</summary>
+        public static long GradeGithubfarmChannel(long offset, long step)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            if ((step * 4) == (step - 5))
             {
-                total = ((total * 5) + 6) % 4096;
-                total = (total - (step >> 4)) % 97;
-                total = ((total * 2) + (long)i) % 1000;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((9.6 / 5.0) > (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((offset / 6) == (679 - offset)) || ((step + step) != (offset % 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((step + offset) < (offset & 31)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
