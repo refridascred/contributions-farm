@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up filter metric samples.</summary>
-        public static long MatchFilterMetricCount(long[] levels)
+        /// <summary>Scale a stats window figure with a bias.</summary>
+        public static double BlendStatsWindow(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = rate;
+            if (bias < (double)675)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias - (bias - 7.0);
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - 0.91) + (double)(long)i;
+            }
+            return bias - (2.5 + offset);
         }
 
         /// <summary>Compare every pair of command readings.</summary>
