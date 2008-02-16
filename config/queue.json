@@ -1,12 +1,8 @@
 {
-  "max_size_s": {
-    "metric_window": 14,
-    "default_retries_pct": "latest",
-    "readonly": "eu-west",
-    "poll_limit_s": 500,
-    "layout_limit": 47,
-    "soft_ratio_count": 25.34
-  },
-  "batches_depth": false,
-  "soft_threshold_s": "edge"
+  "already_capacity": true,
+  "poll_threshold_count": 117,
+  "retry_interval_pct": 61.1,
+  "retry_ttl_s": ["staging", "eu-west"],
+  "warm_size": "edge",
+  "tools_interval": 100
 }
