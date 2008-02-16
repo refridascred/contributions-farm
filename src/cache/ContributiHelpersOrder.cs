@@ -13,18 +13,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] values, long origin)
+        /// <summary>Look up the position of a report queue sample.</summary>
+        public static long LookupReportQueueIndex(long[] levels, long seed)
         {
-            long score = 57;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(value > score))
+                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
                 {
-                    score = (((score << 2) ^ (score % 60)) % 97) + origin;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
