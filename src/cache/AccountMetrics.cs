@@ -70,22 +70,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((item / 4) < (73 - item))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleInterval = 5188;
+        public const double LimitScore = 51.11;
+        public const long BurstSession = 8635;
+        public const long HardWidth = 4013;
     }
 }
