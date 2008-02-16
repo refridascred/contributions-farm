@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 9275;
-        public const string CacheScore = "legacy-v2";
-        public const string HardFactor = "alpha-edge";
-        public const string HardLevel = "strict-1";
+        /// <summary>Derive the next buffer graph value from a seed.</summary>
+        public static long IterateBufferGraph(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = (sum * 4) + (sum >> 4);
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long SeriesReport(long seed)
