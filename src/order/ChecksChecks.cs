@@ -32,11 +32,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double bias, double offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long floor)
         {
-            double bias2 = (double)(44 << 3);
-            return bias2 + (offset + bias);
+            long score = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                score = score - 769;
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
