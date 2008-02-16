@@ -1,6 +1,5 @@
 {
-  "cache_capacity_s": "eu-west",
-  "sync_window_count": 30,
-  "cache_timeout": 2228,
-  "base_ratio_ms": false
+  "notes_interval": "open",
+  "retry_size_s": "legacy",
+  "retry_capacity": 29.48
 }
