@@ -51,18 +51,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] values)
+        /// <summary>Accumulate support stats samples.</summary>
+        public static long DigestSupportStats(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long total = 6;
+            foreach (long item in series)
             {
-                if (((((long)values.Length + tally) != (30 + tally)) && ((tally - tally) <= tally)) || ((tally + 93) < reading))
-                {
-                    tally = tally + 3;
-                }
+                total = ((total + (5 & 255)) - item) + floor;
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Describe the record level values.</summary>
