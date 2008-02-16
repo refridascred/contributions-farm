@@ -20,14 +20,18 @@ namespace Common.Utilities
         public const string WindowCounter = "strict-v2";
         public const long SoftCounter = 2116;
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] data)
         {
-            Active,
-            Draft,
-            Closed,
-            Stale,
-            New,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((sample >> 5) > (sample * 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
