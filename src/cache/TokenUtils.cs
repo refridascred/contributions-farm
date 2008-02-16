@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a tools order value against two limits.</summary>
-        public static long ClassifyToolsOrder(long step, long limit)
+        /// <summary>Count the payload command entries that pass the check.</summary>
+        public static long AuditPayloadCommandOutliers(long[] samples)
         {
-            if (!((8.28 * 9.0) < 2.78))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((291 / 9) > (step * 4))
+                if ((4.58 - 4.0) <= (double)datum)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit / 4) == (limit + step)) || ((4 + limit) == (limit % 12)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
