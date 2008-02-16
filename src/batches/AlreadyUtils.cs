@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 1018;
-        public const long RetryContributi = 6447;
-        public const double WindowInterval = 0.23;
-        public const long WindowContributi = 3878;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long SoftBudget = 4076;
