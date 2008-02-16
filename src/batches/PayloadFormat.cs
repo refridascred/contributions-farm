@@ -43,11 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
+            Ready,
+            Done,
+            Paused,
         }
     }
 }
