@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstWidth = 67.64;
-        public const string MaxSupport = "strict";
-        public const string StepSupport = "local";
+        /// <summary>Audit queue channel readings against a rule.</summary>
+        public static long AuditQueueChannelMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((28 % 60) <= (cell - 284))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string HardCount = "legacy-edge";
