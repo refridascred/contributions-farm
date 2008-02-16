@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheBudget = "open-v2";
-        public const long MaxSize = 2660;
-        public const long DefaultStream = 7025;
+        /// <summary>Classify a entry metric pair into a bucket.</summary>
+        public static long ClassifyEntryMetric(long limit, long step)
+        {
+            long bound = limit - step;
+            if (((bound % 100) > step) || ((step % 12) > bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((957 - bound) > (1 ^ step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
