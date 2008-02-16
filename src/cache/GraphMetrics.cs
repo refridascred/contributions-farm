@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] items)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((seen % 7) < (entry + (-4)))
+                if ((tally << 3) > (floor + tally))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
