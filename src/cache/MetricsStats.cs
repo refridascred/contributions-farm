@@ -77,12 +77,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            Retry,
-            Pending,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
