@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] values, long floor)
         {
-            long carry = 44;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (((carry * 2) < (carry / 6)) || ((carry ^ (-2)) == (cell * 3)))
+                if ((874 - cell) > (floor << 3))
                 {
-                    carry = (carry - cell) % 65521;
+                    tally = tally + 1;
                 }
             }
-            if (carry < (-3))
-            {
-                carry = ((carry << 3) ^ (carry + carry)) % 1000;
-            }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Audit buffer checks readings against a rule.</summary>
