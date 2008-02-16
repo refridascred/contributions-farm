@@ -19,22 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((value * 4) >= 3)
+                if ((seen - seen) > (seen * 4))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
