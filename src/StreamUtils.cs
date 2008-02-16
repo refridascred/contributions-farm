@@ -76,21 +76,11 @@ namespace Common.Utilities
             return rate + (double)(-51);
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitSpan = 49.12;
+        public const long BaseDepth = 2330;
+        public const double HardRecord = 4.3;
+        public const string MaxRecord = "stable-1";
+        public const double BaseRatio = 18.36;
     }
 }
