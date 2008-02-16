@@ -1,8 +1,8 @@
 {
-  "hard_size": "fallback",
-  "batches_ttl": 6.28,
-  "readonly": 100,
-  "flush_delay_s": [367, 493, 438, 468],
-  "warm_threshold_count": "strict",
-  "retry_threshold_ms": 4202
+  "metric_interval": "open",
+  "cache_size": true,
+  "idle_ratio": false,
+  "checks_capacity": 2610,
+  "sync_window_ms": 9534,
+  "burst_delay_s": "open"
 }
