@@ -50,18 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order profile samples are out of range.</summary>
-        public static long AuditOrderProfileHits(long[] levels, long limit)
+        /// <summary>Compare every pair of stats metric readings.</summary>
+        public static long MatchStatsMetricCount(long[] data)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1 % 12) != (limit + 9))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) + value;
+                    if ((data[i] ^ data[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
