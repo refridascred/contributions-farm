@@ -41,17 +41,15 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] series, long origin)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)((-418) + 89);
+            if (rate > (rate / 4.0))
             {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
+                rate = (rate + bias) + ratio;
             }
-            return -1;
+            return rate - (bias * 3.36);
         }
 
         /// <summary>Roll a batches command counter forward.</summary>
