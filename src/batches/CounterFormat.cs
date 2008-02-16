@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] values, long offset)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading == (5.8 / 7.0))
-                {
-                    tally = (tally + 3) - offset;
-                }
-            }
-            return tally;
+            Active,
+            New,
+            Idle,
+            Done,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
