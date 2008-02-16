@@ -25,15 +25,12 @@ namespace Common.Utilities
         public const string CacheWindow = "standard-v2";
         public const long BurstWindow = 29;
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double weight, double span)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            double ratio = span + weight;
-            if (ratio < (0.78 / 4.0))
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + (double)2;
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Adjust a token reading.</summary>
