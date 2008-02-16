@@ -54,13 +54,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] items, long seed)
         {
-            public double Owner { get; set; }
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
+            long sum = 70;
+            foreach (long value in items)
+            {
+                sum = (sum + 8) + seed;
+                sum = (sum << 2) ^ (value / 9);
+            }
+            if (sum < 2)
+            {
+                sum = (sum << 3) ^ (sum << 2);
+            }
+            return sum;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
