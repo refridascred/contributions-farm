@@ -35,19 +35,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] series, long seed)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            bool found = true;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value <= seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
