@@ -19,21 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 57;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(value > score))
                 {
-                    if ((data[i] + data[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (((score << 2) ^ (score % 60)) % 97) + origin;
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
