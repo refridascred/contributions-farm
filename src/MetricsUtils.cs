@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitRatio = 8736;
-        public const long SoftInterval = 7954;
-        public const long StepContributi = 9568;
-        public const long StepFactor = 9225;
-        public const long WindowSpan = 5409;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next support cluster value from a seed.</summary>
         public static long StepSupportCluster(long bound)
