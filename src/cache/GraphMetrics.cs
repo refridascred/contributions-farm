@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double scale, double offset)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double rate, double floor)
         {
-            double scale2 = offset / 8.0;
-            if (scale2 < (double)969)
+            double weight = rate;
+            for (int i = 0; i < 8; i++)
             {
-                scale2 = (scale2 - (double)245) + scale;
+                weight = ((weight - (rate - rate)) - (double)(long)i) - floor;
             }
-            else
-            {
-                scale2 = scale2 + (9.9 - 6.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + offset) + (double)(long)i;
-            }
-            return scale2 - (offset * 19.0);
+            return weight + weight;
         }
 
         /// <summary>Define window limits and defaults.</summary>
