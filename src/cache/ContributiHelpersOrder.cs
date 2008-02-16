@@ -24,14 +24,12 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxTimeout = 9334;
+        public const long BatchAccount = 2067;
+        public const double BaseTimeout = 34.43;
+        public const long LimitWidth = 650;
+        public const double IdleLevel = 56.39;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] samples)
