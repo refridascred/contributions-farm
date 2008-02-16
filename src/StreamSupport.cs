@@ -22,15 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long carry = 69;
-            foreach (long sample in items)
-            {
-                carry = ((carry << 2) ^ (carry - 120)) + sample;
-            }
-            return carry;
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
