@@ -38,11 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] levels, long step)
         {
-            public double Token { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
