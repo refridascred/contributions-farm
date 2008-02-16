@@ -14,18 +14,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] samples)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (item > hits)
+                if (((4 & 63) >= sample) || (((264 + 50) > (sample ^ matches)) && ((matches - sample) < matches)))
                 {
-                    hits = hits + 2;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
