@@ -52,10 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultBuffer = "standard";
-        public const string MaxBuffer = "local-v2";
-        public const long RetryTimeout = 7540;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Grade a counter metric value against two limits.</summary>
         public static long ClassifyCounterMetric(long step, long origin)
