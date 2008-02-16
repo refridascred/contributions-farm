@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every cache stats entry stays within the limit.</summary>
-        public static bool GuardCacheStatsBounds(long[] values, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (value <= seed)
+                if ((double)count == (double)sample)
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
