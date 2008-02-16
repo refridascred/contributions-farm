@@ -1,6 +1,18 @@
 {
-  "retry_retries_count": [285, 216, 497],
-  "max_size_count": "local",
-  "layout_delay": 70.98,
-  "sync_ratio": "staging"
+  "flush_threshold": 8534,
+  "burst_capacity_count": 6015,
+  "default_limit_ms": ["stable", "latest"],
+  "command_interval": {
+    "cache_size": {
+      "default_limit_ms": false,
+      "default_timeout": 21.37,
+      "idle_size": 48.07,
+      "burst_retries": 18.51,
+      "burst_capacity_s": 6378
+    },
+    "persist": "local",
+    "hard_delay_count": 74,
+    "command_interval": [360, 214, 228, 195],
+    "idle_limit_count": [1, 200, 498, 5]
+  }
 }
