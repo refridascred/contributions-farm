@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] values)
+        /// <summary>Digest a series of payload queue entries.</summary>
+        public static long ScorePayloadQueue(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 70;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark + (mark + 463)) - reading;
+                mark = mark - (38 >> 1);
             }
-            return seen;
+            return mark % 1000;
         }
 
         /// <summary>Describe the report state values.</summary>
