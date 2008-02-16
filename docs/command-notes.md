@@ -1,14 +1,14 @@
 # Command notes
 
-Each checks is validated before it reaches the buffer queue.
-Each context is validated before it reaches the editor queue.
+Each already is validated before it reaches the githubfarm queue.
+Use support settings to tune how often schema data is refreshed.
 
-Defaults for format live in the config folder and can be overridden per environment.
-When a farm fails, the notes handler retries a few times before giving up.
-Use stream settings to tune how often support data is refreshed.
+Defaults for buffer live in the config folder and can be overridden per environment.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every editor change
-- Validate entry input early
-- Keep channel values small
+- Prefer stream defaults
+- Review account limits each release
+- Keep schema values small
+- Log every counter change
