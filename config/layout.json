@@ -1,17 +1,5 @@
 {
-  "format_delay": {
-    "cache_limit": {
-      "strict": "cached",
-      "retry_delay_count": 8402,
-      "filter_timeout": 1024
-    },
-    "enabled": 93.19,
-    "hard_interval_count": false,
-    "cache_capacity": [30, 181, 264]
-  },
-  "dry_run": 1590,
-  "cache_window": 500,
-  "schema_timeout": 5621,
-  "cache_ttl_s": "blue",
-  "batch_ttl_ms": false
+  "compress": 7.38,
+  "cache_capacity_count": 100,
+  "enabled": "staging"
 }
