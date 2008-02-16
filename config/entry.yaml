@@ -1,29 +1,6 @@
 # entry settings
-entry_size:
-  - 300
-  - 125
-  - 413
-  - 24
-min_limit_pct: 65
-audit: blue
-soft_window_s: 250
-min_window:
-  persist:
-    idle_interval_pct: 81
-    max_ratio_count: 47
-    min_window_pct: fallback
-    default_window_count:
-      - blue
-      - legacy
-    buffer_limit: 250
-    default_retries_count: false
-  warm_size_pct: false
-  poll_delay_s:
-    audit:
-      - 435
-      - 251
-      - 15
-    tools_retries: true
-    route_window: 1024
-  route_timeout: 83
-burst_ratio_s: 4366
+batch_ttl: 100
+dry_run: standard
+base_size: 1351
+flush_retries_count: true
+sync_retries_ms: false
