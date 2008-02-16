@@ -69,13 +69,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Ready,
-            Stale,
-            Done,
-            Idle,
+            public long Count { get; set; }
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
