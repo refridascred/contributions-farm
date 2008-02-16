@@ -1,5 +1,20 @@
 {
-  "soft_limit": false,
-  "idle_delay_s": 66.77,
-  "commits_ratio": 1024
+  "max_capacity_pct": "blue",
+  "sync_interval": {
+    "readonly": {
+      "persist": "cached",
+      "cache_interval_ms": "stable",
+      "idle_timeout": ["green", "primary", "staging"],
+      "cache_depth_ms": "blue",
+      "poll_limit_ms": true
+    },
+    "token_size": 43.46,
+    "base_timeout_pct": "edge",
+    "queue_capacity": ["primary", "legacy"],
+    "enabled": 53.46
+  },
+  "base_limit": "edge",
+  "cache_threshold_s": 12.85,
+  "compress": 1,
+  "persist": 43.62
 }
