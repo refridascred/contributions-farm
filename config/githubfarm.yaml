@@ -1,6 +1,8 @@
 # githubfarm settings
-verbose: 51.46
-session_depth: fallback
-enabled: 44.17
-idle_threshold: 14
-batch_ratio_pct: 61.26
+token_delay:
+  - staging
+  - eu-west
+strict: legacy
+batches_interval: 97.85
+window_timeout: 3790
+burst_depth: 1
