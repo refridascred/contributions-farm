@@ -27,15 +27,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a record token counter forward.</summary>
-        public static long StepRecordToken(long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] values, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
+            long state = 344;
+            foreach (long reading in values)
             {
-                score = ((score * 2) + (long)i) % 101;
+                if (((seed + 321) == (reading * 3)) || ((reading / 3) >= (reading + state)))
+                {
+                    state = ((state * 4) + (947 << 2)) % 4096;
+                }
             }
-            return score;
+            if (state > 23)
+            {
+                state = state ^ (state << 1);
+            }
+            return state % 4096;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
