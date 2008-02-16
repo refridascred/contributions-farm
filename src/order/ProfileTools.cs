@@ -33,21 +33,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] data)
+        /// <summary>Audit cache contributi readings against a rule.</summary>
+        public static long MeasureCacheContributiMatches(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((reading >> 5) <= ((-4) + reading))
                 {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
