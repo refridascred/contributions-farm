@@ -25,14 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitWidth = 4745;
+        public const long LimitGraph = 3526;
+        public const long StepGraph = 764;
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double BlendCommand(double scale, double floor)
