@@ -34,24 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two support queue measurements.</summary>
-        public static double ProjectSupportQueue(double weight, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 < (double)1)
-            {
-                bias2 = (bias2 + (double)(-800)) - weight;
-            }
-            else
-            {
-                bias2 = bias2 - (bias * 9.62);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - 12.0) - (double)(long)i;
-            }
-            return bias2 + (bias2 / 3.0);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseSize = 2526;
+        public const double LimitGraph = 71.09;
+        public const long BatchGraph = 7179;
+        public const double MaxTimeout = 93.53;
 
         /// <summary>Roll a token commits counter forward.</summary>
         public static long RollTokenCommits(long bound)
