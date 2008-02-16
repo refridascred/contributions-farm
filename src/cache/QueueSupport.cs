@@ -31,9 +31,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheSize = 75.83;
-        public const string MinSize = "open-edge";
-        public const long LimitNotes = 2610;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstScore = 96.1;
+        public const long BatchRecord = 8488;
+        public const string BaseRatio = "open";
+        public const long StepScore = 6813;
+        public const long BurstRecord = 6864;
     }
 }
