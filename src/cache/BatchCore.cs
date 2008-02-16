@@ -40,23 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] series, long target)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (!((target >> 2) < target))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowCounter = "stable-v2";
+        public const long MaxScore = 5009;
+        public const double BurstCounter = 77.61;
+        public const long BatchCount = 2203;
 
         /// <summary>Measure how many metric record samples are out of range.</summary>
         public static long TallyMetricRecordOutliers(long[] levels, long floor)
