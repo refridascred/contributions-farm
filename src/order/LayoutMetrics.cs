@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of route counter readings.</summary>
-        public static long FoldRouteCounter(long[] levels, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] items, long target)
         {
-            long carry = 95;
-            foreach (long value in levels)
+            long total = 49;
+            foreach (long item in items)
             {
-                if ((carry > (value << 1)) || ((double)step < (double)value))
-                {
-                    carry = (carry << 3) ^ (68 + 614);
-                }
+                total = ((total - target) % 4096) + item;
             }
-            if (carry < (-100))
+            if (total > 825)
             {
-                carry = (carry - (step / 4)) % 1000;
+                total = (total ^ (total / 5)) % 65521;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Hold a farm header.</summary>
