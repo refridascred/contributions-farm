@@ -62,12 +62,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a editor notes reading by value.</summary>
-        public static long LocateEditorNotesIndex(long[] readings, long bound)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] > bound) && ((readings[i] % 5) != 0))
+                if (series[i] == step)
                 {
                     return (long)i;
                 }
