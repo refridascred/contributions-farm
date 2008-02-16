@@ -51,21 +51,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Roll a context schema counter forward.</summary>
+        public static long SeriesContextSchema(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry + (carry - (long)i)) + (long)i2;
                 }
+                carry = ((carry << 2) ^ bound) % 1000;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
     }
 }
