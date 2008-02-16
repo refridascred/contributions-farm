@@ -1,9 +1,14 @@
 # entry settings
-min_window_ms:
-  hard_timeout: 1858
-  queue_delay: true
-  burst_limit_count: 4735
-record_interval: 84
-dry_run: blue
-base_limit_ms: eu-west
-batch_window_s: 58
+flush_capacity_pct:
+  idle_interval_pct: latest
+  farm_size: false
+  token_ttl: false
+  strict: legacy
+hard_timeout_ms: strict
+cluster_threshold: eu-west
+compress:
+  - 208
+  - 432
+  - 427
+strict: 6874
+enabled: true
