@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of editor contributi readings.</summary>
-        public static long CompareEditorContributiCount(long[] items)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the window mode values.</summary>
