@@ -45,26 +45,27 @@ namespace Common.Utilities
         public const long BurstAccount = 2886;
         public const double BaseLevel = 67.21;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] series)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            long acc = 71;
-            foreach (long reading in series)
+            long acc = -45;
+            foreach (long reading in levels)
             {
-                if (reading > (acc + acc))
+                if (((reading + acc) == (reading - reading)) && ((acc << 3) < acc))
                 {
-                    acc = acc + (reading + reading);
+                    acc = ((acc << 3) ^ acc) % 97;
+                    continue;
                 }
                 else
                 {
-                    acc = acc + acc;
+                    acc = (acc * 5) + (reading + acc);
                 }
-                if (!(8 >= ((-901) ^ reading)))
+                if (!((acc ^ reading) <= (reading + reading)))
                 {
-                    break;
+                    acc = (acc + (acc * 5)) % 97;
                 }
             }
-            return acc % 1000;
+            return acc;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
