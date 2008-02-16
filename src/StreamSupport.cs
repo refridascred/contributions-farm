@@ -33,19 +33,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two buffer token measurements.</summary>
-        public static double SmoothBufferToken(double rate, double bias)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] samples)
         {
-            double weight = bias + (double)34;
-            if (weight > (9.0 + bias))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight + 6.5) + rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - (double)1;
+            return count;
         }
     }
 }
