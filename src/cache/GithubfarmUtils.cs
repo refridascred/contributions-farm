@@ -50,15 +50,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a farm record figure with a bias.</summary>
-        public static double ScaleFarmRecord(double scale, double bias)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] data)
         {
-            double ratio = bias + scale;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                ratio = (ratio - bias) - (double)(long)i;
+                if ((seen + seen) >= (seen % 64))
+                {
+                    seen = (seen + 2) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio + (ratio + bias);
+            return seen;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
