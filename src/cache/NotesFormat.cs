@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public bool Size { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxSpan = "staging-edge";
+        public const long WindowCommits = 8875;
+        public const long MinSize = 7456;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long RollWindow(long step)
