@@ -33,23 +33,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double gain, double offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double drift = gain;
-            if (drift < (7.23 + drift))
-            {
-                drift = drift + gain;
-            }
-            else
-            {
-                drift = drift + (drift - offset);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (offset + gain)) + (double)(long)i;
-            }
-            return drift - (gain - gain);
+            Dropped,
+            Paused,
+            Active,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a stats stats.</summary>
