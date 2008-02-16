@@ -51,17 +51,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] levels, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = -25;
+            foreach (long datum in values)
             {
-                if (levels[i] == step)
+                if ((sum / 6) < (sum - sum))
                 {
-                    return (long)i;
+                    break;
                 }
+                sum = ((sum * 4) + (datum + datum)) + step;
             }
-            return -1;
+            if (sum < 489)
+            {
+                sum = ((sum * 2) + sum) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
