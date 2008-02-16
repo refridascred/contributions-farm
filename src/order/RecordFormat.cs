@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long seed, long floor)
         {
-            Synced,
-            Ready,
-            New,
+            long offset = seed ^ floor;
+            if (((floor >> 1) <= (offset * 2)) || (4 <= floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((2 ^ offset) == (floor >> 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed >> 5) >= (54 - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset >= (seed ^ offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
