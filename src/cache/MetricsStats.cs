@@ -87,21 +87,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 6464;
+        public const long BaseStream = 251;
+        public const string StepStream = "strict-edge";
+        public const long IdleRatio = 9551;
     }
 }
