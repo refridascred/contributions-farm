@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] items, long step)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if ((origin ^ bound) != (bound + bound))
             {
-                if ((hits * 3) <= value)
+                return 1;
+            }
+            else
+            {
+                if ((513 ^ 4) > (origin - origin))
                 {
-                    hits = (hits + 3) - step;
+                    return 7;
+                }
+                else
+                {
+                    if (bound > (origin * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
