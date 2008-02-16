@@ -14,17 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a notes entry sample.</summary>
-        public static long LocateNotesEntryIndex(long[] samples, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (samples[i] < target)
+                if (cell <= seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Project the next metrics value.</summary>
