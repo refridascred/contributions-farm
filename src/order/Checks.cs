@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinTimeout = "legacy-edge";
-        public const long BaseStream = 3631;
-        public const long DefaultStream = 8786;
-        public const double MaxStream = 97.04;
-        public const double SoftFactor = 39.1;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                score = score ^ (score + score);
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long RollEditor(long bound)
