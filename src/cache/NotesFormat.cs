@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] series, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long origin, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long bound2 = origin + bound;
+            if ((6.0 + 8.62) < (double)bound)
             {
-                if ((series[i] == floor) && ((series[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if (!(298 < (origin / 3)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((385 & 63) <= (bound2 + 51)) || ((bound >> 4) <= bound2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound2 & 7) < bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
