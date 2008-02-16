@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] data, long floor)
         {
-            long anchor = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((anchor ^ anchor) != (anchor - anchor)) || ((sample % 2) <= anchor))
+                if (data[i] <= floor)
                 {
-                    anchor = ((anchor * 2) + (sample + anchor)) % 255;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
