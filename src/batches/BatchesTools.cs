@@ -34,22 +34,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of layout cluster entries.</summary>
-        public static long ScoreLayoutCluster(long[] values)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] levels)
         {
-            long mix = -670;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (((double)sample <= (2.15 * 9.7)) || (mix <= (mix ^ mix)))
+                if (seen > (seen >> 3))
                 {
-                    mix = (mix * 3) + (sample + sample);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ 0;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return mix % 4096;
+            return seen;
         }
     }
 }
