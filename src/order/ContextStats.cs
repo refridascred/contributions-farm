@@ -20,11 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
