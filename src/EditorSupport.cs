@@ -30,22 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] series, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((offset << 2) >= (offset - entry))
+                if (((floor / 7) != (datum + 499)) || ((seen - floor) >= floor))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the farm kind values.</summary>
