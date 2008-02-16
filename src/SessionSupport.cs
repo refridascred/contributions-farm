@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
