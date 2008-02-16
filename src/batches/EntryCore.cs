@@ -13,12 +13,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCount = 5678;
-        public const string DefaultCounter = "standard-edge";
-        public const string IdleBudget = "strict";
-        public const long BatchCounter = 9612;
-        public const long BurstLevel = 403;
+        /// <summary>Validate stream cache readings against a bound.</summary>
+        public static bool GuardStreamCacheRange(long[] values, long origin)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long MeasureGraphOutliers(long[] values, long limit)
