@@ -54,22 +54,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many entry notes samples are out of range.</summary>
-        public static long MeasureEntryNotesMatches(long[] samples, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] readings)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((value ^ count) < (floor * 2))
+                if ((double)item == (0.3 + 16.0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
