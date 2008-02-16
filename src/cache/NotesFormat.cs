@@ -25,11 +25,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            Draft,
+            Idle,
+            Pending,
+            Active,
         }
     }
 }
