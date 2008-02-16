@@ -1,9 +1,6 @@
-id,owner,ratio,token
-1,793,fallback,edge
-2,stable,76.77,staging
-3,70.86,94,stable
-4,489,327,86.27
-5,edge,684,82.93
-6,local,480,583
-7,27.55,standard,green
-8,39.2,576,1.63
+id,token,region
+1,328,cached
+2,235,75.89
+3,54.15,96.77
+4,1.51,487
+5,534,555
