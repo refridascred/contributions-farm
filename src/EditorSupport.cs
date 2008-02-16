@@ -34,13 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Dropped,
-            Queued,
-            Idle,
+            Active,
             Synced,
+            New,
+            Locked,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
