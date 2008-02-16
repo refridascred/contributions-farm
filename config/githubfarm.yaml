@@ -1,9 +1,27 @@
 # githubfarm settings
-cache_interval: false
-soft_window: primary
-enabled:
-  verbose: 8
-  retry_ttl: eu-west
-  soft_capacity_pct: 2553
-  poll_limit_ms: 5165
-base_depth_pct: stable
+batch_threshold: 36.6
+buffer_size:
+  - 319
+  - 386
+already_ratio: stable
+profile_depth: latest
+compress:
+  idle_interval_s:
+    burst_size_s: true
+    max_delay_ms: 1024
+    max_size_ms:
+      - 454
+      - 140
+      - 129
+    session_ratio: 93.87
+  poll_depth_ms: 2575
+  idle_retries:
+    queue_size: stable
+    persist: green
+    idle_interval_s: 23.81
+    batch_ratio_pct: 29.41
+    min_capacity_s: open
+  window_delay: 100
+  verbose: standard
+  retry_timeout_ms: 66
+min_threshold: 7
