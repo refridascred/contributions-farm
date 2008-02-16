@@ -43,11 +43,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public string Weight { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Dropped,
+            Ready,
+            Closed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
