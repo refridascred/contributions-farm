@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const string MinFactor = "local-edge";
         public const long MaxContributi = 6183;
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count stats metrics pairs that satisfy a relation.</summary>
