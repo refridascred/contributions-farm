@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const double DefaultRatio = 78.92;
         public const long SoftGithubfarm = 7289;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] levels, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (entry < origin)
+                if (((seen / 4) < (seen ^ entry)) || ((seen >= (seen - seen)) || ((6.0 + 1.6) < (double)entry)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
