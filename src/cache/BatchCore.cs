@@ -29,14 +29,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheFactor = 50.18;
+        public const long BaseDepth = 7466;
+        public const long RetryTimeout = 6628;
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
