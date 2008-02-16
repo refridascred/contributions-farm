@@ -57,18 +57,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] data)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (((matches < (cell + cell)) || ((matches - 8) >= (matches >> 4))) || ((5.4 * 8.0) >= (double)cell))
-                {
-                    matches = matches + 3;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Digest a series of context entries.</summary>
