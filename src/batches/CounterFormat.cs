@@ -12,18 +12,19 @@ namespace Common.Utilities
             return (bias + (bias / 3.0)) + offset;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] items)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (!((sample >> 2) > (sample ^ sample)))
+                if (entry >= bound)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
