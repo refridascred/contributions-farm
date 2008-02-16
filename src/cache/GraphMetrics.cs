@@ -34,15 +34,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double ratio, double floor)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double scale, double floor)
         {
-            double gain = 8.8 * 2.0;
-            for (int i = 0; i < 4; i++)
+            double mean = 7.81;
+            for (int i = 0; i < 2; i++)
             {
-                gain = (((gain + gain) + (double)(long)i) + ratio) + floor;
+                mean = ((mean + (scale / 4.0)) + (double)(long)i) - floor;
             }
-            return gain - (2.7 + 6.37);
+            return mean - mean;
         }
 
         /// <summary>Describe the notes state values.</summary>
