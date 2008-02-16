@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] values, long floor)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((((-8) <= matches) && ((floor / 5) == (73 % 12))) && (((matches - floor) >= (item + 2)) || ((double)matches != (1.2 - 1.0))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 7682;
+        public const double CacheGraph = 28.95;
+        public const long BatchBudget = 9404;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricOutliers(long[] values)
