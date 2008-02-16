@@ -1,10 +1,6 @@
-id,owner,level
-1,stable,97.49
-2,102,94
-3,38,675
-4,1.22,90.84
-5,31.19,staging
-6,256,fallback
-7,63.45,37.43
-8,371,814
-9,968,primary
+id,owner,score,token
+1,10.76,149,617
+2,fallback,193,eu-west
+3,818,legacy,31.93
+4,green,30.44,blue
+5,358,459,48.6
