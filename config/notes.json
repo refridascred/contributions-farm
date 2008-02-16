@@ -1,6 +1,5 @@
 {
-  "token_capacity": [169, 125],
-  "stream_timeout": [265, 58],
-  "payload_timeout": true,
-  "soft_ratio_ms": "staging"
+  "persist": [151, 29, 148, 410],
+  "channel_capacity": "staging",
+  "strict": 1305
 }
