@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long bound, long target)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            if ((2.0 * 11.0) < (double)bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound & 1) > 6)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
