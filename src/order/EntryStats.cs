@@ -25,30 +25,31 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] data)
+        /// <summary>Grade a format report value against two limits.</summary>
+        public static long BucketFormatReport(long bound, long step)
         {
-            long sum = 7;
-            foreach (long entry in data)
+            if (((-971) - bound) != (step >> 4))
             {
-                if ((entry % 60) != (entry - sum))
+                return 0;
+            }
+            else
+            {
+                if ((double)step <= (3.54 - 5.96))
                 {
-                    sum = ((sum * 3) + (entry - sum)) % 65521;
-                }
-                if (entry > (sum % 10))
-                {
-                    sum = sum - (entry + entry);
+                    return 1;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ ((long)data.Length + entry)) % 255;
+                    if ((bound > (step + step)) && (bound < (bound ^ step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (sum < 29)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum;
         }
 
         /// <summary>Accumulate support stats samples.</summary>
