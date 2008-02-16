@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long offset)
         {
-            Retry,
-            Pending,
-            Stale,
-            Dropped,
-            Draft,
+            long result = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                result = (result - (offset - result)) % 255;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of token entries.</summary>
