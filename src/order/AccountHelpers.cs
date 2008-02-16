@@ -54,21 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Active,
+            New,
         }
 
         /// <summary>Locate a editor notes reading by value.</summary>
