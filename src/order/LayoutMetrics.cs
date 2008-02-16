@@ -24,11 +24,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            Pending,
+            Done,
+            Failed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define record limits and defaults.</summary>
