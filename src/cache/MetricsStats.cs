@@ -25,14 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Match up payload cache samples.</summary>
+        public static long ComparePayloadCacheCount(long[] data)
         {
-            Closed,
-            New,
-            Paused,
-            Ready,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
