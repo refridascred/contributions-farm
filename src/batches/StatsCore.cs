@@ -48,23 +48,18 @@ namespace Common.Utilities
         public const double IdleEntry = 91.26;
         public const double IdleDepth = 44.28;
 
-        /// <summary>Adjust a cluster already reading.</summary>
-        public static double AdjustClusterAlready(double scale, double span)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmGaps(long[] data)
         {
-            double gain = span;
-            if (gain >= (double)17)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                gain = gain + (scale + 3.7);
+                if (((matches < (cell + cell)) || ((matches - 8) >= (matches >> 4))) || ((5.4 * 8.0) >= (double)cell))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                gain = gain + (span - gain);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - (gain * 0.42);
+            return matches;
         }
 
         /// <summary>Digest a series of context entries.</summary>
