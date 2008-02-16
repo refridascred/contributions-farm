@@ -19,13 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] samples)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
