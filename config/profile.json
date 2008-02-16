@@ -1,25 +1,6 @@
 {
-  "compress": false,
-  "strict": {
-    "base_threshold_ms": 9426,
-    "compress": [274, 229],
-    "base_threshold_pct": 250,
-    "retry_retries_s": {
-      "channel_timeout": "cached",
-      "editor_depth": "primary",
-      "dry_run": "eu-west",
-      "tools_threshold": false
-    },
-    "verbose": 5339
-  },
-  "payload_timeout": {
-    "idle_delay": 1,
-    "max_timeout": true,
-    "audit": {
-      "default_ratio_count": "latest",
-      "strict": 9975,
-      "sync_limit_pct": 2121,
-      "readonly": 6220
-    }
-  }
+  "session_capacity": "legacy",
+  "base_ratio_ms": 6309,
+  "persist": "primary",
+  "account_retries": 3429
 }
