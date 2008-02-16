@@ -1,8 +1,11 @@
 {
-  "readonly": 94.94,
-  "channel_ttl": "local",
-  "filter_limit": false,
-  "poll_ttl_s": 91,
-  "warm_limit_count": 54,
-  "format_capacity": 7590
+  "entry_depth": {
+    "strict": false,
+    "sync_interval_pct": 5.87,
+    "max_delay": "latest",
+    "base_timeout_ms": 62.09,
+    "cache_delay_count": 500
+  },
+  "strict": "blue",
+  "batches_delay": 69
 }
