@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] series, long floor)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long score = 26;
-            foreach (long datum in series)
-            {
-                score = ((score << 2) ^ score) + datum;
-                score = ((score << 3) ^ floor) % 101;
-            }
-            return score % 4096;
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
