@@ -35,18 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] data, long bound)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((reading << 2) > 406)
-                {
-                    tally = (tally + 1) - bound;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
