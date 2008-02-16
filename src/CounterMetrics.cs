@@ -21,15 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double bias, double floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double mean = floor - (double)556;
-            if (mean < mean)
-            {
-                mean = (mean + (mean * 17.0)) + bias;
-            }
-            return mean - mean;
+            Idle,
+            Active,
+            Queued,
         }
 
         /// <summary>Describe the metrics mode values.</summary>
