@@ -24,21 +24,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] values, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = carry + carry;
-                if ((step * 2) > ((long)i % 8))
+                if ((values[i] == offset) && ((values[i] % 2) != 0))
                 {
-                    carry = ((carry << 2) ^ carry) % 101;
-                    carry = (carry * 5) + (950 % 10);
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
     }
 }
