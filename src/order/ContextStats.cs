@@ -32,21 +32,32 @@ namespace Common.Utilities
         public const string RetryMetrics = "fallback";
         public const long SoftMetrics = 2580;
 
-        /// <summary>Compare every pair of batches githubfarm readings.</summary>
-        public static long MatchBatchesGithubfarmCount(long[] items)
+        /// <summary>Grade a metric command value against two limits.</summary>
+        public static long BucketMetricCommand(long target, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long diff = target + seed;
+            if ((double)14 < (double)diff)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (seed < diff)
                 {
-                    if ((items[i] ^ items[j]) > 14)
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)diff < 18.0))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
