@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate payload cache readings against a bound.</summary>
-        public static bool GuardPayloadCacheBounds(long[] series, long floor)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Mode { get; set; } = "";
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
