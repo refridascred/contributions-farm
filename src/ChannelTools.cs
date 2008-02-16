@@ -13,12 +13,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double gain, double offset)
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            double ratio = 9.06;
+            if (ratio > ratio)
+            {
+                ratio = (ratio - gain) - offset;
+            }
+            return ratio - (double)(-195);
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
