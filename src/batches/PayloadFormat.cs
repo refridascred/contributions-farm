@@ -40,18 +40,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] samples, long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((5.2 * 4.4) == (double)value)
+                if (cell <= bound)
                 {
-                    hits = (hits + 2) + floor;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Blend two cache measurements.</summary>
