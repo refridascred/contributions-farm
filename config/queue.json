@@ -1,8 +1,8 @@
 {
-  "sync_timeout": 76,
-  "batches_delay": 19,
-  "hard_retries": "eu-west",
-  "hard_ttl": 4015,
-  "readonly": 9639,
-  "batch_delay": false
+  "soft_retries_count": ["open", "cached", "strict"],
+  "channel_retries": "blue",
+  "audit": 47,
+  "retry_size_count": 7022,
+  "burst_interval": ["local", "eu-west"],
+  "warm_window_ms": "cached"
 }
