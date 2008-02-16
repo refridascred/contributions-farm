@@ -51,18 +51,16 @@ namespace Common.Utilities
             return bias2 - ratio;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] data)
+        /// <summary>Iterate the cluster stats series from a seed.</summary>
+        public static long StepClusterStats(long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((item ^ item) >= 94)
-                {
-                    matches = matches + 1;
-                }
+                state = (state ^ bound) % 97;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
     }
 }
