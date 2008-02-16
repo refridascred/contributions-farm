@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long origin, long target)
+        /// <summary>Fold a list of notes stats readings.</summary>
+        public static long CombineNotesStats(long[] data, long seed)
         {
-            if ((origin - origin) < (target ^ origin))
+            long total = 30;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((17.0 / 9.0) <= (double)origin)
+                if (((double)value >= (19.0 - 2.03)) || ((value + total) == (value >> 3)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target % 7) <= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    total = total ^ 72;
                 }
             }
+            if (total > 6)
+            {
+                total = (total ^ (seed >> 4)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the graph level values.</summary>
