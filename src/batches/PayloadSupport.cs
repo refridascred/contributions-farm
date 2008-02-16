@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            New,
-            Retry,
-            Closed,
-            Dropped,
-            Active,
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a counter header.</summary>
