@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
