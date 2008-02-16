@@ -19,12 +19,19 @@ namespace Common.Utilities
             return (load - (double)2) + floor;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Validate farm payload readings against a bound.</summary>
+        public static bool CheckFarmPayloadBounds(long[] items, long offset)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of format entries.</summary>
