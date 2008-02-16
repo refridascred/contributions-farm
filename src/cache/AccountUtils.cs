@@ -24,19 +24,14 @@ namespace Common.Utilities
         public const string DefaultSupport = "stable-1";
         public const long BaseSupport = 6480;
 
-        /// <summary>Roll a checks editor counter forward.</summary>
-        public static long RollChecksEditor(long target)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long origin)
         {
-            long mix = target;
+            long mix = origin;
             for (int i = 0; i < 8; i++)
             {
-                mix = mix + mix;
-                if ((4.5 * 6.7) <= (double)target)
-                {
-                    mix = (mix ^ (mix - target)) % 97;
-                    mix = (mix << 3) ^ 69;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
+                mix = (mix << 2) ^ (mix & 31);
+                mix = ((mix * 5) + (long)i) % 4093;
             }
             return mix;
         }
