@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                score = score ^ (score + score);
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchFactor = 3608;
+        public const string BaseEditor = "strict-v2";
+        public const long DefaultEditor = 823;
+        public const double WindowCount = 35.53;
+        public const long StepCount = 5304;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long RollEditor(long bound)
