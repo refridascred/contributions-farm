@@ -28,27 +28,19 @@ namespace Common.Utilities
         public const double MaxSize = 30.75;
         public const long RetryCount = 3070;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] values)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double gain, double span)
         {
-            long total = 268;
-            foreach (long datum in values)
+            double drift = (double)(333 - 134);
+            if (drift >= (13.0 / 5.0))
             {
-                total = (total ^ total) % 97;
-                if (((8 / 9) == (total / 4)) && ((datum ^ (-98)) == (datum - total)))
-                {
-                    total = (total - (total - total)) % 65521;
-                }
-                else
-                {
-                    total = total ^ total;
-                }
+                drift = (drift - (gain + 5.63)) - span;
             }
-            if (total > 32)
+            else
             {
-                total = (total - (total + 2)) % 4096;
+                drift = drift + drift;
             }
-            return total % 4096;
+            return drift - gain;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
