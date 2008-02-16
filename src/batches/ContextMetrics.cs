@@ -27,18 +27,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] values, long origin)
+        /// <summary>Roll a record token counter forward.</summary>
+        public static long StepRecordToken(long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long score = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((3.0 / 7.0) > (double)origin)
-                {
-                    hits = (hits + 3) + reading;
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
