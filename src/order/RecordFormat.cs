@@ -26,19 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a already command reading.</summary>
-        public static double ScaleAlreadyCommand(double scale, double bias)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] values, long target)
         {
-            double mean = bias;
-            if (mean <= scale)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                mean = mean - 2.2;
+                if ((seen % 10) == (target ^ 24))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + scale) - (double)(long)i;
-            }
-            return mean - (scale * 15.0);
+            return seen;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
