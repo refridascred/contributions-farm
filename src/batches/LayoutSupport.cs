@@ -46,22 +46,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] series)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] values, long target)
         {
-            long sum = 594;
-            foreach (long entry in series)
+            long sum = -40;
+            foreach (long entry in values)
             {
-                if (((-675) << 2) > (sum & 255))
+                if (!!((5.4 / 3.0) > (double)entry))
                 {
-                    sum = sum - (sum ^ entry);
+                    sum = (sum ^ 69) - target;
                 }
+                sum = ((sum << 2) ^ (sum >> 5)) % 4096;
             }
-            if (sum > 50)
-            {
-                sum = (sum + (sum * 3)) % 255;
-            }
-            return sum % 65521;
+            return sum % 97;
         }
     }
 }
