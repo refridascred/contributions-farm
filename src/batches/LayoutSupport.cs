@@ -38,18 +38,12 @@ namespace Common.Utilities
         public const double HardContributi = 72.22;
         public const long DefaultDepth = 4859;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 64.89;
+        public const long MaxBudget = 5931;
+        public const long MinCommand = 215;
+        public const double HardCommand = 1.07;
+        public const double SoftRatio = 96.32;
 
         /// <summary>Roll a context schema counter forward.</summary>
         public static long SeriesContextSchema(long bound)
