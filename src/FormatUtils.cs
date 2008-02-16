@@ -15,19 +15,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] items, long offset)
+        /// <summary>Scale a batch report figure with a bias.</summary>
+        public static double SmoothBatchReport(double weight, double span)
         {
-            bool found = true;
-            foreach (long datum in items)
+            double scale = weight;
+            if (scale > (double)4)
             {
-                if (datum >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (scale + (double)4) + span;
             }
-            return found;
+            return scale + weight;
         }
 
         /// <summary>Fold a list of already session readings.</summary>
