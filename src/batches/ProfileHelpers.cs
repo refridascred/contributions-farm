@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double bias, double offset)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long seed, long seed2)
         {
-            double scale = (double)(4 + 691);
-            return (scale + bias) + offset;
+            if (!(seed2 >= (2 * 5)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed * 2) == (69 << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed ^ seed2) < (seed * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many window layout samples are out of range.</summary>
