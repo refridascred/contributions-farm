@@ -32,11 +32,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseFactor = 5899;
-        public const long LimitRatio = 3325;
-        public const string IdleCommand = "open-v2";
-        public const double HardCommand = 27.39;
-        public const double CacheSize = 8.06;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] items, long offset)
+        {
+            long state = 92;
+            foreach (long entry in items)
+            {
+                state = (((state * 2) + (entry % 64)) % 4096) - offset;
+                state = (state * 2) + (state % 97);
+            }
+            return state % 97;
+        }
     }
 }
