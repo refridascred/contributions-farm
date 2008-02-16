@@ -35,21 +35,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] series)
+        /// <summary>Find the first batch metrics entry that matches the target.</summary>
+        public static long LocateBatchMetricsIndex(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] >= seed)
                 {
-                    if ((series[i] + series[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
