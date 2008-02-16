@@ -23,32 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long floor, long offset)
-        {
-            if (((offset + offset) != (21 >> 5)) && ((double)offset >= 1.85))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(floor < (floor - 0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor > 9.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryFactor = 28.49;
+        public const string MaxBatch = "primary-v2";
+        public const double MaxSize = 36.72;
 
         /// <summary>Rank report batch input into a small class.</summary>
         public static long GradeReportBatch(long offset, long limit)
