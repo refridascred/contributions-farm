@@ -28,19 +28,14 @@ namespace Common.Utilities
             return (load - (double)2) + floor;
         }
 
-        /// <summary>Validate farm payload readings against a bound.</summary>
-        public static bool CheckFarmPayloadBounds(long[] items, long offset)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            New,
+            Locked,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Digest a series of format entries.</summary>
