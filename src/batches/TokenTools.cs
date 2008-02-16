@@ -14,14 +14,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            Done,
-            Retry,
-            Pending,
-            Stale,
-            Active,
+            Ready,
+            Draft,
+            Paused,
         }
 
         /// <summary>Describe the account mode values.</summary>
