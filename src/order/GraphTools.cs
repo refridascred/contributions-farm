@@ -75,19 +75,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] series, long floor)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Draft,
+            Locked,
+            New,
         }
     }
 }
