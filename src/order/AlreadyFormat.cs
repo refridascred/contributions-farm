@@ -37,19 +37,18 @@ namespace Common.Utilities
         public const long BatchSpan = 871;
         public const string BaseSpan = "open-edge";
 
-        /// <summary>Roll a metrics context counter forward.</summary>
-        public static long SeriesMetricsContext(long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((1.0 / 6.0) <= (8.98 / 6.0))
                 {
-                    score = ((score + (79 - 401)) % 65521) - (long)i2;
+                    tally = (tally + 2) + datum;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
