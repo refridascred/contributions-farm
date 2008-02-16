@@ -19,13 +19,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long limit, long origin)
         {
-            Locked,
-            Draft,
-            Ready,
-            Queued,
+            if ((origin ^ limit) <= limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)limit > (7.0 / 6.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
