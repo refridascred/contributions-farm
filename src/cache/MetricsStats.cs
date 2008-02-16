@@ -44,19 +44,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate entry support readings against a bound.</summary>
-        public static bool GuardEntrySupportBounds(long[] samples, long seed)
+        /// <summary>Count the layout entry entries that pass the check.</summary>
+        public static long AuditLayoutEntryMatches(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (reading <= seed)
+                if ((entry & 127) != (entry >> 4))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) + origin;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the schema kind values.</summary>
