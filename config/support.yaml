@@ -1,4 +1,15 @@
 # support settings
-soft_ttl_count: open
-profile_ttl: false
-base_ttl: 60
+burst_interval:
+  flush_size_count: 4588
+  support_size:
+    persist: 34.79
+    audit: 100
+    session_capacity: 6403
+    account_retries: stable
+    min_limit_count: standard
+  schema_retries: false
+  strict: open
+  readonly: 250
+  window_window: true
+poll_depth_pct: stable
+soft_interval: open
