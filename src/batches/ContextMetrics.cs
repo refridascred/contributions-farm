@@ -33,14 +33,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] items)
         {
-            Dropped,
-            Paused,
-            Active,
-            Done,
-            Draft,
+            long total = 69;
+            foreach (long value in items)
+            {
+                total = (((total << 3) ^ total) % 1000) + value;
+            }
+            return total;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
