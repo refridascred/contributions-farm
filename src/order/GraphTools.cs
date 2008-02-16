@@ -25,10 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 67;
-        public const long DefaultGithubfarm = 2292;
-        public const string RetryTimeout = "open";
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long ClassifyMetrics(long floor, long seed)
