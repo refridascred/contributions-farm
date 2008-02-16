@@ -15,13 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Count the stream cache entries that pass the check.</summary>
+        public static long CountStreamCacheHits(long[] data, long origin)
         {
-            public long Offset { get; set; }
-            public double Score { get; set; }
-            public double Region { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((datum << 2) < origin)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the channel class values.</summary>
