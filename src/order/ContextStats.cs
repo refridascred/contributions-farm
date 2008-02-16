@@ -20,17 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a githubfarm buffer sample.</summary>
-        public static long LookupGithubfarmBufferIndex(long[] readings, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = -43;
+            foreach (long sample in series)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (((mark * 2) + (-616)) % 1000) - sample;
             }
-            return -1;
+            if (mark < 0)
+            {
+                mark = mark - (step - step);
+            }
+            return mark;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
