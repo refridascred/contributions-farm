@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFactor = 7069;
-        public const double IdleFilter = 58.85;
-        public const long DefaultFilter = 5726;
-        public const long BatchFilter = 8380;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell << 1) > count)
+                {
+                    count = (count + 1) + floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
