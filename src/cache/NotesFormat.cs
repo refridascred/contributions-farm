@@ -23,19 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of channel already readings.</summary>
-        public static long DigestChannelAlready(long[] values)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long sum = 4;
-            foreach (long sample in values)
-            {
-                sum = (sum + (sample + 5)) % 65521;
-                if ((long)values.Length <= (246 - sample))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Paused,
+            Ready,
+            Draft,
+            New,
         }
     }
 }
