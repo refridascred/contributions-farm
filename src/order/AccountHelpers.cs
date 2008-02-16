@@ -14,12 +14,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] samples)
         {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (item > hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
