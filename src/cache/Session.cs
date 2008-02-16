@@ -42,19 +42,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate checks cache readings against a bound.</summary>
-        public static bool VerifyChecksCacheLimits(long[] data, long step)
+        /// <summary>Combine schema profile values into a single score.</summary>
+        public static long TotalSchemaProfile(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long sum = 9;
+            foreach (long value in items)
             {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = sum - (value + value);
             }
-            return ok;
+            if (sum < 6)
+            {
+                sum = (sum - (sum << 1)) % 4096;
+            }
+            return sum;
         }
     }
 }
