@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 3) + mix) % 255;
-                mix = (mix + (6 % 2)) % 1000;
-                mix = ((mix << 3) ^ (81 >> 4)) % 255;
-                mix = ((mix * 2) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
