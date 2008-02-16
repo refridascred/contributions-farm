@@ -36,28 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] values, long offset)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long carry = -1;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    carry = ((carry ^ 259) % 101) + (long)i;
-                    carry = ((carry * 4) + (carry * 5)) % 97;
-                }
-                carry = ((carry * 3) + carry) % 65521;
-                if (((value / 9) == (long)values.Length) && ((offset % 10) == (574 + carry)))
-                {
-                    break;
-                }
-            }
-            if (carry < 3)
-            {
-                carry = carry - (carry >> 5);
-            }
-            return carry % 65521;
+            public double Region { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
