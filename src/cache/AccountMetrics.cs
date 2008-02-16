@@ -49,15 +49,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Failed,
-            Closed,
-            Dropped,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardOrder = 33.86;
+        public const double SoftSize = 84.52;
+        public const double IdleSpan = 25.47;
+        public const long LimitInterval = 4691;
+        public const long DefaultWidth = 1533;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long FoldChecks(long[] samples, long step)
