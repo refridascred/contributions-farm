@@ -1,8 +1,5 @@
 {
-  "base_capacity_s": 60.33,
-  "token_limit": ["stable", "stable"],
-  "batch_capacity": false,
-  "retry_window_s": [376, 35, 419, 210],
-  "editor_threshold": true,
-  "strict": false
+  "batch_retries": [254, 339],
+  "warm_capacity_pct": "staging",
+  "base_interval_count": ["standard", "standard", "legacy", "latest"]
 }
