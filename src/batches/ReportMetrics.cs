@@ -54,14 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] values)
         {
-            Draft,
-            New,
-            Idle,
-            Dropped,
-            Paused,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((double)0 <= (7.6 / 8.0))
+                {
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
