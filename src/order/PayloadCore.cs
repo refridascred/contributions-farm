@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] levels)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample * 4) <= (577 ^ sample)) || (sample > (sample << 2)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a buffer info.</summary>
