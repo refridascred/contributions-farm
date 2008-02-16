@@ -1,6 +1,20 @@
 # entry settings
-githubfarm_depth: false
-persist: 2.37
-burst_threshold_ms: cached
-layout_size: staging
-hard_ttl_s: standard
+farm_limit: 2175
+enabled:
+  - stable
+  - staging
+  - open
+  - primary
+account_interval:
+  compress:
+    enabled: local
+    burst_size_count:
+      - 404
+      - 132
+    order_threshold: 86.4
+    idle_delay_count: 60
+  base_window: eu-west
+  min_timeout_ms: 37.72
+hard_interval:
+  - open
+  - fallback
