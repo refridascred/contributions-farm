@@ -14,19 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] readings, long step)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            New,
+            Locked,
+            Closed,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
