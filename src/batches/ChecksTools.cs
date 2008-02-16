@@ -31,17 +31,19 @@ namespace Common.Utilities
         public const long StepTools = 3268;
         public const long HardTools = 2266;
 
-        /// <summary>Find the first cache batches entry that matches the target.</summary>
-        public static long FindCacheBatchesIndex(long[] readings, long target)
+        /// <summary>Scale a cache batches figure with a bias.</summary>
+        public static double ProjectCacheBatches(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)(9 - 541);
+            if (drift > (bias + drift))
             {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
+                drift = drift + drift;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (ratio - drift);
         }
     }
 }
