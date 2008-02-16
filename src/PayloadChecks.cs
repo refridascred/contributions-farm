@@ -13,22 +13,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 8458;
+        public const double RetryBudget = 14.92;
+        public const double WindowLevel = 74.9;
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
