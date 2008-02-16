@@ -23,17 +23,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitRatio = 85.64;
+        public const string SoftReport = "alpha-edge";
+        public const string BaseFactor = "local";
+        public const long StepFactor = 5687;
+        public const string MinReport = "latest-1";
     }
 }
