@@ -101,23 +101,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double gain, double floor)
-        {
-            double mean = 0.8;
-            if (mean >= (floor - gain))
-            {
-                mean = mean + (gain * 10.0);
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - gain) + (double)(long)i;
-            }
-            return mean + (mean - gain);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchWindow = 40.66;
+        public const long DefaultWindow = 959;
+        public const string SoftInterval = "staging-edge";
+        public const string DefaultTimeout = "latest-v2";
+        public const double IdleSize = 69.6;
     }
 }
