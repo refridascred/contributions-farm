@@ -46,19 +46,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Check that every entry profile entry stays within the limit.</summary>
-        public static bool ValidateEntryProfileRange(long[] series, long target)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long value in series)
+            double gain = offset + (offset - weight);
+            if (gain > (double)76)
             {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = gain - (double)56;
             }
-            return ready;
+            return gain + (double)113;
         }
     }
 }
