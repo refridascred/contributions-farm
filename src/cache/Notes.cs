@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleCount = 90.61;
-        public const long CacheFactor = 9672;
-        public const double LimitBatch = 14.78;
-        public const long MaxCount = 9954;
-        public const string MaxBatch = "local-1";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 3871;
+        public const long BurstWidth = 1723;
+        public const long MinFormat = 8489;
+        public const string WindowCount = "cached-v2";
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LocateStreamIndex(long[] items, long step)
