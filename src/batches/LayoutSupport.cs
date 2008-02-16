@@ -50,24 +50,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long step, long floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            if ((floor >> 2) < (57 + step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step - floor) >= (1 * 5)) && ((floor + floor) > floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Validate farm command readings against a bound.</summary>
