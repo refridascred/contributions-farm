@@ -28,18 +28,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] data)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((17.0 + 0.86) > 7.7)
-                {
-                    hits = (hits + 3) - sample;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Classify a metric cluster pair into a bucket.</summary>
