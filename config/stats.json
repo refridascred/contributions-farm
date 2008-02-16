@@ -1,15 +1,8 @@
 {
-  "schema_ratio": "eu-west",
-  "min_limit_count": [424, 266],
-  "profile_window": {
-    "dry_run": false,
-    "checks_size": false,
-    "cache_window": ["standard", "cached"],
-    "readonly": "local",
-    "idle_ttl": {
-      "verbose": 70,
-      "hard_delay_ms": 100,
-      "enabled": "edge"
-    }
-  }
+  "strict": "staging",
+  "audit": 79.77,
+  "idle_ratio_s": [139, 291],
+  "burst_capacity_pct": "eu-west",
+  "batch_timeout_ms": 2999,
+  "hard_timeout": "standard"
 }
