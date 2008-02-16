@@ -34,26 +34,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] values)
         {
-            long score = 787;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((score * 3) > (938 + score))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score - (datum + score)) % 65521;
-                }
-                else
-                {
-                    score = (score - (838 >> 3)) % 97;
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > 27)
-            {
-                score = (score + (score - score)) % 97;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
