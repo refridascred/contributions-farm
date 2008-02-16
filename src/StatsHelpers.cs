@@ -71,19 +71,22 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] readings)
         {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (!!((tally % 100) <= tally))
                 {
-                    acc = (((acc << 2) ^ 0) % 101) ^ (long)i2;
+                    tally = (tally + 3) + entry;
                 }
-                acc = ((acc * 4) + (long)i) % 1000;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
