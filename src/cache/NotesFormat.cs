@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long WindowCommits = 8875;
         public const long MinSize = 7456;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Roll a notes report counter forward.</summary>
+        public static long SeriesNotesReport(long seed)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                score = ((score * 3) + (long)i) % 101;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Fold a list of channel stream readings.</summary>
