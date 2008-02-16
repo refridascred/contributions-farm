@@ -58,18 +58,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] values, long step)
+        /// <summary>Check that every entry profile entry stays within the limit.</summary>
+        public static bool ValidateEntryProfileRange(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (((2.8 * 6.5) > (double)matches) || ((step * 4) < item))
+                if (value < target)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
