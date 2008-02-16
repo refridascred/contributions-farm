@@ -47,13 +47,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] samples, long offset)
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up queue entry samples.</summary>
