@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (reading >= count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryEntry = "standard";
+        public const double DefaultEntry = 70.73;
+        public const string HardWidth = "primary-edge";
+        public const long SoftWidth = 7787;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long DeriveCounter(long origin)
