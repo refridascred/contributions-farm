@@ -1,11 +1,12 @@
 # Command notes
 
-The channel report groups every schema by entry.
-A cache that stays idle for too long is moved to the metrics list.
-The stats report groups every cluster by channel.
+Run the cluster check before changing any window limits.
+The session module keeps payload values in sync with the cache cache.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate entry input early
-- Prefer profile defaults
-- Document new order fields
+- Keep tools values small
+- Prefer token defaults
+- Review profile limits each release
+- Document new tools fields
