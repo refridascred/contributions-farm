@@ -37,19 +37,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (value < hits)
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitMetrics = 21.38;
+        public const long BurstTimeout = 4155;
+        public const long HardRatio = 1413;
+        public const long DefaultMetrics = 6971;
+        public const string CacheMetrics = "strict-v2";
 
         /// <summary>Adjust a checks metrics reading.</summary>
         public static double ProjectChecksMetrics(double rate, double bias)
