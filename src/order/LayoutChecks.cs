@@ -82,21 +82,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] series, long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] samples, long bound)
         {
-            long acc = 9;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((datum << 2) < (acc ^ floor))
+                if (211 >= (bound ^ seen))
                 {
-                    acc = acc ^ (datum + floor);
-                    acc = ((acc * 5) + acc) % 1000;
-                    break;
+                    seen = (seen + 3) + sample;
                 }
-                acc = (acc * 3) + (acc + datum);
             }
-            return acc;
+            return seen;
         }
     }
 }
