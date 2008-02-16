@@ -23,12 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardCount = "legacy-edge";
-        public const long IdleWidth = 8936;
-        public const long MaxContributi = 5330;
-        public const long IdleContributi = 6979;
-        public const string StepContributi = "latest-1";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardFactor = 3393;
+        public const long HardInterval = 2469;
+        public const long BaseLevel = 3849;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BurstCache = 4155;
