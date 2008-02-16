@@ -33,19 +33,14 @@ namespace Common.Utilities
             return scale - (offset + ratio);
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] values, long offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            New,
+            Draft,
+            Locked,
+            Closed,
         }
     }
 }
