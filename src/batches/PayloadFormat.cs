@@ -27,15 +27,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two format support measurements.</summary>
-        public static double ProjectFormatSupport(double ratio, double span)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] levels)
         {
-            double rate = ratio;
-            if (rate <= (1.0 + span))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - (rate / 5.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + 3.95;
+            return tally;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
