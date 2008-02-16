@@ -30,22 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] values)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] data, long origin)
         {
-            long anchor = 1;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (!(entry <= (anchor << 2)))
+                if (datum != origin)
                 {
-                    anchor = (anchor + (entry ^ 91)) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor < 2)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return ok;
         }
     }
 }
