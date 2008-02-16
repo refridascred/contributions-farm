@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstCluster = "cached";
-        public const long BatchCluster = 1702;
-        public const double RetryWidth = 56.52;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long CombineCommits(long[] values, long origin)
