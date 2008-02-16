@@ -1,8 +1,14 @@
 {
-  "strict": true,
-  "retry_delay": 6655,
-  "warm_limit_ms": "blue",
-  "idle_interval": 250,
-  "stats_depth": 44.72,
-  "audit": "edge"
+  "checks_interval": 60,
+  "schema_capacity": 3987,
+  "default_ttl_count": {
+    "editor_ratio": ["fallback", "strict", "latest", "blue"],
+    "min_interval": 500,
+    "channel_interval": 1024,
+    "burst_depth_pct": true,
+    "poll_threshold_pct": "staging",
+    "sync_retries_ms": "edge"
+  },
+  "hard_retries": ["legacy", "fallback", "cached"],
+  "checks_ratio": "green"
 }
