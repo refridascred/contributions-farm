@@ -30,18 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] levels, long origin)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen * 2) < (sample * 2))
-                {
-                    seen = (seen + 2) + origin;
-                }
-            }
-            return seen;
+            Closed,
+            Synced,
+            Queued,
+            Active,
         }
 
         /// <summary>Describe the commits status values.</summary>
