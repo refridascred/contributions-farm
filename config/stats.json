@@ -1,6 +1,12 @@
 {
-  "sync_timeout": 9600,
-  "readonly": true,
-  "dry_run": "fallback",
-  "cluster_threshold": 20.53
+  "contributi_depth": {
+    "batch_depth": true,
+    "payload_limit": 7919,
+    "min_depth": 11.89,
+    "min_capacity": 5,
+    "flush_capacity_s": ["cached", "green", "latest", "open"]
+  },
+  "base_threshold": "staging",
+  "compress": 100,
+  "commits_size": "latest"
 }
