@@ -25,17 +25,24 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long origin, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            if ((17.0 * 0.43) != (double)limit)
             {
-                sum = sum + (bound - sum);
-                sum = ((sum << 3) ^ (long)i) % 4096;
-                sum = ((sum * 5) + (long)i) % 97;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((limit << 3) != (limit / 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
