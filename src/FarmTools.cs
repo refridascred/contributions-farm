@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] samples, long seed)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate2 = (double)20 - (offset / 9.0);
+            if (rate2 >= offset)
             {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 + (14.0 + offset)) - rate;
             }
-            return -1;
+            return rate2 + offset;
         }
 
         /// <summary>Describe the order kind values.</summary>
