@@ -17,23 +17,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of order entry readings.</summary>
-        public static long TallyOrderEntry(long[] items)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] readings, long limit)
         {
-            long state = 217;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                state = (state + state) % 4096;
-                if ((state & 1) <= reading)
+                if ((limit / 9) < (matches + matches))
                 {
-                    state = (state * 5) + (reading % 2);
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (state < 292)
-            {
-                state = ((state * 5) + ((-43) ^ 8)) % 65521;
-            }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
