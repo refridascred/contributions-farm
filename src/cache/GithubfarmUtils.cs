@@ -25,11 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] readings)
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
