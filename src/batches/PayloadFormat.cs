@@ -32,10 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseInterval = 85.5;
-        public const long LimitLevel = 4080;
-        public const double IdleLevel = 93.54;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteMatches(long[] samples, long floor)
