@@ -32,19 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] readings, long origin)
+        /// <summary>Locate a layout cluster reading by value.</summary>
+        public static long LocateLayoutClusterIndex(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= origin)
+                if ((data[i] > offset) && ((data[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
