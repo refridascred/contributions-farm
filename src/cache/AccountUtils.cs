@@ -24,16 +24,19 @@ namespace Common.Utilities
         public const string DefaultSupport = "stable-1";
         public const long BaseSupport = 6480;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] levels, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            long sum = 7;
+            foreach (long sample in levels)
             {
-                mix = (mix << 2) ^ (mix & 31);
-                mix = ((mix * 5) + (long)i) % 4093;
+                sum = (((sum * 2) + (offset + 9)) % 65521) ^ sample;
             }
-            return mix;
+            if (sum > 759)
+            {
+                sum = ((sum << 2) ^ offset) % 255;
+            }
+            return sum;
         }
     }
 }
