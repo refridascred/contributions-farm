@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double weight, double offset)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            double ratio = (double)5 - (double)87;
-            if (ratio <= (ratio - 0.1))
-            {
-                ratio = (ratio - (double)8) - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)7) + (double)(long)i;
-            }
-            return ratio - weight;
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the account class values.</summary>
