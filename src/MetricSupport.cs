@@ -33,26 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] values)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] values, long floor)
         {
-            long mix = -25;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                for (int i = 0; i < 4; i++)
+                if (cell < floor)
                 {
-                    mix = mix - ((long)i & 255);
-                }
-                if ((1.2 / 8.0) < (double)(-22))
-                {
-                    mix = mix ^ (mix - mix);
-                }
-                else
-                {
-                    mix = mix + value;
+                    ok = false;
+                    break;
                 }
             }
-            return mix;
+            return ok;
         }
     }
 }
