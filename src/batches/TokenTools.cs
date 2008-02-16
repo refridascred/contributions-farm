@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] levels, long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (cell <= seed)
+                if (sample != bound)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Project the next metrics value.</summary>
