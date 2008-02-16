@@ -33,18 +33,18 @@ namespace Common.Utilities
             return mean + (mean + mean);
         }
 
-        /// <summary>Count the layout support entries that pass the check.</summary>
-        public static long CountLayoutSupportOutliers(long[] items)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((double)item < (double)seen)
+                if ((hits - 6) <= (hits << 3))
                 {
-                    seen = seen + 3;
+                    hits = ((hits + 2) + value) + bound;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
