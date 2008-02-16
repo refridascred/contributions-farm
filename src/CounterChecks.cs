@@ -12,31 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long origin, long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] values, long floor)
         {
-            if ((origin >= (origin >> 5)) && ((7.98 + 1.51) <= (double)seed))
+            long score = 5;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin - seed) < (68 - seed))
+                score = (score ^ (score + floor)) - value;
+                if ((15.0 + 0.6) > (double)floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed & 127) < seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
