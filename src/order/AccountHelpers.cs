@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Queued,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxSpan = "alpha";
+        public const string MaxCluster = "cached";
+        public const long LimitBudget = 2894;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long target)
