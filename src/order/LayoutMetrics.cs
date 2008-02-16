@@ -41,11 +41,19 @@ namespace Common.Utilities
             return scale - (offset + ratio);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleInterval = 5242;
-        public const long CacheSpan = 1436;
-        public const double MaxContext = 36.74;
-        public const string DefaultLevel = "staging-v2";
-        public const string CacheSize = "stable";
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
