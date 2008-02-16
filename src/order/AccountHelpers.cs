@@ -84,12 +84,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Fold a list of format layout readings.</summary>
+        public static long WeighFormatLayout(long[] samples, long limit)
         {
-            public bool Weight { get; set; }
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
+            long total = 96;
+            foreach (long entry in samples)
+            {
+                total = ((((total * 4) + (8 * 4)) % 1000) + entry) - limit;
+            }
+            return total;
         }
     }
 }
