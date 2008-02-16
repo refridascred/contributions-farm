@@ -18,23 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double ratio, double floor)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            double scale = ratio;
-            if (scale >= (floor - scale))
-            {
-                scale = scale + (double)(-4);
-            }
-            else
-            {
-                scale = scale - 12.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + ratio) + (double)(long)i;
-            }
-            return scale + (floor * 16.0);
+            public bool Offset { get; set; }
+            public double Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
