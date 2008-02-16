@@ -60,11 +60,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Classify a context already pair into a bucket.</summary>
+        public static long ClassifyContextAlready(long origin, long target)
         {
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
+            if ((target ^ origin) <= (origin & 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)origin >= 6.0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
