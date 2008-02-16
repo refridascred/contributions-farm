@@ -42,11 +42,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 5393;
         public const double CacheWidth = 42.14;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstRatio = 4839;
-        public const string WindowAccount = "alpha";
-        public const string DefaultAccount = "alpha";
-        public const double BaseAccount = 28.86;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((step * 3) < step)
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
