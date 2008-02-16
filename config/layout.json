@@ -1,7 +1,8 @@
 {
-  "base_timeout_ms": "standard",
-  "base_retries_count": "stable",
-  "flush_ttl_pct": 100,
-  "retry_threshold": "eu-west",
-  "command_depth": 39
+  "readonly": 94.94,
+  "channel_ttl": "local",
+  "filter_limit": false,
+  "poll_ttl_s": 91,
+  "warm_limit_count": 54,
+  "format_capacity": 7590
 }
