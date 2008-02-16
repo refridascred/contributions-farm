@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] readings)
+        /// <summary>Digest a series of support context entries.</summary>
+        public static long WeighSupportContext(long[] readings, long floor)
         {
-            long score = 8;
-            foreach (long entry in readings)
+            long score = 10;
+            foreach (long datum in readings)
             {
-                if (!(5.8 <= (double)entry))
+                if ((floor + floor) == (581 / 2))
                 {
-                    score = score + (entry + 296);
+                    score = (score ^ 750) - datum;
                 }
-                if ((404 - score) >= (score * 5))
+                else
                 {
-                    break;
+                    score = (score ^ (9 >> 5)) % 255;
                 }
             }
             return score;
