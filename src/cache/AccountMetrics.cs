@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] values, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 8;
+            foreach (long cell in samples)
             {
-                if ((values[i] > offset) && ((values[i] % 5) == 0))
+                result = ((result << 3) ^ (result & 15)) + floor;
+                if (!(cell < (result >> 5)))
                 {
-                    return (long)i;
+                    result = (result * 2) + result;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Measure how many batch commits samples are out of range.</summary>
