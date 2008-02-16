@@ -38,12 +38,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Queued,
-            Dropped,
-            New,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSupport = "open-edge";
+        public const string SoftWidth = "legacy-edge";
+        public const long CacheWidth = 3483;
     }
 }
