@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            public double Score { get; set; }
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
