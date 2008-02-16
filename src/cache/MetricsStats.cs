@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] series, long offset)
+        /// <summary>Grade a buffer batches value against two limits.</summary>
+        public static long GradeBufferBatches(long floor, long bound)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            if ((floor << 1) < 3)
             {
-                if (cell >= offset)
+                return 5;
+            }
+            else
+            {
+                if ((9 >> 1) <= (floor & 31))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
