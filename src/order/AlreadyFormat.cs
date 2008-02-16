@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order buffer samples are out of range.</summary>
-        public static long MeasureOrderBufferMatches(long[] samples, long limit)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((18.0 / 3.0) >= (double)limit)
+                if (item < bound)
                 {
-                    hits = (hits + 3) - value;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a metric stats.</summary>
