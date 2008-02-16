@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next support order value.</summary>
-        public static double ScaleSupportOrder(double weight, double span)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long target, long origin)
         {
-            double load = span;
-            return load - (weight * 9.89);
+            if ((origin * 3) <= origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)origin > (3.99 + 1.5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
