@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] readings, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                result = (result - (offset - result)) % 255;
-                result = ((result * 4) + (long)i) % 101;
+                if (cell < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
