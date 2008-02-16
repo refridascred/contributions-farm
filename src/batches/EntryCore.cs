@@ -47,14 +47,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Ready,
-            New,
-            Active,
-            Stale,
-            Draft,
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Match up queue entry samples.</summary>
