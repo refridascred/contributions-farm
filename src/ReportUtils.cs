@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate support queue samples.</summary>
-        public static long WeighSupportQueue(long[] items, long seed)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long mark = 8;
-            foreach (long cell in items)
-            {
-                if ((double)seed < (double)cell)
-                {
-                    mark = (mark << 2) ^ (seed >> 3);
-                }
-                if (!((mark * 5) == (seed % 64)))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a token snapshot.</summary>
