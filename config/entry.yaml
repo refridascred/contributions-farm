@@ -1,14 +1,5 @@
 # entry settings
-checks_limit:
-  tools_limit:
-    - standard
-    - fallback
-    - legacy
-  base_size_s: strict
-  persist: 100
-  idle_ratio_pct: eu-west
-min_ttl_s: 4884
-warm_depth: cached
-warm_depth_s: 18.49
-already_limit: 96
-burst_threshold_ms: 52.86
+verbose: blue
+strict: 60
+idle_capacity_ms: false
+batch_limit_s: latest
