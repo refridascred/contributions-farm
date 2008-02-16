@@ -36,11 +36,11 @@ namespace Common.Utilities
         public const long BurstRatio = 6889;
         public const long BurstBudget = 2456;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the support level values.</summary>
