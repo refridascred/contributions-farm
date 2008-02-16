@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (176 <= (entry ^ hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultContributi = "local-v2";
+        public const long CacheDepth = 2456;
+        public const long MinWidth = 6144;
 
         /// <summary>Classify a token metrics pair into a bucket.</summary>
         public static long SortTokenMetrics(long step, long target)
