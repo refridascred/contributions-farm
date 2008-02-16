@@ -16,17 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a notes support sample.</summary>
-        public static long LocateNotesSupportIndex(long[] items, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((items[i] > step) && ((items[i] % 2) != 0))
+                if ((double)2 < (double)sample)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
