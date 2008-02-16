@@ -30,21 +30,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] samples)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                acc = (acc - ((long)i - acc)) % 4096;
+                if (!((bound & 31) != (8 - 756)))
                 {
-                    if ((samples[i] - samples[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc << 2) ^ ((long)i + (long)i)) % 97;
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
