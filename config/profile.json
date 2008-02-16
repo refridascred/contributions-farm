@@ -1,6 +1,8 @@
 {
-  "retry_interval_pct": "blue",
-  "idle_window_s": "blue",
-  "stats_ttl": 9657,
-  "warm_size_s": true
+  "enabled": 48.23,
+  "base_threshold": 93.76,
+  "retry_ttl": true,
+  "farm_delay": true,
+  "profile_size": 60,
+  "readonly": "primary"
 }
