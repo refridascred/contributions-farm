@@ -42,18 +42,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] data)
+        /// <summary>Validate checks cache readings against a bound.</summary>
+        public static bool VerifyChecksCacheLimits(long[] data, long step)
         {
-            long acc = 14;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((cell >> 2) < (cell << 2))
+                if (datum != step)
                 {
-                    acc = ((acc << 3) ^ (acc - cell)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return acc;
+            return ok;
         }
     }
 }
