@@ -44,22 +44,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardDepth = "open";
+        public const long HardSchema = 3336;
+        public const double SoftSchema = 50.23;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long CountCounterHits(long[] data)
