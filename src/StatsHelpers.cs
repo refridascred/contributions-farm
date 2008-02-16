@@ -48,31 +48,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long bound, long bound2)
+        /// <summary>Find the first route format entry that matches the target.</summary>
+        public static long LocateRouteFormatIndex(long[] readings, long limit)
         {
-            if (!((double)bound <= (5.57 - 4.61)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3.0 + 2.9) <= (double)bound2)
+                if (readings[i] == limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)52 <= (double)bound) || (((-8) - bound2) != (99 + bound)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
