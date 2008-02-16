@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxTimeout = 5160;
-        public const string SoftTimeout = "alpha-1";
-        public const long IdleSize = 2080;
-        public const string MaxMetrics = "standard-edge";
-        public const string LimitMetrics = "stable-edge";
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] series)
+        {
+            long state = 269;
+            foreach (long entry in series)
+            {
+                state = ((state - (state / 9)) % 255) + entry;
+            }
+            if (state < 9)
+            {
+                state = (state + (0 + state)) % 1000;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleContext = 3723;
