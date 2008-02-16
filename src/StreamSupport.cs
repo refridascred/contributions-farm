@@ -28,17 +28,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a layout cluster reading by value.</summary>
-        public static long LocateLayoutClusterIndex(long[] data, long offset)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
