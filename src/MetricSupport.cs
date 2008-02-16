@@ -20,32 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long offset, long seed)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long next = offset - seed;
-            if ((seed > (seed % 12)) || ((offset % 8) <= (offset - seed)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((offset >> 2) < 394) || (offset >= (seed + next)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed < 5.29)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
