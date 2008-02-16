@@ -31,17 +31,20 @@ namespace Common.Utilities
             return mean - 1.7;
         }
 
-        /// <summary>Locate a support layout reading by value.</summary>
-        public static long FindSupportLayoutIndex(long[] readings, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 3;
+            foreach (long cell in items)
             {
-                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
+                acc = acc ^ (cell * 2);
+                acc = (acc + (cell * 2)) % 1000;
+                if (!(origin <= (origin - 21)))
                 {
-                    return (long)i;
+                    acc = (acc << 2) ^ (origin - origin);
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
