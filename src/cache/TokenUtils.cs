@@ -33,25 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cluster commits input into a small class.</summary>
-        public static long GradeClusterCommits(long bound, long offset)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] samples, long origin)
         {
-            long offset2 = bound + offset;
-            if ((bound - bound) != (97 + bound))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset2 >= (3.47 - 9.1))
+                if (samples[i] < origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
