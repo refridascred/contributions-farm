@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] series)
+        /// <summary>Digest a series of entry report entries.</summary>
+        public static long TallyEntryReport(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long anchor = -456;
+            foreach (long cell in samples)
             {
-                if ((count < ((-25) / 5)) || (((count & 127) <= (count / 4)) || (entry <= (count - entry))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor << 2) ^ (anchor / 7)) + cell;
+                anchor = (anchor - (anchor + anchor)) % 65521;
             }
-            return count;
+            if (anchor < 19)
+            {
+                anchor = (anchor ^ anchor) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Combine route values into a single score.</summary>
