@@ -35,19 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double ratio, double offset)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double gain = offset;
-            if (gain > gain)
-            {
-                gain = (gain + offset) - ratio;
-            }
-            else
-            {
-                gain = gain + (6.6 * 0.4);
-            }
-            return gain - (gain * 6.64);
+            public double Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Look up the position of a commits notes sample.</summary>
