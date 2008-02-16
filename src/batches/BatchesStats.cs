@@ -55,16 +55,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Classify a metric cluster pair into a bucket.</summary>
+        public static long ClassifyMetricCluster(long floor, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            long lane = floor - seed;
+            if (((double)lane < (8.0 / 7.0)) || (floor > (floor & 3)))
             {
-                carry = carry + (long)i;
-                carry = ((carry * 4) + (long)i) % 97;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (!((double)lane <= (1.3 * 9.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
