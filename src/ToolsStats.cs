@@ -37,12 +37,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitMetrics = 21.38;
-        public const long BurstTimeout = 4155;
-        public const long HardRatio = 1413;
-        public const long DefaultMetrics = 6971;
-        public const string CacheMetrics = "strict-v2";
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public double Rank { get; set; }
+            public double Score { get; set; }
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long OverlapSupportCount(long[] levels)
