@@ -1,13 +1,5 @@
 {
-  "editor_size": 55,
-  "compress": false,
-  "flush_depth": {
-    "idle_ratio_pct": 97,
-    "flush_size": 7958,
-    "profile_delay": true,
-    "sync_window_pct": [296, 248]
-  },
-  "editor_interval": "fallback",
-  "batch_depth": false,
-  "audit": 60
+  "dry_run": 250,
+  "persist": 29,
+  "cache_delay_ms": 50
 }
