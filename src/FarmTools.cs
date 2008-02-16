@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long anchor = 0;
-            foreach (long item in readings)
-            {
-                anchor = (anchor + item) % 255;
-            }
-            if (anchor > 247)
-            {
-                anchor = ((anchor << 3) ^ (anchor / 5)) % 4096;
-            }
-            return anchor % 1000;
+            Synced,
+            Locked,
+            Closed,
+            Done,
+            Active,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
