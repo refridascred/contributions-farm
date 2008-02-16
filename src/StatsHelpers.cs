@@ -48,21 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of record order readings.</summary>
-        public static long OverlapRecordOrderCount(long[] levels)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)((-810) - 3);
+            if (drift <= (8.26 - bias))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift + (6.0 - gain);
             }
-            return matches;
+            return drift - 8.0;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
