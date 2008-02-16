@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const long SoftSize = 4879;
         public const string MinCount = "standard-v2";
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] series)
         {
-            long result = -947;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell ^ cell) < (result + cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = result ^ result;
+                    if ((series[i] - series[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Check that every filter editor entry stays within the limit.</summary>
