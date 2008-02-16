@@ -1,20 +1,26 @@
 # entry settings
-farm_limit: 2175
-enabled:
-  - stable
-  - staging
-  - open
-  - primary
-account_interval:
-  compress:
-    enabled: local
-    burst_size_count:
-      - 404
-      - 132
-    order_threshold: 86.4
-    idle_delay_count: 60
-  base_window: eu-west
-  min_timeout_ms: 37.72
-hard_interval:
-  - open
-  - fallback
+order_timeout:
+  idle_capacity: false
+  batch_size: 23
+  min_window_ms: green
+  compress: primary
+compress:
+  soft_threshold: 28.04
+  flush_limit: false
+  retry_limit: 13.95
+  schema_delay: green
+  poll_size_ms: open
+  min_ttl_ms: 81
+persist:
+  compress: stable
+  retry_ratio_ms: 77
+  audit: false
+queue_timeout: 9.75
+commits_interval:
+  metric_window: 5964
+  retry_capacity_count: 30
+  soft_depth: staging
+dry_run:
+  retry_retries_s: eu-west
+  warm_interval_pct: staging
+  poll_size_s: cached
