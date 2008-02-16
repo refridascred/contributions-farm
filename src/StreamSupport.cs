@@ -13,19 +13,20 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            long mix = 363;
+            foreach (long value in data)
             {
-                if ((origin / 4) >= 845)
+                mix = (mix + value) % 101;
+                mix = ((mix << 2) ^ ((long)data.Length ^ mix)) % 101;
+                if ((double)8 <= (double)mix)
                 {
-                    continue;
+                    break;
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return mix % 65521;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
