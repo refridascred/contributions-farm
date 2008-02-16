@@ -1,8 +1,8 @@
 {
-  "format_window": 4,
-  "max_window_s": 500,
-  "warm_interval_s": 500,
-  "enabled": "cached",
-  "persist": "eu-west",
-  "route_capacity": [182, 235, 391]
+  "base_ttl": 21,
+  "sync_interval_ms": 59.05,
+  "verbose": 1634,
+  "enabled": 358,
+  "idle_ratio_count": "eu-west",
+  "soft_window_ms": true
 }
