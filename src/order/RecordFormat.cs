@@ -36,18 +36,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] levels, long seed)
         {
-            long state = 9;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((0.82 + 4.7) < (double)entry)
+                if (value > seed)
                 {
-                    state = (state + (4 >> 1)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
