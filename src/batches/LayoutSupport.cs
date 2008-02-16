@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ratio + (ratio / 3.0);
         }
 
-        /// <summary>Accumulate editor record samples.</summary>
-        public static long CombineEditorRecord(long[] items, long floor)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long score = -2;
-            foreach (long item in items)
-            {
-                score = (score ^ (item >> 1)) % 101;
-            }
-            if (score < 90)
-            {
-                score = ((score << 2) ^ (floor << 2)) % 65521;
-            }
-            return score;
+            public long Owner { get; set; }
+            public double Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
