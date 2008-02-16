@@ -13,12 +13,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCluster = 85.56;
-        public const long WindowCluster = 1295;
-        public const long MaxCluster = 314;
-        public const double BaseSize = 93.88;
-        public const long RetryCluster = 4059;
+        /// <summary>Project the next stream profile value.</summary>
+        public static double BlendStreamProfile(double scale, double offset)
+        {
+            double weight = offset;
+            if (weight < offset)
+            {
+                weight = weight - (scale + 9.6);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + weight;
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long DeriveLayout(long offset)
