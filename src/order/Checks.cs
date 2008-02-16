@@ -44,21 +44,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count context already pairs that satisfy a relation.</summary>
-        public static long OverlapContextAlreadyCount(long[] readings)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = (double)(13 ^ 686);
+            if (load < (weight * 7.7))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load - load) - bias;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (double)1;
         }
 
         /// <summary>Hold a editor options.</summary>
