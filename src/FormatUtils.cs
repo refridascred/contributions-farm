@@ -13,22 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of channel entry entries.</summary>
-        public static long FoldChannelEntry(long[] values)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] levels, long seed)
         {
-            long result = 79;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (661 >= result)
+                if (((cell & 3) >= cell) && ((5.15 - 19.0) <= (double)seed))
                 {
-                    result = (result - (result % 64)) % 101;
-                }
-                if ((double)value < (5.8 / 3.0))
-                {
-                    result = (result * 3) + (result / 4);
+                    tally = tally + 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Fold a list of already session readings.</summary>
