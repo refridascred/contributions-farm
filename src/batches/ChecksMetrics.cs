@@ -60,23 +60,19 @@ namespace Common.Utilities
             return load - (gain * 9.5);
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double gain, double offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] levels, long offset)
         {
-            double drift = gain;
-            if (drift < (drift - offset))
+            bool valid = true;
+            foreach (long item in levels)
             {
-                drift = drift - (gain * 0.3);
+                if (item < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (gain - gain)) + (double)(long)i;
-            }
-            return drift + (gain - drift);
+            return valid;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
