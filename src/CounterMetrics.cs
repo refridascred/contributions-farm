@@ -21,13 +21,21 @@ namespace Common.Utilities
         public const string BaseFactor = "standard";
         public const string MaxScore = "standard-v2";
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Count metrics record pairs that satisfy a relation.</summary>
+        public static long CompareMetricsRecordCount(long[] items)
         {
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
