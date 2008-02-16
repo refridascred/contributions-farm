@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long origin)
         {
-            Paused,
-            Active,
-            Synced,
-            Stale,
-            Dropped,
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = (acc + acc) % 4096;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Locate a window reading by value.</summary>
