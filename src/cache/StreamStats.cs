@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Count { get; set; }
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
             public long Size { get; set; }
         }
 
