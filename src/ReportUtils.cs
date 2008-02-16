@@ -33,18 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepGraph = 64.58;
+        public const string HardScore = "open-edge";
+        public const long LimitCount = 5723;
+        public const long BurstRatio = 6889;
+        public const long BurstBudget = 2456;
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
