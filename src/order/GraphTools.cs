@@ -22,10 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinScore = "fallback-1";
-        public const long WindowFormat = 7640;
-        public const long MaxCount = 633;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long DeriveContributi(long bound)
