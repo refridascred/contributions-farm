@@ -1,8 +1,6 @@
 # support settings
-cache_depth_count: true
-verbose: false
-readonly: latest
-queue_interval:
-  - eu-west
-  - eu-west
-flush_timeout_count: open
+dry_run: fallback
+sync_interval_ms: 5250
+min_threshold: 4355
+warm_threshold: edge
+warm_interval_s: false
