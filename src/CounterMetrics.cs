@@ -15,12 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] series)
         {
-            Idle,
-            Active,
-            Queued,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((double)reading <= (16.0 + 6.2)) && ((223 % 5) <= (hits % 24)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
