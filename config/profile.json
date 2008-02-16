@@ -1,6 +1,8 @@
 {
-  "burst_interval_s": 27.89,
-  "sync_ttl": [451, 111, 302, 43],
-  "default_threshold_ms": true,
-  "persist": 30
+  "soft_ttl_pct": [335, 258, 464, 158],
+  "audit": 38,
+  "dry_run": ["fallback", "latest"],
+  "sync_interval_count": 5.84,
+  "cache_ratio_s": [441, 341, 364, 445],
+  "burst_window_pct": "staging"
 }
