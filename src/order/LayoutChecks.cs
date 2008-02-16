@@ -28,12 +28,15 @@ namespace Common.Utilities
         public const double MaxSize = 30.75;
         public const long RetryCount = 3070;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Accumulate entry contributi samples.</summary>
+        public static long TallyEntryContributi(long[] items)
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public bool Count { get; set; }
+            long score = 7;
+            foreach (long reading in items)
+            {
+                score = ((score ^ (score >> 5)) % 255) ^ reading;
+            }
+            return score;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
