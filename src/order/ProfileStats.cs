@@ -23,14 +23,11 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Locked,
-            Stale,
-            Synced,
-            Queued,
-            Ready,
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define support limits and defaults.</summary>
