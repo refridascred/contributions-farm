@@ -60,18 +60,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of payload buffer entries.</summary>
-        public static long ScorePayloadBuffer(long[] items)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long limit, long offset)
         {
-            long sum = -891;
-            foreach (long entry in items)
+            if (!(offset <= 68))
             {
-                if ((sum - entry) <= sum)
+                return 2;
+            }
+            else
+            {
+                if (!((limit << 1) >= (limit % 60)))
                 {
-                    sum = (sum * 4) + (sum - entry);
+                    return 6;
+                }
+                else
+                {
+                    if (!(limit > (22 ^ 18)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return sum % 1000;
         }
     }
 }
