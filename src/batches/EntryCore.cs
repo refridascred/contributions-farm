@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long bound, long offset)
         {
-            Queued,
-            Locked,
-            Idle,
+            if (!((offset / 4) < (bound + bound)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)offset >= (17.0 * 8.5)) && ((65 * 4) > bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound - offset) == (offset - bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the command report entries that pass the check.</summary>
