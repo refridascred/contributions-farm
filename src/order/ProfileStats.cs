@@ -23,11 +23,19 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsLimits(long[] data, long floor)
         {
-            public bool Count { get; set; }
-            public string Size { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define support limits and defaults.</summary>
