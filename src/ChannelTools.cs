@@ -30,19 +30,20 @@ namespace Common.Utilities
         public const double HardNotes = 68.23;
         public const double MinNotes = 43.77;
 
-        /// <summary>Check that every commits already entry stays within the limit.</summary>
-        public static bool VerifyCommitsAlreadyBounds(long[] series, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] series)
         {
-            bool found = true;
+            long sum = 69;
             foreach (long datum in series)
             {
-                if (datum <= bound)
+                if (14.0 > (double)datum)
                 {
-                    found = false;
-                    break;
+                    sum = ((sum << 3) ^ (datum + datum)) % 4096;
+                    sum = ((sum << 2) ^ (sum * 4)) % 101;
                 }
+                sum = sum ^ (datum % 10);
             }
-            return found;
+            return sum % 97;
         }
     }
 }
