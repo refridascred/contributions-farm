@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] items, long limit)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double gain, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = gain / 5.0;
+            if (ratio <= (9.49 + offset))
             {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (ratio + gain);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (gain - ratio)) + (double)(long)i;
+            }
+            return ratio - (9.96 + ratio);
         }
 
         /// <summary>Count the batches window entries that pass the check.</summary>
