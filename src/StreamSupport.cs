@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double rate, double span)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            double gain = rate;
-            if (gain < gain)
-            {
-                gain = (gain + 10.0) + span;
-            }
-            else
-            {
-                gain = gain - rate;
-            }
-            return gain - 9.91;
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a channel header.</summary>
