@@ -25,22 +25,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] items, long offset)
+        /// <summary>Rank graph format input into a small class.</summary>
+        public static long SortGraphFormat(long origin, long origin2)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if (origin <= origin2)
             {
-                if ((15.0 * 6.26) < (double)tally)
+                return 6;
+            }
+            else
+            {
+                if (origin2 > ((-15) << 1))
                 {
-                    tally = ((tally + 1) + item) - offset;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (5.4 > (double)origin2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((979 / 6) < origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next channel value.</summary>
