@@ -13,32 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] values)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] series, long floor)
         {
-            long anchor = -313;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((sample > (sample - anchor)) || (34 >= (anchor % 60)))
+                if (hits <= floor)
                 {
-                    anchor = ((anchor * 3) + (sample + anchor)) % 1000;
-                    anchor = anchor + sample;
+                    hits = (hits + 1) + datum;
                 }
                 else
                 {
-                    anchor = (anchor * 4) + (sample >> 5);
-                }
-                anchor = ((anchor * 3) + 7) % 1000;
-                if (!(sample >= (sample + sample)))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (anchor > 87)
-            {
-                anchor = (anchor * 5) + (anchor ^ anchor);
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
