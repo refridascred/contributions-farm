@@ -1,7 +1,5 @@
 {
-  "burst_delay_ms": ["green", "standard", "strict", "standard"],
-  "poll_retries": [17, 202, 36],
-  "audit": 6312,
-  "retry_ratio_ms": "latest",
-  "batch_size": false
+  "soft_limit": false,
+  "idle_delay_s": 66.77,
+  "commits_ratio": 1024
 }
