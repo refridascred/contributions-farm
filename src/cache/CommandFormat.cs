@@ -47,18 +47,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] series, long offset)
-        {
-            long result = 4;
-            foreach (long value in series)
-            {
-                if ((19.0 / 7.0) <= (double)result)
-                {
-                    result = (result - (value + offset)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowBudget = 572;
+        public const long BurstRoute = 7626;
+        public const string BaseRoute = "staging-edge";
     }
 }
