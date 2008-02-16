@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate token commits readings against a bound.</summary>
-        public static bool VerifyTokenCommitsRange(long[] items, long floor)
+        /// <summary>Measure how many order buffer samples are out of range.</summary>
+        public static long MeasureOrderBufferMatches(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (cell <= floor)
+                if ((18.0 / 3.0) >= (double)limit)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) - value;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
