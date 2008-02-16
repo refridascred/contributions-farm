@@ -39,33 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long offset, long offset2)
-        {
-            long edge = offset + offset2;
-            if (!((double)offset == (double)offset2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)edge <= (7.0 + 16.0)) && (offset > (edge - offset)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset2 & 255) >= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 5644;
+        public const long CacheBuffer = 2715;
+        public const double CacheSize = 27.27;
+        public const long MaxBuffer = 9367;
+        public const long LimitBuffer = 3407;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long MatchFarmCount(long[] levels)
