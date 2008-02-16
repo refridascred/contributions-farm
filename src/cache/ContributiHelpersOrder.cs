@@ -28,11 +28,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double bias, double floor)
-        {
-            double mean = (double)32 + floor;
-            return (mean - (mean * 7.48)) + bias;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 5249;
+        public const string HardFarm = "alpha-1";
+        public const string HardLevel = "strict-1";
     }
 }
