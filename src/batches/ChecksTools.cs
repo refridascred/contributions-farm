@@ -47,15 +47,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of counter buffer entries.</summary>
-        public static long ScoreCounterBuffer(long[] samples, long origin)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long state = 4;
-            foreach (long entry in samples)
-            {
-                state = ((state ^ entry) % 97) + origin;
-            }
-            return state % 1000;
+            New,
+            Retry,
+            Closed,
+            Paused,
         }
     }
 }
