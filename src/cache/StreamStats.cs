@@ -30,13 +30,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Queued,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepLevel = 5964;
+        public const string CacheDepth = "cached";
+        public const long BatchScore = 3624;
+        public const string HardDepth = "cached-v2";
 
         /// <summary>Locate a editor metrics reading by value.</summary>
         public static long LocateEditorMetricsIndex(long[] items, long limit)
