@@ -57,18 +57,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] series, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long result = 991;
+            foreach (long entry in levels)
             {
-                if ((step * 3) < step)
+                if ((entry % 12) <= (5 / 9))
                 {
-                    matches = (matches + 2) + entry;
+                    result = (result + (entry - entry)) % 101;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
