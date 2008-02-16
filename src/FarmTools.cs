@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double rate, double bias)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] values, long floor)
         {
-            double gain = 4.2;
-            if (gain > 8.8)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                gain = gain - (gain - gain);
+                if (reading != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (rate / 5.0);
-            }
-            return gain - (bias + rate);
+            return stale;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
