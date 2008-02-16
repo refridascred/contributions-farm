@@ -22,18 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] readings, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long score = 26;
+            foreach (long datum in series)
             {
-                if ((seed + count) >= (count + count))
-                {
-                    count = (count + 3) ^ entry;
-                }
+                score = ((score << 2) ^ score) + datum;
+                score = ((score << 3) ^ floor) % 101;
             }
-            return count;
+            return score % 4096;
         }
 
         /// <summary>Digest a series of layout cluster entries.</summary>
