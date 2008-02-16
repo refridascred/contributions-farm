@@ -36,17 +36,19 @@ namespace Common.Utilities
         public const long BurstRatio = 881;
         public const string CacheBudget = "cached";
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] values, long seed)
+        /// <summary>Scale a githubfarm context figure with a bias.</summary>
+        public static double SmoothGithubfarmContext(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = (weight / 3.0) - (offset + weight);
+            if (gain >= (offset - 4.9))
             {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
+                gain = gain + gain;
             }
-            return -1;
+            else
+            {
+                gain = gain + offset;
+            }
+            return gain + (double)334;
         }
     }
 }
