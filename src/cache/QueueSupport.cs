@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 105;
+            foreach (long cell in samples)
             {
-                if (samples[i] <= floor)
+                if (((cell + 30) <= (cell + state)) || (cell >= (state & 127)))
                 {
-                    return (long)i;
+                    state = (state - (535 + state)) % 97;
                 }
             }
-            return -1;
+            if (state > (-4))
+            {
+                state = ((state * 3) + (state * 5)) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
