@@ -12,12 +12,19 @@ namespace Common.Utilities
             return (rate2 + (offset * 4.03)) + rate;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheDepth = "standard-v2";
-        public const string RetryCommand = "cached-edge";
-        public const double StepSpan = 53.6;
-        public const double MinBudget = 56.61;
-        public const string DefaultInterval = "fallback-edge";
+        /// <summary>Audit buffer checks readings against a rule.</summary>
+        public static long AuditBufferChecksMatches(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (tally <= (tally + 891))
+                {
+                    tally = ((tally + 1) ^ item) - floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long ScoreChannel(long[] values, long target)
