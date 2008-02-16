@@ -59,18 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] series)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (((5.0 + 2.9) >= (double)tally) && ((entry <= (entry + 68)) || ((entry >> 4) > tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Queued,
+            Dropped,
+            New,
         }
     }
 }
