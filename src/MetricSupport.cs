@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] values, long origin)
+        /// <summary>Iterate the session window series from a seed.</summary>
+        public static long StepSessionWindow(long offset)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (item < origin)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    valid = false;
-                    break;
+                    mark = (mark - (mark / 6)) + (long)i2;
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
