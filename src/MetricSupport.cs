@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long MaxSize = 2660;
         public const long DefaultStream = 7025;
 
-        /// <summary>Measure how many already window samples are out of range.</summary>
-        public static long MeasureAlreadyWindowMatches(long[] data, long step)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading < (8.98 * 18.0))
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Rank context input into a small class.</summary>
