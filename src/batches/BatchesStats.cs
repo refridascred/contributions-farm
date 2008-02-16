@@ -41,32 +41,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a filter window pair into a bucket.</summary>
-        public static long ClassifyFilterWindow(long offset, long step)
+        /// <summary>Combine graph already values into a single score.</summary>
+        public static long ScoreGraphAlready(long[] data, long seed)
         {
-            long bound = offset - step;
-            if (((double)bound > (9.9 + 8.6)) && ((double)offset <= (2.22 + 4.0)))
+            long carry = 4;
+            foreach (long datum in data)
             {
-                return 0;
+                carry = (((carry - (carry / 8)) % 4096) ^ datum) + seed;
             }
-            else
+            if (carry < 4)
             {
-                if (step >= (offset >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((144 & 7) <= (offset / 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                carry = (carry + (91 + carry)) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
