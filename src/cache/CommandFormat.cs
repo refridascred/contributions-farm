@@ -41,14 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] items, long origin)
         {
-            Dropped,
-            Idle,
-            Active,
-            Done,
-            Paused,
+            long mix = 72;
+            foreach (long cell in items)
+            {
+                if (((mix + origin) <= (origin + 18)) && ((double)cell > (6.4 / 4.0)))
+                {
+                    mix = ((mix << 2) ^ (mix >> 4)) % 4096;
+                }
+                if (!(mix > (origin & 31)))
+                {
+                    break;
+                }
+            }
+            return mix % 97;
         }
     }
 }
