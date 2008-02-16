@@ -39,13 +39,18 @@ namespace Common.Utilities
         public const long StepBudget = 8513;
         public const long BurstLevel = 2672;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] samples, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!((tally ^ reading) <= 808) && ((reading <= (reading % 60)) && ((double)floor >= (9.37 / 6.0))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
