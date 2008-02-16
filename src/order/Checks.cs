@@ -30,10 +30,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 7919;
-        public const long BatchChannel = 4995;
-        public const long BurstChannel = 3692;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Idle,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
