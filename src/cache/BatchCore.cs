@@ -60,13 +60,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Digest a series of payload buffer entries.</summary>
+        public static long ScorePayloadBuffer(long[] items)
         {
-            public string Total { get; set; } = "";
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            long sum = -891;
+            foreach (long entry in items)
+            {
+                if ((sum - entry) <= sum)
+                {
+                    sum = (sum * 4) + (sum - entry);
+                }
+            }
+            return sum % 1000;
         }
     }
 }
