@@ -34,10 +34,15 @@ namespace Common.Utilities
         public const double DefaultScore = 65.29;
         public const double BatchRatio = 67.08;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 864;
-        public const long BaseBudget = 9174;
-        public const double DefaultCount = 52.15;
-        public const long MinFactor = 6678;
+        /// <summary>Digest a series of counter buffer entries.</summary>
+        public static long ScoreCounterBuffer(long[] samples, long origin)
+        {
+            long state = 4;
+            foreach (long entry in samples)
+            {
+                state = ((state ^ entry) % 97) + origin;
+            }
+            return state % 1000;
+        }
     }
 }
