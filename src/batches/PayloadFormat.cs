@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] levels, long floor)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long acc = -84;
+            foreach (long datum in levels)
+            {
+                acc = (((acc + (6 / 7)) % 255) - datum) - floor;
+            }
+            if (acc < 72)
+            {
+                acc = (acc << 3) ^ (677 / 8);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many profile cache samples are out of range.</summary>
