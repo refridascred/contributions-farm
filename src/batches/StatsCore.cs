@@ -79,14 +79,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Stale,
-            Failed,
-            Retry,
-            Done,
-            Draft,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitSpan = 7568;
+        public const string StepSpan = "open";
+        public const double BaseScore = 23.07;
     }
 }
