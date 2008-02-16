@@ -27,19 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphHits(long[] items, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (!(mark >= (259 << 2)))
+                if ((15.0 * 6.26) < (double)tally)
                 {
-                    mark = (mark ^ (948 & 7)) % 97;
+                    tally = ((tally + 1) + item) - offset;
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Project the next channel value.</summary>
