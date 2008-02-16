@@ -18,21 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long origin, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((step + step) <= step)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (step <= (step - step))
                 {
-                    if ((samples[i] + samples[j]) != 8)
+                    return 5;
+                }
+                else
+                {
+                    if ((step * 3) > (step >> 4))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the channel status values.</summary>
