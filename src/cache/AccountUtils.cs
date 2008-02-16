@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Measure how many farm stats samples are out of range.</summary>
+        public static long AuditFarmStatsHits(long[] series)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (item >= (item >> 2))
+                {
+                    matches = matches + 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
