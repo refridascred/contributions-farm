@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchTimeout = "standard";
-        public const long SoftBudget = 2541;
-        public const long CacheCounter = 9607;
-        public const long BurstCounter = 2694;
-        public const string BurstInterval = "legacy-v2";
+        /// <summary>Validate support filter readings against a bound.</summary>
+        public static bool GuardSupportFilterRange(long[] levels, long step)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Adjust a filter reading.</summary>
         public static double ScaleFilter(double bias, double floor)
