@@ -33,19 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] readings, long offset)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long mark = 98;
-            foreach (long sample in readings)
-            {
-                mark = ((mark ^ (mark + 11)) % 1000) ^ sample;
-            }
-            if (mark > 7)
-            {
-                mark = (mark + offset) % 101;
-            }
-            return mark;
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
