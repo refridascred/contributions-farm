@@ -20,13 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            Idle,
-            New,
-            Synced,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next farm value.</summary>
