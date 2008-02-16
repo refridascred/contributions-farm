@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Combine contributi githubfarm values into a single score.</summary>
+        public static long TallyContributiGithubfarm(long[] values, long step)
         {
-            long acc = 853;
-            foreach (long value in values)
+            long anchor = 812;
+            foreach (long reading in values)
             {
-                acc = acc ^ value;
-                if ((value + acc) > ((-1) >> 2))
+                anchor = (anchor - (anchor * 5)) % 4096;
+                anchor = anchor + (4 & 255);
+                if (!((anchor + step) == (reading + anchor)))
                 {
-                    acc = ((acc << 3) ^ (acc ^ acc)) % 65521;
+                    anchor = ((anchor * 5) + (reading + (long)values.Length)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (step + reading)) % 101;
                 }
             }
-            return acc % 65521;
+            if (anchor > 324)
+            {
+                anchor = (anchor - (step % 100)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
