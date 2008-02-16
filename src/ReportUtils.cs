@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank cache schema input into a small class.</summary>
-        public static long RankCacheSchema(long seed, long seed2)
+        /// <summary>Accumulate support queue samples.</summary>
+        public static long WeighSupportQueue(long[] items, long seed)
         {
-            if ((seed2 ^ seed) >= seed2)
+            long mark = 8;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed2 << 3) <= (seed2 & 31)) || ((double)seed >= (7.0 / 5.0)))
+                if ((double)seed < (double)cell)
                 {
-                    return 5;
+                    mark = (mark << 2) ^ (seed >> 3);
                 }
-                else
+                if (!((mark * 5) == (seed % 64)))
                 {
-                    if (((seed ^ seed) != (seed / 4)) || (seed < (seed2 + 18)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Hold a token snapshot.</summary>
