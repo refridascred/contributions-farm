@@ -14,22 +14,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] values, long floor)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            long count = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (379 >= (count - 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 1) - value) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] ^ data[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
