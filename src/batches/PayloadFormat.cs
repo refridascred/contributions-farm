@@ -73,10 +73,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleInterval = 9939;
-        public const long MinMetrics = 4559;
-        public const string DefaultSize = "alpha-1";
-        public const long IdleMetrics = 9262;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleLevel = 4969;
+        public const double CacheSpan = 0.05;
+        public const double SoftRatio = 91.05;
+        public const long BatchNotes = 8104;
     }
 }
