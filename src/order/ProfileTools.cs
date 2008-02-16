@@ -64,18 +64,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] values)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long result = 231;
-            foreach (long reading in values)
-            {
-                if ((double)result >= (1.0 * 18.0))
-                {
-                    result = (((result * 3) + result) % 65521) ^ reading;
-                }
-            }
-            return result;
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
