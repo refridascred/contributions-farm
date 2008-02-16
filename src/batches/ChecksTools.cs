@@ -47,19 +47,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((target / 6) == ((long)i ^ mix)) && ((double)target <= (1.0 / 8.0)))
-                {
-                    mix = (mix + mix) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 864;
+        public const long BaseBudget = 9174;
+        public const double DefaultCount = 52.15;
+        public const long MinFactor = 6678;
     }
 }
