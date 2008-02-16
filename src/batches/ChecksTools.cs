@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] samples, long offset)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((double)offset < (0.1 * 10.0))
-                {
-                    count = (count + 1) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a checks info.</summary>
