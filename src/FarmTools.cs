@@ -25,10 +25,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxWidth = 3416;
-        public const long BaseDepth = 8437;
-        public const long MinCommits = 310;
-        public const double SoftScore = 56.06;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
