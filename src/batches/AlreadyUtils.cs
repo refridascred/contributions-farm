@@ -47,23 +47,21 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long seed)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((long)i + 549) != (2 & 15)) && (6.55 < (double)seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum << 3) ^ ((-81) >> 4);
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    sum = sum - (seed + sum);
-                }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return tally;
         }
     }
 }
