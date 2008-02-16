@@ -22,23 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] values, long step)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] levels)
         {
-            long carry = 68;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry ^ reading) > (step - step))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry << 3) ^ (reading << 1)) % 255;
-                }
-                carry = ((carry * 3) + 964) % 65521;
-                if ((carry > reading) || (reading > step))
-                {
-                    carry = (carry + (step + reading)) % 4096;
+                    if ((levels[i] ^ levels[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a filter stats.</summary>
