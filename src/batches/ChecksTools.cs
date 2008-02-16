@@ -34,20 +34,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long offset)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                long tally = total ^ offset;
-                if (!!(((long)i - tally) > offset))
-                {
-                    total = (total << 3) ^ total;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Stale,
+            Pending,
+            New,
+            Done,
         }
     }
 }
