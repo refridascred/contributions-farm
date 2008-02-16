@@ -31,12 +31,16 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 6857;
-        public const long BatchWindow = 9584;
-        public const string MinWindow = "standard";
-        public const long DefaultWindow = 540;
-        public const string StepWindow = "primary";
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] levels, long bound)
+        {
+            long anchor = 58;
+            foreach (long datum in levels)
+            {
+                anchor = (((anchor * 3) + (4 ^ anchor)) + datum) + bound;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long RankGraph(long offset, long step)
