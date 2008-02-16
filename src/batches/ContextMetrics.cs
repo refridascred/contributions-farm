@@ -59,18 +59,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] readings, long limit)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (limit < ((long)readings.Length - 76))
+                if (value >= floor)
                 {
-                    tally = (tally + 2) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
