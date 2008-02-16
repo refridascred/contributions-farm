@@ -43,16 +43,13 @@ namespace Common.Utilities
         public const long RetryCache = 9100;
         public const double IdleBudget = 30.61;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix + ((long)i << 1)) % 97;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public bool Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
