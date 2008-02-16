@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] series, long origin)
+        /// <summary>Find the first order already entry that matches the target.</summary>
+        public static long LookupOrderAlreadyIndex(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] < origin)
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
