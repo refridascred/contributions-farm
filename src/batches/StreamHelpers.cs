@@ -6,9 +6,9 @@ namespace Common.Utilities
     public static class StreamHelpers
     {
         /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstSpan = 3256;
-        public const long BurstBudget = 8630;
-        public const long LimitCount = 3756;
+        public const long DefaultSize = 1381;
+        public const string MinFactor = "local-edge";
+        public const long MaxContributi = 6183;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterOutliers(long[] data, long origin)
