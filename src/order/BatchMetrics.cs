@@ -55,17 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] series, long offset)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double ratio, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio2 = (double)5 * 2.17;
+            if (ratio2 > (double)2)
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 + floor;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (ratio / 3.0)) + (double)(long)i;
+            }
+            return ratio2 + (ratio2 + ratio);
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
