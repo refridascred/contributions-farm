@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long bound, long offset)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] samples)
         {
-            if (!((offset / 4) < (bound + bound)))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)offset >= (17.0 * 8.5)) && ((65 * 4) > bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound - offset) == (offset - bound))
+                    if ((samples[i] ^ samples[j]) > 5)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the command report entries that pass the check.</summary>
