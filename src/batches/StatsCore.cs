@@ -24,39 +24,21 @@ namespace Common.Utilities
             return rate2 - (double)425;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long limit, long floor)
+        /// <summary>Compare every pair of cluster githubfarm readings.</summary>
+        public static long OverlapClusterGithubfarmCount(long[] samples)
         {
-            long prev = limit ^ floor;
-            if (((double)floor <= (16.0 - 7.5)) && (limit >= floor))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(9.36 < (17.0 - 5.07)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((prev + prev) > 79)
+                    if ((samples[i] - samples[j]) < 3)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((prev <= (floor - floor)) && ((7.0 + 6.0) <= (double)limit))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
