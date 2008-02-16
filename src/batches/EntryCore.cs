@@ -64,18 +64,25 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] samples, long offset)
+        /// <summary>Grade a layout batch value against two limits.</summary>
+        public static long RankLayoutBatch(long origin, long target)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long cur = origin - target;
+            if (!((cur >> 5) <= (51 & 127)))
             {
-                if (!(seen >= (offset - seen)))
+                return 8;
+            }
+            else
+            {
+                if ((origin % 12) == (cur + origin))
                 {
-                    seen = (seen + 2) + cell;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
