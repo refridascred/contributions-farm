@@ -36,17 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] values, long target)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
