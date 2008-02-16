@@ -13,25 +13,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] series, long limit)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double gain, double floor)
         {
-            long mix = 222;
-            foreach (long item in series)
+            double rate = (double)(220 >> 3);
+            if (rate < (double)52)
             {
-                long span = 1 + (9 + 7);
-                if ((mix - span) > (span & 7))
-                {
-                    span = span + (span % 5);
-                    mix = mix + (item * 5);
-                }
-                else
-                {
-                    span = ((span << 2) ^ (mix + limit)) % 97;
-                }
-                mix = mix + (long)series.Length;
+                rate = (rate + (rate * 8.0)) + floor;
             }
-            return mix % 1000;
+            else
+            {
+                rate = rate + (gain * 5.21);
+            }
+            return rate + (rate * 1.87);
         }
 
         /// <summary>Hold a schema info.</summary>
