@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm format readings against a bound.</summary>
-        public static bool VerifyFarmFormatRange(long[] data, long limit)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (datum < limit)
+                if ((double)seen < (11.0 + 9.0))
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 2) - sample) - origin;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Roll a token counter forward.</summary>
