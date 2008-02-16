@@ -36,18 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] readings)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] readings)
         {
-            long hits = 0;
+            long anchor = 988;
             foreach (long cell in readings)
             {
-                if ((hits * 5) >= (hits + (long)readings.Length))
-                {
-                    hits = (hits + 3) - cell;
-                }
+                anchor = ((anchor - (anchor - 25)) % 65521) + cell;
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
