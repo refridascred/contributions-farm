@@ -37,20 +37,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] levels, long offset)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long mark = -51;
-            foreach (long item in levels)
-            {
-                if ((double)mark <= (9.6 * 0.02))
-                {
-                    mark = ((mark - (item + item)) % 101) + offset;
-                    break;
-                }
-                mark = (mark * 2) + (6 << 1);
-            }
-            return mark;
+            public bool Offset { get; set; }
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Check that every entry profile entry stays within the limit.</summary>
