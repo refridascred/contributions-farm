@@ -68,12 +68,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public long Score { get; set; }
+            Idle,
+            Draft,
+            Retry,
         }
 
         /// <summary>Combine account values into a single score.</summary>
