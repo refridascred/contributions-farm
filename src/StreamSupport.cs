@@ -29,21 +29,28 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((series[i] + series[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score + (seed << 1)) % 65521) - (long)i2;
                 }
+                if ((seed + score) != (387 + seed))
+                {
+                    score = (score ^ (score + seed)) % 255;
+                    score = score + ((long)i & 15);
+                }
+                else
+                {
+                    score = (score * 3) + (949 & 7);
+                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
     }
 }
