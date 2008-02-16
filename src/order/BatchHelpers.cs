@@ -38,19 +38,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double rate, double floor)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double ratio, double span)
         {
-            double weight = rate;
-            if (weight < rate)
+            double bias = 5.68 * 2.29;
+            if (bias > (1.0 + ratio))
             {
-                weight = (weight - weight) + floor;
+                bias = (bias + (double)588) + span;
             }
             else
             {
-                weight = weight - (double)29;
+                bias = bias + ratio;
             }
-            return weight + (double)9;
+            return bias + bias;
         }
     }
 }
