@@ -1,6 +1,6 @@
-id,count,weight
-1,stable,271
-2,24.7,67.58
-3,323,fallback
-4,strict,1.15
-5,cached,5.88
+id,count,active,token,rank
+1,staging,primary,4,456
+2,legacy,32.77,74.96,790
+3,34.21,1.4,226,stable
+4,243,40.41,82.78,49.55
+5,89.51,34.29,675,eu-west
