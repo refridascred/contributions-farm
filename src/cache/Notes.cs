@@ -14,23 +14,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (18.0 >= (double)limit)
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitSpan = 3520;
+        public const long BurstContributi = 3289;
+        public const long DefaultFactor = 8070;
+        public const long DefaultContributi = 79;
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
