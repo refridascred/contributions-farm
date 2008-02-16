@@ -13,25 +13,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long step, long offset)
-        {
-            if ((step * 4) > (offset + offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset <= 10.0)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 85.56;
+        public const long WindowCluster = 1295;
+        public const long MaxCluster = 314;
+        public const double BaseSize = 93.88;
+        public const long RetryCluster = 4059;
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long FindEntryIndex(long[] readings, long origin)
