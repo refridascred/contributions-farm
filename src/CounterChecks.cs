@@ -53,23 +53,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] readings)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0 + (long)i) >= (step + (long)i))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry << 3) ^ (415 - step)) % 97;
+                    if ((readings[i] ^ readings[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((long)i > (step + carry))
-                {
-                    carry = (carry - (carry + step)) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
