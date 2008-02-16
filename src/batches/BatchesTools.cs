@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
