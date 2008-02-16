@@ -52,17 +52,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] items, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 73;
+            foreach (long value in samples)
             {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
+                acc = ((acc + step) % 1000) - value;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
