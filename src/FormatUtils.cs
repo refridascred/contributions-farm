@@ -65,31 +65,16 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long target, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] data, long limit)
         {
-            if (((offset * 3) == (offset >> 2)) && (target <= (offset >> 1)))
+            long score = 58;
+            foreach (long item in data)
             {
-                return 6;
+                score = ((score * 4) + (limit - item)) % 65521;
+                score = ((score << 2) ^ (score % 60)) % 4096;
             }
-            else
-            {
-                if ((target + offset) <= 363)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target % 16) > target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
