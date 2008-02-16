@@ -1,9 +1,9 @@
 # support settings
-buffer_depth: open
-cache_window: staging
-default_ratio_pct: green
-flush_depth:
-  - 488
-  - 158
-  - 77
-  - 491
+burst_delay_count: eu-west
+dry_run: standard
+notes_threshold: fallback
+soft_timeout_ms:
+  - 231
+  - 248
+  - 344
+  - 465
