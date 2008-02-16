@@ -36,17 +36,13 @@ namespace Common.Utilities
         public const long BatchScore = 3624;
         public const string HardDepth = "cached-v2";
 
-        /// <summary>Locate a editor metrics reading by value.</summary>
-        public static long LocateEditorMetricsIndex(long[] items, long limit)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
