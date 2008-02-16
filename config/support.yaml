@@ -1,5 +1,15 @@
 # support settings
-retry_timeout_ms: 52
-warm_interval_pct: false
-cluster_limit: eu-west
-warm_capacity_s: 1418
+audit: legacy
+poll_delay_s:
+  - 362
+  - 300
+warm_interval_count: 29
+sync_size_count:
+  hard_ratio_s: true
+  compress: 250
+  soft_ttl: 500
+sync_interval_pct: 60
+default_limit_pct:
+  - 138
+  - 27
+  - 174
