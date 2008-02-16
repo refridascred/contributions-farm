@@ -32,18 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] levels)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (seen > (seen >> 3))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
