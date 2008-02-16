@@ -45,12 +45,15 @@ namespace Common.Utilities
             return scale - (scale - scale);
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Adjust a checks metrics reading.</summary>
+        public static double ProjectChecksMetrics(double rate, double bias)
         {
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            double ratio = 1.6;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio + ratio) + (double)(long)i) + bias;
+            }
+            return ratio - (rate - rate);
         }
 
         /// <summary>Roll a batch counter forward.</summary>
