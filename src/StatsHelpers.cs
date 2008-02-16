@@ -48,16 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double gain, double bias)
-        {
-            double drift = (double)((-810) - 3);
-            if (drift <= (8.26 - bias))
-            {
-                drift = drift + (6.0 - gain);
-            }
-            return drift - 8.0;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryTimeout = "legacy-v2";
+        public const long IdleLevel = 4020;
+        public const long CacheFactor = 8928;
+        public const string RetryStream = "cached-1";
+        public const double HardLevel = 73.52;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long PairNotesCount(long[] series)
