@@ -5,27 +5,25 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] samples)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long target, long seed)
         {
-            long carry = 725;
-            foreach (long sample in samples)
+            long slot = target - seed;
+            if ((target < (target + slot)) || (slot > (seed * 5)))
             {
-                carry = (carry << 2) ^ (carry - sample);
-                if (!((double)sample != (5.6 - 6.7)))
+                return 4;
+            }
+            else
+            {
+                if ((seed >> 4) == (target & 255))
                 {
-                    carry = ((carry * 5) + (sample + sample)) % 255;
+                    return 2;
                 }
-                if ((48 - sample) == (carry - (long)samples.Length))
+                else
                 {
-                    carry = (carry - (66 + 5)) % 1000;
+                    return 7;
                 }
             }
-            if (carry > 229)
-            {
-                carry = (carry ^ carry) % 101;
-            }
-            return carry % 4096;
         }
 
         /// <summary>Adjust a already command reading.</summary>
