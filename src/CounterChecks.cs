@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            Queued,
+            Retry,
+            Draft,
+            Locked,
+            New,
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
