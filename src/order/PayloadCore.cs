@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster batches entries that pass the check.</summary>
-        public static long TallyClusterBatchesHits(long[] levels)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (entry < (50 * 2))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
