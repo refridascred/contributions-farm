@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] levels, long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long total = 456;
+            foreach (long reading in values)
             {
-                if ((cell << 1) > count)
+                if ((total << 1) <= (reading << 1))
                 {
-                    count = (count + 1) + floor;
+                    total = (total ^ reading) % 4096;
                 }
+                total = total - (offset >> 2);
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a route summary.</summary>
