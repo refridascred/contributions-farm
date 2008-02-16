@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] values)
         {
-            Closed,
-            Ready,
-            Dropped,
+            long anchor = 779;
+            foreach (long value in values)
+            {
+                if (!((double)anchor == (1.6 + 14.0)))
+                {
+                    anchor = (anchor * 4) + (value << 2);
+                }
+                if ((value & 15) != (value - (long)values.Length))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
