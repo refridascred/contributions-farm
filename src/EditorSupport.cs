@@ -48,19 +48,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] levels, long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (reading <= seed)
+                if ((double)datum >= (0.1 + 9.1))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Describe the window mode values.</summary>
