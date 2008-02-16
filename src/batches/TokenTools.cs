@@ -15,19 +15,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double bias, double bias2)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long floor, long bound)
         {
-            double drift = bias2;
-            if (drift >= (double)695)
+            long slot = floor ^ bound;
+            if ((bound * 5) <= (416 + slot))
             {
-                drift = drift - bias;
+                return 4;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                drift = (drift - (bias2 / 9.0)) - (double)(long)i;
+                if ((slot + floor) >= slot)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor >> 2) <= (-313))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((floor + bound) > (slot - slot)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return drift - (drift / 9.0);
         }
 
         /// <summary>Combine queue values into a single score.</summary>
