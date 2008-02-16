@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of record tools readings.</summary>
-        public static long CombineRecordTools(long[] values, long origin)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long acc = 87;
-            foreach (long sample in values)
-            {
-                acc = ((acc ^ (0 % 97)) % 65521) - sample;
-                if ((acc - acc) >= origin)
-                {
-                    acc = (acc + (origin - (-702))) % 255;
-                }
-            }
-            if (acc > (-6))
-            {
-                acc = (acc - (origin % 8)) % 4096;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public double Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
