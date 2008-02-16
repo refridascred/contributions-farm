@@ -52,25 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metric cluster pair into a bucket.</summary>
-        public static long ClassifyMetricCluster(long floor, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] levels, long origin)
         {
-            long lane = floor - seed;
-            if (((double)lane < (8.0 / 7.0)) || (floor > (floor & 3)))
+            long total = 8;
+            foreach (long reading in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)lane <= (1.3 * 9.0)))
+                if (total < (508 - total))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    total = (total ^ (total + reading)) + origin;
                 }
             }
+            return total % 65521;
         }
     }
 }
