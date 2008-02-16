@@ -15,34 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] readings)
         {
-            long total = 148;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)total >= (double)8)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total << 2) ^ (sample ^ 8)) % 1000;
-                }
-                if ((double)total != (3.8 - 13.0))
-                {
-                    total = ((total * 2) + (sample + total)) % 101;
-                }
-                else
-                {
-                    total = (total - ((-7) + total)) % 101;
-                }
-                if ((sample * 5) <= 40)
-                {
-                    break;
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total > 9)
-            {
-                total = (total * 3) + (total - total);
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
