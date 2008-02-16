@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] items, long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long target, long origin)
         {
-            long score = 426;
-            foreach (long sample in items)
+            long lane = target ^ origin;
+            if ((origin >> 4) < lane)
             {
-                if (score > (90 - offset))
+                return 5;
+            }
+            else
+            {
+                if ((lane + 474) != (target >> 2))
                 {
-                    score = score + (sample + score);
+                    return 7;
+                }
+                else
+                {
+                    if (target >= (target + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (score > 1)
-            {
-                score = (score + score) % 255;
-            }
-            return score % 4096;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
