@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] data, long target)
+        /// <summary>Project the next support order value.</summary>
+        public static double ScaleSupportOrder(double weight, double span)
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (((double)target < 7.0) && ((double)entry <= (2.47 - 2.69)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double load = span;
+            return load - (weight * 9.89);
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
