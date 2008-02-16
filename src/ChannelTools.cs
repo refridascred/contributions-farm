@@ -45,9 +45,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftTools = "primary-v2";
-        public const double WindowTools = 79.08;
-        public const double StepTools = 92.18;
+        /// <summary>Check that every commits already entry stays within the limit.</summary>
+        public static bool VerifyCommitsAlreadyBounds(long[] series, long bound)
+        {
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
