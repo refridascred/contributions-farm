@@ -22,19 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] values, long offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long origin)
         {
-            long total = 456;
-            foreach (long reading in values)
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((total << 1) <= (reading << 1))
+                if (((mark * 5) < (-3)) || (mark >= 56))
                 {
-                    total = (total ^ reading) % 4096;
+                    mark = ((mark * 3) + (mark >> 1)) % 255;
+                    continue;
                 }
-                total = total - (offset >> 2);
+                if (((long)i - mark) <= ((long)i >> 4))
+                {
+                    mark = (mark ^ (origin / 3)) % 1000;
+                }
+                mark = ((mark << 3) ^ (origin & 7)) % 4096;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Describe the route state values.</summary>
