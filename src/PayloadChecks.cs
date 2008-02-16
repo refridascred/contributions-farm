@@ -20,12 +20,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "alpha";
-        public const string MinDepth = "stable-v2";
-        public const long StepBuffer = 3549;
-        public const long StepInterval = 808;
-        public const long BatchSize = 9071;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] items)
+        {
+            long sum = 587;
+            foreach (long item in items)
+            {
+                if (!((item - sum) <= item))
+                {
+                    sum = ((sum << 3) ^ (sum ^ 38)) % 65521;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphMatches(long[] readings, long limit)
