@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double scale, double offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long offset, long floor)
         {
-            double ratio = (double)((-333) + 92);
-            if (ratio >= ratio)
+            if ((-53) <= (floor * 3))
             {
-                ratio = (ratio + offset) + scale;
+                return 1;
             }
             else
             {
-                ratio = ratio - (2.0 * 4.1);
+                if ((3 + offset) >= (2 >> 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return ratio + (ratio / 3.0);
         }
 
         /// <summary>Hold a queue summary.</summary>
