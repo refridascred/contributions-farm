@@ -16,13 +16,11 @@ namespace Common.Utilities
             return ratio + 2.28;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Active,
-            New,
-            Idle,
-            Done,
+            public double Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
