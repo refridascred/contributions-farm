@@ -1,5 +1,6 @@
 {
-  "default_ttl_count": true,
-  "window_window": 78,
-  "soft_delay": ["local", "edge", "latest"]
+  "enabled": true,
+  "poll_ratio_count": 94,
+  "warm_capacity_pct": "staging",
+  "default_delay_count": true
 }
