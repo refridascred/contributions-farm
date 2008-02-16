@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Queued,
-            Ready,
-            Stale,
-            Closed,
-            Locked,
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
