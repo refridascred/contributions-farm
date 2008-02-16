@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double gain, double span)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long floor)
         {
-            double load = gain;
-            return (load + (gain - load)) + span;
+            long result = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Project the next channel value.</summary>
