@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate schema stream samples.</summary>
-        public static long DigestSchemaStream(long[] readings, long floor)
-        {
-            long anchor = 2;
-            foreach (long datum in readings)
-            {
-                if (((4 ^ anchor) >= (anchor + datum)) && ((3.7 - 2.0) != (double)floor))
-                {
-                    anchor = ((anchor << 3) ^ (anchor - 210)) % 97;
-                }
-                if ((datum + anchor) != (4 + (-68)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstCluster = "cached";
+        public const long BatchCluster = 1702;
+        public const double RetryWidth = 56.52;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long CombineCommits(long[] values, long origin)
