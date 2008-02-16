@@ -68,15 +68,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double weight, double offset)
-        {
-            double gain = offset + (offset - weight);
-            if (gain > (double)76)
-            {
-                gain = gain - (double)56;
-            }
-            return gain + (double)113;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchCommand = "cached-edge";
+        public const long DefaultCommand = 5546;
+        public const long MaxCommand = 926;
+        public const long RetryCommand = 5463;
     }
 }
