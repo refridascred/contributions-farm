@@ -39,17 +39,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftRatio = 2809;
+        public const string WindowMetrics = "latest-v2";
+        public const long SoftMetrics = 7660;
     }
 }
