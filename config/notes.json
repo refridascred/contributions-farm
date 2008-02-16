@@ -1,12 +1,6 @@
 {
-  "idle_window_ms": {
-    "warm_threshold_pct": true,
-    "base_window": 31,
-    "audit": 1688,
-    "idle_ratio_ms": ["stable", "open", "staging"],
-    "idle_depth": true,
-    "poll_ttl_pct": false
-  },
-  "hard_ttl": true,
-  "githubfarm_limit": 1024
+  "retry_retries_count": [285, 216, 497],
+  "max_size_count": "local",
+  "layout_delay": 70.98,
+  "sync_ratio": "staging"
 }
