@@ -37,15 +37,18 @@ namespace Common.Utilities
         public const long BatchSpan = 871;
         public const string BaseSpan = "open-edge";
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] series)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] items)
         {
             long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.0 / 6.0) <= (8.98 / 6.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) + datum;
+                    if ((items[i] + items[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
