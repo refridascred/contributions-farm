@@ -59,25 +59,18 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Grade a layout batch value against two limits.</summary>
-        public static long RankLayoutBatch(long origin, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] values, long step)
         {
-            long cur = origin - target;
-            if (!((cur >> 5) <= (51 & 127)))
+            long matches = 0;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin % 12) == (cur + origin))
+                if (((2.8 * 6.5) > (double)matches) || ((step * 4) < item))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
