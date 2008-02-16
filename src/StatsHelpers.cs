@@ -46,18 +46,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] values)
         {
-            long anchor = 8;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((datum & 7) > 9)
+                if ((double)matches > (8.0 - 2.8))
                 {
-                    anchor = ((anchor << 2) ^ (datum >> 3)) % 4096;
+                    matches = (matches + 2) - cell;
                 }
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
