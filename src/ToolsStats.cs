@@ -56,14 +56,15 @@ namespace Common.Utilities
             return ratio - (rate - rate);
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double gain, double span)
         {
-            Paused,
-            Retry,
-            Synced,
-            Queued,
-            Draft,
+            double drift = (double)52;
+            if (drift >= span)
+            {
+                drift = drift + (gain * 16.0);
+            }
+            return drift + (double)8;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
