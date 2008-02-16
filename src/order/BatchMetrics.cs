@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] values, long limit)
+        /// <summary>Count the buffer tools entries that pass the check.</summary>
+        public static long TallyBufferToolsMatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (entry != limit)
+                if ((count ^ 26) == (count + count))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
