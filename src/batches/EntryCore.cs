@@ -31,11 +31,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
+            Queued,
+            Paused,
+            Closed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a layout record.</summary>
