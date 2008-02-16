@@ -50,23 +50,31 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double rate, double offset)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long limit, long seed)
         {
-            double rate2 = offset;
-            if (rate2 > rate2)
+            if (!((limit % 2) < 80))
             {
-                rate2 = rate2 + (rate / 9.0);
+                return 6;
             }
             else
             {
-                rate2 = rate2 + offset;
+                if ((seed << 3) <= (seed & 127))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (limit < (seed % 12))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + 2.0) + (double)(long)i;
-            }
-            return rate2 - offset;
         }
     }
 }
