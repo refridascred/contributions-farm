@@ -44,14 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Active,
-            Paused,
-            Pending,
-            Locked,
-            Draft,
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Check that every batch filter entry stays within the limit.</summary>
