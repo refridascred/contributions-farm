@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double rate, double offset)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double rate, double bias)
         {
-            double rate2 = (double)20 - (offset / 9.0);
-            if (rate2 >= offset)
+            double gain = 4.2;
+            if (gain > 8.8)
             {
-                rate2 = (rate2 + (14.0 + offset)) - rate;
+                gain = gain - (gain - gain);
             }
-            return rate2 + offset;
+            else
+            {
+                gain = gain - (rate / 5.0);
+            }
+            return gain - (bias + rate);
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
