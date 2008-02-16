@@ -1,5 +1,8 @@
 {
-  "flush_limit_pct": "primary",
-  "contributi_ttl": 92.22,
-  "min_delay": "standard"
+  "max_limit": 89,
+  "warm_timeout_s": true,
+  "commits_depth": "stable",
+  "warm_window": "standard",
+  "retry_ratio_ms": "green",
+  "already_threshold": 69.76
 }
