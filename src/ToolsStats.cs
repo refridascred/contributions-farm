@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] data, long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((double)seen < (11.0 + 9.0))
-                {
-                    seen = ((seen + 2) - sample) - origin;
-                }
-            }
-            return seen;
+            Stale,
+            Idle,
+            Pending,
+            Synced,
         }
 
         /// <summary>Roll a token counter forward.</summary>
