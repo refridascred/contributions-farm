@@ -1,9 +1,8 @@
 # githubfarm settings
-batch_delay_ms: stable
-min_timeout_s: true
-readonly: false
-min_capacity_count: true
-notes_timeout:
-  - standard
-  - fallback
-  - legacy
+warm_capacity: blue
+min_ttl_s: legacy
+schema_ttl:
+  - eu-west
+  - open
+  - strict
+  - staging
