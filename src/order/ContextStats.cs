@@ -47,10 +47,17 @@ namespace Common.Utilities
             return (ratio - (offset - offset)) + rate;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleCluster = 84.38;
-        public const double StepCluster = 48.16;
-        public const double MaxCluster = 20.94;
-        public const long DefaultCluster = 9127;
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
