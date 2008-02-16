@@ -41,21 +41,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    if ((items[i] ^ items[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark << 3) ^ 57) ^ (long)i2;
                 }
+                if (((mark * 3) <= (floor + (long)i)) || (((long)i / 9) <= mark))
+                {
+                    mark = (mark << 2) ^ (79 % 12);
+                }
+                else
+                {
+                    mark = mark + (mark >> 1);
+                    mark = mark ^ mark;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
     }
 }
