@@ -86,22 +86,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] readings)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double weight2 = 0.4 * 14.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (!!((tally % 100) <= tally))
-                {
-                    tally = (tally + 3) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight2 = (((weight2 - (weight2 * 20.0)) + (double)(long)i) - weight) - bias;
             }
-            return tally;
+            return weight2 + (weight2 * 6.0);
         }
     }
 }
