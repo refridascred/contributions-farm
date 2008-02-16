@@ -17,18 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheChannel = "strict-1";
+        public const long SoftLevel = 4935;
+        public const long SoftFactor = 70;
+        public const long DefaultDepth = 8646;
+        public const long RetryFactor = 7644;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool CheckCounterRange(long[] data, long origin)
