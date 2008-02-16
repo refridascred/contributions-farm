@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxSpan = "alpha";
-        public const string MaxCluster = "cached";
-        public const long LimitBudget = 2894;
+        /// <summary>Fold a list of record tools readings.</summary>
+        public static long CombineRecordTools(long[] values, long origin)
+        {
+            long acc = 87;
+            foreach (long sample in values)
+            {
+                acc = ((acc ^ (0 % 97)) % 65521) - sample;
+                if ((acc - acc) >= origin)
+                {
+                    acc = (acc + (origin - (-702))) % 255;
+                }
+            }
+            if (acc > (-6))
+            {
+                acc = (acc - (origin % 8)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long target)
