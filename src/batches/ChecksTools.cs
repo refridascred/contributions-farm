@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long BatchAlready = 5952;
         public const long BaseAlready = 2938;
 
-        /// <summary>Find the first session command entry that matches the target.</summary>
-        public static long SeekSessionCommandIndex(long[] levels, long bound)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
+                if (((double)tally < (19.0 - 1.43)) && (((double)tally <= (7.39 * 9.0)) || ((0.6 - 9.96) >= (double)tally)))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a route entry.</summary>
