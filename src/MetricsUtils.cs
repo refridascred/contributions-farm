@@ -23,19 +23,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate entry support readings against a bound.</summary>
-        public static bool VerifyEntrySupportRange(long[] data, long step)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
