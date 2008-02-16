@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const double BurstSupport = 27.59;
         public const long RetrySpan = 9820;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] series, long limit)
         {
-            Stale,
-            Done,
-            Active,
+            long result = -981;
+            foreach (long value in series)
+            {
+                if (!(limit < (184 & 1)))
+                {
+                    result = ((result * 2) + (limit % 16)) - value;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
