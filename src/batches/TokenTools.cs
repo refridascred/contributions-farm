@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Done,
+            Idle,
+            Ready,
+            Synced,
         }
 
         /// <summary>Adjust a profile reading.</summary>
