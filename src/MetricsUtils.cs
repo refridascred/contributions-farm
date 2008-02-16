@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count filter account pairs that satisfy a relation.</summary>
-        public static long CompareFilterAccountCount(long[] readings)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading % 7) == (hits - hits))
                 {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a metrics summary.</summary>
