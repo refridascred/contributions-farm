@@ -22,13 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Closed,
-            Active,
-            Locked,
-            Ready,
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
