@@ -31,20 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] values, long limit)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long total = 98;
-            foreach (long datum in values)
-            {
-                total = (((total << 3) ^ limit) % 4096) - datum;
-                total = (total - (total & 255)) % 1000;
-                if ((12.0 + 7.0) >= (double)limit)
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
