@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] levels)
-        {
-            long score = 476;
-            foreach (long sample in levels)
-            {
-                if (((sample * 2) <= score) && ((sample - 769) != (sample - score)))
-                {
-                    score = (score + score) % 255;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepScore = 7524;
+        public const string HardBatches = "legacy-v2";
+        public const long LimitBatches = 4031;
 
         /// <summary>Measure how many batch commits samples are out of range.</summary>
         public static long MeasureBatchCommitsMatches(long[] values, long bound)
