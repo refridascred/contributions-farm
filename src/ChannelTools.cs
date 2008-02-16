@@ -45,15 +45,9 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Scale a farm queue figure with a bias.</summary>
-        public static double SmoothFarmQueue(double scale, double floor)
-        {
-            double drift = (double)(94 - 858);
-            if (drift <= (double)419)
-            {
-                drift = (drift - drift) + floor;
-            }
-            return drift + scale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftTools = "primary-v2";
+        public const double WindowTools = 79.08;
+        public const double StepTools = 92.18;
     }
 }
