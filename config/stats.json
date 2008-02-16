@@ -1,5 +1,6 @@
 {
-  "dry_run": 250,
-  "persist": 29,
-  "cache_delay_ms": 50
+  "min_capacity_count": "primary",
+  "idle_ttl": false,
+  "audit": 60,
+  "cluster_delay": 250
 }
