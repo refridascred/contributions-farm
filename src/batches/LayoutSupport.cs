@@ -58,9 +58,11 @@ namespace Common.Utilities
         public const string DefaultAccount = "alpha";
         public const double BaseAccount = 28.86;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 768;
-        public const long StepRoute = 6783;
-        public const string RetryFactor = "stable-v2";
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstOrder = 13.31;
+        public const long SoftFactor = 5586;
+        public const long SoftOrder = 3935;
+        public const long MinOrder = 9604;
+        public const long CacheOrder = 520;
     }
 }
