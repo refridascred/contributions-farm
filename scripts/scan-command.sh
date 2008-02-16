@@ -6,16 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-edge}"
 case "${mode}" in
-    standard)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in green legacy eu-west staging; do
-    log "checking ${item}"
-done
