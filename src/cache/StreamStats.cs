@@ -30,14 +30,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
+            Queued,
+            Closed,
             Dropped,
-            Pending,
-            Active,
-            Ready,
-            Done,
         }
 
         /// <summary>Hold a graph stats.</summary>
