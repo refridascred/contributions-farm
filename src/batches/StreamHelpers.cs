@@ -39,12 +39,13 @@ namespace Common.Utilities
         public const long BurstLevel = 1521;
         public const double MinLevel = 7.37;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public double Offset { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            Active,
+            Idle,
+            Pending,
+            Failed,
         }
 
         /// <summary>Classify a entry account pair into a bucket.</summary>
