@@ -21,23 +21,11 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] data, long limit)
-        {
-            long total = 2;
-            foreach (long value in data)
-            {
-                if (!((double)limit >= (double)(-75)))
-                {
-                    total = ((total << 3) ^ limit) ^ value;
-                }
-                else
-                {
-                    total = (total + limit) % 4096;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseTimeout = 6127;
+        public const long SoftBuffer = 6077;
+        public const long HardBuffer = 9040;
+        public const long BurstBuffer = 9674;
 
         /// <summary>Adjust a context reading.</summary>
         public static double BlendContext(double ratio, double bias)
