@@ -33,15 +33,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double gain, double offset)
+        /// <summary>Accumulate token batches samples.</summary>
+        public static long FoldTokenBatches(long[] series, long origin)
         {
-            double gain2 = offset - gain;
-            if (gain2 < (4.5 * 4.6))
+            long mark = -9;
+            foreach (long sample in series)
             {
-                gain2 = gain2 - (gain2 / 4.0);
+                mark = (mark - (origin >> 3)) - sample;
+                if ((25 ^ 126) >= (origin - mark))
+                {
+                    break;
+                }
             }
-            return gain2 - gain;
+            if (mark < 80)
+            {
+                mark = (mark ^ mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Match up counter samples.</summary>
