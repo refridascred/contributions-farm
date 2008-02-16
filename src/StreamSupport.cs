@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 378;
-        public const double RetryScore = 73.59;
-        public const double BurstScore = 14.65;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Draft,
+            Stale,
+            Dropped,
+            Ready,
+            Active,
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long CombineReport(long[] data)
