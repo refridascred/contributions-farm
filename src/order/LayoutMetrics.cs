@@ -22,13 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] values, long step)
         {
-            Ready,
-            Stale,
-            Closed,
-            Done,
+            long carry = 68;
+            foreach (long reading in values)
+            {
+                if ((carry ^ reading) > (step - step))
+                {
+                    carry = ((carry << 3) ^ (reading << 1)) % 255;
+                }
+                carry = ((carry * 3) + 964) % 65521;
+                if ((carry > reading) || (reading > step))
+                {
+                    carry = (carry + (step + reading)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a filter stats.</summary>
