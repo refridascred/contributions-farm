@@ -31,17 +31,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the stream editor series from a seed.</summary>
-        public static long SeriesStreamEditor(long origin)
+        /// <summary>Roll a graph cluster counter forward.</summary>
+        public static long StepGraphCluster(long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                long lane = (long)i ^ ((long)i >> 1);
-                mark = (mark + (lane << 1)) % 101;
-                mark = ((mark * 2) + (long)i) % 65521;
+                long slot = target * 2;
+                total = ((total << 2) ^ (slot + slot)) % 255;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return mark;
+            return total;
         }
     }
 }
