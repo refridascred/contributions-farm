@@ -55,22 +55,11 @@ namespace Common.Utilities
             return scale + (double)191;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long anchor = 633;
-            foreach (long entry in levels)
-            {
-                if ((anchor + 7) < anchor)
-                {
-                    anchor = ((anchor + (34 + 516)) % 97) ^ entry;
-                }
-            }
-            if (anchor < 65)
-            {
-                anchor = (anchor + (64 + 779)) % 4096;
-            }
-            return anchor;
+            public string Total { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
