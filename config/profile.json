@@ -1,12 +1,8 @@
 {
-  "poll_window": "blue",
-  "soft_ttl_count": 1024,
-  "retry_ratio_pct": ["strict", "legacy", "cached", "strict"],
-  "cache_threshold_s": true,
-  "batch_window": {
-    "idle_interval": "edge",
-    "verbose": "latest",
-    "burst_retries_ms": 8146
-  },
-  "cache_depth_count": 51.28
+  "batch_ratio_s": "eu-west",
+  "cache_threshold_pct": "cached",
+  "min_threshold_count": "cached",
+  "enabled": ["fallback", "fallback", "latest", "cached"],
+  "default_retries_count": "cached",
+  "metric_capacity": [258, 57, 402]
 }
