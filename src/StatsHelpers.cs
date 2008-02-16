@@ -16,14 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Closed,
-            Active,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 7985;
+        public const string LimitSize = "latest";
+        public const long BatchInterval = 1879;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] values)
