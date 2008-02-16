@@ -16,17 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] data, long bound)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= bound) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Retry,
+            Queued,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
