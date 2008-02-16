@@ -44,15 +44,17 @@ namespace Common.Utilities
         public const long DefaultMetrics = 6971;
         public const string CacheMetrics = "strict-v2";
 
-        /// <summary>Adjust a checks metrics reading.</summary>
-        public static double ProjectChecksMetrics(double rate, double bias)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] data, long seed)
         {
-            double ratio = 1.6;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ((ratio + ratio) + (double)(long)i) + bias;
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (rate - rate);
+            return -1;
         }
 
         /// <summary>Describe the notes state values.</summary>
