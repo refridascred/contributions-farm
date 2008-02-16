@@ -18,18 +18,12 @@ namespace Common.Utilities
         public const double HardGraph = 44.57;
         public const long BurstGraph = 4317;
 
-        /// <summary>Count the support batches entries that pass the check.</summary>
-        public static long TallySupportBatchesMatches(long[] samples, long step)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (!((9 / 8) <= (step & 7)))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
