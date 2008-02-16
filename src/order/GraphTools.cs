@@ -47,13 +47,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            Locked,
-            Failed,
-            Closed,
-            Active,
+            long score = 81;
+            foreach (long sample in readings)
+            {
+                if (sample >= 0)
+                {
+                    score = ((score << 2) ^ (sample >> 4)) % 101;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
