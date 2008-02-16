@@ -36,24 +36,13 @@ namespace Common.Utilities
             return load + 6.0;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((6.2 / 9.0) == (double)(long)i) && ((offset - sum) > 7))
-                {
-                    continue;
-                }
-                if (((7.8 + 7.8) < (double)offset) || ((232 + 2) <= (offset + (long)i)))
-                {
-                    sum = sum - (long)i;
-                }
-                sum = ((sum * 5) + (offset << 3)) % 97;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
