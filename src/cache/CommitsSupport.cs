@@ -39,13 +39,18 @@ namespace Common.Utilities
         public const double BaseTimeout = 41.76;
         public const string StepFarm = "fallback-v2";
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] series, long origin)
         {
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((10.0 - 3.69) == (double)seen)
+                {
+                    seen = ((seen + 3) - cell) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
