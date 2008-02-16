@@ -41,19 +41,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine graph already values into a single score.</summary>
-        public static long ScoreGraphAlready(long[] data, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] data)
         {
-            long carry = 4;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                carry = (((carry - (carry / 8)) % 4096) ^ datum) + seed;
+                if ((17.0 + 0.86) > 7.7)
+                {
+                    hits = (hits + 3) - sample;
+                }
             }
-            if (carry < 4)
-            {
-                carry = (carry + (91 + carry)) % 1000;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
