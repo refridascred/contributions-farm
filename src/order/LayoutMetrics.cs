@@ -13,22 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] series, long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (hits <= floor)
+                if (cell != step)
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
