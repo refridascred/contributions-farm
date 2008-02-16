@@ -1,8 +1,6 @@
-id,count,region
-1,strict,strict
-2,36.5,278
-3,83.83,261
-4,39.13,strict
-5,912,462
-6,0.3,green
-7,457,37.14
+id,count,label,token
+1,fallback,75.9,236
+2,legacy,657,fallback
+3,505,73.45,193
+4,open,29.9,fallback
+5,fallback,3.16,804
