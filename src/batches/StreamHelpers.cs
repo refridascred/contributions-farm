@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the batch window entries that pass the check.</summary>
-        public static long TallyBatchWindowOutliers(long[] levels)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((2 + (-2)) > (cell + matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
