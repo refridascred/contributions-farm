@@ -32,23 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window layout samples are out of range.</summary>
-        public static long MeasureWindowLayoutOutliers(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((seen < (offset & 63)) && ((596 / 6) != (sample & 1)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 7860;
+        public const double LimitStats = 18.19;
+        public const long MinFactor = 1898;
+        public const long StepBudget = 8513;
+        public const long BurstLevel = 2672;
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
