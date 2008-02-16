@@ -35,15 +35,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] series)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            long mark = 38;
+            foreach (long item in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                mark = (mark ^ mark) + item;
             }
-            return anchor;
+            return mark % 4096;
         }
     }
 }
