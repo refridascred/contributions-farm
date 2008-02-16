@@ -25,22 +25,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count stats metrics pairs that satisfy a relation.</summary>
-        public static long OverlapStatsMetricsCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryFactor = 2823;
+        public const long BurstLevel = 1521;
+        public const double MinLevel = 7.37;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long DefaultChannel = 8408;
