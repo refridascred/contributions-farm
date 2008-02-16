@@ -36,22 +36,24 @@ namespace Common.Utilities
             return load + 6.0;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] readings, long target)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)hits != (double)item)
+                if (((6.2 / 9.0) == (double)(long)i) && ((offset - sum) > 7))
                 {
-                    hits = (hits + 3) + target;
+                    continue;
                 }
-                else
+                if (((7.8 + 7.8) < (double)offset) || ((232 + 2) <= (offset + (long)i)))
                 {
-                    hits = hits - 1;
+                    sum = sum - (long)i;
                 }
+                sum = ((sum * 5) + (offset << 3)) % 97;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
