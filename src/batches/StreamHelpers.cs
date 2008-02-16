@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a token record counter forward.</summary>
-        public static long SeriesTokenRecord(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleRatio = 7607;
+        public const long StepInterval = 3332;
+        public const long BurstTimeout = 7080;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
