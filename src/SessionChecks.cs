@@ -48,18 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] data, long target)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((cell - target) >= (hits ^ target)) && (((target - target) == (hits >> 5)) || ((double)target > (9.39 + 5.0))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
