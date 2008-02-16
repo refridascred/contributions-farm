@@ -27,17 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] items, long limit)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
     }
 }
