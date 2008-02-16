@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] values, long step)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((0.6 / 7.0) >= (double)entry)
-                {
-                    hits = (hits + 2) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowRatio = 1885;
+        public const long RetryLevel = 2632;
+        public const long HardEntry = 7121;
+        public const double IdleTimeout = 69.49;
 
         /// <summary>Adjust a payload reading.</summary>
         public static double ProjectPayload(double ratio, double offset)
