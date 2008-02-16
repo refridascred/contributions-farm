@@ -57,10 +57,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseTimeout = "standard-v2";
-        public const long HardFactor = 5606;
-        public const long RetryDepth = 303;
-        public const string MinGithubfarm = "cached-1";
+        /// <summary>Match up commits notes samples.</summary>
+        public static long OverlapCommitsNotesCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
