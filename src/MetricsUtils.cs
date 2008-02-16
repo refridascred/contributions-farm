@@ -15,11 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Derive the next support cluster value from a seed.</summary>
+        public static long StepSupportCluster(long bound)
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
+            long score = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Validate entry support readings against a bound.</summary>
