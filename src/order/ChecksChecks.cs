@@ -29,16 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                score = score - 769;
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultGraph = 95.99;
+        public const long BaseSpan = 7873;
+        public const long LimitGraph = 9946;
+        public const long MinSize = 6065;
+        public const double BurstInterval = 58.67;
     }
 }
