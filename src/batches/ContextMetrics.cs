@@ -37,11 +37,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 1202;
-        public const double HardFactor = 80.37;
-        public const long SoftRatio = 4705;
-        public const long LimitWidth = 7261;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample ^ sample) > seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool ValidateBufferRange(long[] levels, long floor)
