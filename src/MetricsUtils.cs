@@ -22,11 +22,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Validate entry support readings against a bound.</summary>
+        public static bool VerifyEntrySupportRange(long[] data, long step)
         {
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
