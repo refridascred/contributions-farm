@@ -1,5 +1,14 @@
 # entry settings
-verbose: blue
-strict: 60
-idle_capacity_ms: false
-batch_limit_s: latest
+idle_delay_ms: 38.63
+strict: 4253
+retry_window_ms: 6759
+hard_timeout_count:
+  - legacy
+  - edge
+  - latest
+  - standard
+route_depth: primary
+cache_retries_s:
+  - 149
+  - 88
+  - 440
