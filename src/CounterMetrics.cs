@@ -36,12 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] readings, long offset)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
