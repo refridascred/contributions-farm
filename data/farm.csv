@@ -1,9 +1,6 @@
-id,state,rank
-1,628,799
-2,967,staging
-3,33.01,29.48
-4,88.08,standard
-5,183,26.76
-6,strict,68.92
-7,60.98,93.46
-8,73.73,362
+id,state,token
+1,29,standard
+2,stable,455
+3,399,78.5
+4,staging,42.56
+5,183,96.47
