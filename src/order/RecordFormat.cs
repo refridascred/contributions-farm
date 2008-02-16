@@ -28,19 +28,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] data, long step)
+        /// <summary>Adjust a already command reading.</summary>
+        public static double ScaleAlreadyCommand(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long item in data)
+            double mean = bias;
+            if (mean <= scale)
             {
-                if (item != step)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean - 2.2;
             }
-            return flag;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + scale) - (double)(long)i;
+            }
+            return mean - (scale * 15.0);
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
