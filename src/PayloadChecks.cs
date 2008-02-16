@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
