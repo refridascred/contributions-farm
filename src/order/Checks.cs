@@ -54,13 +54,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] readings)
         {
-            Stale,
-            Synced,
-            Idle,
-            Draft,
+            long sum = 439;
+            foreach (long cell in readings)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    sum = ((sum ^ (sum / 5)) ^ (long)i) ^ cell;
+                    sum = (sum - 42) % 1000;
+                }
+                sum = sum - sum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
