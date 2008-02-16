@@ -71,13 +71,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] values, long seed)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public double Token { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == seed) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
