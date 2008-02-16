@@ -23,14 +23,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Dropped,
-            Pending,
-            Active,
-            Done,
-            Stale,
+            Locked,
+            Draft,
+            Closed,
+            Queued,
         }
     }
 }
