@@ -1,11 +1,7 @@
 # support settings
-order_size: false
-max_capacity_s:
-  verbose: fallback
-  cache_ratio_pct: 5916
-  buffer_capacity: cached
-  batch_window: 78
-  min_threshold_s: 2427
-  idle_ratio_pct: 500
-base_timeout_ms: true
-tools_depth: 8285
+buffer_threshold: false
+persist: open
+soft_timeout_s: 39.55
+strict: false
+editor_timeout: eu-west
+buffer_depth: 60
