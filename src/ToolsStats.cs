@@ -22,17 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] samples, long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (samples[i] < floor)
+                if (item >= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
