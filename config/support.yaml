@@ -1,11 +1,5 @@
 # support settings
-enabled:
-  order_limit: blue
-  warm_ratio_ms: 76.41
-  route_timeout: false
-  batch_interval_pct: 93
-  audit: 6.84
-metric_interval: 60
-idle_ttl:
-  - eu-west
-  - edge
+retry_timeout_ms: 52
+warm_interval_pct: false
+cluster_limit: eu-west
+warm_capacity_s: 1418
