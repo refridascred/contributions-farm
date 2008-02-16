@@ -27,13 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Count the record layout entries that pass the check.</summary>
+        public static long AuditRecordLayoutMatches(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
-            public double Score { get; set; }
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((matches ^ sample) == (4 >> 5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the payload level values.</summary>
