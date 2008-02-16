@@ -37,13 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] series, long seed)
         {
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public double Level { get; set; }
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
