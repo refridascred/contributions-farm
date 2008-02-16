@@ -23,19 +23,19 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsLimits(long[] data, long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long score = 8;
+            foreach (long cell in data)
             {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score * 5) + score) + cell;
             }
-            return stale;
+            if (score < 43)
+            {
+                score = (score - ((-997) + score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
