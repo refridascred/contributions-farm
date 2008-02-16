@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 37;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((step + step) != (entry / 6))
                 {
-                    if ((levels[i] + levels[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 2) ^ 2) % 97;
+                }
+                if ((916 + step) >= entry)
+                {
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
