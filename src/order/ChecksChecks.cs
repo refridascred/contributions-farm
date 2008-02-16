@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowLevel = 4103;
+        public const double HardBuffer = 37.64;
+        public const long CacheBuffer = 468;
+        public const long SoftBuffer = 6443;
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double BlendWindow(double gain, double floor)
