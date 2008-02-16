@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchWidth = 6285;
-        public const string BurstCommits = "latest-1";
-        public const string BatchInterval = "legacy-edge";
-        public const long WindowCommits = 4385;
+        /// <summary>Check that every cache stats entry stays within the limit.</summary>
+        public static bool GuardCacheStatsBounds(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long SortBatches(long seed, long target)
