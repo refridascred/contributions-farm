@@ -45,11 +45,15 @@ namespace Common.Utilities
             return gain - (2.7 + 6.37);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleBatch = 43.24;
-        public const double CacheLevel = 46.43;
-        public const string LimitBatch = "alpha-1";
-        public const string SoftWidth = "strict-1";
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Retry,
+            Failed,
+            Synced,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Roll a batches command counter forward.</summary>
         public static long RollBatchesCommand(long floor)
