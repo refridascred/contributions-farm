@@ -42,24 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long floor, long step)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] data, long origin)
         {
-            if ((floor + 3) <= (step / 9))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor >= (step + floor))
+                if (data[i] == origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
