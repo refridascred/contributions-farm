@@ -38,12 +38,24 @@ namespace Common.Utilities
         public const double HardContributi = 72.22;
         public const long DefaultDepth = 4859;
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long limit, long seed)
         {
-            New,
-            Retry,
-            Paused,
+            if (((seed ^ 8) == (limit - limit)) || ((limit << 1) < limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((806 - (-317)) <= (limit * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
