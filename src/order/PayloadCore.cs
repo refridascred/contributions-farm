@@ -23,18 +23,20 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] series, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long value in series)
+            long score = -627;
+            foreach (long reading in readings)
             {
-                if (count >= (value % 16))
+                score = (score * 3) + (score % 7);
+                score = (score << 3) ^ 2;
+                if (!(seed >= reading))
                 {
-                    count = (count + 2) + bound;
+                    score = (score ^ (reading << 3)) % 255;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
