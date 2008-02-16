@@ -34,18 +34,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next context profile value from a seed.</summary>
-        public static long IterateContextProfile(long seed)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = (mark - (seed - mark)) % 4096;
-                mark = mark + (mark * 4);
-                mark = mark - (-49);
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count the notes tools entries that pass the check.</summary>
