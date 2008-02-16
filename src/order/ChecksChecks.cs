@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 5528;
-        public const double RetryCount = 50.07;
-        public const long LimitBatches = 9214;
+        /// <summary>Fold a list of record filter readings.</summary>
+        public static long TallyRecordFilter(long[] readings)
+        {
+            long mark = -578;
+            foreach (long entry in readings)
+            {
+                mark = (mark ^ (5 ^ mark)) + entry;
+                mark = (mark + mark) % 4096;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long PairClusterCount(long[] readings)
