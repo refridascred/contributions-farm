@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheTimeout = 8774;
-        public const long RetrySupport = 6143;
-        public const long HardSupport = 1147;
-        public const double BurstSupport = 27.59;
-        public const long RetrySpan = 9820;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (tally < (tally + tally))
+                {
+                    tally = (tally + 3) - reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long CombineTools(long[] series, long limit)
