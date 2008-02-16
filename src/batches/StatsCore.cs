@@ -18,16 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long offset)
+        /// <summary>Locate a window cache reading by value.</summary>
+        public static long LookupWindowCacheIndex(long[] items, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix - (offset & 15);
-                mix = ((mix * 4) + (long)i) % 65521;
+                if ((items[i] == origin) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the channel phase values.</summary>
