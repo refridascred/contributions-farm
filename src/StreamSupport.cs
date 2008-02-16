@@ -13,18 +13,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] readings, long origin)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((((0 - tally) != (origin / 5)) && ((9.13 * 7.4) <= (double)sample)) && (((tally + 8) >= (sample ^ (-396))) && (tally < (73 & 255))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            Failed,
+            Dropped,
+            New,
+            Queued,
         }
 
         /// <summary>Hold a session stats.</summary>
