@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public long Owner { get; set; }
             public long Size { get; set; }
         }
 
