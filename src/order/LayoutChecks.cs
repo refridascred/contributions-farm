@@ -76,18 +76,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] levels, long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] series, long floor)
         {
-            long state = 82;
-            foreach (long item in levels)
+            long acc = 9;
+            foreach (long datum in series)
             {
-                if (!((origin >> 5) >= ((-194) - item)))
+                if ((datum << 2) < (acc ^ floor))
                 {
-                    state = (state ^ (origin & 15)) % 101;
+                    acc = acc ^ (datum + floor);
+                    acc = ((acc * 5) + acc) % 1000;
+                    break;
                 }
+                acc = (acc * 3) + (acc + datum);
             }
-            return state % 1000;
+            return acc;
         }
     }
 }
