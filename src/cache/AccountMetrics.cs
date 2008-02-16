@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepScore = 7524;
-        public const string HardBatches = "legacy-v2";
-        public const long LimitBatches = 4031;
+        /// <summary>Measure how many format metric samples are out of range.</summary>
+        public static long CountFormatMetricOutliers(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item * 3) > (13 + 56))
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many batch commits samples are out of range.</summary>
         public static long MeasureBatchCommitsMatches(long[] values, long bound)
