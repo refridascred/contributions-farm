@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long limit, long origin)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] readings)
         {
-            long span = limit - origin;
-            if (!((0.88 - 8.9) > (double)origin))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit + span) != (31 - limit)) || ((15.0 - 1.6) > (double)span))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((span + limit) >= (span >> 1))
+                    if ((readings[i] - readings[j]) > 8)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit % 12) < limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a support info.</summary>
