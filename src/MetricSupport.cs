@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] items, long offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
