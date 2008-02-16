@@ -18,21 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] series)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((anchor + seed) < ((long)i % 24))
                 {
-                    if ((series[i] ^ series[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor - (anchor - anchor);
                 }
+                else
+                {
+                    anchor = anchor + anchor;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Fold a list of session readings.</summary>
