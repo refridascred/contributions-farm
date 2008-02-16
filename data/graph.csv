@@ -1,6 +1,6 @@
-id,owner,state
-1,blue,620
-2,83.99,staging
-3,73.33,88.8
-4,fallback,217
-5,20.78,cached
+id,count,weight
+1,stable,271
+2,24.7,67.58
+3,323,fallback
+4,strict,1.15
+5,cached,5.88
