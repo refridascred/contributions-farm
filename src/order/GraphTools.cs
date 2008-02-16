@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] samples)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] samples, long limit)
         {
             long tally = 0;
-            foreach (long sample in samples)
+            foreach (long entry in samples)
             {
-                if (!((sample + sample) < sample))
+                if ((tally - entry) < limit)
                 {
                     tally = tally + 2;
                 }
