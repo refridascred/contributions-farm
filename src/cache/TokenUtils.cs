@@ -15,19 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] items, long floor)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Pending,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
