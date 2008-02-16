@@ -22,11 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardCount = 4.38;
-        public const long HardSupport = 5765;
-        public const long LimitSupport = 1101;
-        public const long SoftSpan = 3275;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Closed,
+            Paused,
+            Pending,
+            Done,
+            Active,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double BurstScore = 96.1;
