@@ -30,18 +30,17 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Measure how many schema metric samples are out of range.</summary>
-        public static long AuditSchemaMetricGaps(long[] levels)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)item < 14.0)
+                if ((items[i] == limit) && ((items[i] % 5) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Adjust a tools cluster reading.</summary>
