@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] values)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (((double)hits <= (4.08 + 3.9)) && ((hits > (63 ^ 54)) && ((7.5 / 2.0) >= (double)hits)))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
