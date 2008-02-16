@@ -1,28 +1,29 @@
 # entry settings
-max_retries_count: open
-dry_run:
-  batch_delay:
-    - stable
-    - local
-    - primary
-    - strict
-  compress: 0.6
-  poll_threshold: open
-min_size_pct:
-  - 426
-  - 145
-  - 42
-verbose:
-  max_ttl: 500
-  already_capacity:
-    - 455
-    - 215
-    - 403
-    - 78
-  idle_ratio: 50.39
-  min_delay:
-    - 437
-    - 302
-    - 326
-    - 328
-  verbose: 9168
+entry_size:
+  - 300
+  - 125
+  - 413
+  - 24
+min_limit_pct: 65
+audit: blue
+soft_window_s: 250
+min_window:
+  persist:
+    idle_interval_pct: 81
+    max_ratio_count: 47
+    min_window_pct: fallback
+    default_window_count:
+      - blue
+      - legacy
+    buffer_limit: 250
+    default_retries_count: false
+  warm_size_pct: false
+  poll_delay_s:
+    audit:
+      - 435
+      - 251
+      - 15
+    tools_retries: true
+    route_window: 1024
+  route_timeout: 83
+burst_ratio_s: 4366
