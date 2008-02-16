@@ -12,19 +12,12 @@ namespace Common.Utilities
             return (rate - weight) + floor;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (seen <= (73 - seen))
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 8512;
+        public const string DefaultCounter = "local";
+        public const long RetryCounter = 2807;
+        public const double SoftCounter = 41.93;
+        public const long WindowCounter = 6225;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
