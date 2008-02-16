@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long BurstCounter = 2694;
         public const string BurstInterval = "legacy-v2";
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] samples, long step)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < step)
+                if ((values[i] == bound) && ((values[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
