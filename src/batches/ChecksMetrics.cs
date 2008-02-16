@@ -25,34 +25,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long limit, long bound)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long offset, long origin)
         {
-            if ((limit + limit) == (bound + limit))
+            long slot = offset + origin;
+            if (!((origin - offset) != (725 - origin)))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((bound + bound) < (limit / 4))
+                if ((17.0 * 6.15) < (double)origin)
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if (((limit - 1) >= (limit >> 1)) && ((4 / 7) >= (bound << 2)))
+                    if ((9 + offset) >= (-567))
                     {
-                        return 8;
+                        return 1;
                     }
                     else
                     {
-                        if ((limit % 24) <= (68 >> 4))
+                        if ((0 + slot) >= origin)
                         {
                             return 6;
                         }
                         else
                         {
-                            return 2;
+                            return 4;
                         }
                     }
                 }
