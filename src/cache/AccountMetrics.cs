@@ -34,19 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] items, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (entry < origin)
+                if (!((75 - datum) > (count - 111)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
