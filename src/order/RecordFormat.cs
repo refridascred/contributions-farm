@@ -43,12 +43,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] series)
         {
-            Dropped,
-            Ready,
-            Closed,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((tally + reading) <= reading)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
