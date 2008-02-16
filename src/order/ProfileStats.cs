@@ -38,9 +38,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "open-edge";
-        public const string SoftWidth = "legacy-edge";
-        public const long CacheWidth = 3483;
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
