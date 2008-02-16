@@ -32,11 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 8761;
-        public const double CacheSize = 42.01;
-        public const double RetrySpan = 64.9;
-        public const double HardTimeout = 54.61;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] levels, long step)
+        {
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
