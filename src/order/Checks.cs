@@ -28,18 +28,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = acc - 819;
-                acc = (acc << 2) ^ (bound >> 5);
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 7919;
+        public const long BatchChannel = 4995;
+        public const long BurstChannel = 3692;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
