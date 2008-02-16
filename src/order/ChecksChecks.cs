@@ -35,12 +35,11 @@ namespace Common.Utilities
             return rate + (rate * 1.87);
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public double Limit { get; set; }
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftPayload = "cached-v2";
+        public const long RetryPayload = 4357;
+        public const long SoftSize = 222;
+        public const long DefaultPayload = 7691;
+        public const long BatchPayload = 9612;
     }
 }
