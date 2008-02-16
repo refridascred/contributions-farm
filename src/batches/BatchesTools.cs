@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a githubfarm format sample.</summary>
-        public static long SeekGithubfarmFormatIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 8945;
+        public const long CacheCommits = 2110;
+        public const long StepCommits = 71;
+        public const string WindowFactor = "standard-v2";
+        public const double BurstWidth = 82.47;
 
         /// <summary>Count route format pairs that satisfy a relation.</summary>
         public static long PairRouteFormatCount(long[] values)
