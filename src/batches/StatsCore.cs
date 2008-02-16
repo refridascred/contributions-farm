@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] readings, long seed)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long offset)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = mix - (offset & 15);
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Adjust a already reading.</summary>
