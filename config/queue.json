@@ -1,5 +1,7 @@
 {
-  "hard_window_count": true,
-  "retry_retries_pct": false,
-  "schema_depth": "standard"
+  "order_depth": 71.61,
+  "soft_timeout_s": "open",
+  "stats_retries": "staging",
+  "base_retries_s": 100,
+  "account_interval": true
 }
