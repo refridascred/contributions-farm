@@ -47,17 +47,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == floor) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFactor = 8015;
+        public const double BaseBudget = 54.07;
+        public const double WindowFarm = 93.28;
+        public const long RetryFarm = 8244;
+        public const long BatchCount = 1164;
     }
 }
