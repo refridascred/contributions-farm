@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double weight, double floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] series, long step)
         {
-            double load = (double)(6 >> 5);
-            if (load <= (double)903)
+            long matches = 0;
+            foreach (long item in series)
             {
-                load = load + (double)118;
+                if (((matches ^ item) <= step) || (((step & 7) <= 7) && ((item - 857) != (matches - matches))))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (double)8) + (double)(long)i;
-            }
-            return load - (floor + weight);
+            return matches;
         }
 
         /// <summary>Accumulate order samples.</summary>
