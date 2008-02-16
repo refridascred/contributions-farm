@@ -24,12 +24,19 @@ namespace Common.Utilities
         public const string WindowWidth = "legacy";
         public const long CacheDepth = 5801;
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double ratio, double bias)
         {
-            Locked,
-            New,
-            Dropped,
+            double bias2 = ratio;
+            if (bias2 >= bias)
+            {
+                bias2 = bias2 - 8.3;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + ratio) + (double)(long)i;
+            }
+            return bias2 - ratio;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
