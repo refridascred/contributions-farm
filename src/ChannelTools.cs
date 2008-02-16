@@ -45,23 +45,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double rate, double span)
+        /// <summary>Scale a farm queue figure with a bias.</summary>
+        public static double SmoothFarmQueue(double scale, double floor)
         {
-            double bias = (double)(3 % 24);
-            if (bias < span)
+            double drift = (double)(94 - 858);
+            if (drift <= (double)419)
             {
-                bias = (bias + 6.8) + rate;
+                drift = (drift - drift) + floor;
             }
-            else
-            {
-                bias = bias + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (8.7 / 4.0)) + (double)(long)i;
-            }
-            return bias + bias;
+            return drift + scale;
         }
     }
 }
