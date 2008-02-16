@@ -1,11 +1,11 @@
 # githubfarm settings
-verbose: true
-burst_capacity_pct:
-  - 75
-  - 348
-  - 403
-  - 377
-hard_size_ms: 33.62
-hard_window: false
-base_threshold_s: 73.27
-cache_capacity: true
+dry_run: staging
+buffer_interval:
+  compress: strict
+  audit:
+    - 115
+    - 107
+    - 423
+  filter_depth: eu-west
+idle_limit_ms: 61
+default_depth: latest
