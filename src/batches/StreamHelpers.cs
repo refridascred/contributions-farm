@@ -39,13 +39,19 @@ namespace Common.Utilities
         public const long BurstLevel = 1521;
         public const double MinLevel = 7.37;
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] values, long target)
         {
-            Active,
-            Idle,
-            Pending,
-            Failed,
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a entry account pair into a bucket.</summary>
