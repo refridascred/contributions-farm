@@ -1,22 +1,28 @@
 # entry settings
-stream_ratio: false
-batch_interval_count: 65
-dry_run: standard
-soft_timeout: 39.25
-sync_size:
-  batch_timeout:
-    enabled:
-      - 138
-      - 364
-      - 137
-    flush_delay_count: eu-west
-    hard_interval: 2585
-    soft_delay:
-      - 429
-      - 313
-      - 6
-  base_interval_pct: legacy
-  account_ratio: false
-  hard_retries_ms: 12.46
-  readonly: 1024
-  default_retries_ms: 45
+min_depth_pct: 30
+stats_threshold:
+  enabled: staging
+  batch_limit:
+    - edge
+    - standard
+  verbose:
+    default_depth: eu-west
+    contributi_ttl: 27
+    format_threshold: standard
+    burst_capacity_ms: 24.47
+    sync_delay_pct:
+      - 78
+      - 445
+  context_threshold: 58
+  flush_retries_pct: eu-west
+  min_window_pct: staging
+batch_ratio: 1024
+idle_window:
+  sync_size: 63.97
+  burst_depth: stable
+  audit: true
+  counter_timeout: 84.53
+  poll_retries_count: 57.89
+poll_retries:
+  - 227
+  - 451
