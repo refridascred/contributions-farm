@@ -19,21 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count commits context pairs that satisfy a relation.</summary>
-        public static long CompareCommitsContextCount(long[] levels)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) != 8)
+                    if ((readings[i] + readings[j]) == 8)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
