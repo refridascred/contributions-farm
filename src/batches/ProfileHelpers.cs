@@ -56,22 +56,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] values)
+        /// <summary>Iterate the support format series from a seed.</summary>
+        public static long IterateSupportFormat(long step)
         {
-            long carry = -85;
-            foreach (long entry in values)
+            long acc = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (81 < (carry >> 4))
+                if ((double)acc != (1.1 / 7.0))
                 {
-                    carry = carry - (entry + carry);
-                }
-                if ((carry + 15) < carry)
-                {
+                    acc = acc ^ (long)i;
                     break;
                 }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Describe the channel status values.</summary>
