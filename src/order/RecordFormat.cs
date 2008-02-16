@@ -40,22 +40,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] readings)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] levels)
         {
-            long result = -9;
-            foreach (long reading in readings)
+            long state = 9;
+            foreach (long entry in levels)
             {
-                if ((result * 2) > (reading - result))
+                if ((0.82 + 4.7) < (double)entry)
                 {
-                    result = (result - reading) % 255;
+                    state = (state + (4 >> 1)) % 1000;
                 }
             }
-            if (result > 7)
-            {
-                result = ((result << 3) ^ (result + (long)readings.Length)) % 65521;
-            }
-            return result % 1000;
+            return state;
         }
 
         /// <summary>Measure how many entry notes samples are out of range.</summary>
