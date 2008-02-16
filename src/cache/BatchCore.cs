@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowInterval = "primary";
-        public const long MinFormat = 1961;
-        public const long BurstFormat = 9064;
-        public const long WindowFormat = 6461;
-        public const long StepFormat = 4707;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public long Count { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] samples)
