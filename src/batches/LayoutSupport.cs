@@ -72,15 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor stream readings.</summary>
-        public static long ScoreEditorStream(long[] series, long seed)
+        /// <summary>Validate farm command readings against a bound.</summary>
+        public static bool CheckFarmCommandRange(long[] levels, long origin)
         {
-            long mark = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                mark = (((mark ^ (58 % 97)) % 97) + datum) - seed;
+                if (item <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
     }
 }
