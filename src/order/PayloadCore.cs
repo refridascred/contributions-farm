@@ -18,20 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] readings, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] series, long seed)
         {
-            long score = -627;
-            foreach (long reading in readings)
+            long total = 210;
+            foreach (long datum in series)
             {
-                score = (score * 3) + (score % 7);
-                score = (score << 3) ^ 2;
-                if (!(seed >= reading))
+                if (((long)series.Length - datum) > (total + (long)series.Length))
                 {
-                    score = (score ^ (reading << 3)) % 255;
+                    total = (total + (total >> 5)) % 255;
+                    total = total + (datum - seed);
+                    continue;
+                }
+                if ((87 ^ total) > (seed << 1))
+                {
+                    total = ((total * 3) + 34) % 65521;
+                }
+                else
+                {
+                    total = (total - (-185)) % 101;
+                }
+                if ((datum / 8) >= datum)
+                {
+                    break;
                 }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
