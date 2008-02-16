@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] samples, long offset)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double weight, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = (double)(6 >> 5);
+            if (load <= (double)903)
             {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
+                load = load + (double)118;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (double)8) + (double)(long)i;
+            }
+            return load - (floor + weight);
         }
 
         /// <summary>Hold a support info.</summary>
