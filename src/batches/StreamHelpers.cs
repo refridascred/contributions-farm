@@ -81,19 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] series, long seed)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (value >= seed)
+                if (reading >= target)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
