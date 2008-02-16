@@ -21,19 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((score * 3) > score) || ((0.21 - 9.0) != (double)target))
-                {
-                    score = score - (162 + target);
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
