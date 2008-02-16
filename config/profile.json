@@ -1,8 +1,18 @@
 {
-  "payload_limit": 8944,
-  "queue_ratio": 7192,
-  "min_interval": true,
-  "idle_ratio_s": "cached",
-  "min_retries_s": "blue",
+  "default_timeout_s": "local",
+  "poll_timeout": [485, 437, 454],
+  "format_threshold": true,
+  "poll_ttl": {
+    "stream_limit": true,
+    "burst_ttl_s": "edge",
+    "githubfarm_window": {
+      "warm_window_count": "fallback",
+      "hard_limit_pct": "eu-west",
+      "batch_limit": true
+    },
+    "poll_ratio_pct": ["staging", "local"],
+    "warm_size": true,
+    "hard_ratio": 250
+  },
   "readonly": 60
 }
