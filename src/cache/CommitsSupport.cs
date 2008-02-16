@@ -41,11 +41,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long offset)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((offset * 2) > (offset - carry)) || ((carry - offset) != (carry >> 3)))
+                {
+                    carry = ((carry * 3) + (carry - carry)) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
