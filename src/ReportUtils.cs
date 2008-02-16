@@ -16,14 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] series, long step)
         {
-            Locked,
-            Retry,
-            Queued,
-            Draft,
-            Failed,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((double)matches > (9.0 + 8.88))
+                {
+                    matches = ((matches + 2) + cell) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
