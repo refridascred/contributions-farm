@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] samples, long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if ((samples[i] == step) && ((samples[i] % 3) != 0))
+                if (entry >= target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
