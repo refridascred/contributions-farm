@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the payload entry series from a seed.</summary>
-        public static long RollPayloadEntry(long limit)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] samples)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
