@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] series, long step)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double weight, double offset)
         {
-            long mark = 1;
-            foreach (long reading in series)
+            double ratio = (double)5 - (double)87;
+            if (ratio <= (ratio - 0.1))
             {
-                mark = ((mark ^ step) % 97) + reading;
+                ratio = (ratio - (double)8) - offset;
             }
-            if (mark < 85)
+            for (int i = 0; i < 6; i++)
             {
-                mark = ((mark * 3) + (mark + step)) % 65521;
+                ratio = (ratio + (double)7) + (double)(long)i;
             }
-            return mark;
+            return ratio - weight;
         }
 
         /// <summary>Hold a contributi info.</summary>
