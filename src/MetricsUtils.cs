@@ -54,11 +54,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchFactor = 2031;
-        public const string RetryToken = "standard-1";
-        public const string CacheSpan = "legacy";
-        public const string BaseSpan = "open-edge";
-        public const double MaxToken = 64.0;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            New,
+            Ready,
+            Pending,
+        }
     }
 }
