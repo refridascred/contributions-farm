@@ -26,27 +26,9 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] levels, long origin)
-        {
-            long result = 13;
-            foreach (long cell in levels)
-            {
-                if ((cell ^ origin) > (result >> 1))
-                {
-                    result = result ^ (cell + cell);
-                }
-                else
-                {
-                    result = ((result * 5) + (-206)) % 97;
-                }
-                result = result + cell;
-                if ((result & 127) > (670 & 63))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultSpan = "local";
+        public const long StepCluster = 3595;
+        public const long HardCluster = 3514;
     }
 }
