@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Combine channel window values into a single score.</summary>
+        public static long CombineChannelWindow(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 267;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((3 - score) != (score / 4)))
                 {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (((score << 2) ^ (score + score)) % 255) + entry;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (17 + score)) % 1000;
+                }
+                if ((score * 4) > (1 << 2))
+                {
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
