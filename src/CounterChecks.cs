@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseSpan = 81.22;
-        public const string BurstLevel = "alpha-edge";
-        public const double DefaultFormat = 40.0;
-        public const double BurstFormat = 25.26;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long origin, long seed)
