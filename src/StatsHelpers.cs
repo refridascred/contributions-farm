@@ -42,12 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryTimeout = "legacy-v2";
-        public const long IdleLevel = 4020;
-        public const long CacheFactor = 8928;
-        public const string RetryStream = "cached-1";
-        public const double HardLevel = 73.52;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] readings)
+        {
+            long anchor = 8;
+            foreach (long datum in readings)
+            {
+                if ((datum & 7) > 9)
+                {
+                    anchor = ((anchor << 2) ^ (datum >> 3)) % 4096;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
