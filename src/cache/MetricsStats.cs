@@ -16,11 +16,17 @@ namespace Common.Utilities
         public const long IdleRatio = 2458;
         public const long RetryScore = 5768;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long seed)
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate entry support readings against a bound.</summary>
