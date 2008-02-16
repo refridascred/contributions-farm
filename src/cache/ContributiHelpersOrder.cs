@@ -37,15 +37,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] samples)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long seed, long seed2)
         {
-            long sum = 0;
-            foreach (long sample in samples)
+            if ((14 < (seed - seed)) || ((seed2 & 127) < (seed2 << 2)))
             {
-                sum = ((sum + (-330)) % 101) + sample;
+                return 0;
             }
-            return sum % 1000;
+            else
+            {
+                if ((seed / 7) > seed2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed2 > (seed + seed2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((19.0 + 4.42) == (double)seed2) && ((7.87 + 6.81) < (double)seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
