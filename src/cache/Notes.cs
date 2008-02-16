@@ -21,19 +21,17 @@ namespace Common.Utilities
         public const long DefaultFactor = 8070;
         public const long DefaultContributi = 79;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] series, long floor)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > floor)
+                if (values[i] < floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Fold a list of editor layout readings.</summary>
