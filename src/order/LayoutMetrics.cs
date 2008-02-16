@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] values, long step)
         {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((0.6 / 7.0) >= (double)entry)
+                {
+                    hits = (hits + 2) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a payload reading.</summary>
