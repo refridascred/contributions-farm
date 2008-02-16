@@ -29,11 +29,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowCounter = "stable-v2";
-        public const long MaxScore = 5009;
-        public const double BurstCounter = 77.61;
-        public const long BatchCount = 2203;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
