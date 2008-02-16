@@ -23,12 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxFactor = 4667;
-        public const long HardWidth = 3099;
-        public const long HardContext = 839;
-        public const long SoftLevel = 4810;
-        public const long StepContext = 3273;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Idle,
+            Queued,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
