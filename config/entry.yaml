@@ -1,6 +1,16 @@
 # entry settings
-base_ratio_s: green
-dry_run: 48
-idle_limit: 23.74
-payload_ttl: 64
-already_interval: 72
+cache_limit_ms: latest
+context_capacity: 60
+warm_ratio_s:
+  cache_interval: true
+  batch_capacity:
+    - fallback
+    - green
+  sync_depth: 29.82
+  enabled:
+    - 478
+    - 401
+    - 326
+  account_capacity: legacy
+strict: 1.95
+queue_delay: 500
