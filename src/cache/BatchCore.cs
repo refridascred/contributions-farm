@@ -20,13 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double scale, double bias)
         {
-            Failed,
-            Locked,
-            New,
-            Stale,
+            double load = bias;
+            if (load > load)
+            {
+                load = (load - bias) + scale;
+            }
+            return load + (1.0 * 9.82);
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
