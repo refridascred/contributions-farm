@@ -1,7 +1,11 @@
 {
-  "audit": "standard",
-  "tools_ttl": ["blue", "staging", "cached"],
-  "base_timeout_count": ["open", "fallback", "standard", "strict"],
-  "readonly": true,
-  "burst_capacity_count": "open"
+  "persist": 100,
+  "schema_interval": true,
+  "audit": [204, 206, 25, 410],
+  "batch_capacity_ms": {
+    "checks_size": "blue",
+    "sync_window_count": ["green", "legacy"],
+    "batch_threshold_s": 45.64
+  },
+  "warm_threshold": true
 }
