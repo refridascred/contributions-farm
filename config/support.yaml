@@ -1,11 +1,9 @@
 # support settings
-idle_retries_s: staging
-max_delay_pct: standard
-persist: edge
-sync_threshold_ms:
-  - 484
-  - 479
-  - 441
-  - 196
-readonly: standard
-stats_retries: 500
+buffer_depth: open
+cache_window: staging
+default_ratio_pct: green
+flush_depth:
+  - 488
+  - 158
+  - 77
+  - 491
