@@ -1,6 +1,21 @@
 {
-  "session_capacity": "legacy",
-  "base_ratio_ms": 6309,
-  "persist": "primary",
-  "account_retries": 3429
+  "audit": "edge",
+  "burst_retries": {
+    "sync_capacity": {
+      "soft_depth_pct": 76,
+      "verbose": false,
+      "idle_retries_s": "staging"
+    },
+    "sync_window": {
+      "burst_timeout_count": "edge",
+      "hard_size_s": true,
+      "soft_limit": 87.82,
+      "profile_delay": 500,
+      "graph_ttl": "strict"
+    },
+    "warm_window": 26,
+    "batch_timeout_pct": "edge"
+  },
+  "soft_window": false,
+  "buffer_threshold": 17
 }
