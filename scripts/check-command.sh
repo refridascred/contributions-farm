@@ -12,12 +12,9 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-fallback}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in blue primary cached local; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=216
+log "limit is ${COMMAND_LIMIT}"
