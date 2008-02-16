@@ -1,27 +1,13 @@
 # githubfarm settings
-batch_threshold: 36.6
-buffer_size:
-  - 319
-  - 386
-already_ratio: stable
-profile_depth: latest
-compress:
-  idle_interval_s:
-    burst_size_s: true
-    max_delay_ms: 1024
-    max_size_ms:
-      - 454
-      - 140
-      - 129
-    session_ratio: 93.87
-  poll_depth_ms: 2575
-  idle_retries:
-    queue_size: stable
-    persist: green
-    idle_interval_s: 23.81
-    batch_ratio_pct: 29.41
-    min_capacity_s: open
-  window_delay: 100
-  verbose: standard
-  retry_timeout_ms: 66
-min_threshold: 7
+cache_ttl_s: 60
+min_interval_ms: 62.92
+counter_size: 30
+queue_limit: 30
+verbose: 38.04
+strict:
+  contributi_ttl: false
+  flush_ratio_s: blue
+  strict: 97.69
+  cache_depth_count: 60
+  payload_delay: true
+  persist: 419
