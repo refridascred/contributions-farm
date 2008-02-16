@@ -1,21 +1,6 @@
 {
-  "audit": "edge",
-  "burst_retries": {
-    "sync_capacity": {
-      "soft_depth_pct": 76,
-      "verbose": false,
-      "idle_retries_s": "staging"
-    },
-    "sync_window": {
-      "burst_timeout_count": "edge",
-      "hard_size_s": true,
-      "soft_limit": 87.82,
-      "profile_delay": 500,
-      "graph_ttl": "strict"
-    },
-    "warm_window": 26,
-    "batch_timeout_pct": "edge"
-  },
-  "soft_window": false,
-  "buffer_threshold": 17
+  "default_capacity": "open",
+  "enabled": 89.89,
+  "readonly": "cached",
+  "idle_delay_ms": 6119
 }
