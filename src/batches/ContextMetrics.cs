@@ -17,20 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double ratio, double floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((seed + 2) < (875 - (long)i)) && (mix >= (mix - (long)i)))
-                {
-                    mix = (mix + (mix + mix)) % 1000;
-                    mix = (mix - seed) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            double load = ratio;
+            return (load - (double)2) + floor;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
