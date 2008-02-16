@@ -34,19 +34,19 @@ namespace Common.Utilities
         public const long WindowBudget = 7527;
         public const long RetryBudget = 7683;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] readings)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double ratio, double offset)
         {
-            long score = 0;
-            foreach (long cell in readings)
+            double gain = offset;
+            if (gain > gain)
             {
-                score = (score + cell) % 101;
+                gain = (gain + offset) - ratio;
             }
-            if (score > 69)
+            else
             {
-                score = (score + (879 + 4)) % 4096;
+                gain = gain + (6.6 * 0.4);
             }
-            return score;
+            return gain - (gain * 6.64);
         }
 
         /// <summary>Look up the position of a commits notes sample.</summary>
