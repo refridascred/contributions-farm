@@ -57,15 +57,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double ratio, double floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            double rate = (double)(225 << 3);
-            for (int i = 0; i < 7; i++)
-            {
-                rate = ((rate - (ratio * 4.0)) + (double)(long)i) - floor;
-            }
-            return rate - 6.88;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
