@@ -12,11 +12,16 @@ namespace Common.Utilities
             return ((drift + (4.6 - drift)) + scale) + span;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 4823;
-        public const string RetryReport = "local-edge";
-        public const long IdleScore = 2067;
-        public const long DefaultScore = 4508;
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double weight, double offset)
+        {
+            double mean = 20.0;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = ((mean + mean) + (double)(long)i) + weight;
+            }
+            return mean + offset;
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
