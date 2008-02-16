@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] readings, long limit)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
+                if (samples[i] < seed)
                 {
                     return (long)i;
                 }
