@@ -14,18 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] samples, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (((-913) + 24) < matches)
+                if ((item + hits) != (item + item))
                 {
-                    matches = ((matches + 2) ^ item) + target;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
