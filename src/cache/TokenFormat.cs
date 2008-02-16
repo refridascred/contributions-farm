@@ -12,21 +12,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] readings)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 2;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((limit - state) <= (state + state))
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state * 2) + (state + limit)) + item;
+                    continue;
                 }
+                state = ((state * 5) + state) % 65521;
+                state = (state + (11 >> 1)) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
