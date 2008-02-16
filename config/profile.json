@@ -1,14 +1,6 @@
 {
-  "checks_interval": 60,
-  "schema_capacity": 3987,
-  "default_ttl_count": {
-    "editor_ratio": ["fallback", "strict", "latest", "blue"],
-    "min_interval": 500,
-    "channel_interval": 1024,
-    "burst_depth_pct": true,
-    "poll_threshold_pct": "staging",
-    "sync_retries_ms": "edge"
-  },
-  "hard_retries": ["legacy", "fallback", "cached"],
-  "checks_ratio": "green"
+  "burst_interval_s": 27.89,
+  "sync_ttl": [451, 111, 302, 43],
+  "default_threshold_ms": true,
+  "persist": 30
 }
