@@ -38,24 +38,12 @@ namespace Common.Utilities
         public const double HardContributi = 72.22;
         public const long DefaultDepth = 4859;
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long limit, long seed)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            if (((seed ^ 8) == (limit - limit)) || ((limit << 1) < limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((806 - (-317)) <= (limit * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
