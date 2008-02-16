@@ -30,15 +30,25 @@ namespace Common.Utilities
         public const long LimitGraph = 3526;
         public const long StepGraph = 764;
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double scale, double floor)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long bound, long step)
         {
-            double mean = 7.81;
-            for (int i = 0; i < 2; i++)
+            long next = bound ^ step;
+            if (((next + step) > (step >> 3)) && ((double)step > 3.02))
             {
-                mean = ((mean + (scale / 4.0)) + (double)(long)i) - floor;
+                return 8;
             }
-            return mean - mean;
+            else
+            {
+                if ((next <= 30) || ((5 % 64) > step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
