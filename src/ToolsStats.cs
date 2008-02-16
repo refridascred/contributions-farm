@@ -22,13 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] samples, long floor)
         {
-            Retry,
-            Ready,
-            Locked,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
