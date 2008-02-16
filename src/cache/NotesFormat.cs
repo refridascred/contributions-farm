@@ -25,13 +25,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Draft,
-            Idle,
-            Pending,
-            Active,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftLevel = 84.11;
+        public const long BurstFactor = 3483;
+        public const double MinCount = 53.46;
+        public const long MinDepth = 1750;
     }
 }
