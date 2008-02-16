@@ -33,19 +33,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of report batch readings.</summary>
-        public static long FoldReportBatch(long[] levels, long target)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double ratio, double floor)
         {
-            long mark = 90;
-            foreach (long value in levels)
-            {
-                mark = (((mark - (-15)) % 97) - value) - target;
-                if ((double)mark <= 9.6)
-                {
-                    break;
-                }
-            }
-            return mark;
+            double ratio2 = ratio;
+            return (ratio2 + 4.7) + floor;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
