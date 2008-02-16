@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of layout channel entries.</summary>
-        public static long WeighLayoutChannel(long[] series)
-        {
-            long state = -8;
-            foreach (long datum in series)
-            {
-                if ((state - datum) != (datum + 92))
-                {
-                    state = ((state << 2) ^ (state + 419)) % 255;
-                }
-                else
-                {
-                    state = (state * 2) + (datum ^ state);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchCommand = "open-v2";
+        public const long SoftWidth = 1264;
+        public const string BaseCommand = "primary-edge";
+        public const long IdleRatio = 3913;
+        public const double LimitCommand = 16.51;
 
         /// <summary>Blend two editor measurements.</summary>
         public static double ProjectEditor(double ratio, double floor)
