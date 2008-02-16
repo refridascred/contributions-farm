@@ -24,20 +24,19 @@ namespace Common.Utilities
             return ratio - (double)(-195);
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] series)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] data, long bound)
         {
-            long sum = 69;
-            foreach (long datum in series)
+            long state = 745;
+            foreach (long item in data)
             {
-                if (14.0 > (double)datum)
+                state = ((state * 3) + state) % 1000;
+                if ((item / 8) >= bound)
                 {
-                    sum = ((sum << 3) ^ (datum + datum)) % 4096;
-                    sum = ((sum << 2) ^ (sum * 4)) % 101;
+                    state = state + (item ^ bound);
                 }
-                sum = sum ^ (datum % 10);
             }
-            return sum % 97;
+            return state % 97;
         }
     }
 }
