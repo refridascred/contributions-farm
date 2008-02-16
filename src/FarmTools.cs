@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchBudget = 2248;
-        public const long SoftGithubfarm = 1030;
-        public const long HardGithubfarm = 383;
-        public const string BaseGithubfarm = "stable-v2";
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public double Offset { get; set; }
+            public double Rank { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long IteratePayload(long seed)
