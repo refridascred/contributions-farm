@@ -1,8 +1,27 @@
 # githubfarm settings
-default_capacity_count: staging
-hard_interval_count:
-  - stable
-  - latest
+sync_size_count: strict
+cache_interval:
+  - staging
+  - blue
+  - eu-west
   - cached
-  - edge
-persist: stable
+retry_limit: 1024
+batch_size_ms:
+  profile_retries:
+    buffer_threshold: 24
+    record_timeout: 1507
+    default_ratio_s:
+      - stable
+      - staging
+      - fallback
+      - edge
+  burst_depth:
+    - 27
+    - 216
+    - 392
+  flush_ttl_count: true
+  default_size_pct:
+    - stable
+    - staging
+  retry_delay_count: 77
+  verbose: strict
