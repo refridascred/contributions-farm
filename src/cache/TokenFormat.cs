@@ -14,15 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] series, long floor)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long state = 682;
-            foreach (long item in series)
-            {
-                state = (state + (state - item)) - floor;
-            }
-            return state;
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a layout reading by value.</summary>
