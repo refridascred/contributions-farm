@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] values)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long step)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(matches >= (59 + value)))
+                if (((double)step >= (10.0 + 2.0)) || ((double)(long)i == (6.69 + 3.47)))
                 {
-                    matches = matches + 3;
+                    continue;
                 }
+                mix = (mix ^ (step + (long)i)) % 97;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Blend two metric measurements.</summary>
