@@ -1,8 +1,8 @@
-id,rank,active,token,state
-1,blue,green,258,open
-2,green,staging,87.88,57
-3,274,strict,21.67,standard
-4,278,260,317,standard
-5,28,407,814,249
-6,87.03,253,555,289
-7,88.34,47.94,325,46
+id,label,score,count
+1,261,474,83.86
+2,47,135,cached
+3,58.96,latest,986
+4,91.94,85.16,83.85
+5,745,standard,983
+6,501,482,strict
+7,13,738,green
