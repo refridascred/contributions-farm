@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] values, long bound)
+        /// <summary>Check that every report support entry stays within the limit.</summary>
+        public static bool CheckReportSupportBounds(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((values[i] >= bound) && ((values[i] % 5) == 0))
+                if (cell < target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
