@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public long Size { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepRatio = 1312;
+        public const long HardEntry = 8328;
+        public const long MaxSize = 3697;
+        public const double CacheEntry = 40.63;
+        public const string SoftEntry = "cached-edge";
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
