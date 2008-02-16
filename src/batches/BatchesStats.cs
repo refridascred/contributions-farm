@@ -26,12 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinCount = 957;
-        public const double BaseSpan = 84.57;
-        public const string BasePayload = "local-edge";
-        public const long IdlePayload = 6796;
-        public const string BurstPayload = "alpha-v2";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 8339;
+        public const string LimitSupport = "primary";
+        public const long BurstSupport = 239;
 
         /// <summary>Compare every pair of schema command readings.</summary>
         public static long OverlapSchemaCommandCount(long[] readings)
