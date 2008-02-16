@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] readings, long origin)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Active,
+            Dropped,
         }
 
         /// <summary>Check that every payload githubfarm entry stays within the limit.</summary>
