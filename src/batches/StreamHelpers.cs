@@ -26,25 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long origin, long bound)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long limit)
         {
-            long slot = origin + bound;
-            if (((slot >> 1) <= origin) && ((origin / 5) > (slot & 31)))
+            long result = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 8;
+                result = ((result * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((slot % 64) < (slot << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
