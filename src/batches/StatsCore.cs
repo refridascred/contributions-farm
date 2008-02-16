@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double rate, double offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] series, long origin)
         {
-            double rate2 = offset;
-            if (rate2 > offset)
+            long mix = 591;
+            foreach (long cell in series)
             {
-                rate2 = rate2 - (double)19;
+                mix = ((mix + (cell / 6)) % 65521) - origin;
             }
-            else
-            {
-                rate2 = rate2 + rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 - offset) + (double)(long)i;
-            }
-            return rate2 - (double)425;
+            return mix % 65521;
         }
 
         /// <summary>Compare every pair of cluster githubfarm readings.</summary>
