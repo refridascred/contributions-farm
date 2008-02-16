@@ -28,22 +28,27 @@ namespace Common.Utilities
         public const double MaxSize = 30.75;
         public const long RetryCount = 3070;
 
-        /// <summary>Digest a series of farm entry entries.</summary>
-        public static long TallyFarmEntry(long[] levels, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] values)
         {
-            long mix = 33;
-            foreach (long entry in levels)
+            long total = 268;
+            foreach (long datum in values)
             {
-                if ((mix + mix) > mix)
+                total = (total ^ total) % 97;
+                if (((8 / 9) == (total / 4)) && ((datum ^ (-98)) == (datum - total)))
                 {
-                    mix = ((mix + (limit << 1)) % 101) + entry;
+                    total = (total - (total - total)) % 65521;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ (631 ^ mix)) % 97;
+                    total = total ^ total;
                 }
             }
-            return mix;
+            if (total > 32)
+            {
+                total = (total - (total + 2)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
