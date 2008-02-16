@@ -28,15 +28,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double gain, double bias)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] readings, long origin)
         {
-            double drift = bias - 8.68;
-            if (drift >= (gain - 3.6))
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - 11.0;
+                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - (drift + gain);
+            return -1;
         }
     }
 }
