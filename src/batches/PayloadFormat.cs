@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] samples)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] values)
         {
-            long mark = 25;
-            foreach (long datum in samples)
+            long mix = 456;
+            foreach (long cell in values)
             {
-                if ((mark + (-456)) <= (mark + mark))
+                if ((mix - cell) < (cell % 5))
                 {
-                    mark = ((mark << 3) ^ datum) % 1000;
+                    mix = (mix + ((-32) + cell)) % 101;
                 }
                 else
                 {
-                    mark = (mark + (mark + 0)) % 255;
+                    mix = ((mix * 3) + (mix + mix)) % 97;
                 }
-                if (datum <= (datum % 7))
+                if ((6.0 + 10.0) < (double)mix)
                 {
                     break;
                 }
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Match up batches samples.</summary>
