@@ -26,11 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] levels, long seed)
         {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (value < (seed >> 5))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a filter window pair into a bucket.</summary>
