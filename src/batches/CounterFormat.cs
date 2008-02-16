@@ -21,10 +21,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchSpan = "cached-v2";
-        public const string IdleCommits = "open";
-        public const long SoftCommits = 7263;
-        public const long MaxCommits = 920;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Locked,
+            Draft,
+            Ready,
+            Queued,
+        }
     }
 }
