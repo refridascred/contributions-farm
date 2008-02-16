@@ -14,22 +14,24 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] items, long seed)
+        /// <summary>Roll a command editor counter forward.</summary>
+        public static long IterateCommandEditor(long origin)
         {
-            long mark = 315;
-            foreach (long value in items)
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((1 * 5) < (value ^ (long)items.Length))
+                double scale = (double)origin / 3.0;
+                if (anchor <= origin)
                 {
-                    mark = ((mark ^ (mark - value)) % 65521) + seed;
+                    scale = scale - (scale + scale);
                 }
-                else
+                if ((scale / 9.0) >= (scale - scale))
                 {
-                    mark = mark + 793;
+                    anchor = anchor - anchor;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return mark % 65521;
+            return anchor;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
