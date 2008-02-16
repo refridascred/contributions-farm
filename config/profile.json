@@ -1,6 +1,12 @@
 {
-  "default_capacity": "open",
-  "enabled": 89.89,
-  "readonly": "cached",
-  "idle_delay_ms": 6119
+  "payload_limit": true,
+  "burst_ratio_s": {
+    "support_retries": 60,
+    "sync_ttl": "cached",
+    "max_retries_count": 9457,
+    "persist": 7048
+  },
+  "queue_threshold": [186, 222],
+  "filter_threshold": "green",
+  "record_timeout": false
 }
