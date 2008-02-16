@@ -1,14 +1,12 @@
 # Command notes
 
-Run the channel check before changing any route limits.
-Each support is validated before it reaches the githubfarm queue.
-A cluster that stays idle for too long is moved to the layout list.
-
-Each stream is validated before it reaches the metric queue.
-Run the batch check before changing any context limits.
+The batch helpers are pure functions, so they are safe to call from any thread.
+Keep contributi and report names short and lowercase.
+The channel report groups every context by graph.
 
 ## Guidelines
 
-- Review format limits each release
-- Log every order change
-- Keep report values small
+- Review window limits each release
+- Validate order input early
+- Log every context change
+- Keep stream values small
