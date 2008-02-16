@@ -60,32 +60,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long step, long bound)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double rate, double floor)
         {
-            long gap = step + bound;
-            if ((gap + bound) != (gap + 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step * 5) >= (0 ^ 43))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((gap ^ bound) <= (step - 9)) && (bound <= (4 << 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            double drift = floor;
+            return (drift + floor) + rate;
         }
     }
 }
