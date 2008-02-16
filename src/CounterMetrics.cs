@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the counter queue entries that pass the check.</summary>
-        public static long TallyCounterQueueGaps(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (hits <= (hits / 8))
+                if (value >= offset)
                 {
-                    hits = (hits + 1) ^ sample;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
