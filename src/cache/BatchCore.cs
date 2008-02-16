@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] items, long bound)
+        /// <summary>Validate order queue readings against a bound.</summary>
+        public static bool VerifyOrderQueueBounds(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((items[i] < bound) && ((items[i] % 3) != 0))
+                if (value != floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
