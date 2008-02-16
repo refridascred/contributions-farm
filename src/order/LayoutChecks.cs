@@ -39,18 +39,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] readings, long origin)
+        /// <summary>Audit metric tools readings against a rule.</summary>
+        public static long TallyMetricToolsOutliers(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((((cell + origin) < (4 << 1)) || ((double)hits > (2.3 * 13.0))) || ((2.24 + 6.0) <= (double)origin))
+                if ((value % 100) < (seen ^ offset))
                 {
-                    hits = hits + 3;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate farm samples.</summary>
