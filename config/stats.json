@@ -1,5 +1,19 @@
 {
-  "min_capacity_pct": [175, 455, 145, 284],
-  "stream_limit": [36, 88],
-  "counter_size": "strict"
+  "sync_capacity_pct": 500,
+  "persist": true,
+  "warm_retries": "eu-west",
+  "base_window": {
+    "max_capacity_s": {
+      "max_window_pct": 60,
+      "counter_size": "edge",
+      "audit": 100,
+      "session_depth": [244, 125, 491, 232],
+      "hard_delay": 500,
+      "batch_capacity_ms": [474, 446, 149, 23]
+    },
+    "base_interval_ms": "open",
+    "base_threshold": 21.17,
+    "idle_timeout": 8,
+    "batch_size_count": 500
+  }
 }
