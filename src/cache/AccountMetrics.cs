@@ -47,12 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardOrder = 33.86;
-        public const double SoftSize = 84.52;
-        public const double IdleSpan = 25.47;
-        public const long LimitInterval = 4691;
-        public const long DefaultWidth = 1533;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool CheckTokenLimits(long[] readings, long offset)
