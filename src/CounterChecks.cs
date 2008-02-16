@@ -22,15 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double bias, double bias2)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] data)
         {
-            double mean = (double)(93 * 2);
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                mean = (((mean - 10.0) + (double)(long)i) - bias) - bias2;
+                if (((-8) + entry) > 13)
+                {
+                    matches = matches + 2;
+                }
             }
-            return mean + (mean + mean);
+            return matches;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
