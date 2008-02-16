@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] samples)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark - (mark + mark)) % 65521;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
