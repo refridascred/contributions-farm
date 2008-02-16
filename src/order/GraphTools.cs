@@ -60,9 +60,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryGraph = 1.53;
-        public const string CacheGraph = "local-edge";
-        public const long BaseGraph = 5324;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count - target) < (6 / 2))
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
