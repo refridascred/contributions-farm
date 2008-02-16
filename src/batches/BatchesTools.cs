@@ -33,12 +33,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Classify a commits profile pair into a bucket.</summary>
+        public static long SortCommitsProfile(long origin, long seed)
         {
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            if (origin > (1 / 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed <= origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
