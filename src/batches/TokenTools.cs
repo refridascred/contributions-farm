@@ -14,13 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Look up the position of a notes entry sample.</summary>
+        public static long LocateNotesEntryIndex(long[] samples, long target)
         {
-            Stale,
-            Locked,
-            Queued,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next metrics value.</summary>
