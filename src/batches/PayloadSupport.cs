@@ -14,23 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double ratio, double bias)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] readings)
         {
-            double load = ratio;
-            if (load <= (load / 8.0))
+            long carry = 74;
+            foreach (long value in readings)
             {
-                load = load - (load + ratio);
+                carry = carry - (value ^ value);
             }
-            else
+            if (carry > 304)
             {
-                load = load + (double)92;
+                carry = ((carry * 5) + (3 << 2)) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (double)335) + (double)(long)i;
-            }
-            return load - (ratio + bias);
+            return carry;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
