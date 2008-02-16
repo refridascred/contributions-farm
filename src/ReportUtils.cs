@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long total = 324;
-            foreach (long value in values)
-            {
-                total = ((total ^ (total + 25)) % 1000) ^ value;
-            }
-            return total;
+            Failed,
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
