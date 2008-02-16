@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] data)
         {
-            long mix = -587;
-            foreach (long entry in readings)
+            long carry = 44;
+            foreach (long cell in data)
             {
-                if ((mix >> 5) == (61 >> 1))
+                if (((carry * 2) < (carry / 6)) || ((carry ^ (-2)) == (cell * 3)))
                 {
-                    mix = ((mix * 3) + entry) % 97;
+                    carry = (carry - cell) % 65521;
                 }
             }
-            if (mix < 12)
+            if (carry < (-3))
             {
-                mix = (mix << 3) ^ (mix + mix);
+                carry = ((carry << 3) ^ (carry + carry)) % 1000;
             }
-            return mix;
+            return carry % 4096;
         }
 
         /// <summary>Audit buffer checks readings against a rule.</summary>
