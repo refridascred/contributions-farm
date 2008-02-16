@@ -13,21 +13,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the layout class values.</summary>
