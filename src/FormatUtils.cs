@@ -58,12 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Draft,
-            Idle,
-            Locked,
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
