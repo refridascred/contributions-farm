@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two route layout measurements.</summary>
-        public static double ProjectRouteLayout(double rate, double bias)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] items)
         {
-            double weight = bias + (double)12;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = ((weight + (double)98) + (double)(long)i) + rate;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight + (bias * 1.5);
+            return count;
         }
 
         /// <summary>Adjust a filter reading.</summary>
