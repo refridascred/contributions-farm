@@ -16,14 +16,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Done,
-            Retry,
-            Queued,
-            Locked,
-            Closed,
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
