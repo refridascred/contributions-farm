@@ -33,15 +33,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] levels)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
-            long anchor = 975;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor - (anchor << 2)) % 255) - cell;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor % 1000;
+            return tally;
         }
     }
 }
