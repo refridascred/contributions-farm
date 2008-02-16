@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxSpan = "cached-v2";
-        public const string BurstCommits = "strict-edge";
-        public const long DefaultRatio = 9400;
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double rate, double floor)
+        {
+            double ratio = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (double)(long)i) - rate;
+            }
+            return ratio + 2.28;
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
