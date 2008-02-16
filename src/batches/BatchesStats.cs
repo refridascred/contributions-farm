@@ -50,18 +50,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] levels, long limit)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] items)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((limit << 1) <= (-92))
+                if ((double)(long)items.Length > (0.94 + 5.7))
                 {
-                    count = (count + 1) + value;
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
