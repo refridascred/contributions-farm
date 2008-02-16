@@ -14,11 +14,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
+            public long Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
