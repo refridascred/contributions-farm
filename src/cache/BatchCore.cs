@@ -33,19 +33,14 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] samples, long offset)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Pending,
+            Synced,
+            Retry,
+            Failed,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
