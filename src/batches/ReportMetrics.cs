@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double scale, double floor)
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public double Total { get; set; }
+            double rate = floor;
+            if (rate > 2.0)
+            {
+                rate = (rate + rate) - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - floor) + (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
