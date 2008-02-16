@@ -46,19 +46,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] values, long target)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            long sum = -40;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!((5.4 / 3.0) > (double)entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum ^ 69) - target;
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum << 2) ^ (sum >> 5)) % 4096;
             }
-            return sum % 97;
+            return tally;
         }
     }
 }
