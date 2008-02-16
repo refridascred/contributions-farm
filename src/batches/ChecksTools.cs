@@ -22,20 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] readings)
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                score = ((score << 3) ^ (limit + limit)) % 4096;
-                if ((double)score == (double)(long)i)
+                if (entry < (2 + entry))
                 {
-                    score = score - (limit - 369);
+                    count = count + 2;
                 }
-                score = ((score * 3) + (long)i) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a command entry.</summary>
