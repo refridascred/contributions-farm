@@ -68,22 +68,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] levels, long seed)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((hits + 97) > hits)
-                {
-                    hits = ((hits + 2) ^ cell) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
