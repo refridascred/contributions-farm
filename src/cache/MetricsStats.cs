@@ -23,12 +23,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 1628;
-        public const long StepLevel = 302;
-        public const string LimitCache = "latest-v2";
-        public const long IdleCache = 3805;
-        public const double DefaultWidth = 18.51;
+        /// <summary>Validate entry support readings against a bound.</summary>
+        public static bool GuardEntrySupportBounds(long[] samples, long seed)
+        {
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every notes cache entry stays within the limit.</summary>
         public static bool CheckNotesCacheRange(long[] levels, long offset)
