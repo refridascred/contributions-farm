@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the counter record entries that pass the check.</summary>
-        public static long CountCounterRecordMatches(long[] values)
+        /// <summary>Match up batches command samples.</summary>
+        public static long MatchBatchesCommandCount(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((entry > (42 >> 3)) && ((342 + tally) <= (entry >> 5))) || ((4.0 / 8.0) == (double)tally))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((data[i] + data[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
