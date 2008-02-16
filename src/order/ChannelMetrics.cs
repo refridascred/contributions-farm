@@ -12,14 +12,22 @@ namespace Common.Utilities
         public const double CacheEntry = 40.63;
         public const string SoftEntry = "cached-edge";
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] data)
         {
-            Queued,
-            Retry,
-            Synced,
-            Locked,
-            Done,
+            long result = 940;
+            foreach (long sample in data)
+            {
+                if ((sample < (-2)) && ((double)result <= 8.0))
+                {
+                    result = (result + (sample ^ sample)) % 97;
+                }
+            }
+            if (result > 84)
+            {
+                result = ((result << 3) ^ (result ^ result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of context entries.</summary>
