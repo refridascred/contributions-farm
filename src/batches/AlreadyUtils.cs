@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] readings, long origin)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (138 <= ((long)readings.Length / 4))
-                {
-                    hits = ((hits + 3) + reading) - origin;
-                }
-            }
-            return hits;
+            Closed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define window limits and defaults.</summary>
