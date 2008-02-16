@@ -63,11 +63,17 @@ namespace Common.Utilities
             return rate + (double)(-51);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitSpan = 49.12;
-        public const long BaseDepth = 2330;
-        public const double HardRecord = 4.3;
-        public const string MaxRecord = "stable-1";
-        public const double BaseRatio = 18.36;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
