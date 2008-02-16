@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long HardRecord = 5783;
         public const string CacheRecord = "primary-edge";
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] series, long step)
+        /// <summary>Count commits contributi pairs that satisfy a relation.</summary>
+        public static long PairCommitsContributiCount(long[] data)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
