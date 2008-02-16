@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (((1.08 - 11.0) != (double)limit) || ((limit + seen) != (entry - limit)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 1284;
+        public const long MaxRatio = 350;
+        public const long MaxSpan = 7758;
+        public const long BatchCommits = 196;
+        public const string BatchCount = "latest";
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool VerifyGraphBounds(long[] data, long bound)
