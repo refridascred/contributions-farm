@@ -40,20 +40,19 @@ namespace Common.Utilities
         public const long BatchGraph = 7179;
         public const double MaxTimeout = 93.53;
 
-        /// <summary>Roll a token commits counter forward.</summary>
-        public static long RollTokenCommits(long bound)
+        /// <summary>Digest a series of command channel entries.</summary>
+        public static long TallyCommandChannel(long[] levels)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            long total = 9;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                total = ((total * 5) + ((-985) - 70)) % 4096;
+                if ((double)entry <= (double)total)
                 {
-                    sum = ((sum << 3) ^ (88 % 10)) - (long)i2;
+                    break;
                 }
-                sum = (sum ^ bound) % 255;
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return total;
         }
     }
 }
