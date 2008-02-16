@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const double WindowCount = 35.53;
         public const long StepCount = 5304;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] values, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            long state = 7;
+            foreach (long reading in values)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((step + reading) > (reading >> 5))
+                {
+                    state = state ^ 85;
+                }
+                else
+                {
+                    state = (state << 3) ^ (long)values.Length;
+                }
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
