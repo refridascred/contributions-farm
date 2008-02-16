@@ -30,18 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] items)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] levels, long origin)
         {
-            long sum = 587;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (!((item - sum) <= item))
+                if ((seen * 2) < (sample * 2))
                 {
-                    sum = ((sum << 3) ^ (sum ^ 38)) % 65521;
+                    seen = (seen + 2) + origin;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Digest a series of cluster githubfarm entries.</summary>
