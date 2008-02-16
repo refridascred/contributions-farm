@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] series, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] items)
         {
-            long anchor = 32;
-            foreach (long cell in series)
+            long acc = 63;
+            foreach (long cell in items)
             {
-                anchor = ((anchor << 3) ^ (35 >> 4)) % 4096;
-                if (!(cell >= (target + cell)))
+                if (cell > (cell >> 5))
                 {
-                    break;
+                    acc = (acc * 4) + acc;
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    acc = ((acc * 4) + acc) + (long)i;
+                }
+                if ((8 & 63) <= (acc >> 3))
+                {
+                    acc = (acc << 2) ^ (acc >> 3);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (cell << 2);
                 }
             }
-            return anchor;
+            return acc % 65521;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
