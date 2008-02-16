@@ -32,14 +32,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] readings)
         {
-            Done,
-            New,
-            Synced,
-            Queued,
-            Ready,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((8.5 + 2.0) > (double)tally)
+                {
+                    tally = (tally + 1) - value;
+                }
+            }
+            return tally;
         }
     }
 }
