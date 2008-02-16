@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a stats token pair into a bucket.</summary>
-        public static long BucketStatsToken(long target, long target2)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double scale, double span)
         {
-            long offset = target + target2;
-            if (((target2 + offset) != (target ^ offset)) && ((target2 << 2) < target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target2 >> 4) == (239 % 64))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            double drift = (double)((-68) - 80);
+            return ((drift + (4.6 - drift)) + scale) + span;
         }
 
         /// <summary>Define report limits and defaults.</summary>
