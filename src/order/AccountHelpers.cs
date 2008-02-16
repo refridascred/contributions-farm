@@ -77,15 +77,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format layout readings.</summary>
-        public static long WeighFormatLayout(long[] samples, long limit)
+        /// <summary>Adjust a record cluster reading.</summary>
+        public static double BlendRecordCluster(double bias, double floor)
         {
-            long total = 96;
-            foreach (long entry in samples)
+            double mean = (double)(1 - 3);
+            for (int i = 0; i < 6; i++)
             {
-                total = ((((total * 4) + (8 * 4)) % 1000) + entry) - limit;
+                mean = (((mean - (4.94 + mean)) + (double)(long)i) + bias) + floor;
             }
-            return total;
+            return mean - (mean / 6.0);
         }
     }
 }
