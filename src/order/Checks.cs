@@ -47,13 +47,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "primary";
+        public const string RetryWidth = "legacy-1";
+        public const long MinContributi = 7289;
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LookupOrderIndex(long[] levels, long origin)
