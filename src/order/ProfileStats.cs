@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double ratio, double span)
+        /// <summary>Classify a stats token pair into a bucket.</summary>
+        public static long BucketStatsToken(long target, long target2)
         {
-            double mean = (8.7 * 7.11) / 8.0;
-            if (mean <= mean)
+            long offset = target + target2;
+            if (((target2 + offset) != (target ^ offset)) && ((target2 << 2) < target))
             {
-                mean = mean - (ratio / 9.0);
+                return 6;
             }
             else
             {
-                mean = mean - (span * 5.3);
+                if ((target2 >> 4) == (239 % 64))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return mean + (span + span);
         }
 
         /// <summary>Define report limits and defaults.</summary>
