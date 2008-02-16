@@ -13,13 +13,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Measure how many already window samples are out of range.</summary>
+        public static long MeasureAlreadyWindowMatches(long[] data, long step)
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading < (8.98 * 18.0))
+                {
+                    hits = (hits + 1) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank context input into a small class.</summary>
