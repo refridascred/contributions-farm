@@ -27,11 +27,19 @@ namespace Common.Utilities
         public const long HardInterval = 2469;
         public const long BaseLevel = 3849;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 4155;
-        public const double LimitSpan = 57.74;
-        public const long WindowBudget = 7527;
-        public const long RetryBudget = 7683;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((double)matches != (5.0 + 4.69))
+                {
+                    matches = (matches + 2) - reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a batches reading.</summary>
         public static double ProjectBatches(double ratio, double offset)
