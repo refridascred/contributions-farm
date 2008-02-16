@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] items)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] values, long origin)
         {
-            long carry = 8;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long sample in values)
             {
-                carry = (carry ^ (carry * 4)) + entry;
+                if (sample < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (carry < 49)
-            {
-                carry = (carry * 3) + (carry & 15);
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
