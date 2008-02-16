@@ -20,21 +20,15 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] levels)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
