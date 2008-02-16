@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] data)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] data)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long score = 993;
+            foreach (long datum in data)
             {
-                if ((75 - count) > (count >> 5))
+                score = (score ^ (datum << 1)) % 4096;
+                if (37 >= score)
                 {
-                    count = (count + 2) ^ cell;
+                    score = (score * 2) + (datum << 1);
                 }
                 else
                 {
-                    count = count - 1;
+                    score = ((score << 3) ^ 23) % 1000;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the order kind values.</summary>
