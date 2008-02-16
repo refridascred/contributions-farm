@@ -23,23 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] samples)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long sum = 94;
-            foreach (long item in samples)
-            {
-                sum = ((sum << 3) ^ (item & 255)) % 1000;
-                if ((sum * 5) <= 63)
-                {
-                    sum = (sum * 4) + item;
-                }
-            }
-            if (sum < 30)
-            {
-                sum = (sum << 2) ^ (506 & 3);
-            }
-            return sum;
+            public bool Region { get; set; }
+            public double Size { get; set; }
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Digest a series of entry entries.</summary>
