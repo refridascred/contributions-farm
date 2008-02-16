@@ -43,13 +43,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public double Size { get; set; }
-            public string Token { get; set; } = "";
             public long Score { get; set; }
-            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
