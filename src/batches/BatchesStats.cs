@@ -35,21 +35,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of schema command readings.</summary>
-        public static long OverlapSchemaCommandCount(long[] readings)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 66;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((result - result) < (bound % 7)) && (cell < bound))
                 {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result * 4) + (bound / 5)) % 97;
+                }
+                else
+                {
+                    result = result + bound;
                 }
             }
-            return hits;
+            return result % 4096;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
