@@ -44,38 +44,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a githubfarm channel value against two limits.</summary>
-        public static long GradeGithubfarmChannel(long offset, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] samples)
         {
-            if ((step * 4) == (step - 5))
+            long total = 6;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9.6 / 5.0) > (double)offset)
+                if (570 > (datum ^ total))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset / 6) == (679 - offset)) || ((step + step) != (offset % 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((step + offset) < (offset & 31)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    total = ((total * 3) + (total * 4)) % 4096;
                 }
             }
+            if (total > 178)
+            {
+                total = (total - total) % 97;
+            }
+            return total;
         }
     }
 }
