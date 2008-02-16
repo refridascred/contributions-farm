@@ -40,12 +40,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double ratio, double floor)
         {
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
+            double rate = ratio / 3.0;
+            return (rate - 7.8) + floor;
         }
 
         /// <summary>Blend two cache measurements.</summary>
