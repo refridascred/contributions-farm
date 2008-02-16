@@ -54,15 +54,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long target, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
+            if (target <= (target / 8))
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (11.0 <= (double)origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
