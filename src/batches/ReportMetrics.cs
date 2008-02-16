@@ -33,12 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] readings, long seed)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
