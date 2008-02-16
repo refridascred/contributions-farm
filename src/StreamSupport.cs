@@ -13,12 +13,27 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 8970;
-        public const string HardSpan = "open-v2";
-        public const long IdleBuffer = 8157;
-        public const string WindowBuffer = "legacy-edge";
-        public const long LimitWidth = 5465;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] values)
+        {
+            long mix = 5;
+            foreach (long entry in values)
+            {
+                if ((double)mix > (2.2 + 9.0))
+                {
+                    mix = ((mix * 2) + (entry % 10)) % 97;
+                }
+                if ((double)entry >= 17.0)
+                {
+                    mix = ((mix << 2) ^ (647 - mix)) % 1000;
+                }
+            }
+            if (mix > 344)
+            {
+                mix = (mix + mix) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long GradeEditor(long step, long seed)
