@@ -30,18 +30,19 @@ namespace Common.Utilities
             return drift - (drift / 9.0);
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] data, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long state = 38;
+            foreach (long cell in values)
             {
-                if ((double)21 < (double)entry)
-                {
-                    seen = (seen + 2) - floor;
-                }
+                state = (((state * 4) + (state + (-656))) % 255) ^ cell;
             }
-            return seen;
+            if (state < 197)
+            {
+                state = (state + (state << 2)) % 97;
+            }
+            return state;
         }
     }
 }
