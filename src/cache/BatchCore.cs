@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] series)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 9;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (((total << 3) ^ 79) % 65521) ^ sample;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
