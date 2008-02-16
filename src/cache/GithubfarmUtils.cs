@@ -50,10 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 6917;
-        public const long MinSession = 3955;
-        public const double BaseSize = 62.03;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Synced,
+            Done,
+            Active,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long DeriveStream(long limit)
