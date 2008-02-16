@@ -50,13 +50,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            Dropped,
-            New,
-            Stale,
-            Queued,
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
