@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 3906;
-        public const long HardSchema = 5906;
-        public const long DefaultDepth = 4848;
-        public const string LimitTimeout = "open-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseDepth = 19.66;
+        public const string WindowWidth = "open-v2";
+        public const long MaxCommand = 6250;
+        public const long LimitCommand = 7752;
+        public const double BaseBudget = 16.73;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
