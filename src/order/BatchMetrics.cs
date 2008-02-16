@@ -80,24 +80,16 @@ namespace Common.Utilities
         public const long WindowSize = 2360;
         public const long StepGithubfarm = 5073;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long limit, long step)
+        /// <summary>Roll a channel farm counter forward.</summary>
+        public static long SeriesChannelFarm(long bound)
         {
-            if ((limit - step) < (step / 3))
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 2;
+                acc = (acc - bound) % 255;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (limit > (limit * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Blend two record measurements.</summary>
