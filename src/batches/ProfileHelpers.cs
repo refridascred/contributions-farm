@@ -60,38 +60,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long step, long offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] items, long offset)
         {
-            if ((5.42 / 7.0) != (double)step)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step >> 5) < (offset << 1))
+                if (items[i] <= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((step ^ step) > (step - offset)) && ((step + offset) == (offset >> 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step <= (step * 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count stats token pairs that satisfy a relation.</summary>
