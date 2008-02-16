@@ -49,19 +49,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double gain, double bias)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] data)
         {
-            double bias2 = (double)((-29) + 30);
-            if (bias2 < (bias2 * 13.0))
+            long acc = 14;
+            foreach (long cell in data)
             {
-                bias2 = (bias2 - (bias2 / 7.0)) + bias;
+                if ((cell >> 2) < (cell << 2))
+                {
+                    acc = ((acc << 3) ^ (acc - cell)) % 97;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + bias2) + (double)(long)i;
-            }
-            return bias2 - (bias2 + gain);
+            return acc;
         }
     }
 }
