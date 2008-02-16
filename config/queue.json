@@ -1,16 +1,15 @@
 {
-  "soft_ratio": "green",
-  "compress": 19.3,
-  "base_ratio": [128, 221, 398, 451],
-  "counter_limit": "blue",
-  "batch_depth": {
-    "soft_threshold_pct": {
-      "flush_limit_ms": "eu-west",
-      "idle_interval_count": [155, 455, 318],
-      "max_ttl_pct": 46.62
-    },
-    "payload_retries": 9973,
-    "support_size": true
+  "base_delay_ms": 2993,
+  "idle_ttl": {
+    "layout_ratio": 22,
+    "graph_delay": 30,
+    "tools_depth": 1
   },
-  "burst_depth": 23.63
+  "stats_ttl": {
+    "schema_retries": "stable",
+    "compress": 48.73,
+    "sync_interval": [465, 458, 173, 153],
+    "min_limit_ms": 30,
+    "hard_timeout_pct": "green"
+  }
 }
