@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 8776;
-        public const long HardContext = 2684;
-        public const long BaseBudget = 9368;
+        /// <summary>Classify a session commits pair into a bucket.</summary>
+        public static long ClassifySessionCommits(long floor, long offset)
+        {
+            if ((offset * 2) == (floor >> 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset << 1) < offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] readings)
