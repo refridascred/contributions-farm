@@ -48,22 +48,19 @@ namespace Common.Utilities
         public const string BatchCount = "stable-1";
         public const long MinCluster = 7204;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] series)
+        /// <summary>Roll a route buffer counter forward.</summary>
+        public static long StepRouteBuffer(long origin)
         {
-            long total = 13;
-            foreach (long entry in series)
+            long state = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (((total - (long)series.Length) <= (entry - total)) && ((total + total) > entry))
+                if ((long)i == (state + (long)i))
                 {
-                    total = total ^ entry;
+                    continue;
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            if (total < (-6))
-            {
-                total = (total ^ (total / 3)) % 97;
-            }
-            return total % 1000;
+            return state;
         }
 
         /// <summary>Hold a command options.</summary>
