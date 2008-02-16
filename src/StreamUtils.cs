@@ -22,11 +22,28 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Derive the next notes contributi value from a seed.</summary>
+        public static long IterateNotesContributi(long step)
         {
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            long result = step;
+            for (int i = 0; i < 18; i++)
+            {
+                long tally = step;
+                if (tally <= result)
+                {
+                    tally = (tally << 3) ^ (long)i;
+                    tally = tally ^ (result - step);
+                    break;
+                }
+                else
+                {
+                    tally = tally ^ (step << 1);
+                    result = (result - tally) % 101;
+                }
+                result = result + (-1);
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
