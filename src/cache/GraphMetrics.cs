@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Rank route metrics input into a small class.</summary>
+        public static long RankRouteMetrics(long seed, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            if ((bound & 1) >= (bound * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)seed >= (1.2 / 2.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a stream snapshot.</summary>
