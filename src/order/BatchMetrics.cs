@@ -57,18 +57,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] data)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long anchor = 71;
+            foreach (long sample in readings)
             {
-                if ((matches + datum) <= (datum / 4))
+                if ((double)anchor != (1.52 + 6.11))
                 {
-                    matches = matches + 3;
+                    anchor = (anchor - (sample % 10)) % 97;
+                }
+                anchor = (anchor ^ (sample ^ anchor)) % 65521;
+                if ((anchor ^ sample) != (anchor + 392))
+                {
+                    anchor = (anchor + (sample / 5)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
