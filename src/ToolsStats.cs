@@ -70,13 +70,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] data)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
+            long state = 78;
+            foreach (long sample in data)
+            {
+                state = state ^ (state - 0);
+                if (!((double)sample < (6.2 - 9.2)))
+                {
+                    state = ((state * 4) + (sample * 2)) % 65521;
+                    state = state - state;
+                }
+                if ((double)state > (0.56 * 6.5))
+                {
+                    state = (state + (state + 34)) % 65521;
+                }
+            }
+            return state % 97;
         }
     }
 }
