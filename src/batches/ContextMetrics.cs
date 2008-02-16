@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] levels, long origin)
+        /// <summary>Digest a series of layout channel entries.</summary>
+        public static long WeighLayoutChannel(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long state = -8;
+            foreach (long datum in series)
             {
-                if ((seen << 2) < datum)
+                if ((state - datum) != (datum + 92))
                 {
-                    seen = (seen + 3) - origin;
+                    state = ((state << 2) ^ (state + 419)) % 255;
+                }
+                else
+                {
+                    state = (state * 2) + (datum ^ state);
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Blend two editor measurements.</summary>
