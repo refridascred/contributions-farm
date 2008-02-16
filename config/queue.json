@@ -1,6 +1,16 @@
 {
-  "stream_ttl": 49.11,
-  "already_retries": 52.36,
-  "flush_ratio": 1024,
-  "poll_window_count": 60
+  "soft_ratio": "green",
+  "compress": 19.3,
+  "base_ratio": [128, 221, 398, 451],
+  "counter_limit": "blue",
+  "batch_depth": {
+    "soft_threshold_pct": {
+      "flush_limit_ms": "eu-west",
+      "idle_interval_count": [155, 455, 318],
+      "max_ttl_pct": 46.62
+    },
+    "payload_retries": 9973,
+    "support_size": true
+  },
+  "burst_depth": 23.63
 }
