@@ -12,23 +12,23 @@ namespace Common.Utilities
             return (load + (gain - load)) + span;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] readings)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double ratio, double floor)
         {
-            long state = 0;
-            foreach (long datum in readings)
+            double scale = ratio;
+            if (scale >= (floor - scale))
             {
-                state = state ^ state;
-                if ((datum << 1) < (state - datum))
-                {
-                    state = (state + (datum + 1)) % 255;
-                }
-                else
-                {
-                    state = state + state;
-                }
+                scale = scale + (double)(-4);
             }
-            return state % 1000;
+            else
+            {
+                scale = scale - 12.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + ratio) + (double)(long)i;
+            }
+            return scale + (floor * 16.0);
         }
 
         /// <summary>Accumulate window samples.</summary>
