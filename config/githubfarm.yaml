@@ -1,9 +1,9 @@
 # githubfarm settings
-readonly:
-  - strict
-  - primary
-  - fallback
+batch_delay_ms: stable
+min_timeout_s: true
+readonly: false
+min_capacity_count: true
+notes_timeout:
   - standard
-dry_run: edge
-batch_interval: 93.62
-batch_window_pct: primary
+  - fallback
+  - legacy
