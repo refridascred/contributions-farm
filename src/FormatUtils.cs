@@ -13,15 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a batch report figure with a bias.</summary>
-        public static double SmoothBatchReport(double weight, double span)
+        /// <summary>Digest a series of channel entry entries.</summary>
+        public static long FoldChannelEntry(long[] values)
         {
-            double scale = weight;
-            if (scale > (double)4)
+            long result = 79;
+            foreach (long value in values)
             {
-                scale = (scale + (double)4) + span;
+                if (661 >= result)
+                {
+                    result = (result - (result % 64)) % 101;
+                }
+                if ((double)value < (5.8 / 3.0))
+                {
+                    result = (result * 3) + (result / 4);
+                }
             }
-            return scale + weight;
+            return result;
         }
 
         /// <summary>Fold a list of already session readings.</summary>
