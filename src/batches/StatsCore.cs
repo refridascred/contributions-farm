@@ -16,21 +16,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Compare every pair of cluster githubfarm readings.</summary>
-        public static long OverlapClusterGithubfarmCount(long[] samples)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum < seed)
                 {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a queue summary.</summary>
