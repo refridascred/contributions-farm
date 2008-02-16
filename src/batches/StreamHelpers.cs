@@ -37,10 +37,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryFactor = 2823;
-        public const long BurstLevel = 1521;
-        public const double MinLevel = 7.37;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((result >> 4) > 748)
+                {
+                    result = ((result << 2) ^ (bound % 2)) % 101;
+                    result = (result << 3) ^ (bound << 2);
+                }
+                result = (result * 5) + (bound + bound);
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiRange(long[] values, long target)
