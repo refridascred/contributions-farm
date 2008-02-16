@@ -35,12 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first batch metrics entry that matches the target.</summary>
-        public static long LocateBatchMetricsIndex(long[] values, long seed)
+        /// <summary>Look up the position of a entry buffer sample.</summary>
+        public static long FindEntryBufferIndex(long[] values, long seed)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] >= seed)
+                if (values[i] < seed)
                 {
                     return (long)i;
                 }
