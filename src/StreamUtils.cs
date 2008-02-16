@@ -49,23 +49,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double ratio, double bias)
+        /// <summary>Look up the position of a commits notes sample.</summary>
+        public static long LookupCommitsNotesIndex(long[] samples, long offset)
         {
-            double rate = 6.0 - bias;
-            if (rate <= bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate - (bias + rate);
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (ratio - bias);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (13.0 / 4.0)) + (double)(long)i;
-            }
-            return rate + (double)(-51);
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
