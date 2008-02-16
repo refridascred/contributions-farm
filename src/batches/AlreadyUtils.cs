@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] items)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long origin)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long state = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((1.39 - 10.0) > (double)sample)
-                {
-                    count = count + 3;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Digest a series of record entries.</summary>
