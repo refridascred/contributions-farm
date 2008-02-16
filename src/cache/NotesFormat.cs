@@ -25,22 +25,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of channel stream readings.</summary>
-        public static long TotalChannelStream(long[] series)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] data)
         {
-            long mix = 17;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mix + datum) > datum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix - mix) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 101;
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
     }
 }
