@@ -23,31 +23,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long target, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] samples)
         {
-            if (seed >= (seed + 75))
+            long sum = 94;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target <= (1.0 * 7.3))
+                sum = ((sum << 3) ^ (item & 255)) % 1000;
+                if ((sum * 5) <= 63)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(((-7) ^ target) <= (target - target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    sum = (sum * 4) + item;
                 }
             }
+            if (sum < 30)
+            {
+                sum = (sum << 2) ^ (506 & 3);
+            }
+            return sum;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
