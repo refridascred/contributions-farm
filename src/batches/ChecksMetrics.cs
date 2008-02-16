@@ -96,16 +96,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] samples, long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                sum = (sum ^ (limit & 15)) % 1000;
-                sum = ((sum * 5) + (long)i) % 101;
+                if (entry > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
     }
 }
