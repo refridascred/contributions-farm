@@ -59,19 +59,23 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double bias, double span)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            double drift = (double)(2 + 0);
-            if (drift <= (drift * 6.0))
+            long carry = step;
+            for (int i = 0; i < 7; i++)
             {
-                drift = ((drift - (double)1) - bias) - span;
+                if ((0 + (long)i) >= (step + (long)i))
+                {
+                    carry = ((carry << 3) ^ (415 - step)) % 97;
+                }
+                if ((long)i > (step + carry))
+                {
+                    carry = (carry - (carry + step)) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            else
-            {
-                drift = drift - (double)6;
-            }
-            return drift - (double)(-755);
+            return carry;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
