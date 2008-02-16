@@ -28,15 +28,21 @@ namespace Common.Utilities
         public const double MaxSize = 30.75;
         public const long RetryCount = 3070;
 
-        /// <summary>Accumulate entry contributi samples.</summary>
-        public static long TallyEntryContributi(long[] items)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            long score = 7;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score ^ (score >> 5)) % 255) ^ reading;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Audit metric tools readings against a rule.</summary>
