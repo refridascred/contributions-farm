@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long origin)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = (acc + acc) % 4096;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Active,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
