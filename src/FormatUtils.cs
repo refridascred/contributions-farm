@@ -79,19 +79,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session command values into a single score.</summary>
-        public static long CombineSessionCommand(long[] data, long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] data)
         {
-            long carry = -47;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in data)
             {
-                carry = carry - (carry * 5);
-                if (!(reading > (floor >> 2)))
+                if ((seen & 255) >= (item - (long)data.Length))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return carry % 97;
+            return seen;
         }
     }
 }
