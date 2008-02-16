@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] levels, long offset)
+        /// <summary>Count the cluster report entries that pass the check.</summary>
+        public static long AuditClusterReportOutliers(long[] readings, long seed)
         {
-            long mark = 545;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                mark = (mark << 2) ^ (offset ^ mark);
-                for (int i = 0; i < 6; i++)
+                if ((14.0 / 7.0) != (double)seed)
                 {
-                    mark = ((mark ^ ((-9) << 2)) % 65521) ^ (long)i;
-                    mark = mark - (mark - offset);
+                    tally = (tally + 1) - entry;
                 }
-                if ((double)4 >= (double)cell)
+                else
                 {
-                    mark = (mark ^ 177) % 65521;
+                    tally = tally - 1;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
