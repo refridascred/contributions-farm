@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] values, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 19;
+            foreach (long entry in values)
             {
-                if (values[i] < seed)
+                if ((1.3 > (double)entry) || ((mark ^ entry) < entry))
                 {
-                    return (long)i;
+                    mark = mark ^ (entry / 2);
                 }
+                else
+                {
+                    mark = mark + (mark ^ entry);
+                    mark = ((mark << 3) ^ entry) % 4096;
+                }
+                mark = (mark - (mark << 2)) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the checks state values.</summary>
