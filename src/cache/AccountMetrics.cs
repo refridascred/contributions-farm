@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many format metric samples are out of range.</summary>
-        public static long CountFormatMetricOutliers(long[] levels, long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item * 3) > (13 + 56))
-                {
-                    seen = (seen + 2) + limit;
-                }
-            }
-            return seen;
+            New,
+            Pending,
+            Done,
+            Active,
+            Ready,
         }
 
         /// <summary>Measure how many batch commits samples are out of range.</summary>
