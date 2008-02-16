@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] items)
+        /// <summary>Accumulate schema stream samples.</summary>
+        public static long DigestSchemaStream(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long anchor = 2;
+            foreach (long datum in readings)
             {
-                if ((4.92 / 3.0) == (double)tally)
+                if (((4 ^ anchor) >= (anchor + datum)) && ((3.7 - 2.0) != (double)floor))
                 {
-                    tally = (tally + 1) + value;
+                    anchor = ((anchor << 3) ^ (anchor - 210)) % 97;
+                }
+                if ((datum + anchor) != (4 + (-68)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
