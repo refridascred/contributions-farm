@@ -13,11 +13,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxEditor = "standard-1";
-        public const string BatchWidth = "latest-v2";
-        public const long CacheScore = 6688;
-        public const long LimitEditor = 855;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
