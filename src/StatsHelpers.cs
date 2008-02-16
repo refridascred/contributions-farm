@@ -22,18 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream schema readings against a rule.</summary>
-        public static long AuditStreamSchemaOutliers(long[] series, long floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample ^ 7) == (sample / 2))
+                if (readings[i] < seed)
                 {
-                    count = (count + 2) - floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
