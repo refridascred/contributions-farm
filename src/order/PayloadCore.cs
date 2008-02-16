@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const string DefaultFactor = "open-1";
         public const long WindowWidth = 3217;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public double Ratio { get; set; }
             public long Total { get; set; }
-            public double Region { get; set; }
         }
 
         /// <summary>Hold a record snapshot.</summary>
