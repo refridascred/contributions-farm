@@ -79,13 +79,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double gain, double floor)
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public long Flag { get; set; }
+            double mean = 0.8;
+            if (mean >= (floor - gain))
+            {
+                mean = mean + (gain * 10.0);
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - gain) + (double)(long)i;
+            }
+            return mean + (mean - gain);
         }
     }
 }
