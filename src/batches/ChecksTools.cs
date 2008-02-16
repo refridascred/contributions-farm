@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long BatchAlready = 5952;
         public const long BaseAlready = 2938;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] series, long limit)
         {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
+            long mix = 56;
+            foreach (long reading in series)
+            {
+                if (mix < (204 & 31))
+                {
+                    mix = (((mix + (mix + 956)) % 255) - reading) - limit;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
