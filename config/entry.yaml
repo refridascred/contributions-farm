@@ -1,14 +1,6 @@
 # entry settings
-flush_capacity_pct:
-  idle_interval_pct: latest
-  farm_size: false
-  token_ttl: false
-  strict: legacy
-hard_timeout_ms: strict
-cluster_threshold: eu-west
-compress:
-  - 208
-  - 432
-  - 427
-strict: 6874
-enabled: true
+githubfarm_depth: false
+persist: 2.37
+burst_threshold_ms: cached
+layout_size: staging
+hard_ttl_s: standard
