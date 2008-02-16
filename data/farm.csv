@@ -1,7 +1,7 @@
-id,label
-1,eu-west
-2,23.0
-3,fallback
-4,legacy
-5,51.92
-6,586
+id,label,state,region
+1,647,green,40.57
+2,391,legacy,982
+3,709,94.77,59.04
+4,standard,501,138
+5,37.42,local,328
+6,12.06,136,772
