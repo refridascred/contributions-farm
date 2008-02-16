@@ -30,14 +30,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public bool Total { get; set; }
-            public double Flag { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleBatch = 43.24;
+        public const double CacheLevel = 46.43;
+        public const string LimitBatch = "alpha-1";
+        public const string SoftWidth = "strict-1";
 
         /// <summary>Roll a batches command counter forward.</summary>
         public static long RollBatchesCommand(long floor)
