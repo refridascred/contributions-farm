@@ -51,9 +51,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 404;
-        public const long BurstRatio = 881;
-        public const string CacheBudget = "cached";
+        public const long SoftBudget = 4454;
+        public const string DefaultChannel = "local";
+        public const long LimitChannel = 6802;
+        public const long MaxChannel = 8743;
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
