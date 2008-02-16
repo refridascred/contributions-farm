@@ -23,17 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] readings, long bound)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (readings[i] >= bound)
+                if ((5 - 302) >= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) - sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a payload record.</summary>
