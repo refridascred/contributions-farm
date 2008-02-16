@@ -34,19 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double weight, double span)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] data)
         {
-            double bias = span;
-            if (bias >= (bias * 1.0))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                bias = bias - (span + weight);
+                if ((sample & 255) >= (sample * 4))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - weight) + (double)(long)i;
-            }
-            return bias + bias;
+            return matches;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
