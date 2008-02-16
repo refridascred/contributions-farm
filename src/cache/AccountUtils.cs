@@ -35,19 +35,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every account stream entry stays within the limit.</summary>
-        public static bool ValidateAccountStreamRange(long[] items, long floor)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardBudget = 1680;
+        public const string BaseFarm = "fallback-1";
+        public const double MinDepth = 73.59;
     }
 }
