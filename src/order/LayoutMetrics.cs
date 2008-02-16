@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of metrics tools entries.</summary>
-        public static long WeighMetricsTools(long[] readings)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] items)
         {
-            long mark = 85;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark << 2) ^ (cell >> 3);
-                if ((19.0 * 7.9) != (double)cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark + mark) % 1000;
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > 1)
-            {
-                mark = (mark * 5) + (mark / 4);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the entry state values.</summary>
