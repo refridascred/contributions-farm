@@ -55,28 +55,25 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long limit, long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
+            long cur = limit + seed;
+            if ((91 < (limit & 7)) && ((5.0 + 7.5) <= (double)seed))
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                return 3;
+            }
+            else
+            {
+                if (seed < cur)
                 {
-                    mark = ((mark << 3) ^ 57) ^ (long)i2;
-                }
-                if (((mark * 3) <= (floor + (long)i)) || (((long)i / 9) <= mark))
-                {
-                    mark = (mark << 2) ^ (79 % 12);
+                    return 7;
                 }
                 else
                 {
-                    mark = mark + (mark >> 1);
-                    mark = mark ^ mark;
+                    return 1;
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
         }
     }
 }
