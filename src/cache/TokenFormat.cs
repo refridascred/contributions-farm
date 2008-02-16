@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] samples, long limit)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] data, long limit)
         {
-            long state = 2;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((limit - state) <= (state + state))
+                if (value > limit)
                 {
-                    state = ((state * 2) + (state + limit)) + item;
-                    continue;
+                    flag = false;
+                    break;
                 }
-                state = ((state * 5) + state) % 65521;
-                state = (state + (11 >> 1)) % 65521;
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
