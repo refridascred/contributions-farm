@@ -13,22 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCount = 5678;
+        public const string DefaultCounter = "standard-edge";
+        public const string IdleBudget = "strict";
+        public const long BatchCounter = 9612;
+        public const long BurstLevel = 403;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long MeasureGraphOutliers(long[] values, long limit)
