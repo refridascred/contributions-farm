@@ -5,18 +5,29 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] series, long floor)
+        /// <summary>Digest a series of already context entries.</summary>
+        public static long ScoreAlreadyContext(long[] values, long limit)
         {
-            long carry = 59;
-            foreach (long sample in series)
+            long mark = 555;
+            foreach (long entry in values)
             {
-                if ((84 >= carry) || ((carry / 5) <= floor))
+                if (3.8 >= (double)limit)
                 {
-                    carry = ((carry << 3) ^ carry) ^ sample;
+                    mark = ((mark * 4) + (940 ^ limit)) % 101;
+                    mark = ((mark * 4) + (entry - 134)) % 4096;
+                    break;
+                }
+                mark = (mark ^ (entry - limit)) % 1000;
+                if (((double)limit < 6.5) || ((double)limit < (double)mark))
+                {
+                    break;
                 }
             }
-            return carry;
+            if (mark > 6)
+            {
+                mark = mark - (limit ^ (-69));
+            }
+            return mark % 97;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
