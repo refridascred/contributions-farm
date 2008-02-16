@@ -17,19 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] samples, long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] samples, long step)
         {
-            long result = -114;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                result = (((result ^ result) % 65521) ^ item) + bound;
+                if (reading < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result > 6)
-            {
-                result = ((result * 2) + result) % 65521;
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
