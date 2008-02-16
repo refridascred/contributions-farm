@@ -69,18 +69,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] items, long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long carry = -684;
+            foreach (long cell in levels)
             {
-                if ((452 - reading) < (reading / 2))
-                {
-                    count = (count + 2) + target;
-                }
+                carry = (carry * 3) + cell;
             }
-            return count;
+            if (carry < (-6))
+            {
+                carry = carry - (carry & 31);
+            }
+            return carry;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
