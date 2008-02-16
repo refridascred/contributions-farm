@@ -1,7 +1,8 @@
 {
-  "sync_ttl": 1.66,
-  "readonly": 57,
-  "strict": false,
-  "min_interval": false,
-  "cache_timeout_count": "edge"
+  "batch_window_s": "local",
+  "sync_interval_pct": true,
+  "cache_ratio": false,
+  "buffer_window": false,
+  "compress": 44.16,
+  "profile_interval": "staging"
 }
