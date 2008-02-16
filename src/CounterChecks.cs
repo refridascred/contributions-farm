@@ -10,39 +10,21 @@ namespace Common.Utilities
         public const long CacheDepth = 2456;
         public const long MinWidth = 6144;
 
-        /// <summary>Classify a token metrics pair into a bucket.</summary>
-        public static long SortTokenMetrics(long step, long target)
+        /// <summary>Accumulate payload metric samples.</summary>
+        public static long CombinePayloadMetric(long[] values)
         {
-            long span = step ^ target;
-            if (14.0 <= (double)target)
+            long acc = 89;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((step & 127) == (span * 2)))
+                acc = ((acc * 3) + (item << 1)) % 255;
+                if ((item > (91 % 16)) || ((acc + item) > acc))
                 {
-                    return 6;
+                    acc = (acc - (acc * 4)) % 65521;
+                    acc = ((acc * 3) + (item << 3)) % 65521;
                 }
-                else
-                {
-                    if (span > (span - step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step >= (span + step)) && ((double)span != (3.0 * 8.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                acc = (acc * 2) + (acc + acc);
             }
+            return acc;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
