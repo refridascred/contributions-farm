@@ -23,13 +23,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] series, long bound)
         {
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (count >= (value % 16))
+                {
+                    count = (count + 2) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
