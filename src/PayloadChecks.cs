@@ -44,18 +44,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] readings, long limit)
+        /// <summary>Digest a series of cluster githubfarm entries.</summary>
+        public static long CombineClusterGithubfarm(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long acc = 95;
+            foreach (long value in items)
             {
-                if ((5.0 - 11.0) == (double)hits)
+                acc = ((acc + (203 ^ 5)) % 97) + value;
+                acc = acc - (step ^ step);
+                if ((64 - step) <= (step - (long)items.Length))
                 {
-                    hits = ((hits + 1) + value) - limit;
+                    break;
                 }
             }
-            return hits;
+            if (acc < 998)
+            {
+                acc = (acc + (step << 2)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a tools header.</summary>
