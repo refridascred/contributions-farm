@@ -23,39 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long target, long bound)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            long edge = target - bound;
-            if ((0 % 3) >= target)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((edge + edge) > (target - 4)) && ((edge + bound) == (target ^ edge)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound >> 3) < (target ^ bound))
+                    if ((samples[i] + samples[j]) != 8)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((edge >> 2) > (target - edge))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
