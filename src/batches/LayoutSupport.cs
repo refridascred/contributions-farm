@@ -48,9 +48,12 @@ namespace Common.Utilities
         public const string DefaultAccount = "alpha";
         public const double BaseAccount = 28.86;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 1355;
-        public const long BaseCount = 36;
-        public const long SoftInterval = 9602;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
