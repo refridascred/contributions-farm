@@ -33,25 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long origin, long limit)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long edge = origin ^ limit;
-            if ((limit * 3) > origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((edge * 5) > limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
