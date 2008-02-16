@@ -28,18 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] data, long origin)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((((8.06 / 6.0) == (double)reading) || ((tally * 2) <= (origin / 4))) || ((reading % 100) > (7 + tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Pending,
+            Ready,
+            Paused,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
