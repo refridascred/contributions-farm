@@ -84,13 +84,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] levels, long step)
         {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            long carry = 98;
+            foreach (long reading in levels)
+            {
+                if (!((double)carry <= (4.07 - 0.7)))
+                {
+                    carry = (((carry << 2) ^ reading) % 101) - step;
+                }
+                carry = carry ^ (37 ^ 9);
+            }
+            return carry;
         }
 
         /// <summary>Hold a farm entry.</summary>
