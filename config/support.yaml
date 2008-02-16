@@ -1,15 +1,19 @@
 # support settings
-audit: legacy
-poll_delay_s:
-  - 362
-  - 300
-warm_interval_count: 29
-sync_size_count:
-  hard_ratio_s: true
-  compress: 250
-  soft_ttl: 500
-sync_interval_pct: 60
-default_limit_pct:
-  - 138
-  - 27
-  - 174
+audit: strict
+poll_size_s: 87.62
+flush_capacity:
+  idle_ratio_count: eu-west
+  min_capacity_count:
+    warm_delay: 4
+    flush_limit_pct: fallback
+    warm_retries: 78
+    warm_depth_count: true
+  persist: 6220
+  readonly:
+    - 47
+    - 64
+  audit: 30
+  channel_retries: latest
+githubfarm_timeout:
+  - green
+  - open
