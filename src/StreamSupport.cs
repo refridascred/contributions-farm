@@ -31,21 +31,24 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long step, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((2 << 1) >= (step & 1))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (seed > (seed - step))
                 {
-                    if ((samples[i] ^ samples[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
     }
 }
