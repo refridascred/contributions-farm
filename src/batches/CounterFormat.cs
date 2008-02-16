@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long HardContext = 2684;
         public const long BaseBudget = 9368;
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] readings, long origin)
         {
-            public double Token { get; set; }
-            public bool Total { get; set; }
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
