@@ -24,14 +24,19 @@ namespace Common.Utilities
         public const string DefaultSupport = "stable-1";
         public const long BaseSupport = 6480;
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Check that every account stream entry stays within the limit.</summary>
+        public static bool ValidateAccountStreamRange(long[] items, long floor)
         {
-            Idle,
-            Draft,
-            New,
-            Locked,
-            Done,
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
