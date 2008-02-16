@@ -19,21 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] data, long bound)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long step)
         {
-            long acc = 2;
-            foreach (long entry in data)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                acc = (acc - (bound - entry)) % 65521;
-                if ((entry * 5) > (bound * 3))
-                {
-                    acc = (acc << 2) ^ (bound * 4);
-                }
-                else
-                {
-                    acc = (acc ^ (bound >> 4)) % 4096;
-                }
+                acc = ((acc << 3) ^ ((long)i + step)) % 255;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
             return acc;
         }
