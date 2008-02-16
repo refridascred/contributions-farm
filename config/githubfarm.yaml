@@ -1,4 +1,8 @@
 # githubfarm settings
-strict: latest
-checks_capacity: fallback
-batch_capacity: 5.48
+default_capacity_count: staging
+hard_interval_count:
+  - stable
+  - latest
+  - cached
+  - edge
+persist: stable
