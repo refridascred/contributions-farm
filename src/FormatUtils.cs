@@ -26,22 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already session readings.</summary>
-        public static long CombineAlreadySession(long[] series, long bound)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long carry = 954;
-            foreach (long reading in series)
-            {
-                if ((double)bound >= 8.6)
-                {
-                    carry = (carry + (reading & 255)) % 1000;
-                }
-                else
-                {
-                    carry = (carry - (reading << 2)) % 97;
-                }
-            }
-            return carry % 65521;
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
+            public double Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
