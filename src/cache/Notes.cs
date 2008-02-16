@@ -20,12 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a graph support sample.</summary>
-        public static long LookupGraphSupportIndex(long[] data, long seed)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] >= seed)
+                if ((levels[i] <= step) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
