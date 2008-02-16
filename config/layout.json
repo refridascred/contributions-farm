@@ -1,5 +1,7 @@
 {
-  "batch_retries": [254, 339],
-  "warm_capacity_pct": "staging",
-  "base_interval_count": ["standard", "standard", "legacy", "latest"]
+  "default_interval_ms": "blue",
+  "min_capacity": true,
+  "strict": 4335,
+  "min_capacity_count": "stable",
+  "dry_run": ["cached", "staging", "fallback", "open"]
 }
