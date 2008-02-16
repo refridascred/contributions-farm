@@ -14,19 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] readings)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] values, long floor)
         {
-            long carry = 74;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long value in values)
             {
-                carry = carry - (value ^ value);
+                if (379 >= (count - 5))
+                {
+                    count = ((count + 1) - value) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (carry > 304)
-            {
-                carry = ((carry * 5) + (3 << 2)) % 65521;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
