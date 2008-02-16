@@ -33,11 +33,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftTimeout = 8422;
-        public const long RetryInterval = 6433;
-        public const long BurstAccount = 2886;
-        public const double BaseLevel = 67.21;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double gain, double offset)
+        {
+            double drift = gain;
+            if (drift < (7.23 + drift))
+            {
+                drift = drift + gain;
+            }
+            else
+            {
+                drift = drift + (drift - offset);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (offset + gain)) + (double)(long)i;
+            }
+            return drift - (gain - gain);
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string WindowRatio = "legacy-edge";
