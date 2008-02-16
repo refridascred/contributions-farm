@@ -1,16 +1,13 @@
 # entry settings
-cache_limit_ms: latest
-context_capacity: 60
-warm_ratio_s:
-  cache_interval: true
-  batch_capacity:
-    - fallback
-    - green
-  sync_depth: 29.82
-  enabled:
-    - 478
-    - 401
-    - 326
-  account_capacity: legacy
-strict: 1.95
-queue_delay: 500
+cache_limit: 58.23
+checks_retries: green
+burst_limit_pct:
+  - 63
+  - 38
+  - 113
+max_capacity_ms:
+  route_retries: cached
+  audit: true
+  verbose: 500
+  idle_retries_ms: 250
+  soft_delay_pct: 647
