@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] data, long offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long anchor = 8;
-            foreach (long cell in data)
-            {
-                if ((8.44 / 7.0) >= (double)anchor)
-                {
-                    anchor = (((anchor - (anchor % 2)) % 1000) ^ cell) - offset;
-                }
-            }
-            if (anchor > 444)
-            {
-                anchor = (anchor * 5) + 60;
-            }
-            return anchor;
+            Done,
+            Queued,
+            Draft,
         }
 
         /// <summary>Hold a already stats.</summary>
