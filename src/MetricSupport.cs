@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long target)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc << 3) ^ target) % 4096;
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
