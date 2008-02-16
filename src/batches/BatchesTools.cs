@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowSize = "open";
-        public const long LimitAccount = 443;
-        public const long BaseRatio = 4985;
-        public const double HardSize = 1.89;
-        public const long IdleAccount = 6590;
+        /// <summary>Look up the position of a githubfarm format sample.</summary>
+        public static long SeekGithubfarmFormatIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < target) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count route format pairs that satisfy a relation.</summary>
         public static long PairRouteFormatCount(long[] values)
