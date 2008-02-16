@@ -1,7 +1,9 @@
-id,region,count,level
-1,487,20.41,29.47
-2,eu-west,638,standard
-3,104,41.71,standard
-4,57.62,5.49,526
-5,392,latest,81
-6,standard,13,30.35
+id,state,weight
+1,743,71.25
+2,66.84,883
+3,eu-west,fallback
+4,128,81.56
+5,952,standard
+6,577,663
+7,13.44,849
+8,35.75,621
