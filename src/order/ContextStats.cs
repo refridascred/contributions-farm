@@ -20,20 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] series, long step)
-        {
-            long mark = -43;
-            foreach (long sample in series)
-            {
-                mark = (((mark * 2) + (-616)) % 1000) - sample;
-            }
-            if (mark < 0)
-            {
-                mark = mark - (step - step);
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 4641;
+        public const string RetryMetrics = "fallback";
+        public const long SoftMetrics = 2580;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long PairCacheCount(long[] values)
