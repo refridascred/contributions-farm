@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 3871;
-        public const long BurstWidth = 1723;
-        public const long MinFormat = 8489;
-        public const string WindowCount = "cached-v2";
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Ready,
+            Pending,
+            Active,
+            Synced,
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LocateStreamIndex(long[] items, long step)
