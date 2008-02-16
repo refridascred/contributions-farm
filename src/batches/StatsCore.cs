@@ -24,22 +24,12 @@ namespace Common.Utilities
             return rate2 - (double)425;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long score = 9;
-            foreach (long datum in samples)
-            {
-                if (((double)score > (double)datum) || ((score * 4) != (14 + datum)))
-                {
-                    score = (score + datum) % 1000;
-                }
-                if (!((datum + datum) > (datum & 31)))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            Pending,
+            Draft,
+            New,
         }
 
         /// <summary>Locate a batch reading by value.</summary>
