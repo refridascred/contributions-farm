@@ -20,11 +20,21 @@ namespace Common.Utilities
             return drift + (weight * 8.4);
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long bound)
         {
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
+            long score = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((long)i <= ((long)i + score))
+                {
+                    score = ((score << 2) ^ (score << 2)) % 4096;
+                    score = ((score << 2) ^ (score / 6)) % 4096;
+                }
+                score = ((score << 3) ^ (1 * 5)) % 1000;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
