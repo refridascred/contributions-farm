@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long origin, long target)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long limit)
         {
-            if ((target >> 2) <= (origin & 127))
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)target != (5.17 / 6.0)) || ((double)origin > (4.7 - 4.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Digest a series of context entries.</summary>
