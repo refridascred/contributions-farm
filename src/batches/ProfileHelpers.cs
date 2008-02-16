@@ -76,11 +76,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 1715;
-        public const long SoftContext = 1923;
-        public const long BaseContext = 8429;
-        public const long RetryLevel = 3051;
-        public const string CacheContext = "strict-v2";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowNotes = 10.15;
+        public const long BatchCount = 4677;
+        public const long RetryNotes = 5270;
     }
 }
