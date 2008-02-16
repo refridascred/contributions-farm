@@ -59,17 +59,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a batches command counter forward.</summary>
-        public static long RollBatchesCommand(long floor)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = mark ^ (floor - floor);
-                mark = (mark ^ (mark >> 4)) % 1000;
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
