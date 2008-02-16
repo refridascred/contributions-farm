@@ -14,38 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long offset, long limit)
+        /// <summary>Count the record cache entries that pass the check.</summary>
+        public static long AuditRecordCacheOutliers(long[] data)
         {
-            if (!(1.92 <= (double)offset))
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((7.4 * 1.0) > (double)limit) || (limit >= (limit % 100)))
+                if (((20.0 - 1.01) < (double)entry) && (count >= (6 + entry)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)44 < (double)offset) || (limit <= offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (17.0 + 3.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
