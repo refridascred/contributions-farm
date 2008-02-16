@@ -42,17 +42,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] samples, long step)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 85;
+            foreach (long value in samples)
             {
-                if (samples[i] == step)
+                if ((11.0 + 1.34) == (double)target)
                 {
-                    return (long)i;
+                    mix = (mix ^ (mix * 2)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ value) % 65521;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
