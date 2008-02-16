@@ -5,13 +5,29 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long limit)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((mark <= (limit + limit)) || ((mark * 2) < 9))
+                {
+                    mark = ((mark << 2) ^ 916) % 1000;
+                    continue;
+                }
+                if (((long)i >> 2) > (mark % 8))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = (mark + ((long)i >> 5)) % 255;
+                    mark = mark + mark;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of command entries.</summary>
