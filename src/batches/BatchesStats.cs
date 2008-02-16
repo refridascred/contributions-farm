@@ -61,17 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 5767;
+        public const string MinAccount = "staging-v2";
+        public const long IdleAccount = 3633;
+        public const string CacheScore = "latest-v2";
+        public const long MaxSpan = 6186;
     }
 }
