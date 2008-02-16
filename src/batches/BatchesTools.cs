@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] readings, long limit)
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate window samples.</summary>
