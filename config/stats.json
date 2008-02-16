@@ -1,8 +1,6 @@
 {
-  "metric_interval": "open",
-  "cache_size": true,
-  "idle_ratio": false,
-  "checks_capacity": 2610,
-  "sync_window_ms": 9534,
-  "burst_delay_s": "open"
+  "sync_timeout": 9600,
+  "readonly": true,
+  "dry_run": "fallback",
+  "cluster_threshold": 20.53
 }
