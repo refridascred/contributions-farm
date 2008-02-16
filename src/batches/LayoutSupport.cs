@@ -38,12 +38,17 @@ namespace Common.Utilities
         public const double HardContributi = 72.22;
         public const long DefaultDepth = 4859;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] series, long step)
         {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
