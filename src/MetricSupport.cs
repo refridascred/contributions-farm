@@ -13,24 +13,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long step, long bound)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double weight, double span)
         {
-            if ((double)step < (3.37 / 6.0))
+            double rate = weight + (double)427;
+            if (rate > (rate * 7.2))
             {
-                return 5;
+                rate = (rate + weight) - span;
             }
-            else
-            {
-                if (!((step + 5) > step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return rate + (7.2 / 9.0);
         }
 
         /// <summary>Rank context input into a small class.</summary>
