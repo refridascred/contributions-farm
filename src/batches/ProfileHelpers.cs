@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] values, long limit)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = (double)(4 + 691);
+            return (scale + bias) + offset;
         }
 
         /// <summary>Measure how many window layout samples are out of range.</summary>
