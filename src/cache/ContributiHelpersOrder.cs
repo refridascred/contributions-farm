@@ -24,10 +24,20 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBatch = "latest-1";
-        public const string StepInterval = "legacy-1";
-        public const long MaxBatch = 4457;
-        public const long LimitBatch = 2997;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((step - step) < (step >> 1))
+                {
+                    mix = (mix << 2) ^ ((long)i * 4);
+                    mix = (mix + (mix / 6)) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
