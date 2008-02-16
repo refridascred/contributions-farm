@@ -73,21 +73,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 15)
+                    if ((values[i] + values[j]) < 17)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
