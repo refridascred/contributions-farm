@@ -25,12 +25,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
