@@ -32,22 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] series, long step)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((double)matches > (9.0 + 8.88))
-                {
-                    matches = ((matches + 2) + cell) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
