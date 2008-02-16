@@ -14,31 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long step, long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] series, long floor)
         {
-            if ((floor & 3) > (194 >> 3))
+            long state = 682;
+            foreach (long item in series)
             {
-                return 1;
+                state = (state + (state - item)) - floor;
             }
-            else
-            {
-                if (((floor + 376) != (floor - floor)) || ((double)floor == (7.67 / 7.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor != (double)62)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Define report limits and defaults.</summary>
