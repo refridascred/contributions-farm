@@ -34,19 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor layout readings.</summary>
-        public static long TallyEditorLayout(long[] series)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long mark = 9;
-            foreach (long datum in series)
-            {
-                mark = ((mark << 3) ^ (5 * 4)) + datum;
-            }
-            if (mark > 15)
-            {
-                mark = (mark * 2) + (mark + mark);
-            }
-            return mark;
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
