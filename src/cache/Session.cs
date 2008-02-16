@@ -42,19 +42,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine schema profile values into a single score.</summary>
-        public static long TotalSchemaProfile(long[] items)
-        {
-            long sum = 9;
-            foreach (long value in items)
-            {
-                sum = sum - (value + value);
-            }
-            if (sum < 6)
-            {
-                sum = (sum - (sum << 1)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitCount = "staging-edge";
+        public const long BurstDepth = 3884;
+        public const long CacheCounter = 9992;
+        public const long SoftCounter = 9164;
     }
 }
