@@ -29,11 +29,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftPayload = "cached-v2";
-        public const long RetryPayload = 4357;
-        public const long SoftSize = 222;
-        public const long DefaultPayload = 7691;
-        public const long BatchPayload = 9612;
+        /// <summary>Find the first token cluster entry that matches the target.</summary>
+        public static long LookupTokenClusterIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
