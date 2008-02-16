@@ -50,31 +50,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long limit, long offset)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] items, long offset)
         {
-            if (!(offset <= 68))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((limit << 1) >= (limit % 60)))
+                if (items[i] == offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(limit > (22 ^ 18)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
