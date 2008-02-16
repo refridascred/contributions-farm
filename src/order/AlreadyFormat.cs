@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 1284;
-        public const long MaxRatio = 350;
-        public const long MaxSpan = 7758;
-        public const long BatchCommits = 196;
-        public const string BatchCount = "latest";
+        /// <summary>Look up the position of a route session sample.</summary>
+        public static long LocateRouteSessionIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool VerifyGraphBounds(long[] data, long bound)
