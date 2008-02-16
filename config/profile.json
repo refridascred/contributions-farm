@@ -1,13 +1,12 @@
 {
-  "batch_ttl_ms": 7.19,
-  "hard_retries": ["cached", "standard", "primary", "green"],
-  "strict": 8.86,
-  "default_threshold_count": 99,
-  "cache_timeout_count": 83.54,
-  "format_window": {
-    "enabled": 30,
-    "compress": true,
-    "soft_capacity_count": "blue",
-    "counter_size": 2459
-  }
+  "poll_window": "blue",
+  "soft_ttl_count": 1024,
+  "retry_ratio_pct": ["strict", "legacy", "cached", "strict"],
+  "cache_threshold_s": true,
+  "batch_window": {
+    "idle_interval": "edge",
+    "verbose": "latest",
+    "burst_retries_ms": 8146
+  },
+  "cache_depth_count": 51.28
 }
