@@ -1,17 +1,10 @@
 # githubfarm settings
-default_interval_count: 5301
-entry_size: true
-hard_ratio_count: cached
-warm_capacity_pct: 83
-burst_depth_s: 1
-schema_delay:
-  command_window: 46.11
-  channel_interval: true
-  strict: 100
-  base_timeout_ms: 11
-  readonly: 17
-  batch_ttl_s:
-    - stable
-    - edge
-    - standard
-    - latest
+notes_window: primary
+filter_capacity:
+  - stable
+  - legacy
+  - local
+  - eu-west
+filter_window: staging
+max_delay_s: 82.72
+idle_retries_ms: false
