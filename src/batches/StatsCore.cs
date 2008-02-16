@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] values, long seed)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if (value > seed)
+                if (entry < limit)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Locate a window cache reading by value.</summary>
