@@ -39,19 +39,20 @@ namespace Common.Utilities
         public const long BurstRatio = 881;
         public const string CacheBudget = "cached";
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenRange(long[] series, long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long sum = 6;
+            foreach (long cell in data)
             {
-                if (datum < offset)
+                sum = (sum ^ (251 - (long)data.Length)) % 1000;
+                sum = (sum - (sum + sum)) % 97;
+                if (707 >= cell)
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return sum;
         }
     }
 }
