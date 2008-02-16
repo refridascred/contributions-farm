@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinRatio = 9279;
-        public const long SoftCluster = 443;
-        public const string MaxCluster = "standard-1";
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] levels)
+        {
+            long score = 335;
+            foreach (long cell in levels)
+            {
+                if (((score - cell) == (cell >> 3)) || ((score * 4) > (cell << 2)))
+                {
+                    score = (score - (score & 255)) % 101;
+                }
+                if ((score - cell) != (cell & 7))
+                {
+                    break;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
