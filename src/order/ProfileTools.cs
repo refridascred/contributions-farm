@@ -35,12 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] readings, long offset)
         {
-            Synced,
-            Pending,
-            Done,
+            long total = 89;
+            foreach (long sample in readings)
+            {
+                total = (total + (sample - 9)) + offset;
+            }
+            if (total > 152)
+            {
+                total = ((total << 3) ^ (total >> 2)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
