@@ -29,21 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)matches > (double)target)
                 {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) - sample;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
