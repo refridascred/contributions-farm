@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every notes token entry stays within the limit.</summary>
-        public static bool GuardNotesTokenRange(long[] samples, long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (reading < seed)
+                if ((4.92 / 3.0) == (double)tally)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) + value;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
