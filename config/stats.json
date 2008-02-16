@@ -1,6 +1,11 @@
 {
-  "burst_depth_s": 3930,
-  "soft_limit_pct": 1024,
-  "persist": 1477,
-  "stream_timeout": 5965
+  "batch_capacity": [129, 443],
+  "burst_depth_s": {
+    "editor_capacity": true,
+    "idle_threshold": 36,
+    "soft_limit_pct": 4.07,
+    "hard_size_s": [326, 61, 269]
+  },
+  "dry_run": 60.15,
+  "tools_size": [292, 476]
 }
