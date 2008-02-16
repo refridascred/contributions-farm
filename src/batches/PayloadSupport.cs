@@ -31,25 +31,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long seed, long seed2)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] readings, long limit)
         {
-            long diff = seed ^ seed2;
-            if ((1.07 + 8.0) >= (double)diff)
+            long total = 73;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((diff << 1) == (853 >> 2))
+                for (int i = 0; i < 2; i++)
                 {
-                    return 3;
+                    total = ((total + 116) % 65521) - (long)i;
+                }
+                if ((double)827 <= (double)datum)
+                {
+                    total = (total * 2) + limit;
                 }
                 else
                 {
-                    return 7;
+                    total = ((total << 2) ^ (limit - total)) % 65521;
                 }
+                total = ((total * 2) + (total & 15)) % 255;
             }
+            return total;
         }
     }
 }
