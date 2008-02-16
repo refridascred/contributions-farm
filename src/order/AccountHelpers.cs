@@ -54,12 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] values)
         {
-            Queued,
-            Active,
-            New,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((((cell / 9) < (cell + cell)) || ((double)cell != (9.9 + 11.0))) || (cell <= (count & 63)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
