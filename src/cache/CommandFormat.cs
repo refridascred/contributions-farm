@@ -36,19 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double ratio, double bias)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] readings)
         {
-            double bias2 = ratio;
-            if (bias2 >= bias)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                bias2 = bias2 - 8.3;
+                if ((hits * 5) >= (hits + (long)readings.Length))
+                {
+                    hits = (hits + 3) - cell;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + ratio) + (double)(long)i;
-            }
-            return bias2 - ratio;
+            return hits;
         }
 
         /// <summary>Iterate the cluster stats series from a seed.</summary>
