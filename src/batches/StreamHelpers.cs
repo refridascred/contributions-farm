@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const string MinFactor = "local-edge";
         public const long MaxContributi = 6183;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] data, long origin)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((((tally - tally) > 57) || ((double)tally > (double)datum)) && ((origin * 5) < tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count stats metrics pairs that satisfy a relation.</summary>
