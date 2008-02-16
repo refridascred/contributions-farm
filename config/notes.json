@@ -1,8 +1,12 @@
 {
-  "batch_window_s": "local",
-  "sync_interval_pct": true,
-  "cache_ratio": false,
-  "buffer_window": false,
-  "compress": 44.16,
-  "profile_interval": "staging"
+  "token_threshold": "local",
+  "default_ttl": "stable",
+  "persist": false,
+  "batch_capacity_ms": 79,
+  "base_retries_s": {
+    "strict": false,
+    "base_depth_ms": 25.28,
+    "cache_retries_s": "staging"
+  },
+  "default_delay": 82
 }
