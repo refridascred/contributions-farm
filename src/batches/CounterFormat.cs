@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two stats context measurements.</summary>
-        public static double ProjectStatsContext(double scale, double offset)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            double bias = scale;
-            return (bias + (bias / 3.0)) + offset;
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
