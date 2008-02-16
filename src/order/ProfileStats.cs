@@ -39,22 +39,37 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long bound, long target)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long floor, long seed)
         {
-            if (bound < (bound % 97))
+            long diff = floor + seed;
+            if (676 > floor)
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((bound + 0) >= (target + target))
+                if (floor < (diff / 4))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    return 5;
+                    if (6 >= floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed + floor) != (floor << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
