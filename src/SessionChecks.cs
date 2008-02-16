@@ -42,19 +42,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] series)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] data, long target)
         {
             long seen = 0;
-            foreach (long datum in series)
+            foreach (long value in data)
             {
-                if ((seen * 2) == (seen + datum))
+                if ((target + seen) == (seen / 5))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 2) ^ value;
                 }
             }
             return seen;
