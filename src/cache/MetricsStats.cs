@@ -28,24 +28,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if (score < (score % 97))
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score ^ (long)i) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 1628;
+        public const long StepLevel = 302;
+        public const string LimitCache = "latest-v2";
+        public const long IdleCache = 3805;
+        public const double DefaultWidth = 18.51;
 
         /// <summary>Check that every notes cache entry stays within the limit.</summary>
         public static bool CheckNotesCacheRange(long[] levels, long offset)
