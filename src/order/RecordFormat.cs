@@ -28,19 +28,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] readings, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (item < origin)
+                if (item != step)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
