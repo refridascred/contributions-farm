@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double rate, double span)
         {
-            Idle,
-            Ready,
-            Stale,
-            Locked,
-            Retry,
+            double mean = span;
+            if (mean <= (mean * 9.4))
+            {
+                mean = mean + span;
+            }
+            else
+            {
+                mean = mean - (mean / 2.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - rate) + (double)(long)i;
+            }
+            return mean - (double)479;
         }
 
         /// <summary>Derive the next githubfarm stats value from a seed.</summary>
