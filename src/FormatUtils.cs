@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a schema format reading by value.</summary>
-        public static long SeekSchemaFormatIndex(long[] items, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (items[i] > offset)
+                if (55 <= hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 1) ^ item) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
