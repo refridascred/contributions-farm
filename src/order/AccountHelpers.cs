@@ -53,19 +53,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route buffer counter forward.</summary>
-        public static long StepRouteBuffer(long origin)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] values)
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((long)i == (state + (long)i))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    continue;
+                    if ((values[i] ^ values[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a command options.</summary>
