@@ -59,38 +59,19 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long seed, long limit)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long target)
         {
-            if ((42 >= (limit + 81)) && ((3 & 127) <= (seed / 7)))
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit - limit) < (limit + seed))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 6;
+                    acc = (((acc << 2) ^ 0) % 101) ^ (long)i2;
                 }
-                else
-                {
-                    if (!((2.6 - 6.18) < (double)seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((51 % 97) >= ((-24) + seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
+            return acc;
         }
     }
 }
