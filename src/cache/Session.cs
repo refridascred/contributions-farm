@@ -24,18 +24,16 @@ namespace Common.Utilities
         public const long RetryCache = 9100;
         public const double IdleBudget = 30.61;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] values)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (((hits - hits) > reading) || ((1.96 * 18.0) < (double)hits))
-                {
-                    hits = hits + 3;
-                }
+                mix = (mix + ((long)i << 1)) % 97;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
     }
 }
