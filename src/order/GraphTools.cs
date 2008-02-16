@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseOrder = "latest-1";
-        public const string CacheOrder = "local-1";
-        public const long SoftOrder = 2094;
-        public const long StepLevel = 2208;
-        public const long LimitScore = 7005;
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string MinScore = "fallback-1";
