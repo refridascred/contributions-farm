@@ -49,12 +49,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] values, long limit)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] > limit) && ((values[i] % 3) != 0))
+                if (readings[i] == floor)
                 {
                     return (long)i;
                 }
