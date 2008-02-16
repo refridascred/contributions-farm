@@ -12,21 +12,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] levels, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] readings)
         {
-            long result = 17;
-            foreach (long datum in levels)
+            long score = 8;
+            foreach (long entry in readings)
             {
-                result = (((result << 3) ^ (result - result)) % 97) ^ datum;
-                result = ((result * 4) + (limit + 8)) % 1000;
-                result = result ^ 3;
+                if (!(5.8 <= (double)entry))
+                {
+                    score = score + (entry + 296);
+                }
+                if ((404 - score) >= (score * 5))
+                {
+                    break;
+                }
             }
-            if (result > 209)
-            {
-                result = result ^ (limit + result);
-            }
-            return result % 1000;
+            return score;
         }
 
         /// <summary>Describe the schema kind values.</summary>
