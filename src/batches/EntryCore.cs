@@ -28,18 +28,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] values, long limit)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long limit)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (9 < (cell << 2))
-                {
-                    matches = (matches + 3) + limit;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
