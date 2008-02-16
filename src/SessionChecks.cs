@@ -46,22 +46,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] samples, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (!((origin - 591) != (seen & 7)) || ((seen << 1) >= (seen + 0)))
+                if (((cell - target) >= (hits ^ target)) && (((target - target) == (hits >> 5)) || ((double)target > (9.39 + 5.0))))
                 {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
