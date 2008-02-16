@@ -13,15 +13,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double weight, double span)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            double rate = weight + (double)427;
-            if (rate > (rate * 7.2))
-            {
-                rate = (rate + weight) - span;
-            }
-            return rate + (7.2 / 9.0);
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
