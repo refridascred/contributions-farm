@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum << 3) ^ offset) % 1000;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
