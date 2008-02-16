@@ -1,8 +1,10 @@
 {
-  "max_limit": 89,
-  "warm_timeout_s": true,
-  "commits_depth": "stable",
-  "warm_window": "standard",
-  "retry_ratio_ms": "green",
-  "already_threshold": 69.76
+  "dry_run": "edge",
+  "entry_threshold": {
+    "stats_capacity": 48.32,
+    "retry_retries_count": ["standard", "primary", "open", "strict"],
+    "retry_ttl_pct": "fallback",
+    "cache_ratio": 8297
+  },
+  "base_interval_count": false
 }
