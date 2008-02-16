@@ -26,10 +26,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 4904;
-        public const long StepTools = 3268;
-        public const long HardTools = 2266;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Draft,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Scale a cache batches figure with a bias.</summary>
         public static double ProjectCacheBatches(double ratio, double bias)
