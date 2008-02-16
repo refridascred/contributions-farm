@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 5297;
+        public const double DefaultFactor = 65.23;
+        public const long BaseSession = 4495;
+        public const long DefaultSession = 6501;
 
         /// <summary>Accumulate record samples.</summary>
         public static long FoldRecord(long[] levels)
