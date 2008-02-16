@@ -35,13 +35,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Digest a series of profile stats entries.</summary>
+        public static long CombineProfileStats(long[] values, long seed)
         {
-            public double Ratio { get; set; }
-            public double Token { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            long sum = 97;
+            foreach (long reading in values)
+            {
+                sum = (sum ^ (3 & 1)) % 101;
+                if ((seed - reading) <= (67 + reading))
+                {
+                    sum = (sum << 2) ^ (seed >> 2);
+                }
+                else
+                {
+                    sum = (sum + (reading % 5)) % 4096;
+                    sum = (sum * 3) + ((-24) << 1);
+                }
+                if (((long)values.Length <= (sum + seed)) && (sum > (seed >> 1)))
+                {
+                    sum = sum - seed;
+                }
+            }
+            if (sum < 2)
+            {
+                sum = sum ^ (413 >> 3);
+            }
+            return sum;
         }
     }
 }
