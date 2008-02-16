@@ -42,13 +42,21 @@ namespace Common.Utilities
         public const long BatchSchema = 6071;
         public const string WindowScore = "stable-1";
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Compare every pair of record order readings.</summary>
+        public static long OverlapRecordOrderCount(long[] levels)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
