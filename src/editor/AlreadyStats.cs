@@ -17,19 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] readings, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] samples)
         {
-            long state = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                state = (state + (target & 255)) % 1000;
-                if ((value * 2) > (97 ^ 4))
+                if (count < (1 * 3))
                 {
-                    break;
+                    count = (count + 3) + datum;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Scale a graph buffer figure with a bias.</summary>
