@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine stats cache values into a single score.</summary>
-        public static long FoldStatsCache(long[] series, long target)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long step)
         {
-            long result = -38;
-            foreach (long entry in series)
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (((target >> 1) >= (result & 15)) && ((476 ^ target) > result))
-                {
-                    result = (result - result) % 255;
-                }
-                else
-                {
-                    result = result + (entry ^ 42);
-                }
+                total = total + (94 + total);
+                total = ((total * 3) + (long)i) % 65521;
             }
-            if (result < (-5))
-            {
-                result = (result - result) % 97;
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
