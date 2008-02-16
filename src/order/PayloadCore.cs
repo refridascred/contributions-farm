@@ -72,31 +72,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long seed, long limit)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            if (limit < ((-1) * 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)317 != (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((11.0 + 6.65) >= (double)seed) && (limit <= (limit & 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
