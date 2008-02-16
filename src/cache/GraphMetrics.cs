@@ -54,17 +54,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] levels, long bound)
+        /// <summary>Roll a batches command counter forward.</summary>
+        public static long RollBatchesCommand(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mark = mark ^ (floor - floor);
+                mark = (mark ^ (mark >> 4)) % 1000;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
     }
 }
