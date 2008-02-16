@@ -27,38 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank already notes input into a small class.</summary>
-        public static long BucketAlreadyNotes(long offset, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] samples)
         {
-            if ((5.02 * 9.0) >= (double)limit)
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset) < (2 << 3))
+                if (!((6 + count) <= (value % 100)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset >> 1) >= (588 % 97))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset > (limit + offset)) && ((limit - offset) <= (offset * 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
