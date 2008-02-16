@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] readings, long target)
         {
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
