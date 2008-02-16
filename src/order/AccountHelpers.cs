@@ -12,21 +12,16 @@ namespace Common.Utilities
         public const string WindowContext = "legacy-edge";
         public const long HardTimeout = 7833;
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum ^ target) % 65521;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Derive the next editor notes value from a seed.</summary>
