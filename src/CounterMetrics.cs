@@ -18,21 +18,22 @@ namespace Common.Utilities
         public const string BaseFactor = "standard";
         public const string MaxScore = "standard-v2";
 
-        /// <summary>Count metrics record pairs that satisfy a relation.</summary>
-        public static long CompareMetricsRecordCount(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item > (item & 255))
                 {
-                    if ((items[i] + items[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a stats record.</summary>
