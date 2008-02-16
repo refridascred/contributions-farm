@@ -76,15 +76,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] series, long offset)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long anchor = -16;
-            foreach (long item in series)
-            {
-                anchor = (anchor - (offset + item)) % 255;
-            }
-            return anchor;
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
