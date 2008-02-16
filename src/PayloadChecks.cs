@@ -35,12 +35,18 @@ namespace Common.Utilities
         public const long StepInterval = 808;
         public const long BatchSize = 9071;
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] readings, long limit)
         {
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((5.0 - 11.0) == (double)hits)
+                {
+                    hits = ((hits + 1) + value) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a farm stats.</summary>
