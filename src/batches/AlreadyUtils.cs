@@ -34,18 +34,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] series)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((5 + tally) < tally)
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
