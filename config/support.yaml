@@ -1,25 +1,11 @@
 # support settings
-readonly: 75
-context_depth:
-  cluster_ttl: 9.18
-  soft_interval_s: 67
-  sync_ratio:
-    poll_window:
-      - standard
-      - strict
-      - cached
-    idle_delay_count: true
-    batch_ratio_s: latest
-    cache_window_s: true
-    readonly:
-      - stable
-      - standard
-    burst_capacity_pct:
-      - primary
-      - legacy
-      - legacy
-      - fallback
-  cache_retries_count: false
-retry_timeout_pct: 59.52
-batch_interval: latest
-stats_retries: latest
+order_size: false
+max_capacity_s:
+  verbose: fallback
+  cache_ratio_pct: 5916
+  buffer_capacity: cached
+  batch_window: 78
+  min_threshold_s: 2427
+  idle_ratio_pct: 500
+base_timeout_ms: true
+tools_depth: 8285
