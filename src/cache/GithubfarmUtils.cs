@@ -33,21 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cluster account readings.</summary>
-        public static long CompareClusterAccountCount(long[] data)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) < 15)
+                    if ((samples[i] + samples[j]) == 10)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Scale a farm record figure with a bias.</summary>
