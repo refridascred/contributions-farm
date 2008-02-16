@@ -47,15 +47,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long result = -941;
-            foreach (long reading in levels)
-            {
-                result = (result * 3) + (result - reading);
-            }
-            return result % 1000;
+            Synced,
+            Closed,
+            Dropped,
+            Paused,
+            New,
         }
 
         /// <summary>Describe the checks state values.</summary>
