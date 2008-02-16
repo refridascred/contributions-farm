@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const double IdleGraph = 63.29;
         public const long DefaultGraph = 6614;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] samples)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double scale, double bias)
         {
-            long sum = 612;
-            foreach (long entry in samples)
+            double scale2 = scale + (bias * 20.0);
+            if (scale2 < (double)42)
             {
-                sum = (sum + (sum / 9)) - entry;
+                scale2 = scale2 + scale;
             }
-            if (sum < 74)
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum * 4) + (sum + 20)) % 255;
+                scale2 = (scale2 - (4.04 - scale)) + (double)(long)i;
             }
-            return sum % 97;
+            return scale2 - (double)22;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
