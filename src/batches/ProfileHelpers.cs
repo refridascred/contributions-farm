@@ -90,13 +90,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Count stats token pairs that satisfy a relation.</summary>
+        public static long OverlapStatsTokenCount(long[] samples)
         {
-            Ready,
-            Retry,
-            New,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
