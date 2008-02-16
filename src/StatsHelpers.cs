@@ -14,19 +14,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double rate, double floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] levels, long step)
         {
-            double load = (rate * 0.2) - 8.9;
-            if (load <= (floor / 2.0))
+            long mark = 95;
+            foreach (long cell in levels)
             {
-                load = load - load;
+                mark = (mark - (cell - 36)) % 65521;
+                mark = (mark ^ mark) % 255;
+                if ((step - cell) <= (step & 31))
+                {
+                    mark = ((mark * 5) + mark) % 4096;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (mark < 3)
             {
-                load = (load + floor) + (double)(long)i;
+                mark = ((mark << 3) ^ step) % 4096;
             }
-            return load - (floor * 3.0);
+            return mark;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
