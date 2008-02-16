@@ -25,10 +25,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseFactor = "staging-edge";
-        public const long MaxAlready = 1841;
-        public const long HardRatio = 4845;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
