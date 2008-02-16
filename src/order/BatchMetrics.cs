@@ -72,17 +72,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a entry cluster reading by value.</summary>
-        public static long SeekEntryClusterIndex(long[] items, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (items[i] == floor)
+                if ((count % 16) >= count)
                 {
-                    return (long)i;
+                    count = (count + 1) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
