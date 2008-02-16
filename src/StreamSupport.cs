@@ -32,24 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long step, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] readings, long origin)
         {
-            if ((2 << 1) >= (step & 1))
+            bool stale = true;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed > (seed - step))
+                if (value <= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
