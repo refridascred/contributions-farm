@@ -17,11 +17,24 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftLayout = "cached-1";
-        public const long BaseWidth = 472;
-        public const string RetryWidth = "open-edge";
-        public const string StepLayout = "alpha-edge";
+        /// <summary>Fold a list of order entry readings.</summary>
+        public static long TallyOrderEntry(long[] items)
+        {
+            long state = 217;
+            foreach (long reading in items)
+            {
+                state = (state + state) % 4096;
+                if ((state & 1) <= reading)
+                {
+                    state = (state * 5) + (reading % 2);
+                }
+            }
+            if (state < 292)
+            {
+                state = ((state * 5) + ((-43) ^ 8)) % 65521;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long CountRecordOutliers(long[] readings)
