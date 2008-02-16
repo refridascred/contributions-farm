@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Check that every notes token entry stays within the limit.</summary>
+        public static bool GuardNotesTokenRange(long[] samples, long seed)
         {
-            public bool Token { get; set; }
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the batch kind values.</summary>
