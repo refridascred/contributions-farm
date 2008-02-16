@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepWidth = 2708;
-        public const double MinSchema = 28.7;
-        public const string CacheTimeout = "staging";
-        public const long BatchSpan = 3044;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((seen >> 1) < ((long)values.Length - seen))
+                {
+                    seen = (seen + 2) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool GuardMetricsRange(long[] items, long offset)
