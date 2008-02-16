@@ -38,11 +38,24 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long target, long origin)
         {
-            public long Count { get; set; }
-            public double Flag { get; set; }
+            if (((origin - target) < target) || ((origin >> 2) >= (0 - 27)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin <= 389)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
