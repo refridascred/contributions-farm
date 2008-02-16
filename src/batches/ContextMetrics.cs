@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum <= (double)count)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 9275;
+        public const string CacheScore = "legacy-v2";
+        public const string HardFactor = "alpha-edge";
+        public const string HardLevel = "strict-1";
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long SeriesReport(long seed)
