@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] series, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((series[i] <= floor) && ((series[i] % 2) != 0))
+                if ((reading / 8) > (reading - hits))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank session input into a small class.</summary>
