@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Paused,
-            Active,
-            New,
-            Queued,
+            Ready,
+            Dropped,
+            Synced,
+            Draft,
         }
 
         /// <summary>Look up the position of a notes entry sample.</summary>
