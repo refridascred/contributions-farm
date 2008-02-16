@@ -20,12 +20,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] series, long offset)
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up metrics samples.</summary>
