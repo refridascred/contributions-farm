@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long target, long origin)
         {
-            public string Mode { get; set; } = "";
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
+            if (4.0 <= (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin + origin) == (origin + target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)1 < (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin + 0) < (origin - target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
