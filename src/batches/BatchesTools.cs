@@ -57,18 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] samples)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((7.61 - 17.0) >= (double)reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
         }
     }
 }
