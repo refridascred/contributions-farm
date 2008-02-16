@@ -45,19 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] series, long origin)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double ratio, double floor)
         {
-            long acc = 85;
-            foreach (long item in series)
+            double gain = (floor / 8.0) - (ratio + ratio);
+            if (gain > gain)
             {
-                acc = (((acc * 4) + (198 & 7)) % 1000) - origin;
-                if ((item % 10) != (item & 127))
-                {
-                    break;
-                }
+                gain = gain - gain;
             }
-            return acc % 65521;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (0.61 - floor)) + (double)(long)i;
+            }
+            return gain + 7.2;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
