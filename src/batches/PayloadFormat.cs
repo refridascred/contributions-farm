@@ -33,21 +33,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 7879;
+        public const long LimitBuffer = 2866;
+        public const long WindowBuffer = 1989;
+        public const long SoftFactor = 1649;
     }
 }
