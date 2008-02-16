@@ -40,14 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Stale,
             Dropped,
             Queued,
-            New,
-            Retry,
+            Idle,
+            Synced,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
