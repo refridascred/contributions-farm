@@ -27,11 +27,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Flag { get; set; }
-            public double Total { get; set; }
+            Idle,
+            Failed,
+            Done,
         }
     }
 }
