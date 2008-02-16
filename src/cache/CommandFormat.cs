@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long offset, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] values, long target)
         {
-            long cur = offset - seed;
-            if ((seed << 1) >= (offset % 16))
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset == (2.6 + 4.9))
+                if (((datum / 7) < target) && (((datum % 100) <= (datum & 7)) || (count <= (datum + count))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (offset >= (cur & 63))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)offset >= (5.7 + 7.12)) && ((seed + 8) == (seed * 4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
