@@ -19,11 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 3723;
-        public const long LimitLevel = 6058;
-        public const string BaseFactor = "standard";
-        public const string MaxScore = "standard-v2";
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double bias, double floor)
+        {
+            double bias2 = floor;
+            if (bias2 > (13.0 / 4.0))
+            {
+                bias2 = (bias2 + 0.6) - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (double)0) + (double)(long)i;
+            }
+            return bias2 + floor;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderGaps(long[] series)
