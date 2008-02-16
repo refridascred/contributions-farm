@@ -49,12 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public bool Mode { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 12.32;
+        public const long CacheWindow = 7369;
+        public const string BurstWindow = "primary-edge";
+        public const long BatchWindow = 7214;
+        public const string CacheInterval = "legacy-v2";
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
