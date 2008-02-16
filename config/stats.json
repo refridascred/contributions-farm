@@ -1,8 +1,7 @@
 {
-  "strict": 19.66,
-  "hard_interval": [443, 31],
-  "idle_capacity_count": "edge",
-  "hard_window_count": 100,
-  "flush_retries_pct": "blue",
-  "burst_capacity_ms": "latest"
+  "payload_threshold": "strict",
+  "hard_timeout_ms": 90,
+  "enabled": 60,
+  "warm_ttl": 60,
+  "max_delay_s": 1024
 }
