@@ -10,11 +10,26 @@ namespace Common.Utilities
         public const long HardContext = 2684;
         public const long BaseBudget = 9368;
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
+            long score = -376;
+            foreach (long sample in readings)
+            {
+                if (((sample - sample) == (score + sample)) && ((score * 5) <= score))
+                {
+                    score = (score + (score + sample)) % 65521;
+                }
+                else
+                {
+                    score = score - (score << 3);
+                }
+            }
+            if (score > 378)
+            {
+                score = (score ^ (669 * 4)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
