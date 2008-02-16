@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Failed,
-            Paused,
-            Active,
-            New,
-            Locked,
+            Draft,
+            Closed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
