@@ -36,20 +36,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 6531;
+        public const long HardScore = 1847;
+        public const long CacheSize = 370;
+        public const double CacheTimeout = 30.02;
+        public const long DefaultCluster = 5418;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long CountContextGaps(long[] readings)
