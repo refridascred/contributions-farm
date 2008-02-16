@@ -29,21 +29,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 5;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result + (0 ^ result)) % 4096) ^ sample;
             }
-            return matches;
+            if (result > 505)
+            {
+                result = ((result * 4) + result) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate entry support readings against a bound.</summary>
