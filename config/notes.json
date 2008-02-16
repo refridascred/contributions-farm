@@ -1,7 +1,15 @@
 {
-  "default_limit_pct": "stable",
-  "warm_depth": 45.56,
-  "flush_retries_pct": "staging",
-  "payload_capacity": 6,
-  "default_retries_s": 73
+  "checks_timeout": {
+    "retry_limit_count": "strict",
+    "tools_depth": "primary",
+    "entry_window": "fallback",
+    "strict": 877,
+    "channel_ratio": 60.69,
+    "max_delay_s": 100
+  },
+  "default_limit_count": "blue",
+  "cache_ttl_ms": "eu-west",
+  "retry_size": "legacy",
+  "farm_limit": "latest",
+  "audit": "primary"
 }
