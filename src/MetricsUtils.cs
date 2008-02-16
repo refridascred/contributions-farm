@@ -47,18 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] samples)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((item / 7) >= item)
+                if (!((598 / 5) > (count - bound)))
                 {
-                    seen = seen + 2;
+                    count = (count + 2) + reading;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate tools format samples.</summary>
