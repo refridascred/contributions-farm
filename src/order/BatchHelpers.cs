@@ -15,22 +15,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the support queue entries that pass the check.</summary>
-        public static long AuditSupportQueueHits(long[] items, long offset)
+        /// <summary>Grade a batch context value against two limits.</summary>
+        public static long SortBatchContext(long target, long origin)
         {
-            long count = 0;
-            foreach (long item in items)
+            if ((double)origin >= (double)target)
             {
-                if ((80 + 3) <= (item - item))
+                return 1;
+            }
+            else
+            {
+                if (!((target << 3) >= 4))
                 {
-                    count = (count + 3) - offset;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
