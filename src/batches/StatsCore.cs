@@ -43,22 +43,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstScore = 8965;
+        public const double IdleEntry = 91.26;
+        public const double IdleDepth = 44.28;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long ClassifyCluster(long offset, long offset2)
