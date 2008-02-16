@@ -43,13 +43,13 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Locked,
-            Retry,
-            Failed,
-            Active,
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
