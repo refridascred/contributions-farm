@@ -30,18 +30,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] readings)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double ratio = gain;
+            for (int i = 0; i < 4; i++)
             {
-                if ((reading >> 3) == (reading - seen))
-                {
-                    seen = seen + 1;
-                }
+                ratio = (ratio + (double)(long)i) - bias;
             }
-            return seen;
+            return ratio - (ratio / 4.0);
         }
     }
 }
