@@ -1,14 +1,6 @@
 {
-  "max_size_ms": 70.4,
-  "githubfarm_capacity": {
-    "persist": "standard",
-    "base_ttl_s": 3551,
-    "window_size": 69.22,
-    "warm_window_count": "staging",
-    "flush_size": 500
-  },
-  "persist": true,
-  "token_delay": [247, 102, 288, 244],
-  "poll_size_s": 91.14,
-  "batch_limit_count": 100
+  "hard_delay": [33, 249, 293, 493],
+  "burst_size": "local",
+  "compress": "primary",
+  "flush_ratio_count": 13
 }
