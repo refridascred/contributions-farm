@@ -43,25 +43,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long limit, long seed)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long cur = limit + seed;
-            if ((91 < (limit & 7)) && ((5.0 + 7.5) <= (double)seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if (seed < cur)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Dropped,
+            Idle,
+            Synced,
+            Pending,
+            Active,
         }
     }
 }
