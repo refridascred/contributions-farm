@@ -32,12 +32,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] data)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((matches + datum) <= (datum / 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
