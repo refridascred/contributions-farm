@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public bool Total { get; set; }
-            public bool Size { get; set; }
+            Done,
+            Retry,
+            Pending,
+            Stale,
+            Active,
         }
 
         /// <summary>Describe the account mode values.</summary>
