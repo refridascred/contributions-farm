@@ -1,7 +1,6 @@
-id,count,ratio
-1,17.2,15
-2,cached,979
-3,564,blue
-4,73.48,733
-5,blue,local
-6,24,48.6
+id,weight,active,rank,ratio
+1,eu-west,40.88,920,24.84
+2,165,2,standard,green
+3,551,70,legacy,staging
+4,legacy,open,local,open
+5,local,687,794,944
