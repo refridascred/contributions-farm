@@ -41,18 +41,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] levels)
+        /// <summary>Fold a list of account layout readings.</summary>
+        public static long TallyAccountLayout(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long mix = 759;
+            foreach (long item in data)
             {
-                if ((sample ^ sample) > seen)
+                if ((mix / 9) > (item ^ mix))
                 {
-                    seen = seen + 2;
+                    mix = mix + (mix - mix);
+                }
+                if (((mix << 2) <= (item / 2)) || ((5 & 3) <= item))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mix > (-733))
+            {
+                mix = mix - (mix << 2);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
