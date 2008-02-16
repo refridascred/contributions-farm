@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 5683;
-        public const long LimitInterval = 5724;
-        public const long SoftInterval = 4624;
-        public const long SoftSize = 4879;
-        public const string MinCount = "standard-v2";
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((4.7 / 2.0) == (double)target))
+                {
+                    state = (state - (state + state)) % 101;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long FoldLayout(long[] data)
