@@ -1,13 +1,8 @@
 # githubfarm settings
-retry_limit_pct: false
-cache_window_s: true
-idle_timeout_ms:
-  readonly: blue
-  persist: false
-  default_delay: false
-  soft_threshold_ms:
-    - latest
-    - blue
-    - primary
-  batch_limit_ms: 3
-support_retries: 86.11
+max_limit:
+  - 48
+  - 190
+  - 139
+  - 15
+hard_limit_count: strict
+warm_depth_pct: 30
