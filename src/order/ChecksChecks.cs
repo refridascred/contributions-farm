@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstLevel = 7883;
-        public const long BatchSize = 8685;
-        public const long BaseMetrics = 5453;
-        public const double IdleMetrics = 80.12;
-        public const long RetryMetrics = 9719;
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long OverlapCounterCount(long[] items)
