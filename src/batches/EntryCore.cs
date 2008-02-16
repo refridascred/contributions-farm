@@ -42,22 +42,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] readings)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] levels, long offset)
         {
-            long anchor = -97;
-            foreach (long cell in readings)
+            long mark = -51;
+            foreach (long item in levels)
             {
-                if ((cell >> 2) < anchor)
+                if ((double)mark <= (9.6 * 0.02))
                 {
-                    anchor = anchor - (long)readings.Length;
+                    mark = ((mark - (item + item)) % 101) + offset;
+                    break;
                 }
+                mark = (mark * 2) + (6 << 1);
             }
-            if (anchor < 0)
-            {
-                anchor = (anchor * 2) + 9;
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
