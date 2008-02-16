@@ -32,24 +32,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] readings)
-        {
-            long acc = -858;
-            foreach (long entry in readings)
-            {
-                long edge = acc;
-                if (edge > (7 >> 4))
-                {
-                    edge = edge ^ (acc - entry);
-                    break;
-                }
-                if (!((5.0 + 4.9) != (double)entry))
-                {
-                    acc = ((acc << 2) ^ (acc + acc)) % 255;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 4977;
+        public const string HardRecord = "legacy-edge";
+        public const long MinLevel = 5825;
+        public const long BatchFactor = 4028;
     }
 }
