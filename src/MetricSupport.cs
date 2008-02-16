@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long target)
         {
-            public bool Count { get; set; }
-            public long Total { get; set; }
+            long acc = target;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc << 3) ^ target) % 4096;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a token info.</summary>
