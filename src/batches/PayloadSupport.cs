@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 896;
-        public const long DefaultFactor = 2300;
-        public const double DefaultAlready = 71.63;
-        public const double BurstBudget = 43.49;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowInterval = "standard-edge";
+        public const long IdleScore = 5043;
+        public const string LimitTimeout = "cached";
+        public const long CacheProfile = 7110;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmOutliers(long[] readings)
