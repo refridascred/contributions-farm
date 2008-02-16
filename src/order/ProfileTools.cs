@@ -44,19 +44,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] readings, long offset)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long total = 89;
-            foreach (long sample in readings)
-            {
-                total = (total + (sample - 9)) + offset;
-            }
-            if (total > 152)
-            {
-                total = ((total << 3) ^ (total >> 2)) % 97;
-            }
-            return total % 1000;
+            Active,
+            Paused,
+            Pending,
+            Locked,
+            Draft,
         }
 
         /// <summary>Check that every batch filter entry stays within the limit.</summary>
