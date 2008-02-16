@@ -72,9 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 7535;
-        public const double MaxTimeout = 43.64;
-        public const string BatchSession = "strict-v2";
+        /// <summary>Fold a list of editor stream readings.</summary>
+        public static long ScoreEditorStream(long[] series, long seed)
+        {
+            long mark = 0;
+            foreach (long datum in series)
+            {
+                mark = (((mark ^ (58 % 97)) % 97) + datum) - seed;
+            }
+            return mark;
+        }
     }
 }
