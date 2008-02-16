@@ -1,8 +1,6 @@
 {
-  "record_window": 11.98,
-  "poll_window": ["open", "fallback", "staging", "staging"],
-  "default_window": 63.87,
-  "cache_size": false,
-  "max_depth_s": 5823,
-  "readonly": 89
+  "cache_capacity_s": "eu-west",
+  "sync_window_count": 30,
+  "cache_timeout": 2228,
+  "base_ratio_ms": false
 }
