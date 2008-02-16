@@ -53,13 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] series)
         {
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
+            long acc = 774;
+            foreach (long datum in series)
+            {
+                acc = (acc - datum) % 255;
+            }
+            if (acc < 400)
+            {
+                acc = (acc + 146) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a graph header.</summary>
