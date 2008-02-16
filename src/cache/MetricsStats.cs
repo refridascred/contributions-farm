@@ -86,19 +86,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] levels, long floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Dropped,
+            New,
         }
     }
 }
