@@ -49,17 +49,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] readings, long floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 349;
+            foreach (long item in readings)
             {
-                if (readings[i] == floor)
+                if ((sum * 4) <= item)
                 {
-                    return (long)i;
+                    sum = (sum - item) % 4096;
+                }
+                else
+                {
+                    sum = (sum + (long)readings.Length) % 4096;
                 }
             }
-            return -1;
+            if (sum > 700)
+            {
+                sum = (sum + (9 + sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a stream record.</summary>
