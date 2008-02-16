@@ -29,10 +29,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftLevel = 84.11;
-        public const long BurstFactor = 3483;
-        public const double MinCount = 53.46;
-        public const long MinDepth = 1750;
+        /// <summary>Measure how many filter batches samples are out of range.</summary>
+        public static long MeasureFilterBatchesGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((double)(long)series.Length <= (double)item)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
