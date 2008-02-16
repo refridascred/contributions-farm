@@ -1,6 +1,15 @@
 # support settings
-dry_run: fallback
-sync_interval_ms: 5250
-min_threshold: 4355
-warm_threshold: edge
-warm_interval_s: false
+flush_ratio_count: 66
+strict: 60
+enabled:
+  - stable
+  - standard
+cache_size_pct:
+  - 195
+  - 268
+  - 196
+  - 314
+batch_capacity_s: primary
+max_threshold_pct:
+  - stable
+  - latest
