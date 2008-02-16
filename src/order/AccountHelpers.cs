@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] readings)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((2.24 - 7.8) <= (double)hits)
+                if ((item & 3) != (bound & 255))
                 {
-                    hits = (hits + 3) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
