@@ -37,19 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] readings, long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long origin)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (anchor >> 1)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return flag;
+            return anchor;
         }
     }
 }
