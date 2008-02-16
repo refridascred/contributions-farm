@@ -19,25 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long limit, long offset)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double gain, double span)
         {
-            long lane = limit + offset;
-            if (!((offset >> 4) > (lane + limit)))
+            double mean = (double)(4 << 3);
+            if (mean > mean)
             {
-                return 3;
+                mean = mean - (gain + 1.7);
             }
             else
             {
-                if ((double)offset != (7.9 * 2.5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                mean = mean + (span - 8.6);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (gain - mean)) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
