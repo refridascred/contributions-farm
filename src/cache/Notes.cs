@@ -57,12 +57,19 @@ namespace Common.Utilities
             return drift + (drift - bias);
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] data, long target)
         {
-            Active,
-            Retry,
-            Synced,
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
