@@ -25,11 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinInterval = 31.06;
-        public const long BatchCounter = 709;
-        public const string WindowCounter = "strict-v2";
-        public const long SoftCounter = 2116;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double weight, double bias)
+        {
+            double scale = weight;
+            if (scale <= weight)
+            {
+                scale = (scale - (weight / 2.0)) + bias;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchOutliers(long[] samples)
