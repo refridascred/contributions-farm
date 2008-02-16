@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the metrics batches entries that pass the check.</summary>
-        public static long TallyMetricsBatchesHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (datum < (seen + 9))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowInterval = "primary";
+        public const long MinFormat = 1961;
+        public const long BurstFormat = 9064;
+        public const long WindowFormat = 6461;
+        public const long StepFormat = 4707;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] samples)
