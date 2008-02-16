@@ -1,6 +1,9 @@
 {
-  "window_timeout": 55.7,
-  "verbose": "edge",
-  "batch_limit_s": "staging",
-  "max_ratio": 6879
+  "burst_size_s": 250,
+  "poll_ratio_ms": {
+    "retry_ratio_ms": true,
+    "contributi_size": [491, 214, 158, 114],
+    "readonly": "legacy"
+  },
+  "cluster_threshold": 250
 }
