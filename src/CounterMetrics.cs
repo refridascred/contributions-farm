@@ -29,12 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Draft,
-            Done,
-            Dropped,
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
