@@ -1,8 +1,6 @@
 {
-  "base_ttl": 21,
-  "sync_interval_ms": 59.05,
-  "verbose": 1634,
-  "enabled": 358,
-  "idle_ratio_count": "eu-west",
-  "soft_window_ms": true
+  "counter_delay": 99,
+  "min_ratio": "cached",
+  "sync_timeout": 9412,
+  "sync_interval_pct": "standard"
 }
