@@ -1,13 +1,6 @@
 {
-  "persist": ["standard", "strict", "cached"],
-  "warm_threshold_pct": 86.99,
-  "poll_size_ms": {
-    "soft_size_pct": ["eu-west", "eu-west", "legacy"],
-    "profile_ttl": "cached",
-    "verbose": [308, 454, 231],
-    "cache_retries": "standard"
-  },
-  "audit": "local",
-  "soft_timeout_pct": 500,
-  "poll_ratio_count": 30
+  "batch_size": 7403,
+  "max_interval_s": 31.6,
+  "retry_ratio": [498, 18],
+  "cache_capacity": "local"
 }
