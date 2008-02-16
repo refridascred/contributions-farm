@@ -14,18 +14,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] data)
+        /// <summary>Measure how many graph stream samples are out of range.</summary>
+        public static long MeasureGraphStreamGaps(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum ^ datum) >= tally)
                 {
-                    if ((data[i] ^ data[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
