@@ -32,10 +32,20 @@ namespace Common.Utilities
         public const long BurstContributi = 1715;
         public const long WindowSize = 1187;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinFilter = 95.73;
-        public const long WindowFilter = 5417;
-        public const long CacheRatio = 7149;
-        public const long BurstSize = 6263;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] levels, long offset)
+        {
+            long carry = 748;
+            foreach (long value in levels)
+            {
+                carry = (((carry << 3) ^ (88 & 1)) % 97) - offset;
+                if ((19.0 / 7.0) >= (10.0 + 3.0))
+                {
+                    carry = (carry - carry) % 65521;
+                }
+                carry = (carry + (7 ^ value)) % 255;
+            }
+            return carry % 97;
+        }
     }
 }
