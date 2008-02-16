@@ -1,18 +1,7 @@
 # entry settings
-cache_delay: 30
-verbose: 9066
-metric_limit:
-  flush_depth_s: false
-  command_capacity: 6249
-  farm_retries:
-    - stable
-    - staging
-    - latest
-    - stable
-  base_ttl_s: 9739
-  max_ratio_s: true
-min_capacity:
-  - local
-  - stable
-  - open
-  - edge
+metric_ratio: true
+window_capacity: true
+commits_capacity: 32.16
+batch_window_pct: legacy
+retry_window: false
+compress: 63.0
