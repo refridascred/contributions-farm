@@ -40,11 +40,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxContext = 40.08;
-        public const long CacheRatio = 7635;
-        public const long BaseFactor = 2170;
-        public const long BaseDepth = 1996;
-        public const double LimitContext = 84.28;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long step, long seed)
+        {
+            long span = step - seed;
+            if (!((double)span != (7.9 - 0.25)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step % 60) < (step % 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((6.29 * 13.0) >= (double)span) && ((span ^ step) > (step + seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
