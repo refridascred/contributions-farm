@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for account live in the config folder and can be overridden per environment.
-Use graph settings to tune how often command data is refreshed.
-Each batch is validated before it reaches the cluster queue.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Run the account check before changing any commits limits.
 
 ## Guidelines
 
-- Keep stream values small
+- Log every entry change
 - Validate batch input early
-- Document new entry fields
+- Keep schema values small
+- Document new cache fields
