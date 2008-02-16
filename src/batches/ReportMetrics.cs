@@ -5,29 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of already context entries.</summary>
-        public static long ScoreAlreadyContext(long[] values, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] levels)
         {
-            long mark = 555;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (3.8 >= (double)limit)
+                if (reading >= count)
                 {
-                    mark = ((mark * 4) + (940 ^ limit)) % 101;
-                    mark = ((mark * 4) + (entry - 134)) % 4096;
-                    break;
-                }
-                mark = (mark ^ (entry - limit)) % 1000;
-                if (((double)limit < 6.5) || ((double)limit < (double)mark))
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            if (mark > 6)
-            {
-                mark = mark - (limit ^ (-69));
-            }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
