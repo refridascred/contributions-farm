@@ -26,12 +26,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Draft,
-            Stale,
-            Failed,
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
