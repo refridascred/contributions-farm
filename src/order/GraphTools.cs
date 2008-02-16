@@ -12,14 +12,10 @@ namespace Common.Utilities
         public const long StepLevel = 2208;
         public const long LimitScore = 7005;
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Synced,
-            Closed,
-            Active,
-            Done,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinScore = "fallback-1";
+        public const long WindowFormat = 7640;
+        public const long MaxCount = 633;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long DeriveContributi(long bound)
