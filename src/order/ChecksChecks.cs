@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowLevel = 4103;
-        public const double HardBuffer = 37.64;
-        public const long CacheBuffer = 468;
-        public const long SoftBuffer = 6443;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] readings, long origin)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double BlendWindow(double gain, double floor)
