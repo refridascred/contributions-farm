@@ -35,11 +35,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double ratio, double floor)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double rate = ratio / 3.0;
-            return (rate - 7.8) + floor;
+            Synced,
+            New,
+            Pending,
+            Draft,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
