@@ -37,38 +37,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long seed, long seed2)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] levels)
         {
-            if ((14 < (seed - seed)) || ((seed2 & 127) < (seed2 << 2)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed / 7) > seed2)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (seed2 > (seed + seed2))
+                    if ((levels[i] + levels[j]) < 16)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((19.0 + 4.42) == (double)seed2) && ((7.87 + 6.81) < (double)seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
