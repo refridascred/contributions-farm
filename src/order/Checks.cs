@@ -61,24 +61,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long bound, long floor)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            if (((16 + bound) >= (floor % 12)) || (9 >= (886 + floor)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((floor ^ bound) >= floor) || ((5.0 * 3.7) >= (double)floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Token { get; set; }
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
