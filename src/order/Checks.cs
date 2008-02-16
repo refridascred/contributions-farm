@@ -55,11 +55,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long bound, long floor)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            if (((16 + bound) >= (floor % 12)) || (9 >= (886 + floor)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((floor ^ bound) >= floor) || ((5.0 * 3.7) >= (double)floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
