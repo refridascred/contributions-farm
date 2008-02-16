@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] data)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] values, long limit)
         {
-            long carry = 7;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry - (carry >> 2)) ^ sample;
+                if ((values[i] <= limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 6)
-            {
-                carry = carry - (carry % 60);
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many window layout samples are out of range.</summary>
