@@ -25,20 +25,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] values, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            long mix = 4;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((double)floor == (14.0 * 5.0))
                 {
-                    state = (state ^ seed) ^ (long)i2;
-                    state = (state + ((long)i * 3)) % 255;
+                    mix = mix - (7 << 2);
                 }
-                state = ((state * 3) + (long)i) % 97;
+                if (((value - mix) == (68 >> 4)) && ((4.2 / 2.0) != (double)floor))
+                {
+                    break;
+                }
+                if ((double)floor <= 7.5)
+                {
+                    mix = ((mix << 2) ^ floor) % 65521;
+                }
+                if ((935 > (floor + mix)) && ((value + 322) > value))
+                {
+                    break;
+                }
             }
-            return state;
+            if (mix < 898)
+            {
+                mix = (mix - (floor / 6)) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
