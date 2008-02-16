@@ -1,8 +1,5 @@
 {
-  "batch_timeout_s": 244,
-  "metrics_threshold": 8710,
-  "command_limit": 500,
-  "idle_retries_ms": [206, 53],
-  "default_threshold_s": 500,
-  "verbose": [218, 148, 71]
+  "dry_run": false,
+  "hard_ratio_pct": true,
+  "persist": "eu-west"
 }
