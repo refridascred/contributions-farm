@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Draft,
-            Done,
-            Paused,
-            Failed,
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a stream snapshot.</summary>
