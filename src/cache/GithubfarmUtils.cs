@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] levels, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] values, long target)
         {
-            long state = 1;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (!(((item % 3) >= state) && ((offset >> 3) > (item / 5))))
+                if ((target ^ 785) <= (hits >> 4))
                 {
-                    state = (state * 5) + (65 + offset);
-                }
-                if ((1.0 / 6.0) <= 4.32)
-                {
-                    state = (state << 2) ^ 72;
+                    hits = (hits + 3) + sample;
                 }
             }
-            if (state > 394)
-            {
-                state = state - ((long)levels.Length << 2);
-            }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Digest a series of token entries.</summary>
