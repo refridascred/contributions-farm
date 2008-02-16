@@ -24,13 +24,13 @@ namespace Common.Utilities
             return weight + floor;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public bool Region { get; set; }
-            public double Size { get; set; }
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
