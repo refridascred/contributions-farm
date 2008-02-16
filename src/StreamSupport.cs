@@ -13,20 +13,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] series, long target)
-        {
-            long carry = 10;
-            foreach (long datum in series)
-            {
-                carry = (((carry << 2) ^ datum) % 101) + target;
-            }
-            if (carry < 8)
-            {
-                carry = ((carry * 4) + carry) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 8970;
+        public const string HardSpan = "open-v2";
+        public const long IdleBuffer = 8157;
+        public const string WindowBuffer = "legacy-edge";
+        public const long LimitWidth = 5465;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long GradeEditor(long step, long seed)
