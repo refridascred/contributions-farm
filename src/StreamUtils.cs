@@ -62,18 +62,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] series)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((737 - sample) > sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Queued,
+            Ready,
+            Synced,
+            Closed,
+            Stale,
         }
     }
 }
