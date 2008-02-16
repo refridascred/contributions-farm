@@ -29,22 +29,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] samples)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((75 - datum) > (count - 111)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Hold a context snapshot.</summary>
