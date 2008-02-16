@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double rate, double offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] values, long origin)
         {
-            double weight = offset;
-            return (weight + 13.0) + rate;
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
