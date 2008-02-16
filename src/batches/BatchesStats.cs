@@ -26,11 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a filter window pair into a bucket.</summary>
