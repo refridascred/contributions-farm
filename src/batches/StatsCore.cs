@@ -63,19 +63,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] readings, long bound)
+        /// <summary>Iterate the notes tools series from a seed.</summary>
+        public static long IterateNotesTools(long bound)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (reading < bound)
+                if (mix > 2)
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix * 2) + (594 >> 5)) % 4096;
                 }
+                mix = ((mix * 5) + (bound / 4)) % 65521;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Describe the entry kind values.</summary>
