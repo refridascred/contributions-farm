@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] series, long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] data)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long mark = 67;
+            foreach (long sample in data)
             {
-                if (((matches ^ item) <= step) || (((step & 7) <= 7) && ((item - 857) != (matches - matches))))
+                if ((double)mark <= (1.3 - 0.9))
                 {
-                    matches = matches + 2;
+                    mark = mark - 7;
+                }
+                else
+                {
+                    mark = ((mark * 5) + sample) % 101;
                 }
             }
-            return matches;
+            if (mark < 407)
+            {
+                mark = (mark - (mark - mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a layout entry.</summary>
