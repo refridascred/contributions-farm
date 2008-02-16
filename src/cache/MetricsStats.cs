@@ -63,12 +63,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] values)
         {
-            Synced,
-            Dropped,
-            New,
+            long mark = -945;
+            foreach (long entry in values)
+            {
+                mark = (((mark * 2) + (404 & 63)) % 101) ^ entry;
+                if ((mark + 17) > (488 + mark))
+                {
+                    break;
+                }
+            }
+            if (mark < 35)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
     }
 }
