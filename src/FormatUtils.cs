@@ -90,15 +90,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double gain, double span)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            double weight = gain * 14.0;
-            if (weight <= (span + gain))
-            {
-                weight = weight - (double)9;
-            }
-            return weight - span;
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
