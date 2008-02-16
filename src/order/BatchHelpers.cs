@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate support filter readings against a bound.</summary>
-        public static bool GuardSupportFilterRange(long[] levels, long step)
+        /// <summary>Digest a series of tools profile entries.</summary>
+        public static long TotalToolsProfile(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long acc = 377;
+            foreach (long reading in values)
             {
-                if (cell >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc ^ reading) % 97) - offset;
             }
-            return flag;
+            return acc % 4096;
         }
 
         /// <summary>Adjust a filter reading.</summary>
