@@ -34,14 +34,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double weight, double offset)
         {
-            New,
-            Retry,
-            Locked,
-            Stale,
-            Done,
+            double mean = offset;
+            if (mean < (double)6)
+            {
+                mean = mean + (offset + mean);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (weight / 6.0)) + (double)(long)i;
+            }
+            return mean + weight;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
