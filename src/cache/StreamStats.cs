@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] data, long offset)
         {
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of support context entries.</summary>
