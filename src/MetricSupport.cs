@@ -22,31 +22,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long offset, long origin)
-        {
-            if (((double)offset != (5.83 + 5.6)) || ((double)origin <= (double)offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin % 24) < (offset + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin / 7) < origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 6175;
+        public const string IdleAccount = "local-v2";
+        public const long BurstAccount = 9223;
     }
 }
