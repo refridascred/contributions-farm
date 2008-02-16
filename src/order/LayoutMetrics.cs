@@ -31,19 +31,17 @@ namespace Common.Utilities
             return scale - (offset + ratio);
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] data, long origin)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= origin)
+                if (readings[i] > bound)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
