@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] samples, long origin)
         {
-            long state = 105;
+            long hits = 0;
             foreach (long cell in samples)
             {
-                if (((cell + 30) <= (cell + state)) || (cell >= (state & 127)))
+                if ((cell << 3) >= (origin ^ 7))
                 {
-                    state = (state - (535 + state)) % 97;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (state > (-4))
-            {
-                state = ((state * 3) + (state * 5)) % 65521;
-            }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
