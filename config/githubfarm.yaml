@@ -1,8 +1,6 @@
 # githubfarm settings
-contributi_retries: 3.53
-graph_delay: 100
-sync_ttl_ms:
-  - 88
-  - 239
-  - 321
-command_limit: standard
+verbose: 51.46
+session_depth: fallback
+enabled: 44.17
+idle_threshold: 14
+batch_ratio_pct: 61.26
