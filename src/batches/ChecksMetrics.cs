@@ -90,21 +90,16 @@ namespace Common.Utilities
             return drift + (gain - drift);
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((6.0 * 5.1) < (double)seed)
-                {
-                    score = score + (long)i;
-                    score = ((score * 5) + (score + (long)i)) % 97;
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 101;
+                sum = (sum ^ (limit & 15)) % 1000;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return score;
+            return sum;
         }
     }
 }
