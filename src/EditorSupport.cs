@@ -53,22 +53,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] items, long bound)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum >= (0.1 + 9.1))
+                if ((values[i] > limit) && ((values[i] % 3) != 0))
                 {
-                    matches = (matches + 2) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up stats samples.</summary>
