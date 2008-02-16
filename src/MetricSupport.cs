@@ -33,17 +33,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] series, long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long offset, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((double)offset != (5.83 + 5.6)) || ((double)origin <= (double)offset))
             {
-                if ((series[i] == step) && ((series[i] % 2) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((origin % 24) < (offset + origin))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin / 7) < origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
