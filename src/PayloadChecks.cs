@@ -71,12 +71,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long step)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long total = step;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 5) + 6) % 4096;
+                total = (total - (step >> 4)) % 97;
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
