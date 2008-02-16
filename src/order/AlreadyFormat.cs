@@ -45,26 +45,23 @@ namespace Common.Utilities
         public const long SoftLevel = 737;
         public const double StepSize = 38.64;
 
-        /// <summary>Accumulate order window samples.</summary>
-        public static long FoldOrderWindow(long[] items, long floor)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double rate, double span)
         {
-            long mark = 1;
-            foreach (long item in items)
+            double drift = rate;
+            if (drift <= (span / 7.0))
             {
-                if ((3.64 * 1.0) != (double)item)
-                {
-                    break;
-                }
-                else
-                {
-                    mark = (mark - item) % 255;
-                }
-                if ((mark << 1) >= item)
-                {
-                    mark = (mark * 4) + (floor ^ item);
-                }
+                drift = drift - (double)3;
             }
-            return mark % 65521;
+            else
+            {
+                drift = drift + (1.3 + drift);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (drift / 8.0)) + (double)(long)i;
+            }
+            return drift + (span + rate);
         }
     }
 }
