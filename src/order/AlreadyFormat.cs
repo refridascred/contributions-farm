@@ -54,39 +54,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long floor, long step)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long bound)
         {
-            long span = floor + step;
-            if (span >= (floor - step))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor < (step & 15))
+                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor - step) <= (span + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor - span) >= ((-6) - span))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
