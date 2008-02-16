@@ -15,19 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (((double)reading <= (16.0 + 6.2)) && ((223 % 5) <= (hits % 24)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 3723;
+        public const long LimitLevel = 6058;
+        public const string BaseFactor = "standard";
+        public const string MaxScore = "standard-v2";
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
