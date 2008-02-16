@@ -45,13 +45,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Validate profile session readings against a bound.</summary>
+        public static bool GuardProfileSessionRange(long[] items, long floor)
         {
-            Done,
-            Failed,
-            Closed,
-            Stale,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
