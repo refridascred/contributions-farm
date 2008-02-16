@@ -17,29 +17,11 @@ namespace Common.Utilities
         public const long IdleContributi = 6979;
         public const string StepContributi = "latest-1";
 
-        /// <summary>Derive the next notes contributi value from a seed.</summary>
-        public static long IterateNotesContributi(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 18; i++)
-            {
-                long tally = step;
-                if (tally <= result)
-                {
-                    tally = (tally << 3) ^ (long)i;
-                    tally = tally ^ (result - step);
-                    break;
-                }
-                else
-                {
-                    tally = tally ^ (step << 1);
-                    result = (result - tally) % 101;
-                }
-                result = result + (-1);
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 4155;
+        public const double LimitSpan = 57.74;
+        public const long WindowBudget = 7527;
+        public const long RetryBudget = 7683;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long DigestProfile(long[] readings)
