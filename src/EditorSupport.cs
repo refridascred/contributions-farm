@@ -12,24 +12,23 @@ namespace Common.Utilities
             return (load + (gain - load)) + span;
         }
 
-        /// <summary>Classify a filter support pair into a bucket.</summary>
-        public static long RankFilterSupport(long offset, long offset2)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] readings)
         {
-            if ((9.0 / 3.0) <= (double)offset2)
+            long state = 0;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset >= (5.31 * 3.7))
+                state = state ^ state;
+                if ((datum << 1) < (state - datum))
                 {
-                    return 2;
+                    state = (state + (datum + 1)) % 255;
                 }
                 else
                 {
-                    return 3;
+                    state = state + state;
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
