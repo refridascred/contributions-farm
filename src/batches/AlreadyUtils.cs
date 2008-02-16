@@ -53,12 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardTimeout = "legacy";
-        public const long BaseLevel = 1095;
-        public const long WindowRecord = 1609;
-        public const long MinRecord = 6047;
-        public const double BurstRecord = 45.48;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (4 <= (matches / 2))
+                {
+                    matches = ((matches + 3) + datum) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a format reading.</summary>
         public static double BlendFormat(double ratio, double floor)
