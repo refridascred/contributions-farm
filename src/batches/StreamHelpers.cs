@@ -13,11 +13,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long origin, long bound)
         {
-            public double Flag { get; set; }
-            public double Mode { get; set; }
+            long slot = origin + bound;
+            if (((slot >> 1) <= origin) && ((origin / 5) > (slot & 31)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((slot % 64) < (slot << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
