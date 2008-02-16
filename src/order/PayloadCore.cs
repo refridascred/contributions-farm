@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryTimeout = 2780;
-        public const long LimitMetrics = 8567;
-        public const string DefaultFactor = "open-1";
-        public const long WindowWidth = 3217;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long limit, long origin)
+        {
+            long span = limit - origin;
+            if (!((0.88 - 8.9) > (double)origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit + span) != (31 - limit)) || ((15.0 - 1.6) > (double)span))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((span + limit) >= (span >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit % 12) < limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
