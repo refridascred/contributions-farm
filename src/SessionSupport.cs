@@ -32,32 +32,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of profile stats entries.</summary>
-        public static long CombineProfileStats(long[] values, long seed)
+        /// <summary>Derive the next report counter value from a seed.</summary>
+        public static long IterateReportCounter(long target)
         {
-            long sum = 97;
-            foreach (long reading in values)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (sum ^ (3 & 1)) % 101;
-                if ((seed - reading) <= (67 + reading))
+                long edge = (target / 7) - ((long)i - acc);
+                if ((double)edge != (2.59 + 3.49))
                 {
-                    sum = (sum << 2) ^ (seed >> 2);
+                    edge = (edge << 3) ^ (acc + acc);
                 }
                 else
                 {
-                    sum = (sum + (reading % 5)) % 4096;
-                    sum = (sum * 3) + ((-24) << 1);
+                    acc = ((acc << 2) ^ ((-94) % 2)) % 65521;
                 }
-                if (((long)values.Length <= (sum + seed)) && (sum > (seed >> 1)))
-                {
-                    sum = sum - seed;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            if (sum < 2)
-            {
-                sum = sum ^ (413 >> 3);
-            }
-            return sum;
+            return acc;
         }
     }
 }
