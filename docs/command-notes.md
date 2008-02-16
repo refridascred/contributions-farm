@@ -1,12 +1,16 @@
 # Command notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-Keep contributi and report names short and lowercase.
-The channel report groups every context by graph.
+Run the queue check before changing any route limits.
+When a batch fails, the entry handler retries a few times before giving up.
+Use metrics settings to tune how often cache data is refreshed.
+
+Keep session and queue names short and lowercase.
+The counter module keeps cache values in sync with the cluster cache.
+When a checks fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review window limits each release
-- Validate order input early
-- Log every context change
-- Keep stream values small
+- Keep contributi values small
+- Validate report input early
+- Prefer queue defaults
+- Review already limits each release
