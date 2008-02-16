@@ -39,20 +39,21 @@ namespace Common.Utilities
         public const long BurstRatio = 881;
         public const string CacheBudget = "cached";
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] data)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] series)
         {
-            long sum = 6;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum ^ (251 - (long)data.Length)) % 1000;
-                sum = (sum - (sum + sum)) % 97;
-                if (707 >= cell)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
