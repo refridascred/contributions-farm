@@ -1,15 +1,15 @@
 {
-  "retry_ratio": true,
-  "flush_size_pct": "cached",
-  "default_timeout_count": {
-    "strict": 1024,
-    "cache_retries": [37, 75],
-    "audit": 54
+  "strict": 24.26,
+  "filter_delay": false,
+  "poll_retries": {
+    "base_capacity_count": false,
+    "warm_window_s": true,
+    "persist": ["primary", "stable"],
+    "base_timeout_pct": 60,
+    "already_window": 1024,
+    "dry_run": 881
   },
-  "min_window_s": "primary",
-  "persist": {
-    "dry_run": "staging",
-    "soft_capacity_ms": 27.47,
-    "enabled": 81.99
-  }
+  "poll_depth_ms": 31.5,
+  "compress": "standard",
+  "hard_threshold_s": 7527
 }
