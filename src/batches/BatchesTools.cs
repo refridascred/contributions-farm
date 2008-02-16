@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] samples, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 545;
+            foreach (long cell in levels)
             {
-                if (samples[i] < seed)
+                mark = (mark << 2) ^ (offset ^ mark);
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    mark = ((mark ^ ((-9) << 2)) % 65521) ^ (long)i;
+                    mark = mark - (mark - offset);
+                }
+                if ((double)4 >= (double)cell)
+                {
+                    mark = (mark ^ 177) % 65521;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
