@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long bound, long target)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            if (((bound + bound) == (bound - 42)) || ((bound >> 5) > (bound + bound)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound + bound) >= 32)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Scale a githubfarm entry figure with a bias.</summary>
