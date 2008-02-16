@@ -13,13 +13,39 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long target, long bound)
         {
-            Synced,
-            Active,
-            Retry,
-            Failed,
+            long edge = target - bound;
+            if ((0 % 3) >= target)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((edge + edge) > (target - 4)) && ((edge + bound) == (target ^ edge)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound >> 3) < (target ^ bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((edge >> 2) > (target - edge))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
