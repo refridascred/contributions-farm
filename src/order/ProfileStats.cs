@@ -39,21 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] values)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (bias - ratio) / 6.0;
+            if (drift > 4.8)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - ratio;
             }
-            return hits;
+            else
+            {
+                drift = drift - (6.0 - bias);
+            }
+            return drift - bias;
         }
     }
 }
