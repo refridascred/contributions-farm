@@ -21,18 +21,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] levels, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (seen < ((long)levels.Length ^ cell))
+                if (((((long)values.Length + tally) != (30 + tally)) && ((tally - tally) <= tally)) || ((tally + 93) < reading))
                 {
-                    seen = (seen + 3) - origin;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
