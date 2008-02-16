@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheBudget = 1426;
-        public const double CacheFactor = 32.12;
-        public const long MaxInterval = 7147;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseSpan = 81.22;
+        public const string BurstLevel = "alpha-edge";
+        public const double DefaultFormat = 40.0;
+        public const double BurstFormat = 25.26;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long origin, long seed)
