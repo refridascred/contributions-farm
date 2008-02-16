@@ -41,15 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] values)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long mark = 9;
-            foreach (long datum in values)
-            {
-                mark = (mark + mark) - datum;
-            }
-            return mark;
+            public long Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Blend two commits measurements.</summary>
