@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long bound, long target)
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
+            if (((bound + bound) == (bound - 42)) || ((bound >> 5) > (bound + bound)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound + bound) >= 32)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
