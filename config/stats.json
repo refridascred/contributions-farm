@@ -1,6 +1,15 @@
 {
-  "counter_delay": 99,
-  "min_ratio": "cached",
-  "sync_timeout": 9412,
-  "sync_interval_pct": "standard"
+  "retry_ratio": true,
+  "flush_size_pct": "cached",
+  "default_timeout_count": {
+    "strict": 1024,
+    "cache_retries": [37, 75],
+    "audit": 54
+  },
+  "min_window_s": "primary",
+  "persist": {
+    "dry_run": "staging",
+    "soft_capacity_ms": 27.47,
+    "enabled": 81.99
+  }
 }
