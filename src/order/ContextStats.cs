@@ -55,10 +55,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepScore = 20.73;
-        public const double BaseChannel = 84.96;
-        public const double CacheScore = 24.69;
-        public const long CacheChannel = 9555;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepTimeout = 3352;
+        public const double DefaultWidth = 96.44;
+        public const double HardRatio = 76.9;
     }
 }
