@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            Retry,
+            Ready,
+            Locked,
+            Idle,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
