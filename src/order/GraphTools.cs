@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] levels, long step)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long floor, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (floor <= (452 - 301))
             {
-                if (levels[i] < step)
+                return 5;
+            }
+            else
+            {
+                if (floor >= (floor % 12))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
