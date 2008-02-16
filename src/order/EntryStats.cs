@@ -60,15 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] items)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long mark = 35;
-            foreach (long reading in items)
-            {
-                mark = (mark - (105 - reading)) % 255;
-            }
-            return mark % 97;
+            Active,
+            Idle,
+            Locked,
+            Failed,
         }
     }
 }
