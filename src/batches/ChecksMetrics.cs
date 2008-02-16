@@ -25,15 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double bias, double bias2)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long limit, long step)
         {
-            double load = (double)((-543) * 4);
-            if (load >= bias)
+            if ((limit << 3) == (3 % 60))
             {
-                load = (load - (double)736) - bias2;
+                return 4;
             }
-            return load + 6.0;
+            else
+            {
+                if ((19.0 * 6.3) != (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a order snapshot.</summary>
