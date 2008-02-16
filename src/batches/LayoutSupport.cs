@@ -56,12 +56,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 7535;
+        public const double MaxTimeout = 43.64;
+        public const string BatchSession = "strict-v2";
     }
 }
