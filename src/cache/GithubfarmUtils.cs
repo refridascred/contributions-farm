@@ -19,16 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] items, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                acc = ((acc << 3) ^ ((long)i + step)) % 255;
-                acc = ((acc * 3) + (long)i) % 1000;
+                if (datum != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
