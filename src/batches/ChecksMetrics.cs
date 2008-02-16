@@ -36,26 +36,22 @@ namespace Common.Utilities
             return load + 6.0;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] data)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] readings, long target)
         {
-            long mix = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (reading <= (reading / 8))
+                if ((double)hits != (double)item)
                 {
-                    mix = ((mix << 2) ^ (reading + reading)) % 101;
+                    hits = (hits + 3) + target;
                 }
                 else
                 {
-                    mix = (mix - mix) % 1000;
-                }
-                if (!((reading - 66) > 686))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Blend two metric measurements.</summary>
