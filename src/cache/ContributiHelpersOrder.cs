@@ -23,27 +23,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] data, long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long target, long seed)
         {
-            long mix = 29;
-            foreach (long item in data)
+            if (seed >= (seed + 75))
             {
-                long span = (item - origin) >> 5;
-                if (!((5.0 - 9.0) >= (double)mix))
+                return 6;
+            }
+            else
+            {
+                if ((double)target <= (1.0 * 7.3))
                 {
-                    mix = (mix + (span + origin)) % 101;
+                    return 5;
                 }
-                if ((5 / 6) >= origin)
+                else
                 {
-                    mix = (mix + origin) % 101;
+                    if (!(((-7) ^ target) <= (target - target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (mix > 9)
-            {
-                mix = (mix * 2) + (origin ^ 79);
-            }
-            return mix;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
