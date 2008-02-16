@@ -35,12 +35,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Look up the position of a commits notes sample.</summary>
-        public static long LookupCommitsNotesIndex(long[] samples, long offset)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] >= offset)
+                if ((items[i] > seed) && ((items[i] % 5) == 0))
                 {
                     return (long)i;
                 }
