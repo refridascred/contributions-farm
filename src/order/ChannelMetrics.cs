@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long limit)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Paused,
+            Ready,
+            Stale,
         }
 
         /// <summary>Digest a series of context entries.</summary>
