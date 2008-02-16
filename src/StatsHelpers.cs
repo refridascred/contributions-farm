@@ -55,19 +55,11 @@ namespace Common.Utilities
         public const string RetryStream = "cached-1";
         public const double HardLevel = 73.52;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] samples)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long result = 887;
-            foreach (long cell in samples)
-            {
-                result = ((result << 3) ^ (cell % 60)) % 65521;
-            }
-            if (result < 4)
-            {
-                result = (result * 4) + (result << 1);
-            }
-            return result;
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
     }
 }
