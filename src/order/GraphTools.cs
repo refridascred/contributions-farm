@@ -52,13 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] levels, long seed)
         {
-            Paused,
-            Done,
-            Idle,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
