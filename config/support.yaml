@@ -1,11 +1,15 @@
 # support settings
-compress:
-  - 161
-  - 190
-  - 44
-  - 340
-default_retries_count: stable
-session_limit: stable
-sync_interval_s: staging
-soft_delay_count: edge
-stats_ratio: blue
+flush_threshold_ms: 60
+min_capacity: open
+cluster_ttl: 5295
+strict:
+  hard_delay: 11.34
+  hard_window_ms: false
+  sync_retries: true
+  base_timeout: 24
+  checks_ratio: true
+  context_interval: 74
+base_capacity:
+  - 89
+  - 39
+max_ratio: primary
