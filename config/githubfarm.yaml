@@ -1,27 +1,13 @@
 # githubfarm settings
-sync_size_count: strict
-cache_interval:
-  - staging
-  - blue
-  - eu-west
-  - cached
-retry_limit: 1024
-batch_size_ms:
-  profile_retries:
-    buffer_threshold: 24
-    record_timeout: 1507
-    default_ratio_s:
-      - stable
-      - staging
-      - fallback
-      - edge
-  burst_depth:
-    - 27
-    - 216
-    - 392
-  flush_ttl_count: true
-  default_size_pct:
-    - stable
-    - staging
-  retry_delay_count: 77
-  verbose: strict
+retry_limit_pct: false
+cache_window_s: true
+idle_timeout_ms:
+  readonly: blue
+  persist: false
+  default_delay: false
+  soft_threshold_ms:
+    - latest
+    - blue
+    - primary
+  batch_limit_ms: 3
+support_retries: 86.11
