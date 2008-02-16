@@ -1,16 +1,13 @@
 {
-  "sync_limit_pct": "cached",
-  "readonly": {
-    "hard_delay": false,
-    "record_depth": {
-      "session_window": "primary",
-      "default_window": "cached",
-      "enabled": "green"
-    },
-    "batch_capacity": ["edge", "cached", "legacy", "green"],
-    "warm_limit": true,
-    "flush_ttl_count": false,
-    "verbose": "blue"
-  },
-  "enabled": [181, 254, 111, 207]
+  "batch_ttl_ms": 7.19,
+  "hard_retries": ["cached", "standard", "primary", "green"],
+  "strict": 8.86,
+  "default_threshold_count": 99,
+  "cache_timeout_count": 83.54,
+  "format_window": {
+    "enabled": 30,
+    "compress": true,
+    "soft_capacity_count": "blue",
+    "counter_size": 2459
+  }
 }
