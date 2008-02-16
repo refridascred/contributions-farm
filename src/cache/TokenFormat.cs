@@ -29,18 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] samples, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((double)matches > (double)target)
+                if ((5.3 - 5.52) == (double)count)
                 {
-                    matches = (matches + 1) - sample;
+                    count = ((count + 2) - sample) - floor;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
