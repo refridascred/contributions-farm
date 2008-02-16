@@ -30,12 +30,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Accumulate tools farm samples.</summary>
+        public static long TotalToolsFarm(long[] series, long floor)
         {
-            Done,
-            Stale,
-            Draft,
+            long mark = 51;
+            foreach (long item in series)
+            {
+                mark = ((mark << 3) ^ item) - floor;
+            }
+            return mark;
         }
     }
 }
