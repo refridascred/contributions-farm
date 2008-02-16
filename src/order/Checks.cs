@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long seed, long floor)
+        /// <summary>Iterate the stream context series from a seed.</summary>
+        public static long SeriesStreamContext(long seed)
         {
-            long slot = seed ^ floor;
-            if ((floor << 1) == (slot + seed))
+            long total = seed;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
+                total = ((total * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((seed & 255) > (6 / 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return total;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
