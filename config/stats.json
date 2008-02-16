@@ -1,7 +1,8 @@
 {
-  "payload_threshold": "strict",
-  "hard_timeout_ms": 90,
-  "enabled": 60,
-  "warm_ttl": 60,
-  "max_delay_s": 1024
+  "retry_size_ms": "legacy",
+  "readonly": "standard",
+  "idle_window_s": 63,
+  "poll_ratio_pct": 63.61,
+  "verbose": 70.94,
+  "soft_depth_ms": true
 }
