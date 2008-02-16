@@ -57,14 +57,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] items, long target)
         {
-            Idle,
-            Closed,
-            Ready,
-            Done,
-            Draft,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((452 - reading) < (reading / 2))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
