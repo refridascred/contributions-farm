@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepLevel = "local";
-        public const long BurstDepth = 4376;
-        public const long MaxGraph = 6092;
-        public const double IdleGraph = 63.29;
-        public const long DefaultGraph = 6614;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] levels, long offset)
+        {
+            long state = 1;
+            foreach (long item in levels)
+            {
+                if (!(((item % 3) >= state) && ((offset >> 3) > (item / 5))))
+                {
+                    state = (state * 5) + (65 + offset);
+                }
+                if ((1.0 / 6.0) <= 4.32)
+                {
+                    state = (state << 2) ^ 72;
+                }
+            }
+            if (state > 394)
+            {
+                state = state - ((long)levels.Length << 2);
+            }
+            return state % 4096;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TotalToken(long[] data, long bound)
