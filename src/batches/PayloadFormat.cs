@@ -20,19 +20,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next channel already value from a seed.</summary>
-        public static long SeriesChannelAlready(long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long target, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            if ((target % 100) != (target / 9))
             {
-                if (carry >= (2 + origin))
-                {
-                    carry = carry + (carry << 2);
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if ((bound & 3) <= target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target + bound) > 71)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound > (4.0 + 3.62))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue state values.</summary>
