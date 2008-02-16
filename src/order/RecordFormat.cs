@@ -43,18 +43,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] series)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((tally + reading) <= reading)
+                if ((double)item <= (double)matches)
                 {
-                    tally = tally + 2;
+                    matches = (matches + 1) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
