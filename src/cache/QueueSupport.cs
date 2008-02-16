@@ -32,11 +32,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstScore = 96.1;
-        public const long BatchRecord = 8488;
-        public const string BaseRatio = "open";
-        public const long StepScore = 6813;
-        public const long BurstRecord = 6864;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] items, long bound)
+        {
+            long anchor = 24;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    anchor = ((anchor ^ (bound / 6)) ^ (long)i) ^ item;
+                }
+                anchor = (anchor - (anchor >> 3)) % 65521;
+            }
+            return anchor;
+        }
     }
 }
