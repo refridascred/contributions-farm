@@ -1,6 +1,8 @@
 {
-  "readonly": [448, 235],
-  "compress": true,
-  "flush_window": "green",
-  "default_interval_ms": "blue"
+  "entry_depth": true,
+  "persist": true,
+  "notes_timeout": 87.31,
+  "sync_capacity_count": [484, 383],
+  "dry_run": "strict",
+  "batches_threshold": "stable"
 }
