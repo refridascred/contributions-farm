@@ -14,16 +14,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long target)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = (sum ^ target) % 65521;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
