@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] data, long origin)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
