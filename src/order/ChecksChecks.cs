@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double gain, double floor)
+        /// <summary>Check that every payload githubfarm entry stays within the limit.</summary>
+        public static bool ValidatePayloadGithubfarmRange(long[] items, long seed)
         {
-            double rate = (double)(220 >> 3);
-            if (rate < (double)52)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                rate = (rate + (rate * 8.0)) + floor;
+                if (datum < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + (gain * 5.21);
-            }
-            return rate + (rate * 1.87);
+            return valid;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
