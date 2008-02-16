@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] data)
         {
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long carry = 7;
+            foreach (long sample in data)
+            {
+                carry = (carry - (carry >> 2)) ^ sample;
+            }
+            if (carry < 6)
+            {
+                carry = carry - (carry % 60);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
