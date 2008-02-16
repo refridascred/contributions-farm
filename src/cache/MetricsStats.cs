@@ -25,38 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long seed, long target)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            if (seed <= (target >> 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target * 4) >= target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)target < (18.0 / 6.0)) || (target <= 62))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((8.77 - 8.5) < (double)seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Closed,
+            New,
+            Paused,
+            Ready,
+            Queued,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
