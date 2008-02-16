@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const double IdleGraph = 63.29;
         public const long DefaultGraph = 6614;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] samples)
         {
-            Failed,
-            Locked,
-            Draft,
-            New,
-            Pending,
+            long sum = 612;
+            foreach (long entry in samples)
+            {
+                sum = (sum + (sum / 9)) - entry;
+            }
+            if (sum < 74)
+            {
+                sum = ((sum * 4) + (sum + 20)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
