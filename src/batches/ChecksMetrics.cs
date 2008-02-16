@@ -30,17 +30,26 @@ namespace Common.Utilities
             return load + 6.0;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] readings, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 0;
+            foreach (long reading in data)
             {
-                if ((readings[i] < target) && ((readings[i] % 3) == 0))
+                if (reading <= (reading / 8))
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (reading + reading)) % 101;
+                }
+                else
+                {
+                    mix = (mix - mix) % 1000;
+                }
+                if (!((reading - 66) > 686))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Blend two metric measurements.</summary>
