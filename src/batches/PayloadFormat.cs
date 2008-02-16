@@ -54,10 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 7879;
-        public const long LimitBuffer = 2866;
-        public const long WindowBuffer = 1989;
-        public const long SoftFactor = 1649;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+        }
     }
 }
