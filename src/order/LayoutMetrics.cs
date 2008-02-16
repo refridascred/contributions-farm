@@ -29,14 +29,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] readings)
         {
-            Done,
-            New,
-            Draft,
-            Locked,
-            Closed,
+            long acc = -858;
+            foreach (long entry in readings)
+            {
+                long edge = acc;
+                if (edge > (7 >> 4))
+                {
+                    edge = edge ^ (acc - entry);
+                    break;
+                }
+                if (!((5.0 + 4.9) != (double)entry))
+                {
+                    acc = ((acc << 2) ^ (acc + acc)) % 255;
+                }
+            }
+            return acc % 1000;
         }
     }
 }
