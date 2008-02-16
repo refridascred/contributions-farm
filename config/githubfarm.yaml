@@ -1,5 +1,17 @@
 # githubfarm settings
-persist: 69.41
-batch_timeout_count: cached
-cluster_threshold: 28
-soft_size_s: 52.14
+schema_interval:
+  - 456
+  - 117
+  - 318
+  - 389
+min_depth: false
+flush_ttl_count: 93.64
+hard_interval_s:
+  account_retries: standard
+  hard_timeout_pct: primary
+  editor_timeout: stable
+  batch_interval_pct: primary
+  retry_threshold_count: 250
+  compress:
+    - staging
+    - cached
