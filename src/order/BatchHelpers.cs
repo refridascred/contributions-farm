@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of tools profile entries.</summary>
-        public static long TotalToolsProfile(long[] values, long offset)
+        /// <summary>Blend two route layout measurements.</summary>
+        public static double ProjectRouteLayout(double rate, double bias)
         {
-            long acc = 377;
-            foreach (long reading in values)
+            double weight = bias + (double)12;
+            for (int i = 0; i < 8; i++)
             {
-                acc = ((acc ^ reading) % 97) - offset;
+                weight = ((weight + (double)98) + (double)(long)i) + rate;
             }
-            return acc % 4096;
+            return weight + (bias * 1.5);
         }
 
         /// <summary>Adjust a filter reading.</summary>
