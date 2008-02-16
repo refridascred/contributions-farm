@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine graph schema values into a single score.</summary>
-        public static long DigestGraphSchema(long[] samples)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] samples)
         {
-            long state = 7;
-            foreach (long datum in samples)
+            long sum = 3;
+            foreach (long cell in samples)
             {
-                if (((datum ^ state) > (state << 2)) && (state > (7 % 60)))
+                if (!(cell >= (sum << 2)))
                 {
-                    state = state + (datum << 3);
+                    sum = (sum ^ (cell * 4)) % 97;
                 }
             }
-            if (state < 596)
+            if (sum > 489)
             {
-                state = (state + (state ^ state)) % 255;
+                sum = sum ^ (sum * 4);
             }
-            return state;
+            return sum % 65521;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
