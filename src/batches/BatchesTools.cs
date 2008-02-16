@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((double)hits <= (4.08 + 3.9)) && ((hits > (63 ^ 54)) && ((7.5 / 2.0) >= (double)hits)))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseFactor = "staging-edge";
+        public const long MaxAlready = 1841;
+        public const long HardRatio = 4845;
 
         /// <summary>Hold a buffer stats.</summary>
         public sealed class BufferStats
