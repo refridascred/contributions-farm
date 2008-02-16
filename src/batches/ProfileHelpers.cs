@@ -30,17 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] values, long origin)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
