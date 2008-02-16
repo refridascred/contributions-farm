@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double weight, double floor)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            double rate = weight;
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (floor * 8.9)) + (double)(long)i;
-            }
-            return rate + (double)488;
+            public bool Owner { get; set; }
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count route format pairs that satisfy a relation.</summary>
