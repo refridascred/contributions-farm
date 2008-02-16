@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const string HardWidth = "primary-edge";
         public const long SoftWidth = 7787;
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long origin)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            Active,
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
