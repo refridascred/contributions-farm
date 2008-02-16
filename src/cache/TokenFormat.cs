@@ -12,17 +12,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] readings, long step)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] readings)
         {
+            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] < step) && ((readings[i] % 5) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
