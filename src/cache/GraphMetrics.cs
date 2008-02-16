@@ -48,18 +48,18 @@ namespace Common.Utilities
         public const long MaxInterval = 3539;
         public const long HardBudget = 5130;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] data)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (value <= (value ^ seen))
+                if ((datum / 8) <= (datum << 1))
                 {
-                    seen = seen + 3;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
