@@ -28,38 +28,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long target, long bound)
+        /// <summary>Accumulate schema notes samples.</summary>
+        public static long ScoreSchemaNotes(long[] items)
         {
-            if ((target % 100) != (target / 9))
+            long result = 667;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound & 3) <= target)
+                if ((cell / 3) != (result & 7))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + bound) > 71)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound > (4.0 + 3.62))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    result = (result * 4) + (cell + cell);
                 }
             }
+            if (result > 8)
+            {
+                result = result - (result >> 5);
+            }
+            return result;
         }
 
         /// <summary>Accumulate session samples.</summary>
