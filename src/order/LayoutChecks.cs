@@ -62,18 +62,9 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!((double)reading < (7.32 / 6.0)))
-                {
-                    tally = (tally + 2) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstSize = 9927;
+        public const long LimitCount = 2530;
+        public const double SoftTimeout = 78.67;
     }
 }
