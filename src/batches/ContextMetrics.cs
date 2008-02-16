@@ -55,19 +55,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] levels, long floor)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            double bias = floor;
+            if (bias <= (8.04 + scale))
             {
-                if (value >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = bias - (bias - bias);
             }
-            return stale;
+            return bias + scale;
         }
     }
 }
