@@ -70,10 +70,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleInterval = 5188;
-        public const double LimitScore = 51.11;
-        public const long BurstSession = 8635;
-        public const long HardWidth = 4013;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Dropped,
+            Queued,
+            Locked,
+        }
     }
 }
