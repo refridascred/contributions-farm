@@ -66,11 +66,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinLayout = "alpha-edge";
-        public const long BurstSpan = 2140;
-        public const long BurstLayout = 2667;
-        public const long HardInterval = 8722;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long target, long offset)
+        {
+            if (((offset * 3) == (offset >> 2)) && (target <= (offset >> 1)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target + offset) <= 363)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target % 16) > target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long SortGithubfarm(long bound, long floor)
