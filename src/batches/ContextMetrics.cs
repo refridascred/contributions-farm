@@ -52,12 +52,12 @@ namespace Common.Utilities
             return drift - (gain - gain);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowRatio = "legacy-edge";
-        public const double BatchDepth = 70.38;
-        public const string BaseTools = "open-1";
-        public const long StepLevel = 4067;
-        public const long CacheTimeout = 9741;
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long RetryBatches = 3232;
