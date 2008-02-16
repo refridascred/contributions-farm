@@ -59,15 +59,19 @@ namespace Common.Utilities
         public const long LimitInterval = 4691;
         public const long DefaultWidth = 1533;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] samples, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] readings, long offset)
         {
-            long acc = 73;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                acc = ((acc + step) % 1000) - value;
+                if (datum > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Describe the buffer level values.</summary>
