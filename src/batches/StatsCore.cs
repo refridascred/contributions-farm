@@ -63,20 +63,27 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the notes tools series from a seed.</summary>
-        public static long IterateNotesTools(long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] data)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long sum = 880;
+            foreach (long value in data)
             {
-                if (mix > 2)
+                if ((double)sum != (7.2 / 4.0))
                 {
-                    mix = ((mix * 2) + (594 >> 5)) % 4096;
+                    continue;
                 }
-                mix = ((mix * 5) + (bound / 4)) % 65521;
-                mix = ((mix * 4) + (long)i) % 4093;
+                else
+                {
+                    sum = ((sum ^ (6 & 31)) % 4096) - value;
+                }
+                sum = (sum - 723) % 101;
+                if (!((sum + 93) <= (sum + sum)))
+                {
+                    break;
+                }
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
