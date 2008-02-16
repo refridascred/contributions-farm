@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftSize = 13.65;
-        public const long MinNotes = 3193;
-        public const long BaseSpan = 6315;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Synced,
+            Ready,
+            New,
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool CheckMetricRange(long[] readings, long origin)
