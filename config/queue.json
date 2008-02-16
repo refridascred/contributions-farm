@@ -1,7 +1,6 @@
 {
-  "default_ttl_s": [231, 499, 149],
-  "base_depth_s": 61.14,
-  "default_window_count": true,
-  "editor_ratio": 27.72,
-  "dry_run": "eu-west"
+  "flush_limit": "edge",
+  "cache_size_count": "edge",
+  "context_limit": 42,
+  "default_ratio": 30
 }
