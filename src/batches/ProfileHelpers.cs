@@ -45,19 +45,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate profile session readings against a bound.</summary>
-        public static bool GuardProfileSessionRange(long[] items, long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long total = 3;
+            foreach (long datum in series)
             {
-                if (cell <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (total - step) - datum;
             }
-            return valid;
+            if (total < 116)
+            {
+                total = total + (806 + step);
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
