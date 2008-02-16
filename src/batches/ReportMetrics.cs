@@ -31,17 +31,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a graph cluster counter forward.</summary>
-        public static long StepGraphCluster(long target)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
-            {
-                long slot = target * 2;
-                total = ((total << 2) ^ (slot + slot)) % 255;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
