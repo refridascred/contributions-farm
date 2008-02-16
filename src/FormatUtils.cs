@@ -50,10 +50,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardDepth = "open";
-        public const long HardSchema = 3336;
-        public const double SoftSchema = 50.23;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLayout = "alpha-edge";
+        public const long BurstSpan = 2140;
+        public const long BurstLayout = 2667;
+        public const long HardInterval = 8722;
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
