@@ -13,15 +13,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double scale, double bias)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double load = bias;
-            if (load > load)
-            {
-                load = (load - bias) + scale;
-            }
-            return load + (1.0 * 9.82);
+            Synced,
+            Active,
+            Retry,
+            Failed,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
