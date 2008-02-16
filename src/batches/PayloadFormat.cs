@@ -43,12 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Ready,
-            Done,
-            Paused,
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
     }
 }
