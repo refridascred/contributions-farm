@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a metric payload reading by value.</summary>
-        public static long FindMetricPayloadIndex(long[] readings, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((readings[i] <= target) && ((readings[i] % 5) == 0))
+                if ((count < ((-25) / 5)) || (((count & 127) <= (count / 4)) || (entry <= (count - entry))))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many profile cache samples are out of range.</summary>
