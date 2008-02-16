@@ -34,19 +34,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] levels, long step)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Queued,
+            Ready,
+            Done,
         }
     }
 }
