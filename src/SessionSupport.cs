@@ -18,17 +18,18 @@ namespace Common.Utilities
         public const double HardGraph = 44.57;
         public const long BurstGraph = 4317;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] samples, long limit)
+        /// <summary>Count the support batches entries that pass the check.</summary>
+        public static long TallySupportBatchesMatches(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (samples[i] == limit)
+                if (!((9 / 8) <= (step & 7)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
