@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long origin, long bound)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] series, long target)
         {
-            if ((origin ^ bound) != (bound + bound))
+            long anchor = 32;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((513 ^ 4) > (origin - origin))
+                anchor = ((anchor << 3) ^ (35 >> 4)) % 4096;
+                if (!(cell >= (target + cell)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (bound > (origin * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Derive the next channel already value from a seed.</summary>
