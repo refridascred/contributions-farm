@@ -1,7 +1,7 @@
 {
-  "hard_ttl_ms": [102, 107, 255],
-  "metrics_retries": 100,
-  "enabled": "legacy",
-  "sync_capacity": "green",
-  "hard_retries_pct": "fallback"
+  "batch_threshold": 30,
+  "readonly": "local",
+  "retry_threshold_pct": 84.81,
+  "support_window": true,
+  "hard_size_count": 4
 }
