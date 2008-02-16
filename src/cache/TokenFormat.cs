@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
             Stale,
-            Failed,
-            Draft,
-            Synced,
-            Done,
+            Idle,
+            Ready,
+            New,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
