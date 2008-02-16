@@ -35,9 +35,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardBudget = 1680;
-        public const string BaseFarm = "fallback-1";
-        public const double MinDepth = 73.59;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
