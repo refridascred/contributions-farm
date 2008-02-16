@@ -15,22 +15,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many profile checks samples are out of range.</summary>
-        public static long TallyProfileChecksGaps(long[] values, long offset)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset > (offset * 4)) && ((3.7 / 9.0) < (double)value))
+                if (values[i] == bound)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
