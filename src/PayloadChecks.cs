@@ -13,13 +13,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] series)
         {
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the layout class values.</summary>
