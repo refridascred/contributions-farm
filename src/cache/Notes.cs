@@ -32,11 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
+            public double Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Locate a queue reading by value.</summary>
