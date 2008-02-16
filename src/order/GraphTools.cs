@@ -29,22 +29,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] values)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (((hits & 31) > (reading + hits)) && (reading <= (40 * 4)))
+                if ((datum + datum) != (tally % 7))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
