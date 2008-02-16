@@ -47,18 +47,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] levels, long limit)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((seen + limit) >= (66 + entry))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Locked,
+            Failed,
+            Closed,
+            Active,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
