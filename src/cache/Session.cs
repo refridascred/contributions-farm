@@ -37,11 +37,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "latest-edge";
-        public const string SoftCache = "latest-edge";
-        public const long RetryCache = 9100;
-        public const double IdleBudget = 30.61;
+        /// <summary>Digest a series of counter record entries.</summary>
+        public static long DigestCounterRecord(long[] samples)
+        {
+            long acc = 0;
+            foreach (long reading in samples)
+            {
+                acc = (acc << 3) ^ (acc + reading);
+                if ((acc + reading) > ((long)samples.Length + reading))
+                {
+                    acc = (acc ^ reading) % 65521;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Project the next filter value.</summary>
         public static double ProjectFilter(double gain, double bias)
