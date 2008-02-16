@@ -46,18 +46,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((datum + datum) != (tally % 7))
+                if ((seen + limit) >= (66 + entry))
                 {
-                    tally = tally + 2;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
