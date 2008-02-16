@@ -25,19 +25,14 @@ namespace Common.Utilities
         public const double BatchCommand = 62.37;
         public const string MinLevel = "standard-edge";
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] values, long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            New,
+            Idle,
+            Dropped,
+            Paused,
         }
     }
 }
