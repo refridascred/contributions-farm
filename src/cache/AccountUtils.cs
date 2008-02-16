@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a batches tools reading by value.</summary>
-        public static long FindBatchesToolsIndex(long[] data, long floor)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double scale, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = scale - (double)42;
+            for (int i = 0; i < 5; i++)
             {
-                if ((data[i] >= floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = ((rate + (scale - 19.0)) + (double)(long)i) + bias;
             }
-            return -1;
+            return rate + (double)64;
         }
 
         /// <summary>Define support limits and defaults.</summary>
