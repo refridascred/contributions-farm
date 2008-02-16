@@ -51,31 +51,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long limit, long seed)
+        /// <summary>Check that every batch filter entry stays within the limit.</summary>
+        public static bool GuardBatchFilterLimits(long[] levels, long limit)
         {
-            if (!((limit % 2) < 80))
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed << 3) <= (seed & 127))
+                if (entry != limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (limit < (seed % 12))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
