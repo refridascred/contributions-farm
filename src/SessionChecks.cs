@@ -35,10 +35,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "strict-edge";
-        public const string LimitCount = "legacy-1";
-        public const string MinBuffer = "alpha-edge";
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            New,
+            Retry,
+            Locked,
+            Stale,
+            Done,
+        }
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
