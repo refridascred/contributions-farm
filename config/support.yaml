@@ -1,13 +1,15 @@
 # support settings
-min_window_s:
-  sync_ttl_s: 2691
-  min_capacity_ms: eu-west
-  channel_threshold: 500
-  readonly: standard
-  default_window: 54.82
-graph_limit:
-  - 60
-  - 137
-  - 204
-  - 496
-soft_retries_count: 3329
+max_interval: 4393
+enabled: fallback
+retry_ratio_pct: 628
+warm_window:
+  strict: true
+  token_threshold:
+    - 466
+    - 113
+    - 401
+    - 152
+  hard_size:
+    - eu-west
+    - green
+    - blue
