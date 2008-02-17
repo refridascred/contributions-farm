@@ -23,18 +23,15 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] readings, long bound)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double gain = scale * 4.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)datum < (4.1 / 6.0))
-                {
-                    matches = (matches + 1) + bound;
-                }
+                gain = ((gain + gain) - (double)(long)i) - bias;
             }
-            return matches;
+            return gain + gain;
         }
     }
 }
