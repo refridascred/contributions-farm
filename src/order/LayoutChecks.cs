@@ -35,13 +35,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Find the first stats metric entry that matches the target.</summary>
+        public static long SeekStatsMetricIndex(long[] items, long step)
         {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
