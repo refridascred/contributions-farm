@@ -54,12 +54,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowTimeout = 56.68;
-        public const long LimitEditor = 7078;
-        public const string SoftEditor = "strict";
-        public const long WindowEditor = 6219;
-        public const long BatchEditor = 1262;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Dropped,
+            Retry,
+            Idle,
+            Paused,
+            New,
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long DeriveToken(long origin)
