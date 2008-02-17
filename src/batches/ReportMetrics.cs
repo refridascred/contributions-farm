@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryEntry = "standard";
-        public const double DefaultEntry = 70.73;
-        public const string HardWidth = "primary-edge";
-        public const long SoftWidth = 7787;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Dropped,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
