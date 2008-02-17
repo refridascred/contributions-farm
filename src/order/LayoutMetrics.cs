@@ -31,18 +31,9 @@ namespace Common.Utilities
             return drift + (weight + bias);
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)count != (2.0 * 8.12))
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 9474;
+        public const string BaseCount = "stable-edge";
+        public const double CacheQueue = 51.76;
     }
 }
