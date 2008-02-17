@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] items, long target)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long score = 9;
-            foreach (long reading in items)
-            {
-                if ((score * 2) < ((-7) + target))
-                {
-                    score = (score ^ (target + target)) + reading;
-                }
-            }
-            return score;
+            Pending,
+            Draft,
+            Ready,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
