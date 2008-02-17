@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first contributi entry entry that matches the target.</summary>
-        public static long LookupContributiEntryIndex(long[] readings, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((readings[i] < seed) && ((readings[i] % 3) == 0))
+                if (reading >= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
