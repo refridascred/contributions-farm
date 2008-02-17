@@ -40,11 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double bias, double bias2)
         {
-            public double Ratio { get; set; }
-            public double Owner { get; set; }
+            double scale = 1.18;
+            return ((scale - (double)1) + bias) + bias2;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
