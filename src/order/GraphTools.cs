@@ -64,16 +64,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] data, long offset)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            long result = -470;
-            foreach (long item in data)
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
             {
-                result = ((result << 3) ^ (result + 6)) % 65521;
-                result = result ^ (offset + item);
+                double gain = (double)(acc * 2);
+                if ((double)831 > (gain * 14.0))
+                {
+                    gain = gain - (double)1;
+                    acc = (acc - ((long)i - bound)) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return result % 4096;
+            return acc;
         }
     }
 }
