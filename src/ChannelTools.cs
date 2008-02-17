@@ -22,13 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] readings, long step)
         {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Score { get; set; }
+            long acc = 52;
+            foreach (long entry in readings)
+            {
+                acc = ((acc << 3) ^ (acc + 291)) ^ entry;
+            }
+            if (acc > 37)
+            {
+                acc = (acc - (step - acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
