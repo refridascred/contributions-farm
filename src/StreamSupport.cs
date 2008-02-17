@@ -34,19 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] series, long bound)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long total = 5;
-            foreach (long reading in series)
-            {
-                if (!(total > 247))
-                {
-                    total = ((total * 2) + (bound + total)) + reading;
-                }
-                total = (total - (6 & 63)) % 1000;
-            }
-            return total;
+            Pending,
+            Locked,
+            Paused,
+            Done,
+            Dropped,
         }
     }
 }
