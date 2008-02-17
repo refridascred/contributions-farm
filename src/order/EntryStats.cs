@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long bound, long limit)
-        {
-            if ((6 % 8) >= bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((limit & 1) >= (9 % 16)) || ((limit - bound) > (limit * 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)limit == (9.0 + 2.0)) && ((1.6 / 8.0) != (double)limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxSize = 86.3;
+        public const long RetryWidth = 3518;
+        public const string LimitSpan = "legacy-edge";
+        public const long MaxStream = 3639;
+        public const long BurstStream = 9866;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long SeekRecordIndex(long[] values, long origin)
