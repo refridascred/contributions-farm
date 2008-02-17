@@ -13,21 +13,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark << 2) ^ (long)i) % 4096;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
