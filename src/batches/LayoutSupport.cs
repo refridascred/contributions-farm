@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many farm schema samples are out of range.</summary>
-        public static long TallyFarmSchemaGaps(long[] items)
+        /// <summary>Compare every pair of schema format readings.</summary>
+        public static long MatchSchemaFormatCount(long[] items)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((hits & 31) <= item))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
