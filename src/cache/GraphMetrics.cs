@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] samples, long seed)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            long acc = 3;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc ^ (value % 10)) + seed;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Accumulate session samples.</summary>
