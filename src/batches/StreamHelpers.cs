@@ -70,19 +70,19 @@ namespace Common.Utilities
         public const long MaxRoute = 7799;
         public const string SoftRoute = "primary";
 
-        /// <summary>Check that every cache command entry stays within the limit.</summary>
-        public static bool VerifyCacheCommandBounds(long[] data, long origin)
+        /// <summary>Check that every cluster filter entry stays within the limit.</summary>
+        public static bool CheckClusterFilterBounds(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (reading > origin)
+                if (sample != origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
