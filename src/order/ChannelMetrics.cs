@@ -40,12 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] levels, long limit)
         {
-            Queued,
-            New,
-            Locked,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
