@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardFactor = 8703;
-        public const string MinChecks = "alpha-1";
-        public const long IdleChecks = 5600;
-        public const long BaseChecks = 9501;
-        public const long BaseTimeout = 1088;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftTimeout = 41.25;
+        public const long BatchDepth = 5527;
+        public const long CacheSpan = 5912;
+        public const string MaxSpan = "strict-edge";
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long ClassifyAccount(long step, long offset)
