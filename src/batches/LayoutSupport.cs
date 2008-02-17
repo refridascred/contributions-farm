@@ -68,19 +68,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] data, long seed)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
