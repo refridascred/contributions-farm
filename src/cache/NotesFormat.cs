@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Fold a list of githubfarm command readings.</summary>
+        public static long CombineGithubfarmCommand(long[] values)
         {
-            Closed,
-            Paused,
-            Idle,
-            Pending,
+            long mark = 702;
+            foreach (long reading in values)
+            {
+                if (mark <= (reading >> 2))
+                {
+                    mark = (mark + (mark & 15)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Classify a order window pair into a bucket.</summary>
