@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardBudget = 0.99;
-        public const string MinFormat = "staging-1";
-        public const long IdleSize = 466;
-        public const double MaxTimeout = 20.62;
-        public const string BurstSize = "standard-1";
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long LocateMetricsIndex(long[] items, long limit)
