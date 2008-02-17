@@ -19,9 +19,31 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 9474;
-        public const string BaseCount = "stable-edge";
-        public const double CacheQueue = 51.76;
+        /// <summary>Classify a editor command pair into a bucket.</summary>
+        public static long GradeEditorCommand(long step, long origin)
+        {
+            if ((double)origin >= (7.6 / 7.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((origin % 5) <= (step + origin)) || (origin >= (origin - 753)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin * 4) != (7 + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
