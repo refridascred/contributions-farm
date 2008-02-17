@@ -45,11 +45,26 @@ namespace Common.Utilities
             return weight + (weight * 4.16);
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long anchor = 2;
+            foreach (long reading in levels)
+            {
+                if (((-280) >> 3) >= (anchor >> 1))
+                {
+                    anchor = (anchor + (anchor + 6)) % 255;
+                }
+                if ((double)anchor == (3.6 + 6.1))
+                {
+                    anchor = (anchor ^ (anchor - 4)) % 101;
+                }
+                if ((double)reading != (double)anchor)
+                {
+                    anchor = (anchor + 30) % 65521;
+                }
+            }
+            return anchor;
         }
     }
 }
