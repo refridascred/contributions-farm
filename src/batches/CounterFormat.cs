@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] series, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (offset > (item % 24))
+                if (entry <= step)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Iterate the metric farm series from a seed.</summary>
