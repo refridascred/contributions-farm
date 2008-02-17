@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Iterate the contributi channel series from a seed.</summary>
+        public static long RollContributiChannel(long step)
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
+            long mix = step;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
