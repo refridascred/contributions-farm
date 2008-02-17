@@ -1,11 +1,10 @@
 # support settings
-soft_capacity_ms: 60
-contributi_timeout:
-  - 358
-  - 184
-  - 257
-entry_timeout: true
-burst_retries_pct:
-  - 395
-  - 269
-  - 95
+strict:
+  - 429
+  - 272
+  - 251
+  - 466
+persist: 34.89
+tools_window: strict
+idle_retries: false
+session_ttl: true
