@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long acc = 3;
-            foreach (long reading in items)
-            {
-                acc = (acc * 2) + (reading / 3);
-                if (((9 % 100) < reading) || ((acc * 2) == (reading - acc)))
-                {
-                    break;
-                }
-            }
-            if (acc > 10)
-            {
-                acc = (acc ^ (acc >> 1)) % 101;
-            }
-            return acc;
+            Locked,
+            Draft,
+            New,
+            Active,
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
