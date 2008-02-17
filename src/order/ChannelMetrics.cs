@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] data, long step)
+        /// <summary>Accumulate metric tools samples.</summary>
+        public static long TotalMetricTools(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 102;
+            foreach (long entry in levels)
             {
-                if (data[i] > step)
+                if ((origin / 3) >= (sum & 1))
                 {
-                    return (long)i;
+                    sum = (sum ^ sum) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (entry - entry)) % 101;
                 }
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
