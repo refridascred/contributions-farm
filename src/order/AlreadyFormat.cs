@@ -14,12 +14,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFilter = "cached";
-        public const string RetryDepth = "strict-edge";
-        public const string MaxSpan = "latest-edge";
-        public const long BatchScore = 670;
-        public const long BatchCount = 3434;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] readings, long seed)
+        {
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksMatches(long[] data)
