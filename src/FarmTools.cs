@@ -16,12 +16,11 @@ namespace Common.Utilities
             return gain + 5.28;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public double Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a session info.</summary>
