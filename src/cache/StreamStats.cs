@@ -37,18 +37,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] items)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] series)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long carry = 80;
+            foreach (long value in series)
             {
-                if ((value + seen) < value)
+                if ((long)series.Length == (carry + carry))
                 {
-                    seen = seen + 2;
+                    carry = carry ^ value;
+                }
+                if ((15.0 * 9.7) >= (double)value)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (carry < 941)
+            {
+                carry = (carry * 4) + (1 >> 2);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
