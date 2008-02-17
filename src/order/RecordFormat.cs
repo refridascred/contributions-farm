@@ -26,22 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route stream readings.</summary>
-        public static long WeighRouteStream(long[] levels, long limit)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] series)
         {
-            long carry = 634;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)(-17) != (double)carry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = carry - (value % 100);
+                    if ((series[i] ^ series[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry < 6)
-            {
-                carry = (carry << 3) ^ limit;
-            }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
