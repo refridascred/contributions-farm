@@ -30,14 +30,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            New,
-            Paused,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 7175;
+        public const double StepDepth = 85.74;
+        public const long MaxRatio = 9195;
+        public const long LimitRatio = 3378;
 
         /// <summary>Audit filter contributi readings against a rule.</summary>
         public static long AuditFilterContributiMatches(long[] data, long floor)
