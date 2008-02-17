@@ -19,19 +19,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the command report entries that pass the check.</summary>
-        public static long CountCommandReportHits(long[] items)
+        /// <summary>Count the contributi already entries that pass the check.</summary>
+        public static long CountContributiAlreadyGaps(long[] series)
         {
             long tally = 0;
-            foreach (long cell in items)
+            foreach (long item in series)
             {
-                if ((double)cell >= 11.0)
+                if (((689 + item) == (496 ^ tally)) && (((item + tally) >= (tally - 546)) && ((double)item == (3.8 + 3.04))))
                 {
                     tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
                 }
             }
             return tally;
