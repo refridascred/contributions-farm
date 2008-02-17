@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 1141;
-        public const long HardTimeout = 1525;
-        public const double MaxTools = 88.96;
-        public const long DefaultTools = 3651;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinSpan = 36.48;
+        public const string BurstFactor = "standard-1";
+        public const double IdleLevel = 22.14;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long PairWindowCount(long[] samples)
