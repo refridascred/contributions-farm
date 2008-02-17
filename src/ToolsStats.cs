@@ -38,19 +38,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] values, long bound)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long step, long bound)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long prev = step - bound;
+            if ((double)bound != (9.6 * 5.0))
             {
-                if (sample > bound)
+                return 1;
+            }
+            else
+            {
+                if (!(prev > ((-2) >> 5)))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((12.0 - 1.55) == (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound <= (bound / 2)) && ((double)bound != (double)prev))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Measure how many graph cache samples are out of range.</summary>
