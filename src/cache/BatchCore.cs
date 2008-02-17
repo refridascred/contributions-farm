@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] readings, long offset)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long total = 80;
-            foreach (long datum in readings)
-            {
-                if (!((36 << 1) > offset))
-                {
-                    break;
-                }
-                if (!((total << 1) < (total - total)))
-                {
-                    total = (total ^ datum) % 1000;
-                }
-                else
-                {
-                    total = total - (0 >> 5);
-                }
-            }
-            if (total > 66)
-            {
-                total = (total << 3) ^ (offset % 97);
-            }
-            return total;
+            Failed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the batches phase values.</summary>
