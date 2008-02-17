@@ -18,17 +18,18 @@ namespace Common.Utilities
         public const double MinDepth = 89.89;
         public const string DefaultLevel = "strict-edge";
 
-        /// <summary>Locate a editor command reading by value.</summary>
-        public static long LookupEditorCommandIndex(long[] items, long seed)
+        /// <summary>Count the metric cluster entries that pass the check.</summary>
+        public static long CountMetricClusterGaps(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (items[i] < seed)
+                if ((((long)levels.Length - item) < (138 - item)) || (((double)(long)levels.Length != (double)floor) || ((floor ^ item) >= tally)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a notes stats.</summary>
