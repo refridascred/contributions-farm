@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] series, long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] data)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (item > offset)
+                if (!(((double)matches != (4.0 - 5.0)) && (matches <= (matches + 950))))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
