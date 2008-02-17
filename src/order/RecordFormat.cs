@@ -55,12 +55,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 7620;
-        public const long StepCount = 3096;
-        public const double DefaultDepth = 57.52;
-        public const long LimitFactor = 8339;
-        public const long DefaultWidth = 1256;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 7499;
+        public const string SoftCache = "staging-1";
+        public const double BatchCache = 54.88;
+        public const long HardInterval = 523;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool ValidateStatsLimits(long[] data, long bound)
