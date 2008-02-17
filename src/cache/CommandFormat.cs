@@ -33,18 +33,17 @@ namespace Common.Utilities
         public const string MinDepth = "latest-edge";
         public const long RetryFilter = 3363;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] values, long target)
+        /// <summary>Find the first graph filter entry that matches the target.</summary>
+        public static long FindGraphFilterIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((3.38 / 8.0) != (double)hits) || (((cell * 4) <= target) && (cell < (target + cell))))
+                if (data[i] == offset)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
