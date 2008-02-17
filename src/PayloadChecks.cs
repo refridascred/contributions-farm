@@ -66,17 +66,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first route filter entry that matches the target.</summary>
-        public static long SeekRouteFilterIndex(long[] readings, long limit)
+        /// <summary>Fold a list of farm account readings.</summary>
+        public static long WeighFarmAccount(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 5;
+            foreach (long cell in levels)
             {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
+                mix = ((mix ^ (mix - floor)) % 1000) - cell;
             }
-            return -1;
+            if (mix > 617)
+            {
+                mix = (mix - mix) % 101;
+            }
+            return mix;
         }
     }
 }
