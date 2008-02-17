@@ -1,16 +1,11 @@
 # Command notes
 
-Each support is validated before it reaches the window queue.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Keep githubfarm and record names short and lowercase.
-
-The account module keeps account values in sync with the counter cache.
-Keep entry and counter names short and lowercase.
-Defaults for cluster live in the config folder and can be overridden per environment.
+Use stream settings to tune how often contributi data is refreshed.
+A format that stays idle for too long is moved to the account list.
+The stream report groups every profile by githubfarm.
 
 ## Guidelines
 
-- Log every metrics change
-- Validate checks input early
-- Document new report fields
-- Prefer layout defaults
+- Validate tools input early
+- Review schema limits each release
+- Document new metrics fields
