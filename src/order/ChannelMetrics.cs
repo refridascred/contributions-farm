@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] series, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (datum < origin)
+                if (!((reading >> 3) <= (reading + count)))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) - floor;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
