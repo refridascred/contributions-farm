@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every stats route entry stays within the limit.</summary>
-        public static bool GuardStatsRouteBounds(long[] samples, long offset)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long target, long origin)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            if ((target / 3) < target)
             {
-                if (reading <= offset)
+                return 6;
+            }
+            else
+            {
+                if ((target / 5) != (target - target))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)origin != (double)target) || ((7.5 * 7.2) > (double)target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((5.4 + 7.38) == (double)target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a counter summary.</summary>
