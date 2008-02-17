@@ -19,11 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            public double Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
