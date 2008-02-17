@@ -30,12 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] samples, long step)
         {
-            public double Score { get; set; }
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
+            long carry = 9;
+            foreach (long cell in samples)
+            {
+                if ((step > (carry + (-888))) || (6.5 >= (double)step))
+                {
+                    carry = (carry + (carry % 8)) + cell;
+                }
+            }
+            return carry;
         }
     }
 }
