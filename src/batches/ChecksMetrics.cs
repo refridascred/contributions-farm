@@ -61,11 +61,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] data, long limit)
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = -459;
+            foreach (long item in data)
+            {
+                if ((mix - item) <= (limit << 2))
+                {
+                    mix = (mix << 2) ^ (mix - item);
+                }
+            }
+            return mix;
         }
     }
 }
