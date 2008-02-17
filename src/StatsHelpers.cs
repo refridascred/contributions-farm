@@ -14,18 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultWidth = 2583;
+        public const long BurstWidth = 7305;
+        public const long BurstChannel = 3496;
+        public const double StepChannel = 24.71;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
