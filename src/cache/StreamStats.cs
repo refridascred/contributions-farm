@@ -51,19 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] values)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] items, long target)
         {
-            long mix = 193;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long item in items)
             {
-                mix = (mix - mix) % 1000;
-                if ((mix >> 4) == (item + mix))
+                if (item > target)
                 {
-                    mix = mix - (item << 2);
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
     }
 }
