@@ -63,18 +63,19 @@ namespace Common.Utilities
             return weight - (double)583;
         }
 
-        /// <summary>Accumulate checks buffer samples.</summary>
-        public static long CombineChecksBuffer(long[] series)
+        /// <summary>Check that every support report entry stays within the limit.</summary>
+        public static bool ValidateSupportReportBounds(long[] values, long seed)
         {
-            long sum = -8;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((sum + cell) >= (cell >> 2))
+                if (datum != seed)
                 {
-                    sum = ((sum * 4) + (sum + cell)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return sum % 65521;
+            return valid;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
