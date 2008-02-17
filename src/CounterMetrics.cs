@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowInterval = 8244;
-        public const long BurstCommits = 9526;
-        public const long CacheCommits = 8396;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long BucketSupport(long floor, long step)
