@@ -53,18 +53,19 @@ namespace Common.Utilities
         public const double HardWidth = 29.75;
         public const long LimitDepth = 3888;
 
-        /// <summary>Roll a schema githubfarm counter forward.</summary>
-        public static long SeriesSchemaGithubfarm(long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] series, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                state = (state - (state >> 1)) % 101;
-                state = (state + (long)i) % 1000;
-                state = state - (305 * 3);
-                state = ((state * 2) + (long)i) % 4093;
+                if (entry > target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
