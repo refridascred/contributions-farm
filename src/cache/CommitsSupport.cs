@@ -69,11 +69,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double scale, double offset)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            double gain = (double)(6 & 31);
+            if (gain <= offset)
+            {
+                gain = gain - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (scale - 9.0)) - (double)(long)i;
+            }
+            return gain - (scale - scale);
         }
     }
 }
