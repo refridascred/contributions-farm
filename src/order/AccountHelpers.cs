@@ -37,12 +37,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public double Total { get; set; }
-            public bool Rank { get; set; }
-            public double Token { get; set; }
+            Draft,
+            Ready,
+            Idle,
+            New,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
