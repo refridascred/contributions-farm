@@ -48,17 +48,12 @@ namespace Common.Utilities
         public const double SoftSchema = 54.64;
         public const long BaseSpan = 9733;
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] data, long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Draft,
+            Stale,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
