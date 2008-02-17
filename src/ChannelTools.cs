@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] values)
-        {
-            long acc = 5;
-            foreach (long sample in values)
-            {
-                acc = ((acc * 4) + (sample + sample)) % 4096;
-                if ((double)(-61) == (double)acc)
-                {
-                    acc = (acc * 2) + (sample / 2);
-                }
-            }
-            if (acc < 102)
-            {
-                acc = ((acc * 2) + (9 - acc)) % 255;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinGithubfarm = 7.13;
+        public const long BurstSpan = 1815;
+        public const double StepCount = 32.26;
+        public const string IdleGithubfarm = "standard-v2";
+        public const string DefaultBudget = "strict-v2";
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long SeekTokenIndex(long[] items, long step)
