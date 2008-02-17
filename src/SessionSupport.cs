@@ -11,23 +11,19 @@ namespace Common.Utilities
         public const long BaseBudget = 300;
         public const double LimitSession = 42.13;
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double scale, double bias)
+        /// <summary>Adjust a report account reading.</summary>
+        public static double ProjectReportAccount(double bias, double floor)
         {
-            double load = (double)6 + (double)0;
-            if (load < load)
+            double weight = floor;
+            if (weight > weight)
             {
-                load = (load + load) - scale;
+                weight = (weight + (double)123) + bias;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                load = load + 5.18;
+                weight = (weight + 16.0) + (double)(long)i;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (bias + 1.1)) + (double)(long)i;
-            }
-            return load + (double)6;
+            return weight + 5.67;
         }
 
         /// <summary>Define command limits and defaults.</summary>
