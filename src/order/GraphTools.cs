@@ -46,11 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next route commits value.</summary>
-        public static double ScaleRouteCommits(double bias, double span)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] levels)
         {
-            double bias2 = (double)63 * 3.87;
-            return ((bias2 - (bias2 * 2.0)) + bias) + span;
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the report status values.</summary>
