@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=306
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-open}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for item in legacy stable fallback; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+COMMAND_LIMIT=499
+log "limit is ${COMMAND_LIMIT}"
