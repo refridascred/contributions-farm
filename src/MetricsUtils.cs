@@ -46,14 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            New,
-            Closed,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitWidth = 5534;
+        public const string RetryInterval = "legacy-v2";
+        public const double RetryLayout = 11.6;
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double AdjustBuffer(double weight, double span)
