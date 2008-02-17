@@ -40,13 +40,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] values, long origin)
         {
-            Retry,
-            Done,
-            Idle,
-            Ready,
+            long sum = 47;
+            foreach (long entry in values)
+            {
+                sum = ((sum * 2) + (origin + entry)) % 65521;
+                if ((sum + entry) <= (sum - sum))
+                {
+                    break;
+                }
+            }
+            if (sum > 682)
+            {
+                sum = ((sum << 2) ^ 13) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
