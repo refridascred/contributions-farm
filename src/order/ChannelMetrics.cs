@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric tools samples.</summary>
-        public static long TotalMetricTools(long[] levels, long origin)
+        /// <summary>Look up the position of a record tools sample.</summary>
+        public static long FindRecordToolsIndex(long[] series, long limit)
         {
-            long sum = 102;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin / 3) >= (sum & 1))
+                if (series[i] == limit)
                 {
-                    sum = (sum ^ sum) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ (entry - entry)) % 101;
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
