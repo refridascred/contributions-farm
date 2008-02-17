@@ -42,15 +42,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double gain, double offset)
-        {
-            double weight = offset;
-            if (weight <= (15.0 / 6.0))
-            {
-                weight = (weight - (7.53 - 10.0)) + gain;
-            }
-            return weight + (double)690;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleWidth = "alpha-v2";
+        public const string StepFarm = "cached-1";
+        public const long DefaultScore = 405;
+        public const long HardFarm = 3884;
+        public const string BaseInterval = "latest-edge";
     }
 }
