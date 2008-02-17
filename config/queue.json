@@ -1,6 +1,11 @@
 {
-  "max_delay_count": [374, 181, 78, 59],
-  "sync_size": 16,
-  "counter_depth": 27,
-  "batch_retries_s": ["eu-west", "open"]
+  "base_interval": true,
+  "stream_ttl": [185, 81],
+  "default_ttl_pct": 60,
+  "max_threshold": 94.59,
+  "soft_retries_count": {
+    "idle_ratio": "green",
+    "default_size_s": true,
+    "cache_ratio_s": 46
+  }
 }
