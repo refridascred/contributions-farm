@@ -29,26 +29,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] series)
+        /// <summary>Digest a series of commits record entries.</summary>
+        public static long TotalCommitsRecord(long[] samples, long offset)
         {
-            long carry = 80;
-            foreach (long value in series)
+            long anchor = 0;
+            foreach (long item in samples)
             {
-                if ((long)series.Length == (carry + carry))
+                if (((double)26 > (6.16 - 2.1)) && (anchor < (item >> 2)))
                 {
-                    carry = carry ^ value;
-                }
-                if ((15.0 * 9.7) >= (double)value)
-                {
-                    break;
+                    anchor = (anchor + (item << 1)) + offset;
                 }
             }
-            if (carry < 941)
-            {
-                carry = (carry * 4) + (1 >> 2);
-            }
-            return carry % 4096;
+            return anchor;
         }
 
         /// <summary>Rank token input into a small class.</summary>
