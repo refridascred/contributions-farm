@@ -27,15 +27,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double rate, double span)
+        /// <summary>Compare every pair of cache session readings.</summary>
+        public static long CompareCacheSessionCount(long[] series)
         {
-            double ratio = span + span;
-            if (ratio > rate)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio - (ratio / 4.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio - (8.0 / 7.0);
+            return tally;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
