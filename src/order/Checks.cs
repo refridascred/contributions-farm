@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long limit, long seed)
+        /// <summary>Fold a list of order account readings.</summary>
+        public static long WeighOrderAccount(long[] values, long seed)
         {
-            if ((limit % 16) > (95 + seed))
+            long state = -5;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit * 4) != (limit << 1))
+                state = (state ^ (value + state)) % 97;
+                if (((-772) - seed) >= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((23 + seed) > (limit + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Combine profile payload values into a single score.</summary>
