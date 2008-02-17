@@ -79,11 +79,13 @@ namespace Common.Utilities
             return ratio2 + span;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the filter level values.</summary>
