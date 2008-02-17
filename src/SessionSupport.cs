@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseSpan = "local-v2";
+        public const string SoftSession = "latest-1";
+        public const long BaseBudget = 300;
+        public const double LimitSession = 42.13;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenBounds(long[] levels, long floor)
