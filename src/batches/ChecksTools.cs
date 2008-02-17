@@ -50,12 +50,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double ratio, double span)
         {
-            New,
-            Pending,
-            Synced,
+            double ratio2 = span;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 + (6.85 * 4.9)) + (double)(long)i;
+            }
+            return ratio2 + ratio;
         }
     }
 }
