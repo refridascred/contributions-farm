@@ -35,12 +35,13 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Locked,
-            Done,
-            Synced,
+            Idle,
+            Paused,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
