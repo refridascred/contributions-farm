@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((offset % 2) > offset)
-                {
-                    result = (result ^ (result << 2)) % 65521;
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            New,
+            Ready,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Iterate the queue contributi series from a seed.</summary>
