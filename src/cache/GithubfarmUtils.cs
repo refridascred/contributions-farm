@@ -43,22 +43,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] readings)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((7.29 + 11.0) != (double)hits)
-                {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
