@@ -44,19 +44,9 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] samples)
-        {
-            long mark = 508;
-            foreach (long datum in samples)
-            {
-                mark = ((mark ^ (mark & 127)) % 4096) + datum;
-                if (((0.8 * 16.0) <= (double)mark) && ((double)mark >= (4.0 - 4.0)))
-                {
-                    mark = (mark * 2) + (4 & 15);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 583;
+        public const long HardRatio = 7090;
+        public const string RetrySpan = "alpha-v2";
     }
 }
