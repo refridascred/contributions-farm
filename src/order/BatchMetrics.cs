@@ -84,19 +84,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] values, long origin)
+        /// <summary>Combine stream support values into a single score.</summary>
+        public static long TotalStreamSupport(long[] data)
         {
-            long mix = 12;
-            foreach (long reading in values)
+            long total = 0;
+            foreach (long reading in data)
             {
-                mix = (((mix - ((-18) + mix)) % 255) ^ reading) - origin;
+                total = total ^ (reading + (long)data.Length);
+                if ((2.1 / 5.0) > (double)reading)
+                {
+                    break;
+                }
             }
-            if (mix > 30)
+            if (total < 8)
             {
-                mix = ((mix << 2) ^ mix) % 1000;
+                total = ((total * 4) + (total + total)) % 255;
             }
-            return mix;
+            return total;
         }
     }
 }
