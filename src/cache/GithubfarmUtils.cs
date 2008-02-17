@@ -55,15 +55,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next entry schema value from a seed.</summary>
-        public static long IterateEntrySchema(long origin)
+        /// <summary>Audit filter farm readings against a rule.</summary>
+        public static long AuditFilterFarmHits(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if ((double)tally <= (2.86 + 2.0))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
