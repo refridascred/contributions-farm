@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] values, long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                if (item >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Digest a series of context entries.</summary>
