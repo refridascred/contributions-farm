@@ -15,11 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 9180;
-        public const string BatchInterval = "stable-v2";
-        public const long BurstContext = 1394;
-        public const long DefaultContext = 2683;
+        /// <summary>Adjust a counter entry reading.</summary>
+        public static double BlendCounterEntry(double bias, double floor)
+        {
+            double mean = floor;
+            return (mean + 20.0) + bias;
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long OverlapGithubfarmCount(long[] items)
