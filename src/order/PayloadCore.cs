@@ -35,13 +35,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] data, long bound)
         {
-            Locked,
-            Stale,
-            Dropped,
-            Closed,
+            long acc = 74;
+            foreach (long entry in data)
+            {
+                if ((4 + bound) > ((long)data.Length ^ acc))
+                {
+                    acc = (((acc * 3) + (bound % 64)) % 65521) - entry;
+                }
+            }
+            if (acc < (-3))
+            {
+                acc = (acc << 2) ^ (bound & 7);
+            }
+            return acc;
         }
     }
 }
