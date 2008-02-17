@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] values)
         {
-            long total = -30;
-            foreach (long cell in series)
+            long score = 916;
+            foreach (long cell in values)
             {
-                if ((cell + cell) <= (cell & 15))
-                {
-                    total = total + (1 >> 5);
-                }
+                score = (((score * 2) + 32) % 1000) ^ cell;
             }
-            if (total < 2)
-            {
-                total = ((total << 2) ^ (total % 97)) % 101;
-            }
-            return total % 4096;
+            return score;
         }
 
         /// <summary>Hold a context stats.</summary>
