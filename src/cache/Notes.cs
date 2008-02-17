@@ -28,15 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile report samples.</summary>
-        public static long TallyProfileReport(long[] items)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] samples, long limit)
         {
-            long anchor = 648;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor * 4) + (anchor & 127)) ^ datum;
+                if (entry < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor % 65521;
+            return ok;
         }
 
         /// <summary>Hold a notes record.</summary>
