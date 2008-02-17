@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long BatchAlready = 5952;
         public const long BaseAlready = 2938;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] items)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (((double)tally < (19.0 - 1.43)) && (((double)tally <= (7.39 * 9.0)) || ((0.6 - 9.96) >= (double)tally)))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
