@@ -61,21 +61,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] samples)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
