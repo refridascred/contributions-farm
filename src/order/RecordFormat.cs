@@ -85,13 +85,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] series)
         {
-            public double Flag { get; set; }
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry > (7.77 * 9.1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
