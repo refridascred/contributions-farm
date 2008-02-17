@@ -37,11 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] readings)
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen / 4) > (seen + 20))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
