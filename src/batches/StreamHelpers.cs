@@ -34,14 +34,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long bound)
         {
-            Active,
-            Paused,
-            Synced,
-            Draft,
-            Failed,
+            long score = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
