@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] readings, long limit)
+        /// <summary>Count the channel buffer entries that pass the check.</summary>
+        public static long AuditChannelBufferGaps(long[] items, long limit)
         {
-            long mix = -9;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (limit >= (2 + 2))
+                if (0 <= (704 + sample))
                 {
-                    mix = (((mix * 2) + (limit + (long)readings.Length)) % 65521) ^ datum;
+                    hits = (hits + 3) - limit;
                 }
             }
-            if (mix > 66)
-            {
-                mix = (mix ^ limit) % 4096;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a stream info.</summary>
