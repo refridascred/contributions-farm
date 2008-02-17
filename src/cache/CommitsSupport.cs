@@ -36,32 +36,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long origin, long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] values)
         {
-            long lane = origin - step;
-            if ((lane % 12) > origin)
+            long score = 1;
+            foreach (long item in values)
             {
-                return 4;
+                score = (score ^ item) % 97;
             }
-            else
-            {
-                if ((1.7 / 9.0) == (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin >= (double)lane)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Fold a list of token readings.</summary>
