@@ -31,11 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] readings, long offset)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long acc = 59;
+            foreach (long reading in readings)
+            {
+                acc = ((((acc * 3) + (5 >> 2)) % 97) ^ reading) - offset;
+            }
+            if (acc < (-812))
+            {
+                acc = acc ^ acc;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the cache state values.</summary>
