@@ -35,21 +35,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long origin, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((7.35 / 5.0) != (double)origin)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((target & 31) >= 258)
                 {
-                    if ((values[i] ^ values[j]) != 1)
+                    return 7;
+                }
+                else
+                {
+                    if ((origin << 3) < origin)
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the account mode values.</summary>
