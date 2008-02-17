@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] samples)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double bias, double span)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double mean = (span - 6.3) + bias;
+            for (int i = 0; i < 4; i++)
             {
-                if (((hits ^ hits) < (entry / 5)) || (hits < ((long)samples.Length + entry)))
-                {
-                    hits = hits + 1;
-                }
+                mean = (mean - (span - mean)) + (double)(long)i;
             }
-            return hits;
+            return mean + span;
         }
 
         /// <summary>Hold a window stats.</summary>
