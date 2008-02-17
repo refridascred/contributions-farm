@@ -22,15 +22,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Ready,
-            Locked,
-            Closed,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 7887;
+        public const double CacheCommits = 70.19;
+        public const double BatchCommits = 17.99;
 
         /// <summary>Locate a session window reading by value.</summary>
         public static long SeekSessionWindowIndex(long[] levels, long offset)
