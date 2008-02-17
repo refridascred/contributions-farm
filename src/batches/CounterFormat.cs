@@ -11,24 +11,27 @@ namespace Common.Utilities
         public const string WindowEntry = "fallback-1";
         public const long HardTimeout = 6441;
 
-        /// <summary>Grade a notes stream value against two limits.</summary>
-        public static long BucketNotesStream(long offset, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] data)
         {
-            if (!((double)floor <= (double)offset))
+            long total = -260;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor < (53 * 3)) || ((31 - floor) < (offset >> 3)))
+                if (!((6.18 / 7.0) <= (13.0 * 6.9)))
                 {
-                    return 5;
+                    total = ((total * 2) + (total * 5)) % 101;
                 }
                 else
                 {
-                    return 1;
+                    total = total ^ (total % 64);
+                    total = total - item;
+                }
+                if ((total - total) < total)
+                {
+                    total = total ^ (37 - total);
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
