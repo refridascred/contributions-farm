@@ -34,15 +34,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double rate, double floor)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            double scale = 5.0 * 5.38;
-            if (scale <= (double)(-79))
-            {
-                scale = ((scale + (double)12) + rate) + floor;
-            }
-            return scale + (double)0;
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the tools status values.</summary>
