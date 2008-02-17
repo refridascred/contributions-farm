@@ -1,10 +1,7 @@
-id,ratio,weight,active
-1,staging,51.94,30.55
-2,544,edge,latest
-3,edge,stable,65.51
-4,latest,65.73,0.69
-5,54.12,307,408
-6,legacy,53.37,23.34
-7,760,892,264
-8,34.67,129,primary
-9,4.73,994,138
+id,label,active
+1,80.8,825
+2,37.54,87
+3,70.21,stable
+4,25.48,stable
+5,64.8,263
+6,57.09,16.71
