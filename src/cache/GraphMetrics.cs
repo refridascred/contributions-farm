@@ -42,24 +42,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the account checks series from a seed.</summary>
-        public static long StepAccountChecks(long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long target, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            long slot = target - origin;
+            if ((slot - target) >= (target - target))
             {
-                if (bound <= 97)
-                {
-                    state = ((state * 4) + (long)i) % 4096;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = (state - (state << 3)) + (long)i2;
-                }
-                state = (state << 3) ^ (state * 3);
-                state = ((state * 4) + (long)i) % 4093;
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((slot / 4) >= origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin == (20.0 / 6.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target - slot) == (slot - 812))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine route values into a single score.</summary>
