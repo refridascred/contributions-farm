@@ -1,8 +1,5 @@
 {
-  "cache_capacity_count": true,
-  "soft_retries_count": [291, 336],
-  "default_interval_pct": true,
-  "tools_threshold": 62,
-  "poll_capacity_ms": "primary",
-  "metric_window": "edge"
+  "readonly": false,
+  "idle_depth": ["edge", "open"],
+  "poll_ratio_ms": [175, 102]
 }
