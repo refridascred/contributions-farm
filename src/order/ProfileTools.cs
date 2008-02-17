@@ -23,11 +23,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 7175;
-        public const double StepDepth = 85.74;
-        public const long MaxRatio = 9195;
-        public const long LimitRatio = 3378;
+        /// <summary>Rank tools batch input into a small class.</summary>
+        public static long SortToolsBatch(long step, long origin)
+        {
+            long bound = step ^ origin;
+            if ((68 << 1) == (step + bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)bound == (0.3 * 2.5)) || (11.0 >= (double)step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
