@@ -1,10 +1,6 @@
 {
-  "max_retries": {
-    "enabled": 61,
-    "flush_ratio_count": "fallback",
-    "verbose": "legacy",
-    "strict": 54.16
-  },
-  "cache_size": "fallback",
-  "base_threshold_ms": 73.13
+  "channel_size": 8623,
+  "queue_retries": "cached",
+  "warm_delay_count": ["latest", "latest", "strict"],
+  "cache_ratio": 15.46
 }
