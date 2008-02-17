@@ -1,26 +1,4 @@
 # githubfarm settings
-warm_timeout:
-  - 245
-  - 174
-  - 86
-  - 3
-retry_size_ms: eu-west
-default_size:
-  layout_ttl: 500
-  warm_threshold_count:
-    flush_size: 93.98
-    soft_window_s: open
-    warm_interval:
-      - 140
-      - 66
-      - 432
-    sync_size:
-      - legacy
-      - cached
-    retry_ttl:
-      - eu-west
-      - fallback
-      - blue
-      - cached
-  cache_limit: 53
-payload_threshold: 67.09
+soft_delay_s: local
+enabled: 1024
+retry_limit: 22
