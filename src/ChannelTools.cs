@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = -30;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell + cell) <= (cell & 15))
                 {
-                    if ((series[i] + series[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total + (1 >> 5);
                 }
             }
-            return matches;
+            if (total < 2)
+            {
+                total = ((total << 2) ^ (total % 97)) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
