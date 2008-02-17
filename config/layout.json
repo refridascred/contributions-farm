@@ -1,5 +1,17 @@
 {
-  "contributi_window": 39,
-  "audit": [235, 56],
-  "retry_limit_count": 500
+  "min_limit_s": 3010,
+  "base_timeout": [499, 166, 211],
+  "verbose": {
+    "flush_timeout_ms": 24.63,
+    "verbose": 67,
+    "burst_delay_s": 69.89,
+    "batch_window": {
+      "sync_depth_count": 100,
+      "flush_depth_s": "fallback",
+      "retry_delay": "staging",
+      "audit": true,
+      "compress": 1.26
+    },
+    "strict": [221, 121, 268]
+  }
 }
