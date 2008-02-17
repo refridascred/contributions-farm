@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Pending,
-            Synced,
-            Queued,
-            Ready,
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a notes reading.</summary>
