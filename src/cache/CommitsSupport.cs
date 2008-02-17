@@ -45,13 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] readings)
         {
-            Failed,
-            Closed,
-            Draft,
-            Retry,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((seen ^ entry) < seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of stats metric readings.</summary>
