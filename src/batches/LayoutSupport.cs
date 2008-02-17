@@ -34,20 +34,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] values)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long step, long step2)
         {
-            long anchor = -9;
-            foreach (long reading in values)
+            if ((step2 % 24) >= (step2 * 4))
             {
-                anchor = anchor - (reading >> 1);
-                if ((anchor <= (anchor - 727)) || ((reading ^ reading) > (reading ^ anchor)))
-                {
-                    anchor = anchor + anchor;
-                }
-                anchor = (anchor - (anchor ^ 449)) % 97;
+                return 8;
             }
-            return anchor % 97;
+            else
+            {
+                if (step2 <= (step2 - step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (step2 > (1 << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((4 % 2) != (step2 ^ step2)) || ((double)step2 <= (double)step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
