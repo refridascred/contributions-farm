@@ -18,13 +18,13 @@ namespace Common.Utilities
         public const double RetryBudget = 14.92;
         public const double WindowLevel = 74.9;
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Closed,
-            Synced,
-            Queued,
-            Active,
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
