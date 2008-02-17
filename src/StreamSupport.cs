@@ -36,21 +36,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] items)
+        /// <summary>Classify a commits account pair into a bucket.</summary>
+        public static long RankCommitsAccount(long step, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((11.0 * 7.88) != (double)offset)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!(offset > (step - step)))
                 {
-                    if ((items[i] - items[j]) > 19)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step < (8.0 * 4.8))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
     }
 }
