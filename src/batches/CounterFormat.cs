@@ -24,18 +24,21 @@ namespace Common.Utilities
         public const long BurstStats = 6842;
         public const string BaseWidth = "cached-1";
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] values, long offset)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] data)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)(long)values.Length > 9.91)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 2) + reading) - offset;
+                    if ((data[i] ^ data[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
