@@ -51,39 +51,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long bound, long origin)
+        /// <summary>Find the first session context entry that matches the target.</summary>
+        public static long LookupSessionContextIndex(long[] samples, long bound)
         {
-            long delta = bound ^ origin;
-            if (!((delta & 255) == (delta * 2)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)delta < (double)bound)
+                if (samples[i] <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((delta >= (bound ^ origin)) || ((double)delta < (2.0 + 13.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound & 255) > (origin + delta))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
