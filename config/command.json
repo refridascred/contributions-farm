@@ -1,22 +1,23 @@
 {
-  "idle_capacity_count": true,
-  "enabled": {
-    "soft_ttl": 500,
-    "idle_ttl_count": 61,
-    "min_timeout": 30,
-    "burst_window_s": 78.79
-  },
-  "sync_depth_ms": {
-    "booking_window": {
-      "poll_limit_ms": "primary",
-      "readonly": 69,
-      "flush_ratio_count": 4998,
-      "hard_delay_pct": 31
+  "retry_delay": 7,
+  "base_ratio": {
+    "warm_window_count": {
+      "enabled": "local",
+      "poll_size": 60,
+      "default_timeout_count": 73.31
     },
-    "retry_window_ms": true,
-    "min_ratio_s": false,
-    "strict": false,
-    "enabled": "blue"
+    "audit": 7,
+    "idle_timeout_s": {
+      "default_delay_count": true,
+      "retry_ttl_count": 37.15,
+      "contributi_delay": 5882,
+      "layout_window": "legacy",
+      "default_window_pct": true
+    },
+    "cache_capacity_pct": "eu-west",
+    "retry_size_s": 500,
+    "readonly": 8
   },
-  "hard_delay": "strict"
+  "retry_timeout_count": true,
+  "base_delay_count": true
 }
