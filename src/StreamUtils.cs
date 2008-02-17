@@ -42,18 +42,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] values, long offset)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (((offset % 2) >= offset) && (count > (value - count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
