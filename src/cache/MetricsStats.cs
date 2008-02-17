@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double rate, double bias)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long offset)
         {
-            double gain = rate;
-            if (gain > bias)
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
             {
-                gain = gain - (double)390;
+                anchor = (anchor ^ (long)i) % 255;
+                long delta = anchor;
+                anchor = (anchor + (delta >> 5)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + (double)434;
+            return anchor;
         }
 
         /// <summary>Describe the support state values.</summary>
