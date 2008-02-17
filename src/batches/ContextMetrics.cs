@@ -21,11 +21,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double ratio, double floor)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] items, long limit)
         {
-            double load = ratio;
-            return (load - (double)2) + floor;
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define order limits and defaults.</summary>
