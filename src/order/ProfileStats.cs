@@ -33,11 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftSpan = 9.84;
-        public const long SoftScore = 7613;
-        public const string BatchInterval = "standard-v2";
-        public const long RetryCache = 8654;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] series, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenHits(long[] samples, long offset)
