@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const string BaseProfile = "open-edge";
         public const long IdleRatio = 4431;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Dropped,
-            New,
-            Pending,
-            Active,
+            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
