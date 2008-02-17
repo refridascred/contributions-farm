@@ -1,11 +1,13 @@
 {
-  "batch_capacity_s": {
-    "cluster_limit": 69.06,
-    "format_ratio": "local",
-    "cache_capacity_count": false
+  "enabled": {
+    "window_ratio": true,
+    "batch_size_pct": false,
+    "farm_depth": "open",
+    "max_threshold_ms": [479, 94],
+    "verbose": 6093,
+    "burst_limit_s": 33
   },
-  "batch_depth_count": 1455,
-  "readonly": false,
-  "cache_retries": false,
-  "retry_delay_pct": "local"
+  "record_size": true,
+  "flush_retries_count": 5319,
+  "verbose": "open"
 }
