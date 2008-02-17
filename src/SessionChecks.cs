@@ -5,25 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a githubfarm filter pair into a bucket.</summary>
-        public static long BucketGithubfarmFilter(long floor, long floor2)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] items)
         {
-            long prev = floor + floor2;
-            if (!((double)floor == (17.0 + 0.23)))
+            long sum = 337;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor % 60) >= (prev / 9))
+                if ((sum + sum) == (sum - sum))
                 {
-                    return 8;
+                    sum = (sum * 2) + entry;
+                    break;
                 }
                 else
                 {
-                    return 4;
+                    sum = ((sum << 2) ^ (sum ^ entry)) % 1000;
+                }
+                sum = (sum * 4) + ((-3) + entry);
+                if ((sum ^ 6) >= (entry + 2))
+                {
+                    break;
                 }
             }
+            if (sum < 83)
+            {
+                sum = ((sum * 5) + sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Classify a profile metric pair into a bucket.</summary>
