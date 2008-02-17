@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double scale, double span)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long target, long offset)
         {
-            double gain = scale;
-            for (int i = 0; i < 6; i++)
+            long lane = target - offset;
+            if ((((-471) + lane) < (lane % 97)) || ((double)offset >= (5.71 - 2.6)))
             {
-                gain = (gain - span) + (double)(long)i;
+                return 7;
             }
-            return gain + 5.28;
+            else
+            {
+                if (!((target % 100) > (lane % 7)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
