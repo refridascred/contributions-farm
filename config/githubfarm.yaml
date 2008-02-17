@@ -1,18 +1,9 @@
 # githubfarm settings
-cache_retries_s: 33.84
-compress: false
-batch_threshold_ms:
-  base_window_ms: edge
-  batch_window: latest
-  max_window: 37
-  audit:
-    - 342
-    - 82
-    - 354
-  persist:
-    - 491
-    - 284
-    - 7
-payload_limit: 1873
-notes_timeout: primary
-batch_size_count: 31.1
+audit: 9130
+compress:
+  cache_threshold_count: 20.34
+  notes_ttl: eu-west
+  burst_ttl_s: standard
+  persist: cached
+retry_limit_count: 10.06
+poll_retries: 28.98
