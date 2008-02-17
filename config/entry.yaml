@@ -1,14 +1,6 @@
 # entry settings
-readonly: primary
-contributi_interval: staging
-route_window:
-  - cached
-  - cached
-  - primary
-  - eu-west
-retry_delay_pct: latest
-account_limit: open
-burst_depth:
-  - eu-west
-  - stable
-  - edge
+profile_ttl: stable
+soft_size: cached
+account_size: 92.46
+default_retries_pct: 67
+warm_window_ms: staging
