@@ -76,23 +76,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double bias, double span)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            double load = span;
-            if (load > 9.21)
-            {
-                load = load + (load - load);
-            }
-            else
-            {
-                load = load + (bias / 5.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (bias - 3.3)) + (double)(long)i;
-            }
-            return load - 3.1;
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
