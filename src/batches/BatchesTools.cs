@@ -19,39 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long floor, long floor2)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] items, long floor)
         {
-            long delta = floor ^ floor2;
-            if (!((floor2 ^ floor) <= (delta - delta)))
+            bool ready = true;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((904 * 2) != ((-870) - floor2))
+                if (reading <= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor2 >> 1) > (floor2 + delta))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (delta > (7 & 63))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
