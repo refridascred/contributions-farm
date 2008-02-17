@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy staging fallback; do
-    log "checking ${item}"
-done
+mode="${1:-local}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=238
+log "limit is ${RECORD_LIMIT}"
