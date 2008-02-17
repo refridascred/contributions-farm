@@ -37,10 +37,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 7887;
-        public const double CacheCommits = 70.19;
-        public const double BatchCommits = 17.99;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 4766;
+        public const long MinGraph = 2033;
+        public const double BaseGraph = 66.64;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
