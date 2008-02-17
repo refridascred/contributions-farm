@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] series)
         {
-            Dropped,
-            Idle,
-            New,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (!((seen + reading) > reading) && ((reading % 5) < (reading & 31)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
