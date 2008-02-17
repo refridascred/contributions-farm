@@ -14,14 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] series, long bound)
         {
-            Queued,
-            Retry,
-            Idle,
-            Draft,
-            Locked,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((6.35 * 7.0) != (double)item)
+                {
+                    count = (count + 3) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of notes metrics readings.</summary>
