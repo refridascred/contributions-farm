@@ -14,16 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] values)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] values, long step)
         {
-            long result = 9;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                result = (result + (81 / 6)) % 1000;
-                result = ((result * 3) + sample) % 4096;
+                if (datum > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
