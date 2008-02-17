@@ -30,19 +30,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] items, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (entry > seed)
+                if (((long)samples.Length ^ 62) <= seen)
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 2) + cell) - seed;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Fold a list of session readings.</summary>
