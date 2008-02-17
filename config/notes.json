@@ -1,9 +1,5 @@
 {
-  "readonly": 30,
-  "batch_interval_pct": {
-    "enabled": "legacy",
-    "min_interval_count": [62, 18, 144],
-    "verbose": [385, 16, 376, 142]
-  },
-  "burst_window": "legacy"
+  "min_ratio": false,
+  "min_retries": 250,
+  "poll_ttl_ms": "fallback"
 }
