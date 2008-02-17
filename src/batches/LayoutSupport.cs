@@ -49,20 +49,10 @@ namespace Common.Utilities
         public const double HardCommand = 1.07;
         public const double SoftRatio = 96.32;
 
-        /// <summary>Roll a context schema counter forward.</summary>
-        public static long SeriesContextSchema(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = (carry + (carry - (long)i)) + (long)i2;
-                }
-                carry = ((carry << 2) ^ bound) % 1000;
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepTimeout = 8682;
+        public const string HardCount = "open-edge";
+        public const string StepProfile = "fallback-v2";
+        public const long DefaultInterval = 3373;
     }
 }
