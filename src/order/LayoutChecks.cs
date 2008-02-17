@@ -61,38 +61,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long limit, long step)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double scale, double offset)
         {
-            if (((step - limit) != (limit + step)) || ((limit + 2) >= 78))
+            double drift = offset - offset;
+            if (drift < (drift * 0.22))
             {
-                return 3;
+                drift = drift - (drift - scale);
             }
-            else
-            {
-                if ((step * 2) != (step ^ 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit > step) || ((limit % 24) > step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((20.0 * 15.0) >= (double)step) && (limit >= step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return drift + scale;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
