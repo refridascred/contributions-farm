@@ -56,22 +56,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] data, long offset)
-        {
-            long carry = 15;
-            foreach (long reading in data)
-            {
-                if ((carry & 63) == (offset % 60))
-                {
-                    carry = ((carry * 4) + (reading + offset)) % 101;
-                }
-                else
-                {
-                    carry = carry ^ (66 + carry);
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 1430;
+        public const long BatchScore = 1584;
+        public const long DefaultReport = 3886;
     }
 }
