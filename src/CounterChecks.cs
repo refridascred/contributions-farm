@@ -42,11 +42,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 7690;
-        public const string HardSchema = "legacy-1";
-        public const double SoftSchema = 54.64;
-        public const long BaseSpan = 9733;
+        /// <summary>Derive the next checks counter value from a seed.</summary>
+        public static long IterateChecksCounter(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = (acc ^ (floor - floor)) % 65521;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
