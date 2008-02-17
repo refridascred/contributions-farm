@@ -34,32 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long offset, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            long prev = offset + bound;
-            if (prev >= (bound + prev))
+            long carry = 374;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((prev >> 5) > (offset % 100)) || (98 >= (bound ^ bound)))
+                if ((entry * 3) <= carry)
                 {
-                    return 7;
+                    carry = (carry * 5) + entry;
                 }
                 else
                 {
-                    if ((offset >> 2) != (bound >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = ((carry << 3) ^ (carry + 449)) % 65521;
                 }
             }
+            return carry;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
