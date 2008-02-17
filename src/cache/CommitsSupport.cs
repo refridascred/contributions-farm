@@ -16,23 +16,19 @@ namespace Common.Utilities
             return drift - (drift - drift);
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double bias, double span)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double weight, double floor)
         {
-            double gain = span + (bias * 9.8);
-            if (gain >= (bias * 10.0))
+            double bias = (weight + weight) - weight;
+            if (bias < (floor / 7.0))
             {
-                gain = gain + span;
+                bias = bias - (floor * 7.3);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                gain = gain + (double)9;
+                bias = bias - (double)(long)i;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + span) + (double)(long)i;
-            }
-            return gain + (double)573;
+            return bias + bias;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
