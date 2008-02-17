@@ -55,13 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleLevel = "alpha-1";
+        public const string BatchOrder = "cached-v2";
+        public const string SoftOrder = "open-1";
+        public const long MaxOrder = 1036;
+        public const long LimitWidth = 2290;
     }
 }
