@@ -67,11 +67,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
