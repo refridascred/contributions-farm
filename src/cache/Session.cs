@@ -42,11 +42,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleWidth = "alpha-v2";
-        public const string StepFarm = "cached-1";
-        public const long DefaultScore = 405;
-        public const long HardFarm = 3884;
-        public const string BaseInterval = "latest-edge";
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public bool Score { get; set; }
+        }
     }
 }
