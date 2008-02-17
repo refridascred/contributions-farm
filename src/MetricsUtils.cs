@@ -41,18 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] series, long bound)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((598 / 5) > (count - bound)))
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
+            New,
+            Closed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
