@@ -33,17 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] values, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (values[i] >= origin)
+                if (datum < (datum ^ tally))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
