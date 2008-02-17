@@ -1,11 +1,18 @@
 # entry settings
-hard_threshold_count: strict
-cache_timeout: primary
-hard_retries_pct: edge
-cluster_capacity:
-  - 31
-  - 223
-  - 453
-  - 275
-poll_limit: 85
-sync_interval_ms: 30
+cache_size: 52
+already_timeout:
+  - 263
+  - 365
+batch_depth: false
+hard_timeout:
+  batch_ratio_pct:
+    readonly: 835
+    account_size: 95.98
+    graph_depth: 58.23
+    idle_window: 9475
+  commits_interval: 0.5
+  min_delay: staging
+  batch_limit_count: fallback
+  base_retries_count: 19
+  sync_delay: 90.96
+soft_interval: false
