@@ -19,13 +19,16 @@ namespace Common.Utilities
         public const long StepSupport = 5208;
         public const long RetrySize = 2636;
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Derive the next token tools value from a seed.</summary>
+        public static long StepTokenTools(long floor)
         {
-            Retry,
-            Active,
-            Pending,
-            Idle,
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark << 2) ^ (42 >> 3)) % 65521;
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Blend two support measurements.</summary>
