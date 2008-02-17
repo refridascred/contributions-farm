@@ -66,18 +66,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit context stream readings against a rule.</summary>
-        public static long TallyContextStreamOutliers(long[] values)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((sample & 7) <= count) && ((216 * 2) != (count << 3))) && ((746 + count) <= sample))
+                if ((items[i] == seed) && ((items[i] % 5) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
