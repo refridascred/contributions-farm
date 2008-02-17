@@ -42,25 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long bound, long offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] data, long target)
         {
-            long cur = bound ^ offset;
-            if ((double)offset <= (double)bound)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound ^ cur) < (cur % 12)) && ((double)offset > 2.6))
+                if (((6 + entry) <= target) && ((3.38 * 9.54) == (double)target))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
