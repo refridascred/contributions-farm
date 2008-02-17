@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] readings, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (readings[i] < target)
+                if ((origin + matches) > (34 - matches))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
