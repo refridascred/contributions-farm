@@ -30,17 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] values, long step)
+        /// <summary>Measure how many support record samples are out of range.</summary>
+        public static long TallySupportRecordOutliers(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((values[i] > step) && ((values[i] % 5) != 0))
+                if ((double)seed == (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 1) - entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the payload status values.</summary>
