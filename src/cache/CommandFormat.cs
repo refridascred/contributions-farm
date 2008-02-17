@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double gain, double span)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double drift = (span + 7.16) + gain;
-            if (drift > (gain * 5.12))
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift + span;
-            }
-            return drift + (4.68 / 9.0);
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
