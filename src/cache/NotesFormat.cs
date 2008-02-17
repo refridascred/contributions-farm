@@ -14,24 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long limit, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] levels, long offset)
         {
-            if ((step - limit) > (step + limit))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit >= (double)687)
+                if (3.5 <= (double)hits)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    hits = ((hits + 3) + reading) + offset;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
