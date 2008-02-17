@@ -58,11 +58,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 1770;
-        public const string BurstSession = "cached-1";
-        public const double BurstFactor = 6.87;
-        public const long SoftInterval = 5739;
-        public const long HardSession = 1304;
+        /// <summary>Accumulate counter farm samples.</summary>
+        public static long FoldCounterFarm(long[] data)
+        {
+            long sum = 6;
+            foreach (long sample in data)
+            {
+                if ((double)(long)data.Length <= 9.64)
+                {
+                    sum = (sum + (sample & 255)) % 4096;
+                }
+            }
+            if (sum > 763)
+            {
+                sum = (sum ^ (sum & 3)) % 255;
+            }
+            return sum;
+        }
     }
 }
