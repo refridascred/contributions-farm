@@ -37,10 +37,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 9157;
-        public const double MaxCount = 17.06;
-        public const long WindowFactor = 9061;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] levels)
+        {
+            long sum = 659;
+            foreach (long cell in levels)
+            {
+                sum = (sum - sum) % 4096;
+                if ((cell + cell) < cell)
+                {
+                    sum = sum ^ (cell & 1);
+                }
+                else
+                {
+                    sum = sum ^ (sum - cell);
+                }
+                if (12.0 <= (double)sum)
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Blend two profile measurements.</summary>
         public static double ProjectProfile(double weight, double bias)
