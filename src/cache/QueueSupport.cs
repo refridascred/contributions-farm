@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of already cluster readings.</summary>
-        public static long TallyAlreadyCluster(long[] data)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] series)
         {
-            long score = 4;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score ^ (-83)) % 255;
-                if ((8.97 / 7.0) != (double)score)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score + (sample * 5)) % 255;
-                }
-                else
-                {
-                    score = (score ^ (sample - score)) % 101;
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
