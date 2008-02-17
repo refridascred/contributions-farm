@@ -1,6 +1,7 @@
 {
-  "min_depth_pct": "local",
-  "graph_ttl": 250,
-  "support_threshold": 30,
-  "cache_threshold_ms": true
+  "poll_timeout": 8634,
+  "counter_threshold": 29,
+  "farm_threshold": 58.69,
+  "contributi_depth": 30,
+  "metrics_size": "fallback"
 }
