@@ -53,9 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 7441;
-        public const long WindowStats = 9385;
-        public const long BatchLevel = 6177;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] items, long target)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
