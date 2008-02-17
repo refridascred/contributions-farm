@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long target, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] items)
         {
-            if (4.0 <= (double)target)
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin + origin) == (origin + target))
+                if ((26 > (hits ^ 2)) && !((69 + (-79)) >= value))
                 {
-                    return 3;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((double)1 < (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin + 0) < (origin - target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a commits record.</summary>
