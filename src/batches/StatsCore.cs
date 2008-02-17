@@ -43,18 +43,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the batches order entries that pass the check.</summary>
-        public static long TallyBatchesOrderHits(long[] series, long floor)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (!(((7.8 - 8.0) <= (double)seen) || (5.24 < (double)cell)))
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
