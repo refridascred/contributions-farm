@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long IdleStream = 1956;
         public const long CacheBudget = 4960;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] readings)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (((count ^ 9) <= (count + count)) || ((5.0 * 3.79) <= 4.94))
-                {
-                    count = (count + 3) - sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
