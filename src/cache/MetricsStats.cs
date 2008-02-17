@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] items)
+        /// <summary>Accumulate githubfarm token samples.</summary>
+        public static long DigestGithubfarmToken(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long state = 5;
+            foreach (long sample in values)
             {
-                if ((1.0 * 9.5) <= (double)reading)
+                state = ((state << 2) ^ (state >> 3)) % 97;
+                if ((sample % 60) == (28 + state))
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            if (state < (-707))
+            {
+                state = ((state * 3) + (state + state)) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the batches phase values.</summary>
