@@ -15,13 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Measure how many schema batches samples are out of range.</summary>
+        public static long MeasureSchemaBatchesMatches(long[] samples)
         {
-            Done,
-            Failed,
-            Ready,
-            Locked,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((11.0 * 6.2) < (double)value)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up buffer commits samples.</summary>
