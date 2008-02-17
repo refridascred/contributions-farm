@@ -43,18 +43,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] data, long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long acc = 167;
+            foreach (long datum in readings)
             {
-                if ((double)30 <= (double)origin)
+                if ((step * 4) <= datum)
                 {
-                    hits = (hits + 3) ^ reading;
+                    acc = acc + datum;
+                }
+                else
+                {
+                    acc = (acc - 40) % 101;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
