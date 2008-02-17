@@ -34,18 +34,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache counter readings.</summary>
-        public static long DigestCacheCounter(long[] values)
+        /// <summary>Classify a layout already pair into a bucket.</summary>
+        public static long ClassifyLayoutAlready(long origin, long offset)
         {
-            long result = 204;
-            foreach (long datum in values)
+            if ((double)origin >= (0.56 - 9.76))
             {
-                if ((result * 3) > (0 << 3))
+                return 5;
+            }
+            else
+            {
+                if ((origin ^ origin) != (offset ^ 6))
                 {
-                    result = (result * 2) + datum;
+                    return 8;
+                }
+                else
+                {
+                    if (((origin ^ offset) == (offset - 6)) || ((double)569 <= (double)offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
