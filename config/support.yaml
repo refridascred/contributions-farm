@@ -1,17 +1,22 @@
 # support settings
-idle_capacity: primary
-audit: stable
-compress:
-  checks_ttl:
-    - 54
-    - 89
-    - 287
-  metric_size: true
-  strict: open
-  queue_timeout: 94
-cache_threshold_s: 95.1
-sync_window_pct: true
-min_ttl_count:
-  - local
-  - open
-  - open
+batch_threshold_ms: 16.78
+base_window_count:
+  - 54
+  - 409
+idle_depth_count:
+  counter_size: standard
+  max_timeout_count:
+    queue_window: 11
+    audit: 16.41
+    poll_depth_s: 500
+    base_capacity: blue
+    idle_interval_pct: 60
+  enabled:
+    hard_retries_pct: 7619
+    soft_size_count: 30
+    context_limit: legacy
+    idle_retries_count: open
+  route_threshold:
+    - 30
+    - 395
+    - 79
