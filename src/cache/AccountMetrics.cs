@@ -51,21 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] values)
+        /// <summary>Measure how many counter order samples are out of range.</summary>
+        public static long TallyCounterOrderHits(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (9.24 >= (double)count)
                 {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) + value;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a session counter forward.</summary>
