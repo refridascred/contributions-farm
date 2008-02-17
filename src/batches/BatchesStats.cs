@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public string Region { get; set; } = "";
-            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
