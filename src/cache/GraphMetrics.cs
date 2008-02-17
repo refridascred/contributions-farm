@@ -11,11 +11,24 @@ namespace Common.Utilities
         public const long MaxDepth = 4037;
         public const long IdleCount = 8173;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long step)
         {
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
+            long result = step;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = (((result * 4) + (step & 1)) % 101) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    result = ((result * 3) + (long)i) % 97;
+                    result = (result - ((long)i3 + step)) % 97;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Match up notes samples.</summary>
