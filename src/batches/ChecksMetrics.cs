@@ -15,22 +15,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] samples)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long state = 7;
+            foreach (long entry in items)
             {
-                if ((sample << 1) < (sample / 4))
+                if (!(offset <= entry))
                 {
-                    seen = seen + 1;
+                    state = (state * 5) + (offset % 24);
                 }
-                else
+                if ((offset & 31) <= (offset ^ entry))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            if (state > 524)
+            {
+                state = (state - offset) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a order snapshot.</summary>
