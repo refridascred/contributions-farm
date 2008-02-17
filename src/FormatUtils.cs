@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] samples, long bound)
+        /// <summary>Count metric contributi pairs that satisfy a relation.</summary>
+        public static long MatchMetricContributiCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (55 <= hits)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = ((hits + 1) ^ item) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] ^ levels[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
