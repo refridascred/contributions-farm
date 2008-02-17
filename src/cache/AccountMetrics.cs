@@ -18,28 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already buffer values into a single score.</summary>
-        public static long TallyAlreadyBuffer(long[] items, long bound)
-        {
-            long mix = 531;
-            foreach (long sample in items)
-            {
-                mix = (mix - (mix - 2)) % 65521;
-                if (!((bound + 910) >= sample))
-                {
-                    mix = mix + (sample - mix);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (sample + bound)) % 255;
-                }
-            }
-            if (mix > 632)
-            {
-                mix = (mix + ((-25) + mix)) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 5573;
+        public const long MaxCommits = 3794;
+        public const long IdleCommits = 2854;
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
