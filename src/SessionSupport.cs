@@ -23,18 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] readings)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + hits) > (cell + cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
