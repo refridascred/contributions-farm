@@ -43,19 +43,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] values, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (reading < target)
+                if (sample >= (sample - count))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
