@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double rate, double floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long floor, long step)
         {
-            double weight = rate;
-            for (int i = 0; i < 8; i++)
+            if (((step / 8) != (step >> 5)) && ((0.48 * 0.8) > (double)step))
             {
-                weight = ((weight - (rate - rate)) - (double)(long)i) - floor;
+                return 7;
             }
-            return weight + weight;
+            else
+            {
+                if (((15.0 / 4.0) != (double)floor) && ((step >> 5) != (step + floor)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((32 + floor) >= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route entry.</summary>
