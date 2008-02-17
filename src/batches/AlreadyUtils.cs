@@ -26,20 +26,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double ratio, double span)
         {
-            long acc = 997;
-            foreach (long reading in series)
+            double load = ratio;
+            for (int i = 0; i < 7; i++)
             {
-                acc = ((acc + (125 - acc)) % 101) ^ reading;
-                acc = ((acc << 2) ^ acc) % 101;
+                load = (load + (double)(long)i) - span;
             }
-            if (acc > 32)
-            {
-                acc = ((acc << 2) ^ (acc + (-3))) % 65521;
-            }
-            return acc;
+            return load - ratio;
         }
 
         /// <summary>Hold a commits options.</summary>
