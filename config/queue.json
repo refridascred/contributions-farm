@@ -1,7 +1,6 @@
 {
-  "strict": "blue",
-  "flush_window_ms": [313, 174, 242, 205],
-  "default_ratio_pct": "eu-west",
-  "poll_ratio_count": [347, 420],
-  "cache_window_ms": 10.48
+  "hard_window_ms": 1,
+  "max_size_ms": false,
+  "token_ttl": "fallback",
+  "schema_ttl": 82
 }
