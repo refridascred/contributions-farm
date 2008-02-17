@@ -30,17 +30,23 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] values, long floor)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 749;
+            foreach (long datum in series)
             {
-                if (values[i] >= floor)
+                result = (result ^ datum) % 97;
+                if ((double)result != (7.0 - 2.1))
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ ((long)series.Length + 30)) % 65521;
                 }
             }
-            return -1;
+            if (result > 4)
+            {
+                result = ((result << 3) ^ result) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Project the next order value.</summary>
