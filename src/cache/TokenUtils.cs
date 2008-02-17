@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] series, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] items)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long mix = 3;
+            foreach (long cell in items)
             {
-                if (item <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix + (mix >> 1)) - cell;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
