@@ -19,31 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long bound, long origin)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            if ((675 ^ bound) > bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound <= (bound + 87)) || ((bound % 7) > bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((3.5 >= (double)origin) && ((origin + bound) >= bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Paused,
+            Done,
+            Idle,
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
