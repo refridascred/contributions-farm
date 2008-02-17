@@ -1,12 +1,5 @@
 {
-  "dry_run": {
-    "sync_ratio_pct": 6485,
-    "hard_retries_count": "local",
-    "burst_delay_ms": 264
-  },
-  "readonly": "green",
-  "persist": false,
-  "token_window": "primary",
-  "base_size_count": [206, 490, 96, 499],
-  "compress": "eu-west"
+  "strict": "eu-west",
+  "batch_window_count": [382, 194, 240, 162],
+  "compress": "cached"
 }
