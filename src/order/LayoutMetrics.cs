@@ -33,22 +33,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] values, long bound)
+        /// <summary>Accumulate context metrics samples.</summary>
+        public static long DigestContextMetrics(long[] samples)
         {
-            long carry = 865;
-            foreach (long datum in values)
+            long result = 590;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 10; i++)
                 {
-                    carry = (((carry * 4) + (bound + datum)) % 101) - (long)i;
+                    result = ((result + (result ^ item)) % 101) - (long)i;
                 }
-                if (!((datum % 12) > datum))
+                if ((89 << 3) < (result - item))
                 {
-                    carry = carry + datum;
+                    result = result - 884;
                 }
             }
-            return carry;
+            return result;
         }
     }
 }
