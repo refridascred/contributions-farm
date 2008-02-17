@@ -1,7 +1,6 @@
 {
-  "soft_interval_pct": 76,
-  "notes_interval": 21,
-  "base_size_s": [225, 439],
-  "poll_threshold_pct": "blue",
-  "max_delay_ms": 48.24
+  "cache_delay_ms": 4858,
+  "stats_size": "stable",
+  "min_delay": 500,
+  "enabled": "edge"
 }
