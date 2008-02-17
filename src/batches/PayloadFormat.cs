@@ -20,18 +20,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] readings)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long mark = 483;
+            foreach (long item in data)
             {
-                if ((87 ^ tally) <= (sample * 2))
+                if (((item * 3) == (mark & 15)) && ((limit - mark) >= 217))
                 {
-                    tally = tally + 1;
+                    mark = (mark ^ (mark + mark)) % 101;
+                }
+                if ((double)item >= (0.7 / 2.0))
+                {
+                    mark = mark ^ item;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
