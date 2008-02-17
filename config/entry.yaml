@@ -1,6 +1,8 @@
 # entry settings
-warm_window_pct: strict
-soft_ttl_pct: false
-hard_threshold_ms: false
-layout_timeout: blue
-persist: 81.49
+metrics_timeout:
+  base_ttl_count: fallback
+  enabled: cached
+  format_limit: 80.67
+  burst_depth_s: open
+enabled: true
+commits_depth: eu-west
