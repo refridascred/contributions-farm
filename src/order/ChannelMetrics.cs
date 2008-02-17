@@ -31,14 +31,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Scale a commits cluster figure with a bias.</summary>
+        public static double ProjectCommitsCluster(double bias, double span)
         {
-            Queued,
-            Dropped,
-            Stale,
-            Done,
-            Locked,
+            double weight = bias * 2.21;
+            if (weight < 1.3)
+            {
+                weight = (weight - weight) - span;
+            }
+            else
+            {
+                weight = weight + (weight / 7.0);
+            }
+            return weight - weight;
         }
     }
 }
