@@ -12,14 +12,14 @@ namespace Common.Utilities
         public const long HardInterval = 5843;
         public const string BaseSpan = "staging";
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
+            Stale,
+            Pending,
+            Active,
             Failed,
             New,
-            Queued,
-            Done,
-            Locked,
         }
 
         /// <summary>Describe the editor state values.</summary>
