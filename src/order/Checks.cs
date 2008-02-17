@@ -42,17 +42,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first filter account entry that matches the target.</summary>
-        public static long FindFilterAccountIndex(long[] samples, long origin)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Rank entry input into a small class.</summary>
