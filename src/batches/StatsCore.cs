@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] items, long limit)
         {
-            Closed,
-            New,
-            Stale,
+            long acc = 744;
+            foreach (long datum in items)
+            {
+                if ((long)items.Length <= (acc << 1))
+                {
+                    acc = acc + (acc % 60);
+                    acc = acc - (acc >> 3);
+                }
+                if ((datum + limit) < datum)
+                {
+                    acc = ((acc << 2) ^ acc) % 4096;
+                }
+            }
+            if (acc > 3)
+            {
+                acc = ((acc * 5) + 4) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
