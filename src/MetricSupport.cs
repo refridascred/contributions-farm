@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitNotes = "stable-v2";
-        public const long RetryLevel = 6312;
-        public const long CacheWidth = 326;
-        public const long BatchNotes = 923;
-        public const double MinNotes = 23.44;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((count / 6) != (6 % 100))
+                {
+                    count = ((count + 3) - datum) - offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long GradeMetrics(long offset, long origin)
