@@ -23,17 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a editor stats sample.</summary>
-        public static long LocateEditorStatsIndex(long[] items, long bound)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Failed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a filter header.</summary>
