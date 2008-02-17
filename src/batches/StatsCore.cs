@@ -37,11 +37,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleScore = 1045;
-        public const double MaxSpan = 12.29;
-        public const string BaseCount = "local";
-        public const long WindowBudget = 9207;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TotalSession(long[] levels, long limit)
