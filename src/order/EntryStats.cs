@@ -14,38 +14,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long target, long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] items, long target)
         {
-            if ((limit > (1 << 3)) || (target > limit))
+            bool stale = true;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target + target) < limit)
+                if (sample >= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((3 >> 3) >= (target >> 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((limit - target) > (limit & 255)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Accumulate support stats samples.</summary>
