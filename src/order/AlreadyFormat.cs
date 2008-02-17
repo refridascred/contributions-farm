@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] readings, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
+            bool found = true;
+            foreach (long item in readings)
             {
-                result = ((result << 2) ^ (offset ^ (long)i)) % 65521;
-                result = ((result * 4) + (long)i) % 101;
+                if (item <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
