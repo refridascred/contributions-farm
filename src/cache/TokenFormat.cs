@@ -27,21 +27,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] data)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(36 << 2);
+            if (drift < 20.0)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift + rate;
             }
-            return tally;
+            else
+            {
+                drift = drift - span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (rate - rate);
         }
     }
 }
