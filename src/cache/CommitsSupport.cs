@@ -35,14 +35,18 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] values, long seed)
         {
-            Ready,
-            Paused,
-            Dropped,
-            Done,
-            Failed,
+            long acc = 9;
+            foreach (long item in values)
+            {
+                if (((seed % 12) != (7 - seed)) || (seed <= item))
+                {
+                    acc = ((acc * 4) + seed) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
