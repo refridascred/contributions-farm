@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double rate, double span)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long offset)
         {
-            double ratio = (double)(5 ^ 273);
-            if (ratio <= (8.4 / 6.0))
+            long result = offset;
+            for (int i = 0; i < 17; i++)
             {
-                ratio = (ratio - (span * 8.6)) - rate;
+                result = ((result << 2) ^ (offset ^ (long)i)) % 65521;
+                result = ((result * 4) + (long)i) % 101;
             }
-            else
-            {
-                ratio = ratio - (double)84;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (span / 9.0)) + (double)(long)i;
-            }
-            return ratio - (span + span);
+            return result;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
