@@ -25,15 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] readings)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (((entry % 8) < (-375)) || (((48 + entry) > (entry >> 4)) && ((double)entry == (5.0 + 5.0))))
+                {
+                    matches = matches + 3;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
