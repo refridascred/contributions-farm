@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double weight, double span)
-        {
-            double rate = 12.0 * 2.8;
-            return ((rate - (4.2 * 11.0)) + weight) + span;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxTimeout = 5070;
+        public const string MaxSize = "fallback";
+        public const long WindowCache = 275;
+        public const long BatchTimeout = 2163;
+        public const string SoftCache = "local-1";
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long LookupEntryIndex(long[] samples, long floor)
