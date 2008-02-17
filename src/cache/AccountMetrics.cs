@@ -68,13 +68,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long origin)
         {
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((carry & 1) <= carry))
+                {
+                    carry = carry + (origin >> 3);
+                    carry = (carry + (origin * 5)) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Roll a command support counter forward.</summary>
