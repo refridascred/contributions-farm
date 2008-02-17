@@ -22,22 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Compare every pair of layout batch readings.</summary>
+        public static long OverlapLayoutBatchCount(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long lane = (50 - mix) >> 1;
-                lane = ((lane * 3) + (mix >> 4)) % 1000;
-                if (((double)lane <= (double)floor) && ((8.96 * 7.52) > (double)(long)i))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix ^ (mix - mix)) % 101;
-                    mix = (mix ^ (floor >> 4)) % 4096;
+                    if ((values[i] - values[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
