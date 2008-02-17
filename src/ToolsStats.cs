@@ -41,19 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double ratio, double span)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            double ratio2 = (ratio - span) * 15.0;
-            if (ratio2 > ratio2)
-            {
-                ratio2 = ratio2 + (1.7 - ratio);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 - ratio2) + (double)(long)i;
-            }
-            return ratio2 + span;
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
