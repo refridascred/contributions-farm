@@ -37,22 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] samples, long origin)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((origin >> 5) <= (tally * 4))
-                {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
     }
 }
