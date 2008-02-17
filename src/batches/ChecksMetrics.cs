@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] items, long floor)
         {
-            Paused,
-            Locked,
-            Stale,
-            Ready,
-            Synced,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
