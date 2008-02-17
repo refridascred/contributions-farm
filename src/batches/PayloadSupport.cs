@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long seed, long bound)
         {
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
+            if (((bound / 5) >= (seed / 9)) && ((1.0 + 10.0) <= (double)bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(bound >= (bound - bound)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((275 >= seed) && ((seed % 100) < bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(40 < (bound >> 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the already class values.</summary>
