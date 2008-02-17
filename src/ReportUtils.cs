@@ -37,24 +37,26 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long limit, long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] samples, long offset)
         {
-            if (limit > (limit & 3))
+            long anchor = 7;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin <= (4.67 + 15.0))
+                if ((sample << 1) < (sample + sample))
                 {
-                    return 0;
+                    anchor = (anchor << 3) ^ 420;
                 }
                 else
                 {
-                    return 5;
+                    anchor = (anchor + (offset - (-930))) % 101;
                 }
             }
+            if (anchor > 1)
+            {
+                anchor = anchor + offset;
+            }
+            return anchor;
         }
     }
 }
