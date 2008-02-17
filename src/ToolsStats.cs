@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 8323;
+        public const long BurstRatio = 4085;
+        public const string SoftWidth = "legacy";
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmGaps(long[] data)
