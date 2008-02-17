@@ -1,8 +1,6 @@
-id,weight,count
-1,staging,98
-2,fallback,49.76
-3,565,edge
-4,545,staging
-5,188,116
-6,41,743
-7,staging,stable
+id,count,label,active
+1,956,80.48,98.44
+2,20.99,primary,10.12
+3,315,625,431
+4,73.69,76.46,standard
+5,stable,eu-west,stable
