@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long floor, long seed)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long offset = floor ^ seed;
-            if ((62 + offset) > (floor >> 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)644 >= (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(78 < (offset ^ offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
