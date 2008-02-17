@@ -16,15 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long sum = 712;
-            foreach (long cell in values)
-            {
-                sum = ((sum << 2) ^ cell) % 65521;
-            }
-            return sum % 65521;
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
