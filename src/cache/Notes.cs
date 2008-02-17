@@ -28,19 +28,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes metrics readings.</summary>
-        public static long CombineNotesMetrics(long[] levels, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] data)
         {
-            long state = 695;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                state = ((state - offset) % 97) + sample;
+                if ((cell ^ cell) == (62 << 2))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (state < 141)
-            {
-                state = state ^ (offset * 2);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
