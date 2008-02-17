@@ -1,7 +1,8 @@
 {
-  "batch_depth": [182, 105],
-  "dry_run": 93.26,
-  "hard_interval_ms": 4484,
-  "route_limit": 54.23,
-  "batch_limit": false
+  "cache_capacity_count": true,
+  "soft_retries_count": [291, 336],
+  "default_interval_pct": true,
+  "tools_threshold": 62,
+  "poll_capacity_ms": "primary",
+  "metric_window": "edge"
 }
