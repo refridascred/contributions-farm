@@ -15,12 +15,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] readings, long limit)
         {
-            Pending,
-            Retry,
-            Idle,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((limit >> 2) < (sample - limit))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batch status values.</summary>
