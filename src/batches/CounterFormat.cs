@@ -19,19 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueLimits(long[] items, long step)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Queued,
+            Locked,
+            Idle,
+            Synced,
         }
 
         /// <summary>Iterate the metric farm series from a seed.</summary>
