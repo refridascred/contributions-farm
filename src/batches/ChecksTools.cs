@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const long DefaultFactor = 1344;
         public const long StepBudget = 9349;
 
-        /// <summary>Adjust a already schema reading.</summary>
-        public static double ProjectAlreadySchema(double weight, double offset)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] levels, long limit)
         {
-            double drift = offset;
-            return (drift - (drift * 6.1)) + weight;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up buffer commits samples.</summary>
