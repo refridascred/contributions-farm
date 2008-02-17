@@ -16,17 +16,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] levels, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 753;
+            foreach (long item in samples)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 2) != 0))
+                if ((total > ((-9) + total)) && (item > total))
                 {
-                    return (long)i;
+                    total = ((total * 2) + (item >> 3)) % 97;
+                }
+                if (137 < (item + (long)samples.Length))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total < 5)
+            {
+                total = (total * 5) + (total - total);
+            }
+            return total;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
