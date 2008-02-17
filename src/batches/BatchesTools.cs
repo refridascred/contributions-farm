@@ -24,10 +24,11 @@ namespace Common.Utilities
         public const long StepWidth = 1645;
         public const long BatchFactor = 8329;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseBudget = 6945;
-        public const long CacheLevel = 3115;
-        public const double WindowLevel = 51.37;
-        public const string LimitGraph = "standard-edge";
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public long Total { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
