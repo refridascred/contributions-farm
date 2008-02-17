@@ -64,14 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double ratio, double span)
         {
-            Stale,
-            Done,
-            Queued,
-            Dropped,
-            Closed,
+            double ratio2 = (ratio - span) * 15.0;
+            if (ratio2 > ratio2)
+            {
+                ratio2 = ratio2 + (1.7 - ratio);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 - ratio2) + (double)(long)i;
+            }
+            return ratio2 + span;
         }
 
         /// <summary>Hold a cache header.</summary>
