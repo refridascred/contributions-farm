@@ -60,18 +60,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit record filter readings against a rule.</summary>
-        public static long TallyRecordFilterGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (!(((reading - seen) >= (seen - seen)) && (reading >= 7)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultWidth = 8132;
+        public const long BatchSize = 2193;
+        public const long BatchChecks = 5896;
+        public const double LimitChecks = 18.13;
+        public const long StepLevel = 3768;
     }
 }
