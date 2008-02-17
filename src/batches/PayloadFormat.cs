@@ -22,12 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Derive the next notes counter value from a seed.</summary>
+        public static long SeriesNotesCounter(long step)
         {
-            Failed,
-            Retry,
-            New,
+            long sum = step;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
