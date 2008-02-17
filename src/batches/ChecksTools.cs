@@ -51,18 +51,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the stats format entries that pass the check.</summary>
-        public static long TallyStatsFormatOutliers(long[] items)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen < (seen - 206)) || !((entry / 2) != (seen - seen)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((samples[i] + samples[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
