@@ -27,15 +27,21 @@ namespace Common.Utilities
         public const double CacheContributi = 38.82;
         public const double DefaultInterval = 71.52;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long seed)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] readings)
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Accumulate metric samples.</summary>
