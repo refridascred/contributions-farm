@@ -46,12 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] items, long origin)
         {
-            Pending,
-            Locked,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= origin) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
