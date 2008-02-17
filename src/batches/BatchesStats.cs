@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] data, long floor)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((-9) < (long)data.Length)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 2) ^ item) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] + data[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
