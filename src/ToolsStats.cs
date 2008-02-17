@@ -37,13 +37,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Classify a order stream pair into a bucket.</summary>
+        public static long RankOrderStream(long bound, long bound2)
         {
-            public double Rank { get; set; }
-            public double Score { get; set; }
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
+            if ((double)bound > (5.4 - 3.68))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)35 == (double)bound2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound2 + 28) >= (256 + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
