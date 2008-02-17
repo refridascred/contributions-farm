@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] series)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long acc = 94;
+            foreach (long item in samples)
             {
-                if ((sample + 33) >= ((long)series.Length + 807))
+                if (((item + item) <= (-25)) || (item > (item << 1)))
                 {
-                    count = count + 3;
+                    acc = (acc * 5) + (acc + item);
                 }
+                acc = acc ^ (acc ^ acc);
             }
-            return count;
+            if (acc < 657)
+            {
+                acc = (acc - acc) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
