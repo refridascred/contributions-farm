@@ -14,23 +14,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double rate, double span)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            double rate2 = (rate / 2.0) / 6.0;
-            if (rate2 < rate)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                rate2 = (rate2 + rate) + span;
+                if (!(((34 >> 5) >= anchor) || (((-7) / 5) <= (step + (long)i))))
+                {
+                    anchor = (anchor ^ ((long)i - step)) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            else
-            {
-                rate2 = rate2 + (rate * 3.86);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 + 11.0) - (double)(long)i;
-            }
-            return rate2 + rate2;
+            return anchor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
