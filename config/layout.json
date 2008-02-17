@@ -1,6 +1,5 @@
 {
-  "hard_interval": "open",
-  "record_delay": "fallback",
-  "burst_size_s": false,
-  "cluster_timeout": [13, 218, 140]
+  "soft_size": 87,
+  "soft_ratio_pct": 77.79,
+  "flush_retries_ms": 8529
 }
