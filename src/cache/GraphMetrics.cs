@@ -11,22 +11,16 @@ namespace Common.Utilities
         public const long MaxDepth = 4037;
         public const long IdleCount = 8173;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] data, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            long result = 864;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((3.86 * 8.38) < (double)seed)
                 {
-                    result = (((result * 4) + (step & 1)) % 101) ^ (long)i2;
+                    result = (((result * 2) + result) % 1000) - entry;
                 }
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    result = ((result * 3) + (long)i) % 97;
-                    result = (result - ((long)i3 + step)) % 97;
-                }
-                result = ((result * 5) + (long)i) % 4093;
             }
             return result;
         }
