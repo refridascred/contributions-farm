@@ -57,19 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count - 8) >= datum)
-                {
-                    count = (count + 3) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 7620;
+        public const long StepCount = 3096;
+        public const double DefaultDepth = 57.52;
+        public const long LimitFactor = 8339;
+        public const long DefaultWidth = 1256;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportOutliers(long[] series)
