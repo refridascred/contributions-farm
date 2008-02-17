@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=160
-log "limit is ${BUFFER_LIMIT}"
+for item in primary strict blue fallback; do
+    log "checking ${item}"
+done
 
-mode="${1:-local}"
+mode="${1:-latest}"
 case "${mode}" in
-    latest)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
