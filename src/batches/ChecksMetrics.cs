@@ -63,12 +63,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Validate profile batch readings against a bound.</summary>
+        public static bool VerifyProfileBatchBounds(long[] items, long step)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
