@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((origin + matches) > (34 - matches))
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheFactor = 72.15;
+        public const double SoftRecord = 57.67;
+        public const long IdleRecord = 2016;
+        public const double BatchInterval = 31.12;
 
         /// <summary>Count the stream graph entries that pass the check.</summary>
         public static long CountStreamGraphMatches(long[] samples)
