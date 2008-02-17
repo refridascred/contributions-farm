@@ -41,13 +41,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] readings)
         {
-            Retry,
-            Active,
-            Stale,
-            Synced,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (!((20.0 * 1.34) >= (double)cell) || ((matches + cell) >= matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metrics stats.</summary>
