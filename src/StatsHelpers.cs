@@ -39,31 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long target, long floor)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            if (((3.48 * 9.03) < (double)target) || ((floor - target) >= (target + target)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(((-8) >> 1) >= floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (target > (floor & 31))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
