@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long target, long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] values)
         {
-            long slot = target - seed;
-            if ((target < (target + slot)) || (slot > (seed * 5)))
+            long anchor = 5;
+            foreach (long item in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed >> 4) == (target & 255))
+                if (anchor >= (7 * 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    anchor = (anchor + (item - item)) % 101;
                 }
             }
+            if (anchor < 188)
+            {
+                anchor = anchor ^ ((-658) ^ anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Match up stream samples.</summary>
