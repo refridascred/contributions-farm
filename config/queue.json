@@ -1,13 +1,7 @@
 {
-  "compress": true,
-  "max_size": {
-    "stats_interval": 100,
-    "poll_ttl_ms": false,
-    "sync_interval_count": "open",
-    "sync_retries": [11, 133, 292, 49],
-    "record_ttl": [192, 456]
-  },
-  "poll_delay": 43.68,
-  "retry_retries_ms": "cached",
-  "cache_ttl": 8757
+  "idle_delay": 3041,
+  "dry_run": 60.87,
+  "filter_window": 9638,
+  "cache_ratio": 34.71,
+  "flush_window_pct": 16.85
 }
