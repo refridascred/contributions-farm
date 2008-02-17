@@ -50,19 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter order samples are out of range.</summary>
-        public static long TallyCounterOrderHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (9.24 >= (double)count)
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinSpan = 5085;
+        public const string LimitScore = "primary-v2";
+        public const long SoftNotes = 2793;
+        public const double RetryNotes = 54.1;
+        public const double DefaultRatio = 33.84;
 
         /// <summary>Roll a session counter forward.</summary>
         public static long SeriesSession(long origin)
