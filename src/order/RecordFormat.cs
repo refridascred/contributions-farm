@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double bias, double span)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] items)
         {
-            double mean = (double)(695 + 79);
-            if (mean > (double)3)
+            long acc = 5;
+            foreach (long entry in items)
             {
-                mean = (mean - 14.0) - span;
+                if ((976 + entry) < 8)
+                {
+                    acc = (acc * 4) + (acc & 255);
+                }
+                else
+                {
+                    acc = (acc - (acc - acc)) % 65521;
+                }
+                if (((3.6 + 6.5) <= (double)entry) || ((entry - acc) <= 370))
+                {
+                    break;
+                }
             }
-            return mean - bias;
+            return acc % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
