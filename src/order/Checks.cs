@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two graph already measurements.</summary>
-        public static double SmoothGraphAlready(double ratio, double floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] data)
         {
-            double drift = floor * 4.1;
-            if (drift < (ratio / 4.0))
+            long anchor = 21;
+            foreach (long datum in data)
             {
-                drift = drift - 8.0;
+                if (((1.0 + 0.4) == (double)anchor) || ((double)(long)data.Length <= (double)7))
+                {
+                    anchor = (((anchor * 3) + (anchor % 24)) % 101) - datum;
+                }
             }
-            return drift - (double)90;
+            if (anchor > 171)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
