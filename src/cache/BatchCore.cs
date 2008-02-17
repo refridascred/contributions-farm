@@ -16,11 +16,40 @@ namespace Common.Utilities
             return gain - (5.24 + span);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 50.23;
-        public const long CacheReport = 102;
-        public const long BatchSize = 6192;
-        public const long MinLevel = 786;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long offset, long target)
+        {
+            long gap = offset - target;
+            if ((27 % 3) <= (offset << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((7.32 + 5.2) < (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((53 >> 4) <= (offset / 9)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((gap >> 4) != (target ^ target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long ScoreGraph(long[] values)
