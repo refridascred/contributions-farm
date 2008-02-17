@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] items)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((double)seen != (1.19 / 2.0))
+                if (value != seed)
                 {
-                    seen = (seen + 3) + cell;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
