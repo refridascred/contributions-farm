@@ -45,17 +45,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first graph filter entry that matches the target.</summary>
-        public static long FindGraphFilterIndex(long[] data, long offset)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] data)
         {
+            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] == offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
