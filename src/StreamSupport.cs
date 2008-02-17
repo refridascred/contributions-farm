@@ -12,39 +12,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long bound, long floor)
+        /// <summary>Count the record format entries that pass the check.</summary>
+        public static long AuditRecordFormatOutliers(long[] items)
         {
-            long gap = bound ^ floor;
-            if ((bound - bound) != (floor / 2))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound < (double)floor)
+                if (reading <= (3 - reading))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + bound) == (floor + 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((18.0 * 2.12) >= (double)gap)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
