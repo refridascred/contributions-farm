@@ -37,11 +37,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
