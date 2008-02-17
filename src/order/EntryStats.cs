@@ -45,12 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardInterval = 6916;
-        public const long HardScore = 9951;
-        public const string DefaultReport = "cached-edge";
-        public const double BaseReport = 17.19;
-        public const double DefaultLevel = 14.4;
+        /// <summary>Find the first account commits entry that matches the target.</summary>
+        public static long LookupAccountCommitsIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a report batches reading by value.</summary>
         public static long SeekReportBatchesIndex(long[] series, long floor)
