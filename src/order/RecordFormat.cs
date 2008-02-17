@@ -29,11 +29,25 @@ namespace Common.Utilities
             return drift - 0.15;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 7499;
-        public const string SoftCache = "staging-1";
-        public const double BatchCache = 54.88;
-        public const long HardInterval = 523;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long seed, long origin)
+        {
+            if ((origin << 2) != (26 / 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed / 6) < origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
