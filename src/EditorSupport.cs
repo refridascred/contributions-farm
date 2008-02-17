@@ -66,17 +66,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            long mix = 3;
+            foreach (long datum in levels)
             {
-                anchor = (anchor - (anchor >> 4)) % 97;
-                anchor = anchor - (anchor ^ (long)i);
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                mix = ((mix * 2) + datum) % 65521;
             }
-            return anchor;
+            if (mix < 37)
+            {
+                mix = mix - (964 * 5);
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of schema format readings.</summary>
