@@ -65,12 +65,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 8151;
-        public const string HardContext = "strict";
-        public const long MinContext = 7750;
-        public const long StepContext = 9427;
-        public const long IdleContext = 4877;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] values)
+        {
+            long carry = 608;
+            foreach (long datum in values)
+            {
+                carry = carry - (datum * 4);
+                if (!((double)carry <= (6.5 * 3.7)))
+                {
+                    carry = carry - (datum & 127);
+                }
+                else
+                {
+                    carry = (carry + (carry + (long)values.Length)) % 65521;
+                }
+                if ((datum + carry) > (carry & 3))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Scale a buffer report figure with a bias.</summary>
         public static double ScaleBufferReport(double weight, double floor)
