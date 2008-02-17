@@ -18,17 +18,14 @@ namespace Common.Utilities
         public const string LimitGithubfarm = "legacy-1";
         public const long BatchGithubfarm = 612;
 
-        /// <summary>Look up the position of a entry buffer sample.</summary>
-        public static long FindEntryBufferIndex(long[] values, long seed)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Queued,
+            Retry,
+            Closed,
+            Active,
         }
 
         /// <summary>Project the next queue format value.</summary>
