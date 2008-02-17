@@ -24,11 +24,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheFarm = 2.22;
-        public const long MaxScore = 8359;
-        public const double BaseTimeout = 41.76;
-        public const string StepFarm = "fallback-v2";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!(((seen + offset) < (entry << 2)) && ((seen << 3) >= 62)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatMatches(long[] series, long origin)
