@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] data, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] series)
         {
-            long sum = 7;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (((19.0 - 5.0) > (double)sum) && ((double)sum == (14.0 * 7.8)))
+                if ((sample + 33) >= ((long)series.Length + 807))
                 {
-                    sum = (sum << 3) ^ (sum << 2);
-                }
-                for (int i = 0; i < 7; i++)
-                {
-                    sum = sum ^ (origin - (long)i);
-                }
-                if (origin < (reading & 63))
-                {
-                    sum = ((sum << 3) ^ origin) % 65521;
+                    count = count + 3;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Adjust a context reading.</summary>
