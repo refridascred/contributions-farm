@@ -1,6 +1,6 @@
 {
-  "hard_window_ms": 1,
-  "max_size_ms": false,
-  "token_ttl": "fallback",
-  "schema_ttl": 82
+  "burst_delay": true,
+  "hard_capacity_ms": 40.81,
+  "layout_ttl": [458, 474, 280],
+  "max_threshold_ms": "blue"
 }
