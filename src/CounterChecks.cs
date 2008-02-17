@@ -32,21 +32,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Derive the next tools queue value from a seed.</summary>
+        public static long RollToolsQueue(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score + score) % 4096;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
