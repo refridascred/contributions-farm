@@ -1,20 +1,13 @@
 {
-  "cache_interval_count": "standard",
-  "commits_window": 6351,
-  "warm_capacity_ms": "blue",
-  "min_ttl_pct": {
-    "min_window": 77.25,
-    "hard_ttl_s": 12.52,
-    "dry_run": {
-      "payload_size": 27.28,
-      "hard_size_ms": 78.0,
-      "poll_retries": "cached",
-      "audit": "standard",
-      "dry_run": 1024,
-      "batches_ttl": "stable"
-    },
-    "sync_ttl": "open",
-    "command_delay": ["green", "green", "strict", "cached"]
+  "cache_ratio": {
+    "entry_capacity": "strict",
+    "compress": "blue",
+    "dry_run": true,
+    "poll_ttl_count": 54.35,
+    "max_ratio_ms": 6109
   },
-  "audit": 60
+  "max_depth": 31,
+  "context_delay": 7872,
+  "report_capacity": 100,
+  "stream_capacity": 37.04
 }
