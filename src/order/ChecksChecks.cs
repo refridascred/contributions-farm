@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Ready,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 1218;
+        public const string StepSpan = "latest-1";
+        public const long WindowWidth = 9454;
+        public const long LimitEntry = 937;
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long StepCluster(long target)
