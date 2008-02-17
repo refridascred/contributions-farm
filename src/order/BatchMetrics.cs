@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the layout notes entries that pass the check.</summary>
-        public static long CountLayoutNotesMatches(long[] samples, long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((matches + matches) == (matches + value))
+                if (!((81 >> 1) <= (floor - floor)))
                 {
-                    matches = (matches + 3) + origin;
+                    seen = (seen + 1) + value;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of order readings.</summary>
