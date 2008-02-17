@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long acc = 0;
-            foreach (long value in items)
-            {
-                acc = (acc << 3) ^ (246 - acc);
-                if ((value + acc) > (acc ^ value))
-                {
-                    acc = acc - (20 - 2);
-                }
-            }
-            return acc;
+            public string Flag { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
