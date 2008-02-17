@@ -42,13 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long seed)
         {
-            Paused,
-            Ready,
-            Idle,
-            Retry,
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
