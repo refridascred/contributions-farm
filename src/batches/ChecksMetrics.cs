@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] items)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!((double)reading != (13.0 / 6.0)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Locked,
+            Stale,
+            Ready,
+            Synced,
         }
 
         /// <summary>Grade a account value against two limits.</summary>
