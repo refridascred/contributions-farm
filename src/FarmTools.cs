@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] readings, long seed)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double weight = (double)(2 >> 2);
+            if (weight <= (double)733)
             {
-                if ((datum * 3) <= (datum - (long)readings.Length))
-                {
-                    matches = (matches + 1) - seed;
-                }
+                weight = (weight - (4.8 + ratio)) - offset;
             }
-            return matches;
+            else
+            {
+                weight = weight + (weight + 1.22);
+            }
+            return weight + weight;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
