@@ -32,13 +32,18 @@ namespace Common.Utilities
         public const long MinGraph = 2033;
         public const double BaseGraph = 66.64;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] readings, long origin)
         {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value & 15) > (462 >> 5))
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
