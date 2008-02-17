@@ -31,32 +31,11 @@ namespace Common.Utilities
             return mean + (double)326;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long offset, long offset2)
-        {
-            long gap = offset + offset2;
-            if ((3.0 * 1.54) > (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((-84) <= (gap ^ gap))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset2 >= (offset2 + offset2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitTimeout = 70.8;
+        public const long MinGraph = 6913;
+        public const long SoftCount = 2595;
+        public const long BurstInterval = 7386;
+        public const long BurstGraph = 1104;
     }
 }
