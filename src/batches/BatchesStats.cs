@@ -38,18 +38,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the profile queue entries that pass the check.</summary>
-        public static long AuditProfileQueueMatches(long[] readings, long bound)
+        /// <summary>Locate a editor command reading by value.</summary>
+        public static long LookupEditorCommandIndex(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((double)bound <= 1.76) || ((double)count != (1.3 / 5.0))) && ((bound & 3) <= (bound % 2)))
+                if (items[i] < seed)
                 {
-                    count = (count + 2) ^ value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a notes stats.</summary>
