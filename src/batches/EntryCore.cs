@@ -40,18 +40,18 @@ namespace Common.Utilities
         public const string BurstScore = "latest-1";
         public const long BaseBudget = 4429;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] series, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] levels, long offset)
         {
-            long mark = 48;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (((9 ^ cell) != (mark ^ mark)) || ((1.1 / 5.0) >= (double)mark))
+                if (((offset - offset) == (75 * 5)) || ((8 ^ entry) <= offset))
                 {
-                    mark = (mark * 3) + step;
+                    count = count + 2;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Accumulate route samples.</summary>
