@@ -70,15 +70,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double bias, double bias2)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] levels, long bound)
         {
-            double scale = bias2;
-            if (scale >= bias2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale - 0.32;
+                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - bias;
+            return -1;
         }
 
         /// <summary>Audit token farm readings against a rule.</summary>
