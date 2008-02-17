@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the contributi channel series from a seed.</summary>
-        public static long RollContributiChannel(long step)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
