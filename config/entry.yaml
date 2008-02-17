@@ -1,10 +1,13 @@
 # entry settings
-hard_interval_s:
-  - 45
-  - 478
-  - 218
-  - 359
-sync_depth: stable
-base_ratio_count: 69.57
-cache_ratio: true
-editor_capacity: false
+base_ratio_s: 250
+base_ttl: staging
+strict:
+  - blue
+  - open
+  - primary
+batch_retries_count: 76
+poll_capacity_ms:
+  - stable
+  - legacy
+  - local
+verbose: 97.25
