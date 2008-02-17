@@ -62,19 +62,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] items, long target)
+        /// <summary>Count schema queue pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaQueueCount(long[] values)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
