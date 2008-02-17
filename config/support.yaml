@@ -1,21 +1,11 @@
 # support settings
-warm_ratio: 39.32
-default_depth_pct: 14.47
-session_size: false
-warm_ttl: local
-idle_window:
-  checks_limit: true
-  base_ttl_count:
-    - 25
-    - 410
-    - 36
-    - 53
-  channel_delay: 100
-  cache_timeout_s: latest
-  hard_limit: 74
-  warm_ratio:
-    layout_interval: stable
-    base_interval: false
-    hard_interval: standard
-    batch_limit: 5304
-    poll_capacity: legacy
+soft_capacity_ms: 60
+contributi_timeout:
+  - 358
+  - 184
+  - 257
+entry_timeout: true
+burst_retries_pct:
+  - 395
+  - 269
+  - 95
