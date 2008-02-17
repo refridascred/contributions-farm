@@ -66,38 +66,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long offset, long origin)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] levels, long origin)
         {
-            if (origin <= (origin & 127))
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin & 1) >= (origin / 3))
+                if (datum < origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((origin - offset) < 397))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset << 2) > (offset ^ 701))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
