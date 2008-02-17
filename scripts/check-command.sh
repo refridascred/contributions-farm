@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy fallback eu-west; do
-    log "checking ${item}"
-done
-
-mode="${1:-eu-west}"
+mode="${1:-blue}"
 case "${mode}" in
-    fallback)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=226
+log "limit is ${COMMAND_LIMIT}"
