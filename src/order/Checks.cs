@@ -64,17 +64,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] readings, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
+                if (tally < (tally >> 5))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + value;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
