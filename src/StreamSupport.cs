@@ -16,12 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] levels, long floor)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] levels, long bound)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] > floor)
+                if ((levels[i] >= bound) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
