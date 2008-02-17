@@ -35,13 +35,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] data, long seed)
         {
-            Draft,
-            Closed,
-            Active,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm commits samples.</summary>
