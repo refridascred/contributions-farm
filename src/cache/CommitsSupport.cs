@@ -20,19 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double weight, double floor)
+        /// <summary>Match up editor order samples.</summary>
+        public static long PairEditorOrderCount(long[] values)
         {
-            double bias = (weight + weight) - weight;
-            if (bias < (floor / 7.0))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias - (floor * 7.3);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias + bias;
+            return tally;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
