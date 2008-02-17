@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] series)
+        /// <summary>Count metrics session pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsSessionCount(long[] items)
         {
-            long anchor = 940;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)anchor >= (12.0 / 6.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor + ((long)series.Length % 60)) % 255) ^ entry;
+                    if ((items[i] + items[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 129)
-            {
-                anchor = anchor ^ (596 >> 3);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
