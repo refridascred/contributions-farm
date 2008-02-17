@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Look up the position of a editor tools sample.</summary>
+        public static long SeekEditorToolsIndex(long[] levels, long seed)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((levels[i] == seed) && ((levels[i] % 5) == 0))
                 {
-                    long bound = anchor;
-                    anchor = anchor - ((long)i2 ^ bound);
+                    return (long)i;
                 }
-                if ((double)step > (7.5 / 4.0))
-                {
-                    anchor = (anchor ^ (2 / 5)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the metrics state values.</summary>
