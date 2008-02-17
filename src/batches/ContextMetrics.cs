@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] data)
+        /// <summary>Count the graph notes entries that pass the check.</summary>
+        public static long TallyGraphNotesOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (!(((double)matches != (4.0 - 5.0)) && (matches <= (matches + 950))))
+                if ((double)count != (double)cell)
                 {
-                    matches = (matches + 2) + datum;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
