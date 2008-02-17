@@ -1,8 +1,5 @@
 {
-  "warm_window": "eu-west",
-  "hard_ttl_pct": "blue",
-  "default_limit": ["edge", "standard", "cached", "standard"],
-  "warm_delay_count": ["staging", "fallback"],
-  "buffer_ttl": "stable",
-  "githubfarm_threshold": ["cached", "green"]
+  "dry_run": true,
+  "layout_window": 2664,
+  "audit": 12.7
 }
