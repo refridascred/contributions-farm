@@ -77,13 +77,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Validate buffer stats readings against a bound.</summary>
+        public static bool CheckBufferStatsBounds(long[] series, long step)
         {
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
