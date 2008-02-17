@@ -12,21 +12,16 @@ namespace Common.Utilities
         public const long BaseChecks = 9501;
         public const long BaseTimeout = 1088;
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry << 2) ^ carry) % 255;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
