@@ -31,20 +31,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the context report series from a seed.</summary>
-        public static long StepContextReport(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((((long)i - state) >= (state & 255)) || ((offset + state) > offset))
-                {
-                    state = ((state * 2) + (offset - state)) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstDepth = "legacy-v2";
+        public const long StepFarm = 3537;
+        public const string LimitFarm = "stable-1";
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long TallySessionGaps(long[] values)
