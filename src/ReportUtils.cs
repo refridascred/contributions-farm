@@ -14,12 +14,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 1519;
-        public const string RetryCounter = "fallback-edge";
-        public const string IdleCounter = "staging-1";
-        public const long BurstCounter = 9536;
-        public const long LimitCounter = 5780;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] readings, long origin)
+        {
+            long sum = 682;
+            foreach (long reading in readings)
+            {
+                if (origin >= (sum + origin))
+                {
+                    sum = (sum - (reading + origin)) % 101;
+                }
+                else
+                {
+                    sum = sum - (reading / 8);
+                }
+                if ((sum & 127) != (sum % 2))
+                {
+                    break;
+                }
+            }
+            if (sum > 207)
+            {
+                sum = sum ^ (origin % 3);
+            }
+            return sum % 97;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long CombineMetrics(long[] readings)
