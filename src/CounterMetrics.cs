@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] levels)
-        {
-            long carry = 67;
-            foreach (long item in levels)
-            {
-                if ((carry + 64) == (carry ^ carry))
-                {
-                    carry = (carry + (carry + carry)) % 65521;
-                }
-                else
-                {
-                    carry = (carry ^ (carry - item)) % 1000;
-                }
-                if ((916 & 3) == (carry - carry))
-                {
-                    break;
-                }
-            }
-            if (carry > 772)
-            {
-                carry = ((carry << 3) ^ (carry / 6)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 3457;
+        public const long SoftRecord = 1794;
+        public const long IdleWidth = 23;
+        public const long MaxRecord = 8349;
 
         /// <summary>Adjust a layout reading.</summary>
         public static double AdjustLayout(double ratio, double floor)
