@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 19; i++)
-            {
-                total = total + (94 + total);
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinSupport = "alpha-edge";
+        public const long HardSupport = 657;
+        public const long MaxCount = 776;
+        public const long BurstSupport = 812;
 
         /// <summary>Measure how many contributi metric samples are out of range.</summary>
         public static long AuditContributiMetricOutliers(long[] samples, long limit)
