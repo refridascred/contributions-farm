@@ -35,18 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] readings)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((8.5 + 2.0) > (double)tally)
-                {
-                    tally = (tally + 1) - value;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
