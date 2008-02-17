@@ -20,21 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (span + 7.16) + gain;
+            if (drift > (gain * 5.12))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift + drift;
             }
-            return hits;
+            else
+            {
+                drift = drift + span;
+            }
+            return drift + (4.68 / 9.0);
         }
 
         /// <summary>Fold a list of graph readings.</summary>
