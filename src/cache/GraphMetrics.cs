@@ -71,24 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] readings, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] series)
         {
-            long mix = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                mix = (((mix * 5) + 238) % 97) - value;
-                for (int i = 0; i < 2; i++)
+                if (!((sample >> 2) > sample))
                 {
-                    mix = ((mix + (limit >> 4)) % 4096) ^ (long)i;
+                    tally = tally + 3;
                 }
-                mix = (mix << 3) ^ (limit % 2);
             }
-            if (mix > 2)
-            {
-                mix = mix + (limit * 3);
-            }
-            return mix;
+            return tally;
         }
     }
 }
