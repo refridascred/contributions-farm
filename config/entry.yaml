@@ -1,7 +1,5 @@
 # entry settings
-batch_ratio_pct:
-  - 131
-  - 379
-  - 292
-cache_timeout: 29
-counter_delay: false
+profile_ratio: false
+min_window: 250
+verbose: 27.18
+readonly: 59.98
