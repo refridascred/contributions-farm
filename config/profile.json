@@ -1,6 +1,7 @@
 {
-  "retry_threshold_pct": ["standard", "strict", "open", "staging"],
-  "persist": "primary",
-  "command_window": 6,
-  "hard_size_count": "fallback"
+  "context_threshold": 35.06,
+  "soft_timeout_s": ["cached", "edge"],
+  "batch_interval_count": 60,
+  "poll_ratio_count": true,
+  "sync_limit_pct": "staging"
 }
