@@ -44,17 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a window context sample.</summary>
-        public static long LookupWindowContextIndex(long[] data, long offset)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Check that every batch filter entry stays within the limit.</summary>
