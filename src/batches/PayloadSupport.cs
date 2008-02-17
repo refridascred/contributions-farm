@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowInterval = "standard-edge";
-        public const long IdleScore = 5043;
-        public const string LimitTimeout = "cached";
-        public const long CacheProfile = 7110;
+        /// <summary>Compare every pair of support layout readings.</summary>
+        public static long OverlapSupportLayoutCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
