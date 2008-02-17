@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] levels, long seed)
+        /// <summary>Fold a list of payload stream readings.</summary>
+        public static long TotalPayloadStream(long[] samples, long bound)
         {
-            long acc = 32;
-            foreach (long datum in levels)
+            long state = -504;
+            foreach (long cell in samples)
             {
-                if ((double)acc < (3.9 + 2.0))
-                {
-                    acc = acc - (seed + seed);
-                }
-                if ((7.88 - 9.1) == (double)datum)
-                {
-                    break;
-                }
+                state = ((state - state) - cell) + bound;
             }
-            return acc;
+            return state % 97;
         }
 
         /// <summary>Digest a series of context entries.</summary>
