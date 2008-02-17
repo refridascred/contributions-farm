@@ -45,13 +45,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] data, long offset)
         {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((tally / 8) >= (offset + 98))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
