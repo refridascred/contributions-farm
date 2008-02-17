@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] items, long origin)
+        /// <summary>Grade a channel buffer value against two limits.</summary>
+        public static long GradeChannelBuffer(long target, long target2)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            if (8.0 <= (double)target)
             {
-                if ((double)origin > 3.22)
+                return 0;
+            }
+            else
+            {
+                if (!((target2 * 2) >= target))
                 {
-                    seen = (seen + 2) + entry;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the batches kind values.</summary>
