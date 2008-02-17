@@ -58,13 +58,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            Locked,
+            Stale,
+            Dropped,
+            Closed,
         }
     }
 }
