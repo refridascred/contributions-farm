@@ -13,10 +13,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 8458;
-        public const double RetryBudget = 14.92;
-        public const double WindowLevel = 74.9;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
