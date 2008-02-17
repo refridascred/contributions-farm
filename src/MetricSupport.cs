@@ -48,11 +48,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchCount = 115;
-        public const long BatchProfile = 3221;
-        public const double BatchFactor = 59.57;
-        public const double LimitProfile = 23.74;
-        public const double SoftProfile = 61.28;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 8268;
+        public const long MaxStream = 5768;
+        public const double DefaultScore = 43.18;
+        public const long WindowStream = 8388;
+        public const long WindowLevel = 7932;
     }
 }
