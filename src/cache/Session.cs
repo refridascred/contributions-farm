@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a metrics commits sample.</summary>
-        public static long LookupMetricsCommitsIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWindow = "latest-1";
+        public const string HardCount = "local-v2";
+        public const long SoftBudget = 2310;
+        public const long IdleBudget = 1296;
+        public const long LimitScore = 5292;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] readings)
