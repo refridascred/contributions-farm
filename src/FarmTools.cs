@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count record entry pairs that satisfy a relation.</summary>
-        public static long MatchRecordEntryCount(long[] data)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = scale;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = (gain - span) + (double)(long)i;
             }
-            return seen;
+            return gain + 5.28;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
