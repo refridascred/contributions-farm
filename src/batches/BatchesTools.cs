@@ -19,13 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double bias, double offset)
         {
-            Pending,
-            Synced,
-            Active,
-            Stale,
+            double load = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (load + load)) - (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
