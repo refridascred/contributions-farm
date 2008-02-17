@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepFactor = "legacy";
-        public const long StepSpan = 3092;
-        public const string CacheTimeout = "primary-1";
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsMatches(long[] items, long seed)
