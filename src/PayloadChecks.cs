@@ -35,13 +35,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] levels, long floor)
         {
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of token entries.</summary>
