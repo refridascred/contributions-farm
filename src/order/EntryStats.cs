@@ -68,13 +68,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long offset)
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((long)i < (183 + anchor))
+                {
+                    anchor = (anchor - (long)i) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (offset & 63)) % 101;
+                    anchor = anchor - (anchor >> 3);
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
