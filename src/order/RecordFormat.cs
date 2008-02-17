@@ -23,19 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (((long)data.Length ^ floor) > (cell & 63))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseGraph = 0.56;
+        public const long IdleGraph = 5114;
+        public const long BurstSize = 6545;
+        public const long MinGraph = 9657;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long CombineFarm(long[] readings, long step)
