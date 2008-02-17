@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxWidth = 3872;
-        public const long IdleBatches = 4729;
-        public const string StepBatches = "cached";
-        public const double StepCount = 9.61;
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] values, long bound)
+        {
+            long mix = -34;
+            foreach (long reading in values)
+            {
+                if (reading <= mix)
+                {
+                    mix = (mix - ((long)values.Length >> 4)) - bound;
+                }
+                else
+                {
+                    mix = (mix - reading) % 101;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long WeighContext(long[] data)
