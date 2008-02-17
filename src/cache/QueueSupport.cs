@@ -24,19 +24,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] readings, long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((34 >> 5) >= anchor) || (((-7) / 5) <= (step + (long)i))))
+                if (readings[i] == limit)
                 {
-                    anchor = (anchor ^ ((long)i - step)) % 97;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count the tools stream entries that pass the check.</summary>
