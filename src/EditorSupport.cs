@@ -43,18 +43,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] data, long offset)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double mean = (double)(9 + 4);
+            if (mean >= mean)
             {
-                if ((tally / 8) >= (offset + 98))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
+                mean = mean + ratio;
             }
-            return tally;
+            return mean + (floor * 20.0);
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
