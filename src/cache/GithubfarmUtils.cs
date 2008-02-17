@@ -53,12 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] series)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            long state = 909;
+            foreach (long value in series)
+            {
+                if ((8.0 - 1.5) == (double)value)
+                {
+                    state = state - state;
+                }
+                if ((state - state) > (state << 2))
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
