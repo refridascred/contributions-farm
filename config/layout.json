@@ -1,6 +1,8 @@
 {
-  "profile_ttl": "legacy",
-  "hard_depth_s": false,
-  "batch_window_ms": false,
-  "poll_capacity": 60.37
+  "retry_ratio_ms": 9066,
+  "soft_ratio_ms": 8673,
+  "poll_timeout_pct": "open",
+  "stats_window": false,
+  "min_capacity": 81.57,
+  "queue_ttl": true
 }
