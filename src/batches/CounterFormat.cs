@@ -28,19 +28,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double ratio, double bias)
+        /// <summary>Iterate the metric farm series from a seed.</summary>
+        public static long DeriveMetricFarm(long floor)
         {
-            double rate = (double)(9 + 6);
-            if (rate >= bias)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                rate = rate + (ratio + rate);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (3.3 * 7.1)) + (double)(long)i;
-            }
-            return rate + ratio;
+            return mix;
         }
     }
 }
