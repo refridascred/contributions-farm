@@ -1,6 +1,9 @@
-id,owner,count
-1,728,797
-2,89.27,74.84
-3,19.02,legacy
-4,58,primary
-5,33.02,42.08
+id,ratio,label,token,region
+1,14.35,blue,379,eu-west
+2,463,848,138,495
+3,75,local,staging,78.85
+4,213,559,primary,fallback
+5,8.35,eu-west,547,110
+6,4.62,blue,827,9.59
+7,495,7.2,996,standard
+8,47.67,480,67.51,61.44
