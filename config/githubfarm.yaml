@@ -1,7 +1,4 @@
 # githubfarm settings
-soft_depth: 30
-soft_interval_ms: local
-idle_threshold_pct: 1024
-account_retries: 40
-burst_delay_pct: 46
-warm_timeout_ms: strict
+readonly: eu-west
+hard_threshold: true
+min_capacity_pct: blue
