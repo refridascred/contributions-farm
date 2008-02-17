@@ -15,14 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] readings, long target)
         {
-            Done,
-            Retry,
-            Paused,
-            Pending,
-            New,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value & 7) != (matches + target))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many tools notes samples are out of range.</summary>
