@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank cluster support input into a small class.</summary>
-        public static long ClassifyClusterSupport(long seed, long target)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long seed, long step)
         {
-            if (8 > target)
+            if ((seed - seed) <= (seed + seed))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (((double)21 == (double)target) && (seed > (seed + target)))
+                if (step >= seed)
                 {
                     return 8;
                 }
                 else
                 {
-                    if (seed < target)
+                    if (177 > (step + seed))
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        return 1;
+                        if ((2.24 * 18.0) == (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
