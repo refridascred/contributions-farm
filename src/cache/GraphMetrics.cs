@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = (carry << 2) ^ (9 - limit);
+                if (92 < ((long)i - 458))
                 {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry ^ (limit - carry);
+                    break;
                 }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Hold a account entry.</summary>
