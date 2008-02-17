@@ -19,31 +19,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Classify a editor command pair into a bucket.</summary>
-        public static long GradeEditorCommand(long step, long origin)
+        /// <summary>Audit token cluster readings against a rule.</summary>
+        public static long TallyTokenClusterOutliers(long[] samples)
         {
-            if ((double)origin >= (7.6 / 7.0))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((origin % 5) <= (step + origin)) || (origin >= (origin - 753)))
+                if ((entry + entry) < 741)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin * 4) != (7 + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
