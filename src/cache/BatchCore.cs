@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a cache support figure with a bias.</summary>
-        public static double ScaleCacheSupport(double scale, double span)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            double gain = (double)(38 & 255);
-            if (gain > span)
-            {
-                gain = gain - scale;
-            }
-            return gain - (5.24 + span);
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
