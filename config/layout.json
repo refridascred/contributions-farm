@@ -1,7 +1,16 @@
 {
-  "flush_threshold": 3304,
-  "order_capacity": 23.24,
-  "soft_window": 29,
-  "stats_depth": 30,
-  "enabled": true
+  "compress": "fallback",
+  "verbose": "latest",
+  "route_window": {
+    "format_retries": 16.91,
+    "base_window_s": 53,
+    "max_retries_s": {
+      "notes_capacity": "local",
+      "cache_depth_ms": [426, 3, 174, 318],
+      "min_ttl_s": ["legacy", "standard", "strict", "staging"],
+      "verbose": 450,
+      "burst_window_ms": 80,
+      "persist": "edge"
+    }
+  }
 }
