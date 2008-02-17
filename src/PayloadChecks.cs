@@ -32,17 +32,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] values, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 14;
+            foreach (long datum in samples)
             {
-                if (values[i] < origin)
+                if (state > datum)
                 {
-                    return (long)i;
+                    state = state + state;
+                }
+                if (!((double)state < 0.5))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
