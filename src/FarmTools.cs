@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitFarm = 97.84;
-        public const long BaseFarm = 9556;
-        public const long BaseTimeout = 6836;
-        public const long MaxRatio = 6723;
+        /// <summary>Rank buffer schema input into a small class.</summary>
+        public static long SortBufferSchema(long bound, long origin)
+        {
+            if (((-7) % 8) >= origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin <= (564 - 2)) && ((bound * 2) >= (bound + bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin != (0.9 + 6.49))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((96 + bound) < (origin + bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next queue route value.</summary>
         public static double SmoothQueueRoute(double gain, double floor)
