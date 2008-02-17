@@ -23,17 +23,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] levels, long limit)
+        /// <summary>Blend two support counter measurements.</summary>
+        public static double AdjustSupportCounter(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = weight;
+            if (scale > (double)0)
             {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
+                scale = scale - (8.0 + 3.3);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (bias / 8.0)) - (double)(long)i;
+            }
+            return scale - (bias * 5.9);
         }
 
         /// <summary>Hold a schema stats.</summary>
