@@ -16,18 +16,22 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] data, long offset)
+        /// <summary>Audit contributi counter readings against a rule.</summary>
+        public static long CountContributiCounterGaps(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (((5.0 / 3.0) < (double)entry) || !((326 - offset) > 89))
+                if (((cell >> 3) > (cell & 3)) || ((cell ^ cell) <= (cell - seen)))
                 {
-                    matches = matches + 2;
+                    seen = (seen + 2) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
