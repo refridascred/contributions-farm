@@ -1,5 +1,19 @@
 # support settings
-retry_size: legacy
-default_size_count: 10.77
-strict: 3604
-readonly: 20
+min_window:
+  farm_window: 250
+  entry_depth: 8.3
+  batch_retries_count: true
+  dry_run: eu-west
+  base_timeout_count: blue
+  hard_size_count:
+    - 203
+    - 417
+    - 463
+    - 225
+sync_ratio:
+  - 452
+  - 369
+burst_timeout_s: 80.05
+retry_ttl:
+  - 367
+  - 283
