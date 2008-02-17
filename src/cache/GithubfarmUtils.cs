@@ -42,20 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route cache series from a seed.</summary>
-        public static long RollRouteCache(long limit)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double weight, double floor)
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((7 - score) < limit)
-                {
-                    continue;
-                }
-                score = (score + limit) % 101;
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            double scale = (double)(3 ^ 403);
+            return ((scale + scale) + weight) + floor;
         }
     }
 }
