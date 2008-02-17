@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] items, long bound)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long origin)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((item & 3) != (bound & 255))
+                if (!((599 % 24) >= (sum << 2)))
                 {
-                    seen = seen + 3;
+                    sum = ((sum * 5) + ((-6) + origin)) % 97;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
