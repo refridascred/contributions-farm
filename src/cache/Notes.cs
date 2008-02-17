@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] levels, long seed)
         {
-            Done,
-            Ready,
-            Idle,
-            Active,
-            Draft,
+            long anchor = 340;
+            foreach (long cell in levels)
+            {
+                anchor = (anchor + (cell * 4)) % 101;
+                if ((2.0 * 4.0) == (double)seed)
+                {
+                    anchor = anchor ^ (-14);
+                }
+            }
+            if (anchor < 87)
+            {
+                anchor = (anchor ^ (anchor & 3)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
