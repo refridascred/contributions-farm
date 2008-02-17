@@ -35,24 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] levels, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            long anchor = 41;
+            foreach (long datum in levels)
             {
-                if ((floor * 3) <= total)
+                if ((anchor & 1) == (floor + anchor))
                 {
-                    total = ((total << 2) ^ (floor >> 1)) % 1000;
+                    anchor = (anchor + (anchor + anchor)) - datum;
                 }
-                total = (total + (12 / 4)) % 1000;
-                if (floor <= (total + floor))
-                {
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 65521;
+                anchor = ((anchor * 5) + (floor + anchor)) % 65521;
             }
-            return total;
+            return anchor;
         }
     }
 }
