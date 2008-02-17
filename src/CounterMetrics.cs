@@ -20,23 +20,22 @@ namespace Common.Utilities
             return drift + (double)391;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] values)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] samples)
         {
-            long mix = -66;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                mix = (mix * 4) + (cell / 2);
-                if ((6 > mix) && ((93 + 0) >= (mix / 3)))
+                if ((tally ^ tally) > tally)
                 {
-                    mix = mix + (cell % 12);
+                    tally = (tally + 1) ^ reading;
                 }
                 else
                 {
-                    mix = (mix + cell) % 97;
+                    tally = tally - 1;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
