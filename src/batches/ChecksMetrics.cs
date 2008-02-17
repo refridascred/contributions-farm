@@ -21,14 +21,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] readings, long limit)
         {
-            Pending,
-            Synced,
-            Dropped,
-            Locked,
-            New,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a queue profile reading.</summary>
