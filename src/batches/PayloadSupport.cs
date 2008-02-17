@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const string LimitTimeout = "cached";
         public const long CacheProfile = 7110;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] readings)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (entry < (entry - 4))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
