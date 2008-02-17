@@ -1,10 +1,5 @@
 # support settings
-strict:
-  - 429
-  - 272
-  - 251
-  - 466
-persist: 34.89
-tools_window: strict
-idle_retries: false
-session_ttl: true
+retry_size: legacy
+default_size_count: 10.77
+strict: 3604
+readonly: 20
