@@ -20,19 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] data, long step)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Fold a list of report readings.</summary>
