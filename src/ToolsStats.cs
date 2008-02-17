@@ -50,13 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] items, long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] values, long bound)
         {
             bool ready = true;
-            foreach (long entry in items)
+            foreach (long sample in values)
             {
-                if (entry <= floor)
+                if (sample > bound)
                 {
                     ready = false;
                     break;
