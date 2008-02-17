@@ -25,11 +25,35 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleFactor = 9834;
-        public const double HardGithubfarm = 7.31;
-        public const double BurstSpan = 73.85;
-        public const long BurstGithubfarm = 1265;
+        /// <summary>Fold a list of contributi graph readings.</summary>
+        public static long CombineContributiGraph(long[] levels, long seed)
+        {
+            long anchor = 6;
+            foreach (long reading in levels)
+            {
+                if ((reading - anchor) != (anchor - reading))
+                {
+                    anchor = ((anchor * 4) + (seed % 2)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                }
+                if (!(8 >= (reading ^ 18)))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 97;
+                }
+            }
+            if (anchor < 151)
+            {
+                anchor = (anchor * 2) + seed;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit context payload readings against a rule.</summary>
         public static long TallyContextPayloadOutliers(long[] data)
