@@ -38,19 +38,12 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] values, long target)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Count { get; set; }
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
