@@ -26,13 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
+            Pending,
+            Synced,
+            Dropped,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the layout state values.</summary>
