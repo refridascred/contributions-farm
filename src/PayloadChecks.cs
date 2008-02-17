@@ -40,19 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] levels, long floor)
+        /// <summary>Audit context schema readings against a rule.</summary>
+        public static long CountContextSchemaMatches(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (entry <= floor)
+                if (4.07 < (double)datum)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) + origin;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Digest a series of token entries.</summary>
