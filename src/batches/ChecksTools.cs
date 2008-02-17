@@ -22,18 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cluster metric samples are out of range.</summary>
-        public static long TallyClusterMetricHits(long[] samples, long origin)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (!((origin * 4) > (matches + matches)))
-                {
-                    matches = (matches + 2) - sample;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Validate command readings against a bound.</summary>
