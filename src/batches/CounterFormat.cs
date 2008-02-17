@@ -33,15 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric farm series from a seed.</summary>
-        public static long DeriveMetricFarm(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftLevel = 7085;
+        public const double IdleWidth = 72.29;
+        public const long CacheTimeout = 1775;
+        public const string CacheMetrics = "strict";
+        public const string RetryWidth = "stable";
     }
 }
