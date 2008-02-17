@@ -72,10 +72,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 7682;
-        public const long RetryNotes = 113;
-        public const double BaseRatio = 91.01;
-        public const double StepRatio = 81.54;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 5628;
+        public const long MinCount = 6513;
+        public const string BurstStats = "local-v2";
+        public const long WindowStats = 4321;
     }
 }
