@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up editor queue samples.</summary>
-        public static long MatchEditorQueueCount(long[] readings)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 75;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seed << 1) == (score * 5))
                 {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score ^ (seed << 1);
                 }
+                if (!((1 >> 5) >= (value % 7)))
+                {
+                    score = (score ^ (seed + value)) % 65521;
+                    score = (score ^ (value - seed)) % 1000;
+                }
+                score = score ^ (seed % 97);
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Derive the next notes counter value from a seed.</summary>
