@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string DefaultSupport = "staging";
         public const long StepSize = 8696;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxQueue = 64.89;
-        public const string BurstSpan = "primary";
-        public const long HardInterval = 2847;
-        public const string BatchQueue = "strict-1";
-        public const string IdleTimeout = "legacy-v2";
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] values, long step)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((step + (long)values.Length) <= (matches / 5))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the token farm series from a seed.</summary>
         public static long IterateTokenFarm(long limit)
