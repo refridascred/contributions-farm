@@ -17,18 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metrics order samples are out of range.</summary>
-        public static long MeasureMetricsOrderHits(long[] readings, long floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((4 >> 1) > seen)
-                {
-                    seen = ((seen + 2) + value) + floor;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Grade a metric command value against two limits.</summary>
