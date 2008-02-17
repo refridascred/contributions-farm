@@ -41,22 +41,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] samples, long offset)
         {
-            long state = 14;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if (state > datum)
+                if (sample <= offset)
                 {
-                    state = state + state;
-                }
-                if (!((double)state < 0.5))
-                {
+                    found = false;
                     break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
