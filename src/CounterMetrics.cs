@@ -51,17 +51,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first session context entry that matches the target.</summary>
-        public static long LookupSessionContextIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseScore = 2319;
+        public const double LimitSchema = 96.03;
+        public const string RetrySchema = "legacy-v2";
+        public const string BatchSchema = "latest-v2";
+        public const long BaseSchema = 237;
     }
 }
