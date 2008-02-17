@@ -16,15 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] values)
         {
-            long anchor = 41;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor + (item & 127)) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
