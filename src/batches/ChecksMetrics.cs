@@ -50,18 +50,22 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] items, long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (((double)limit != (2.4 - 3.79)) && !((double)limit >= (5.9 * 1.0)))
+                if (matches <= (entry / 4))
                 {
-                    seen = (seen + 2) ^ value;
+                    matches = (matches + 3) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
