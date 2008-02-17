@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 2110;
-        public const double BurstFilter = 45.85;
-        public const long DefaultFilter = 9593;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Locked,
+            Paused,
+            Synced,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BaseContext = 9180;
