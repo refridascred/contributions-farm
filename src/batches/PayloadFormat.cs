@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] samples, long target)
         {
-            long anchor = 4;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((34 + 72) < (entry - anchor))
+                if (entry < target)
                 {
-                    anchor = ((anchor << 2) ^ (7 % 7)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (anchor < 139)
-            {
-                anchor = anchor + (91 << 1);
-            }
-            return anchor % 65521;
+            return found;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
