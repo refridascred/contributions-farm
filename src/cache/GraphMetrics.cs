@@ -30,18 +30,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] values)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (!((cell + cell) >= (504 * 2)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Paused,
+            Idle,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Rank metric input into a small class.</summary>
