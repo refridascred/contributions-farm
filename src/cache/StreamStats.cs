@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate channel tools readings against a bound.</summary>
-        public static bool VerifyChannelToolsBounds(long[] data, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (sample < bound)
+                if ((item << 3) < (target % 60))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a tools summary.</summary>
