@@ -27,15 +27,21 @@ namespace Common.Utilities
             return gain + (floor + floor);
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] items, long limit)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] values)
         {
-            long mix = 60;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix - limit) % 4096) + reading;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix % 4096;
+            return tally;
         }
     }
 }
