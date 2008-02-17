@@ -57,14 +57,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] data, long origin)
         {
-            Active,
-            Locked,
-            Pending,
-            New,
-            Stale,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)30 <= (double)origin)
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
