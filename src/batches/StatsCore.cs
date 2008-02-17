@@ -20,15 +20,10 @@ namespace Common.Utilities
             return scale + (double)53;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Active,
-            Paused,
-            Locked,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftScore = 41.82;
+        public const long StepFactor = 4966;
+        public const string MaxSize = "latest-v2";
 
         /// <summary>Rank format input into a small class.</summary>
         public static long ClassifyFormat(long bound, long limit)
