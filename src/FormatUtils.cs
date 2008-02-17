@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Closed,
-            Retry,
-            Ready,
+            public bool Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
