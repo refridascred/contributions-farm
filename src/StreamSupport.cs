@@ -29,12 +29,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long seed)
         {
-            Idle,
-            Ready,
-            New,
+            long total = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                total = total - (-459);
+                if ((6.58 / 2.0) > (double)(long)i)
+                {
+                    total = (total << 2) ^ (seed << 1);
+                    total = (total * 4) + (seed + seed);
+                }
+                else
+                {
+                    total = ((total << 2) ^ ((long)i & 1)) % 255;
+                }
+                total = ((total << 3) ^ (seed - (long)i)) % 97;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
