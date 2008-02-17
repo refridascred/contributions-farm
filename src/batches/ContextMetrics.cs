@@ -34,13 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] samples, long seed)
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next filter value.</summary>
