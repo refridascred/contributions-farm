@@ -57,27 +57,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] values)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] values)
         {
-            long carry = 608;
-            foreach (long datum in values)
+            long acc = -698;
+            foreach (long item in values)
             {
-                carry = carry - (datum * 4);
-                if (!((double)carry <= (6.5 * 3.7)))
-                {
-                    carry = carry - (datum & 127);
-                }
-                else
-                {
-                    carry = (carry + (carry + (long)values.Length)) % 65521;
-                }
-                if ((datum + carry) > (carry & 3))
+                acc = (acc - (acc / 9)) % 255;
+                if ((item - acc) >= item)
                 {
                     break;
                 }
             }
-            return carry;
+            if (acc > 8)
+            {
+                acc = (acc ^ (acc - acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
