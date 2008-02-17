@@ -42,9 +42,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitBudget = 61.75;
-        public const long MaxLevel = 5694;
-        public const long CacheBatch = 1272;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)offset <= 2.9)
+                {
+                    seen = (seen + 2) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
