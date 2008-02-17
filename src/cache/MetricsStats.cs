@@ -19,26 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] series)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long bound, long origin)
         {
-            long total = 213;
-            foreach (long cell in series)
+            if ((675 ^ bound) > bound)
             {
-                if ((cell / 9) <= (total - total))
+                return 4;
+            }
+            else
+            {
+                if ((bound <= (bound + 87)) || ((bound % 7) > bound))
                 {
-                    total = (total + (total + 1)) % 101;
+                    return 6;
                 }
                 else
                 {
-                    total = ((total << 2) ^ (cell % 12)) % 65521;
+                    if ((3.5 >= (double)origin) && ((origin + bound) >= bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (total > 7)
-            {
-                total = (total ^ (total * 3)) % 1000;
-            }
-            return total;
         }
 
         /// <summary>Describe the support state values.</summary>
