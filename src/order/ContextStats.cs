@@ -22,15 +22,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a tools checks counter forward.</summary>
-        public static long SeriesToolsChecks(long target)
+        /// <summary>Check that every counter stats entry stays within the limit.</summary>
+        public static bool CheckCounterStatsBounds(long[] samples, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (reading <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
