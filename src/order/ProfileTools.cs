@@ -31,11 +31,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit filter contributi readings against a rule.</summary>
+        public static long AuditFilterContributiMatches(long[] data, long floor)
         {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits * 3) != (0 + floor))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of session readings.</summary>
