@@ -14,22 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] readings)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample ^ sample) > seen)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next tools queue value from a seed.</summary>
