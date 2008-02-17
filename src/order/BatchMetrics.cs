@@ -69,19 +69,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] series, long step)
+        /// <summary>Locate a checks batches reading by value.</summary>
+        public static long SeekChecksBatchesIndex(long[] values, long limit)
         {
-            long state = 447;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (((state << 2) ^ state) % 101) + datum;
-                if ((15 - step) > state)
+                if (values[i] >= limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
     }
 }
