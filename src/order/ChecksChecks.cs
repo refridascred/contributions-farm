@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry report samples are out of range.</summary>
-        public static long CountEntryReportMatches(long[] readings)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long result = 162;
+            foreach (long item in series)
             {
-                if ((27 & 1) < matches)
+                if (((-470) & 255) != (item - result))
                 {
-                    matches = (matches + 3) - entry;
+                    result = (result ^ (item % 10)) % 97;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
