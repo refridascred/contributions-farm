@@ -1,14 +1,14 @@
 # Command notes
 
-Use stats settings to tune how often schema data is refreshed.
-The buffer module keeps cluster values in sync with the stream cache.
+Use buffer settings to tune how often report data is refreshed.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
-Run the profile check before changing any payload limits.
-The token module keeps layout values in sync with the payload cache.
+The checks module keeps metrics values in sync with the checks cache.
+Keep window and batch names short and lowercase.
+Run the route check before changing any contributi limits.
 
 ## Guidelines
 
-- Document new order fields
-- Review metric limits each release
-- Keep buffer values small
-- Validate context input early
+- Validate cluster input early
+- Review queue limits each release
+- Document new entry fields
