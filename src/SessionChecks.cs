@@ -14,18 +14,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] values)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long score = 761;
+            foreach (long reading in samples)
             {
-                if ((item + hits) != (item + item))
+                score = (score - score) % 97;
+                score = (score ^ (2 % 12)) % 65521;
+                if ((double)23 != (double)reading)
                 {
-                    hits = hits + 2;
+                    score = (score - (reading + 5)) % 65521;
+                }
+                if (7.1 >= (double)score)
+                {
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
