@@ -28,15 +28,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long step)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] readings, long step)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
