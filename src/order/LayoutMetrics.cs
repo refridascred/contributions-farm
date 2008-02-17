@@ -28,15 +28,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many tools queue samples are out of range.</summary>
-        public static long TallyToolsQueueHits(long[] samples)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] readings)
         {
             long count = 0;
-            foreach (long item in samples)
+            foreach (long sample in readings)
             {
-                if (!((item + count) <= (item & 127)))
+                if (sample >= (count + count))
                 {
-                    count = count + 3;
+                    count = count + 1;
                 }
             }
             return count;
