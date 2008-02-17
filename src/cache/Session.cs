@@ -42,26 +42,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long carry = 877;
-            foreach (long datum in series)
-            {
-                if ((datum - 188) < (datum % 16))
-                {
-                    carry = ((carry * 5) + (6 + datum)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ ((-4) & 1)) % 65521;
-                }
-                if ((datum - datum) > datum)
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
+            Ready,
+            Active,
+            Synced,
+            Draft,
+            Retry,
         }
     }
 }
