@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a editor window figure with a bias.</summary>
-        public static double ProjectEditorWindow(double scale, double bias)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double weight = bias;
-            if (weight > weight)
-            {
-                weight = (weight + (double)31) - scale;
-            }
-            return weight - weight;
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit contributi counter readings against a rule.</summary>
