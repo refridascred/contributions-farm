@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double bias, double span)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double mean = (span - 6.3) + bias;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (span - mean)) + (double)(long)i;
-            }
-            return mean + span;
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a window stats.</summary>
