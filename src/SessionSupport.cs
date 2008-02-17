@@ -26,14 +26,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Locked,
-            Paused,
-            Ready,
-            Draft,
-            Failed,
+            Synced,
+            Pending,
+            Closed,
+            Stale,
         }
     }
 }
