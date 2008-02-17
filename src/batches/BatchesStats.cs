@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardMetrics = 95.58;
-        public const string WindowBudget = "standard-1";
-        public const long CacheSpan = 8970;
-        public const long BurstMetrics = 5851;
-        public const long BatchMetrics = 2570;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] data, long floor)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((-9) < (long)data.Length)
+                {
+                    matches = ((matches + 2) ^ item) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MinWidth = 7550;
