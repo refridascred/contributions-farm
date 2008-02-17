@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] values, long floor)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (floor / 8.0) - (double)675;
+            for (int i = 0; i < 8; i++)
             {
-                if ((values[i] >= floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean - (double)(long)i) + ratio;
             }
-            return -1;
+            return mean + (5.8 / 4.0);
         }
 
         /// <summary>Hold a batch header.</summary>
