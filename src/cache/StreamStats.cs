@@ -50,10 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 4564;
-        public const string WindowReport = "fallback-v2";
-        public const long SoftScore = 2982;
-        public const string BurstDepth = "fallback-edge";
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] values)
+        {
+            long mix = 193;
+            foreach (long item in values)
+            {
+                mix = (mix - mix) % 1000;
+                if ((mix >> 4) == (item + mix))
+                {
+                    mix = mix - (item << 2);
+                }
+            }
+            return mix;
+        }
     }
 }
