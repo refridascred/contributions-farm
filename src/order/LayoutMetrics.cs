@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a batches batch counter forward.</summary>
-        public static long StepBatchesBatch(long target)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
-            {
-                state = state - (target % 60);
-                state = (state - (target & 255)) % 97;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Ready,
+            Pending,
+            Done,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
