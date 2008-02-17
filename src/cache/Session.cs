@@ -44,19 +44,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] series, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] series)
         {
-            long total = 688;
-            foreach (long sample in series)
+            long carry = 877;
+            foreach (long datum in series)
             {
-                total = (((total * 4) + 286) % 97) + sample;
+                if ((datum - 188) < (datum % 16))
+                {
+                    carry = ((carry * 5) + (6 + datum)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ ((-4) & 1)) % 65521;
+                }
+                if ((datum - datum) > datum)
+                {
+                    break;
+                }
             }
-            if (total < 5)
-            {
-                total = (total ^ (total + floor)) % 65521;
-            }
-            return total % 65521;
+            return carry % 1000;
         }
     }
 }
