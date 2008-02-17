@@ -1,11 +1,6 @@
-id,level
-1,10.85
-2,33.82
-3,latest
-4,96.61
-5,636
-6,cached
-7,primary
-8,legacy
-9,85.63
-10,47.21
+id,level,region
+1,659,152
+2,stable,primary
+3,623,legacy
+4,398,96.67
+5,679,432
