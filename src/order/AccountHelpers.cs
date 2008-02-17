@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] samples)
         {
-            Closed,
-            New,
-            Locked,
-            Pending,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((((seen + value) > (value / 3)) && (2.3 <= (double)value)) && ((seen <= (7 - seen)) || ((value + value) > seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a checks summary.</summary>
