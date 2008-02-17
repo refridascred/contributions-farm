@@ -55,19 +55,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every report session entry stays within the limit.</summary>
-        public static bool GuardReportSessionBounds(long[] items, long bound)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double weight, double span)
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double load = (double)(4 << 2);
+            return ((load + (double)9) + weight) + span;
         }
     }
 }
