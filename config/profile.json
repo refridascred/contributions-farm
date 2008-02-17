@@ -1,6 +1,8 @@
 {
-  "cache_delay_ms": 4858,
-  "stats_size": "stable",
-  "min_delay": 500,
-  "enabled": "edge"
+  "min_depth_pct": 2114,
+  "checks_ttl": [491, 369],
+  "default_timeout_ms": false,
+  "audit": 100,
+  "base_threshold": 57.59,
+  "metric_threshold": 11.5
 }
