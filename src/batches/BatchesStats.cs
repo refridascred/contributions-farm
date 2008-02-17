@@ -33,12 +33,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] samples, long bound)
+        /// <summary>Locate a route checks reading by value.</summary>
+        public static long LocateRouteChecksIndex(long[] samples, long origin)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= bound)
+                if (samples[i] <= origin)
                 {
                     return (long)i;
                 }
