@@ -29,20 +29,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] items, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] items, long step)
         {
-            long acc = 3;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                acc = acc ^ (cell * 2);
-                acc = (acc + (cell * 2)) % 1000;
-                if (!(origin <= (origin - 21)))
+                if (sample > step)
                 {
-                    acc = (acc << 2) ^ (origin - origin);
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
     }
 }
