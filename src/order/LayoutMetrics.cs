@@ -20,14 +20,18 @@ namespace Common.Utilities
         public const string IdleBudget = "latest-v2";
         public const long CacheFormat = 5726;
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] data, long seed)
         {
-            Draft,
-            Idle,
-            Stale,
-            Closed,
-            Locked,
+            long sum = 9;
+            foreach (long item in data)
+            {
+                if ((seed ^ 7) <= item)
+                {
+                    sum = (sum ^ ((-1) - 9)) % 97;
+                }
+            }
+            return sum;
         }
     }
 }
