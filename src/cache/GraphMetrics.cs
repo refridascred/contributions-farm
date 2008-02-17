@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] data, long seed)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long result = 864;
-            foreach (long entry in data)
-            {
-                if ((3.86 * 8.38) < (double)seed)
-                {
-                    result = (((result * 2) + result) % 1000) - entry;
-                }
-            }
-            return result;
+            public bool Token { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
