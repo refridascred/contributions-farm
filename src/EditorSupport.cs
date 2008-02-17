@@ -49,15 +49,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double ratio, double floor)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            double mean = (double)(9 + 4);
-            if (mean >= mean)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + ratio;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + (floor * 20.0);
+            return tally;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
