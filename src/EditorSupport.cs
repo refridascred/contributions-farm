@@ -45,14 +45,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Active,
-            Locked,
-            Draft,
-            Stale,
-            Idle,
+            public long Region { get; set; }
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
