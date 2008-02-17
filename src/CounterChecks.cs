@@ -14,11 +14,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] series, long target)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!((entry >> 3) == (target * 5)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next tools queue value from a seed.</summary>
