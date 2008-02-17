@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string WindowFactor = "staging";
         public const long MinBudget = 3237;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] levels, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (item <= step)
+                if ((tally >= (origin - tally)) || ((double)tally <= (double)origin))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) - value;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
