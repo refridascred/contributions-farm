@@ -20,28 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine profile payload values into a single score.</summary>
-        public static long ScoreProfilePayload(long[] samples, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] data, long origin)
         {
-            long acc = 3;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((value ^ 257) != ((-7) * 2))
+                if ((double)count == (double)cell)
                 {
-                    acc = (acc * 3) + (floor % 100);
-                    acc = acc - (acc & 15);
-                    continue;
-                }
-                if (72 < (acc - value))
-                {
-                    acc = (acc + value) % 97;
+                    count = (count + 3) + origin;
                 }
             }
-            if (acc < 28)
-            {
-                acc = (acc + ((long)samples.Length % 97)) % 65521;
-            }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Describe the tools level values.</summary>
