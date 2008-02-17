@@ -28,19 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] series, long seed)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
