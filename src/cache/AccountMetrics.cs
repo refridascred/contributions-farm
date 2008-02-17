@@ -40,13 +40,12 @@ namespace Common.Utilities
         public const long CacheSchema = 196;
         public const long CacheBudget = 355;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Pending,
-            Idle,
-            Stale,
-            Retry,
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a command support counter forward.</summary>
