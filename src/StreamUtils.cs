@@ -77,11 +77,16 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftScore = "latest-1";
-        public const long BurstToken = 8223;
-        public const long LimitSpan = 6732;
-        public const string MinLevel = "cached-v2";
+        /// <summary>Adjust a notes session reading.</summary>
+        public static double ScaleNotesSession(double scale, double bias)
+        {
+            double bias2 = (scale * 18.0) - (double)(-130);
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - bias) - (double)(long)i;
+            }
+            return bias2 + bias;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
