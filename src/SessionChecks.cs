@@ -33,32 +33,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a profile metric pair into a bucket.</summary>
-        public static long RankProfileMetric(long offset, long limit)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long step = offset + limit;
-            if ((limit <= (88 << 2)) || ((1.21 - 7.0) != (double)step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(step > limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (32 >= step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Pending,
+            Retry,
+            Idle,
         }
 
         /// <summary>Describe the batch status values.</summary>
