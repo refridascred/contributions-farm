@@ -37,18 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools stream entries that pass the check.</summary>
-        public static long CountToolsStreamHits(long[] levels)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((double)count >= (6.8 * 5.64))
+                if (!(((datum * 5) <= (offset * 4)) || ((offset - datum) < seen)))
                 {
-                    count = (count + 2) - item;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
