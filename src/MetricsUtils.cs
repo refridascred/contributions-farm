@@ -51,11 +51,21 @@ namespace Common.Utilities
         public const string RetryInterval = "legacy-v2";
         public const double RetryLayout = 11.6;
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double weight, double span)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] series)
         {
-            double load = (double)(4 << 2);
-            return ((load + (double)9) + weight) + span;
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
