@@ -1,12 +1,8 @@
 {
-  "burst_ratio_ms": {
-    "sync_delay_ms": [325, 235, 293],
-    "compress": 2866,
-    "readonly": "stable"
-  },
-  "notes_capacity": "green",
-  "persist": 100,
-  "base_threshold_ms": [128, 114, 142, 289],
-  "burst_size": "cached",
-  "poll_ttl": "standard"
+  "route_window": "legacy",
+  "audit": 27.14,
+  "max_retries": "edge",
+  "contributi_retries": 8647,
+  "dry_run": "latest",
+  "max_timeout_count": 6
 }
