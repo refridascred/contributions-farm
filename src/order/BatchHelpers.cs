@@ -22,19 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double bias, double floor)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            double mean = floor * 7.3;
-            if (mean <= mean)
-            {
-                mean = (mean + mean) - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - 1.7;
+            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Combine batches values into a single score.</summary>
