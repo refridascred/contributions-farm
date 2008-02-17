@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a entry cluster pair into a bucket.</summary>
-        public static long BucketEntryCluster(long origin, long seed)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            if (!((origin / 3) != (5 + seed)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (629 < origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Locked,
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
