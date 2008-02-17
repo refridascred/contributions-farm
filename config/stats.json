@@ -1,6 +1,14 @@
 {
-  "min_capacity_count": "primary",
-  "idle_ttl": false,
-  "audit": 60,
-  "cluster_delay": 250
+  "hard_timeout": 4,
+  "base_window": {
+    "max_depth_s": false,
+    "warm_depth": 75.38,
+    "dry_run": 41.01,
+    "contributi_delay": "eu-west",
+    "order_size": 82,
+    "compress": 47
+  },
+  "strict": "edge",
+  "hard_capacity_count": 1024,
+  "audit": 39.79
 }
