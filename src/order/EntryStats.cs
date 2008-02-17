@@ -57,12 +57,20 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long offset)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public bool Total { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                long gap = (77 - (-46)) + offset;
+                if ((carry - gap) != (carry ^ (long)i))
+                {
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
