@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a counter cache reading.</summary>
-        public static double AdjustCounterCache(double scale, double bias)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double ratio, double floor)
         {
-            double drift = scale;
-            return (drift - scale) + bias;
+            double ratio2 = (double)5 * 5.34;
+            if (ratio2 < (double)(-988))
+            {
+                ratio2 = (ratio2 + ratio) + floor;
+            }
+            else
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            return ratio2 - (ratio / 7.0);
         }
 
         /// <summary>Hold a stream info.</summary>
