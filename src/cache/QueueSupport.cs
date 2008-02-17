@@ -14,17 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] series, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((series[i] >= limit) && ((series[i] % 5) != 0))
+                if ((((2.8 / 6.0) == (double)matches) && ((matches + value) > 382)) || (value <= (24 - value)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
