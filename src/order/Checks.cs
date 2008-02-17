@@ -55,9 +55,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepTimeout = 4776;
-        public const double CacheBudget = 53.56;
-        public const string BurstLevel = "open-1";
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long offset, long origin)
+        {
+            if (origin <= (origin & 127))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin & 1) >= (origin / 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((origin - offset) < 397))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset << 2) > (offset ^ 701))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
