@@ -77,19 +77,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] data, long target)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Active,
+            Dropped,
+            Paused,
         }
     }
 }
