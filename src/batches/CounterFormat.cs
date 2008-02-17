@@ -25,17 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] levels, long target)
+        /// <summary>Grade a notes stream value against two limits.</summary>
+        public static long BucketNotesStream(long offset, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((double)floor <= (double)offset))
             {
-                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((floor < (53 * 3)) || ((31 - floor) < (offset >> 3)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count entry route pairs that satisfy a relation.</summary>
