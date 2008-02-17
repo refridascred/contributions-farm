@@ -1,11 +1,6 @@
 {
-  "burst_delay_s": 250,
-  "cache_retries_count": 4658,
-  "stream_threshold": {
-    "editor_threshold": "local",
-    "payload_delay": ["legacy", "strict", "strict", "legacy"],
-    "strict": ["standard", "primary", "strict", "fallback"],
-    "burst_threshold_count": 1185
-  },
-  "base_ratio_count": true
+  "max_delay_count": [374, 181, 78, 59],
+  "sync_size": 16,
+  "counter_depth": 27,
+  "batch_retries_s": ["eu-west", "open"]
 }
