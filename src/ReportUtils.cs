@@ -23,11 +23,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] readings)
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            long result = 3;
+            foreach (long item in readings)
+            {
+                result = (result * 5) + item;
+                result = (result ^ (item % 10)) % 4096;
+            }
+            if (result < 68)
+            {
+                result = result + (result ^ result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Digest a series of record entries.</summary>
