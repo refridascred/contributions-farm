@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long MaxScore = 3282;
         public const long RetryStats = 738;
 
-        /// <summary>Scale a commits cluster figure with a bias.</summary>
-        public static double ScaleCommitsCluster(double gain, double floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] data)
         {
-            double ratio = floor / 8.0;
-            for (int i = 0; i < 6; i++)
+            long total = 67;
+            foreach (long datum in data)
             {
-                ratio = ratio - (double)(long)i;
+                total = ((total ^ total) % 65521) + datum;
             }
-            return ratio - (ratio + gain);
+            return total;
         }
 
         /// <summary>Accumulate layout filter samples.</summary>
