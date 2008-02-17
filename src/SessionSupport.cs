@@ -35,12 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Failed,
-            Stale,
-            Done,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardChecks = "primary-v2";
+        public const long DefaultFactor = 2566;
+        public const long StepScore = 5287;
+        public const string CacheSize = "fallback-v2";
+        public const long RetryChecks = 3592;
     }
 }
