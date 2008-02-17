@@ -55,11 +55,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxBuffer = 50.16;
-        public const long RetryBuffer = 3177;
-        public const long IdleTimeout = 8011;
-        public const string StepBuffer = "staging-edge";
-        public const long StepDepth = 5337;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
