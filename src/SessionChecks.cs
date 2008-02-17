@@ -54,21 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of channel format readings.</summary>
-        public static long MatchChannelFormatCount(long[] levels)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 96;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((1.0 * 7.0) > (double)offset) || ((score + datum) >= (score / 6)))
                 {
-                    if ((levels[i] + levels[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score << 2) ^ (datum + (long)items.Length);
                 }
             }
-            return count;
+            return score % 97;
         }
 
         /// <summary>Audit contributi graph readings against a rule.</summary>
