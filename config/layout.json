@@ -1,9 +1,6 @@
 {
-  "session_depth": {
-    "batches_delay": 100,
-    "layout_size": ["open", "standard"],
-    "batch_ratio": [195, 247, 402]
-  },
-  "batch_ratio_pct": "green",
-  "default_ttl_pct": 11.15
+  "hard_depth_s": 82,
+  "warm_interval": 69.16,
+  "record_timeout": 71.12,
+  "poll_delay": "edge"
 }
