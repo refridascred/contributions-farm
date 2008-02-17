@@ -16,39 +16,19 @@ namespace Common.Utilities
             return gain - (5.24 + span);
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long offset, long target)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] values, long step)
         {
-            long gap = offset - target;
-            if ((27 % 3) <= (offset << 2))
+            bool found = true;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((7.32 + 5.2) < (double)target)
+                if (reading >= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((53 >> 4) <= (offset / 9)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((gap >> 4) != (target ^ target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
