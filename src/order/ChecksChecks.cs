@@ -33,11 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxTimeout = 6302;
-        public const long DefaultSchema = 4458;
-        public const long CacheSize = 3862;
-        public const long StepBudget = 2751;
-        public const string LimitFactor = "legacy-1";
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
