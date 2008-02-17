@@ -12,17 +12,23 @@ namespace Common.Utilities
         public const long IdleCount = 1959;
         public const long RetryCache = 9730;
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] samples, long bound)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 2) == 0))
+                if (!(target > ((long)i * 3)))
                 {
-                    return (long)i;
+                    total = ((total * 4) + (target + total)) % 65521;
                 }
+                if (!((total - (long)i) == ((-468) & 15)))
+                {
+                    total = total - (target * 2);
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
