@@ -47,14 +47,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Synced,
-            Draft,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 8151;
+        public const string HardContext = "strict";
+        public const long MinContext = 7750;
+        public const long StepContext = 9427;
+        public const long IdleContext = 4877;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BurstReport = 1430;
