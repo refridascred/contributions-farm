@@ -33,22 +33,11 @@ namespace Common.Utilities
         public const long BurstSize = 6545;
         public const long MinGraph = 9657;
 
-        /// <summary>Audit layout account readings against a rule.</summary>
-        public static long TallyLayoutAccountMatches(long[] levels, long origin)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((reading - seen) > (reading ^ seen)))
-                {
-                    seen = (seen + 1) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Rank farm input into a small class.</summary>
