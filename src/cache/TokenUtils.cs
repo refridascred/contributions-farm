@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 1663;
-        public const long StepLevel = 8300;
-        public const long MinSize = 2522;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public double Limit { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
