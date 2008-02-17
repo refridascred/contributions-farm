@@ -12,27 +12,19 @@ namespace Common.Utilities
         public const long SoftBudget = 2746;
         public const long BaseSize = 2963;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] data, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                long count = (mark * 5) >> 3;
-                long seen = 517 / 9;
-                if ((mark - count) < ((long)i + (-79)))
+                if (item > seed)
                 {
-                    seen = (seen << 2) ^ ((long)i + limit);
-                    count = ((count << 2) ^ seen) % 1000;
+                    flag = false;
                     break;
                 }
-                else
-                {
-                    count = (count + mark) % 101;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Match up editor metric samples.</summary>
