@@ -15,31 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long target, long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] samples, long offset)
         {
-            if ((target + origin) < (target ^ origin))
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target * 3) > 43)
+                if (entry < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin != (3.0 + 11.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
