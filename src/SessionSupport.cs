@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long BurstDepth = 8307;
         public const long SoftInterval = 7542;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] items)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell + hits) > (cell + cell))
                 {
-                    if ((items[i] - items[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
