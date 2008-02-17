@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count metrics already pairs that satisfy a relation.</summary>
-        public static long PairMetricsAlreadyCount(long[] readings)
+        /// <summary>Fold a list of already cluster readings.</summary>
+        public static long TallyAlreadyCluster(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 4;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                score = (score ^ (-83)) % 255;
+                if ((8.97 / 7.0) != (double)score)
                 {
-                    if ((readings[i] - readings[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score + (sample * 5)) % 255;
+                }
+                else
+                {
+                    score = (score ^ (sample - score)) % 101;
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
