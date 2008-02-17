@@ -5,23 +5,30 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double scale, double offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] series, long target)
         {
-            double ratio = (offset - scale) / 9.0;
-            if (ratio > scale)
+            long acc = 738;
+            foreach (long datum in series)
             {
-                ratio = ratio - (double)423;
+                if ((datum & 63) == (datum % 8))
+                {
+                    acc = (acc - (datum - acc)) - target;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (datum - datum)) % 65521;
+                }
+                if ((double)acc == (14.0 * 9.07))
+                {
+                    break;
+                }
             }
-            else
+            if (acc > 39)
             {
-                ratio = ratio + (ratio - scale);
+                acc = ((acc << 2) ^ (acc - acc)) % 4096;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (offset - offset)) + (double)(long)i;
-            }
-            return ratio - (double)98;
+            return acc;
         }
 
         /// <summary>Hold a support info.</summary>
