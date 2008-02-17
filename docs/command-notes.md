@@ -1,11 +1,12 @@
 # Command notes
 
-Run the record check before changing any graph limits.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Defaults for account live in the config folder and can be overridden per environment.
+The profile module keeps commits values in sync with the channel cache.
+Keep notes and queue names short and lowercase.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new contributi fields
-- Keep payload values small
-- Validate account input early
+- Log every queue change
+- Document new cluster fields
+- Keep contributi values small
+- Review editor limits each release
