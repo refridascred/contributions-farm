@@ -31,12 +31,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            Pending,
+            Synced,
+            Done,
+            Draft,
+            Idle,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
