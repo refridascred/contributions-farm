@@ -1,7 +1,8 @@
 # entry settings
-burst_retries:
-  - cached
-  - stable
-  - open
-commits_ratio: open
-poll_ttl: 82.45
+persist: edge
+hard_window_pct: 9716
+poll_depth:
+  - latest
+  - eu-west
+  - staging
+  - strict
