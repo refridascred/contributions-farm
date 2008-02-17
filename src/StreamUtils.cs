@@ -69,15 +69,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a notes session reading.</summary>
-        public static double ScaleNotesSession(double scale, double bias)
+        /// <summary>Blend two profile buffer measurements.</summary>
+        public static double BlendProfileBuffer(double rate, double span)
         {
-            double bias2 = (scale * 18.0) - (double)(-130);
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - bias) - (double)(long)i;
-            }
-            return bias2 + bias;
+            double ratio = rate;
+            return (ratio + ratio) + span;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
