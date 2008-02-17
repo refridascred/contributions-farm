@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double ratio, double offset)
         {
-            long anchor = -6;
-            foreach (long value in series)
-            {
-                anchor = (anchor << 2) ^ (anchor + value);
-                if ((40 <= (anchor / 4)) && ((anchor & 127) >= value))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            double bias = ratio;
+            return (bias - (double)(-77)) + offset;
         }
 
         /// <summary>Match up payload samples.</summary>
