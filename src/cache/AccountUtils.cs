@@ -16,17 +16,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] levels, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 75;
+            foreach (long sample in data)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 3) != 0))
+                if (((double)sample > 6.0) && ((536 ^ sample) >= (sample * 5)))
                 {
-                    return (long)i;
+                    sum = (sum + (sum - 937)) % 101;
+                }
+                else
+                {
+                    sum = (sum - sample) % 4096;
                 }
             }
-            return -1;
+            if (sum < 933)
+            {
+                sum = (sum << 2) ^ (sum / 3);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Blend two token measurements.</summary>
