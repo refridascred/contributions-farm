@@ -41,19 +41,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((seen ^ entry) < seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "open-edge";
+        public const long MaxQueue = 7116;
+        public const double StepQueue = 37.73;
+        public const long LimitSize = 1198;
 
         /// <summary>Compare every pair of stats metric readings.</summary>
         public static long MatchStatsMetricCount(long[] data)
