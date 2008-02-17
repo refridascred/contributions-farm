@@ -70,13 +70,10 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Draft,
-            Dropped,
-            Done,
-            New,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 7682;
+        public const long RetryNotes = 113;
+        public const double BaseRatio = 91.01;
+        public const double StepRatio = 81.54;
     }
 }
