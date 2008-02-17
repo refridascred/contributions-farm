@@ -26,12 +26,14 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Done,
+            Ready,
             Paused,
-            Draft,
+            Dropped,
+            Done,
+            Failed,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
