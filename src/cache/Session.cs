@@ -44,14 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double scale, double floor)
         {
-            Ready,
-            Active,
-            Synced,
-            Draft,
-            Retry,
+            double bias = floor + (scale * 17.0);
+            if (bias < scale)
+            {
+                bias = bias - floor;
+            }
+            else
+            {
+                bias = bias + (scale / 7.0);
+            }
+            return bias - bias;
         }
     }
 }
