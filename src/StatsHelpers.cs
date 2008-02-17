@@ -24,12 +24,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] data, long target)
         {
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stream summary.</summary>
