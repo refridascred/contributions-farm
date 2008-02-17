@@ -52,15 +52,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double rate, double span)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long bound)
         {
-            double gain = (double)(93 * 3);
-            if (gain > gain)
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
             {
-                gain = ((gain + gain) + rate) - span;
+                mix = ((mix << 3) ^ ((long)i / 7)) % 1000;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return gain - 1.4;
+            return mix;
         }
     }
 }
