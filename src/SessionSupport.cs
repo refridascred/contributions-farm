@@ -30,15 +30,17 @@ namespace Common.Utilities
             return load + (double)6;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] data, long bound)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] series, long origin)
         {
-            long state = 4;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (((state * 5) + state) ^ value) + bound;
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return state % 97;
+            return -1;
         }
     }
 }
