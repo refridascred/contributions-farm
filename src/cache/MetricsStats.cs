@@ -46,13 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double rate, double floor)
         {
-            Dropped,
-            Closed,
-            Pending,
-            Draft,
+            double scale = (double)(6 + 158);
+            return ((scale + (double)264) + rate) + floor;
         }
 
         /// <summary>Count the support profile entries that pass the check.</summary>
