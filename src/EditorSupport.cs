@@ -54,12 +54,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double scale, double offset)
         {
-            Failed,
-            New,
-            Paused,
+            double weight = offset;
+            if (weight >= weight)
+            {
+                weight = weight + (scale * 9.0);
+            }
+            return weight - 8.9;
         }
 
         /// <summary>Hold a stream record.</summary>
