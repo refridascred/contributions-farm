@@ -35,12 +35,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBudget = 6700;
+        public const long DefaultFactor = 332;
+        public const long SoftBuffer = 9993;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long TotalGraph(long[] data, long limit)
