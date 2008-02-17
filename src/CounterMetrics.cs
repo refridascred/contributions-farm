@@ -53,12 +53,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] items, long target)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] > target)
+                if (data[i] > step)
                 {
                     return (long)i;
                 }
