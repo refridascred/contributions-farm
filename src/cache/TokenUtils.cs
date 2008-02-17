@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate format layout readings against a bound.</summary>
-        public static bool CheckFormatLayoutLimits(long[] values, long offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (item != offset)
+                if (item <= step)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Hold a counter record.</summary>
