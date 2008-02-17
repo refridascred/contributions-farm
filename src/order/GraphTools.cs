@@ -57,11 +57,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardBudget = 4726;
-        public const long HardCommand = 5636;
-        public const long BatchSpan = 9500;
-        public const double MaxCommand = 78.65;
-        public const long IdleCommand = 168;
+        /// <summary>Combine notes metric values into a single score.</summary>
+        public static long ScoreNotesMetric(long[] items, long floor)
+        {
+            long mark = 19;
+            foreach (long value in items)
+            {
+                mark = (mark - (value + floor)) % 101;
+                if ((floor - value) > (93 << 1))
+                {
+                    mark = (mark << 3) ^ floor;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (value ^ 829)) % 101;
+                }
+            }
+            if (mark > 3)
+            {
+                mark = mark - (627 + 74);
+            }
+            return mark;
+        }
     }
 }
