@@ -52,11 +52,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] samples, long origin)
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (origin > (origin / 8))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stats record.</summary>
