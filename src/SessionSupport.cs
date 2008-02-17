@@ -35,13 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            Failed,
+            Stale,
+            Done,
         }
     }
 }
