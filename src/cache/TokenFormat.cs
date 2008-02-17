@@ -19,19 +19,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] data, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long anchor = 706;
+            foreach (long entry in samples)
             {
-                if (reading >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor + (anchor ^ offset)) % 101) - entry;
             }
-            return found;
+            return anchor % 65521;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
