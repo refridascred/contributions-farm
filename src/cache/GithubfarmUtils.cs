@@ -39,12 +39,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Iterate the route cache series from a seed.</summary>
+        public static long RollRouteCache(long limit)
         {
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
+            long score = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((7 - score) < limit)
+                {
+                    continue;
+                }
+                score = (score + limit) % 101;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
