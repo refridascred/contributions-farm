@@ -28,18 +28,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((918 % 8) < reading)
                 {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
