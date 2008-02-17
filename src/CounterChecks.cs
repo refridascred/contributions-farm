@@ -49,16 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next checks counter value from a seed.</summary>
-        public static long IterateChecksCounter(long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                acc = (acc ^ (floor - floor)) % 65521;
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((6.49 * 3.69) <= (double)entry)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the filter status values.</summary>
