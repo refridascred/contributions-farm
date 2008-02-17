@@ -47,22 +47,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] readings, long seed)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long delta = bound ^ origin;
+            if (!((delta & 255) == (delta * 2)))
             {
-                if ((5 - seen) < seed)
+                return 3;
+            }
+            else
+            {
+                if ((double)delta < (double)bound)
                 {
-                    seen = (seen + 1) - cell;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((delta >= (bound ^ origin)) || ((double)delta < (2.0 + 13.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound & 255) > (origin + delta))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
