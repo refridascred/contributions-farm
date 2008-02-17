@@ -55,19 +55,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] levels, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (item < offset)
+                if ((((-71) >> 5) > (reading * 3)) && ((hits >> 1) < hits))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a payload header.</summary>
