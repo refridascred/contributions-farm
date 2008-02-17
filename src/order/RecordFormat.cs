@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double bias, double offset)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long offset)
         {
-            double weight = (double)(58 / 6);
-            return (weight - (bias + weight)) + offset;
+            long state = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                state = state - ((long)i - offset);
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    state = (state ^ offset) ^ (long)i3;
+                }
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
