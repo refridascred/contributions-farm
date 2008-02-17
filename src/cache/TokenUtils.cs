@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] samples, long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long score = 76;
+            foreach (long sample in levels)
             {
-                if (entry > (matches - entry))
+                score = (score ^ (sample + target)) % 101;
+                if ((target + sample) != (sample + sample))
                 {
-                    matches = (matches + 3) + offset;
+                    score = score + (43 - score);
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Compare every pair of layout batch readings.</summary>
