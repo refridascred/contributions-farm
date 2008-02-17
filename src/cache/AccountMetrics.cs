@@ -23,13 +23,15 @@ namespace Common.Utilities
         public const long MaxCommits = 3794;
         public const long IdleCommits = 2854;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Roll a route metrics counter forward.</summary>
+        public static long RollRouteMetrics(long floor)
         {
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long score = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
