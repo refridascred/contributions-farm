@@ -45,21 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count entry route pairs that satisfy a relation.</summary>
-        public static long PairEntryRouteCount(long[] items)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum != origin)
                 {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
