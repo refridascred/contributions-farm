@@ -15,18 +15,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] series, long bound)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6.35 * 7.0) != (double)item)
+                if ((samples[i] >= bound) && ((samples[i] % 2) == 0))
                 {
-                    count = (count + 3) - bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
