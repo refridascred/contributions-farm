@@ -1,7 +1,7 @@
 {
-  "strict": 32.94,
-  "soft_ttl_count": "standard",
-  "base_capacity": [200, 253, 86, 263],
-  "enabled": 1,
-  "flush_ttl": 92.99
+  "retry_timeout_pct": "standard",
+  "min_delay_ms": "local",
+  "batch_threshold": [5, 320],
+  "batch_limit_s": 8.9,
+  "route_ttl": true
 }
