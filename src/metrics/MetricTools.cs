@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstGraph = 95.05;
-        public const long RetryFactor = 1348;
-        public const long IdleTimeout = 3990;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long IdleFactor = 9834;
