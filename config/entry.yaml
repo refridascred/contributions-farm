@@ -1,36 +1,10 @@
 # entry settings
-profile_capacity: 15.12
-context_ttl: true
-sync_retries_pct: 250
-strict: 250
-min_delay:
-  base_interval_count:
-    - fallback
-    - edge
-    - local
-  token_size:
-    contributi_threshold: 10.47
-    entry_timeout: true
-    sync_depth_pct: open
-    counter_timeout: 79.88
-    strict: 2769
-  profile_retries:
-    support_capacity: 27
-    cache_depth: latest
-    farm_interval: primary
-    retry_delay_pct: legacy
-    flush_interval_s: true
-  stream_threshold:
-    burst_capacity_s: false
-    default_timeout_s: false
-    checks_delay:
-      - 294
-      - 164
-      - 39
-    contributi_threshold:
-      - blue
-      - edge
-      - primary
-      - strict
-    poll_size_pct: stable
-max_delay_s: blue
+burst_limit_pct: latest
+persist: edge
+burst_interval:
+  - legacy
+  - standard
+  - standard
+  - local
+poll_interval: 500
+readonly: edge
