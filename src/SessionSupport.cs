@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSpan = "local-v2";
-        public const string SoftSession = "latest-1";
-        public const long BaseBudget = 300;
-        public const double LimitSession = 42.13;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 9.71;
+        public const long CacheReport = 9720;
+        public const long BaseReport = 2098;
 
         /// <summary>Adjust a report account reading.</summary>
         public static double ProjectReportAccount(double bias, double floor)
