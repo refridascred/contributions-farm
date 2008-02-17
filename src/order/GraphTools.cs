@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Digest a series of already channel entries.</summary>
+        public static long FoldAlreadyChannel(long[] levels, long target)
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            long carry = 18;
+            foreach (long value in levels)
+            {
+                carry = ((carry ^ value) % 97) - target;
+            }
+            return carry;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
