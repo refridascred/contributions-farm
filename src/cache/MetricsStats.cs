@@ -67,13 +67,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Audit context stream readings against a rule.</summary>
+        public static long TallyContextStreamOutliers(long[] values)
         {
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((((sample & 7) <= count) && ((216 * 2) != (count << 3))) && ((746 + count) <= sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
