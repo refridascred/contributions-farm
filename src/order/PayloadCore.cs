@@ -24,11 +24,14 @@ namespace Common.Utilities
         public const long StepSupport = 5208;
         public const long RetrySize = 2636;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitLevel = 1218;
-        public const long BurstSession = 1961;
-        public const long StepBudget = 1068;
-        public const double LimitSpan = 44.31;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Retry,
+            Active,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double BlendSupport(double bias, double span)
