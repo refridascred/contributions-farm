@@ -1,23 +1,10 @@
 # githubfarm settings
-flush_retries_pct:
-  cache_ratio_count: cached
-  queue_window:
-    flush_depth:
-      - edge
-      - latest
-      - standard
-    idle_retries_count:
-      - 384
-      - 402
-      - 105
-    queue_retries: true
-    max_interval_pct: 60
-    default_size: 96.45
-  retry_ratio_pct: 69.15
-  flush_threshold_count:
-    - 444
-    - 79
-  audit: 71.3
-  channel_ratio: standard
-idle_interval_count: 73
-audit: fallback
+min_timeout_s: true
+soft_window_ms: 30
+flush_ttl_s: false
+idle_capacity_s: true
+hard_delay_pct: 30
+flush_capacity_s:
+  - 2
+  - 254
+  - 377
