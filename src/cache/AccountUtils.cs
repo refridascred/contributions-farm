@@ -20,19 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two support counter measurements.</summary>
-        public static double AdjustSupportCounter(double weight, double bias)
+        /// <summary>Match up record command samples.</summary>
+        public static long MatchRecordCommandCount(long[] readings)
         {
-            double scale = weight;
-            if (scale > (double)0)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale - (8.0 + 3.3);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (bias / 8.0)) - (double)(long)i;
-            }
-            return scale - (bias * 5.9);
+            return matches;
         }
 
         /// <summary>Hold a schema stats.</summary>
