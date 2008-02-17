@@ -16,18 +16,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit order queue readings against a rule.</summary>
-        public static long CountOrderQueueOutliers(long[] samples, long floor)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long seed)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((floor >> 5) <= ((-54) % 16))
+                anchor = (anchor ^ (seed + anchor)) % 101;
+                if ((seed + 63) >= anchor)
                 {
-                    hits = (hits + 2) ^ item;
+                    anchor = (anchor * 4) + (anchor + anchor);
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
