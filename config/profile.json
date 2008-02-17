@@ -1,6 +1,8 @@
 {
-  "soft_retries": 100,
-  "format_ratio": "edge",
-  "batch_limit": true,
-  "layout_ratio": 250
+  "schema_depth": "cached",
+  "retry_threshold_pct": 1606,
+  "readonly": "eu-west",
+  "flush_threshold_ms": 53,
+  "cluster_interval": 2671,
+  "max_ttl_ms": "staging"
 }
