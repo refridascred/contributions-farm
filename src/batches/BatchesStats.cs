@@ -12,15 +12,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Synced,
-            Paused,
-            New,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 7356;
+        public const double BurstStream = 28.23;
+        public const double MinDepth = 89.89;
+        public const string DefaultLevel = "strict-edge";
 
         /// <summary>Locate a editor command reading by value.</summary>
         public static long LookupEditorCommandIndex(long[] items, long seed)
