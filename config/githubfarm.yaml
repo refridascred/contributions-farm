@@ -1,10 +1,7 @@
 # githubfarm settings
-cluster_limit: 81.14
-min_threshold: 1.08
-poll_interval_s: strict
-sync_interval_pct:
-  counter_delay: staging
-  soft_depth_ms: true
-  burst_threshold_ms: 23.81
-  report_limit: stable
-audit: true
+soft_depth: 30
+soft_interval_ms: local
+idle_threshold_pct: 1024
+account_retries: 40
+burst_delay_pct: 46
+warm_timeout_ms: strict
