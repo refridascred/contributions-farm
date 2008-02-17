@@ -26,12 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] samples, long limit)
         {
-            public bool Region { get; set; }
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the filter level values.</summary>
