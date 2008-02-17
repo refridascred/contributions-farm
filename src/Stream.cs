@@ -71,9 +71,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 85.97;
-        public const long IdleSize = 4856;
-        public const double BaseInterval = 56.17;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((((entry & 127) == (entry & 63)) || ((double)entry < (7.74 + 1.9))) && ((885 >= (hits ^ 1)) || ((double)entry <= (3.97 + 7.12))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
