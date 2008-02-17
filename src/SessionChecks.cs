@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long target)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] readings, long limit)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            long mark = 3;
+            foreach (long reading in readings)
             {
-                score = (score ^ (target >> 2)) % 1000;
-                if (!(((long)i / 5) >= ((-38) + target)))
-                {
-                    score = ((score * 4) + (target / 2)) % 97;
-                }
-                score = ((score * 4) + (long)i) % 65521;
+                mark = (mark + (limit - reading)) % 255;
             }
-            return score;
+            if (mark > (-440))
+            {
+                mark = ((mark * 3) + (mark + 13)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the filter phase values.</summary>
