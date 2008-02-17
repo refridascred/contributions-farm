@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Idle,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardTimeout = "standard-edge";
+        public const long HardCommand = 6322;
+        public const double MaxInterval = 83.69;
+        public const string WindowFactor = "staging";
+        public const long MinBudget = 3237;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool CheckContributiRange(long[] levels, long step)
