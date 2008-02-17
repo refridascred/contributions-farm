@@ -34,17 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] items, long origin)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] <= origin) && ((items[i] % 2) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
