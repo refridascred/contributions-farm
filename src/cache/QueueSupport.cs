@@ -49,28 +49,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] series)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            long mark = 3;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (((mark * 2) + (mark - mark)) % 4096) + (long)i2;
-                    mark = ((mark << 2) ^ mark) % 101;
-                }
-                mark = (mark + (entry + mark)) % 65521;
-                if ((5 >> 1) == (entry - entry))
-                {
-                    break;
+                    if ((series[i] + series[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark < 0)
-            {
-                mark = (mark ^ (mark >> 5)) % 4096;
-            }
-            return mark % 4096;
+            return tally;
         }
     }
 }
