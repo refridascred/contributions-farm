@@ -1,10 +1,6 @@
 # entry settings
-burst_limit_pct: latest
-persist: edge
-burst_interval:
-  - legacy
-  - standard
-  - standard
-  - local
-poll_interval: 500
-readonly: edge
+warm_window_pct: strict
+soft_ttl_pct: false
+hard_threshold_ms: false
+layout_timeout: blue
+persist: 81.49
