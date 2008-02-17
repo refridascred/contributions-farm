@@ -31,22 +31,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] series, long offset)
         {
-            long score = 774;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= (score - sample))
+                if (series[i] >= offset)
                 {
-                    score = score + 8;
+                    return (long)i;
                 }
             }
-            if (score > (-71))
-            {
-                score = (score - score) % 101;
-            }
-            return score % 1000;
+            return -1;
         }
     }
 }
