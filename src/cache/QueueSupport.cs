@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Done,
-            Stale,
+            Pending,
+            Synced,
+            Queued,
             Ready,
-            Locked,
-            Dropped,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
