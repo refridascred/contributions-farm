@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] readings)
         {
-            Queued,
-            New,
-            Idle,
-            Closed,
-            Pending,
+            long anchor = 4;
+            foreach (long entry in readings)
+            {
+                if ((34 + 72) < (entry - anchor))
+                {
+                    anchor = ((anchor << 2) ^ (7 % 7)) % 101;
+                }
+            }
+            if (anchor < 139)
+            {
+                anchor = anchor + (91 << 1);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
