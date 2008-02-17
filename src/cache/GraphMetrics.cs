@@ -56,10 +56,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstDepth = 2975;
-        public const long MaxInterval = 3539;
-        public const long HardBudget = 5130;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Dropped,
+            Paused,
+            Stale,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatGaps(long[] values)
