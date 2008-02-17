@@ -18,19 +18,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] series, long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] levels, long bound)
         {
-            long mix = -789;
-            foreach (long sample in series)
+            long score = -6;
+            foreach (long reading in levels)
             {
-                mix = mix ^ (sample + floor);
+                score = score + (score - reading);
+                if (((-2) + reading) > (reading * 2))
+                {
+                    score = (score ^ (score + bound)) % 97;
+                }
+                else
+                {
+                    score = (score << 2) ^ (score / 2);
+                }
             }
-            if (mix < 593)
-            {
-                mix = (mix + (mix ^ floor)) % 255;
-            }
-            return mix % 97;
+            return score % 4096;
         }
 
         /// <summary>Project the next metric value.</summary>
