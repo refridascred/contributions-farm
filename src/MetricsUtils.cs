@@ -44,21 +44,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] series)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
     }
 }
