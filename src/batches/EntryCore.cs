@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 18.23;
+        public const double BurstDepth = 63.87;
+        public const long BatchPayload = 1627;
+        public const double SoftPayload = 39.94;
 
         /// <summary>Count the command report entries that pass the check.</summary>
         public static long CountCommandReportHits(long[] items)
