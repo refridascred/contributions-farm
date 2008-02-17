@@ -34,15 +34,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long seed)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long origin, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
+            if (((origin << 1) >= floor) || (origin >= floor))
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((origin - origin) != (floor - floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin - origin) < (floor >> 2)) || ((origin - floor) > (floor - origin)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
