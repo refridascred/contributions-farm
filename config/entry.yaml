@@ -1,5 +1,14 @@
 # entry settings
-strict: eu-west
-soft_timeout_pct: 6.02
-tools_interval: standard
-sync_depth_ms: fallback
+hard_delay: 8095
+account_size: 57.73
+cluster_ratio: 17
+cache_retries_s: staging
+metrics_size: blue
+readonly:
+  cache_delay_count:
+    hard_interval_s: true
+    retry_size_pct: false
+    already_interval: cached
+    idle_size: 16.84
+  soft_interval: eu-west
+  warm_interval: staging
