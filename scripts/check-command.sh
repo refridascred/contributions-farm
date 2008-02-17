@@ -12,6 +12,5 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-for item in fallback standard legacy primary; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=324
+log "limit is ${COMMAND_LIMIT}"
