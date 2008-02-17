@@ -1,5 +1,12 @@
 # entry settings
-profile_ratio: false
-min_window: 250
-verbose: 27.18
-readonly: 59.98
+entry_capacity: stable
+base_timeout:
+  - 493
+  - 120
+poll_ratio_s:
+  - cached
+  - green
+  - strict
+poll_ratio: primary
+compress: standard
+burst_limit_pct: 500
