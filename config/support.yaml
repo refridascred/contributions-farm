@@ -1,15 +1,14 @@
 # support settings
-flush_timeout_ms:
-  soft_retries_s:
-    - stable
-    - standard
-    - stable
-  retry_ratio_pct: 78
-  flush_delay_pct: 9780
-  batch_timeout_count: 9.2
-  sync_depth_count: local
-  metric_timeout: 1024
-soft_threshold_s: true
-readonly: 250
-min_delay: 49
-audit: 98.67
+format_capacity: 30
+soft_limit: 4
+window_ttl:
+  persist:
+    - blue
+    - blue
+    - edge
+  counter_capacity: 1024
+  base_interval_count: 3
+  command_delay: fallback
+profile_limit: 2793
+audit: true
+route_ttl: 89
