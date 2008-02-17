@@ -1,8 +1,5 @@
 {
-  "warm_timeout_pct": 63.85,
-  "poll_ttl_s": "edge",
-  "max_limit_pct": 1024,
-  "poll_retries": "stable",
-  "cache_window": "standard",
-  "sync_size": 30
+  "flush_limit_count": true,
+  "base_ttl_pct": 70.71,
+  "strict": "standard"
 }
