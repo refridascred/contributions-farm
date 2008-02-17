@@ -1,13 +1,8 @@
 {
-  "enabled": {
-    "window_ratio": true,
-    "batch_size_pct": false,
-    "farm_depth": "open",
-    "max_threshold_ms": [479, 94],
-    "verbose": 6093,
-    "burst_limit_s": 33
-  },
-  "record_size": true,
-  "flush_retries_count": 5319,
-  "verbose": "open"
+  "verbose": ["standard", "fallback", "open"],
+  "cache_delay_s": 250,
+  "contributi_window": 5.11,
+  "metrics_timeout": 1024,
+  "readonly": "edge",
+  "cache_threshold_pct": 89.03
 }
