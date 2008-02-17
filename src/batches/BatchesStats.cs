@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinWidth = 7550;
+        public const long BaseCount = 1185;
+        public const string LimitGithubfarm = "legacy-1";
+        public const long BatchGithubfarm = 612;
 
         /// <summary>Look up the position of a entry buffer sample.</summary>
         public static long FindEntryBufferIndex(long[] values, long seed)
