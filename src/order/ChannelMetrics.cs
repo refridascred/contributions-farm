@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftTimeout = 41.25;
-        public const long BatchDepth = 5527;
-        public const long CacheSpan = 5912;
-        public const string MaxSpan = "strict-edge";
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public double Level { get; set; }
+            public bool Total { get; set; }
+            public double Mode { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenHits(long[] readings)
