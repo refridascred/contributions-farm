@@ -1,16 +1,4 @@
 # already settings
-batch_depth_ms: false
-batch_limit_ms:
-  - latest
-  - latest
-  - stable
-strict:
-  base_depth: 60
-  hard_timeout: 6451
-  min_retries: legacy
-  counter_retries: 6.22
-base_depth_pct: blue
-default_depth_pct:
-  - legacy
-  - stable
-buffer_ratio: 31.19
+entry_delay: staging
+schema_interval: primary
+hard_ratio_pct: 100
