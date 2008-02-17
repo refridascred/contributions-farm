@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long bound)
         {
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
-            public double Owner { get; set; }
+            long result = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a window stats.</summary>
