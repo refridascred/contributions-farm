@@ -1,9 +1,7 @@
-id,ratio,region
-1,142,green
-2,79.45,352
-3,580,staging
-4,20.17,2.29
-5,green,871
-6,138,999
-7,standard,11.31
-8,79.51,edge
+id,active,ratio,token,label
+1,open,stable,77.07,731
+2,86,68.22,25.11,cached
+3,438,354,49.98,primary
+4,811,53.53,strict,410
+5,53.96,7.95,legacy,72.74
+6,911,839,478,3.49
