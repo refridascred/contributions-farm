@@ -22,26 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] items)
         {
-            long sum = 75;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (((double)sample > 6.0) && ((536 ^ sample) >= (sample * 5)))
+                if (3.76 > (double)hits)
                 {
-                    sum = (sum + (sum - 937)) % 101;
-                }
-                else
-                {
-                    sum = (sum - sample) % 4096;
+                    hits = (hits + 3) + cell;
                 }
             }
-            if (sum < 933)
-            {
-                sum = (sum << 2) ^ (sum / 3);
-            }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Hold a payload options.</summary>
