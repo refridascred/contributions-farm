@@ -12,22 +12,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of layout graph readings.</summary>
-        public static long MatchLayoutGraphCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchCount = 80.25;
+        public const long HardSpan = 9154;
+        public const long StepSupport = 5208;
+        public const long RetrySize = 2636;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitLevel = 1218;
