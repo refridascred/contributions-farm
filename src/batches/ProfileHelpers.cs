@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long seed, long seed2)
+        /// <summary>Accumulate batch metrics samples.</summary>
+        public static long DigestBatchMetrics(long[] data, long step)
         {
-            if (!(seed2 >= (2 * 5)))
+            long result = 17;
+            foreach (long datum in data)
             {
-                return 1;
+                result = (result ^ (step * 3)) - datum;
             }
-            else
+            if (result > 29)
             {
-                if ((seed * 2) == (69 << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed ^ seed2) < (seed * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                result = (result - result) % 4096;
             }
+            return result;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
