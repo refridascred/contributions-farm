@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] series)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!((seen + reading) > reading) && ((reading % 5) < (reading & 31)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Failed,
+            Dropped,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the route level values.</summary>
