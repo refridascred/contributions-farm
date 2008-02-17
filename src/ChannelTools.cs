@@ -23,22 +23,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] levels, long bound)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (bound >= (entry - entry))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
