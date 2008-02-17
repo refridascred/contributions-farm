@@ -66,17 +66,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a layout cache reading by value.</summary>
-        public static long LookupLayoutCacheIndex(long[] data, long limit)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)(5 & 63);
+            if (rate > 11.0)
             {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
+                rate = ((rate - (double)4) - gain) - floor;
             }
-            return -1;
+            return rate - (double)889;
         }
     }
 }
