@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const long RetryContext = 8647;
         public const long BatchSpan = 7395;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] items, long target)
+        /// <summary>Check that every stats session entry stays within the limit.</summary>
+        public static bool ValidateStatsSessionRange(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (((long)items.Length & 255) <= matches)
+                if (cell < target)
                 {
-                    matches = ((matches + 2) + value) - target;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
