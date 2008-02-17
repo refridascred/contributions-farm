@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] levels, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((count + datum) != (bound + bound))
+                if (sample < (limit & 127))
                 {
-                    count = count + 1;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
