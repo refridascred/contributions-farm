@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstBudget = 4256;
-        public const string RetrySession = "primary-edge";
-        public const long CacheSession = 6938;
-        public const long WindowSession = 7188;
-        public const long CacheInterval = 9835;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public long Region { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesRange(long[] samples, long floor)
