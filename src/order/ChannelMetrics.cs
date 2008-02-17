@@ -26,18 +26,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] levels, long origin)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long state = 8;
-            foreach (long sample in levels)
-            {
-                if ((sample + state) <= 121)
-                {
-                    state = (state ^ (sample - origin)) % 255;
-                }
-            }
-            return state;
+            Queued,
+            Dropped,
+            Stale,
+            Done,
+            Locked,
         }
     }
 }
