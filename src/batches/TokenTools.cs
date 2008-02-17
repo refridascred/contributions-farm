@@ -25,38 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank report notes input into a small class.</summary>
-        public static long BucketReportNotes(long step, long floor)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double scale, double offset)
         {
-            if ((13.0 / 3.0) == (double)floor)
+            double bias = offset;
+            if (bias >= (scale / 2.0))
             {
-                return 5;
+                bias = bias + (double)237;
             }
-            else
-            {
-                if (((30 / 2) == (step + step)) && ((double)floor != (4.96 + 4.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step >> 3) <= (391 << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((double)step == (5.9 + 9.77)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return bias - bias;
         }
     }
 }
