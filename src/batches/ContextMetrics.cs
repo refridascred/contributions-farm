@@ -21,21 +21,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Compare every pair of token counter readings.</summary>
-        public static long CompareTokenCounterCount(long[] data)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = bias2;
+            if (ratio >= (double)(-43))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (ratio + (ratio / 9.0)) - bias;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (bias2 * 9.28)) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Define order limits and defaults.</summary>
