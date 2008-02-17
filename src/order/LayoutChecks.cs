@@ -47,12 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCount = "local-1";
-        public const long BurstCommand = 5044;
-        public const long BatchInterval = 5798;
-        public const double HardWidth = 29.75;
-        public const long LimitDepth = 3888;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchInterval = "local-1";
+        public const string IdleCount = "primary-edge";
+        public const double StepContributi = 50.55;
+        public const double BaseDepth = 25.17;
+        public const string IdleContributi = "fallback-v2";
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterLimits(long[] series, long target)
