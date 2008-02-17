@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of window record entries.</summary>
-        public static long DigestWindowRecord(long[] series, long bound)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long limit)
         {
-            long anchor = 35;
-            foreach (long datum in series)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = ((anchor * 3) + (anchor + anchor)) - datum;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            if (anchor > 85)
-            {
-                anchor = (anchor * 2) + (bound >> 4);
-            }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Count editor notes pairs that satisfy a relation.</summary>
