@@ -28,17 +28,30 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] samples, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -354;
+            foreach (long sample in values)
             {
-                if ((samples[i] < step) && ((samples[i] % 5) != 0))
+                for (int i = 0; i < 11; i++)
                 {
-                    return (long)i;
+                    carry = ((carry * 3) + 565) ^ (long)i;
+                }
+                if (((sample - 20) > (carry ^ carry)) || ((sample >> 2) != (sample % 2)))
+                {
+                    carry = carry - (sample + sample);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ carry) % 1000;
                 }
             }
-            return -1;
+            if (carry > 473)
+            {
+                carry = ((carry * 5) + (carry + carry)) % 1000;
+            }
+            return carry;
         }
     }
 }
