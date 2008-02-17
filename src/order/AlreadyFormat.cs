@@ -20,19 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] readings, long seed)
+        /// <summary>Roll a editor farm counter forward.</summary>
+        public static long DeriveEditorFarm(long target)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell <= seed)
+                carry = carry ^ carry;
+                if (((long)i + target) >= target)
                 {
-                    flag = false;
-                    break;
+                    carry = (carry - (137 - 2)) % 255;
                 }
+                else
+                {
+                    carry = (carry * 4) + carry;
+                }
+                carry = (carry ^ target) % 97;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Digest a series of token entries.</summary>
