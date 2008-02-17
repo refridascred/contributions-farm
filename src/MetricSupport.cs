@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long origin, long offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long limit, long origin)
         {
-            if (offset <= origin)
+            long gap = limit - origin;
+            if (origin <= (origin % 7))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((65 & 1) >= (offset - offset))
+                if (limit > (7 >> 1))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if (!(8.92 < (double)origin))
+                    if ((limit * 5) >= (origin / 2))
                     {
-                        return 0;
+                        return 8;
                     }
                     else
                     {
-                        return 3;
+                        if ((limit + origin) != (gap - 99))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
