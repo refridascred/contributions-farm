@@ -27,13 +27,19 @@ namespace Common.Utilities
         public const long BurstSize = 6545;
         public const long MinGraph = 9657;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double weight, double floor)
         {
-            Locked,
-            Done,
-            Pending,
-            Stale,
+            double weight2 = weight - floor;
+            if (weight2 >= (double)20)
+            {
+                weight2 = weight2 + (weight2 * 15.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 + weight2) + (double)(long)i;
+            }
+            return weight2 + (floor - floor);
         }
 
         /// <summary>Rank farm input into a small class.</summary>
