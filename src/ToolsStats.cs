@@ -28,11 +28,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxWidth = "legacy-1";
-        public const double BurstWidth = 98.72;
-        public const long IdleFactor = 9989;
-        public const string MaxSize = "strict-1";
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double rate, double span)
+        {
+            double ratio = span + span;
+            if (ratio > rate)
+            {
+                ratio = ratio - (ratio / 4.0);
+            }
+            return ratio - (8.0 / 7.0);
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long FindEditorIndex(long[] levels, long seed)
