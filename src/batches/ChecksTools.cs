@@ -35,15 +35,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double ratio, double span)
+        /// <summary>Match up buffer batches samples.</summary>
+        public static long OverlapBufferBatchesCount(long[] readings)
         {
-            double ratio2 = span;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio2 = (ratio2 + (6.85 * 4.9)) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio2 + ratio;
+            return tally;
         }
     }
 }
