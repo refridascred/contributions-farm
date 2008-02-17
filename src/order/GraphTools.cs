@@ -19,18 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] readings)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long floor)
         {
-            long mark = 125;
-            foreach (long sample in readings)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (((mark & 7) >= (sample & 7)) || (mark < (sample ^ sample)))
+                if ((acc + floor) < ((long)i >> 4))
                 {
-                    mark = (mark * 4) + (mark / 6);
+                    acc = acc ^ (floor + 190);
+                    acc = (acc + (floor - floor)) % 4096;
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
