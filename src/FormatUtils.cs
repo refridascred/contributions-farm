@@ -91,11 +91,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a buffer report figure with a bias.</summary>
-        public static double ScaleBufferReport(double weight, double floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] values)
         {
-            double bias = (floor * 8.0) * 7.0;
-            return bias + (weight * 18.0);
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen ^ seen) >= (seen << 2))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
