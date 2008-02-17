@@ -29,18 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] data)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if ((((long)data.Length ^ value) <= ((long)data.Length - value)) || (((double)value >= 2.72) && ((value + matches) >= (34 + value))))
+                if (datum < step)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
