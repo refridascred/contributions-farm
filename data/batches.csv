@@ -1,6 +1,7 @@
-id,token,score
-1,296,152
-2,737,85.57
-3,open,staging
-4,19.54,334
-5,edge,30.59
+id,ratio,rank,region
+1,local,standard,44.09
+2,78.04,blue,68.31
+3,95.77,13,525
+4,54,legacy,79.66
+5,621,15.77,257
+6,legacy,515,standard
