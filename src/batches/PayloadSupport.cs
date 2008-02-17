@@ -42,22 +42,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] data, long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((double)offset <= 2.9)
+                if (entry > limit)
                 {
-                    seen = (seen + 2) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
