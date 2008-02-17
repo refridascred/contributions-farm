@@ -35,18 +35,12 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] levels, long bound)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long result = 1;
-            foreach (long reading in levels)
-            {
-                if (((double)reading > (9.0 * 1.16)) || ((bound * 3) <= (bound ^ reading)))
-                {
-                    result = (result << 3) ^ ((long)levels.Length ^ reading);
-                }
-            }
-            return result % 4096;
+            Locked,
+            Done,
+            Synced,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
