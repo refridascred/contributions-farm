@@ -86,39 +86,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long floor, long step)
-        {
-            long delta = floor ^ step;
-            if (293 >= step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step / 4) != (delta - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step + delta) < (step & 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((2.02 - 1.0) > (double)delta))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardBudget = 4726;
+        public const long HardCommand = 5636;
+        public const long BatchSpan = 9500;
+        public const double MaxCommand = 78.65;
+        public const long IdleCommand = 168;
     }
 }
