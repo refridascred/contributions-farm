@@ -1,13 +1,8 @@
 {
-  "hard_ratio": ["staging", "green", "standard"],
-  "strict": "staging",
-  "readonly": 9216,
-  "batch_capacity_pct": {
-    "layout_interval": ["green", "primary", "staging", "edge"],
-    "min_ttl_s": "standard",
-    "max_retries_pct": "standard",
-    "batch_delay": 6787,
-    "queue_delay": [216, 33, 249, 82],
-    "base_size_ms": false
-  }
+  "idle_limit": 95,
+  "base_interval_s": "eu-west",
+  "contributi_window": "strict",
+  "support_capacity": ["fallback", "blue"],
+  "commits_ratio": 6006,
+  "burst_ratio_count": [471, 331, 7, 498]
 }
