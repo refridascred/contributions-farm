@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the stream graph entries that pass the check.</summary>
-        public static long CountStreamGraphMatches(long[] samples)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value < (9 / 5))
+                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the metric farm series from a seed.</summary>
