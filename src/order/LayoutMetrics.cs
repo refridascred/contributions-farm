@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of window githubfarm readings.</summary>
-        public static long CompareWindowGithubfarmCount(long[] data)
+        /// <summary>Count the already githubfarm entries that pass the check.</summary>
+        public static long CountAlreadyGithubfarmHits(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (bound <= tally)
                 {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
