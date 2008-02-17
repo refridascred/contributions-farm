@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] samples, long floor)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((reading >> 3) <= (reading + count)))
+                if (series[i] == seed)
                 {
-                    count = (count + 1) - floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
