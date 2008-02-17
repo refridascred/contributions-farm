@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const long BatchTimeout = 2163;
         public const string SoftCache = "local-1";
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] samples, long floor)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Retry,
+            Queued,
+            Closed,
+            Locked,
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
