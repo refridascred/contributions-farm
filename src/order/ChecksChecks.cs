@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double weight, double offset)
         {
-            long result = 162;
-            foreach (long item in series)
+            double rate = 7.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (((-470) & 255) != (item - result))
-                {
-                    result = (result ^ (item % 10)) % 97;
-                }
+                rate = (((rate + rate) + (double)(long)i) - weight) - offset;
             }
-            return result;
+            return rate - 8.8;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
