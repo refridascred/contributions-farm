@@ -61,17 +61,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] data, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 18;
+            foreach (long item in values)
             {
-                if (data[i] > step)
+                if (item <= (item / 5))
                 {
-                    return (long)i;
+                    mark = mark ^ mark;
+                    mark = (mark ^ mark) % 255;
                 }
+                else
+                {
+                    mark = (mark ^ (bound % 24)) % 4096;
+                }
+                mark = ((mark << 3) ^ ((-297) - bound)) % 97;
             }
-            return -1;
+            if (mark > 8)
+            {
+                mark = (mark - (87 + bound)) % 1000;
+            }
+            return mark % 65521;
         }
     }
 }
