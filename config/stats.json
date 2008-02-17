@@ -1,10 +1,8 @@
 {
-  "format_size": 3779,
-  "report_size": 98,
-  "retry_delay_count": {
-    "route_timeout": false,
-    "tools_interval": 1024,
-    "burst_depth": 1066
-  },
-  "idle_timeout": 36.45
+  "idle_threshold": [266, 140],
+  "soft_limit": 53.32,
+  "max_ratio_ms": 26.31,
+  "record_size": [284, 64, 390, 391],
+  "cluster_capacity": 100,
+  "farm_capacity": false
 }
