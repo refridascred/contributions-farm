@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a metric stats reading.</summary>
-        public static double ScaleMetricStats(double gain, double bias)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] samples)
         {
-            double mean = bias;
-            if (mean > 6.0)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                mean = mean + gain;
+                if (!((cell << 2) <= (cell % 12)) && ((matches * 2) <= (cell << 2)))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + 13.0;
+            return matches;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
