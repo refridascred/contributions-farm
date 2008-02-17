@@ -30,22 +30,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] samples, long step)
+        /// <summary>Audit route account readings against a rule.</summary>
+        public static long CountRouteAccountOutliers(long[] readings)
         {
-            long anchor = 955;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((9.0 / 7.0) < (double)value)
+                if ((entry - 883) >= (entry + (long)readings.Length))
                 {
-                    anchor = (anchor - step) % 255;
+                    count = count + 1;
                 }
             }
-            if (anchor < 79)
-            {
-                anchor = ((anchor * 4) + 96) % 4096;
-            }
-            return anchor % 65521;
+            return count;
         }
     }
 }
