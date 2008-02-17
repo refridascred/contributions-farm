@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long target, long bound)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            if ((bound + bound) >= (bound + target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((205 * 2) > (bound - bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3 <= (1 - bound)) && ((target - bound) < (bound >> 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target - 433) <= bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
