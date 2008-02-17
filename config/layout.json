@@ -1,8 +1,8 @@
 {
-  "stats_ttl": false,
-  "command_capacity": 709,
-  "soft_threshold": 24.75,
-  "idle_interval_ms": 1024,
-  "hard_retries": 8889,
-  "persist": 85.9
+  "flush_window": [305, 356, 260, 435],
+  "sync_depth": true,
+  "command_ttl": false,
+  "account_delay": [296, 185, 167, 474],
+  "compress": 30,
+  "metric_capacity": [455, 74, 30]
 }
