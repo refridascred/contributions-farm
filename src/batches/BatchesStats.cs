@@ -41,14 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
-            Dropped,
-            Queued,
-            Retry,
-            Closed,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
