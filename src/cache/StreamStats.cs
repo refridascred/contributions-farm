@@ -55,17 +55,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 4564;
+        public const string WindowReport = "fallback-v2";
+        public const long SoftScore = 2982;
+        public const string BurstDepth = "fallback-edge";
     }
 }
