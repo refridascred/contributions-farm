@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Scale a cache support figure with a bias.</summary>
+        public static double ScaleCacheSupport(double scale, double span)
         {
-            public double Score { get; set; }
-            public bool Stamp { get; set; }
+            double gain = (double)(38 & 255);
+            if (gain > span)
+            {
+                gain = gain - scale;
+            }
+            return gain - (5.24 + span);
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
