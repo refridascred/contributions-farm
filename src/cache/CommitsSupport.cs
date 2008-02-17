@@ -65,26 +65,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] readings, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] items, long bound)
         {
-            long carry = 232;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((double)limit >= (2.3 / 8.0))
+                if ((double)reading <= 2.88)
                 {
-                    carry = (((carry << 3) ^ carry) % 101) + item;
+                    hits = (hits + 3) + bound;
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ (carry / 4)) % 65521;
+                    hits = hits - 1;
                 }
             }
-            if (carry < 490)
-            {
-                carry = (carry ^ (carry - 95)) % 1000;
-            }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
