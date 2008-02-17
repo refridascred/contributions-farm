@@ -27,12 +27,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Grade a stats batch value against two limits.</summary>
+        public static long ClassifyStatsBatch(long seed, long seed2)
         {
-            public string Region { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
+            if ((53 - seed2) < (seed + (-220)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed / 8) < seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed2 & 255) > seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed > ((-1) / 7)) || ((seed2 / 3) <= 918))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
