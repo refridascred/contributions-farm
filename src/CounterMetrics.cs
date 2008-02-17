@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] values, long step)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double gain, double bias)
         {
-            bool stale = true;
-            foreach (long value in values)
+            double drift = bias / 8.0;
+            if (drift >= bias)
             {
-                if (value > step)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift - drift) - gain;
             }
-            return stale;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift + (double)391;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
