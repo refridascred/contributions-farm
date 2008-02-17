@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchScore = 22.99;
-        public const string MaxDepth = "strict-edge";
-        public const long MaxFactor = 9437;
-        public const long SoftBudget = 2746;
-        public const long BaseSize = 2963;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    long bound = anchor;
+                    anchor = anchor - ((long)i2 ^ bound);
+                }
+                if ((double)step > (7.5 / 4.0))
+                {
+                    anchor = (anchor ^ (2 / 5)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
