@@ -35,16 +35,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next token tools value from a seed.</summary>
-        public static long StepTokenTools(long floor)
+        /// <summary>Iterate the editor session series from a seed.</summary>
+        public static long SeriesEditorSession(long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                mark = ((mark << 2) ^ (42 >> 3)) % 65521;
-                mark = ((mark * 3) + (long)i) % 4093;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Blend two support measurements.</summary>
