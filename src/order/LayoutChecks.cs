@@ -51,19 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] series, long limit)
         {
-            long acc = 774;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                acc = (acc - datum) % 255;
+                if (cell < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (acc < 400)
-            {
-                acc = (acc + 146) % 255;
-            }
-            return acc % 4096;
+            return stale;
         }
 
         /// <summary>Fold a list of already readings.</summary>
