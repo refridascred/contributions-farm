@@ -47,18 +47,34 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] samples, long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long carry = 544;
+            foreach (long cell in samples)
             {
-                if (!((tally ^ reading) <= 808) && ((reading <= (reading % 60)) && ((double)floor >= (9.37 / 6.0))))
+                if ((cell - carry) != (origin + origin))
                 {
-                    tally = tally + 2;
+                    carry = (carry ^ ((long)samples.Length & 255)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (cell - 6)) % 255;
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = (carry + (origin + cell)) ^ (long)i;
+                }
+                if (65 > (cell - origin))
+                {
+                    carry = carry ^ (origin - origin);
                 }
             }
-            return tally;
+            if (carry > 92)
+            {
+                carry = (carry - (27 - origin)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
