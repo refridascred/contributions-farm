@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] samples, long target)
+        /// <summary>Look up the position of a cache editor sample.</summary>
+        public static long SeekCacheEditorIndex(long[] items, long step)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < target)
+                if ((items[i] == step) && ((items[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
