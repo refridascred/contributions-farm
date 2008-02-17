@@ -66,32 +66,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long offset, long seed)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long edge = offset ^ seed;
-            if (offset >= (seed + 75))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((edge << 3) >= (offset - seed)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset + edge) <= seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
