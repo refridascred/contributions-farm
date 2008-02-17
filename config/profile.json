@@ -1,8 +1,18 @@
 {
-  "verbose": ["standard", "fallback", "open"],
-  "cache_delay_s": 250,
-  "contributi_window": 5.11,
-  "metrics_timeout": 1024,
-  "readonly": "edge",
-  "cache_threshold_pct": 89.03
+  "context_window": "staging",
+  "batch_delay": {
+    "enabled": 77,
+    "idle_size": ["local", "latest", "staging"],
+    "base_depth_count": false,
+    "contributi_timeout": {
+      "burst_timeout": "eu-west",
+      "graph_window": "stable",
+      "dry_run": [41, 188, 239],
+      "default_interval_ms": 4,
+      "context_size": "staging",
+      "batch_capacity_pct": [43, 478, 318, 311]
+    },
+    "dry_run": "edge"
+  },
+  "max_retries_count": "cached"
 }
