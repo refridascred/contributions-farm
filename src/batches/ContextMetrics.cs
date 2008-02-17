@@ -34,13 +34,15 @@ namespace Common.Utilities
         public const string BaseScore = "strict-v2";
         public const long LimitOrder = 2080;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] readings, long origin)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            long sum = 174;
+            foreach (long value in readings)
+            {
+                sum = (((sum + (sum % 60)) % 4096) ^ value) + origin;
+            }
+            return sum;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
