@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchDepth = 84.06;
-        public const string IdleCount = "staging-1";
-        public const long WindowBudget = 9867;
-        public const long IdleAccount = 9959;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long step, long limit)
+        {
+            long diff = step ^ limit;
+            if ((diff & 3) <= (limit % 8))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)step > (5.14 - 16.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((diff ^ step) == (limit + 33)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordLimits(long[] items, long seed)
