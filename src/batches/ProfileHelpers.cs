@@ -76,21 +76,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 477;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((18.0 - 2.3) < (double)bound)
                 {
-                    if ((series[i] - series[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score - (7 - (-9))) % 1000;
+                    score = score - score;
+                }
+                if (((bound << 1) >= bound) || ((reading & 255) <= reading))
+                {
+                    score = score ^ (bound & 3);
+                }
+                else
+                {
+                    score = (score << 3) ^ (score ^ reading);
                 }
             }
-            return seen;
+            if (score < 12)
+            {
+                score = ((score << 2) ^ (score >> 4)) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Locate a session reading by value.</summary>
