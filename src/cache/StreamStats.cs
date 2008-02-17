@@ -52,13 +52,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] samples, long bound)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
