@@ -22,13 +22,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
+            Ready,
+            Locked,
+            Closed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Locate a session window reading by value.</summary>
