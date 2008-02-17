@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double ratio, double offset)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double weight = (double)(2 >> 2);
-            if (weight <= (double)733)
-            {
-                weight = (weight - (4.8 + ratio)) - offset;
-            }
-            else
-            {
-                weight = weight + (weight + 1.22);
-            }
-            return weight + weight;
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
