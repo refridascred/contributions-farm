@@ -61,11 +61,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string LimitMetrics = "local-1";
-        public const long IdleMetrics = 8529;
-        public const long SoftMetrics = 5430;
-        public const long LimitTimeout = 109;
-        public const double MinSize = 17.18;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long floor, long step)
+        {
+            long delta = floor ^ step;
+            if (293 >= step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step / 4) != (delta - floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step + delta) < (step & 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((2.02 - 1.0) > (double)delta))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
