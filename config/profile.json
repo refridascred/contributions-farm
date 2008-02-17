@@ -1,13 +1,7 @@
 {
-  "enabled": {
-    "sync_ratio": 3971,
-    "hard_ttl_count": [499, 224, 464, 328],
-    "min_ratio_ms": 250,
-    "soft_depth": true,
-    "dry_run": 100
-  },
-  "batch_ttl": "standard",
-  "flush_ttl": 30,
-  "audit": 87,
-  "default_ttl_pct": "primary"
+  "enabled": "cached",
+  "idle_interval": "cached",
+  "strict": 2,
+  "poll_capacity": 42.68,
+  "min_depth_ms": 100
 }
