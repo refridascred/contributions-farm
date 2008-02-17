@@ -1,5 +1,10 @@
 # entry settings
-retry_ratio: 4765
-queue_size: 65.0
-dry_run: 30
-default_timeout_count: primary
+persist:
+  - 467
+  - 402
+  - 468
+idle_delay:
+  - 301
+  - 252
+route_depth: 21.41
+retry_threshold: 33.95
