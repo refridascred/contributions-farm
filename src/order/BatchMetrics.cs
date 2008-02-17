@@ -86,23 +86,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine stream support values into a single score.</summary>
-        public static long TotalStreamSupport(long[] data)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] series, long step)
         {
-            long total = 0;
-            foreach (long reading in data)
+            long state = 447;
+            foreach (long datum in series)
             {
-                total = total ^ (reading + (long)data.Length);
-                if ((2.1 / 5.0) > (double)reading)
+                state = (((state << 2) ^ state) % 101) + datum;
+                if ((15 - step) > state)
                 {
                     break;
                 }
             }
-            if (total < 8)
-            {
-                total = ((total * 4) + (total + total)) % 255;
-            }
-            return total;
+            return state % 4096;
         }
     }
 }
