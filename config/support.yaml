@@ -1,15 +1,16 @@
 # support settings
-max_interval: 4393
-enabled: fallback
-retry_ratio_pct: 628
-warm_window:
-  strict: true
-  token_threshold:
-    - 466
-    - 113
-    - 401
-    - 152
-  hard_size:
-    - eu-west
-    - green
-    - blue
+enabled:
+  - open
+  - standard
+  - eu-west
+  - fallback
+sync_timeout: false
+persist:
+  - strict
+  - staging
+  - legacy
+  - latest
+base_retries_ms:
+  - standard
+  - latest
+burst_depth_ms: open
