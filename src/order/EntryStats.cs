@@ -42,12 +42,12 @@ namespace Common.Utilities
         public const long HardBudget = 3011;
         public const string SoftBatches = "primary-v2";
 
-        /// <summary>Locate a report batches reading by value.</summary>
-        public static long SeekReportBatchesIndex(long[] series, long floor)
+        /// <summary>Look up the position of a buffer metric sample.</summary>
+        public static long SeekBufferMetricIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] > floor) && ((series[i] % 5) != 0))
+                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
