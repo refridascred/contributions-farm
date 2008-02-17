@@ -15,10 +15,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchFormat = 42.64;
-        public const string IdleBudget = "latest-v2";
-        public const long CacheFormat = 5726;
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double weight, double bias)
+        {
+            double drift = (weight * 2.19) + (bias - bias);
+            if (drift > (double)267)
+            {
+                drift = drift - (double)0;
+            }
+            else
+            {
+                drift = drift + (weight * 0.7);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - 6.0) + (double)(long)i;
+            }
+            return drift + (weight + bias);
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long CombineOrder(long[] data, long seed)
