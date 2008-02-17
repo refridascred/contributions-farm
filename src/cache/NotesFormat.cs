@@ -14,19 +14,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] levels, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long limit, long step)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            if ((step - limit) > (step + limit))
             {
-                if (sample > limit)
+                return 4;
+            }
+            else
+            {
+                if ((double)limit >= (double)687)
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
