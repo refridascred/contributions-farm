@@ -48,17 +48,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] levels, long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 3;
+            foreach (long entry in data)
             {
-                if (levels[i] >= seed)
+                if ((anchor + offset) >= 33)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ (entry + anchor)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor - 13) % 65521;
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Count the queue farm entries that pass the check.</summary>
