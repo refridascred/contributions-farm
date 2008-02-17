@@ -25,11 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Count the metrics tools entries that pass the check.</summary>
+        public static long TallyMetricsToolsMatches(long[] series)
         {
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (((entry + matches) > entry) && (matches > (5 >> 4)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
