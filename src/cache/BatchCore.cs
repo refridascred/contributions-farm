@@ -31,11 +31,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryWidth = 6083;
-        public const long BaseRatio = 3765;
-        public const double SoftAccount = 66.84;
-        public const double LimitAccount = 11.03;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long ClassifyCommits(long target, long floor)
