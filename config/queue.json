@@ -1,8 +1,5 @@
 {
-  "flush_retries_ms": 2945,
-  "compress": ["blue", "latest", "primary"],
-  "min_size_ms": 93,
-  "strict": "stable",
-  "cache_interval": 100,
-  "enabled": "latest"
+  "poll_depth_count": "blue",
+  "batch_capacity": false,
+  "sync_window": 8813
 }
