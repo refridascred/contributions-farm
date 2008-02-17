@@ -39,14 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Queued,
-            Done,
             Active,
-            Idle,
-            Locked,
+            Synced,
+            Dropped,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a stream summary.</summary>
