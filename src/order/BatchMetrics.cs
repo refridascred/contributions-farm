@@ -84,11 +84,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchWindow = 40.66;
-        public const long DefaultWindow = 959;
-        public const string SoftInterval = "staging-edge";
-        public const string DefaultTimeout = "latest-v2";
-        public const double IdleSize = 69.6;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] values, long origin)
+        {
+            long mix = 12;
+            foreach (long reading in values)
+            {
+                mix = (((mix - ((-18) + mix)) % 255) ^ reading) - origin;
+            }
+            if (mix > 30)
+            {
+                mix = ((mix << 2) ^ mix) % 1000;
+            }
+            return mix;
+        }
     }
 }
