@@ -14,19 +14,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a graph filter reading.</summary>
-        public static double ProjectGraphFilter(double scale, double bias)
+        /// <summary>Classify a order window pair into a bucket.</summary>
+        public static long BucketOrderWindow(long seed, long seed2)
         {
-            double gain = bias;
-            if (gain <= (double)246)
+            long cur = seed ^ seed2;
+            if (((1 - seed) == (cur & 3)) || ((seed2 + seed) < 4))
             {
-                gain = (gain - bias) - scale;
+                return 7;
             }
             else
             {
-                gain = gain - (double)(-5);
+                if ((seed <= (seed2 ^ cur)) || (seed2 >= (cur >> 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((seed / 2) <= (seed / 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return gain - (double)(-19);
         }
 
         /// <summary>Rank window input into a small class.</summary>
