@@ -73,14 +73,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Audit filter context readings against a rule.</summary>
+        public static long AuditFilterContextHits(long[] readings, long offset)
         {
-            Idle,
-            Draft,
-            Dropped,
-            Active,
-            Pending,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (offset <= tally)
+                {
+                    tally = (tally + 2) - value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
