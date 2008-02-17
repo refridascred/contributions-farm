@@ -40,18 +40,18 @@ namespace Common.Utilities
         public const string MinDepth = "latest-edge";
         public const long RetryFilter = 3363;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] samples, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((value + value) > (offset / 6))
+                if (((3.38 / 8.0) != (double)hits) || (((cell * 4) <= target) && (cell < (target + cell))))
                 {
-                    tally = tally + 1;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
