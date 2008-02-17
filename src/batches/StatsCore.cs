@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] items, long limit)
+        /// <summary>Measure how many order farm samples are out of range.</summary>
+        public static long CountOrderFarmHits(long[] samples)
         {
-            long acc = 744;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((long)items.Length <= (acc << 1))
+                if ((((item + 2) <= (item + item)) && (item < (780 + seen))) || (item < 464))
                 {
-                    acc = acc + (acc % 60);
-                    acc = acc - (acc >> 3);
-                }
-                if ((datum + limit) < datum)
-                {
-                    acc = ((acc << 2) ^ acc) % 4096;
+                    seen = seen + 1;
                 }
             }
-            if (acc > 3)
-            {
-                acc = ((acc * 5) + 4) % 4096;
-            }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
