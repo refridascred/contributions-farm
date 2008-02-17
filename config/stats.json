@@ -1,16 +1,6 @@
 {
-  "sync_capacity_s": "green",
-  "audit": "cached",
-  "min_ttl_pct": {
-    "batch_capacity_ms": 3697,
-    "compress": {
-      "warm_delay": 63.47,
-      "metric_window": 4683,
-      "verbose": "stable",
-      "min_size_count": 8143
-    },
-    "filter_limit": [267, 91],
-    "commits_depth": true
-  },
-  "entry_capacity": true
+  "retry_timeout_count": [247, 246],
+  "poll_ratio_s": "edge",
+  "sync_retries": true,
+  "batch_limit_s": 91
 }
