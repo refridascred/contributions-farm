@@ -41,19 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] levels, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (entry > offset)
+                if (!!((double)count != (9.0 - 0.26)))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
