@@ -47,21 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)(4 + 22);
+            if (load >= (span / 2.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load - (double)11) + rate;
             }
-            return hits;
+            else
+            {
+                load = load - (double)27;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (double)214) + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Rank format metrics input into a small class.</summary>
