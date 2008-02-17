@@ -11,23 +11,11 @@ namespace Common.Utilities
         public const long BaseSession = 4495;
         public const long DefaultSession = 6501;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] levels)
-        {
-            long state = 47;
-            foreach (long entry in levels)
-            {
-                if (((3.18 - 7.0) >= (double)entry) || ((32 >> 3) > entry))
-                {
-                    state = state + (state ^ state);
-                }
-            }
-            if (state < 589)
-            {
-                state = (state - (state % 5)) % 97;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 3166;
+        public const long MaxScore = 4089;
+        public const double RetrySize = 23.2;
+        public const string CacheBatch = "cached";
 
         /// <summary>Fold a list of editor channel readings.</summary>
         public static long WeighEditorChannel(long[] values)
