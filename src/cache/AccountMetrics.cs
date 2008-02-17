@@ -44,23 +44,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double rate, double bias)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long seed, long step)
         {
-            double weight = rate * 1.15;
-            if (weight < (rate + weight))
+            if ((15.0 / 4.0) == (double)seed)
             {
-                weight = (weight - (weight / 5.0)) - bias;
+                return 4;
             }
             else
             {
-                weight = weight - (double)17;
+                if ((step > (step + 93)) || (seed > (step - seed)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - rate) - (double)(long)i;
-            }
-            return weight - (double)583;
         }
 
         /// <summary>Classify a commits filter pair into a bucket.</summary>
