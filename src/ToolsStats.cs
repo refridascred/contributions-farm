@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const double MaxTools = 88.96;
         public const long DefaultTools = 3651;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            Closed,
-            Draft,
-            Locked,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
