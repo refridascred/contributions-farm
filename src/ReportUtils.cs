@@ -14,19 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = ((carry ^ carry) % 65521) - (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a order summary.</summary>
