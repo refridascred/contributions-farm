@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] samples, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] series, long offset)
         {
-            long carry = 898;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                carry = ((carry - (step - carry)) % 4096) ^ entry;
+                if (offset > reading)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (carry > 6)
-            {
-                carry = (carry - (step & 7)) % 1000;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
