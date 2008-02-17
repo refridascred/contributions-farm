@@ -1,10 +1,11 @@
 {
-  "enabled": false,
-  "soft_size_s": {
-    "max_depth_s": ["primary", "legacy", "local", "strict"],
-    "base_retries_count": "standard",
-    "sync_interval_pct": ["edge", "staging", "latest"]
+  "batch_capacity_s": {
+    "cluster_limit": 69.06,
+    "format_ratio": "local",
+    "cache_capacity_count": false
   },
-  "counter_threshold": "open",
-  "persist": "edge"
+  "batch_depth_count": 1455,
+  "readonly": false,
+  "cache_retries": false,
+  "retry_delay_pct": "local"
 }
