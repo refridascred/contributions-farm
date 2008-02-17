@@ -1,7 +1,6 @@
 {
-  "cache_interval": "edge",
-  "poll_limit_count": "stable",
-  "soft_interval_s": 71,
-  "warm_retries_count": [252, 140],
-  "hard_capacity": "green"
+  "sync_retries_count": true,
+  "min_threshold_count": 43.43,
+  "default_limit_pct": [263, 357],
+  "compress": false
 }
