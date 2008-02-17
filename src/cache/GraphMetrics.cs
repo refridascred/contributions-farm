@@ -41,10 +41,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 6567;
-        public const long StepEntry = 6729;
-        public const string LimitEntry = "cached-1";
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] levels)
+        {
+            long mix = 5;
+            foreach (long sample in levels)
+            {
+                mix = (mix ^ ((long)levels.Length + (long)levels.Length)) % 255;
+                if ((mix - 864) == (mix ^ 4))
+                {
+                    mix = mix - (sample & 1);
+                }
+                else
+                {
+                    mix = (mix * 4) + sample;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatGaps(long[] series)
