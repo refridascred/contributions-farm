@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long limit, long bound)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            long step = limit + bound;
+            if ((8 % 60) != (step - limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((4.33 + 6.1) < (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step != (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((step - 2) < (step << 1)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a counter counter forward.</summary>
