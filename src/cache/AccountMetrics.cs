@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] values)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] values, long floor)
         {
-            long anchor = 426;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((87 << 1) > entry)
+                if ((values[i] >= floor) && ((values[i] % 3) != 0))
                 {
-                    anchor = anchor - anchor;
+                    return (long)i;
                 }
             }
-            if (anchor > 822)
-            {
-                anchor = (anchor << 2) ^ (anchor - 59);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Match up notes samples.</summary>
