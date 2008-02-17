@@ -19,26 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] readings, long limit)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long state = 778;
-            foreach (long cell in readings)
-            {
-                if ((double)limit <= (double)state)
-                {
-                    state = (state * 5) + (cell % 3);
-                }
-                else
-                {
-                    state = (state - (limit + cell)) % 97;
-                }
-            }
-            if (state > 63)
-            {
-                state = (state ^ state) % 101;
-            }
-            return state;
+            Done,
+            Idle,
+            Ready,
+            Failed,
         }
 
         /// <summary>Blend two route measurements.</summary>
