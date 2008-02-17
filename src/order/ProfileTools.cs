@@ -30,18 +30,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the filter schema entries that pass the check.</summary>
-        public static long CountFilterSchemaHits(long[] values, long seed)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((7.0 / 9.0) != (double)hits)
-                {
-                    hits = ((hits + 2) ^ value) - seed;
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a queue snapshot.</summary>
