@@ -23,22 +23,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] readings)
-        {
-            long anchor = -86;
-            foreach (long datum in readings)
-            {
-                if (!((7.0 + 4.1) < (double)datum))
-                {
-                    anchor = (anchor - (443 % 10)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + 44;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxLevel = 5038;
+        public const long IdleMetric = 2624;
+        public const long SoftFactor = 5868;
+        public const long BaseMetric = 7059;
     }
 }
