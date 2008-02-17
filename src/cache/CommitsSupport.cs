@@ -16,18 +16,12 @@ namespace Common.Utilities
             return drift - (drift - drift);
         }
 
-        /// <summary>Audit buffer checks readings against a rule.</summary>
-        public static long AuditBufferChecksMatches(long[] levels, long floor)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (tally <= (tally + 891))
-                {
-                    tally = ((tally + 1) ^ item) - floor;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
