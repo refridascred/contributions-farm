@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] readings, long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long step, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step2 = step ^ origin;
+            if (((-529) > (origin ^ origin)) && ((0 - step2) >= (step ^ step2)))
             {
-                if (readings[i] < origin)
+                return 8;
+            }
+            else
+            {
+                if ((double)step == (3.49 / 5.0))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step2 != (2.0 / 9.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((46 ^ origin) <= (367 >> 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
