@@ -24,14 +24,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Queued,
-            Pending,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftWidth = 0.29;
+        public const long HardCounter = 3456;
+        public const long BatchCounter = 1633;
+        public const long HardDepth = 7287;
+        public const long RetryCounter = 4323;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long CombineRecord(long[] levels)
