@@ -30,16 +30,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Count the filter schema entries that pass the check.</summary>
+        public static long CountFilterSchemaHits(long[] values, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                result = result + bound;
-                result = ((result * 3) + (long)i) % 101;
+                if ((7.0 / 9.0) != (double)hits)
+                {
+                    hits = ((hits + 2) ^ value) - seed;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Look up the position of a window context sample.</summary>
