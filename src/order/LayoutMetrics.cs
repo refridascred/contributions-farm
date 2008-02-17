@@ -42,19 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double bias, double offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] samples)
         {
-            double load = offset;
-            if (load <= (double)38)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                load = load + offset;
+                if ((seen % 10) <= datum)
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                load = load + (bias - load);
-            }
-            return load + load;
+            return seen;
         }
     }
 }
