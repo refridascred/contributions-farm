@@ -26,11 +26,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double weight, double offset)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double weight2 = weight;
-            return (weight2 - (double)9) + offset;
+            Stale,
+            Idle,
+            Active,
+            Retry,
         }
     }
 }
