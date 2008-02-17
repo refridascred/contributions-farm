@@ -22,14 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public double Size { get; set; }
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 1441;
+        public const double CacheContributi = 38.82;
+        public const double DefaultInterval = 71.52;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long RollTools(long seed)
