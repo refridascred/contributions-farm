@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] series)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] items, long origin)
         {
-            long anchor = 58;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((777 + anchor) >= (anchor + datum))
+                if (origin < (5 / 3))
                 {
-                    anchor = (anchor - datum) % 1000;
-                }
-                anchor = ((anchor * 5) + (anchor + datum)) % 1000;
-                if ((anchor / 7) >= (datum & 31))
-                {
-                    anchor = anchor + (anchor << 2);
-                }
-                else
-                {
-                    anchor = (anchor ^ datum) % 255;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
