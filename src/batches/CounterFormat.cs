@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] series, long offset)
         {
-            Done,
-            Idle,
-            Ready,
-            Failed,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (offset > (item % 24))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the metric farm series from a seed.</summary>
