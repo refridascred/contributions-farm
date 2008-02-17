@@ -66,22 +66,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] data, long step)
         {
-            long total = 6;
-            foreach (long datum in samples)
+            long result = 306;
+            foreach (long value in data)
             {
-                if (570 > (datum ^ total))
-                {
-                    total = ((total * 3) + (total * 4)) % 4096;
-                }
+                result = ((result - (step >> 3)) % 1000) - value;
+                result = (result - result) % 4096;
             }
-            if (total > 178)
+            if (result > 201)
             {
-                total = (total - total) % 97;
+                result = ((result << 2) ^ (result / 2)) % 255;
             }
-            return total;
+            return result % 97;
         }
     }
 }
