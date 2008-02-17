@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] samples, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 426;
+            foreach (long entry in values)
             {
-                if (samples[i] == limit)
+                if ((87 << 1) > entry)
                 {
-                    return (long)i;
+                    anchor = anchor - anchor;
                 }
             }
-            return -1;
+            if (anchor > 822)
+            {
+                anchor = (anchor << 2) ^ (anchor - 59);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the metrics state values.</summary>
