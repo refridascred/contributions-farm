@@ -1,6 +1,8 @@
 {
-  "sync_retries_count": true,
-  "min_threshold_count": 43.43,
-  "default_limit_pct": [263, 357],
-  "compress": false
+  "strict": [135, 500],
+  "warm_interval": "stable",
+  "sync_depth_ms": "standard",
+  "batch_capacity_s": 80.9,
+  "max_capacity_count": "staging",
+  "min_size_pct": 1.71
 }
