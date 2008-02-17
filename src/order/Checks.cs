@@ -27,11 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 2328;
-        public const double CacheFormat = 3.0;
-        public const long StepFormat = 8553;
-        public const long RetryTimeout = 2987;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (matches > (27 + matches))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] data, long offset)
