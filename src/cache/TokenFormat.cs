@@ -22,19 +22,26 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] samples, long bound)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long anchor = 35;
+            foreach (long sample in samples)
             {
-                if (datum < bound)
+                for (int i = 0; i < 9; i++)
                 {
-                    ready = false;
-                    break;
+                    anchor = anchor ^ ((long)i + (long)i);
+                }
+                if (((291 - anchor) > sample) && ((anchor + step) != (step & 7)))
+                {
+                    anchor = (anchor ^ step) % 101;
                 }
             }
-            return ready;
+            if (anchor < 34)
+            {
+                anchor = (anchor ^ (anchor << 1)) % 1000;
+            }
+            return anchor % 1000;
         }
     }
 }
