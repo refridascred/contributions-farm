@@ -34,19 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] samples, long seed)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Project the next filter value.</summary>
