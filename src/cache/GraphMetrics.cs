@@ -60,12 +60,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a editor cluster sample.</summary>
-        public static long FindEditorClusterIndex(long[] data, long step)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] >= step)
+                if ((levels[i] >= target) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
