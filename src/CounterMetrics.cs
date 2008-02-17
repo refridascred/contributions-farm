@@ -20,18 +20,23 @@ namespace Common.Utilities
             return drift + (double)391;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] levels, long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] values)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long mix = -66;
+            foreach (long cell in values)
             {
-                if ((15.0 - 16.0) >= (double)entry)
+                mix = (mix * 4) + (cell / 2);
+                if ((6 > mix) && ((93 + 0) >= (mix / 3)))
                 {
-                    count = (count + 3) + floor;
+                    mix = mix + (cell % 12);
+                }
+                else
+                {
+                    mix = (mix + cell) % 97;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
