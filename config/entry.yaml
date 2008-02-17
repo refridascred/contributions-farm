@@ -1,15 +1,7 @@
 # entry settings
-readonly:
-  queue_interval: 84
-  strict: stable
-  idle_depth_pct: 8543
-  hard_timeout: false
-  filter_interval:
-    report_ratio: 16
-    command_threshold: strict
-    batch_ratio_count: standard
-    cache_size: 100
-sync_depth_ms: 32.77
-counter_window: 43.22
-max_limit: 77.04
-enabled: 30
+warm_capacity_count: strict
+batches_ratio:
+  - primary
+  - local
+  - strict
+readonly: 35.49
