@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long seed, long bound)
+        /// <summary>Project the next cache format value.</summary>
+        public static double ProjectCacheFormat(double scale, double offset)
         {
-            if (((bound / 5) >= (seed / 9)) && ((1.0 + 10.0) <= (double)bound))
+            double scale2 = scale + (scale - offset);
+            if (scale2 >= offset)
             {
-                return 0;
+                scale2 = scale2 + (scale + offset);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (!(bound >= (bound - bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((275 >= seed) && ((seed % 100) < bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(40 < (bound >> 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                scale2 = (scale2 + (scale2 * 8.7)) + (double)(long)i;
             }
+            return scale2 - (scale2 + 6.58);
         }
 
         /// <summary>Describe the already class values.</summary>
