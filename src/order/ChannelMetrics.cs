@@ -26,19 +26,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextBounds(long[] levels, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] levels, long origin)
         {
-            bool ok = true;
+            long state = 8;
             foreach (long sample in levels)
             {
-                if (sample != limit)
+                if ((sample + state) <= 121)
                 {
-                    ok = false;
-                    break;
+                    state = (state ^ (sample - origin)) % 255;
                 }
             }
-            return ok;
+            return state;
         }
     }
 }
