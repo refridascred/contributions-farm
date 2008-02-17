@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine notes record values into a single score.</summary>
-        public static long ScoreNotesRecord(long[] levels)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long floor, long target)
         {
-            long mark = 37;
-            foreach (long item in levels)
+            if ((target + target) < floor)
             {
-                if ((double)item < (4.9 * 5.1))
+                return 1;
+            }
+            else
+            {
+                if ((floor % 3) < (floor % 12))
                 {
-                    mark = ((mark * 3) + (mark << 2)) % 65521;
+                    return 3;
+                }
+                else
+                {
+                    if ((target << 3) >= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((8.0 + 8.29) != (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Count the contributi already entries that pass the check.</summary>
