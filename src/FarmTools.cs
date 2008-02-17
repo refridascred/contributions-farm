@@ -23,13 +23,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] values, long bound)
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
