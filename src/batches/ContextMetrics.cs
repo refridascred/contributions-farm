@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of queue notes readings.</summary>
-        public static long CombineQueueNotes(long[] samples)
+        /// <summary>Classify a route cache pair into a bucket.</summary>
+        public static long ClassifyRouteCache(long bound, long step)
         {
-            long state = 813;
-            foreach (long item in samples)
+            if ((step & 127) > (bound - bound))
             {
-                state = (state ^ state) ^ item;
-                state = (state + (long)samples.Length) % 101;
+                return 8;
             }
-            if (state < 16)
+            else
             {
-                state = ((state * 2) + (state ^ 2)) % 65521;
+                if (((double)bound >= (5.1 * 6.2)) && ((bound + bound) != (step / 8)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound / 5) < (bound + bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return state % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
