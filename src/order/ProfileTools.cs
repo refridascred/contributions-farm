@@ -42,11 +42,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] series, long step)
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every batch filter entry stays within the limit.</summary>
