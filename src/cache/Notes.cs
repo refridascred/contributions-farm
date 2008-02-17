@@ -63,18 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel batch samples are out of range.</summary>
-        public static long CountChannelBatchOutliers(long[] levels)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long total = 868;
+            foreach (long entry in values)
             {
-                if (((double)value > (1.85 - 3.0)) || (((3 >> 4) <= (count << 1)) && (9.3 > (double)count)))
+                total = ((((total << 3) ^ (total + (long)values.Length)) % 101) - entry) - origin;
+                if ((double)total != (5.56 / 7.0))
                 {
-                    count = count + 1;
+                    break;
                 }
             }
-            return count;
+            return total;
         }
     }
 }
