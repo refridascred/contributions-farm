@@ -1,10 +1,7 @@
 {
-  "strict": "cached",
-  "session_capacity": {
-    "dry_run": false,
-    "metrics_interval": true,
-    "layout_delay": [221, 163, 313, 419]
-  },
-  "profile_interval": 44.75,
-  "profile_window": ["cached", "latest", "edge", "cached"]
+  "queue_interval": "strict",
+  "cache_capacity": false,
+  "graph_window": 8522,
+  "cache_ttl_pct": "local",
+  "readonly": 6576
 }
