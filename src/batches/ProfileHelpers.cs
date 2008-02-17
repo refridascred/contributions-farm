@@ -76,26 +76,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] readings, long bound)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            long sum = 505;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((item - item) < (bound + bound)) && ((12 - bound) > (item - 21)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum ^ item) % 101;
-                }
-                if ((sum * 3) >= (68 + bound))
-                {
-                    break;
+                    if ((series[i] - series[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum < 51)
-            {
-                sum = ((sum * 5) + bound) % 4096;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Locate a session reading by value.</summary>
