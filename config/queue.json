@@ -1,7 +1,6 @@
 {
-  "default_limit_pct": false,
-  "default_capacity_count": 95.74,
-  "cache_delay_ms": 60,
-  "retry_depth_s": 60.82,
-  "verbose": 5292
+  "sync_ratio": "edge",
+  "queue_ratio": 88.52,
+  "schema_ratio": 39.42,
+  "readonly": 2813
 }
