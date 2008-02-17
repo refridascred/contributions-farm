@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank buffer schema input into a small class.</summary>
-        public static long SortBufferSchema(long bound, long origin)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            if (((-7) % 8) >= origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin <= (564 - 2)) && ((bound * 2) >= (bound + bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin != (0.9 + 6.49))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((96 + bound) < (origin + bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Project the next queue route value.</summary>
