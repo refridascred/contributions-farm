@@ -35,15 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window profile counter forward.</summary>
-        public static long RollWindowProfile(long floor)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Draft,
+            Pending,
+            Ready,
+            New,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
