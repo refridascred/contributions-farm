@@ -1,13 +1,11 @@
 # entry settings
-burst_ratio_pct: 3186
-hard_retries_ms: staging
-sync_window: 28
-sync_retries_ms:
-  base_timeout_count: 30
-  githubfarm_capacity: cached
-  base_capacity_ms: green
-  cache_ttl_count: eu-west
-  window_delay: 54.14
-  batch_interval_count: 54.34
-verbose: legacy
-compress: true
+cache_depth:
+  - 112
+  - 466
+retry_limit_s: 7099
+record_ratio:
+  - strict
+  - cached
+  - local
+  - local
+readonly: blue
