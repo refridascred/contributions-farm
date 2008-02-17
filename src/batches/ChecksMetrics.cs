@@ -27,12 +27,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double gain, double bias)
         {
-            Dropped,
-            Retry,
-            Idle,
+            double scale = 9.0 * 14.0;
+            if (scale < scale)
+            {
+                scale = (scale - scale) - gain;
+            }
+            else
+            {
+                scale = scale - (scale - bias);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (double)616) + (double)(long)i;
+            }
+            return scale - (9.5 * 5.8);
         }
 
         /// <summary>Adjust a queue profile reading.</summary>
