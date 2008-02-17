@@ -31,19 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric filter readings against a bound.</summary>
-        public static bool CheckMetricFilterBounds(long[] levels, long floor)
+        /// <summary>Project the next queue format value.</summary>
+        public static double ScaleQueueFormat(double ratio, double floor)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double load = 1.9;
+            for (int i = 0; i < 3; i++)
             {
-                if (reading < floor)
-                {
-                    found = false;
-                    break;
-                }
+                load = (((load - (16.0 * 9.62)) + (double)(long)i) + ratio) - floor;
             }
-            return found;
+            return load - (double)29;
         }
     }
 }
