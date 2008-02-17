@@ -1,6 +1,9 @@
-id,ratio,level,count
-1,4.5,257,858
-2,cached,90.25,787
-3,300,607,971
-4,30.56,92.14,95
-5,374,64.15,96.12
+id,label,score,region
+1,587,green,primary
+2,1.15,open,244
+3,cached,eu-west,20.19
+4,stable,24.67,990
+5,54,21.33,690
+6,452,open,open
+7,788,275,686
+8,13.16,eu-west,609
