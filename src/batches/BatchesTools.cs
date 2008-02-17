@@ -54,15 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes filter samples.</summary>
-        public static long CombineNotesFilter(long[] items, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] series)
         {
-            long total = 58;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                total = ((total ^ (floor & 7)) % 65521) ^ reading;
+                if (!((hits << 2) < (hits + 400)) || (value <= 92))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
