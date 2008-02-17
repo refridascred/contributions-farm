@@ -23,23 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((limit + limit) == (limit - limit))
-                {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 9180;
+        public const string BatchInterval = "stable-v2";
+        public const long BurstContext = 1394;
+        public const long DefaultContext = 2683;
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long OverlapGithubfarmCount(long[] items)
