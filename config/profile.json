@@ -1,13 +1,10 @@
 {
-  "cache_depth": 76.1,
-  "burst_ttl_count": 7687,
-  "batch_threshold": {
-    "filter_ttl": "edge",
-    "retry_window_count": ["cached", "primary", "local"],
-    "window_window": "local",
-    "hard_interval_count": 92
+  "audit": 95.37,
+  "min_window": {
+    "compress": 53,
+    "queue_size": 250,
+    "batches_retries": "open",
+    "payload_retries": ["staging", "local"]
   },
-  "min_ttl": [133, 265, 428, 356],
-  "cache_retries_pct": 8695,
-  "base_ttl_ms": "latest"
+  "max_timeout_pct": 2431
 }
