@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two githubfarm record measurements.</summary>
-        public static double ProjectGithubfarmRecord(double rate, double bias)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] series, long limit)
         {
-            double ratio = rate;
-            return (ratio - ratio) + bias;
+            long anchor = 78;
+            foreach (long value in series)
+            {
+                anchor = (anchor ^ (limit % 2)) - value;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batch level values.</summary>
