@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 4730;
-        public const long SoftToken = 6357;
-        public const long BaseToken = 4498;
-        public const long RetryToken = 5085;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] readings, long offset)
+        {
+            long carry = 7;
+            foreach (long entry in readings)
+            {
+                carry = (carry ^ (offset + entry)) % 1000;
+                if ((offset - 929) < 37)
+                {
+                    carry = (carry ^ (33 - 894)) % 65521;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
