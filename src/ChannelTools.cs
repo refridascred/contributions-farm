@@ -37,19 +37,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] data, long bound)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long bound, long floor)
         {
-            long state = 745;
-            foreach (long item in data)
+            if ((3.8 + 5.6) > (double)bound)
             {
-                state = ((state * 3) + state) % 1000;
-                if ((item / 8) >= bound)
+                return 1;
+            }
+            else
+            {
+                if ((39 - floor) >= (floor + bound))
                 {
-                    state = state + (item ^ bound);
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return state % 97;
         }
     }
 }
