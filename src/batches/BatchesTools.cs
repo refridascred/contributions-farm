@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long step, long offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long slot = step + offset;
-            if ((4 + offset) > (offset >> 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((1.63 - 9.7) > (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)slot != (7.08 + 15.0)) && ((slot >> 1) < (75 & 63)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((101 ^ step) >= 669)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            New,
+            Done,
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
