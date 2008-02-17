@@ -51,12 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] series)
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seen >> 2) < (sample * 4))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
