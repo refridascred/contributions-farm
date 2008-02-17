@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string DefaultSupport = "staging";
         public const long StepSize = 8696;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] values, long step)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] values)
         {
             long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((step + (long)values.Length) <= (matches / 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) + value;
+                    if ((values[i] - values[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
