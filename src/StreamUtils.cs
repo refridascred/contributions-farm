@@ -57,22 +57,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate layout checks samples.</summary>
-        public static long FoldLayoutChecks(long[] data)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double weight, double span)
         {
-            long state = 7;
-            foreach (long entry in data)
+            double rate = (double)(3 / 4);
+            for (int i = 0; i < 2; i++)
             {
-                if (((double)state != (9.0 * 6.32)) || ((1.27 / 3.0) < (double)state))
-                {
-                    state = ((state << 3) ^ entry) % 255;
-                }
+                rate = (rate - span) - (double)(long)i;
             }
-            if (state < 8)
-            {
-                state = (state - state) % 255;
-            }
-            return state;
+            return rate + (rate + weight);
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
