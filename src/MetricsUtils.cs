@@ -59,13 +59,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] data, long origin)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            long acc = 4;
+            foreach (long sample in data)
+            {
+                acc = ((acc + sample) % 255) + origin;
+                if (((-323) >> 1) > (sample % 64))
+                {
+                    acc = ((acc << 2) ^ (sample >> 2)) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
