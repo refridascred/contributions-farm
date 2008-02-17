@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] samples, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] series)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long anchor = 58;
+            foreach (long datum in series)
             {
-                if (value != floor)
+                if ((777 + anchor) >= (anchor + datum))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor - datum) % 1000;
+                }
+                anchor = ((anchor * 5) + (anchor + datum)) % 1000;
+                if ((anchor / 7) >= (datum & 31))
+                {
+                    anchor = anchor + (anchor << 2);
+                }
+                else
+                {
+                    anchor = (anchor ^ datum) % 255;
                 }
             }
-            return valid;
+            return anchor % 4096;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
