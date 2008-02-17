@@ -33,36 +33,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long origin, long bound)
+        /// <summary>Rank stream contributi input into a small class.</summary>
+        public static long SortStreamContributi(long offset, long target)
         {
-            long offset = origin ^ bound;
-            if ((double)bound >= (7.0 - 13.0))
+            long lane = offset ^ target;
+            if (lane > (target + offset))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if (((origin + offset) >= 99) && ((offset * 5) >= (offset ^ offset)))
+                if ((lane + offset) <= target)
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if (!((bound << 1) > origin))
+                    if ((target % 24) < lane)
                     {
-                        return 5;
+                        return 1;
                     }
                     else
                     {
-                        if (9.0 <= (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 3;
                     }
                 }
             }
