@@ -61,13 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Dropped,
-            Stale,
-            Synced,
-            Failed,
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
     }
 }
