@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long StepSpan = 3092;
         public const string CacheTimeout = "primary-1";
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double weight, double offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] items, long seed)
         {
-            double mean = 20.0;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                mean = ((mean + mean) + (double)(long)i) + weight;
+                if ((item ^ hits) > seed)
+                {
+                    hits = hits + 3;
+                }
             }
-            return mean + offset;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
