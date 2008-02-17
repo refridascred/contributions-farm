@@ -31,18 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] readings, long bound)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample >= (826 + 1)) || (4.0 <= (double)count))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) + bound;
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the channel state values.</summary>
