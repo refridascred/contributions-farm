@@ -50,11 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowFactor = 2.9;
+        public const double MaxPayload = 1.63;
+        public const long BurstLevel = 8630;
+        public const long DefaultInterval = 5362;
+        public const long BatchWidth = 7634;
     }
 }
