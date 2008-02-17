@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] readings, long step)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] data, long offset)
         {
-            long acc = 522;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc * 5) + (step - acc)) % 65521) + reading;
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 61)
-            {
-                acc = acc + (893 - step);
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
