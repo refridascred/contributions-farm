@@ -30,16 +30,10 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Derive the next tools graph value from a seed.</summary>
-        public static long SeriesToolsGraph(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 97;
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseBudget = 6945;
+        public const long CacheLevel = 3115;
+        public const double WindowLevel = 51.37;
+        public const string LimitGraph = "standard-edge";
     }
 }
