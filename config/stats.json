@@ -1,8 +1,5 @@
 {
-  "cache_ttl_ms": "local",
-  "cluster_ratio": true,
-  "persist": false,
-  "retry_timeout_s": true,
-  "schema_capacity": "stable",
-  "idle_threshold_pct": "eu-west"
+  "min_timeout": [217, 197],
+  "compress": "standard",
+  "base_interval_pct": 250
 }
