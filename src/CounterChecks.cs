@@ -62,10 +62,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitScore = 1851;
-        public const long IdleNotes = 3252;
-        public const long SoftTimeout = 2429;
-        public const double WindowNotes = 83.77;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 8161;
+        public const long RetryScore = 3744;
+        public const double SoftRoute = 37.44;
+        public const string IdleRoute = "standard-v2";
+        public const long RetryRoute = 8648;
     }
 }
