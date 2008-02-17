@@ -65,11 +65,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long target)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            long carry = target;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = (carry ^ 3) % 255;
+                carry = (carry ^ ((long)i * 4)) % 101;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
