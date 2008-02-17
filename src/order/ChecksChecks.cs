@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route account readings against a rule.</summary>
-        public static long CountRouteAccountOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry - 883) >= (entry + (long)readings.Length))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxTimeout = 6302;
+        public const long DefaultSchema = 4458;
+        public const long CacheSize = 3862;
+        public const long StepBudget = 2751;
+        public const string LimitFactor = "legacy-1";
     }
 }
