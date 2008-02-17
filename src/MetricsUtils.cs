@@ -30,25 +30,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long bound, long target)
+        /// <summary>Scale a stream cache figure with a bias.</summary>
+        public static double ScaleStreamCache(double bias, double offset)
         {
-            long next = bound ^ target;
-            if (!((target % 64) != (target * 5)))
+            double mean = bias;
+            if (mean >= (offset / 4.0))
             {
-                return 1;
+                mean = mean - bias;
             }
             else
             {
-                if ((next % 64) < 528)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
+                mean = mean + (double)1;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (2.1 / 6.0)) + (double)(long)i;
+            }
+            return mean - (double)22;
         }
 
         /// <summary>Hold a metrics stats.</summary>
