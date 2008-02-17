@@ -30,15 +30,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double rate, double offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] items)
         {
-            double mean = (offset + 13.0) + (offset + 1.0);
-            if (mean > mean)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - (double)78) - rate;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean + (double)326;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
