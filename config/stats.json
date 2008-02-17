@@ -1,10 +1,12 @@
 {
-  "base_size": 8091,
-  "audit": 59.26,
-  "commits_delay": 250,
-  "soft_size_s": {
-    "token_threshold": 9.28,
-    "cache_size_s": 60,
-    "buffer_delay": ["strict", "green", "standard", "green"]
-  }
+  "idle_timeout_pct": 90.22,
+  "editor_ratio": 29.78,
+  "flush_depth": ["strict", "green", "cached", "local"],
+  "base_interval_s": "open",
+  "command_window": {
+    "dry_run": 98,
+    "warm_threshold_s": 62.59,
+    "strict": 30
+  },
+  "burst_interval_pct": 46.16
 }
