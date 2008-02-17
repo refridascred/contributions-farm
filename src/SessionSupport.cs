@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 1560;
-        public const double MaxFactor = 10.96;
-        public const long HardWidth = 334;
-        public const long BurstDepth = 8307;
-        public const long SoftInterval = 7542;
+        /// <summary>Count the metric stats entries that pass the check.</summary>
+        public static long TallyMetricStatsOutliers(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((12.0 / 7.0) == (double)datum)
+                {
+                    tally = (tally + 1) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountMatches(long[] readings)
