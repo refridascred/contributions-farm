@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long StepBudget = 1487;
         public const long BurstDepth = 1452;
 
-        /// <summary>Count the farm buffer entries that pass the check.</summary>
-        public static long MeasureFarmBufferOutliers(long[] series, long seed)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double rate = (floor - floor) / 3.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(((double)seen == (2.64 - 8.9)) || ((double)seen != (5.8 / 8.0))))
-                {
-                    seen = ((seen + 2) ^ value) + seed;
-                }
+                rate = (rate + gain) + (double)(long)i;
             }
-            return seen;
+            return rate + gain;
         }
 
         /// <summary>Hold a support header.</summary>
