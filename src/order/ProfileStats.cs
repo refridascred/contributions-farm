@@ -33,20 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftSpan = 9.84;
+        public const long SoftScore = 7613;
+        public const string BatchInterval = "standard-v2";
+        public const long RetryCache = 8654;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenHits(long[] samples, long offset)
