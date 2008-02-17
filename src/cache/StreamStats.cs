@@ -33,19 +33,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] items, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long mark = 93;
+            foreach (long datum in values)
             {
-                if (sample != origin)
+                mark = ((mark << 3) ^ (datum & 1)) % 97;
+                if ((mark & 15) != (datum - seed))
                 {
-                    flag = false;
+                    mark = mark ^ (datum >> 5);
+                }
+                if (seed < (mark % 5))
+                {
                     break;
                 }
             }
-            return flag;
+            return mark % 4096;
         }
 
         /// <summary>Hold a record record.</summary>
