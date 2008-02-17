@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const string RetryBudget = "local-edge";
         public const double DefaultBuffer = 3.19;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] items, long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > seed) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Derive the next already entry value from a seed.</summary>
