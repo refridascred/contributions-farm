@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the graph notes entries that pass the check.</summary>
-        public static long TallyGraphNotesOutliers(long[] series)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((double)count != (double)cell)
+                if (sample > limit)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
