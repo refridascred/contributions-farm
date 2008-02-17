@@ -14,15 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Dropped,
-            Locked,
-            New,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardLevel = 5673;
+        public const double CacheSize = 81.95;
+        public const string SoftDepth = "strict-1";
+        public const string WindowTimeout = "strict";
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] data)
