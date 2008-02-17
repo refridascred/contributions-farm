@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of payload stream readings.</summary>
-        public static long TotalPayloadStream(long[] samples, long bound)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] series)
         {
-            long state = -504;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state - state) - cell) + bound;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Digest a series of context entries.</summary>
