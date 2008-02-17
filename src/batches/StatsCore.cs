@@ -22,12 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            Active,
+            Paused,
+            Locked,
+            Queued,
+            Synced,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
