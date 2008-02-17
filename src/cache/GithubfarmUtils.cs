@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] data)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long mark = 59;
-            foreach (long item in data)
-            {
-                if ((double)item == (18.0 - 18.0))
-                {
-                    mark = (mark - (item * 2)) % 4096;
-                }
-            }
-            if (mark < 51)
-            {
-                mark = (mark ^ (mark % 64)) % 65521;
-            }
-            return mark;
+            Pending,
+            Active,
+            Stale,
+            Synced,
         }
 
         /// <summary>Fold a list of command readings.</summary>
