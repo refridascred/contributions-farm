@@ -67,17 +67,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long offset)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 3) + (offset >> 1)) % 255;
-                anchor = anchor ^ ((-703) + anchor);
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
