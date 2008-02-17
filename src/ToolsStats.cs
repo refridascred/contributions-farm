@@ -28,17 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 2) + (target + (long)i)) % 255;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxWidth = "legacy-1";
+        public const double BurstWidth = 98.72;
+        public const long IdleFactor = 9989;
+        public const string MaxSize = "strict-1";
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long FindEditorIndex(long[] levels, long seed)
