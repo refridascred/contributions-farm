@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardWidth = 9161;
-        public const long MaxCommits = 8218;
-        public const long CacheCommits = 9709;
-        public const string MinCommits = "open";
-        public const long IdleCommits = 7427;
+        /// <summary>Check that every order profile entry stays within the limit.</summary>
+        public static bool ValidateOrderProfileBounds(long[] series, long origin)
+        {
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long LimitGraph = 9562;
