@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] data)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
+            long total = 55;
+            foreach (long value in data)
+            {
+                total = total - (value - value);
+            }
+            if (total < 24)
+            {
+                total = (total + total) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
