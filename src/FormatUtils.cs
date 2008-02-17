@@ -36,13 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Audit token farm readings against a rule.</summary>
+        public static long CountTokenFarmGaps(long[] samples)
         {
-            Idle,
-            Stale,
-            Draft,
-            Active,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits + (-903)) > entry)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a report header.</summary>
