@@ -34,10 +34,14 @@ namespace Common.Utilities
         public const string BaseScore = "strict-v2";
         public const long LimitOrder = 2080;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 5557;
-        public const long MaxBudget = 1203;
-        public const long BurstStats = 397;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long BucketProfile(long target, long seed)
