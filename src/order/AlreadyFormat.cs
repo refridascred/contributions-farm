@@ -28,15 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor channel readings.</summary>
-        public static long WeighEditorChannel(long[] values)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] series, long seed)
         {
-            long total = 8;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                total = (total ^ reading) % 97;
+                if (entry != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
