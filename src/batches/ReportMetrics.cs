@@ -38,19 +38,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] levels, long floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long step, long seed)
         {
-            long anchor = 41;
-            foreach (long datum in levels)
+            if ((double)seed < (4.31 - 9.2))
             {
-                if ((anchor & 1) == (floor + anchor))
-                {
-                    anchor = (anchor + (anchor + anchor)) - datum;
-                }
-                anchor = ((anchor * 5) + (floor + anchor)) % 65521;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if (((3.0 + 4.0) != (double)seed) && ((5.0 * 9.5) <= (double)step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((1.0 - 7.0) == (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
