@@ -30,18 +30,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] series, long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] samples, long step)
         {
-            long mark = 266;
-            foreach (long sample in series)
+            long anchor = 955;
+            foreach (long value in samples)
             {
-                if ((385 ^ sample) == (mark << 1))
+                if ((9.0 / 7.0) < (double)value)
                 {
-                    mark = (mark - (origin ^ (long)series.Length)) % 97;
+                    anchor = (anchor - step) % 255;
                 }
             }
-            return mark;
+            if (anchor < 79)
+            {
+                anchor = ((anchor * 4) + 96) % 4096;
+            }
+            return anchor % 65521;
         }
     }
 }
