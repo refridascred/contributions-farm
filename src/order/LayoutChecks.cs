@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] samples, long seed)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long limit)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long score = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
