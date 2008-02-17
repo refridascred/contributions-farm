@@ -46,10 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitWidth = 5534;
-        public const string RetryInterval = "legacy-v2";
-        public const double RetryLayout = 11.6;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long PairMetricCount(long[] series)
