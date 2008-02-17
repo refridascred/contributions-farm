@@ -1,33 +1,23 @@
 # githubfarm settings
-default_delay_pct:
-  audit:
-    - 29
-    - 352
-  readonly: 250
-  hard_delay_ms: green
-  stream_timeout:
-    - latest
-    - local
-    - staging
-    - cached
-  channel_interval: 617
-min_timeout_pct: 30.19
-strict: 67
-base_retries_s:
-  poll_ttl_s:
-    idle_interval: 15.17
-    cache_limit_count: standard
-    flush_delay_ms: local
-    audit: legacy
-  base_size_pct:
-    cache_window_ms: 69.99
-    filter_window: 15
-    poll_interval:
-      - primary
-      - cached
-    layout_interval:
-      - 23
-      - 457
-      - 304
-  hard_size_s: 7.69
-batch_delay_pct: 5051
+flush_retries_pct:
+  cache_ratio_count: cached
+  queue_window:
+    flush_depth:
+      - edge
+      - latest
+      - standard
+    idle_retries_count:
+      - 384
+      - 402
+      - 105
+    queue_retries: true
+    max_interval_pct: 60
+    default_size: 96.45
+  retry_ratio_pct: 69.15
+  flush_threshold_count:
+    - 444
+    - 79
+  audit: 71.3
+  channel_ratio: standard
+idle_interval_count: 73
+audit: fallback
