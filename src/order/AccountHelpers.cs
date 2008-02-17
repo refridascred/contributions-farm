@@ -19,16 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result << 2) ^ (result & 31)) % 255;
-                result = ((result * 4) + (long)i) % 1000;
+                mix = ((mix << 2) ^ bound) % 65521;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
