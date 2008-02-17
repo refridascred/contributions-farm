@@ -1,6 +1,5 @@
 {
-  "hard_depth_s": 82,
-  "warm_interval": 69.16,
-  "record_timeout": 71.12,
-  "poll_delay": "edge"
+  "soft_ratio_ms": "eu-west",
+  "layout_window": "staging",
+  "enabled": 51
 }
