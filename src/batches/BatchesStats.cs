@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long floor, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] readings, long origin)
         {
-            if ((0 + step) != (floor % 60))
+            bool ready = true;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)floor > (6.2 * 4.3)) || ((613 - 646) > (floor % 24)))
+                if (value <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step * 2) > (floor * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
