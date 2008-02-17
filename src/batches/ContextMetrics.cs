@@ -21,10 +21,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowRecord = "stable-edge";
-        public const double HardBudget = 2.67;
-        public const long MaxScore = 1618;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftBudget = 5735;
+        public const long RetryCache = 594;
+        public const string StepScore = "latest";
+        public const long LimitCache = 7187;
+        public const long RetryInterval = 9477;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MaxWidth = 9650;
