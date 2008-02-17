@@ -20,11 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double weight, double span)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double mean = span;
-            return (mean - (9.01 / 8.0)) + weight;
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
