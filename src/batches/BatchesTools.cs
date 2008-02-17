@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] levels, long origin)
         {
-            New,
-            Done,
-            Stale,
-            Retry,
-            Failed,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((5 ^ origin) == (cell - cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a context snapshot.</summary>
