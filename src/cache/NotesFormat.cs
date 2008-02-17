@@ -33,18 +33,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] readings, long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((seed + seen) < seen)
+                if (item < limit)
                 {
-                    seen = (seen + 3) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
