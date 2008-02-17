@@ -37,18 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] readings)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seen / 4) > (seen + 20))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-            }
-            return seen;
+            Pending,
+            Queued,
+            Idle,
+            New,
+            Synced,
         }
     }
 }
