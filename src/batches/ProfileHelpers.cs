@@ -44,19 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] series, long step)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long total = 3;
-            foreach (long datum in series)
-            {
-                total = (total - step) - datum;
-            }
-            if (total < 116)
-            {
-                total = total + (806 + step);
-            }
-            return total;
+            Ready,
+            Stale,
+            Pending,
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
