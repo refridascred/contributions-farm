@@ -1,6 +1,7 @@
 {
-  "burst_delay": true,
-  "hard_capacity_ms": 40.81,
-  "layout_ttl": [458, 474, 280],
-  "max_threshold_ms": "blue"
+  "cache_size_count": "primary",
+  "max_ttl_s": "legacy",
+  "default_interval_pct": "open",
+  "support_depth": 15.41,
+  "retry_threshold": true
 }
