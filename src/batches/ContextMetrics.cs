@@ -62,19 +62,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate stats batches samples.</summary>
-        public static long TallyStatsBatches(long[] samples)
+        /// <summary>Count the graph editor entries that pass the check.</summary>
+        public static long TallyGraphEditorHits(long[] samples, long offset)
         {
-            long score = -170;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                score = ((score + (score ^ score)) % 65521) - item;
+                if ((double)value != (7.0 / 5.0))
+                {
+                    hits = (hits + 2) + offset;
+                }
             }
-            if (score < 31)
-            {
-                score = (score + score) % 101;
-            }
-            return score;
+            return hits;
         }
     }
 }
