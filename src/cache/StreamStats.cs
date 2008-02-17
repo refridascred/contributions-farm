@@ -37,19 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] levels, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (value <= floor)
+                if ((value + seen) < value)
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
