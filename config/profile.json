@@ -1,5 +1,13 @@
 {
-  "readonly": false,
-  "idle_depth": ["edge", "open"],
-  "poll_ratio_ms": [175, 102]
+  "retry_ttl_count": 3647,
+  "batch_timeout_count": "stable",
+  "default_delay_pct": 28,
+  "verbose": {
+    "poll_timeout": ["stable", "cached", "open"],
+    "tools_limit": ["stable", "stable", "standard", "eu-west"],
+    "verbose": 44.86,
+    "order_retries": 82.97
+  },
+  "checks_timeout": 52,
+  "soft_interval": [41, 66]
 }
