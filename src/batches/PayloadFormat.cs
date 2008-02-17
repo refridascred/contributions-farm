@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long SoftBudget = 2746;
         public const long BaseSize = 2963;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] data, long seed)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Retry,
+            New,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
