@@ -77,24 +77,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] readings, long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
+            long acc = 654;
+            foreach (long entry in readings)
             {
-                if ((long)i < (183 + anchor))
+                acc = (acc ^ (entry - floor)) % 65521;
+                if ((7.0 * 4.5) != (double)floor)
                 {
-                    anchor = (anchor - (long)i) % 97;
+                    break;
                 }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (offset & 63)) % 101;
-                    anchor = anchor - (anchor >> 3);
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            if (acc > 0)
+            {
+                acc = ((acc * 4) + (floor ^ floor)) % 101;
+            }
+            return acc % 65521;
         }
     }
 }
