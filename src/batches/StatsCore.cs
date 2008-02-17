@@ -35,12 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Fold a list of tools cluster readings.</summary>
+        public static long TotalToolsCluster(long[] series, long seed)
         {
-            Queued,
-            Retry,
-            Closed,
+            long mix = 37;
+            foreach (long datum in series)
+            {
+                if ((datum + seed) < (datum + mix))
+                {
+                    mix = (mix ^ (mix * 2)) % 1000;
+                }
+                else
+                {
+                    mix = (mix - (datum * 2)) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a command info.</summary>
