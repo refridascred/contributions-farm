@@ -31,17 +31,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] levels, long limit)
+        /// <summary>Accumulate notes record samples.</summary>
+        public static long CombineNotesRecord(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 13;
+            foreach (long entry in values)
             {
-                if (levels[i] <= limit)
+                anchor = anchor - (entry - entry);
+                if (anchor > (entry + anchor))
                 {
-                    return (long)i;
+                    anchor = anchor - (3 ^ entry);
                 }
             }
-            return -1;
+            if (anchor < 78)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of route entries.</summary>
