@@ -13,14 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] levels)
         {
-            New,
-            Locked,
-            Draft,
-            Stale,
-            Ready,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally + item) <= (tally / 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stats state values.</summary>
