@@ -41,11 +41,13 @@ namespace Common.Utilities
         public const string BaseCount = "local";
         public const long WindowBudget = 9207;
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
