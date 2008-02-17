@@ -16,20 +16,11 @@ namespace Common.Utilities
             return drift - 1.3;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstBudget = 66.29;
+        public const string BasePayload = "stable";
+        public const string LimitPayload = "standard";
+        public const long MaxPayload = 1248;
 
         /// <summary>Scale a commits cluster figure with a bias.</summary>
         public static double ProjectCommitsCluster(double bias, double span)
