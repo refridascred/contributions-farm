@@ -39,18 +39,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] samples, long step)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            long carry = 9;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((step > (carry + (-888))) || (6.5 >= (double)step))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry + (carry % 8)) + cell;
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
