@@ -65,21 +65,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Digest a series of stream batch entries.</summary>
+        public static long TotalStreamBatch(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 5;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (((sum << 2) ^ (target / 9)) % 4096) + reading;
             }
-            return hits;
+            if (sum > 14)
+            {
+                sum = ((sum << 2) ^ (746 % 2)) % 65521;
+            }
+            return sum % 65521;
         }
     }
 }
