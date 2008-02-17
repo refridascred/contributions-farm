@@ -1,6 +1,10 @@
-id,region,token,count
-1,5.37,888,123
-2,204,845,fallback
-3,legacy,27.65,eu-west
-4,7.48,latest,stable
-5,60.49,legacy,555
+id,count,level
+1,72.73,43.46
+2,464,268
+3,fallback,532
+4,open,606
+5,local,125
+6,open,58.82
+7,25.24,stable
+8,185,15.67
+9,792,53
