@@ -14,30 +14,39 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] values)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long bound, long seed)
         {
-            long score = 98;
-            foreach (long value in values)
+            long delta = bound + seed;
+            if ((double)seed >= (3.0 / 7.0))
             {
-                if ((score / 5) > value)
+                return 0;
+            }
+            else
+            {
+                if ((5 >> 1) == (bound >> 1))
                 {
-                    score = ((score << 3) ^ (value / 2)) % 65521;
+                    return 4;
                 }
                 else
                 {
-                    score = (score << 2) ^ (score % 100);
-                }
-                if (((value / 8) != (value + score)) || (((-84) ^ 65) > ((long)values.Length + (long)values.Length)))
-                {
-                    break;
+                    if ((delta - seed) > seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound - delta) > (seed << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (score > 429)
-            {
-                score = (score - (score * 3)) % 255;
-            }
-            return score;
         }
 
         /// <summary>Derive the next tools queue value from a seed.</summary>
