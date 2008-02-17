@@ -1,8 +1,6 @@
 {
-  "hard_size": false,
-  "session_ratio": "latest",
-  "default_size": false,
-  "hard_ratio_count": false,
-  "default_interval": 85.79,
-  "enabled": 60
+  "hard_interval": "open",
+  "record_delay": "fallback",
+  "burst_size_s": false,
+  "cluster_timeout": [13, 218, 140]
 }
