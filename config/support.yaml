@@ -1,14 +1,36 @@
 # support settings
-poll_delay_ms:
-  min_limit_s: 4560
-  sync_limit_pct: 500
-  batch_delay_pct: 52.54
-  warm_capacity: 15.88
-  retry_timeout_count: 100
-  base_delay_s:
-    - eu-west
-    - blue
-batch_depth: 30
-stream_window: 4658
-verbose: 93
-retry_interval_count: 500
+hard_depth: 66.43
+sync_window_s:
+  base_limit: 9.03
+  idle_delay: 16
+  compress:
+    enabled: 47.12
+    max_timeout_pct: green
+    burst_depth: 92.4
+    burst_ttl_ms: 73.84
+    hard_size: 55.53
+  warm_ratio: legacy
+burst_threshold_pct: 60
+base_size_ms:
+  queue_limit:
+    idle_interval_count:
+      - legacy
+      - latest
+    soft_ttl: 60
+    session_limit: false
+  layout_timeout: 60
+  base_limit_count:
+    - 26
+    - 61
+    - 435
+  soft_delay_s:
+    commits_timeout:
+      - 20
+      - 8
+    farm_depth: standard
+    cache_window_count: false
+retry_ttl_pct: latest
+profile_depth:
+  - 457
+  - 257
+  - 405
