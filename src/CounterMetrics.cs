@@ -14,32 +14,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long floor, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] levels, long floor)
         {
-            long next = floor - step;
-            if (((next & 255) == (floor / 3)) && ((50 % 8) > (next ^ next)))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((14.0 - 7.8) != (double)step)
+                if ((15.0 - 16.0) >= (double)entry)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step > (next % 5)) && ((next ^ step) <= (step & 127)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = (count + 3) + floor;
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
