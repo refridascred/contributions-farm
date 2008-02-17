@@ -26,31 +26,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long bound, long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            if (!(bound <= (7 + 93)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((302 + offset) > offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset <= 5.01)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Paused,
+            Synced,
+            Closed,
         }
     }
 }
