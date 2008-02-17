@@ -1,5 +1,9 @@
 {
-  "flush_ratio": 6300,
-  "context_timeout": [366, 59, 128],
-  "flush_capacity_ms": ["local", "eu-west", "edge", "green"]
+  "readonly": 30,
+  "batch_interval_pct": {
+    "enabled": "legacy",
+    "min_interval_count": [62, 18, 144],
+    "verbose": [385, 16, 376, 142]
+  },
+  "burst_window": "legacy"
 }
