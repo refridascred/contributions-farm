@@ -16,21 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count editor notes pairs that satisfy a relation.</summary>
-        public static long MatchEditorNotesCount(long[] readings)
+        /// <summary>Derive the next report graph value from a seed.</summary>
+        public static long IterateReportGraph(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((total + seed) > (seed << 1))
                 {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total + ((-9) + total)) % 4096;
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Blend two token measurements.</summary>
