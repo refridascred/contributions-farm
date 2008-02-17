@@ -30,23 +30,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a stream cache figure with a bias.</summary>
-        public static double ScaleStreamCache(double bias, double offset)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double mean = bias;
-            if (mean >= (offset / 4.0))
-            {
-                mean = mean - bias;
-            }
-            else
-            {
-                mean = mean + (double)1;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (2.1 / 6.0)) + (double)(long)i;
-            }
-            return mean - (double)22;
+            Retry,
+            Active,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a metrics stats.</summary>
