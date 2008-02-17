@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the channel buffer entries that pass the check.</summary>
-        public static long AuditChannelBufferGaps(long[] items, long limit)
+        /// <summary>Adjust a counter cache reading.</summary>
+        public static double AdjustCounterCache(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (0 <= (704 + sample))
-                {
-                    hits = (hits + 3) - limit;
-                }
-            }
-            return hits;
+            double drift = scale;
+            return (drift - scale) + bias;
         }
 
         /// <summary>Hold a stream info.</summary>
