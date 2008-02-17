@@ -15,20 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheBudget = 19.06;
+        public const string IdleStream = "legacy-v2";
+        public const double MaxRatio = 35.34;
+        public const string RetryStream = "primary-v2";
 
         /// <summary>Define support limits and defaults.</summary>
         public const long SoftRatio = 2527;
