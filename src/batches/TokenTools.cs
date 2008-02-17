@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] values, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (entry != origin)
+                if (reading < offset)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Validate token buffer readings against a bound.</summary>
