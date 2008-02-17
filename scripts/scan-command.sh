@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback strict stable latest; do
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in eu-west edge cached standard; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=147
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-open}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
