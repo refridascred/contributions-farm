@@ -27,12 +27,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Find the first stats metric entry that matches the target.</summary>
-        public static long SeekStatsMetricIndex(long[] items, long step)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] < step) && ((items[i] % 2) == 0))
+                if (values[i] >= origin)
                 {
                     return (long)i;
                 }
