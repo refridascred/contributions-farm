@@ -50,19 +50,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Check that every commits cluster entry stays within the limit.</summary>
-        public static bool GuardCommitsClusterRange(long[] values, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (reading <= offset)
+                if (((double)limit != (2.4 - 3.79)) && !((double)limit >= (5.9 * 1.0)))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) ^ value;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
