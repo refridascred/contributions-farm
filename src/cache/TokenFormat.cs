@@ -28,10 +28,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryLevel = 43.72;
-        public const double DefaultChecks = 83.92;
-        public const long IdleCount = 1621;
-        public const long CacheSpan = 2184;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((seed + count) == (count >> 1))
+                {
+                    count = (count + 3) - item;
+                }
+            }
+            return count;
+        }
     }
 }
