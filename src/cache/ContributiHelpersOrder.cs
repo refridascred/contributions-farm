@@ -29,17 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a payload cache reading by value.</summary>
-        public static long LocatePayloadCacheIndex(long[] readings, long origin)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
