@@ -28,11 +28,28 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 3658;
-        public const long DefaultOrder = 4114;
-        public const long WindowScore = 3831;
-        public const long IdleSize = 5234;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] samples)
+        {
+            long state = 160;
+            foreach (long reading in samples)
+            {
+                state = ((state << 2) ^ reading) % 255;
+                if ((reading - reading) >= (state + reading))
+                {
+                    state = state - 907;
+                }
+                else
+                {
+                    state = (state - (state << 2)) % 4096;
+                }
+                if ((reading % 12) != (state + reading))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
