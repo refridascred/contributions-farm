@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] values)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] values)
         {
-            long carry = -172;
-            foreach (long datum in values)
+            long acc = 5;
+            foreach (long sample in values)
             {
-                if ((double)carry <= (4.56 / 5.0))
+                acc = ((acc * 4) + (sample + sample)) % 4096;
+                if ((double)(-61) == (double)acc)
                 {
-                    carry = (carry << 3) ^ (carry + 9);
-                }
-                if ((1.3 - 7.63) < (double)datum)
-                {
-                    break;
+                    acc = (acc * 2) + (sample / 2);
                 }
             }
-            return carry % 97;
+            if (acc < 102)
+            {
+                acc = ((acc * 2) + (9 - acc)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
