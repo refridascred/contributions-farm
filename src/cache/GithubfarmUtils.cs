@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] levels, long offset)
+        /// <summary>Compare every pair of checks tools readings.</summary>
+        public static long CompareChecksToolsCount(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
