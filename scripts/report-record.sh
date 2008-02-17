@@ -6,18 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=38
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-strict}"
+mode="${1:-blue}"
 case "${mode}" in
-    local)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=180
+log "limit is ${RECORD_LIMIT}"
 
 count=0
 while [ "${count}" -lt 4 ]; do
