@@ -66,17 +66,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a checks batches reading by value.</summary>
-        public static long SeekChecksBatchesIndex(long[] values, long limit)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
