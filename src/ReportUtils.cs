@@ -30,11 +30,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] levels, long seed)
         {
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            long total = 661;
+            foreach (long sample in levels)
+            {
+                total = ((total - total) + sample) - seed;
+                if ((2.6 * 8.7) == (double)total)
+                {
+                    total = (total * 5) + 4;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Digest a series of window entries.</summary>
