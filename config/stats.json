@@ -1,20 +1,11 @@
 {
-  "metric_size": {
-    "min_capacity": "green",
-    "verbose": {
-      "batch_depth": "fallback",
-      "min_ttl": "staging",
-      "poll_timeout_pct": "strict"
-    },
-    "readonly": {
-      "readonly": "staging",
-      "min_ratio": 94.66,
-      "min_depth_ms": "green",
-      "persist": ["edge", "legacy", "eu-west"],
-      "default_size_pct": 64,
-      "batch_limit_pct": "strict"
-    }
-  },
-  "flush_capacity_ms": 72.83,
-  "profile_window": 53.22
+  "batch_limit": true,
+  "soft_timeout_count": "primary",
+  "session_threshold": 4.77,
+  "batch_interval_count": {
+    "route_delay": true,
+    "schema_ratio": 83.91,
+    "idle_limit": "cached",
+    "cluster_retries": 35
+  }
 }
