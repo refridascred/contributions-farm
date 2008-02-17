@@ -73,13 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Accumulate order metrics samples.</summary>
+        public static long ScoreOrderMetrics(long[] samples, long floor)
         {
-            Retry,
-            Idle,
-            Queued,
-            Closed,
+            long total = 0;
+            foreach (long value in samples)
+            {
+                if ((floor ^ 853) < (total - 571))
+                {
+                    total = ((total * 4) + (long)samples.Length) % 1000;
+                }
+                else
+                {
+                    total = (total + (total + value)) % 101;
+                }
+            }
+            return total;
         }
     }
 }
