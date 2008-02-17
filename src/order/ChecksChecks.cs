@@ -20,17 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] data, long bound)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a buffer entry.</summary>
