@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-fallback}"
 case "${mode}" in
-    legacy)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+for item in standard blue; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+COMMAND_LIMIT=245
+log "limit is ${COMMAND_LIMIT}"
