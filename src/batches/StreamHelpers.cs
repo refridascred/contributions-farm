@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double bias, double offset)
-        {
-            double mean = 4.7;
-            if (mean > bias)
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (offset / 5.0)) + (double)(long)i;
-            }
-            return mean + (double)261;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 4528;
+        public const double BurstStats = 12.84;
+        public const long BurstCount = 812;
+        public const long MaxScore = 3282;
+        public const long RetryStats = 738;
 
         /// <summary>Scale a commits cluster figure with a bias.</summary>
         public static double ScaleCommitsCluster(double gain, double floor)
