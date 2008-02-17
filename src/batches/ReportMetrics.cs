@@ -28,13 +28,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long step)
         {
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
-            public double Weight { get; set; }
+            long result = step;
+            for (int i = 0; i < 5; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
