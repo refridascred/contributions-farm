@@ -32,12 +32,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] series)
         {
-            Pending,
-            Ready,
-            Retry,
+            long sum = 734;
+            foreach (long sample in series)
+            {
+                sum = (sum + sample) % 255;
+                if (sum >= (sample & 1))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define context limits and defaults.</summary>
