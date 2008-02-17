@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] readings, long limit)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (reading >= limit)
+                if (cell != limit)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
