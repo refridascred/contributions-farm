@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] series)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a command entry.</summary>
