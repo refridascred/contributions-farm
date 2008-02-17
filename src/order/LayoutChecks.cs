@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] series, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] samples, long seed)
         {
-            long anchor = -295;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                anchor = (((anchor << 2) ^ entry) % 255) - target;
+                if (sample > seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (anchor < 795)
-            {
-                anchor = ((anchor << 3) ^ (3 % 97)) % 4096;
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Accumulate metric samples.</summary>
