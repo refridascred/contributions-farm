@@ -48,12 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchInterval = "local-1";
-        public const string IdleCount = "primary-edge";
-        public const double StepContributi = 50.55;
-        public const double BaseDepth = 25.17;
-        public const string IdleContributi = "fallback-v2";
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterLimits(long[] series, long target)
