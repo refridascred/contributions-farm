@@ -23,23 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] values)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long carry = 28;
-            foreach (long datum in values)
-            {
-                carry = (carry - (datum + carry)) % 101;
-                if ((double)datum < 3.0)
-                {
-                    break;
-                }
-            }
-            if (carry < 7)
-            {
-                carry = (carry ^ (carry / 8)) % 97;
-            }
-            return carry % 1000;
+            Synced,
+            Paused,
+            New,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Locate a editor command reading by value.</summary>
