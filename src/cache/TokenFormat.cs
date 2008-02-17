@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Ready,
-            Queued,
-            Active,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchSize = 36.21;
+        public const string SoftSpan = "strict";
+        public const long StepBudget = 1487;
+        public const long BurstDepth = 1452;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long CombineContributi(long[] samples, long offset)
