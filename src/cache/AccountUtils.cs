@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine counter checks values into a single score.</summary>
-        public static long FoldCounterChecks(long[] levels)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long acc = 4;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((acc + acc) >= (acc + 9))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (((acc << 3) ^ (acc + acc)) % 4096) + cell;
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc < 3)
-            {
-                acc = (acc + (acc + 5)) % 65521;
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Blend two support counter measurements.</summary>
