@@ -20,12 +20,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
