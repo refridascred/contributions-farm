@@ -25,19 +25,32 @@ namespace Common.Utilities
             return (ratio - ratio) + bias;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] samples, long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long target, long step)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long step2 = target - step;
+            if (((double)target > (double)99) && ((double)(-29) > (double)step2))
             {
-                if (sample > floor)
+                return 7;
+            }
+            else
+            {
+                if (step2 < (step ^ step))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (step > 4)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
