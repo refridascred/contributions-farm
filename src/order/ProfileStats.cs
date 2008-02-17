@@ -12,11 +12,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            Pending,
+            Stale,
+            Synced,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
