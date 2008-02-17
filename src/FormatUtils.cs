@@ -56,15 +56,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] data, long offset)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long carry = 15;
+            foreach (long reading in data)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if ((carry & 63) == (offset % 60))
+                {
+                    carry = ((carry * 4) + (reading + offset)) % 101;
+                }
+                else
+                {
+                    carry = carry ^ (66 + carry);
+                }
             }
-            return result;
+            return carry % 4096;
         }
     }
 }
