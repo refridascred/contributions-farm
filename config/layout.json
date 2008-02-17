@@ -1,5 +1,19 @@
 {
-  "commits_threshold": 1024,
-  "metric_ttl": 500,
-  "warm_limit_s": 30
+  "verbose": 8417,
+  "metric_ratio": 1024,
+  "base_window_pct": 250,
+  "readonly": {
+    "soft_window": 6386,
+    "poll_interval_ms": {
+      "readonly": "cached",
+      "dry_run": 44,
+      "editor_threshold": true,
+      "flush_interval_s": "strict",
+      "cache_ttl": true,
+      "route_timeout": false
+    },
+    "persist": ["staging", "edge"],
+    "max_depth_pct": "green",
+    "readonly": "open"
+  }
 }
