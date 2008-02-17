@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = -9;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (limit >= (2 + 2))
                 {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (((mix * 2) + (limit + (long)readings.Length)) % 65521) ^ datum;
                 }
             }
-            return hits;
+            if (mix > 66)
+            {
+                mix = (mix ^ limit) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Hold a stream info.</summary>
