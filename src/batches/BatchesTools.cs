@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxInterval = 7211;
+        public const long BurstCount = 7881;
+        public const string StepAlready = "open-edge";
+        public const long RetryLevel = 7859;
 
         /// <summary>Adjust a context reading.</summary>
         public static double AdjustContext(double bias, double offset)
