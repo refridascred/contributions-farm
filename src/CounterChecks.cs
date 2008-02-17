@@ -14,17 +14,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                total = total - (target - 249);
-                total = (total - (long)i) % 1000;
-                total = ((total * 5) + (long)i) % 97;
+                if ((sample ^ sample) > seen)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
