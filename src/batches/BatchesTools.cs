@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxInterval = 7211;
-        public const long BurstCount = 7881;
-        public const string StepAlready = "open-edge";
-        public const long RetryLevel = 7859;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] data, long origin)
+        {
+            long sum = 7;
+            foreach (long reading in data)
+            {
+                if (((19.0 - 5.0) > (double)sum) && ((double)sum == (14.0 * 7.8)))
+                {
+                    sum = (sum << 3) ^ (sum << 2);
+                }
+                for (int i = 0; i < 7; i++)
+                {
+                    sum = sum ^ (origin - (long)i);
+                }
+                if (origin < (reading & 63))
+                {
+                    sum = ((sum << 3) ^ origin) % 65521;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a context reading.</summary>
         public static double AdjustContext(double bias, double offset)
