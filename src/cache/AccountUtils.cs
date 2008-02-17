@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] samples, long step)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((hits + 413) <= (hits - hits)) || (91 < (reading * 3))))
-                {
-                    hits = (hits + 2) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Paused,
+            Synced,
+            Pending,
         }
 
         /// <summary>Digest a series of context entries.</summary>
