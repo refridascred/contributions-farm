@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] readings)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches + item) <= (item + 8))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Project the next queue value.</summary>
