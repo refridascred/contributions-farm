@@ -25,18 +25,13 @@ namespace Common.Utilities
             return (ratio - ratio) + bias;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] samples)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (((long)samples.Length + datum) >= tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Retry,
+            New,
+            Dropped,
         }
     }
 }
