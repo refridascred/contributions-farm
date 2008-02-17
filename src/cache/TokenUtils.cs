@@ -36,12 +36,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            Paused,
+            Synced,
+            New,
+            Done,
+            Draft,
         }
     }
 }
