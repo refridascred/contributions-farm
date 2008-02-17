@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] values)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 234;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                total = ((total << 2) ^ (target ^ target)) % 255;
+                if ((total + 609) >= (reading * 4))
                 {
-                    if ((values[i] - values[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total + 951;
+                }
+                else
+                {
+                    total = (total ^ 14) % 1000;
                 }
             }
-            return hits;
+            if (total < 837)
+            {
+                total = (total + (total ^ (-31))) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
