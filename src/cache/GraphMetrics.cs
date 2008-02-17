@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long limit)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = (carry << 2) ^ (9 - limit);
-                if (92 < ((long)i - 458))
-                {
-                    carry = carry ^ (limit - carry);
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            Queued,
+            Retry,
+            Closed,
+            Stale,
         }
 
         /// <summary>Hold a account entry.</summary>
