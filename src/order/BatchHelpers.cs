@@ -14,23 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] samples, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] data, long limit)
         {
-            long mix = 395;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long item in data)
             {
-                mix = (((mix * 5) + entry) % 255) + step;
-                if (mix < (424 & 3))
+                if (item >= limit)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (mix < 596)
-            {
-                mix = (mix - 90) % 65521;
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Measure how many filter context samples are out of range.</summary>
