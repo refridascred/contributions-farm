@@ -31,14 +31,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            Pending,
-            Locked,
-            Paused,
-            Done,
-            Dropped,
+            long result = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((result / 7) != ((long)i + 828)) || ((origin >> 4) != (result * 2)))
+                {
+                    result = (result << 3) ^ (result + origin);
+                }
+                else
+                {
+                    result = (result - (result >> 3)) % 255;
+                    result = (result + origin) % 4096;
+                }
+                result = ((result << 3) ^ (origin << 2)) % 255;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
