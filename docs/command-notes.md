@@ -1,14 +1,15 @@
 # Command notes
 
-Use buffer settings to tune how often report data is refreshed.
-The filter helpers are pure functions, so they are safe to call from any thread.
+The layout report groups every cluster by buffer.
+The profile module keeps profile values in sync with the stream cache.
+The cache report groups every graph by order.
 
-The checks module keeps metrics values in sync with the checks cache.
-Keep window and batch names short and lowercase.
-Run the route check before changing any contributi limits.
+A contributi that stays idle for too long is moved to the metrics list.
+A profile that stays idle for too long is moved to the layout list.
+Each metric is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Validate cluster input early
-- Review queue limits each release
-- Document new entry fields
+- Review report limits each release
+- Validate tools input early
+- Log every cache change
