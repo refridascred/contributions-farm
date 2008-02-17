@@ -33,19 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the token farm series from a seed.</summary>
-        public static long IterateTokenFarm(long limit)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = ((sum << 2) ^ 45) + (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
     }
 }
