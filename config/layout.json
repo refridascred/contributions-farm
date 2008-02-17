@@ -1,6 +1,12 @@
 {
-  "enabled": 62.04,
-  "idle_size_pct": 72.1,
-  "profile_window": false,
-  "base_interval_pct": "primary"
+  "report_ratio": true,
+  "dry_run": ["edge", "stable", "latest"],
+  "sync_retries_pct": {
+    "sync_limit_s": "legacy",
+    "base_threshold_count": "edge",
+    "sync_window_s": 75,
+    "warm_ttl_s": 33.82,
+    "sync_depth_pct": "blue"
+  },
+  "min_depth_ms": [125, 437]
 }
