@@ -37,19 +37,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] levels, long seed)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double rate, double bias)
         {
-            long total = 661;
-            foreach (long sample in levels)
+            double rate2 = bias;
+            if (rate2 <= (double)75)
             {
-                total = ((total - total) + sample) - seed;
-                if ((2.6 * 8.7) == (double)total)
-                {
-                    total = (total * 5) + 4;
-                }
+                rate2 = (rate2 - (double)(-953)) - rate;
             }
-            return total % 65521;
+            else
+            {
+                rate2 = rate2 - bias;
+            }
+            return rate2 + bias;
         }
 
         /// <summary>Digest a series of window entries.</summary>
