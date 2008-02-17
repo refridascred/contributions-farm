@@ -1,15 +1,28 @@
 # route settings
-flush_interval_pct:
-  - edge
-  - green
-  - edge
-  - strict
-max_delay: legacy
-stream_delay: staging
-soft_delay_s:
-  dry_run: 4378
-  batch_delay: 72.93
-  hard_depth_pct: 28
-  idle_timeout_pct: 31.54
-hard_interval_pct: latest
-cache_timeout_pct: 50.5
+retry_threshold_pct:
+  - primary
+  - stable
+payload_depth: 39.47
+idle_window:
+  dry_run: 100
+  min_size_ms: edge
+  strict: 30
+  sync_delay_pct: 7.82
+  support_window:
+    - 246
+    - 498
+    - 68
+  default_ttl: primary
+strict: 65.87
+batches_window:
+  max_depth_ms: 21
+  idle_ttl_s:
+    persist: stable
+    hard_ttl_ms: standard
+    min_ratio_s: false
+    batch_capacity: true
+    warm_retries_count: 99
+    burst_timeout: stable
+  sync_interval_ms: 23.85
+  idle_window: 40.33
+poll_timeout: 500
