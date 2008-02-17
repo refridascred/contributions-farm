@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long floor, long target)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            if ((target + target) < floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor % 3) < (floor % 12))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target << 3) >= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((8.0 + 8.29) != (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Draft,
+            New,
+            Closed,
+            Queued,
         }
 
         /// <summary>Count the contributi already entries that pass the check.</summary>
