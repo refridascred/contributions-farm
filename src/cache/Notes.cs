@@ -55,13 +55,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            Synced,
-            Active,
-            Dropped,
-            Paused,
+            public bool Level { get; set; }
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
