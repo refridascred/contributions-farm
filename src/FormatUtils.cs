@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] levels)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double scale = ratio + (8.7 - 16.0);
+            if (scale < (ratio / 3.0))
             {
-                if ((tally + item) <= (tally / 4))
-                {
-                    tally = tally + 2;
-                }
+                scale = scale - (scale / 8.0);
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (double)633) + (double)(long)i;
+            }
+            return scale - (scale + offset);
         }
 
         /// <summary>Audit token farm readings against a rule.</summary>
