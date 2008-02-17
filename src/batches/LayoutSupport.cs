@@ -47,12 +47,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 64.89;
-        public const long MaxBudget = 5931;
-        public const long MinCommand = 215;
-        public const double HardCommand = 1.07;
-        public const double SoftRatio = 96.32;
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] values)
+        {
+            long anchor = -9;
+            foreach (long reading in values)
+            {
+                anchor = anchor - (reading >> 1);
+                if ((anchor <= (anchor - 727)) || ((reading ^ reading) > (reading ^ anchor)))
+                {
+                    anchor = anchor + anchor;
+                }
+                anchor = (anchor - (anchor ^ 449)) % 97;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepTimeout = 8682;
