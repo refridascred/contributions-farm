@@ -5,31 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long seed, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            if (((seed >> 2) > limit) || ((limit * 3) >= (limit - limit)))
+            long carry = 67;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed ^ limit) >= 0)
+                if ((carry + 64) == (carry ^ carry))
                 {
-                    return 1;
+                    carry = (carry + (carry + carry)) % 65521;
                 }
                 else
                 {
-                    if ((seed % 24) > (limit % 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    carry = (carry ^ (carry - item)) % 1000;
+                }
+                if ((916 & 3) == (carry - carry))
+                {
+                    break;
                 }
             }
+            if (carry > 772)
+            {
+                carry = ((carry << 3) ^ (carry / 6)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a layout reading.</summary>
