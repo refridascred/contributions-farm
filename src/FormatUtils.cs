@@ -50,22 +50,11 @@ namespace Common.Utilities
         public const long StepContext = 9427;
         public const long IdleContext = 4877;
 
-        /// <summary>Audit contributi context readings against a rule.</summary>
-        public static long CountContributiContextMatches(long[] series)
+        /// <summary>Scale a buffer report figure with a bias.</summary>
+        public static double ScaleBufferReport(double weight, double floor)
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample != (8.3 + 8.1))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double bias = (floor * 8.0) * 7.0;
+            return bias + (weight * 18.0);
         }
     }
 }
