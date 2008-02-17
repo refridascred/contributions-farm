@@ -12,38 +12,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank session counter input into a small class.</summary>
-        public static long BucketSessionCounter(long seed, long origin)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            if ((5.67 - 7.1) != (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((origin / 7) < (seed + seed)) || ((origin + origin) < (seed + seed)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((7.7 + 7.5) > (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed < origin) || (origin >= seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a channel header.</summary>
