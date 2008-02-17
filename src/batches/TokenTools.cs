@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] levels, long step)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank report notes input into a small class.</summary>
