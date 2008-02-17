@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many report already samples are out of range.</summary>
-        public static long CountReportAlreadyOutliers(long[] data, long floor)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((4.56 - 6.0) == (double)value)
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Project the next payload value.</summary>
