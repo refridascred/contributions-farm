@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long origin, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] levels, long offset)
         {
-            long prev = origin - bound;
-            if ((origin & 31) < 670)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((17.0 > (double)prev) && ((double)prev >= 2.1))
+                if (reading != offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound & 255) >= (prev % 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
