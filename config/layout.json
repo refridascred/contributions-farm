@@ -1,6 +1,19 @@
 {
-  "poll_window_s": false,
-  "base_ttl": "latest",
-  "retry_size": false,
-  "warm_threshold_pct": "latest"
+  "burst_retries_count": {
+    "editor_timeout": ["standard", "cached", "local"],
+    "max_delay_s": "blue",
+    "cache_ratio": {
+      "base_depth": ["green", "edge", "blue", "fallback"],
+      "idle_capacity_ms": 47,
+      "default_threshold_count": ["open", "green", "fallback", "edge"],
+      "burst_ratio": ["latest", "cached", "green"],
+      "cache_threshold_ms": 60,
+      "base_limit": 92
+    },
+    "strict": 73.44,
+    "entry_interval": "open",
+    "graph_limit": "cached"
+  },
+  "cache_retries_s": "open",
+  "flush_timeout_s": "green"
 }
