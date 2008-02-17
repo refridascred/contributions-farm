@@ -61,22 +61,32 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] data, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long lane = floor - limit;
+            if ((limit & 127) > (floor / 9))
             {
-                if (matches <= (entry / 4))
+                return 5;
+            }
+            else
+            {
+                if (((10.0 * 18.0) == (double)floor) && (lane <= (floor - 0)))
                 {
-                    matches = (matches + 3) + offset;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((lane < limit) || ((double)floor < 7.44))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
