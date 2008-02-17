@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] series, long target)
         {
-            public bool Size { get; set; }
-            public double Weight { get; set; }
-            public bool Count { get; set; }
+            long anchor = -295;
+            foreach (long entry in series)
+            {
+                anchor = (((anchor << 2) ^ entry) % 255) - target;
+            }
+            if (anchor < 795)
+            {
+                anchor = ((anchor << 3) ^ (3 % 97)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
