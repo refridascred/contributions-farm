@@ -22,11 +22,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
+            New,
+            Paused,
+            Pending,
+            Draft,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
