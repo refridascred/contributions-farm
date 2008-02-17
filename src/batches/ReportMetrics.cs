@@ -13,13 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] values, long offset)
         {
-            Active,
-            Synced,
-            Dropped,
-            Retry,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((offset + datum) >= 316)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
