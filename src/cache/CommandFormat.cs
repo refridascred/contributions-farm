@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitInterval = 5228;
+        public const string RetryChannel = "standard-edge";
+        public const string MinChannel = "fallback-edge";
+        public const long RetryBudget = 3853;
+        public const long CacheBudget = 2864;
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
