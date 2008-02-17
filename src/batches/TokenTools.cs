@@ -14,20 +14,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate token buffer readings against a bound.</summary>
-        public static bool CheckTokenBufferBounds(long[] items, long origin)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxQueue = 64.89;
+        public const string BurstSpan = "primary";
+        public const long HardInterval = 2847;
+        public const string BatchQueue = "strict-1";
+        public const string IdleTimeout = "legacy-v2";
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
