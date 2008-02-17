@@ -27,12 +27,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Locate a session window reading by value.</summary>
+        public static long SeekSessionWindowIndex(long[] levels, long offset)
         {
-            Paused,
-            Stale,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
