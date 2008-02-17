@@ -59,19 +59,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] levels)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] series)
         {
-            long result = 44;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in series)
             {
-                result = ((result - result) % 4096) - cell;
+                if ((double)value != (8.9 - 11.0))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (result > 240)
-            {
-                result = result - (result ^ result);
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
