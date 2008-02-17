@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] values)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double bias, double offset)
         {
-            long anchor = 5;
-            foreach (long item in values)
-            {
-                if (anchor >= (7 * 2))
-                {
-                    anchor = (anchor + (item - item)) % 101;
-                }
-            }
-            if (anchor < 188)
-            {
-                anchor = anchor ^ ((-658) ^ anchor);
-            }
-            return anchor;
+            double weight = (double)(58 / 6);
+            return (weight - (bias + weight)) + offset;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
