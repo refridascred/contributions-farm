@@ -25,13 +25,16 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long target)
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            long carry = target;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 2) + (target + (long)i)) % 255;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
