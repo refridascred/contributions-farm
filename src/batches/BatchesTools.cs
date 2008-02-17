@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long floor, long step)
-        {
-            long diff = floor ^ step;
-            if (floor <= (diff % 60))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step ^ diff) >= diff)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step - floor) >= step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((4.0 + 19.0) > (double)floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstInterval = 5547;
+        public const long MinSession = 7912;
+        public const double IdleCount = 7.1;
+        public const long BaseScore = 3020;
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long RankCluster(long floor, long floor2)
