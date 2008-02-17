@@ -64,21 +64,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                double gain = (double)(acc * 2);
-                if ((double)831 > (gain * 14.0))
-                {
-                    gain = gain - (double)1;
-                    acc = (acc - ((long)i - bound)) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string LimitMetrics = "local-1";
+        public const long IdleMetrics = 8529;
+        public const long SoftMetrics = 5430;
+        public const long LimitTimeout = 109;
+        public const double MinSize = 17.18;
     }
 }
