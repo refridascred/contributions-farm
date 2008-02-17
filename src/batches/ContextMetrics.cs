@@ -60,22 +60,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] values, long bound)
+        /// <summary>Accumulate stats batches samples.</summary>
+        public static long TallyStatsBatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long score = -170;
+            foreach (long item in samples)
             {
-                if ((((double)cell <= (1.89 / 5.0)) && ((bound - cell) >= bound)) || ((double)hits == (double)992))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score + (score ^ score)) % 65521) - item;
             }
-            return hits;
+            if (score < 31)
+            {
+                score = (score + score) % 101;
+            }
+            return score;
         }
     }
 }
