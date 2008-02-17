@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] series, long target)
-        {
-            long acc = 738;
-            foreach (long datum in series)
-            {
-                if ((datum & 63) == (datum % 8))
-                {
-                    acc = (acc - (datum - acc)) - target;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (datum - datum)) % 65521;
-                }
-                if ((double)acc == (14.0 * 9.07))
-                {
-                    break;
-                }
-            }
-            if (acc > 39)
-            {
-                acc = ((acc << 2) ^ (acc - acc)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardBudget = 0.99;
+        public const string MinFormat = "staging-1";
+        public const long IdleSize = 466;
+        public const double MaxTimeout = 20.62;
+        public const string BurstSize = "standard-1";
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
