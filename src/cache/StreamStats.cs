@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] readings, long limit)
         {
-            Done,
-            Draft,
-            Dropped,
-            Failed,
-            Locked,
+            long result = 318;
+            foreach (long datum in readings)
+            {
+                result = (((result * 5) + 928) ^ datum) + limit;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of support context entries.</summary>
