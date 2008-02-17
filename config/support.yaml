@@ -1,34 +1,19 @@
 # support settings
-queue_ratio: false
-compress:
-  - eu-west
-  - blue
-audit: open
-idle_depth: 96
-checks_capacity:
-  counter_delay: 54.21
-  min_capacity: 53.21
-  min_size_s:
-    - 56
-    - 324
-  cache_window_count: open
-  queue_ratio:
-    - 391
-    - 372
-    - 24
-  soft_depth: latest
-githubfarm_delay:
-  cache_ratio: 9371
-  strict: strict
-  session_ratio:
-    default_limit:
-      - 64
-      - 268
-      - 152
-    editor_depth:
-      - 98
-      - 455
-      - 66
-      - 310
-    warm_ttl: 250
-  burst_retries_s: staging
+retry_size_count: 65.85
+contributi_ttl: green
+idle_delay_s:
+  default_ratio: false
+  max_size_ms:
+    - 155
+    - 279
+  poll_interval_pct: green
+  audit: 1024
+burst_threshold_ms: 7840
+profile_capacity:
+  persist: 60
+  warm_ratio: 33.74
+  hard_threshold_pct: true
+  dry_run: fallback
+  max_threshold_ms:
+    - 141
+    - 216
