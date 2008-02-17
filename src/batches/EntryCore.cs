@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first support window entry that matches the target.</summary>
-        public static long LocateSupportWindowIndex(long[] levels, long bound)
+        /// <summary>Combine notes record values into a single score.</summary>
+        public static long ScoreNotesRecord(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 37;
+            foreach (long item in levels)
             {
-                if ((levels[i] == bound) && ((levels[i] % 5) == 0))
+                if ((double)item < (4.9 * 5.1))
                 {
-                    return (long)i;
+                    mark = ((mark * 3) + (mark << 2)) % 65521;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count the command report entries that pass the check.</summary>
