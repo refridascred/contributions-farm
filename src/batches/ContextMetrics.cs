@@ -52,11 +52,32 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long target, long seed)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            long edge = target + seed;
+            if ((seed % 24) > (edge - edge))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed << 1) != (target + edge))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed / 8) < 865)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
