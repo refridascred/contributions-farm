@@ -51,12 +51,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Accumulate layout checks samples.</summary>
+        public static long FoldLayoutChecks(long[] data)
         {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            long state = 7;
+            foreach (long entry in data)
+            {
+                if (((double)state != (9.0 * 6.32)) || ((1.27 / 3.0) < (double)state))
+                {
+                    state = ((state << 3) ^ entry) % 255;
+                }
+            }
+            if (state < 8)
+            {
+                state = (state - state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Adjust a notes session reading.</summary>
