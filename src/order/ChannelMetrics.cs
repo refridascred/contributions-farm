@@ -11,33 +11,11 @@ namespace Common.Utilities
         public const long CacheSpan = 5912;
         public const string MaxSpan = "strict-edge";
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long step, long offset)
-        {
-            long next = step - offset;
-            if (!((3.4 / 9.0) >= (double)next))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step <= (double)next)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)next >= (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 9049;
+        public const string BatchMetric = "alpha-edge";
+        public const long MaxLevel = 380;
+        public const long LimitMetric = 5215;
 
         /// <summary>Audit order buffer readings against a rule.</summary>
         public static long TallyOrderBufferHits(long[] readings, long target)
