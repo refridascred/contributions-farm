@@ -1,10 +1,13 @@
 {
-  "cache_timeout_s": {
-    "readonly": 96,
-    "queue_timeout": ["strict", "local"],
-    "dry_run": true,
-    "idle_interval_count": "fallback"
+  "strict": 32.37,
+  "retry_retries_count": "stable",
+  "dry_run": "blue",
+  "persist": "staging",
+  "support_limit": {
+    "channel_size": ["local", "strict", "primary"],
+    "filter_retries": true,
+    "batch_threshold": [176, 461, 171, 87],
+    "default_ratio": 3999
   },
-  "token_interval": "legacy",
-  "flush_timeout_ms": 36.77
+  "session_limit": "staging"
 }
