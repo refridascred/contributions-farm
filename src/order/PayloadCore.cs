@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Roll a record contributi counter forward.</summary>
+        public static long DeriveRecordContributi(long limit)
         {
-            Draft,
-            Active,
-            Pending,
-            Locked,
-            Synced,
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define support limits and defaults.</summary>
