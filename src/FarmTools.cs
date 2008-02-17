@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long target, long offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] levels, long seed)
         {
-            long lane = target - offset;
-            if ((((-471) + lane) < (lane % 97)) || ((double)offset >= (5.71 - 2.6)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((target % 100) > (lane % 7)))
+                if (levels[i] > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
