@@ -28,21 +28,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] levels)
+        /// <summary>Measure how many tools queue samples are out of range.</summary>
+        public static long TallyToolsQueueHits(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((item + count) <= (item & 127)))
                 {
-                    if ((levels[i] ^ levels[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Adjust a farm reading.</summary>
