@@ -56,14 +56,10 @@ namespace Common.Utilities
             return ratio2 + span;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitWidth = 5484;
+        public const long MaxMetrics = 4539;
+        public const string DefaultTimeout = "latest-v2";
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
