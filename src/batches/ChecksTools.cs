@@ -22,19 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Look up the position of a editor stats sample.</summary>
+        public static long LocateEditorStatsIndex(long[] items, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((11.0 - 2.8) >= (double)total))
+                if (items[i] < bound)
                 {
-                    total = total - (long)i;
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a filter header.</summary>
