@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] values)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long offset)
         {
-            long score = 916;
-            foreach (long cell in values)
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
             {
-                score = (((score * 2) + 32) % 1000) ^ cell;
+                if (((sum - (long)i) > (sum - sum)) && (sum > (sum + (long)i)))
+                {
+                    sum = ((sum << 3) ^ (offset % 100)) % 1000;
+                }
+                long gap = sum;
+                if ((double)gap == (double)offset)
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = (sum ^ (long)i) % 65521;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Hold a context stats.</summary>
