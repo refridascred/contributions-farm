@@ -18,17 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record tools sample.</summary>
-        public static long FindRecordToolsIndex(long[] series, long limit)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Queued,
+            Ready,
+            Draft,
+            Retry,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
