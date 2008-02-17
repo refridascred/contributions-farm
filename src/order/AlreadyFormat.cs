@@ -35,19 +35,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] data, long step)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Ready,
+            Paused,
+            New,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
