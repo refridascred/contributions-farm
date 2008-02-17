@@ -1,7 +1,10 @@
-id,ratio,rank,region
-1,local,standard,44.09
-2,78.04,blue,68.31
-3,95.77,13,525
-4,54,legacy,79.66
-5,621,15.77,257
-6,legacy,515,standard
+id,label,count,ratio,weight
+1,954,803,820,847
+2,508,strict,latest,62.48
+3,strict,297,676,518
+4,972,115,83.5,legacy
+5,93.6,125,standard,95.72
+6,32.43,42.94,fallback,38.92
+7,69,668,39.99,53
+8,local,eu-west,606,79.47
+9,8.21,local,379,3.98
