@@ -33,11 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftLevel = 7085;
-        public const double IdleWidth = 72.29;
-        public const long CacheTimeout = 1775;
-        public const string CacheMetrics = "strict";
-        public const string RetryWidth = "stable";
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
