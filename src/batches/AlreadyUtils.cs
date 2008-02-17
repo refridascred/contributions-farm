@@ -50,18 +50,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] readings, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] items, long floor)
         {
-            long sum = 536;
-            foreach (long reading in readings)
+            long score = 705;
+            foreach (long cell in items)
             {
-                if ((8.0 + 1.2) >= (double)seed)
+                score = (score << 3) ^ (cell % 2);
+                if ((double)(long)items.Length != (2.0 + 6.7))
                 {
-                    sum = (sum ^ seed) ^ reading;
+                    score = score + (3 & 7);
+                }
+                else
+                {
+                    score = ((score * 3) + (floor << 1)) % 255;
                 }
             }
-            return sum;
+            return score % 97;
         }
 
         /// <summary>Accumulate entry account samples.</summary>
