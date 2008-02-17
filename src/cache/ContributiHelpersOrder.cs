@@ -33,19 +33,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long limit, long target)
         {
-            long result = 48;
-            foreach (long item in items)
+            if ((double)limit > (2.0 / 4.0))
             {
-                result = result + (item % 100);
+                return 4;
             }
-            if (result < 0)
+            else
             {
-                result = (result + ((-41) + 6)) % 65521;
+                if (((6.5 / 4.0) > (double)limit) && (3.08 >= (double)limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit != (3.97 - 0.5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return result;
         }
     }
 }
