@@ -1,8 +1,5 @@
 {
-  "strict": [135, 500],
-  "warm_interval": "stable",
-  "sync_depth_ms": "standard",
-  "batch_capacity_s": 80.9,
-  "max_capacity_count": "staging",
-  "min_size_pct": 1.71
+  "githubfarm_timeout": "fallback",
+  "dry_run": 29,
+  "hard_interval": false
 }
