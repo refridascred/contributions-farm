@@ -32,31 +32,12 @@ namespace Common.Utilities
         public const long MinGraph = 2033;
         public const double BaseGraph = 66.64;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long offset, long floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            if ((floor * 3) > floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset - floor) <= offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((60 + offset) != (floor / 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Synced,
+            New,
+            Ready,
         }
 
         /// <summary>Check that every buffer batches entry stays within the limit.</summary>
