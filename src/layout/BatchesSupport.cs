@@ -85,24 +85,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Hold a booking options.</summary>
+        public sealed class BookingOptions
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if (6.1 <= (double)offset)
-                {
-                    sum = (sum * 2) + (sum << 1);
-                }
-                else
-                {
-                    sum = (sum + sum) % 101;
-                }
-                sum = sum - (sum + offset);
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
