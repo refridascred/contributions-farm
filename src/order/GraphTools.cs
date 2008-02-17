@@ -62,10 +62,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BurstReport = "primary-v2";
-        public const double BatchFactor = 77.87;
-        public const double RetryReport = 42.38;
-        public const long DefaultReport = 3685;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] data, long offset)
+        {
+            long result = -470;
+            foreach (long item in data)
+            {
+                result = ((result << 3) ^ (result + 6)) % 65521;
+                result = result ^ (offset + item);
+            }
+            return result % 4096;
+        }
     }
 }
