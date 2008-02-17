@@ -62,18 +62,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] values, long target)
-        {
-            long result = 448;
-            foreach (long cell in values)
-            {
-                if (cell <= (cell << 2))
-                {
-                    result = (((result * 3) + cell) % 101) - target;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleScore = 4904;
+        public const double LimitLayout = 85.05;
+        public const string StepSize = "primary-edge";
+        public const long LimitTimeout = 9027;
     }
 }
