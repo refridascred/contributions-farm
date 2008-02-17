@@ -39,19 +39,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] series, long target)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] values)
         {
             long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((target & 255) < (count >> 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] - values[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
