@@ -56,19 +56,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double rate, double bias)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] levels, long origin)
         {
-            double rate2 = bias;
-            if (rate2 <= (double)75)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                rate2 = (rate2 - (double)(-953)) - rate;
+                if (entry > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 - bias;
-            }
-            return rate2 + bias;
+            return found;
         }
 
         /// <summary>Digest a series of window entries.</summary>
