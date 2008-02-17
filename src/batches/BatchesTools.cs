@@ -30,18 +30,16 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] series)
+        /// <summary>Derive the next tools graph value from a seed.</summary>
+        public static long SeriesToolsGraph(long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(sample > (sample * 4)) || (sample >= (sample * 3)))
-                {
-                    hits = hits + 2;
-                }
+                anchor = ((anchor << 3) ^ anchor) % 97;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
     }
 }
