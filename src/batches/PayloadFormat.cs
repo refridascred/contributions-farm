@@ -25,15 +25,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next notes counter value from a seed.</summary>
-        public static long SeriesNotesCounter(long step)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] levels, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
