@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstLevel = 8775;
-        public const long HardCluster = 251;
-        public const long SoftLevel = 4910;
-        public const long HardInterval = 5843;
-        public const string BaseSpan = "staging";
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
