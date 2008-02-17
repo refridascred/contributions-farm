@@ -42,21 +42,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] data)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the cache class values.</summary>
