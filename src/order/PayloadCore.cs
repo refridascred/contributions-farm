@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] series, long target)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
