@@ -52,19 +52,18 @@ namespace Common.Utilities
         public const long MaxRoute = 7799;
         public const string SoftRoute = "primary";
 
-        /// <summary>Check that every cluster filter entry stays within the limit.</summary>
-        public static bool CheckClusterFilterBounds(long[] data, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (sample != origin)
+                if (((-5) > ((long)items.Length + seed)) || ((double)cell < (double)seed))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
