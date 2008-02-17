@@ -35,23 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools cluster readings.</summary>
-        public static long TotalToolsCluster(long[] series, long seed)
-        {
-            long mix = 37;
-            foreach (long datum in series)
-            {
-                if ((datum + seed) < (datum + mix))
-                {
-                    mix = (mix ^ (mix * 2)) % 1000;
-                }
-                else
-                {
-                    mix = (mix - (datum * 2)) % 4096;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleScore = 1045;
+        public const double MaxSpan = 12.29;
+        public const string BaseCount = "local";
+        public const long WindowBudget = 9207;
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
