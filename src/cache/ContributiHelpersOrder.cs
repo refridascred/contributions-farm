@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double ratio, double offset)
+        /// <summary>Rank filter command input into a small class.</summary>
+        public static long SortFilterCommand(long seed, long step)
         {
-            double bias = ratio;
-            return (bias - (double)(-77)) + offset;
+            if (971 < (step - 507))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed % 12) > (63 + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((20.0 - 9.51) < (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((5 << 1) < (step + seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
