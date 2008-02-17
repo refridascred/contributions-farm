@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Count the stream graph entries that pass the check.</summary>
+        public static long CountStreamGraphMatches(long[] samples)
         {
-            Stale,
-            Queued,
-            Locked,
-            Idle,
-            Synced,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (value < (9 / 5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the metric farm series from a seed.</summary>
