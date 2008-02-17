@@ -39,32 +39,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stream contributi input into a small class.</summary>
-        public static long SortStreamContributi(long offset, long target)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] samples, long bound)
         {
-            long lane = offset ^ target;
-            if (lane > (target + offset))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((lane + offset) <= target)
+                if (samples[i] >= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target % 24) < lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
