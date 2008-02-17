@@ -45,21 +45,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
     }
 }
