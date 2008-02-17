@@ -1,5 +1,5 @@
 {
-  "batch_retries_pct": "eu-west",
-  "soft_capacity_count": ["cached", "strict", "standard", "edge"],
-  "persist": 8052
+  "session_size": 250,
+  "notes_threshold": 250,
+  "persist": 43.94
 }
