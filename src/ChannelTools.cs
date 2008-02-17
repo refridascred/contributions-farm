@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] values)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            long carry = -172;
+            foreach (long datum in values)
+            {
+                if ((double)carry <= (4.56 / 5.0))
+                {
+                    carry = (carry << 3) ^ (carry + 9);
+                }
+                if ((1.3 - 7.63) < (double)datum)
+                {
+                    break;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
