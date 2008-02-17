@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] levels)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double bias, double bias2)
         {
-            long state = 161;
-            foreach (long value in levels)
+            double gain = bias * 15.0;
+            for (int i = 0; i < 2; i++)
             {
-                state = (((state << 2) ^ (state - state)) % 4096) + value;
+                gain = ((gain + bias) + (double)(long)i) - bias2;
             }
-            if (state > 801)
-            {
-                state = (state ^ state) % 255;
-            }
-            return state;
+            return gain - (bias / 7.0);
         }
 
         /// <summary>Audit record readings against a rule.</summary>
