@@ -51,20 +51,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] items, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (!((553 << 1) < mark))
+                if (sample < origin)
                 {
-                    mark = (mark * 5) + (mark >> 2);
-                    mark = ((mark * 4) + mark) % 1000;
+                    flag = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
