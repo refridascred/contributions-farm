@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long WindowSession = 7188;
         public const long CacheInterval = 9835;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] data, long seed)
+        /// <summary>Check that every cluster order entry stays within the limit.</summary>
+        public static bool GuardClusterOrderBounds(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (data[i] <= seed)
+                if (datum != target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Locate a support reading by value.</summary>
