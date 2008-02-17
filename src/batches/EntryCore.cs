@@ -61,21 +61,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up queue entry samples.</summary>
-        public static long PairQueueEntryCount(long[] series)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = (double)82 - (double)(-60);
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = ((gain - gain) + (double)(long)i) - bias;
             }
-            return hits;
+            return gain - span;
         }
     }
 }
