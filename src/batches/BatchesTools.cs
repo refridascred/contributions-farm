@@ -27,14 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] readings, long bound)
         {
-            Synced,
-            Locked,
-            Stale,
-            Active,
-            Draft,
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
