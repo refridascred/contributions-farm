@@ -59,18 +59,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the metrics commits entries that pass the check.</summary>
-        public static long AuditMetricsCommitsHits(long[] series)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long total = 138;
+            foreach (long datum in data)
             {
-                if ((datum * 3) <= seen)
-                {
-                    seen = seen + 2;
-                }
+                total = ((((total << 3) ^ 49) % 4096) + datum) - offset;
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
