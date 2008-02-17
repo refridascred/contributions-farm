@@ -33,39 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long bound, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] items, long limit)
         {
-            long step = bound - limit;
-            if ((bound * 5) > (bound + limit))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step >> 4) < (bound / 3))
+                if ((limit + 868) != (matches + limit))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((3.55 - 9.7) < (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2 + step) <= step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = (matches + 2) - datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a notes entry.</summary>
