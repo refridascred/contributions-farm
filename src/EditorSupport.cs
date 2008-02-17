@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long bound, long floor)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] series)
         {
-            long prev = bound - floor;
-            if ((prev << 1) > floor)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + (-79)) == (prev << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    if ((series[i] ^ series[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a command entry.</summary>
