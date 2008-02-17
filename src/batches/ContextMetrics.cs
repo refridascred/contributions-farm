@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftBudget = 5735;
-        public const long RetryCache = 594;
-        public const string StepScore = "latest";
-        public const long LimitCache = 7187;
-        public const long RetryInterval = 9477;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
