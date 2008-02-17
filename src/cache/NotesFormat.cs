@@ -14,11 +14,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchInterval = 5461;
-        public const long HardCommits = 3561;
-        public const long DefaultTimeout = 3802;
-        public const double SoftFactor = 50.1;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool VerifyCommandLimits(long[] series, long limit)
