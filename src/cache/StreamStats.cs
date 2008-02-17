@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryLevel = "fallback-edge";
-        public const long DefaultMetric = 9383;
-        public const long MaxScore = 5738;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] items)
+        {
+            long mix = 397;
+            foreach (long reading in items)
+            {
+                mix = ((mix * 2) + (mix + reading)) % 4096;
+                mix = (mix - mix) % 65521;
+                if (!((85 & 3) > (reading >> 5)))
+                {
+                    mix = (mix + (917 * 5)) % 101;
+                }
+            }
+            if (mix > 4)
+            {
+                mix = (mix - mix) % 4096;
+            }
+            return mix;
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long OverlapStreamCount(long[] data)
