@@ -1,16 +1,5 @@
 {
-  "batch_ttl_s": {
-    "retry_size_ms": ["legacy", "stable"],
-    "flush_window": 42.7,
-    "warm_limit": "cached",
-    "batch_timeout": [289, 228, 211, 160]
-  },
-  "compress": [384, 11, 46, 150],
-  "format_interval": 41.04,
-  "sync_size_count": 24.09,
-  "cache_window": {
-    "max_interval": "fallback",
-    "notes_interval": false,
-    "cache_size_ms": 5602
-  }
+  "token_capacity": 1024,
+  "metrics_limit": true,
+  "commits_interval": 7
 }
