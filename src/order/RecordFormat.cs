@@ -71,16 +71,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] samples, long target)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                result = (result - result) % 1000;
-                result = ((result * 2) + (long)i) % 4093;
+                if ((count - 8) >= datum)
+                {
+                    count = (count + 3) + target;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a contributi summary.</summary>
