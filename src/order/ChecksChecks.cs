@@ -23,11 +23,14 @@ namespace Common.Utilities
             return rate - 8.8;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            public string Region { get; set; } = "";
-            public double Mode { get; set; }
+            Stale,
+            Done,
+            Idle,
+            New,
+            Active,
         }
     }
 }
