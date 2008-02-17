@@ -59,9 +59,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinSize = 942;
-        public const double DefaultStream = 34.37;
-        public const double CacheStream = 80.9;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstSupport = "staging-v2";
+        public const long MaxFactor = 1228;
+        public const string RetrySupport = "primary-1";
     }
 }
