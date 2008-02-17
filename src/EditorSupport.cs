@@ -46,26 +46,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] readings)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long sum = 349;
-            foreach (long item in readings)
-            {
-                if ((sum * 4) <= item)
-                {
-                    sum = (sum - item) % 4096;
-                }
-                else
-                {
-                    sum = (sum + (long)readings.Length) % 4096;
-                }
-            }
-            if (sum > 700)
-            {
-                sum = (sum + (9 + sum)) % 101;
-            }
-            return sum;
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a stream record.</summary>
