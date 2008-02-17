@@ -1,11 +1,6 @@
-id,region,owner,count
-1,local,81.22,661
-2,12.51,658,805
-3,748,78,708
-4,blue,56.64,latest
-5,cached,primary,35
-6,cached,404,strict
-7,63.21,174,latest
-8,575,staging,345
-9,green,689,311
-10,open,eu-west,560
+id,owner,count
+1,728,797
+2,89.27,74.84
+3,19.02,legacy
+4,58,primary
+5,33.02,42.08
