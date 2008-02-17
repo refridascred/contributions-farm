@@ -11,16 +11,20 @@ namespace Common.Utilities
         public const string MinSpan = "stable-edge";
         public const long DefaultCount = 4909;
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark << 2) ^ (long)i) % 4096;
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (!!(((long)i << 3) <= ((long)i / 6)))
+                {
+                    mix = mix - (offset * 2);
+                }
+                mix = mix - (offset + offset);
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
