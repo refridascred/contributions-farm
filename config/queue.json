@@ -1,7 +1,10 @@
 {
-  "readonly": [379, 167],
-  "retry_capacity_pct": false,
-  "sync_capacity_ms": 78,
-  "dry_run": false,
-  "poll_ttl": [488, 433, 482, 87]
+  "max_retries": {
+    "enabled": 61,
+    "flush_ratio_count": "fallback",
+    "verbose": "legacy",
+    "strict": 54.16
+  },
+  "cache_size": "fallback",
+  "base_threshold_ms": 73.13
 }
