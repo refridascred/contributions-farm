@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const long BaseChecks = 9501;
         public const long BaseTimeout = 1088;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstBudget = 66.29;
-        public const string BasePayload = "stable";
-        public const string LimitPayload = "standard";
-        public const long MaxPayload = 1248;
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteOutliers(long[] values, long offset)
