@@ -14,26 +14,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] values)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] levels, long floor)
         {
-            long result = 282;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result - entry) <= 35)
+                if (levels[i] > floor)
                 {
-                    result = (result ^ (entry + result)) % 255;
-                }
-                else
-                {
-                    result = (result * 5) + entry;
+                    return (long)i;
                 }
             }
-            if (result < 40)
-            {
-                result = result + (-9);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Classify a commits account pair into a bucket.</summary>
