@@ -16,22 +16,12 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Audit buffer cluster readings against a rule.</summary>
-        public static long MeasureBufferClusterMatches(long[] items)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((sample & 1) > seen)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Rank checks input into a small class.</summary>
