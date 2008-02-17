@@ -56,19 +56,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of farm account readings.</summary>
-        public static long WeighFarmAccount(long[] levels, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] series)
         {
-            long mix = 5;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                mix = ((mix ^ (mix - floor)) % 1000) - cell;
+                if ((sample - seen) <= sample)
+                {
+                    seen = seen + 3;
+                }
             }
-            if (mix > 617)
-            {
-                mix = (mix - mix) % 101;
-            }
-            return mix;
+            return seen;
         }
     }
 }
