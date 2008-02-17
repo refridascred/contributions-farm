@@ -20,12 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] data, long bound)
         {
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit route account readings against a rule.</summary>
