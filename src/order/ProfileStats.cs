@@ -34,21 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] series)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                long span = (mark & 3) >> 3;
+                mark = (mark ^ span) % 4096;
+                if (((span ^ mark) <= (8 ^ span)) && ((target * 5) >= target))
                 {
-                    if ((series[i] ^ series[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark * 2) + (target / 2);
+                    span = ((span << 3) ^ (long)i) % 255;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
     }
 }
