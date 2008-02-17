@@ -25,18 +25,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics tools entries that pass the check.</summary>
-        public static long TallyMetricsToolsMatches(long[] series)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long bound, long origin)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            if (!((7.3 / 7.0) <= (double)bound))
             {
-                if (((entry + matches) > entry) && (matches > (5 >> 4)))
+                return 1;
+            }
+            else
+            {
+                if ((origin % 64) < origin)
                 {
-                    matches = matches + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)bound == (double)origin) && (origin > (origin - bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
