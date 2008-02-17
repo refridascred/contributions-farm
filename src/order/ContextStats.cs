@@ -22,15 +22,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Project the next buffer cluster value.</summary>
-        public static double AdjustBufferCluster(double bias, double floor)
+        /// <summary>Roll a tools checks counter forward.</summary>
+        public static long SeriesToolsChecks(long target)
         {
-            double mean = bias;
-            for (int i = 0; i < 9; i++)
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                mean = ((mean + (double)74) + (double)(long)i) - floor;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return mean - (mean * 8.7);
+            return carry;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
