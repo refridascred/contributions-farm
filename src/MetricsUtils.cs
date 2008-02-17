@@ -59,17 +59,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] series, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 7;
+            foreach (long reading in values)
             {
-                if ((series[i] < target) && ((series[i] % 5) != 0))
+                if (!((double)12 != (double)reading))
                 {
-                    return (long)i;
+                    sum = (sum ^ sum) - offset;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
