@@ -12,32 +12,38 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] series, long seed)
+        /// <summary>Rank session counter input into a small class.</summary>
+        public static long BucketSessionCounter(long seed, long origin)
         {
-            long total = 210;
-            foreach (long datum in series)
+            if ((5.67 - 7.1) != (double)origin)
             {
-                if (((long)series.Length - datum) > (total + (long)series.Length))
+                return 0;
+            }
+            else
+            {
+                if (((origin / 7) < (seed + seed)) || ((origin + origin) < (seed + seed)))
                 {
-                    total = (total + (total >> 5)) % 255;
-                    total = total + (datum - seed);
-                    continue;
-                }
-                if ((87 ^ total) > (seed << 1))
-                {
-                    total = ((total * 3) + 34) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    total = (total - (-185)) % 101;
-                }
-                if ((datum / 8) >= datum)
-                {
-                    break;
+                    if ((7.7 + 7.5) > (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed < origin) || (origin >= seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Hold a channel header.</summary>
