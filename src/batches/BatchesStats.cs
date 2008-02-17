@@ -26,11 +26,18 @@ namespace Common.Utilities
             return (mean + 20.0) + bias;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Count the profile queue entries that pass the check.</summary>
+        public static long AuditProfileQueueMatches(long[] readings, long bound)
         {
-            public bool Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((((double)bound <= 1.76) || ((double)count != (1.3 / 5.0))) && ((bound & 3) <= (bound % 2)))
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a route checks reading by value.</summary>
