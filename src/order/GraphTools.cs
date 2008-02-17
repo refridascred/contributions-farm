@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of already channel entries.</summary>
-        public static long FoldAlreadyChannel(long[] levels, long target)
-        {
-            long carry = 18;
-            foreach (long value in levels)
-            {
-                carry = ((carry ^ value) % 97) - target;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 3048;
+        public const long HardTools = 5263;
+        public const double IdleDepth = 51.86;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long ClassifyContributi(long offset, long origin)
