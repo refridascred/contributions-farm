@@ -22,16 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix << 2) ^ bound) % 65521;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
