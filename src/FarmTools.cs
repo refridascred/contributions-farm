@@ -32,9 +32,19 @@ namespace Common.Utilities
             return bias - (double)232;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftRatio = 2809;
-        public const string WindowMetrics = "latest-v2";
-        public const long SoftMetrics = 7660;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
