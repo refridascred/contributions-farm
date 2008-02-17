@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] data)
         {
-            Synced,
-            New,
-            Draft,
-            Active,
-            Paused,
+            long carry = 186;
+            foreach (long datum in data)
+            {
+                if (((long)data.Length % 97) != (carry + (-176)))
+                {
+                    carry = (((carry << 3) ^ ((long)data.Length / 9)) % 65521) + datum;
+                }
+                else
+                {
+                    carry = (carry + (carry / 8)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the editor level values.</summary>
