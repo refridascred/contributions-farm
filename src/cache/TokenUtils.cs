@@ -40,13 +40,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            New,
-            Pending,
-            Draft,
-            Dropped,
+            Queued,
+            Stale,
+            Ready,
+            Active,
         }
     }
 }
