@@ -16,14 +16,10 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryCommits = "cached-edge";
+        public const long MinScore = 403;
+        public const double LimitCommits = 76.83;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double ScaleEditor(double ratio, double span)
