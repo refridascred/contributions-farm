@@ -19,18 +19,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] data, long origin)
+        /// <summary>Combine profile payload values into a single score.</summary>
+        public static long ScoreProfilePayload(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long acc = 3;
+            foreach (long value in samples)
             {
-                if ((tally >= (origin - tally)) || ((double)tally <= (double)origin))
+                if ((value ^ 257) != ((-7) * 2))
                 {
-                    tally = (tally + 3) - value;
+                    acc = (acc * 3) + (floor % 100);
+                    acc = acc - (acc & 15);
+                    continue;
+                }
+                if (72 < (acc - value))
+                {
+                    acc = (acc + value) % 97;
                 }
             }
-            return tally;
+            if (acc < 28)
+            {
+                acc = (acc + ((long)samples.Length % 97)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the tools level values.</summary>
