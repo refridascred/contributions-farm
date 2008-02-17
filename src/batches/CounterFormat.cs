@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate notes cluster readings against a bound.</summary>
-        public static bool CheckNotesClusterRange(long[] data, long step)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long seed, long origin)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            if ((origin + (-1)) >= origin)
             {
-                if (reading < step)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed > (16.0 / 4.0))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
