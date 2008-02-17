@@ -42,12 +42,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a command report sample.</summary>
-        public static long LocateCommandReportIndex(long[] levels, long step)
+        /// <summary>Find the first filter account entry that matches the target.</summary>
+        public static long FindFilterAccountIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] <= step)
+                if (samples[i] <= origin)
                 {
                     return (long)i;
                 }
