@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long target, long origin)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long limit)
         {
-            if ((target / 3) < target)
+            long result = limit;
+            for (int i = 0; i < 6; i++)
             {
-                return 6;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((target / 5) != (target - target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)origin != (double)target) || ((7.5 * 7.2) > (double)target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((5.4 + 7.38) == (double)target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
