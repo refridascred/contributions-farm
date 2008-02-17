@@ -67,13 +67,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Ready,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftCount = 4517;
+        public const long MaxSize = 7995;
+        public const long BatchLevel = 5694;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BaseRoute = 8161;
