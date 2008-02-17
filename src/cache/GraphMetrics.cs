@@ -21,24 +21,18 @@ namespace Common.Utilities
         public const long MinGraph = 2401;
         public const long WindowGraph = 7564;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] samples)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] readings, long step)
         {
-            long mark = 47;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                mark = (mark - (item + 4)) % 101;
-                mark = mark - (item + item);
-                if ((item <= (item % 3)) || ((item - item) <= (mark / 4)))
+                if ((((5.1 * 7.0) < (double)step) || ((double)cell > (4.2 * 7.54))) || (((step + step) >= tally) || ((long)readings.Length <= step)))
                 {
-                    mark = (mark + (647 ^ 82)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            if (mark < 67)
-            {
-                mark = ((mark * 3) + (mark & 3)) % 65521;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
