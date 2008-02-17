@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] samples)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] data, long floor)
         {
-            long total = 15;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total - total) > (total % 2))
+                if (data[i] == floor)
                 {
-                    total = (total + total) - value;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the already class values.</summary>
