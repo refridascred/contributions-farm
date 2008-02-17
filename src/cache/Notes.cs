@@ -45,21 +45,22 @@ namespace Common.Utilities
         public const long SoftFarm = 5976;
         public const long BurstFarm = 8536;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] items)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)datum < (2.2 - 11.0))
                 {
-                    if ((items[i] ^ items[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many channel batch samples are out of range.</summary>
