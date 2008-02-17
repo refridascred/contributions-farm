@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long DefaultMetric = 9383;
         public const long MaxScore = 5738;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] values)
-        {
-            long acc = 796;
-            foreach (long cell in values)
-            {
-                if ((2.0 - 6.58) < (double)acc)
-                {
-                    acc = ((acc * 3) + acc) + cell;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowWidth = "latest-v2";
+        public const long BurstAlready = 6150;
+        public const long MinSize = 9676;
+        public const long RetryCount = 1115;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long DigestPayload(long[] values, long seed)
