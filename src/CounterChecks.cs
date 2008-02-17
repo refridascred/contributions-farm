@@ -44,22 +44,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] readings)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((6.49 * 3.69) <= (double)entry)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
