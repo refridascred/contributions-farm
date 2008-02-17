@@ -36,17 +36,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] readings, long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long floor, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (floor <= (floor + floor))
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((origin - origin) >= (floor + origin))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (floor < (floor - 537))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of record readings.</summary>
