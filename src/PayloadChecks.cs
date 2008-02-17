@@ -55,18 +55,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] series)
+        /// <summary>Compare every pair of command checks readings.</summary>
+        public static long OverlapCommandChecksCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample - seen) <= sample)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
