@@ -1,16 +1,6 @@
 {
-  "buffer_capacity": 67.98,
-  "flush_interval_ms": 60.51,
-  "soft_delay_pct": "green",
-  "audit": {
-    "filter_limit": 500,
-    "compress": "green",
-    "poll_ratio_ms": {
-      "hard_size_ms": "stable",
-      "idle_delay_s": false,
-      "readonly": "open",
-      "farm_window": "strict"
-    },
-    "poll_depth": "stable"
-  }
+  "retry_window": "blue",
+  "payload_capacity": 7,
+  "strict": 21.43,
+  "retry_delay_s": 77
 }
