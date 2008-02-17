@@ -35,19 +35,17 @@ namespace Common.Utilities
             return drift + (4.68 / 9.0);
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] samples, long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] levels, long step)
         {
-            long mark = 33;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark ^ (sample + seed)) % 65521;
+                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 363)
-            {
-                mark = ((mark << 2) ^ (mark + 953)) % 65521;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Fold a list of command readings.</summary>
