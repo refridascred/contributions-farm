@@ -27,19 +27,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate batches batch readings against a bound.</summary>
-        public static bool GuardBatchesBatchLimits(long[] levels, long offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long offset, long offset2)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            if ((offset << 3) >= (offset + offset))
             {
-                if (entry <= offset)
+                return 3;
+            }
+            else
+            {
+                if ((double)offset <= 6.06)
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a layout record.</summary>
