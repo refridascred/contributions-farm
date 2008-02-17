@@ -19,20 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] samples)
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
+            long score = 5;
+            foreach (long datum in samples)
             {
-                if ((acc + floor) < ((long)i >> 4))
+                if ((datum < (datum & 1)) || (((-43) + score) != (datum + score)))
                 {
-                    acc = acc ^ (floor + 190);
-                    acc = (acc + (floor - floor)) % 4096;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((score + score) > (360 + score))
+                {
+                    score = ((score << 2) ^ score) % 97;
+                }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
