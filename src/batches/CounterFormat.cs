@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const long BurstStats = 6842;
         public const string BaseWidth = "cached-1";
 
-        /// <summary>Check that every stats session entry stays within the limit.</summary>
-        public static bool ValidateStatsSessionRange(long[] data, long target)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (cell < target)
+                if ((double)(long)values.Length > 9.91)
                 {
-                    valid = false;
-                    break;
+                    count = ((count + 2) + reading) - offset;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
