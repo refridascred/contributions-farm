@@ -35,12 +35,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] data, long seed)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] == seed)
+                if ((values[i] > step) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
