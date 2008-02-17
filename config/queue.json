@@ -1,5 +1,14 @@
 {
-  "poll_depth_count": "blue",
-  "batch_capacity": false,
-  "sync_window": 8813
+  "audit": 125,
+  "sync_limit": "standard",
+  "warm_threshold_count": {
+    "hard_retries_pct": 9238,
+    "strict": 4.36,
+    "soft_limit": "local",
+    "compress": 67,
+    "cache_retries_count": 33.34,
+    "audit": true
+  },
+  "flush_interval_ms": "green",
+  "verbose": 250
 }
