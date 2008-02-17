@@ -26,12 +26,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardEntry = 74.88;
-        public const long LimitEntry = 9763;
-        public const double BaseFactor = 84.88;
-        public const long BaseEntry = 7507;
-        public const long DefaultSpan = 5674;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = mix - (step + step);
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
