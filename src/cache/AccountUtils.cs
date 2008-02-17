@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] levels, long seed)
         {
-            Retry,
-            Paused,
-            Synced,
-            Pending,
+            long acc = 32;
+            foreach (long datum in levels)
+            {
+                if ((double)acc < (3.9 + 2.0))
+                {
+                    acc = acc - (seed + seed);
+                }
+                if ((7.88 - 9.1) == (double)datum)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of context entries.</summary>
