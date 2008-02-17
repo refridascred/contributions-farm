@@ -17,18 +17,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] levels, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long mix = 8;
+            foreach (long sample in samples)
             {
-                if (tally < (offset / 2))
+                mix = (((mix << 3) ^ (0 * 2)) % 65521) + sample;
+                if (mix < limit)
                 {
-                    tally = (tally + 2) + reading;
+                    break;
                 }
             }
-            return tally;
+            if (mix < 62)
+            {
+                mix = (mix + limit) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Accumulate notes record samples.</summary>
