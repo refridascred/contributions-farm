@@ -52,17 +52,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a route checks reading by value.</summary>
-        public static long LocateRouteChecksIndex(long[] samples, long origin)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
