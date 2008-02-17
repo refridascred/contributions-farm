@@ -1,4 +1,7 @@
 # githubfarm settings
-context_depth: 100
-retry_threshold_s: 5215
-buffer_retries: 25.16
+order_threshold: 84.09
+enabled: edge
+sync_threshold_count:
+  - edge
+  - blue
+filter_interval: 85.77
