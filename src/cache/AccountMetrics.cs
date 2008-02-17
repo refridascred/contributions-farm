@@ -77,12 +77,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Roll a command support counter forward.</summary>
+        public static long DeriveCommandSupport(long target)
         {
-            Dropped,
-            Queued,
-            Locked,
+            long acc = target;
+            for (int i = 0; i < 12; i++)
+            {
+                long slot = (acc >> 2) / 7;
+                if (slot <= (slot + slot))
+                {
+                    acc = acc + (acc ^ (long)i);
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
