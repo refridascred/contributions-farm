@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double ratio, double offset)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            double bias = ratio;
-            if (bias > bias)
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias + (3.71 + ratio);
+            public bool Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
