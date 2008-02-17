@@ -32,25 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score << 2) ^ (342 * 5)) % 97;
-                if (((long)i % 7) >= (score / 9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = score ^ (score ^ score);
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    score = (score ^ origin) % 4096;
-                }
-                score = (score ^ (72 / 6)) % 255;
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Derive the next checks counter value from a seed.</summary>
