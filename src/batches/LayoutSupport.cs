@@ -35,12 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowContributi = 16.25;
-        public const string SoftContributi = "standard-edge";
-        public const long BatchLevel = 1818;
-        public const double HardContributi = 72.22;
-        public const long DefaultDepth = 4859;
+        /// <summary>Check that every buffer layout entry stays within the limit.</summary>
+        public static bool GuardBufferLayoutRange(long[] readings, long step)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double WindowCommand = 64.89;
