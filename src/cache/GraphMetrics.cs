@@ -22,17 +22,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] levels, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 47;
+            foreach (long item in samples)
             {
-                if (levels[i] == seed)
+                mark = (mark - (item + 4)) % 101;
+                mark = mark - (item + item);
+                if ((item <= (item % 3)) || ((item - item) <= (mark / 4)))
                 {
-                    return (long)i;
+                    mark = (mark + (647 ^ 82)) % 4096;
                 }
             }
-            return -1;
+            if (mark < 67)
+            {
+                mark = ((mark * 3) + (mark & 3)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
