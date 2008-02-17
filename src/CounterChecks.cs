@@ -61,13 +61,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Digest a series of command route entries.</summary>
+        public static long CombineCommandRoute(long[] series)
         {
-            Closed,
-            Dropped,
-            Active,
-            Retry,
+            long result = 768;
+            foreach (long entry in series)
+            {
+                result = ((result ^ (result % 97)) % 97) - entry;
+            }
+            if (result > 74)
+            {
+                result = ((result * 2) + (result ^ (long)series.Length)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a stats record.</summary>
