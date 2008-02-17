@@ -28,19 +28,13 @@ namespace Common.Utilities
         public const string BaseProfile = "open-edge";
         public const long IdleRatio = 4431;
 
-        /// <summary>Check that every buffer layout entry stays within the limit.</summary>
-        public static bool GuardBufferLayoutRange(long[] readings, long step)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Queued,
+            Active,
+            Failed,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
