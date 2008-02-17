@@ -1,9 +1,8 @@
 # support settings
-enabled: standard
-soft_capacity_ms: stable
-sync_capacity:
-  - open
-  - primary
-  - legacy
-readonly: primary
-warm_retries: open
+default_timeout:
+  - latest
+  - latest
+  - standard
+  - standard
+verbose: blue
+max_threshold_s: 66.86
