@@ -54,18 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] items, long offset)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long score = 96;
-            foreach (long datum in items)
-            {
-                if (((1.0 * 7.0) > (double)offset) || ((score + datum) >= (score / 6)))
-                {
-                    score = (score << 2) ^ (datum + (long)items.Length);
-                }
-            }
-            return score % 97;
+            Idle,
+            Draft,
+            Queued,
+            Failed,
         }
 
         /// <summary>Audit contributi graph readings against a rule.</summary>
