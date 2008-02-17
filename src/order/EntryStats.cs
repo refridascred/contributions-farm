@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long bound, long limit)
         {
-            public double Offset { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            if ((6 % 8) >= bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit & 1) >= (9 % 16)) || ((limit - bound) > (limit * 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)limit == (9.0 + 2.0)) && ((1.6 / 8.0) != (double)limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a record reading by value.</summary>
