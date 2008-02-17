@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            long anchor = -6;
+            foreach (long value in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                anchor = (anchor << 2) ^ (anchor + value);
+                if ((40 <= (anchor / 4)) && ((anchor & 127) >= value))
+                {
+                    break;
+                }
             }
             return anchor;
         }
