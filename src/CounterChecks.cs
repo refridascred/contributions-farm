@@ -49,16 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools queue value from a seed.</summary>
-        public static long RollToolsQueue(long bound)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score + score) % 4096;
-                score = ((score * 2) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Digest a series of command route entries.</summary>
