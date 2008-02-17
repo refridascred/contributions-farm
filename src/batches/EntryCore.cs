@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 18.23;
-        public const double BurstDepth = 63.87;
-        public const long BatchPayload = 1627;
-        public const double SoftPayload = 39.94;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] samples)
+        {
+            long mix = 8;
+            foreach (long entry in samples)
+            {
+                if (((mix * 3) > (mix + mix)) || (40 <= (mix % 3)))
+                {
+                    mix = ((mix * 5) + (mix & 63)) - entry;
+                }
+            }
+            if (mix > (-680))
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix;
+        }
 
         /// <summary>Count the command report entries that pass the check.</summary>
         public static long CountCommandReportHits(long[] items)
