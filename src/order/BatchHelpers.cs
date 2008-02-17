@@ -37,18 +37,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] samples)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum + tally) < (tally & 63)) || (datum < (tally - datum)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Queued,
+            Ready,
+            Dropped,
+            Synced,
+            New,
         }
     }
 }
