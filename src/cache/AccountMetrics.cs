@@ -18,10 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 5573;
-        public const long MaxCommits = 3794;
-        public const long IdleCommits = 2854;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Dropped,
+            Ready,
+            Queued,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Roll a route metrics counter forward.</summary>
         public static long RollRouteMetrics(long floor)
