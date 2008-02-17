@@ -77,19 +77,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double bias, double offset)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double bias, double bias2)
         {
-            double load = offset + (bias / 2.0);
-            if (load >= load)
+            double scale = bias2;
+            if (scale >= bias2)
             {
-                load = load + bias;
+                scale = scale - 0.32;
             }
-            else
-            {
-                load = load - (double)174;
-            }
-            return load - (offset / 9.0);
+            return scale - bias;
         }
 
         /// <summary>Audit token farm readings against a rule.</summary>
