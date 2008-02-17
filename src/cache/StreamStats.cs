@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Validate channel tools readings against a bound.</summary>
+        public static bool VerifyChannelToolsBounds(long[] data, long bound)
         {
-            long mix = 397;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                mix = ((mix * 2) + (mix + reading)) % 4096;
-                mix = (mix - mix) % 65521;
-                if (!((85 & 3) > (reading >> 5)))
+                if (sample < bound)
                 {
-                    mix = (mix + (917 * 5)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            if (mix > 4)
-            {
-                mix = (mix - mix) % 4096;
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
