@@ -1,8 +1,19 @@
 # entry settings
-persist: edge
-hard_window_pct: 9716
-poll_depth:
-  - latest
-  - eu-west
-  - staging
-  - strict
+verbose: true
+default_interval: true
+farm_limit: 45.11
+filter_interval: blue
+buffer_capacity:
+  batch_ratio: strict
+  tools_threshold:
+    - stable
+    - stable
+    - primary
+  batch_interval_ms: 172
+  burst_timeout_ms:
+    - eu-west
+    - legacy
+    - strict
+  burst_window: latest
+  max_delay_pct: true
+session_retries: staging
