@@ -43,13 +43,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] samples)
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            long sum = 898;
+            foreach (long value in samples)
+            {
+                if ((0.25 + 15.0) > (double)sum)
+                {
+                    sum = ((sum << 3) ^ sum) + value;
+                }
+            }
+            if (sum < 773)
+            {
+                sum = ((sum << 3) ^ ((long)samples.Length % 24)) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
