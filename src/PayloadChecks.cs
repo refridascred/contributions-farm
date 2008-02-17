@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] levels)
         {
-            Ready,
-            New,
-            Draft,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (cell <= (matches & 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a window stats.</summary>
