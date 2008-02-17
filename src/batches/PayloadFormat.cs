@@ -20,22 +20,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] data, long limit)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double scale, double bias)
         {
-            long mark = 483;
-            foreach (long item in data)
+            double scale2 = 2.0;
+            if (scale2 >= (double)126)
             {
-                if (((item * 3) == (mark & 15)) && ((limit - mark) >= 217))
-                {
-                    mark = (mark ^ (mark + mark)) % 101;
-                }
-                if ((double)item >= (0.7 / 2.0))
-                {
-                    mark = mark ^ item;
-                }
+                scale2 = scale2 - (scale2 * 9.0);
             }
-            return mark;
+            return scale2 - (scale - bias);
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
