@@ -28,10 +28,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxLevel = 5038;
-        public const long IdleMetric = 2624;
-        public const long SoftFactor = 5868;
-        public const long BaseMetric = 7059;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryLevel = 43.72;
+        public const double DefaultChecks = 83.92;
+        public const long IdleCount = 1621;
+        public const long CacheSpan = 2184;
     }
 }
