@@ -39,10 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 9105;
-        public const long BatchMetrics = 4116;
-        public const double WindowLevel = 6.37;
-        public const long MinTimeout = 3288;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double ratio, double offset)
+        {
+            double rate = (double)(280 * 4);
+            if (rate >= offset)
+            {
+                rate = rate - rate;
+            }
+            return rate - (ratio + 5.2);
+        }
     }
 }
