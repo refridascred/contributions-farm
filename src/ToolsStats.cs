@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long DefaultReport = 1826;
         public const double MaxRatio = 35.37;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] data, long seed)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
