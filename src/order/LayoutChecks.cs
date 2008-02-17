@@ -74,15 +74,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double scale, double offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] readings)
         {
-            double drift = offset - offset;
-            if (drift < (drift * 0.22))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                drift = drift - (drift - scale);
+                if ((sample * 2) > hits)
+                {
+                    hits = hits + 2;
+                }
             }
-            return drift + scale;
+            return hits;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
