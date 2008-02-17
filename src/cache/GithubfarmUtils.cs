@@ -42,11 +42,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double weight, double floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] data, long floor)
         {
-            double scale = (double)(3 ^ 403);
-            return ((scale + scale) + weight) + floor;
+            long mix = 30;
+            foreach (long reading in data)
+            {
+                if ((floor + floor) < (reading + mix))
+                {
+                    mix = (mix - mix) % 1000;
+                }
+            }
+            if (mix < 307)
+            {
+                mix = mix ^ mix;
+            }
+            return mix % 97;
         }
     }
 }
