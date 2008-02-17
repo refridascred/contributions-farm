@@ -2,12 +2,13 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     region TEXT,
+    state TEXT NOT NULL DEFAULT 'new',
     created_at TIMESTAMP,
-    token TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
-    score REAL NOT NULL DEFAULT 0
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_token ON layout_items (token);
+CREATE INDEX IF NOT EXISTS idx_layout_items_region ON layout_items (region);
 
-INSERT INTO layout_items (region, token, active, score) VALUES ('edge', 'blue', 52, 87.95);
+INSERT INTO layout_items (region, state, active) VALUES ('cached', 'cached', 53);
+INSERT INTO layout_items (region, state, active) VALUES ('latest', 'fallback', 22);
+INSERT INTO layout_items (region, state, active) VALUES ('local', 'green', 62);
