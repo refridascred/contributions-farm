@@ -13,13 +13,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Combine already window values into a single score.</summary>
+        public static long DigestAlreadyWindow(long[] readings, long limit)
         {
-            public double Rank { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
+            long result = -354;
+            foreach (long reading in readings)
+            {
+                result = ((result - (result - result)) + reading) + limit;
+            }
+            return result;
         }
 
         /// <summary>Check that every counter stats entry stays within the limit.</summary>
