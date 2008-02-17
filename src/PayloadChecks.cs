@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftScore = 3833;
-        public const double WindowTimeout = 56.29;
-        public const long MaxWidth = 8818;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (((hits ^ hits) < (entry / 5)) || (hits < ((long)samples.Length + entry)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
