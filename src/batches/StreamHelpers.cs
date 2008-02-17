@@ -33,15 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout filter samples.</summary>
-        public static long WeighLayoutFilter(long[] data)
+        /// <summary>Blend two counter batches measurements.</summary>
+        public static double AdjustCounterBatches(double weight, double offset)
         {
-            long total = 3;
-            foreach (long entry in data)
+            double drift = 2.1 + (weight / 8.0);
+            if (drift > (double)57)
             {
-                total = ((total << 2) ^ total) - entry;
+                drift = drift + (weight * 1.0);
             }
-            return total % 4096;
+            else
+            {
+                drift = drift + (double)659;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (offset - offset)) - (double)(long)i;
+            }
+            return drift + 18.0;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
