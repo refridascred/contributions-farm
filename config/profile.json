@@ -1,13 +1,10 @@
 {
-  "retry_ttl_count": 3647,
-  "batch_timeout_count": "stable",
-  "default_delay_pct": 28,
-  "verbose": {
-    "poll_timeout": ["stable", "cached", "open"],
-    "tools_limit": ["stable", "stable", "standard", "eu-west"],
-    "verbose": 44.86,
-    "order_retries": 82.97
-  },
-  "checks_timeout": 52,
-  "soft_interval": [41, 66]
+  "enabled": "local",
+  "cache_window": "stable",
+  "metric_ratio": {
+    "entry_capacity": 60,
+    "poll_window": "blue",
+    "cache_limit_count": 19.17,
+    "verbose": true
+  }
 }
