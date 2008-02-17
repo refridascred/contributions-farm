@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] data, long step)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(4 + 24);
+            for (int i = 0; i < 8; i++)
             {
-                if ((data[i] <= step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - floor) + (double)(long)i;
             }
-            return -1;
+            return scale + bias;
         }
 
         /// <summary>Audit already window readings against a rule.</summary>
