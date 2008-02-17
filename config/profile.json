@@ -1,7 +1,6 @@
 {
-  "enabled": "cached",
-  "idle_interval": "cached",
-  "strict": 2,
-  "poll_capacity": 42.68,
-  "min_depth_ms": 100
+  "strict": ["open", "primary", "primary"],
+  "sync_threshold_count": "edge",
+  "poll_limit": [465, 57, 331],
+  "poll_depth": 2989
 }
