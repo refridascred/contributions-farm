@@ -80,13 +80,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Retry,
-            Active,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "local-v2";
+        public const long LimitProfile = 8186;
+        public const long IdleProfile = 4999;
+        public const double MinDepth = 75.76;
+        public const long CacheProfile = 8574;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
