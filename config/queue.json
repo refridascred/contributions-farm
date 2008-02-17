@@ -1,7 +1,7 @@
 {
-  "idle_delay": 3041,
-  "dry_run": 60.87,
-  "filter_window": 9638,
-  "cache_ratio": 34.71,
-  "flush_window_pct": 16.85
+  "default_limit_pct": false,
+  "default_capacity_count": 95.74,
+  "cache_delay_ms": 60,
+  "retry_depth_s": 60.82,
+  "verbose": 5292
 }
