@@ -31,19 +31,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] readings, long origin)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long offset, long offset2)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            if ((offset2 + offset) < (offset2 * 3))
             {
-                if (datum != origin)
+                return 6;
+            }
+            else
+            {
+                if ((offset2 - offset) > (offset ^ 420))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
     }
 }
