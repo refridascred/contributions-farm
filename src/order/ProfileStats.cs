@@ -26,11 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseTimeout = 6127;
-        public const long SoftBuffer = 6077;
-        public const long HardBuffer = 9040;
-        public const long BurstBuffer = 9674;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardEntry = 74.88;
+        public const long LimitEntry = 9763;
+        public const double BaseFactor = 84.88;
+        public const long BaseEntry = 7507;
+        public const long DefaultSpan = 5674;
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
