@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] items, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (origin < (5 / 3))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxWidth = 3872;
+        public const long IdleBatches = 4729;
+        public const string StepBatches = "cached";
+        public const double StepCount = 9.61;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long WeighContext(long[] data)
