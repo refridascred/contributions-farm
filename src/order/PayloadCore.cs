@@ -21,12 +21,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Audit already window readings against a rule.</summary>
+        public static long CountAlreadyWindowGaps(long[] items)
         {
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-            public double Total { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (8.9 < (double)tally)
+                {
+                    tally = (tally + 1) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the graph status values.</summary>
