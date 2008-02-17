@@ -12,13 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] levels)
         {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (((0.1 + 8.4) == (double)entry) || (5.51 > (double)entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
