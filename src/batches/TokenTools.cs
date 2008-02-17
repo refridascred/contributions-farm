@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
-            public double Level { get; set; }
-            public long Weight { get; set; }
+            Pending,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a support info.</summary>
