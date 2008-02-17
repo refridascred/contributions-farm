@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long limit, long step)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
+            long edge = limit + step;
+            if ((limit - edge) != (4 + step))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((28 + step) > (step / 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((2.25 * 9.15) >= (double)limit) || ((0.46 * 7.22) <= (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
