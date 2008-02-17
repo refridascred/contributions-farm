@@ -54,39 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long floor, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] items, long step)
         {
-            long next = floor ^ target;
-            if ((target ^ 75) != (target % 64))
+            bool stale = true;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5 + 39) != (372 ^ target))
+                if (entry != step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (next < (target + 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target << 1) > target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
