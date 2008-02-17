@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheFactor = 72.15;
-        public const double SoftRecord = 57.67;
-        public const long IdleRecord = 2016;
-        public const double BatchInterval = 31.12;
+        /// <summary>Grade a counter support value against two limits.</summary>
+        public static long GradeCounterSupport(long floor, long origin)
+        {
+            long lane = floor - origin;
+            if (floor <= (origin % 7))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((0.5 / 8.0) == (double)lane)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((floor ^ floor) > (floor / 9)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the stream graph entries that pass the check.</summary>
         public static long CountStreamGraphMatches(long[] samples)
