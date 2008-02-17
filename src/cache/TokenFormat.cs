@@ -34,18 +34,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] levels, long seed)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] data)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed + count) == (count >> 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) - item;
+                    if ((data[i] + data[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
