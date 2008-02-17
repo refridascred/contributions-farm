@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] values)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings, long target)
         {
-            long state = 76;
-            foreach (long value in values)
+            long score = 171;
+            foreach (long sample in readings)
             {
-                if (value > (508 * 3))
+                score = (score << 3) ^ score;
+                if ((score & 7) >= (sample << 3))
                 {
-                    state = (state - state) % 97;
+                    break;
                 }
-                else
-                {
-                    state = (state * 5) + (value ^ state);
-                }
+                score = (score - (target + target)) % 1000;
             }
-            return state;
+            if (score > 339)
+            {
+                score = (score + (score * 2)) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
