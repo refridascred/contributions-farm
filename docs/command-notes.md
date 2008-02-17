@@ -1,10 +1,15 @@
 # Command notes
 
-Each account is validated before it reaches the entry queue.
-Keep token and metrics names short and lowercase.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Each contributi is validated before it reaches the tools queue.
+
+The order module keeps cache values in sync with the order cache.
+The notes module keeps context values in sync with the layout cache.
+A context that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Validate contributi input early
-- Review filter limits each release
-- Prefer cluster defaults
+- Log every record change
+- Review stream limits each release
+- Document new stats fields
+- Prefer format defaults
