@@ -1,14 +1,18 @@
 # entry settings
-hard_delay: 8095
-account_size: 57.73
-cluster_ratio: 17
-cache_retries_s: staging
-metrics_size: blue
-readonly:
-  cache_delay_count:
-    hard_interval_s: true
-    retry_size_pct: false
-    already_interval: cached
-    idle_size: 16.84
-  soft_interval: eu-west
-  warm_interval: staging
+compress: 1024
+format_limit:
+  hard_capacity_s: 1024
+  hard_ttl_s: strict
+  burst_threshold_s: cached
+burst_delay:
+  default_limit: true
+  cluster_depth: false
+  window_limit:
+    - 189
+    - 477
+  stream_timeout:
+    - 92
+    - 237
+    - 496
+  audit: strict
+counter_delay: cached
