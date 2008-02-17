@@ -22,32 +22,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Grade a metric command value against two limits.</summary>
-        public static long BucketMetricCommand(long target, long seed)
+        /// <summary>Project the next buffer cluster value.</summary>
+        public static double AdjustBufferCluster(double bias, double floor)
         {
-            long diff = target + seed;
-            if ((double)14 < (double)diff)
+            double mean = bias;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                mean = ((mean + (double)74) + (double)(long)i) - floor;
             }
-            else
-            {
-                if (seed < diff)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)diff < 18.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mean - (mean * 8.7);
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
