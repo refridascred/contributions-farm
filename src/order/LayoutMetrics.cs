@@ -33,22 +33,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate context metrics samples.</summary>
-        public static long DigestContextMetrics(long[] samples)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double bias, double floor)
         {
-            long result = 590;
-            foreach (long item in samples)
+            double load = (double)(86 << 1);
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    result = ((result + (result ^ item)) % 101) - (long)i;
-                }
-                if ((89 << 3) < (result - item))
-                {
-                    result = result - 884;
-                }
+                load = (load - (double)(long)i) + floor;
             }
-            return result;
+            return load - bias;
         }
     }
 }
