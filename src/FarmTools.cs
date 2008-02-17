@@ -22,23 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next queue route value.</summary>
-        public static double SmoothQueueRoute(double gain, double floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] values)
         {
-            double bias = (double)(13 % 7);
-            if (bias >= bias)
+            long count = 0;
+            foreach (long sample in values)
             {
-                bias = bias - (bias + bias);
+                if (sample <= 340)
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                bias = bias + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - floor) - (double)(long)i;
-            }
-            return bias - (double)232;
+            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
