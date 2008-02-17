@@ -27,16 +27,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long step)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = mark - (mark - 1);
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Done,
+            Ready,
+            Idle,
+            Active,
+            Pending,
         }
     }
 }
