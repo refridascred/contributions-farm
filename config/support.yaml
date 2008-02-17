@@ -1,6 +1,7 @@
 # support settings
-soft_window: 57
-min_retries_count: 55.83
-tools_window: fallback
-compress: 6954
-warm_depth_count: 1908
+filter_depth: 60
+enabled: 6577
+notes_interval:
+  - 326
+  - 400
+  - 22
