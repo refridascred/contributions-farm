@@ -1,9 +1,25 @@
 # githubfarm settings
-audit: 9130
-compress:
-  cache_threshold_count: 20.34
-  notes_ttl: eu-west
-  burst_ttl_s: standard
-  persist: cached
-retry_limit_count: 10.06
-poll_retries: 28.98
+sync_delay_s: 1039
+contributi_window: 87.6
+max_timeout_count: latest
+hard_depth_s:
+  - fallback
+  - local
+  - local
+soft_capacity_count:
+  enabled: 9586
+  cache_delay_count:
+    hard_delay_count: strict
+    sync_retries_ms:
+      - 88
+      - 408
+    base_ttl: 9495
+    burst_timeout_pct: 9535
+  hard_ttl_pct: false
+  audit: false
+hard_window_pct:
+  payload_interval: 59
+  base_window_pct: 50.95
+  warm_retries: edge
+  contributi_interval: 59.51
+  retry_ttl: 41
