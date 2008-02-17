@@ -1,14 +1,13 @@
 {
-  "sync_depth": 11.83,
-  "sync_capacity_s": "blue",
-  "command_ttl": 1,
-  "soft_size_ms": {
-    "stream_retries": 1899,
-    "strict": "strict",
-    "default_capacity_ms": 40.79,
-    "max_ttl_s": false,
-    "flush_threshold_pct": true
+  "flush_ttl_pct": 2708,
+  "base_timeout_count": "cached",
+  "entry_delay": 250,
+  "sync_window_count": 11,
+  "poll_retries_pct": {
+    "burst_delay_ms": "eu-west",
+    "enabled": 93.97,
+    "cache_depth": false,
+    "editor_ttl": 5690
   },
-  "sync_ttl_pct": 60,
-  "warm_depth": "primary"
+  "payload_interval": [20, 91, 243, 87]
 }
