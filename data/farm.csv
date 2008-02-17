@@ -1,6 +1,9 @@
-id,count,label,active
-1,956,80.48,98.44
-2,20.99,primary,10.12
-3,315,625,431
-4,73.69,76.46,standard
-5,stable,eu-west,stable
+id,ratio,state
+1,73.35,461
+2,76.85,500
+3,standard,279
+4,992,94.14
+5,662,118
+6,legacy,248
+7,844,primary
+8,420,eu-west
