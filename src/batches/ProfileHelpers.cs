@@ -73,12 +73,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "local-v2";
-        public const long LimitProfile = 8186;
-        public const long IdleProfile = 4999;
-        public const double MinDepth = 75.76;
-        public const long CacheProfile = 8574;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = (mix + (long)i) % 101;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
