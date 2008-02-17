@@ -18,22 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] readings, long target)
+        /// <summary>Combine already buffer values into a single score.</summary>
+        public static long TallyAlreadyBuffer(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mix = 531;
+            foreach (long sample in items)
             {
-                if ((value & 7) != (matches + target))
+                mix = (mix - (mix - 2)) % 65521;
+                if (!((bound + 910) >= sample))
                 {
-                    matches = matches + 3;
+                    mix = mix + (sample - mix);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = ((mix << 3) ^ (sample + bound)) % 255;
                 }
             }
-            return matches;
+            if (mix > 632)
+            {
+                mix = (mix + ((-25) + mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a account header.</summary>
