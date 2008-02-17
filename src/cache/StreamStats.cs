@@ -37,17 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] items, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((items[i] >= seed) && ((items[i] % 2) != 0))
+                if (value <= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
