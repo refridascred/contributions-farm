@@ -62,18 +62,19 @@ namespace Common.Utilities
         public const long LimitFactor = 8339;
         public const long DefaultWidth = 1256;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] series)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((double)entry > (7.77 * 9.1))
+                if (reading != bound)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
