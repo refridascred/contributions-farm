@@ -40,11 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double weight, double span)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long floor, long floor2)
         {
-            double load = weight;
-            return load - span;
+            long delta = floor ^ floor2;
+            if (!((floor2 ^ floor) <= (delta - delta)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((904 * 2) != ((-870) - floor2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor2 >> 1) > (floor2 + delta))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (delta > (7 & 63))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
