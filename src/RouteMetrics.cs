@@ -44,20 +44,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double rate, double bias)
-        {
-            double gain = bias;
-            if (gain <= gain)
-            {
-                gain = (gain + (double)192) + rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (double)93) + (double)(long)i;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryBudget = 19.42;
+        public const long MinMetrics = 1244;
+        public const long SoftSpan = 5426;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
