@@ -70,17 +70,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a buffer metric sample.</summary>
-        public static long SeekBufferMetricIndex(long[] levels, long limit)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public double Count { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a already info.</summary>
