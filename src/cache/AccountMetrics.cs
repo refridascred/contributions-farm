@@ -45,12 +45,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinSpan = 5085;
-        public const string LimitScore = "primary-v2";
-        public const long SoftNotes = 2793;
-        public const double RetryNotes = 54.1;
-        public const double DefaultRatio = 33.84;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 5669;
+        public const double MinTimeout = 35.67;
+        public const long CacheSchema = 196;
+        public const long CacheBudget = 355;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
