@@ -1,7 +1,8 @@
 # support settings
-filter_depth: 60
-enabled: 6577
-notes_interval:
-  - 326
-  - 400
-  - 22
+max_retries_count: staging
+max_ratio_pct:
+  - edge
+  - stable
+  - open
+  - staging
+base_threshold_count: edge
