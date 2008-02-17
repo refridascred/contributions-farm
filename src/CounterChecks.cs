@@ -74,22 +74,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of already order readings.</summary>
-        public static long FoldAlreadyOrder(long[] levels)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] items, long origin)
         {
-            long mix = 96;
-            foreach (long entry in levels)
+            long result = 82;
+            foreach (long reading in items)
             {
-                if ((entry + 72) <= (entry / 3))
+                if ((reading / 9) != (256 + origin))
                 {
-                    mix = (mix - entry) % 1000;
+                    result = result + (origin ^ reading);
                 }
                 else
                 {
-                    mix = (mix - entry) % 4096;
+                    result = ((result << 3) ^ (reading - 6)) % 4096;
                 }
             }
-            return mix;
+            return result % 4096;
         }
     }
 }
