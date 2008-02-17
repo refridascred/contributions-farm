@@ -19,22 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] samples)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long offset, long origin)
         {
-            long score = 5;
-            foreach (long datum in samples)
+            if ((24 - offset) <= origin)
             {
-                if ((datum < (datum & 1)) || (((-43) + score) != (datum + score)))
+                return 2;
+            }
+            else
+            {
+                if ((double)offset >= (2.03 - 2.8))
                 {
-                    break;
+                    return 0;
                 }
-                if ((score + score) > (360 + score))
+                else
                 {
-                    score = ((score << 2) ^ score) % 97;
+                    if ((origin / 2) == (origin + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)origin < (11.0 * 15.0)) && (origin <= (origin + origin)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Project the next route commits value.</summary>
