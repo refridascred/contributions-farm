@@ -21,20 +21,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double bias, double bias2)
-        {
-            double ratio = bias2;
-            if (ratio >= (double)(-43))
-            {
-                ratio = (ratio + (ratio / 9.0)) - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (bias2 * 9.28)) + (double)(long)i;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowRecord = "stable-edge";
+        public const double HardBudget = 2.67;
+        public const long MaxScore = 1618;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MaxWidth = 9650;
