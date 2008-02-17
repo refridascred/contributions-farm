@@ -38,39 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long step, long bound)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] levels, long seed)
         {
-            long prev = step - bound;
-            if ((double)bound != (9.6 * 5.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(prev > ((-2) >> 5)))
+                if (levels[i] >= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((12.0 - 1.55) == (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound <= (bound / 2)) && ((double)bound != (double)prev))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many graph cache samples are out of range.</summary>
