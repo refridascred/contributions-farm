@@ -37,17 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] readings, long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 33;
+            foreach (long sample in samples)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark ^ (sample + seed)) % 65521;
             }
-            return -1;
+            if (mark > 363)
+            {
+                mark = ((mark << 2) ^ (mark + 953)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of command readings.</summary>
