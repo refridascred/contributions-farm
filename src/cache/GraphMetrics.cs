@@ -30,11 +30,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftNotes = 57.73;
-        public const long HardScore = 5052;
-        public const long CacheWidth = 2547;
-        public const long MinFactor = 5751;
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long BucketMetric(long target, long origin)
