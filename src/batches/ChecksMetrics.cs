@@ -59,13 +59,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate profile batch readings against a bound.</summary>
-        public static bool VerifyProfileBatchBounds(long[] items, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] samples, long bound)
         {
             bool ok = true;
-            foreach (long item in items)
+            foreach (long reading in samples)
             {
-                if (item <= step)
+                if (reading > bound)
                 {
                     ok = false;
                     break;
