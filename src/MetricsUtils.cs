@@ -10,14 +10,14 @@ namespace Common.Utilities
         public const string IdleOrder = "local-edge";
         public const long SoftOrder = 7099;
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Locked,
+            Draft,
+            Failed,
+            Pending,
+            Retry,
             Paused,
-            Synced,
-            Done,
-            Ready,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
