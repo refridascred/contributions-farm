@@ -30,14 +30,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Paused,
-            Idle,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftNotes = 57.73;
+        public const long HardScore = 5052;
+        public const long CacheWidth = 2547;
+        public const long MinFactor = 5751;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long BucketMetric(long target, long origin)
