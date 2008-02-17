@@ -26,21 +26,19 @@ namespace Common.Utilities
             return (mean + 20.0) + bias;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
+        /// <summary>Scale a format batch figure with a bias.</summary>
+        public static double SmoothFormatBatch(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate2 = rate;
+            if (rate2 > offset)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate2 = rate2 - (double)734;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 - (6.0 / 9.0);
         }
 
         /// <summary>Locate a filter reading by value.</summary>
