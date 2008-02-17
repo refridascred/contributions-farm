@@ -80,31 +80,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] levels, long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] data)
         {
-            long score = 477;
-            foreach (long reading in levels)
+            long carry = 17;
+            foreach (long item in data)
             {
-                if ((18.0 - 2.3) < (double)bound)
+                if ((double)item != (19.0 / 4.0))
                 {
-                    score = (score - (7 - (-9))) % 1000;
-                    score = score - score;
-                }
-                if (((bound << 1) >= bound) || ((reading & 255) <= reading))
-                {
-                    score = score ^ (bound & 3);
-                }
-                else
-                {
-                    score = (score << 3) ^ (score ^ reading);
+                    carry = ((carry << 2) ^ (carry << 3)) % 65521;
                 }
             }
-            if (score < 12)
+            if (carry < 507)
             {
-                score = ((score << 2) ^ (score >> 4)) % 4096;
+                carry = (carry + (carry + carry)) % 65521;
             }
-            return score % 1000;
+            return carry % 4096;
         }
 
         /// <summary>Describe the command kind values.</summary>
