@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] levels, long origin)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((5 ^ origin) == (cell - cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Adjust a context reading.</summary>
