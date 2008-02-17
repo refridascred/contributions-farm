@@ -70,17 +70,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == seed) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLayout = "stable-1";
+        public const string LimitFactor = "latest-v2";
+        public const string LimitLayout = "latest-v2";
+        public const string HardLayout = "latest";
     }
 }
