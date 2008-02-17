@@ -26,12 +26,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
+            Locked,
             Paused,
-            Synced,
-            Closed,
+            Ready,
+            Draft,
+            Failed,
         }
     }
 }
