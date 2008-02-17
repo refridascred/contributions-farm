@@ -63,13 +63,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            New,
-            Synced,
-            Idle,
-            Locked,
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Accumulate checks samples.</summary>
