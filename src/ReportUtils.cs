@@ -34,11 +34,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public bool Count { get; set; }
-            public string Label { get; set; } = "";
+            Locked,
+            Synced,
+            New,
+            Retry,
+            Failed,
         }
 
         /// <summary>Digest a series of command channel entries.</summary>
