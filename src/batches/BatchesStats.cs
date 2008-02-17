@@ -58,9 +58,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryFilter = "primary-v2";
-        public const string IdleFilter = "open-1";
-        public const long StepLevel = 8871;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long origin, long bound)
+        {
+            long offset = origin ^ bound;
+            if ((double)bound >= (7.0 - 13.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin + offset) >= 99) && ((offset * 5) >= (offset ^ offset)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((bound << 1) > origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (9.0 <= (double)origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
