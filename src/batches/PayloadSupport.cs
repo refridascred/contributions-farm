@@ -25,30 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] values)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long seed)
         {
-            long carry = -354;
-            foreach (long sample in values)
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    carry = ((carry * 3) + 565) ^ (long)i;
-                }
-                if (((sample - 20) > (carry ^ carry)) || ((sample >> 2) != (sample % 2)))
-                {
-                    carry = carry - (sample + sample);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ carry) % 1000;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (carry > 473)
-            {
-                carry = ((carry * 5) + (carry + carry)) % 1000;
-            }
-            return carry;
+            return mix;
         }
     }
 }
