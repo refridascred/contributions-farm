@@ -33,38 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a support tools value against two limits.</summary>
-        public static long SortSupportTools(long target, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] items)
         {
-            if (((target >> 5) <= limit) && ((limit * 4) != (target ^ target)))
+            long result = 48;
+            foreach (long item in items)
             {
-                return 8;
+                result = result + (item % 100);
             }
-            else
+            if (result < 0)
             {
-                if ((target - limit) == (limit ^ (-574)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((((-7) >> 2) >= (target - limit)) || ((double)limit != (2.16 / 4.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit - target) < 4)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                result = (result + ((-41) + 6)) % 65521;
             }
+            return result;
         }
     }
 }
