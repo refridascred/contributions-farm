@@ -28,18 +28,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] readings, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long acc = 941;
+            foreach (long entry in levels)
             {
-                if ((matches ^ 6) > bound)
-                {
-                    matches = (matches + 2) + datum;
-                }
+                acc = acc ^ entry;
+                acc = (acc - entry) % 97;
             }
-            return matches;
+            return acc % 97;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
