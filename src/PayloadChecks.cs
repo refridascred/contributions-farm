@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long bound)
+        /// <summary>Fold a list of schema token readings.</summary>
+        public static long CombineSchemaToken(long[] series, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            long acc = 2;
+            foreach (long sample in series)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                if ((sample * 3) < acc)
+                {
+                    acc = (acc - (sample + sample)) % 65521;
+                    break;
+                }
+                if (acc > (limit >> 4))
+                {
+                    acc = acc ^ (9 + acc);
+                }
+                if ((limit < ((-889) + sample)) || (sample <= (limit * 3)))
+                {
+                    acc = (acc + (limit * 3)) % 101;
+                }
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Hold a window stats.</summary>
