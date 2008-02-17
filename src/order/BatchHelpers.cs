@@ -22,19 +22,24 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] items, long step)
+        /// <summary>Fold a list of metrics account readings.</summary>
+        public static long CombineMetricsAccount(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long total = 4;
+            foreach (long value in values)
             {
-                if (sample > step)
+                if ((double)value <= (6.0 - 4.71))
                 {
-                    valid = false;
-                    break;
+                    total = (total ^ (value >> 2)) % 255;
+                    continue;
                 }
+                total = ((total << 3) ^ (total << 1)) % 97;
             }
-            return valid;
+            if (total > 311)
+            {
+                total = ((total << 2) ^ total) % 97;
+            }
+            return total;
         }
     }
 }
