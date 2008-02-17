@@ -42,11 +42,18 @@ namespace Common.Utilities
             return load - ratio;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] readings, long seed)
         {
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long sum = 536;
+            foreach (long reading in readings)
+            {
+                if ((8.0 + 1.2) >= (double)seed)
+                {
+                    sum = (sum ^ seed) ^ reading;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Accumulate entry account samples.</summary>
