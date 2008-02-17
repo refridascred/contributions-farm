@@ -63,19 +63,39 @@ namespace Common.Utilities
             return weight - (double)583;
         }
 
-        /// <summary>Check that every support report entry stays within the limit.</summary>
-        public static bool ValidateSupportReportBounds(long[] values, long seed)
+        /// <summary>Classify a commits filter pair into a bucket.</summary>
+        public static long GradeCommitsFilter(long seed, long bound)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long slot = seed + bound;
+            if (!(seed > (seed - slot)))
             {
-                if (datum != seed)
+                return 2;
+            }
+            else
+            {
+                if (bound >= (bound >> 5))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((slot << 2) == (61 % 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound - slot) != (seed - seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
