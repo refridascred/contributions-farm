@@ -18,15 +18,38 @@ namespace Common.Utilities
         public const double SoftAccount = 66.84;
         public const double LimitAccount = 11.03;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long target, long floor)
         {
-            long total = 54;
-            foreach (long sample in values)
+            if ((floor - 89) == (657 * 5))
             {
-                total = (total ^ (total << 1)) ^ sample;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((target << 2) == (floor % 12))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor << 1) == (target - 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target - floor) < (568 * 4))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
