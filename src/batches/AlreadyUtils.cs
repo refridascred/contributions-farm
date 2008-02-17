@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] readings, long offset)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            long carry = 7;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry ^ (offset + entry)) % 1000;
-                if ((offset - 929) < 37)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry ^ (33 - 894)) % 65521;
+                    if ((values[i] ^ values[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Hold a stream info.</summary>
