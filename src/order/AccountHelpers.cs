@@ -19,11 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Digest a series of stats order entries.</summary>
+        public static long TallyStatsOrder(long[] series)
         {
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
+            long acc = -16;
+            foreach (long entry in series)
+            {
+                acc = ((acc - (7 << 1)) % 97) - entry;
+            }
+            return acc;
         }
 
         /// <summary>Hold a token snapshot.</summary>
