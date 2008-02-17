@@ -19,11 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a counter entry reading.</summary>
-        public static double BlendCounterEntry(double bias, double floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] values)
         {
-            double mean = floor;
-            return (mean + 20.0) + bias;
+            long carry = 28;
+            foreach (long datum in values)
+            {
+                carry = (carry - (datum + carry)) % 101;
+                if ((double)datum < 3.0)
+                {
+                    break;
+                }
+            }
+            if (carry < 7)
+            {
+                carry = (carry ^ (carry / 8)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the profile queue entries that pass the check.</summary>
