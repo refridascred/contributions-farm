@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheBudget = 4208;
+        public const long RetrySupport = 8962;
+        public const long MaxSupport = 3913;
+        public const string MinCount = "strict-v2";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long RetryMetrics = 3967;
