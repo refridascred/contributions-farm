@@ -20,18 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] data, long seed)
+        /// <summary>Blend two batches filter measurements.</summary>
+        public static double BlendBatchesFilter(double ratio, double floor)
         {
-            long sum = 8;
-            foreach (long sample in data)
+            double gain = floor;
+            if (gain < (7.0 + gain))
             {
-                if ((double)seed == (12.0 - 4.63))
-                {
-                    sum = (((sum << 2) ^ (seed / 9)) % 65521) + sample;
-                }
+                gain = (gain + (1.3 / 9.0)) + ratio;
             }
-            return sum;
+            return gain + (floor + floor);
         }
 
         /// <summary>Count format tools pairs that satisfy a relation.</summary>
