@@ -1,10 +1,10 @@
 # entry settings
-enabled:
-  - cached
-  - local
-base_limit_pct:
-  - fallback
-  - open
-  - latest
-verbose: 5244
-default_ttl_count: 21
+hard_interval_s:
+  - 45
+  - 478
+  - 218
+  - 359
+sync_depth: stable
+base_ratio_count: 69.57
+cache_ratio: true
+editor_capacity: false
