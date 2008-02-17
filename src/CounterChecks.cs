@@ -27,18 +27,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] levels, long bound)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long origin)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long score = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((hits - 6) <= (hits << 3))
+                score = ((score << 2) ^ (342 * 5)) % 97;
+                if (((long)i % 7) >= (score / 9))
                 {
-                    hits = ((hits + 2) + value) + bound;
+                    score = score ^ (score ^ score);
                 }
+                else
+                {
+                    score = (score ^ origin) % 4096;
+                }
+                score = (score ^ (72 / 6)) % 255;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Derive the next checks counter value from a seed.</summary>
