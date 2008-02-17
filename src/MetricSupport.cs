@@ -40,23 +40,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double rate, double floor)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double weight, double offset)
         {
-            double mean = rate;
-            if (mean >= 5.0)
+            double gain = offset * 8.8;
+            if (gain > (weight * 14.0))
             {
-                mean = mean + (mean / 8.0);
+                gain = gain - (double)1;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                mean = mean - floor;
+                gain = (gain - (9.8 / 3.0)) + (double)(long)i;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + 3.04) + (double)(long)i;
-            }
-            return mean - 5.05;
+            return gain - (double)36;
         }
     }
 }
