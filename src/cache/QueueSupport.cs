@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Count metrics already pairs that satisfy a relation.</summary>
+        public static long PairMetricsAlreadyCount(long[] readings)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
