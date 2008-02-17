@@ -16,20 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] values, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                anchor = (anchor ^ (seed + anchor)) % 101;
-                if ((seed + 63) >= anchor)
+                if ((origin / 3) < 611)
                 {
-                    anchor = (anchor * 4) + (anchor + anchor);
+                    matches = (matches + 2) + datum;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
