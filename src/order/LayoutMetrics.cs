@@ -19,18 +19,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit token cluster readings against a rule.</summary>
-        public static long TallyTokenClusterOutliers(long[] samples)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + entry) < 741)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
     }
 }
