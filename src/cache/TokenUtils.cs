@@ -39,15 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double ratio, double offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double rate = (double)(280 * 4);
-            if (rate >= offset)
-            {
-                rate = rate - rate;
-            }
-            return rate - (ratio + 5.2);
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
