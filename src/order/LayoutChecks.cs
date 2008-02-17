@@ -20,19 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] values, long floor)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Find the first stats metric entry that matches the target.</summary>
