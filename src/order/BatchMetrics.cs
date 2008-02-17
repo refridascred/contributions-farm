@@ -51,19 +51,12 @@ namespace Common.Utilities
         public const string BaseInterval = "latest-edge";
         public const string WindowTimeout = "fallback-edge";
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] readings, long floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a githubfarm header.</summary>
