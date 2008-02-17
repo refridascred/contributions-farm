@@ -36,18 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] items)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (value < (seen - value))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
