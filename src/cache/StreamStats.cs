@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long DefaultMetric = 9383;
         public const long MaxScore = 5738;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowWidth = "latest-v2";
-        public const long BurstAlready = 6150;
-        public const long MinSize = 9676;
-        public const long RetryCount = 1115;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LookupEntryIndex(long[] items, long seed)
