@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] values, long bound)
+        /// <summary>Compare every pair of window githubfarm readings.</summary>
+        public static long CompareWindowGithubfarmCount(long[] data)
         {
-            long mix = -34;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= mix)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix - ((long)values.Length >> 4)) - bound;
-                }
-                else
-                {
-                    mix = (mix - reading) % 101;
+                    if ((data[i] + data[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
