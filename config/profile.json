@@ -1,5 +1,10 @@
 {
-  "flush_interval_ms": 7959,
-  "editor_limit": 39,
-  "retry_limit": 30
+  "enabled": false,
+  "soft_size_s": {
+    "max_depth_s": ["primary", "legacy", "local", "strict"],
+    "base_retries_count": "standard",
+    "sync_interval_pct": ["edge", "staging", "latest"]
+  },
+  "counter_threshold": "open",
+  "persist": "edge"
 }
