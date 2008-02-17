@@ -35,20 +35,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Derive the next farm route value from a seed.</summary>
+        public static long RollFarmRoute(long origin)
         {
-            long acc = 9;
-            foreach (long item in samples)
+            long total = origin;
+            for (int i = 0; i < 23; i++)
             {
-                acc = ((acc << 2) ^ (911 - acc)) % 101;
-                acc = (acc + item) % 1000;
+                total = ((total << 2) ^ (673 - total)) % 65521;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            if (acc < 40)
-            {
-                acc = ((acc * 3) + (acc % 12)) % 4096;
-            }
-            return acc;
+            return total;
         }
 
         /// <summary>Describe the account mode values.</summary>
