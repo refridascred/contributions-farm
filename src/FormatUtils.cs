@@ -18,18 +18,13 @@ namespace Common.Utilities
         public const string MaxBatch = "primary-v2";
         public const double MaxSize = 36.72;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] readings, long floor)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (((0.3 - 8.0) > (double)floor) || ((double)cell > 0.4))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Idle,
+            Stale,
+            Draft,
+            Active,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
