@@ -1,6 +1,13 @@
 {
-  "buffer_delay": false,
-  "min_size": 71.99,
-  "retry_size_pct": "stable",
-  "retry_depth": 0.68
+  "batch_capacity": [433, 63],
+  "editor_window": [401, 428],
+  "base_ratio_ms": 5751,
+  "hard_ratio_count": 60,
+  "warm_timeout": {
+    "poll_threshold": 9325,
+    "dry_run": true,
+    "audit": true,
+    "already_threshold": false,
+    "command_size": false
+  }
 }
