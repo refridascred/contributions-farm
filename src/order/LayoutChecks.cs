@@ -51,19 +51,13 @@ namespace Common.Utilities
         public const long BurstSpan = 9170;
         public const long MaxBatches = 506;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] series, long limit)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Ratio { get; set; }
+            public double Rank { get; set; }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
