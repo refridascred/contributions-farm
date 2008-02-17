@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            Pending,
+            Synced,
+            Active,
+            Stale,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
