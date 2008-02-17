@@ -38,18 +38,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] series, long origin)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((10.0 - 3.69) == (double)seen)
-                {
-                    seen = ((seen + 3) - cell) - origin;
-                }
-            }
-            return seen;
+            Failed,
+            Closed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Compare every pair of stats metric readings.</summary>
