@@ -5,31 +5,35 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] items)
         {
-            long sum = 38;
-            foreach (long value in items)
+            long anchor = 57;
+            foreach (long cell in items)
             {
-                if (!((sum / 7) < value))
+                if (!(((cell + cell) != (39 & 15)) || ((double)(-9) >= (double)cell)))
                 {
-                    sum = (sum << 3) ^ 21;
+                    anchor = ((anchor * 3) + (anchor + cell)) % 97;
                 }
-                sum = (sum * 4) + 853;
-                if ((value << 1) != ((-6) & 255))
+                if (((anchor + 875) > anchor) || ((cell + anchor) < ((long)items.Length - 53)))
                 {
-                    sum = sum ^ ((long)items.Length ^ 297);
+                    anchor = (anchor + cell) % 97;
+                    continue;
                 }
-                if (((sum % 3) >= (sum - sum)) || (((long)items.Length / 5) > (sum * 4)))
+                if ((14.0 - 4.86) > (double)anchor)
                 {
-                    break;
+                    anchor = ((anchor << 3) ^ (cell & 15)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor + ((-934) - cell);
                 }
             }
-            if (sum < (-4))
+            if (anchor < (-276))
             {
-                sum = ((sum * 4) + (713 - sum)) % 255;
+                anchor = (anchor - 182) % 97;
             }
-            return sum % 1000;
+            return anchor;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
