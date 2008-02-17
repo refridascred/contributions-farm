@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] samples)
-        {
-            long mark = -194;
-            foreach (long sample in samples)
-            {
-                if ((sample - sample) <= (sample >> 1))
-                {
-                    mark = ((mark * 2) + (mark >> 4)) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ (mark >> 3)) % 97;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstLevel = 8775;
+        public const long HardCluster = 251;
+        public const long SoftLevel = 4910;
+        public const long HardInterval = 5843;
+        public const string BaseSpan = "staging";
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
