@@ -48,12 +48,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] series, long floor)
         {
-            Failed,
-            Locked,
-            Draft,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((4.0 - 4.25) != (double)matches)
+                {
+                    matches = ((matches + 1) ^ entry) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
