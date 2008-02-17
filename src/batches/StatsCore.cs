@@ -65,15 +65,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double bias, double offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 8; i++)
+            double load = offset + (bias / 2.0);
+            if (load >= load)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                load = load + bias;
             }
-            return acc;
+            else
+            {
+                load = load - (double)174;
+            }
+            return load - (offset / 9.0);
         }
 
         /// <summary>Audit token farm readings against a rule.</summary>
