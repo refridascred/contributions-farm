@@ -1,5 +1,10 @@
 # entry settings
-hard_retries_pct: cached
-batch_capacity: 64.59
-idle_depth: 54
-soft_timeout_pct: 9068
+enabled:
+  - cached
+  - local
+base_limit_pct:
+  - fallback
+  - open
+  - latest
+verbose: 5244
+default_ttl_count: 21
