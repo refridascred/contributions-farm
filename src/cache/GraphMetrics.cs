@@ -60,17 +60,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] levels, long target)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= target) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            New,
+            Closed,
         }
     }
 }
