@@ -51,9 +51,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 583;
-        public const long HardRatio = 7090;
-        public const string RetrySpan = "alpha-v2";
+        /// <summary>Accumulate entry account samples.</summary>
+        public static long CombineEntryAccount(long[] levels, long origin)
+        {
+            long result = 1;
+            foreach (long sample in levels)
+            {
+                if ((origin + result) >= (83 & 15))
+                {
+                    result = (result ^ (541 & 255)) - sample;
+                }
+                else
+                {
+                    result = result ^ origin;
+                }
+            }
+            return result;
+        }
     }
 }
