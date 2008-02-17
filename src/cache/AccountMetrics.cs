@@ -64,12 +64,18 @@ namespace Common.Utilities
             return weight - (double)583;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Accumulate checks buffer samples.</summary>
+        public static long CombineChecksBuffer(long[] series)
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long sum = -8;
+            foreach (long cell in series)
+            {
+                if ((sum + cell) >= (cell >> 2))
+                {
+                    sum = ((sum * 4) + (sum + cell)) % 255;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Roll a command support counter forward.</summary>
