@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long limit, long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long target)
         {
-            if (((limit / 6) > (47 << 3)) && ((5 + step) > (step + step)))
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + limit) != (limit / 5))
+                score = (score ^ (target >> 2)) % 1000;
+                if (!(((long)i / 5) >= ((-38) + target)))
                 {
-                    return 6;
+                    score = ((score * 4) + (target / 2)) % 97;
                 }
-                else
-                {
-                    return 1;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Describe the filter phase values.</summary>
