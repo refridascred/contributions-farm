@@ -1,18 +1,15 @@
 # entry settings
-compress: 1024
-format_limit:
-  hard_capacity_s: 1024
-  hard_ttl_s: strict
-  burst_threshold_s: cached
-burst_delay:
-  default_limit: true
-  cluster_depth: false
-  window_limit:
-    - 189
-    - 477
-  stream_timeout:
-    - 92
-    - 237
-    - 496
-  audit: strict
-counter_delay: cached
+readonly:
+  queue_interval: 84
+  strict: stable
+  idle_depth_pct: 8543
+  hard_timeout: false
+  filter_interval:
+    report_ratio: 16
+    command_threshold: strict
+    batch_ratio_count: standard
+    cache_size: 100
+sync_depth_ms: 32.77
+counter_window: 43.22
+max_limit: 77.04
+enabled: 30
