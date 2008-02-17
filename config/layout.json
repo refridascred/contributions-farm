@@ -1,8 +1,7 @@
 {
-  "max_size": "staging",
-  "command_ratio": 89.09,
-  "soft_limit_pct": 9853,
-  "min_retries_pct": "fallback",
-  "default_threshold": 37.88,
-  "retry_ratio": 88
+  "compress": 50.87,
+  "warm_size_ms": 60,
+  "warm_interval_ms": "cached",
+  "max_threshold_count": 21.11,
+  "soft_interval_ms": 18.59
 }
