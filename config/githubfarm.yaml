@@ -1,7 +1,22 @@
 # githubfarm settings
-order_threshold: 84.09
-enabled: edge
-sync_threshold_count:
-  - edge
-  - blue
-filter_interval: 85.77
+hard_size_ms:
+  batch_interval_count:
+    - 366
+    - 146
+  idle_window: 6968
+  poll_ratio_pct:
+    - 186
+    - 157
+    - 28
+  graph_limit: 74.0
+  persist:
+    hard_ratio_ms: latest
+    cache_interval: blue
+    burst_ratio_ms: 63.4
+    sync_timeout_pct:
+      - staging
+      - open
+      - local
+      - primary
+audit: 8968
+min_threshold_ms: 67
