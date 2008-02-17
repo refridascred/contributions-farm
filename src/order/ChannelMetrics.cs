@@ -27,22 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long mix = 1;
-            foreach (long cell in data)
-            {
-                if ((double)cell <= (double)94)
-                {
-                    mix = (mix << 3) ^ (mix * 2);
-                }
-            }
-            if (mix > 74)
-            {
-                mix = ((mix << 2) ^ (mix - 555)) % 101;
-            }
-            return mix % 4096;
+            Synced,
+            Active,
+            New,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
