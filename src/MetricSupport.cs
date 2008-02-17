@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] levels, long bound)
+        /// <summary>Rank notes command input into a small class.</summary>
+        public static long ClassifyNotesCommand(long limit, long limit2)
         {
-            long anchor = 35;
-            foreach (long reading in levels)
+            long next = limit + limit2;
+            if (limit > (limit2 * 5))
             {
-                if (((double)anchor < 2.4) || ((8.0 / 7.0) > (double)anchor))
+                return 1;
+            }
+            else
+            {
+                if (!((double)next < (7.6 + 0.17)))
                 {
-                    anchor = (((anchor << 3) ^ (23 >> 5)) % 1000) ^ reading;
+                    return 2;
                 }
                 else
                 {
-                    anchor = (anchor << 2) ^ (-96);
+                    if (((limit << 2) > limit) || ((next >> 4) < limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (anchor > 500)
-            {
-                anchor = (anchor + (bound & 255)) % 97;
-            }
-            return anchor % 1000;
         }
 
         /// <summary>Describe the stats phase values.</summary>
