@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseStats = "latest-edge";
-        public const double MinStats = 30.54;
-        public const long BurstStats = 6842;
-        public const string BaseWidth = "cached-1";
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= offset) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long CompareCommandCount(long[] data)
