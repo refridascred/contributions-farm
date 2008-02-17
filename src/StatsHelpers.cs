@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultWidth = 2583;
-        public const long BurstWidth = 7305;
-        public const long BurstChannel = 3496;
-        public const double StepChannel = 24.71;
+        /// <summary>Audit already window readings against a rule.</summary>
+        public static long TallyAlreadyWindowMatches(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (offset > count)
+                {
+                    count = (count + 3) - reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LocateEditorIndex(long[] readings, long origin)
