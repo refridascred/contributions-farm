@@ -41,11 +41,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double scale, double floor)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            double rate = scale;
-            return (rate + rate) + floor;
+            Ready,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Accumulate payload samples.</summary>
