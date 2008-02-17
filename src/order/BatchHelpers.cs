@@ -27,24 +27,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metrics account readings.</summary>
-        public static long CombineMetricsAccount(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] samples)
         {
-            long total = 4;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((double)value <= (6.0 - 4.71))
+                if (((datum + tally) < (tally & 63)) || (datum < (tally - datum)))
                 {
-                    total = (total ^ (value >> 2)) % 255;
-                    continue;
+                    tally = tally + 3;
                 }
-                total = ((total << 3) ^ (total << 1)) % 97;
             }
-            if (total > 311)
-            {
-                total = ((total << 2) ^ total) % 97;
-            }
-            return total;
+            return tally;
         }
     }
 }
