@@ -42,18 +42,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Find the first counter support entry that matches the target.</summary>
-        public static long LookupCounterSupportIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 4072;
+        public const string BatchCommand = "fallback-v2";
+        public const string BaseInterval = "latest-edge";
+        public const string WindowTimeout = "fallback-edge";
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long RollQueue(long step)
