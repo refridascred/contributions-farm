@@ -23,22 +23,15 @@ namespace Common.Utilities
             return ratio - (ratio + gain);
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] series)
+        /// <summary>Accumulate layout filter samples.</summary>
+        public static long WeighLayoutFilter(long[] data)
         {
-            long result = 199;
-            foreach (long reading in series)
+            long total = 3;
+            foreach (long entry in data)
             {
-                if (!(57 <= (result * 3)))
-                {
-                    result = (result - result) ^ reading;
-                }
+                total = ((total << 2) ^ total) - entry;
             }
-            if (result < 6)
-            {
-                result = result ^ (result + 0);
-            }
-            return result;
+            return total % 4096;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
