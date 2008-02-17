@@ -1,19 +1,11 @@
 # entry settings
-verbose: true
-default_interval: true
-farm_limit: 45.11
-filter_interval: blue
-buffer_capacity:
-  batch_ratio: strict
-  tools_threshold:
-    - stable
-    - stable
-    - primary
-  batch_interval_ms: 172
-  burst_timeout_ms:
-    - eu-west
-    - legacy
-    - strict
-  burst_window: latest
-  max_delay_pct: true
-session_retries: staging
+hard_threshold_count: strict
+cache_timeout: primary
+hard_retries_pct: edge
+cluster_capacity:
+  - 31
+  - 223
+  - 453
+  - 275
+poll_limit: 85
+sync_interval_ms: 30
