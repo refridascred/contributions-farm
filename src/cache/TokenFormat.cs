@@ -34,15 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] data)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] samples, long bound)
         {
-            long result = 33;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                result = (result - (cell << 1)) % 65521;
+                if (datum < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result % 1000;
+            return ready;
         }
     }
 }
