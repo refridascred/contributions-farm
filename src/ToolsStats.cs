@@ -53,13 +53,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Measure how many graph cache samples are out of range.</summary>
+        public static long CountGraphCacheHits(long[] items, long seed)
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((double)seed > (1.73 * 10.0))
+                {
+                    matches = (matches + 3) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the filter level values.</summary>
