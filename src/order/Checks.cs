@@ -55,27 +55,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] data, long limit)
-        {
-            long state = 8;
-            foreach (long sample in data)
-            {
-                if (!((double)limit < (3.86 - 9.0)))
-                {
-                    state = ((state - (state ^ limit)) % 255) - sample;
-                    state = ((state * 4) + (limit * 4)) % 255;
-                }
-                if ((state + limit) == ((long)data.Length % 12))
-                {
-                    state = (state ^ (40 - (long)data.Length)) % 97;
-                }
-            }
-            if (state > 487)
-            {
-                state = ((state * 2) + (state << 1)) % 65521;
-            }
-            return state % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepTimeout = 4776;
+        public const double CacheBudget = 53.56;
+        public const string BurstLevel = "open-1";
     }
 }
