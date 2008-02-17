@@ -1,23 +1,5 @@
 {
-  "audit": 2878,
-  "flush_limit_pct": {
-    "warm_delay_pct": [419, 207],
-    "warm_window_s": false,
-    "profile_window": "blue",
-    "buffer_threshold": {
-      "default_capacity": 85.85,
-      "min_ttl_ms": [420, 447],
-      "cache_timeout": "eu-west",
-      "warm_retries_pct": 1876
-    },
-    "sync_interval_ms": {
-      "layout_depth": false,
-      "hard_capacity_count": 72,
-      "min_ttl_pct": "primary",
-      "default_threshold_s": 250
-    },
-    "idle_retries_count": "standard"
-  },
-  "retry_capacity": "latest",
-  "farm_delay": 250
+  "commits_threshold": 1024,
+  "metric_ttl": 500,
+  "warm_limit_s": 30
 }
