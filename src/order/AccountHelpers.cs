@@ -26,10 +26,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstDepth = "legacy-v2";
-        public const long StepFarm = 3537;
-        public const string LimitFarm = "stable-1";
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] values)
+        {
+            long total = 7;
+            foreach (long datum in values)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    total = (((total * 2) + total) % 97) + (long)i;
+                    total = (total ^ datum) % 65521;
+                }
+                total = (total - datum) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MinSize = 2178;
