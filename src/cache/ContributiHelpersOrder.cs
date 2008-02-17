@@ -12,21 +12,18 @@ namespace Common.Utilities
             return (bias - (double)(-77)) + offset;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell % 2) < matches)
                 {
-                    if ((readings[i] + readings[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
