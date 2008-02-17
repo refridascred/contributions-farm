@@ -16,23 +16,17 @@ namespace Common.Utilities
         public const long MinSize = 9676;
         public const long RetryCount = 1115;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] values, long seed)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] items, long seed)
         {
-            long mark = 93;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark << 3) ^ (datum & 1)) % 97;
-                if ((mark & 15) != (datum - seed))
+                if ((items[i] >= seed) && ((items[i] % 2) != 0))
                 {
-                    mark = mark ^ (datum >> 5);
-                }
-                if (seed < (mark % 5))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
