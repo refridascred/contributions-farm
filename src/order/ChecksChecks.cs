@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] readings, long target)
+        /// <summary>Measure how many report already samples are out of range.</summary>
+        public static long CountReportAlreadyOutliers(long[] data, long floor)
         {
-            long score = 171;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long value in data)
             {
-                score = (score << 3) ^ score;
-                if ((score & 7) >= (sample << 3))
+                if ((4.56 - 6.0) == (double)value)
                 {
-                    break;
+                    seen = (seen + 1) - floor;
                 }
-                score = (score - (target + target)) % 1000;
             }
-            if (score > 339)
-            {
-                score = (score + (score * 2)) % 255;
-            }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Hold a buffer header.</summary>
