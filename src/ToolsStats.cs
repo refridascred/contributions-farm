@@ -50,13 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] items, long floor)
         {
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
