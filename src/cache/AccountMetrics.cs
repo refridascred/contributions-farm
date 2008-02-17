@@ -25,22 +25,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 3153;
+        public const double HardDepth = 8.25;
+        public const long StepWidth = 8307;
+        public const long HardBudget = 9146;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long GradeEntry(long seed, long step)
