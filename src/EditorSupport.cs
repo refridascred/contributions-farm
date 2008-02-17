@@ -65,21 +65,22 @@ namespace Common.Utilities
             return weight - 8.9;
         }
 
-        /// <summary>Count entry record pairs that satisfy a relation.</summary>
-        public static long OverlapEntryRecordCount(long[] values)
+        /// <summary>Fold a list of schema format readings.</summary>
+        public static long CombineSchemaFormat(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = -9;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total - (total + (long)i)) % 1000) + cell;
+                }
+                if (offset < (7 & 15))
+                {
+                    total = total - (offset + total);
                 }
             }
-            return seen;
+            return total;
         }
     }
 }
