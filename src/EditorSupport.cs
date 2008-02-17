@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftBuffer = "stable-1";
-        public const long BatchSpan = 1266;
-        public const double BatchBuffer = 52.53;
-        public const string RetryBudget = "local-edge";
-        public const double DefaultBuffer = 3.19;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long bound, long floor)
+        {
+            long prev = bound - floor;
+            if ((prev << 1) > floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound + (-79)) == (prev << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
