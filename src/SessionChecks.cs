@@ -43,18 +43,9 @@ namespace Common.Utilities
             return rate + (floor * 4.49);
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((target + seen) == (seen / 5))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinSize = 942;
+        public const double DefaultStream = 34.37;
+        public const double CacheStream = 80.9;
     }
 }
