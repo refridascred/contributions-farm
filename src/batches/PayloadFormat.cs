@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] samples, long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (entry < target)
+                if (!((double)686 > (double)target))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
