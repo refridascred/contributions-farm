@@ -36,18 +36,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] data)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen - seen) == (cell % 60))
+                if (items[i] <= limit)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
