@@ -52,12 +52,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Match up profile already samples.</summary>
+        public static long OverlapProfileAlreadyCount(long[] data)
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a window snapshot.</summary>
