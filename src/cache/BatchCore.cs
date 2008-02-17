@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Failed,
+            Locked,
+            Draft,
+            Paused,
             Queued,
-            Retry,
+            Active,
         }
 
         /// <summary>Describe the batches phase values.</summary>
