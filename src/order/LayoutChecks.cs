@@ -34,31 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Fold a list of cache counter readings.</summary>
+        public static long DigestCacheCounter(long[] values)
         {
-            long mark = 92;
-            foreach (long sample in values)
+            long result = 204;
+            foreach (long datum in values)
             {
-                if ((sample - sample) > sample)
+                if ((result * 3) > (0 << 3))
                 {
-                    mark = (mark * 2) + (mark << 1);
-                    continue;
-                }
-                if ((double)mark >= (9.8 / 4.0))
-                {
-                    mark = (mark + sample) % 255;
-                }
-                if ((11.0 + 1.5) <= (double)53)
-                {
-                    break;
+                    result = (result * 2) + datum;
                 }
             }
-            if (mark < 7)
-            {
-                mark = ((mark * 3) + ((-6) ^ mark)) % 65521;
-            }
-            return mark % 1000;
+            return result % 1000;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
