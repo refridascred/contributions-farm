@@ -39,25 +39,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long bound, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] series, long target)
         {
-            long next = bound ^ step;
-            if (((next + step) > (step >> 3)) && ((double)step > 3.02))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((next <= 30) || ((5 % 64) > step))
+                if (!((target & 255) < (count >> 3)))
                 {
-                    return 3;
+                    count = (count + 3) + value;
                 }
                 else
                 {
-                    return 5;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
