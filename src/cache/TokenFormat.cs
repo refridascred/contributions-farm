@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((anchor >> 2) > (anchor - offset))
+                {
+                    anchor = anchor - ((long)i & 1);
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next payload value.</summary>
