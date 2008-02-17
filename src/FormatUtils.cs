@@ -35,10 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBudget = 6700;
-        public const long DefaultFactor = 332;
-        public const long SoftBuffer = 9993;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Weight { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long TotalGraph(long[] data, long limit)
