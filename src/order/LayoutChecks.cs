@@ -44,19 +44,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit metric tools readings against a rule.</summary>
-        public static long TallyMetricToolsOutliers(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((value % 100) < (seen ^ offset))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 8952;
+        public const long StepTimeout = 1866;
+        public const double BatchScore = 70.36;
+        public const long BurstSpan = 9170;
+        public const long MaxBatches = 506;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool CheckPayloadBounds(long[] series, long limit)
