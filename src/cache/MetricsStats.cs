@@ -39,11 +39,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double rate, double floor)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double scale = (double)(6 + 158);
-            return ((scale + (double)264) + rate) + floor;
+            Draft,
+            Closed,
+            Active,
+            Paused,
         }
 
         /// <summary>Count the support profile entries that pass the check.</summary>
