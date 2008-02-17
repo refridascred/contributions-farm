@@ -23,14 +23,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public bool Size { get; set; }
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 1072;
+        public const string BaseProfile = "open-edge";
+        public const long IdleRatio = 4431;
 
         /// <summary>Check that every buffer layout entry stays within the limit.</summary>
         public static bool GuardBufferLayoutRange(long[] readings, long step)
