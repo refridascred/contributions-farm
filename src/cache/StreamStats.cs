@@ -59,19 +59,24 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] items, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long bound, long offset)
         {
-            bool found = true;
-            foreach (long item in items)
+            if (!((offset - offset) < bound))
             {
-                if (item > target)
+                return 4;
+            }
+            else
+            {
+                if (!((8.41 * 3.8) < (double)offset))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
     }
 }
