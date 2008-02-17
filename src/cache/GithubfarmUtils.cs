@@ -36,22 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] data)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((seen + seen) >= (seen % 64))
-                {
-                    seen = (seen + 2) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
