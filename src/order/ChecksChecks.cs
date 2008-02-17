@@ -30,12 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public string Size { get; set; } = "";
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            public double Score { get; set; }
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
