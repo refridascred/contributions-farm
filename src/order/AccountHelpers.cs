@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] samples)
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark + mark) % 65521) + (long)i2;
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
