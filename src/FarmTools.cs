@@ -16,39 +16,12 @@ namespace Common.Utilities
             return gain + 5.28;
         }
 
-        /// <summary>Grade a account metrics value against two limits.</summary>
-        public static long ClassifyAccountMetrics(long limit, long offset)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long prev = limit ^ offset;
-            if ((offset & 255) == (limit - prev))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit ^ offset) < prev)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset ^ offset) >= (offset & 31))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((894 + 86) < (prev / 5)) && (1.52 > (double)offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a session info.</summary>
