@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the metric stats entries that pass the check.</summary>
-        public static long TallyMetricStatsOutliers(long[] items, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long anchor = 580;
+            foreach (long entry in levels)
             {
-                if ((12.0 / 7.0) == (double)datum)
-                {
-                    tally = (tally + 1) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor * 2) + (anchor << 2)) + entry;
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a metric entry.</summary>
