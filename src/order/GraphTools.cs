@@ -45,12 +45,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] readings, long step)
         {
-            Idle,
-            Retry,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
