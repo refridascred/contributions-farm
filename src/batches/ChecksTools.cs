@@ -11,26 +11,11 @@ namespace Common.Utilities
         public const long DefaultFactor = 1344;
         public const long StepBudget = 9349;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] levels, long origin)
+        /// <summary>Adjust a already schema reading.</summary>
+        public static double ProjectAlreadySchema(double weight, double offset)
         {
-            long acc = 5;
-            foreach (long value in levels)
-            {
-                if ((0.14 - 2.09) > (double)value)
-                {
-                    acc = ((acc * 3) + 8) % 1000;
-                }
-                if (value <= (84 + value))
-                {
-                    acc = (acc ^ (acc - acc)) % 97;
-                }
-            }
-            if (acc < 3)
-            {
-                acc = (acc << 2) ^ (acc - origin);
-            }
-            return acc;
+            double drift = offset;
+            return (drift - (drift * 6.1)) + weight;
         }
 
         /// <summary>Match up buffer commits samples.</summary>
