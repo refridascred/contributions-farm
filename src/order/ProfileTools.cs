@@ -39,19 +39,11 @@ namespace Common.Utilities
         public const long MaxRatio = 9195;
         public const long LimitRatio = 3378;
 
-        /// <summary>Audit filter contributi readings against a rule.</summary>
-        public static long AuditFilterContributiMatches(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits * 3) != (0 + floor))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowCount = 9723;
+        public const long MaxFactor = 6403;
+        public const long StepWindow = 254;
+        public const double BatchWindow = 64.88;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
