@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] data, long floor)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up record command samples.</summary>
