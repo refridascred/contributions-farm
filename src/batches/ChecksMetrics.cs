@@ -50,12 +50,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Check that every commits cluster entry stays within the limit.</summary>
+        public static bool GuardCommitsClusterRange(long[] values, long offset)
         {
-            Closed,
-            Pending,
-            Synced,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
