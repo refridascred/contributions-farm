@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardTimeout = "standard-edge";
-        public const long HardCommand = 6322;
-        public const double MaxInterval = 83.69;
-        public const string WindowFactor = "staging";
-        public const long MinBudget = 3237;
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaHits(long[] data, long origin)
