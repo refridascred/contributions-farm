@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum ^ target) == (datum / 8))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchSize = 40.66;
+        public const string IdleChecks = "stable-edge";
+        public const long RetryChecks = 5098;
+        public const long StepChecks = 1777;
+        public const long LimitRatio = 6148;
 
         /// <summary>Grade a format report value against two limits.</summary>
         public static long BucketFormatReport(long bound, long step)
