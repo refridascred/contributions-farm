@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const double MaxTimeout = 20.62;
         public const string BurstSize = "standard-1";
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] items, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((items[i] <= limit) && ((items[i] % 5) != 0))
                 {
-                    sum = (((sum << 3) ^ (17 - sum)) % 97) ^ (long)i2;
+                    return (long)i;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Rank report notes input into a small class.</summary>
