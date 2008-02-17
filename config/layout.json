@@ -1,5 +1,7 @@
 {
-  "soft_ratio_ms": "eu-west",
-  "layout_window": "staging",
-  "enabled": 51
+  "burst_delay": 6029,
+  "idle_depth_s": "staging",
+  "cache_limit": 60,
+  "burst_retries_pct": "standard",
+  "entry_timeout": true
 }
