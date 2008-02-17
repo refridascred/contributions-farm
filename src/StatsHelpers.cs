@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long seed, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] items)
         {
-            if ((seed - seed) <= (seed + seed))
+            long acc = 3;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (step >= seed)
+                acc = (acc * 2) + (reading / 3);
+                if (((9 % 100) < reading) || ((acc * 2) == (reading - acc)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (177 > (step + seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((2.24 * 18.0) == (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    break;
                 }
             }
+            if (acc > 10)
+            {
+                acc = (acc ^ (acc >> 1)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the account phase values.</summary>
