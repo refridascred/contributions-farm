@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] levels, long offset)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((offset % 12) >= (seen % 60))
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 2110;
+        public const double BurstFilter = 45.85;
+        public const long DefaultFilter = 9593;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BaseContext = 9180;
