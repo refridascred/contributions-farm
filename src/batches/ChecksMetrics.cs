@@ -21,38 +21,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Rank checks stream input into a small class.</summary>
-        public static long GradeChecksStream(long floor, long bound)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            if ((double)bound != (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((6.12 * 2.0) < (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound >= (363 << 3)) || ((4.8 - 0.3) <= (double)bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((floor & 31) >= (floor + floor)) && (8.0 <= (double)floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Retry,
+            Idle,
         }
 
         /// <summary>Adjust a queue profile reading.</summary>
