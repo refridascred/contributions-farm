@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowCluster = "standard-v2";
-        public const long HardCluster = 5926;
-        public const long DefaultCluster = 1398;
-        public const long BatchCluster = 7225;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftSpan = "staging-edge";
+        public const long DefaultBudget = 6773;
+        public const double CacheCommand = 4.5;
+        public const double DefaultSize = 30.19;
+        public const long WindowCommand = 6722;
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long LocateMetricsIndex(long[] levels, long offset)
