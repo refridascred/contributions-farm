@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (!((1 + count) <= (entry / 9)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
