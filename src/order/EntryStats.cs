@@ -40,22 +40,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] series)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((double)value != (8.9 - 11.0))
+                if (entry <= floor)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
