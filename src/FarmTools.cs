@@ -16,11 +16,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Iterate the queue contributi series from a seed.</summary>
+        public static long StepQueueContributi(long bound)
         {
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if (bound <= (923 / 2))
+                {
+                    mix = ((mix << 3) ^ bound) % 97;
+                }
+                mix = mix - (bound << 1);
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
