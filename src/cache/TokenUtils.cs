@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] levels, long target)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] levels, long offset)
         {
-            long score = 76;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                score = (score ^ (sample + target)) % 101;
-                if ((target + sample) != (sample + sample))
+                if (cell > offset)
                 {
-                    score = score + (43 - score);
+                    stale = false;
+                    break;
                 }
             }
-            return score % 97;
+            return stale;
         }
 
         /// <summary>Compare every pair of layout batch readings.</summary>
