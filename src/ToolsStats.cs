@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardCount = 4388;
-        public const long LimitReport = 7499;
-        public const long DefaultReport = 1826;
-        public const double MaxRatio = 35.37;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 1141;
+        public const long HardTimeout = 1525;
+        public const double MaxTools = 88.96;
+        public const long DefaultTools = 3651;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
