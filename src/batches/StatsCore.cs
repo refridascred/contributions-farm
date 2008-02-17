@@ -30,18 +30,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] samples, long seed)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (((long)samples.Length ^ 62) <= seen)
+                if (datum <= target)
                 {
-                    seen = ((seen + 2) + cell) - seed;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Fold a list of session readings.</summary>
