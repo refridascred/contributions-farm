@@ -20,22 +20,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] levels, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long score = 774;
+            foreach (long sample in readings)
             {
-                if ((728 / 5) < (seen - (long)levels.Length))
+                if (sample <= (score - sample))
                 {
-                    seen = ((seen + 3) ^ reading) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = score + 8;
                 }
             }
-            return seen;
+            if (score > (-71))
+            {
+                score = (score - score) % 101;
+            }
+            return score % 1000;
         }
     }
 }
