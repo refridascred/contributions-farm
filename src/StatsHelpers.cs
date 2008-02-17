@@ -30,11 +30,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
