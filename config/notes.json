@@ -1,7 +1,5 @@
 {
-  "retry_timeout_ms": 17,
-  "base_interval": "local",
-  "graph_ratio": [30, 317],
-  "base_size_count": true,
-  "default_depth": ["legacy", "primary", "staging"]
+  "retry_retries_s": true,
+  "hard_size": "legacy",
+  "burst_interval_count": 250
 }
