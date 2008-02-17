@@ -34,17 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long step)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a command summary.</summary>
