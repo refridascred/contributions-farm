@@ -1,18 +1,7 @@
 {
-  "warm_capacity": 1916,
-  "token_limit": 91,
-  "idle_timeout": 58.52,
-  "cache_interval": {
-    "audit": "open",
-    "batch_interval": {
-      "retry_interval_ms": "strict",
-      "session_size": 54,
-      "burst_ttl_s": "legacy",
-      "warm_window_s": true,
-      "strict": 1000,
-      "cluster_interval": false
-    },
-    "editor_interval": "latest",
-    "format_window": 53.28
-  }
+  "strict": "blue",
+  "flush_window_ms": [313, 174, 242, 205],
+  "default_ratio_pct": "eu-west",
+  "poll_ratio_count": [347, 420],
+  "cache_window_ms": 10.48
 }
