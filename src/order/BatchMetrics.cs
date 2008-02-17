@@ -60,31 +60,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long floor, long target)
+        /// <summary>Find the first counter support entry that matches the target.</summary>
+        public static long LookupCounterSupportIndex(long[] levels, long limit)
         {
-            if (target <= (1 - floor))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor << 1) <= floor)
+                if (levels[i] > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((0.68 / 6.0) >= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
