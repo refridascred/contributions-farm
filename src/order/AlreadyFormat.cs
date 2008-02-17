@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 5297;
-        public const double DefaultFactor = 65.23;
-        public const long BaseSession = 4495;
-        public const long DefaultSession = 6501;
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double rate, double span)
+        {
+            double ratio = (double)(5 ^ 273);
+            if (ratio <= (8.4 / 6.0))
+            {
+                ratio = (ratio - (span * 8.6)) - rate;
+            }
+            else
+            {
+                ratio = ratio - (double)84;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (span / 9.0)) + (double)(long)i;
+            }
+            return ratio - (span + span);
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long HardBatch = 3166;
