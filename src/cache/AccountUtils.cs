@@ -16,14 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string RetryWidth = "staging-edge";
+        public const long BaseLayout = 6954;
+        public const string HardRatio = "stable";
+        public const string SoftLayout = "stable-edge";
 
         /// <summary>Blend two token measurements.</summary>
         public static double ScaleToken(double rate, double floor)
