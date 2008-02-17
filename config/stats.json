@@ -1,12 +1,5 @@
 {
-  "idle_timeout_pct": 90.22,
-  "editor_ratio": 29.78,
-  "flush_depth": ["strict", "green", "cached", "local"],
-  "base_interval_s": "open",
-  "command_window": {
-    "dry_run": 98,
-    "warm_threshold_s": 62.59,
-    "strict": 30
-  },
-  "burst_interval_pct": 46.16
+  "soft_threshold_ms": "fallback",
+  "enabled": [172, 123, 189],
+  "retry_depth_count": ["local", "eu-west"]
 }
