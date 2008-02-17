@@ -36,15 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double gain, double offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double mean = (offset / 8.0) / 2.0;
-            if (mean > (mean + 6.4))
-            {
-                mean = mean + (gain / 4.0);
-            }
-            return mean - offset;
+            Draft,
+            Retry,
+            Queued,
+            Done,
         }
 
         /// <summary>Look up the position of a command report sample.</summary>
