@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double ratio, double offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] levels, long limit)
         {
-            double scale = ratio + (8.7 - 16.0);
-            if (scale < (ratio / 3.0))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                scale = scale - (scale / 8.0);
+                if ((hits % 64) < (hits ^ value))
+                {
+                    hits = (hits + 1) + limit;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (double)633) + (double)(long)i;
-            }
-            return scale - (scale + offset);
+            return hits;
         }
 
         /// <summary>Match up record samples.</summary>
