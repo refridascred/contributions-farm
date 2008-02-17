@@ -1,19 +1,21 @@
 # support settings
-retry_size_count: 65.85
-contributi_ttl: green
-idle_delay_s:
-  default_ratio: false
-  max_size_ms:
-    - 155
-    - 279
-  poll_interval_pct: green
-  audit: 1024
-burst_threshold_ms: 7840
-profile_capacity:
-  persist: 60
-  warm_ratio: 33.74
-  hard_threshold_pct: true
-  dry_run: fallback
-  max_threshold_ms:
-    - 141
-    - 216
+warm_ratio: 39.32
+default_depth_pct: 14.47
+session_size: false
+warm_ttl: local
+idle_window:
+  checks_limit: true
+  base_ttl_count:
+    - 25
+    - 410
+    - 36
+    - 53
+  channel_delay: 100
+  cache_timeout_s: latest
+  hard_limit: 74
+  warm_ratio:
+    layout_interval: stable
+    base_interval: false
+    hard_interval: standard
+    batch_limit: 5304
+    poll_capacity: legacy
