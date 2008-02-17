@@ -34,19 +34,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] series, long limit)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long target)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (item < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = acc ^ (acc * 5);
+                acc = (acc - (acc + acc)) % 4096;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return flag;
+            return acc;
         }
     }
 }
