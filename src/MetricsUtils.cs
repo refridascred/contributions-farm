@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metric context value from a seed.</summary>
-        public static long RollMetricContext(long origin)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = (carry * 4) + origin;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
