@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
