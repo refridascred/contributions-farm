@@ -65,11 +65,21 @@ namespace Common.Utilities
             return weight - 8.9;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Count entry record pairs that satisfy a relation.</summary>
+        public static long OverlapEntryRecordCount(long[] values)
         {
-            public long Label { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
