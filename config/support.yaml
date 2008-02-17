@@ -1,21 +1,14 @@
 # support settings
-verbose:
-  - staging
-  - cached
-  - edge
-  - eu-west
-persist: blue
-dry_run: 6304
-batches_limit:
-  sync_limit_ms: cached
-  warm_interval_pct: 893
-  report_timeout: 8
-  min_interval_ms:
-    - 335
-    - 252
-enabled:
-  - eu-west
-  - eu-west
-  - eu-west
-  - cached
-counter_threshold: 65.54
+poll_delay_ms:
+  min_limit_s: 4560
+  sync_limit_pct: 500
+  batch_delay_pct: 52.54
+  warm_capacity: 15.88
+  retry_timeout_count: 100
+  base_delay_s:
+    - eu-west
+    - blue
+batch_depth: 30
+stream_window: 4658
+verbose: 93
+retry_interval_count: 500
