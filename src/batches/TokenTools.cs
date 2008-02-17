@@ -35,15 +35,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double scale, double offset)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double bias = offset;
-            if (bias >= (scale / 2.0))
-            {
-                bias = bias + (double)237;
-            }
-            return bias - bias;
+            Retry,
+            Draft,
+            Synced,
+            Queued,
         }
     }
 }
