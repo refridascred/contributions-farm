@@ -10,11 +10,32 @@ namespace Common.Utilities
         public const long BurstCommits = 9526;
         public const long CacheCommits = 8396;
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double ratio, double floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long floor, long step)
         {
-            double weight = (double)8 / 9.0;
-            return ((weight - weight) + ratio) + floor;
+            long next = floor - step;
+            if (((next & 255) == (floor / 3)) && ((50 % 8) > (next ^ next)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((14.0 - 7.8) != (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step > (next % 5)) && ((next ^ step) <= (step & 127)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
