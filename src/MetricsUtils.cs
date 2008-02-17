@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = mix + (mix % 12);
-                mix = ((mix * 4) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the channel class values.</summary>
