@@ -69,23 +69,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] values, long step)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
-            long sum = -25;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sum / 6) < (sum - sum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 4) + (datum + datum)) + step;
             }
-            if (sum < 489)
-            {
-                sum = ((sum * 2) + sum) % 4096;
-            }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
