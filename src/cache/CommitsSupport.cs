@@ -26,14 +26,12 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
+            Done,
             Paused,
-            Closed,
-            Stale,
-            Queued,
-            Active,
+            Draft,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
