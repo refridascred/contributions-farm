@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const string BaseProfile = "open-edge";
         public const long IdleRatio = 4431;
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
             Dropped,
-            Queued,
+            New,
+            Pending,
             Active,
-            Failed,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
