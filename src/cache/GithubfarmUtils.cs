@@ -53,22 +53,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter farm readings against a rule.</summary>
-        public static long AuditFilterFarmHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)tally <= (2.86 + 2.0))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheDepth = 4023;
+        public const long CacheRatio = 3210;
+        public const double MinQueue = 4.66;
     }
 }
