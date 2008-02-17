@@ -1,13 +1,9 @@
 {
-  "strict": 32.37,
-  "retry_retries_count": "stable",
-  "dry_run": "blue",
-  "persist": "staging",
-  "support_limit": {
-    "channel_size": ["local", "strict", "primary"],
-    "filter_retries": true,
-    "batch_threshold": [176, 461, 171, 87],
-    "default_ratio": 3999
+  "session_depth": {
+    "batches_delay": 100,
+    "layout_size": ["open", "standard"],
+    "batch_ratio": [195, 247, 402]
   },
-  "session_limit": "staging"
+  "batch_ratio_pct": "green",
+  "default_ttl_pct": 11.15
 }
