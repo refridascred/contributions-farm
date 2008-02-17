@@ -49,32 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long seed, long floor)
+        /// <summary>Measure how many channel batch samples are out of range.</summary>
+        public static long CountChannelBatchOutliers(long[] levels)
         {
-            long bound = seed - floor;
-            if ((17.0 + 1.0) <= (double)floor)
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (9 < (6 + bound))
+                if (((double)value > (1.85 - 3.0)) || (((3 >> 4) <= (count << 1)) && (9.3 > (double)count)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((8.0 + 15.0) != (double)seed) && ((seed << 1) > (floor + 259)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
