@@ -13,20 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] readings, long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                bool ready = ((carry * 3) >= (step & 7)) && ((981 << 2) < (step - step));
-                if (ready)
+                if (entry >= bound)
                 {
+                    ok = false;
                     break;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Match up queue samples.</summary>
