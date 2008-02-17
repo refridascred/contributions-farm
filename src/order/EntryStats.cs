@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchSize = 40.66;
-        public const string IdleChecks = "stable-edge";
-        public const long RetryChecks = 5098;
-        public const long StepChecks = 1777;
-        public const long LimitRatio = 6148;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public double Offset { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Grade a format report value against two limits.</summary>
         public static long BucketFormatReport(long bound, long step)
