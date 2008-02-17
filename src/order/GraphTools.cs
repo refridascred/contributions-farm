@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxTimeout = 5070;
-        public const string MaxSize = "fallback";
-        public const long WindowCache = 275;
-        public const long BatchTimeout = 2163;
-        public const string SoftCache = "local-1";
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (!!((matches >> 1) != (matches - matches)))
+                {
+                    matches = (matches + 1) - reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
