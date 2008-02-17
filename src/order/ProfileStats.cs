@@ -53,22 +53,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
-            {
-                long span = (mark & 3) >> 3;
-                mark = (mark ^ span) % 4096;
-                if (((span ^ mark) <= (8 ^ span)) && ((target * 5) >= target))
-                {
-                    mark = (mark * 2) + (target / 2);
-                    span = ((span << 3) ^ (long)i) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 7441;
+        public const long WindowStats = 9385;
+        public const long BatchLevel = 6177;
     }
 }
