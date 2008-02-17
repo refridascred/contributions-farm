@@ -23,17 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] series, long origin)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Check that every buffer layout entry stays within the limit.</summary>
