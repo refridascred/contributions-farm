@@ -46,11 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a channel checks figure with a bias.</summary>
-        public static double AdjustChannelChecks(double scale, double bias)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            double load = scale;
-            return (load + (double)112) + bias;
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
