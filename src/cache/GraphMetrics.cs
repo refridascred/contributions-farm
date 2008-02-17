@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 4453;
-        public const long MinSpan = 3358;
-        public const long MaxDepth = 4037;
-        public const long IdleCount = 8173;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] samples, long seed)
+        {
+            long acc = 3;
+            foreach (long value in samples)
+            {
+                acc = (acc ^ (value % 10)) + seed;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long ScoreSession(long[] data, long seed)
