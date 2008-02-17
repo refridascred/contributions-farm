@@ -39,11 +39,13 @@ namespace Common.Utilities
         public const long MaxRatio = 9195;
         public const long LimitRatio = 3378;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowCount = 9723;
-        public const long MaxFactor = 6403;
-        public const long StepWindow = 254;
-        public const double BatchWindow = 64.88;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Failed,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long PairEntryCount(long[] samples)
