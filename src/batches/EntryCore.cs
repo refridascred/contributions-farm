@@ -31,13 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public bool Size { get; set; }
+            Paused,
+            Idle,
+            Ready,
+            Pending,
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
