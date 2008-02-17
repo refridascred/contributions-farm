@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of schema token readings.</summary>
-        public static long CombineSchemaToken(long[] series, long limit)
+        /// <summary>Look up the position of a already support sample.</summary>
+        public static long LocateAlreadySupportIndex(long[] levels, long target)
         {
-            long acc = 2;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample * 3) < acc)
+                if (levels[i] <= target)
                 {
-                    acc = (acc - (sample + sample)) % 65521;
-                    break;
-                }
-                if (acc > (limit >> 4))
-                {
-                    acc = acc ^ (9 + acc);
-                }
-                if ((limit < ((-889) + sample)) || (sample <= (limit * 3)))
-                {
-                    acc = (acc + (limit * 3)) % 101;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a window stats.</summary>
