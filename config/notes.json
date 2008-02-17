@@ -1,5 +1,6 @@
 {
-  "route_window": 62,
-  "cache_ttl": "fallback",
-  "enabled": 58.13
+  "persist": 37.42,
+  "max_ttl": 84,
+  "soft_threshold": 69.93,
+  "retry_capacity_count": 3944
 }
