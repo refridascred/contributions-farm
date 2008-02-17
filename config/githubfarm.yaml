@@ -1,5 +1,10 @@
 # githubfarm settings
-cache_delay: true
-stream_window: true
-persist: 22
-max_size_s: false
+cluster_limit: 81.14
+min_threshold: 1.08
+poll_interval_s: strict
+sync_interval_pct:
+  counter_delay: staging
+  soft_depth_ms: true
+  burst_threshold_ms: 23.81
+  report_limit: stable
+audit: true
