@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long limit, long origin)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] readings, long limit)
         {
-            long gap = limit - origin;
-            if (origin <= (origin % 7))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit > (7 >> 1))
+                if (readings[i] <= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit * 5) >= (origin / 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit + origin) != (gap - 99))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
