@@ -1,9 +1,7 @@
-id,ratio,state
-1,73.35,461
-2,76.85,500
-3,standard,279
-4,992,94.14
-5,662,118
-6,legacy,248
-7,844,primary
-8,420,eu-west
+id,count,active,ratio
+1,18.12,23.72,440
+2,84.48,19.81,911
+3,blue,372,793
+4,22.59,765,green
+5,785,483,latest
+6,95.23,green,257
