@@ -42,24 +42,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            long acc = 9;
+            foreach (long item in samples)
             {
-                if ((offset + 252) < (offset + offset))
-                {
-                    sum = ((sum << 2) ^ (sum & 7)) % 101;
-                }
-                sum = sum ^ 861;
-                if (!(((long)i % 10) <= (offset + (long)i)))
-                {
-                    sum = (sum * 5) + (sum ^ sum);
-                }
-                sum = ((sum * 5) + (long)i) % 97;
+                acc = ((acc << 2) ^ (911 - acc)) % 101;
+                acc = (acc + item) % 1000;
             }
-            return sum;
+            if (acc < 40)
+            {
+                acc = ((acc * 3) + (acc % 12)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Describe the account mode values.</summary>
