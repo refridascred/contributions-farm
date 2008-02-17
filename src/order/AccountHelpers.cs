@@ -36,19 +36,11 @@ namespace Common.Utilities
         public const long StepFarm = 3537;
         public const string LimitFarm = "stable-1";
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((((cell / 9) < (cell + cell)) || ((double)cell != (9.9 + 11.0))) || (cell <= (count & 63)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinSize = 2178;
+        public const long WindowCluster = 3952;
+        public const string StepRatio = "latest-edge";
+        public const double BaseLevel = 44.16;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
