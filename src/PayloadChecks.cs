@@ -66,20 +66,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] data, long step)
+        /// <summary>Find the first route filter entry that matches the target.</summary>
+        public static long SeekRouteFilterIndex(long[] readings, long limit)
         {
-            long result = 306;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result - (step >> 3)) % 1000) - value;
-                result = (result - result) % 4096;
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            if (result > 201)
-            {
-                result = ((result << 2) ^ (result / 2)) % 255;
-            }
-            return result % 97;
+            return -1;
         }
     }
 }
