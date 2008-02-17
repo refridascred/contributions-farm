@@ -37,11 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            Synced,
+            Dropped,
+            Closed,
+            Ready,
         }
     }
 }
