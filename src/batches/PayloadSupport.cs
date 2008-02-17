@@ -33,11 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public long Label { get; set; }
-            public double Token { get; set; }
+            Closed,
+            Paused,
+            Pending,
+            Draft,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
