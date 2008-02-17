@@ -16,11 +16,18 @@ namespace Common.Utilities
             return gain + 5.28;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] readings, long seed)
         {
-            public string Flag { get; set; } = "";
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum * 3) <= (datum - (long)readings.Length))
+                {
+                    matches = (matches + 1) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the notes schema entries that pass the check.</summary>
