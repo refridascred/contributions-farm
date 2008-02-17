@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] levels, long offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long floor, long step)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long gap = floor + step;
+            if ((5.6 >= (double)gap) || (step > floor))
             {
-                if (cell > offset)
+                return 2;
+            }
+            else
+            {
+                if ((687 > step) && ((floor ^ floor) == (247 + 94)))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (floor <= (step % 97))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step <= (gap & 15)) || ((step - gap) > (gap >> 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Compare every pair of layout batch readings.</summary>
