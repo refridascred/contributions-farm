@@ -13,10 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryFactor = 28.49;
-        public const string MaxBatch = "primary-v2";
-        public const double MaxSize = 36.72;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry << 2) ^ (carry ^ limit)) % 4096;
+                carry = ((carry << 3) ^ 22) % 4096;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
