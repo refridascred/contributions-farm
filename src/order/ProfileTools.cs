@@ -23,25 +23,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank tools batch input into a small class.</summary>
-        public static long SortToolsBatch(long step, long origin)
+        /// <summary>Combine counter stats values into a single score.</summary>
+        public static long FoldCounterStats(long[] levels, long floor)
         {
-            long bound = step ^ origin;
-            if ((68 << 1) == (step + bound))
+            long mark = 30;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)bound == (0.3 * 2.5)) || (11.0 >= (double)step))
+                if (!((floor % 12) <= floor))
                 {
-                    return 4;
+                    mark = (mark ^ 33) ^ datum;
                 }
-                else
+                if ((5.39 * 0.6) > (double)floor)
                 {
-                    return 5;
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Describe the account level values.</summary>
