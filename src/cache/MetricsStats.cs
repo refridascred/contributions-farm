@@ -43,12 +43,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "latest-v2";
-        public const long MaxWidth = 4716;
-        public const long RetryScore = 2332;
-        public const string StepWidth = "strict-1";
-        public const long CacheScore = 9948;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Queued,
+            Stale,
+            Done,
+            Closed,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string StepLayout = "stable-1";
