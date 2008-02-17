@@ -61,19 +61,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] series, long target)
+        /// <summary>Accumulate stats channel samples.</summary>
+        public static long DigestStatsChannel(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mix = 1;
+            foreach (long cell in series)
             {
-                if (entry > target)
+                if (((double)cell < (1.65 * 8.44)) || (cell >= (29 + 2)))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix - ((-57) ^ cell)) + step;
                 }
             }
-            return ready;
+            if (mix < 713)
+            {
+                mix = (mix << 2) ^ (6 >> 2);
+            }
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
