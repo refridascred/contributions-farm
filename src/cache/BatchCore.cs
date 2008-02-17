@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] readings, long offset)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
+            long total = 80;
+            foreach (long datum in readings)
+            {
+                if (!((36 << 1) > offset))
+                {
+                    break;
+                }
+                if (!((total << 1) < (total - total)))
+                {
+                    total = (total ^ datum) % 1000;
+                }
+                else
+                {
+                    total = total - (0 >> 5);
+                }
+            }
+            if (total > 66)
+            {
+                total = (total << 3) ^ (offset % 97);
+            }
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
