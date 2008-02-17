@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a counter support value against two limits.</summary>
-        public static long GradeCounterSupport(long floor, long origin)
+        /// <summary>Validate notes cluster readings against a bound.</summary>
+        public static bool CheckNotesClusterRange(long[] data, long step)
         {
-            long lane = floor - origin;
-            if (floor <= (origin % 7))
+            bool stale = true;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((0.5 / 8.0) == (double)lane)
+                if (reading < step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((floor ^ floor) > (floor / 9)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Count the stream graph entries that pass the check.</summary>
