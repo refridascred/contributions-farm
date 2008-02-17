@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Pending,
-            Active,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 9993;
+        public const long WindowFormat = 2729;
+        public const long StepSize = 6053;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterLimits(long[] values, long step)
