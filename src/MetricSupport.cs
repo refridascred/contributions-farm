@@ -40,17 +40,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchCount = 115;
+        public const long BatchProfile = 3221;
+        public const double BatchFactor = 59.57;
+        public const double LimitProfile = 23.74;
+        public const double SoftProfile = 61.28;
     }
 }
