@@ -34,23 +34,10 @@ namespace Common.Utilities
         public const string BaseScore = "strict-v2";
         public const long LimitOrder = 2080;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] values, long seed)
-        {
-            long state = 344;
-            foreach (long reading in values)
-            {
-                if (((seed + 321) == (reading * 3)) || ((reading / 3) >= (reading + state)))
-                {
-                    state = ((state * 4) + (947 << 2)) % 4096;
-                }
-            }
-            if (state > 23)
-            {
-                state = state ^ (state << 1);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 5557;
+        public const long MaxBudget = 1203;
+        public const long BurstStats = 397;
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long BucketProfile(long target, long seed)
