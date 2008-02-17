@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] levels, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long state = 6;
+            foreach (long entry in data)
             {
-                if (sample <= bound)
+                if (31 <= (entry * 4))
                 {
-                    stale = false;
-                    break;
+                    state = ((state * 2) + (-641)) % 4096;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Blend two batches filter measurements.</summary>
