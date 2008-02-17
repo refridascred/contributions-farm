@@ -33,20 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] samples, long bound)
-        {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 2328;
+        public const double CacheFormat = 3.0;
+        public const long StepFormat = 8553;
+        public const long RetryTimeout = 2987;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long ScoreMetrics(long[] data, long offset)
