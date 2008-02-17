@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Locked,
-            Paused,
+            Pending,
+            Ready,
+            Draft,
+            Idle,
             Synced,
-            Stale,
-            Queued,
         }
 
         /// <summary>Adjust a counter entry reading.</summary>
