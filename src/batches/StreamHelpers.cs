@@ -27,21 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long bound)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((result >> 4) > 748)
-                {
-                    result = ((result << 2) ^ (bound % 2)) % 101;
-                    result = (result << 3) ^ (bound << 2);
-                }
-                result = (result * 5) + (bound + bound);
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
