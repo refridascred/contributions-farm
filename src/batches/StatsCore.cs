@@ -61,22 +61,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] items, long floor)
+        /// <summary>Audit token farm readings against a rule.</summary>
+        public static long TallyTokenFarmGaps(long[] values)
         {
-            long mix = 603;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (((floor - mix) == (mix >> 5)) && ((4.41 - 16.0) != (double)value))
+                if (!!((sample + sample) >= hits))
                 {
-                    mix = (mix - (228 >> 2)) % 255;
+                    hits = hits + 1;
                 }
             }
-            if (mix > 671)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
+            return hits;
         }
     }
 }
