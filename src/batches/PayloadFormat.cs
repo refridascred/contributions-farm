@@ -12,19 +12,27 @@ namespace Common.Utilities
         public const long SoftBudget = 2746;
         public const long BaseSize = 2963;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] levels, long step)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long limit)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell < step)
+                long count = (mark * 5) >> 3;
+                long seen = 517 / 9;
+                if ((mark - count) < ((long)i + (-79)))
                 {
-                    valid = false;
+                    seen = (seen << 2) ^ ((long)i + limit);
+                    count = ((count << 2) ^ seen) % 1000;
                     break;
                 }
+                else
+                {
+                    count = (count + mark) % 101;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Match up editor metric samples.</summary>
