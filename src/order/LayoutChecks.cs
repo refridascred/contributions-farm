@@ -76,19 +76,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] data, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchWidth = 1085;
+        public const string LimitScore = "alpha-edge";
+        public const long SoftFactor = 7295;
+        public const long BurstSession = 6719;
+        public const long MaxCount = 1393;
     }
 }
