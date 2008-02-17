@@ -20,17 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] series, long target)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = span;
+            return (mean - (9.01 / 8.0)) + weight;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
