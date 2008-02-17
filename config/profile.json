@@ -1,17 +1,6 @@
 {
-  "channel_size": [125, 84],
-  "batch_ratio_pct": {
-    "batch_retries": 39.84,
-    "cache_capacity": {
-      "poll_threshold_ms": 2775,
-      "base_size": "fallback",
-      "notes_delay": true
-    },
-    "account_ratio": [385, 122],
-    "graph_ttl": "eu-west"
-  },
-  "batches_depth": [39, 123, 109],
-  "hard_ttl_count": 259,
-  "flush_threshold_pct": 7593,
-  "soft_depth": "blue"
+  "retry_threshold_pct": ["standard", "strict", "open", "staging"],
+  "persist": "primary",
+  "command_window": 6,
+  "hard_size_count": "fallback"
 }
