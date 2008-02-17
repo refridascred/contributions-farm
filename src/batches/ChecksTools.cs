@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Dropped,
-            Done,
-            Queued,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 4261;
+        public const string BatchFormat = "fallback-edge";
+        public const long DefaultFactor = 1344;
+        public const long StepBudget = 9349;
 
         /// <summary>Measure how many schema batches samples are out of range.</summary>
         public static long MeasureSchemaBatchesMatches(long[] samples)
