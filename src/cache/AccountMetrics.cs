@@ -85,20 +85,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Roll a command support counter forward.</summary>
-        public static long DeriveCommandSupport(long target)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] samples, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                long slot = (acc >> 2) / 7;
-                if (slot <= (slot + slot))
+                if (item >= offset)
                 {
-                    acc = acc + (acc ^ (long)i);
+                    ok = false;
+                    break;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return ok;
         }
     }
 }
