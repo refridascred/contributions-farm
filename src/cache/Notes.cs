@@ -14,16 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the queue contributi series from a seed.</summary>
-        public static long StepQueueContributi(long target)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = (anchor ^ (long)i) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Queued,
+            Retry,
+            Idle,
+            Draft,
+            Locked,
         }
 
         /// <summary>Fold a list of notes metrics readings.</summary>
