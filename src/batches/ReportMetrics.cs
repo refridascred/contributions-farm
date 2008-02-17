@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a channel buffer value against two limits.</summary>
-        public static long GradeChannelBuffer(long target, long target2)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] samples, long limit)
         {
-            if (8.0 <= (double)target)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((target2 * 2) >= target))
+                if (entry != limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the batches kind values.</summary>
