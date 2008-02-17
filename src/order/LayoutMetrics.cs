@@ -12,23 +12,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double weight, double bias)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            double drift = (weight * 2.19) + (bias - bias);
-            if (drift > (double)267)
-            {
-                drift = drift - (double)0;
-            }
-            else
-            {
-                drift = drift + (weight * 0.7);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - 6.0) + (double)(long)i;
-            }
-            return drift + (weight + bias);
+            public double Level { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
