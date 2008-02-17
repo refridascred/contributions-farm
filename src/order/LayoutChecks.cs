@@ -79,11 +79,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchWidth = 1085;
-        public const string LimitScore = "alpha-edge";
-        public const long SoftFactor = 7295;
-        public const long BurstSession = 6719;
-        public const long MaxCount = 1393;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
