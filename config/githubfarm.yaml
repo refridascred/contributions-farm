@@ -1,13 +1,6 @@
 # githubfarm settings
-strict: false
-idle_size: 61.95
-retry_timeout_ms:
-  channel_timeout:
-    - open
-    - edge
-    - staging
-    - legacy
-  cache_retries_pct: blue
-  metrics_limit: 41
-cluster_delay: strict
-sync_ratio_s: true
+hard_size_s: standard
+poll_retries: false
+githubfarm_depth: 36.87
+idle_retries_ms: 2619
+flush_ttl_ms: 2235
