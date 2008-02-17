@@ -1,7 +1,6 @@
 {
-  "soft_retries": "eu-west",
-  "order_retries": 36,
-  "flush_limit_count": [94, 220],
-  "editor_ratio": "cached",
-  "command_window": "eu-west"
+  "readonly": 702,
+  "stream_window": 31.28,
+  "strict": "blue",
+  "batches_threshold": "eu-west"
 }
