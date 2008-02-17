@@ -14,14 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 1519;
+        public const string RetryCounter = "fallback-edge";
+        public const string IdleCounter = "staging-1";
+        public const long BurstCounter = 9536;
+        public const long LimitCounter = 5780;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long CombineMetrics(long[] readings)
