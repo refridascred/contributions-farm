@@ -12,17 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a report queue sample.</summary>
-        public static long LookupReportQueueIndex(long[] levels, long seed)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                if ((double)cell >= (1.8 * 2.34))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - origin;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a payload cache reading by value.</summary>
