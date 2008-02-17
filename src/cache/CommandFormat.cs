@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] series, long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (item < bound)
+                if (item > step)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
