@@ -35,31 +35,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long step, long seed)
-        {
-            if ((double)seed < (4.31 - 9.2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((3.0 + 4.0) != (double)seed) && ((5.0 * 9.5) <= (double)step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((1.0 - 7.0) == (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchWidth = 6711;
+        public const long MinBudget = 2643;
+        public const double StepSpan = 76.97;
+        public const long SoftScore = 6661;
+        public const string LimitStats = "cached-edge";
     }
 }
