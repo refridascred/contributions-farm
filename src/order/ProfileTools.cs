@@ -20,14 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] items, long limit)
         {
-            Stale,
-            Pending,
-            Active,
-            Failed,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
