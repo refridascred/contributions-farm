@@ -1,13 +1,27 @@
 # entry settings
-base_ratio_s: 250
-base_ttl: staging
-strict:
-  - blue
-  - open
-  - primary
-batch_retries_count: 76
-poll_capacity_ms:
-  - stable
-  - legacy
-  - local
-verbose: 97.25
+default_window_s: true
+warm_limit_pct: 65
+hard_ratio_count: 98
+poll_ratio_ms:
+  order_interval: false
+  warm_delay: green
+  compress: 65
+  burst_size_ms:
+    burst_ratio_pct: 2321
+    burst_ttl_s:
+      - stable
+      - edge
+      - stable
+      - stable
+    flush_depth: local
+  default_capacity_s: false
+soft_ttl_count:
+  strict: 29.1
+  readonly: 3
+  warm_interval_pct: standard
+  soft_depth_pct: 28.79
+  profile_ttl:
+    - 498
+    - 163
+    - 369
+  session_interval: false
