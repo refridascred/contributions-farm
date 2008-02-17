@@ -1,10 +1,6 @@
 {
-  "burst_interval": "eu-west",
-  "base_delay_s": {
-    "batch_retries_ms": "strict",
-    "base_window": 61.22,
-    "burst_depth_count": 30
-  },
-  "token_capacity": ["staging", "standard", "staging"],
-  "already_limit": 5708
+  "compress": true,
+  "githubfarm_ratio": "legacy",
+  "max_ttl": "legacy",
+  "retry_depth_count": "primary"
 }
