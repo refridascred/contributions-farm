@@ -1,8 +1,7 @@
 {
-  "soft_depth_s": "local",
-  "retry_interval": "open",
-  "token_threshold": "eu-west",
-  "batch_window": 6299,
-  "default_window_pct": 17,
-  "persist": 100
+  "strict": 32.94,
+  "soft_ttl_count": "standard",
+  "base_capacity": [200, 253, 86, 263],
+  "enabled": 1,
+  "flush_ttl": 92.99
 }
