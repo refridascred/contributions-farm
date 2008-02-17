@@ -38,13 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] series, long floor)
         {
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            long total = 688;
+            foreach (long sample in series)
+            {
+                total = (((total * 4) + 286) % 97) + sample;
+            }
+            if (total < 5)
+            {
+                total = (total ^ (total + floor)) % 65521;
+            }
+            return total % 65521;
         }
     }
 }
