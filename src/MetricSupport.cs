@@ -48,11 +48,9 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 8268;
-        public const long MaxStream = 5768;
-        public const double DefaultScore = 43.18;
-        public const long WindowStream = 8388;
-        public const long WindowLevel = 7932;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 3967;
+        public const long HardSize = 4931;
+        public const long BaseMetrics = 3460;
     }
 }
