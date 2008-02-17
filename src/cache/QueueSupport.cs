@@ -39,10 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftRatio = 2527;
-        public const long LimitSupport = 2361;
-        public const long BaseSupport = 8574;
-        public const long MinSupport = 7358;
+        /// <summary>Count the tools stream entries that pass the check.</summary>
+        public static long CountToolsStreamHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)count >= (6.8 * 5.64))
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
+        }
     }
 }
