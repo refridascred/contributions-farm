@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of githubfarm command readings.</summary>
-        public static long CombineGithubfarmCommand(long[] values)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] levels, long bound)
         {
-            long mark = 702;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (mark <= (reading >> 2))
+                if (sample <= bound)
                 {
-                    mark = (mark + (mark & 15)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Classify a order window pair into a bucket.</summary>
