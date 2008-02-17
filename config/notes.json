@@ -1,21 +1,8 @@
 {
-  "base_timeout_count": [173, 145, 40, 474],
-  "burst_delay_count": 55,
-  "max_timeout": true,
-  "context_window": "legacy",
-  "dry_run": 79.26,
-  "support_interval": {
-    "hard_ratio": 3135,
-    "idle_capacity": {
-      "checks_size": false,
-      "persist": 76.02,
-      "batch_timeout_count": 54.5,
-      "default_depth_count": 8161,
-      "buffer_limit": 28.21,
-      "readonly": 49
-    },
-    "poll_depth": "strict",
-    "schema_timeout": 59.72,
-    "batch_timeout": 500
-  }
+  "idle_timeout": false,
+  "compress": [87, 282, 183],
+  "sync_ttl_s": false,
+  "session_timeout": 76,
+  "poll_size_s": "fallback",
+  "min_depth_s": true
 }
