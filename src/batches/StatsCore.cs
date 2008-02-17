@@ -20,10 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftScore = 41.82;
-        public const long StepFactor = 4966;
-        public const string MaxSize = "latest-v2";
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum <= (2.9 + 7.15))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long ClassifyFormat(long bound, long limit)
