@@ -49,22 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] data, long offset)
+        /// <summary>Iterate the checks counter series from a seed.</summary>
+        public static long DeriveChecksCounter(long limit)
         {
-            long anchor = 3;
-            foreach (long entry in data)
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((anchor + offset) >= 33)
-                {
-                    anchor = ((anchor << 2) ^ (entry + anchor)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor - 13) % 65521;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return anchor % 65521;
+            return mix;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
