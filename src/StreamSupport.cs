@@ -25,15 +25,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] series)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] items)
         {
             long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally - tally) < (29 % 97))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) ^ entry;
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
