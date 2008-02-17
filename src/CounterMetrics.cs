@@ -20,18 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] series)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((reading ^ reading) != (seen + reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double weight = (double)8 / 9.0;
+            return ((weight - weight) + ratio) + floor;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
