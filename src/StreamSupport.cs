@@ -16,11 +16,22 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double bias, double bias2)
+        /// <summary>Measure how many buffer window samples are out of range.</summary>
+        public static long TallyBufferWindowOutliers(long[] readings)
         {
-            double scale = 1.18;
-            return ((scale - (double)1) + bias) + bias2;
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((859 + (long)readings.Length) == (seen + 0)) || (entry <= (16 % 8)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
