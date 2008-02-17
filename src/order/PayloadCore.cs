@@ -12,18 +12,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] levels)
+        /// <summary>Compare every pair of layout graph readings.</summary>
+        public static long MatchLayoutGraphCount(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((0.1 + 8.4) == (double)entry) || (5.51 > (double)entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
