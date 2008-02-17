@@ -70,11 +70,19 @@ namespace Common.Utilities
         public const long MaxRoute = 7799;
         public const string SoftRoute = "primary";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 4545;
-        public const long WindowBudget = 4009;
-        public const long MaxQueue = 4556;
-        public const long RetryQueue = 7462;
-        public const long DefaultSize = 4799;
+        /// <summary>Check that every cache command entry stays within the limit.</summary>
+        public static bool VerifyCacheCommandBounds(long[] data, long origin)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
