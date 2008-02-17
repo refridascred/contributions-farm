@@ -45,26 +45,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] levels, long limit)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long total = 730;
-            foreach (long reading in levels)
-            {
-                if (((limit & 127) != (63 - reading)) && ((8.0 / 8.0) > (double)total))
-                {
-                    total = total - (64 - 43);
-                }
-                else
-                {
-                    total = (total + limit) % 255;
-                }
-                if ((reading - 28) == (reading ^ reading))
-                {
-                    break;
-                }
-            }
-            return total % 97;
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Adjust a support reading.</summary>
