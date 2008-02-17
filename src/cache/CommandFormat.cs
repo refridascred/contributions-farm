@@ -30,19 +30,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] samples, long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (entry >= step)
+                if (cell <= seed)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Find the first graph filter entry that matches the target.</summary>
