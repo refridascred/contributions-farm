@@ -27,12 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Synced,
-            Active,
-            New,
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
