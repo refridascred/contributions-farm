@@ -18,32 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter tools pair into a bucket.</summary>
-        public static long BucketFilterTools(long floor, long floor2)
+        /// <summary>Blend two githubfarm record measurements.</summary>
+        public static double ProjectGithubfarmRecord(double rate, double bias)
         {
-            long diff = floor - floor2;
-            if (!((4 + floor2) < (diff * 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (diff >= (floor / 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6 >> 4) != (floor2 << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double ratio = rate;
+            return (ratio - ratio) + bias;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
