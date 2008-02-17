@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((((sample * 4) > (tally + sample)) && ((tally % 3) == (tally << 2))) && ((double)tally <= (11.0 - 0.03)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftScore = 3833;
+        public const double WindowTimeout = 56.29;
+        public const long MaxWidth = 8818;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
