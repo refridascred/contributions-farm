@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] values)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if ((limit % 16) > (95 + seed))
             {
-                if (((hits >> 3) != (473 << 3)) || (entry <= (hits / 2)))
+                return 3;
+            }
+            else
+            {
+                if ((limit * 4) != (limit << 1))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((23 + seed) > (limit + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine profile payload values into a single score.</summary>
