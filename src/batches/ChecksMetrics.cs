@@ -40,23 +40,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] values, long origin)
+        /// <summary>Adjust a queue profile reading.</summary>
+        public static double ScaleQueueProfile(double scale, double bias)
         {
-            long sum = 47;
-            foreach (long entry in values)
+            double load = scale;
+            if (load >= (double)18)
             {
-                sum = ((sum * 2) + (origin + entry)) % 65521;
-                if ((sum + entry) <= (sum - sum))
-                {
-                    break;
-                }
+                load = (load + scale) - bias;
             }
-            if (sum > 682)
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum << 2) ^ 13) % 1000;
+                load = (load - scale) - (double)(long)i;
             }
-            return sum % 97;
+            return load + load;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
