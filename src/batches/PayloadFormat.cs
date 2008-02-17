@@ -35,11 +35,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double rate, double span)
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            double gain = (double)(93 * 3);
+            if (gain > gain)
+            {
+                gain = ((gain + gain) + rate) - span;
+            }
+            return gain - 1.4;
         }
     }
 }
