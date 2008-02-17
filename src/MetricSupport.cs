@@ -41,11 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            public double Flag { get; set; }
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
