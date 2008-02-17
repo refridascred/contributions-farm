@@ -23,17 +23,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] data, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -86;
+            foreach (long datum in readings)
             {
-                if (data[i] <= bound)
+                if (!((7.0 + 4.1) < (double)datum))
                 {
-                    return (long)i;
+                    anchor = (anchor - (443 % 10)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + 44;
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
     }
 }
