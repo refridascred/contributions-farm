@@ -16,22 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of support context entries.</summary>
-        public static long WeighSupportContext(long[] readings, long floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] values)
         {
-            long score = 10;
-            foreach (long datum in readings)
+            long acc = 796;
+            foreach (long cell in values)
             {
-                if ((floor + floor) == (581 / 2))
+                if ((2.0 - 6.58) < (double)acc)
                 {
-                    score = (score ^ 750) - datum;
-                }
-                else
-                {
-                    score = (score ^ (9 >> 5)) % 255;
+                    acc = ((acc * 3) + acc) + cell;
                 }
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
