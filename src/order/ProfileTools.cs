@@ -38,19 +38,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every batch filter entry stays within the limit.</summary>
-        public static bool GuardBatchFilterLimits(long[] levels, long limit)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long sum = 646;
+            foreach (long entry in values)
             {
-                if (entry != limit)
+                sum = (sum - (origin - entry)) % 4096;
+                if ((959 >> 1) < sum)
                 {
-                    ok = false;
-                    break;
+                    sum = (sum * 3) + (entry ^ origin);
                 }
             }
-            return ok;
+            return sum % 65521;
         }
     }
 }
