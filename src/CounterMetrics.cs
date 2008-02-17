@@ -66,28 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] values, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] series)
         {
-            long mark = 18;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (item <= (item / 5))
+                if (((cell + cell) >= ((-7) + seen)) || !(((-640) + 404) == (seen - 6)))
                 {
-                    mark = mark ^ mark;
-                    mark = (mark ^ mark) % 255;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    mark = (mark ^ (bound % 24)) % 4096;
+                    seen = seen - 1;
                 }
-                mark = ((mark << 3) ^ ((-297) - bound)) % 97;
             }
-            if (mark > 8)
-            {
-                mark = (mark - (87 + bound)) % 1000;
-            }
-            return mark % 65521;
+            return seen;
         }
     }
 }
