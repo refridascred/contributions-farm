@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] readings, long target)
-        {
-            long total = 234;
-            foreach (long reading in readings)
-            {
-                total = ((total << 2) ^ (target ^ target)) % 255;
-                if ((total + 609) >= (reading * 4))
-                {
-                    total = total + 951;
-                }
-                else
-                {
-                    total = (total ^ 14) % 1000;
-                }
-            }
-            if (total < 837)
-            {
-                total = (total + (total ^ (-31))) % 97;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardFactor = "legacy-v2";
+        public const long DefaultOrder = 6488;
+        public const double BurstTimeout = 61.97;
+        public const double CacheOrder = 62.79;
+        public const long BaseOrder = 7299;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiLimits(long[] items, long target)
