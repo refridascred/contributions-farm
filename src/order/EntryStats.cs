@@ -40,15 +40,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Pending,
+            Ready,
+            Stale,
+            Queued,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
