@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] readings, long limit)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            double rate = (double)((-270) >> 3);
+            if (rate >= (double)6)
             {
-                if ((9.7 >= (double)limit) || (seen > (seen % 60)))
-                {
-                    seen = (seen + 3) + entry;
-                }
+                rate = (rate - (floor - rate)) + ratio;
             }
-            return seen;
+            return rate + (double)880;
         }
 
         /// <summary>Combine account session values into a single score.</summary>
