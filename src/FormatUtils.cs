@@ -35,19 +35,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] readings, long offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long acc = 59;
-            foreach (long reading in readings)
-            {
-                acc = ((((acc * 3) + (5 >> 2)) % 97) ^ reading) - offset;
-            }
-            if (acc < (-812))
-            {
-                acc = acc ^ acc;
-            }
-            return acc % 1000;
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define context limits and defaults.</summary>
