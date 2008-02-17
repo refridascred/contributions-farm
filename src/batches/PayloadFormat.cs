@@ -27,21 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up editor metric samples.</summary>
-        public static long PairEditorMetricCount(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((87 ^ tally) <= (sample * 2))
                 {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Roll a record counter forward.</summary>
