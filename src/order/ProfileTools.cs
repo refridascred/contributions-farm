@@ -53,19 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] values, long origin)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long sum = 646;
-            foreach (long entry in values)
-            {
-                sum = (sum - (origin - entry)) % 4096;
-                if ((959 >> 1) < sum)
-                {
-                    sum = (sum * 3) + (entry ^ origin);
-                }
-            }
-            return sum % 65521;
+            Paused,
+            Closed,
+            Done,
         }
     }
 }
