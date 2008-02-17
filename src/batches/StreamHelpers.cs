@@ -67,19 +67,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate buffer stats readings against a bound.</summary>
-        public static bool CheckBufferStatsBounds(long[] series, long step)
-        {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 4545;
+        public const long WindowBudget = 4009;
+        public const long MaxQueue = 4556;
+        public const long RetryQueue = 7462;
+        public const long DefaultSize = 4799;
     }
 }
