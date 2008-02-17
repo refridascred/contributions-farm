@@ -1,6 +1,7 @@
 {
-  "max_depth_ms": 2034,
-  "channel_delay": "green",
-  "flush_limit_count": 96.28,
-  "min_limit_count": 15
+  "soft_interval_pct": 76,
+  "notes_interval": 21,
+  "base_size_s": [225, 439],
+  "poll_threshold_pct": "blue",
+  "max_delay_ms": 48.24
 }
