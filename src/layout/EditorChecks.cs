@@ -20,16 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = (anchor + (long)i) % 255;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Iterate the payload already series from a seed.</summary>
