@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftSpan = 1161;
+        public const long DefaultLayout = 9934;
+        public const long SoftLayout = 5467;
+        public const long BatchLayout = 6379;
 
         /// <summary>Blend two support counter measurements.</summary>
         public static double AdjustSupportCounter(double weight, double bias)
