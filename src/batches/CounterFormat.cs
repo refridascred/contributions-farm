@@ -13,10 +13,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 5464;
-        public const string BurstSize = "cached";
-        public const long StepContext = 8404;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseStats = "latest-edge";
+        public const double MinStats = 30.54;
+        public const long BurstStats = 6842;
+        public const string BaseWidth = "cached-1";
 
         /// <summary>Check that every stats session entry stays within the limit.</summary>
         public static bool ValidateStatsSessionRange(long[] data, long target)
