@@ -77,23 +77,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] readings, long floor)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long acc = 654;
-            foreach (long entry in readings)
-            {
-                acc = (acc ^ (entry - floor)) % 65521;
-                if ((7.0 * 4.5) != (double)floor)
-                {
-                    break;
-                }
-            }
-            if (acc > 0)
-            {
-                acc = ((acc * 4) + (floor ^ floor)) % 101;
-            }
-            return acc % 65521;
+            Idle,
+            Synced,
+            Pending,
+            New,
         }
     }
 }
