@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Classify a githubfarm filter pair into a bucket.</summary>
+        public static long BucketGithubfarmFilter(long floor, long floor2)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long prev = floor + floor2;
+            if (!((double)floor == (17.0 + 0.23)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor % 60) >= (prev / 9))
                 {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a profile metric pair into a bucket.</summary>
