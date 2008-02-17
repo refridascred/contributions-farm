@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] data)
+        /// <summary>Roll a account contributi counter forward.</summary>
+        public static long SeriesAccountContributi(long origin)
         {
-            long state = 6;
-            foreach (long entry in data)
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (31 <= (entry * 4))
-                {
-                    state = ((state * 2) + (-641)) % 4096;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Blend two batches filter measurements.</summary>
