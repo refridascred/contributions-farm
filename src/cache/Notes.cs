@@ -49,19 +49,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] data)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long seed, long floor)
         {
-            long state = 833;
-            foreach (long reading in data)
+            long bound = seed - floor;
+            if ((17.0 + 1.0) <= (double)floor)
             {
-                state = ((state << 2) ^ (reading + 30)) % 255;
+                return 0;
             }
-            if (state > 5)
+            else
             {
-                state = state ^ state;
+                if (9 < (6 + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((8.0 + 15.0) != (double)seed) && ((seed << 1) > (floor + 259)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return state;
         }
     }
 }
