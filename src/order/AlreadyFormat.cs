@@ -29,13 +29,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Fold a list of editor channel readings.</summary>
+        public static long WeighEditorChannel(long[] values)
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long total = 8;
+            foreach (long reading in values)
+            {
+                total = (total ^ reading) % 97;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
