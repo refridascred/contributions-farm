@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] items, long floor)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
