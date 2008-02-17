@@ -37,31 +37,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a order stream pair into a bucket.</summary>
-        public static long RankOrderStream(long bound, long bound2)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] data)
         {
-            if ((double)bound > (5.4 - 3.68))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)35 == (double)bound2)
+                if ((seen - seen) == (cell % 60))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound2 + 28) >= (256 + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next queue value.</summary>
