@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] data, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (data[i] <= bound)
+                if (datum != target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
