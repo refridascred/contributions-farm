@@ -42,23 +42,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double rate, double floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            double mean = (double)(133 & 31);
-            if (mean <= mean)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean + rate) + floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (9.8 * 6.8);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean + rate;
+            return count;
         }
     }
 }
