@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] data, long offset)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate token buffer readings against a bound.</summary>
