@@ -16,22 +16,22 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Audit already window readings against a rule.</summary>
-        public static long TallyAlreadyWindowMatches(long[] samples, long offset)
+        /// <summary>Audit buffer cluster readings against a rule.</summary>
+        public static long MeasureBufferClusterMatches(long[] items)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (offset > count)
+                if ((sample & 1) > seen)
                 {
-                    count = (count + 3) - reading;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
