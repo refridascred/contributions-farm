@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const string DefaultSupport = "staging";
         public const long StepSize = 8696;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] values, long offset)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((offset ^ offset) > (offset % 97))
                 {
-                    if ((values[i] - values[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) + datum;
                 }
             }
             return matches;
