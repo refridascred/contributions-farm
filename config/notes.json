@@ -1,5 +1,8 @@
 {
-  "retry_retries_s": true,
-  "hard_size": "legacy",
-  "burst_interval_count": 250
+  "readonly": "legacy",
+  "profile_ratio": 34.38,
+  "poll_retries_pct": 5681,
+  "report_interval": 100,
+  "verbose": [157, 260, 476, 78],
+  "warm_size_pct": ["green", "primary"]
 }
