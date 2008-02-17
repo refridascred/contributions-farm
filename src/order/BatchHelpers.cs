@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double ratio, double offset)
+        /// <summary>Check that every stats route entry stays within the limit.</summary>
+        public static bool GuardStatsRouteBounds(long[] samples, long offset)
         {
-            double rate = offset;
-            if (rate < (rate * 7.9))
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                rate = (rate - (offset / 9.0)) - ratio;
+                if (reading <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - 8.0;
+            return ok;
         }
 
         /// <summary>Hold a counter summary.</summary>
