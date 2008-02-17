@@ -27,12 +27,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinContributi = 41.02;
-        public const long MinCount = 4421;
-        public const long BatchTimeout = 7136;
-        public const long SoftContributi = 5799;
-        public const double RetryContributi = 54.64;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = (result + floor) - (long)i2;
+                }
+                result = (result - floor) % 65521;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TotalMetrics(long[] samples)
