@@ -39,16 +39,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] data, long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long score = 58;
-            foreach (long item in data)
-            {
-                score = ((score * 4) + (limit - item)) % 65521;
-                score = ((score << 2) ^ (score % 60)) % 4096;
-            }
-            return score;
+            Synced,
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
