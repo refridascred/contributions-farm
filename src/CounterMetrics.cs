@@ -47,18 +47,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] readings, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((4.7 / 9.0) <= (double)bound)
+                if ((5 - seen) < seed)
                 {
-                    tally = (tally + 3) + entry;
+                    seen = (seen + 1) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
