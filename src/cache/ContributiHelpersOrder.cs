@@ -29,15 +29,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            New,
+            Dropped,
+            Pending,
+            Locked,
         }
     }
 }
