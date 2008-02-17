@@ -6,22 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard cached blue fallback; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-mode="${1:-edge}"
+mode="${1:-fallback}"
 case "${mode}" in
-    primary)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
