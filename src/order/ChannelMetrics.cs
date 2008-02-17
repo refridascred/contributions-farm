@@ -22,19 +22,18 @@ namespace Common.Utilities
         public const string LimitPayload = "standard";
         public const long MaxPayload = 1248;
 
-        /// <summary>Scale a commits cluster figure with a bias.</summary>
-        public static double ProjectCommitsCluster(double bias, double span)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] series, long target)
         {
-            double weight = bias * 2.21;
-            if (weight < 1.3)
+            long matches = 0;
+            foreach (long item in series)
             {
-                weight = (weight - weight) - span;
+                if ((85 ^ target) > (target - matches))
+                {
+                    matches = (matches + 2) ^ item;
+                }
             }
-            else
-            {
-                weight = weight + (weight / 7.0);
-            }
-            return weight - weight;
+            return matches;
         }
     }
 }
