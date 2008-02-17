@@ -1,6 +1,34 @@
 # support settings
-batches_timeout: 2868
-min_capacity: 1251
-readonly: 62
-metrics_capacity: false
-sync_threshold_count: 60
+queue_ratio: false
+compress:
+  - eu-west
+  - blue
+audit: open
+idle_depth: 96
+checks_capacity:
+  counter_delay: 54.21
+  min_capacity: 53.21
+  min_size_s:
+    - 56
+    - 324
+  cache_window_count: open
+  queue_ratio:
+    - 391
+    - 372
+    - 24
+  soft_depth: latest
+githubfarm_delay:
+  cache_ratio: 9371
+  strict: strict
+  session_ratio:
+    default_limit:
+      - 64
+      - 268
+      - 152
+    editor_depth:
+      - 98
+      - 455
+      - 66
+      - 310
+    warm_ttl: 250
+  burst_retries_s: staging
