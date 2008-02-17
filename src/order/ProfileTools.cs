@@ -15,12 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Pending,
-            Stale,
-            Draft,
+            public bool Token { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine counter stats values into a single score.</summary>
