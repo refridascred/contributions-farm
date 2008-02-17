@@ -15,11 +15,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultDepth = 7698;
-        public const long BurstDepth = 2674;
-        public const long BatchCommits = 2108;
-        public const long BaseFactor = 4329;
-        public const long RetryWidth = 7600;
+        public const long BatchInterval = 5461;
+        public const long HardCommits = 3561;
+        public const long DefaultTimeout = 3802;
+        public const double SoftFactor = 50.1;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool VerifyCommandLimits(long[] series, long limit)
