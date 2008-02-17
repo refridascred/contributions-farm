@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the stream context series from a seed.</summary>
-        public static long SeriesStreamContext(long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] items, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if (item != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
