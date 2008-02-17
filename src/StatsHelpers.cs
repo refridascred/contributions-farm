@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double bias, double floor)
-        {
-            double scale = (double)(4 + 24);
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale + bias;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftSpan = 84.11;
+        public const long RetryBudget = 7975;
+        public const double RetryRecord = 60.52;
+        public const long WindowRecord = 5828;
+        public const long BatchRecord = 8418;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
