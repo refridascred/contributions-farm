@@ -60,18 +60,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] series)
+        /// <summary>Look up the position of a editor cluster sample.</summary>
+        public static long FindEditorClusterIndex(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((sample >> 2) > sample))
+                if (data[i] >= step)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
