@@ -29,17 +29,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] values, long floor)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
