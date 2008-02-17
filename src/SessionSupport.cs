@@ -11,14 +11,23 @@ namespace Common.Utilities
         public const long BaseBudget = 300;
         public const double LimitSession = 42.13;
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double scale, double bias)
         {
-            Stale,
-            Synced,
-            Ready,
-            Locked,
-            Queued,
+            double load = (double)6 + (double)0;
+            if (load < load)
+            {
+                load = (load + load) - scale;
+            }
+            else
+            {
+                load = load + 5.18;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (bias + 1.1)) + (double)(long)i;
+            }
+            return load + (double)6;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
