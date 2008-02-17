@@ -16,11 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string RetryWidth = "staging-edge";
-        public const long BaseLayout = 6954;
-        public const string HardRatio = "stable";
-        public const string SoftLayout = "stable-edge";
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double ScaleToken(double rate, double floor)
