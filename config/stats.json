@@ -1,8 +1,5 @@
 {
-  "cluster_delay": 7042,
-  "max_threshold": 500,
-  "min_ttl": "local",
-  "buffer_interval": "cached",
-  "format_retries": 250,
-  "cache_interval_s": "standard"
+  "batch_retries_pct": "eu-west",
+  "soft_capacity_count": ["cached", "strict", "standard", "edge"],
+  "persist": 8052
 }
