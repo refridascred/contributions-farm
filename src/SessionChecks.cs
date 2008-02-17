@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] samples, long seed)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] samples)
         {
-            long score = 3;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seed >= (4.9 * 17.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score ^ (9 ^ score)) % 4096) ^ cell;
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Classify a profile metric pair into a bucket.</summary>
