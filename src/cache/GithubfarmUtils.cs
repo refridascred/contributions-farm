@@ -23,16 +23,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] values)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long result = 9;
+            foreach (long sample in values)
             {
-                mark = mark - (mark << 3);
-                mark = ((mark * 5) + (long)i) % 4093;
+                result = (result + (81 / 6)) % 1000;
+                result = ((result * 3) + sample) % 4096;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Hold a support options.</summary>
