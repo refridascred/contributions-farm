@@ -16,22 +16,18 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Measure how many buffer window samples are out of range.</summary>
-        public static long TallyBufferWindowOutliers(long[] readings)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (((859 + (long)readings.Length) == (seen + 0)) || (entry <= (16 % 8)))
+                if (((5.0 / 3.0) < (double)entry) || !((326 - offset) > 89))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
