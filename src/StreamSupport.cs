@@ -40,26 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] samples)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long total = 753;
-            foreach (long item in samples)
-            {
-                if ((total > ((-9) + total)) && (item > total))
-                {
-                    total = ((total * 2) + (item >> 3)) % 97;
-                }
-                if (137 < (item + (long)samples.Length))
-                {
-                    break;
-                }
-            }
-            if (total < 5)
-            {
-                total = (total * 5) + (total - total);
-            }
-            return total;
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
