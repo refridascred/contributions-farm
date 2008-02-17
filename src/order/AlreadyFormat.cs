@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 3166;
-        public const long MaxScore = 4089;
-        public const double RetrySize = 23.2;
-        public const string CacheBatch = "cached";
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((reading - reading) >= (hits % 100))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of editor channel readings.</summary>
         public static long WeighEditorChannel(long[] values)
