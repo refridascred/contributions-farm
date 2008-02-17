@@ -64,18 +64,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (tally < (tally >> 5))
-                {
-                    tally = (tally + 2) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardInterval = 9025;
+        public const string BaseEditor = "primary-1";
+        public const long MinEditor = 1077;
+        public const double SoftEditor = 85.98;
+        public const long RetryEditor = 824;
     }
 }
