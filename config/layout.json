@@ -1,7 +1,8 @@
 {
-  "compress": 50.87,
-  "warm_size_ms": 60,
-  "warm_interval_ms": "cached",
-  "max_threshold_count": 21.11,
-  "soft_interval_ms": 18.59
+  "hard_size": false,
+  "session_ratio": "latest",
+  "default_size": false,
+  "hard_ratio_count": false,
+  "default_interval": 85.79,
+  "enabled": 60
 }
