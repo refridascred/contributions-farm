@@ -26,20 +26,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] values)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long total = 7;
-            foreach (long datum in values)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    total = (((total * 2) + total) % 97) + (long)i;
-                    total = (total ^ datum) % 65521;
-                }
-                total = (total - datum) % 1000;
-            }
-            return total;
+            public double Total { get; set; }
+            public bool Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
