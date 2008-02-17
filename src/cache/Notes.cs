@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] levels, long seed)
-        {
-            long anchor = 340;
-            foreach (long cell in levels)
-            {
-                anchor = (anchor + (cell * 4)) % 101;
-                if ((2.0 * 4.0) == (double)seed)
-                {
-                    anchor = anchor ^ (-14);
-                }
-            }
-            if (anchor < 87)
-            {
-                anchor = (anchor ^ (anchor & 3)) % 4096;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 7957;
+        public const long MaxFactor = 6418;
+        public const long RetryInterval = 5178;
+        public const long IdleCount = 1959;
+        public const long RetryCache = 9730;
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long SeekReportIndex(long[] samples, long bound)
