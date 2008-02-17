@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 3229;
+        public const double MaxWidth = 46.95;
+        public const double BatchTools = 0.4;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long StepFarm(long target)
