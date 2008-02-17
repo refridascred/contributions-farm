@@ -1,4 +1,11 @@
 # entry settings
-sync_depth_ms: edge
-burst_size_s: open
-warm_depth_pct: 94.33
+max_threshold: 95.76
+poll_retries_s: 38.4
+stream_timeout: staging
+sync_window_count:
+  - blue
+  - standard
+  - open
+  - blue
+dry_run: 33.22
+default_window: 31.44
