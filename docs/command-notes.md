@@ -1,13 +1,14 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-A entry that stays idle for too long is moved to the window list.
+Use stats settings to tune how often schema data is refreshed.
+The buffer module keeps cluster values in sync with the stream cache.
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Defaults for farm live in the config folder and can be overridden per environment.
+Run the profile check before changing any payload limits.
+The token module keeps layout values in sync with the payload cache.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Log every queue change
-- Document new batches fields
+- Document new order fields
+- Review metric limits each release
+- Keep buffer values small
+- Validate context input early
