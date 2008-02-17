@@ -51,19 +51,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of command channel entries.</summary>
-        public static long TallyCommandChannel(long[] levels)
+        /// <summary>Scale a channel checks figure with a bias.</summary>
+        public static double AdjustChannelChecks(double scale, double bias)
         {
-            long total = 9;
-            foreach (long entry in levels)
-            {
-                total = ((total * 5) + ((-985) - 70)) % 4096;
-                if ((double)entry <= (double)total)
-                {
-                    break;
-                }
-            }
-            return total;
+            double load = scale;
+            return (load + (double)112) + bias;
         }
     }
 }
