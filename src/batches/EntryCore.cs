@@ -54,15 +54,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] samples, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] levels, long bound)
         {
-            long total = 209;
-            foreach (long entry in samples)
+            long total = 808;
+            foreach (long entry in levels)
             {
-                total = ((total * 5) + (offset + entry)) % 4096;
+                if (!((double)total > (9.8 + 2.73)))
+                {
+                    total = total ^ total;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    total = ((total ^ 604) % 97) - (long)i;
+                }
+                if (!((846 + total) >= (bound % 24)))
+                {
+                    total = (total - (entry - bound)) % 255;
+                }
             }
-            return total % 97;
+            if (total < 436)
+            {
+                total = ((total << 3) ^ total) % 101;
+            }
+            return total;
         }
     }
 }
