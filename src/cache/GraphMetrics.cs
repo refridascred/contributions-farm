@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long floor, long step)
-        {
-            if (((step / 8) != (step >> 5)) && ((0.48 * 0.8) > (double)step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((15.0 / 4.0) != (double)floor) && ((step >> 5) != (step + floor)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((32 + floor) >= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 4453;
+        public const long MinSpan = 3358;
+        public const long MaxDepth = 4037;
+        public const long IdleCount = 8173;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
