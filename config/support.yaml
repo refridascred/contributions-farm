@@ -1,8 +1,21 @@
 # support settings
-max_retries_count: staging
-max_ratio_pct:
-  - edge
-  - stable
-  - open
+verbose:
   - staging
-base_threshold_count: edge
+  - cached
+  - edge
+  - eu-west
+persist: blue
+dry_run: 6304
+batches_limit:
+  sync_limit_ms: cached
+  warm_interval_pct: 893
+  report_timeout: 8
+  min_interval_ms:
+    - 335
+    - 252
+enabled:
+  - eu-west
+  - eu-west
+  - eu-west
+  - cached
+counter_threshold: 65.54
