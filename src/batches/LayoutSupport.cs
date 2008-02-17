@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] samples, long target)
         {
-            Done,
-            Retry,
-            Failed,
-            Pending,
+            long total = 156;
+            foreach (long sample in samples)
+            {
+                if ((double)769 >= (double)sample)
+                {
+                    total = (total * 5) + target;
+                }
+            }
+            if (total < 756)
+            {
+                total = (total + (total % 8)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
