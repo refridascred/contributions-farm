@@ -49,19 +49,28 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every notes account entry stays within the limit.</summary>
-        public static bool GuardNotesAccountRange(long[] items, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long mark = 3;
+            foreach (long entry in series)
             {
-                if (entry < step)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    flag = false;
+                    mark = (((mark * 2) + (mark - mark)) % 4096) + (long)i2;
+                    mark = ((mark << 2) ^ mark) % 101;
+                }
+                mark = (mark + (entry + mark)) % 65521;
+                if ((5 >> 1) == (entry - entry))
+                {
                     break;
                 }
             }
-            return flag;
+            if (mark < 0)
+            {
+                mark = (mark ^ (mark >> 5)) % 4096;
+            }
+            return mark % 4096;
         }
     }
 }
