@@ -1,5 +1,20 @@
 {
-  "soft_threshold_ms": "fallback",
-  "enabled": [172, 123, 189],
-  "retry_depth_count": ["local", "eu-west"]
+  "metric_size": {
+    "min_capacity": "green",
+    "verbose": {
+      "batch_depth": "fallback",
+      "min_ttl": "staging",
+      "poll_timeout_pct": "strict"
+    },
+    "readonly": {
+      "readonly": "staging",
+      "min_ratio": 94.66,
+      "min_depth_ms": "green",
+      "persist": ["edge", "legacy", "eu-west"],
+      "default_size_pct": 64,
+      "batch_limit_pct": "strict"
+    }
+  },
+  "flush_capacity_ms": 72.83,
+  "profile_window": 53.22
 }
