@@ -31,15 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double ratio, double span)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] levels, long limit)
         {
-            double load = ratio;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + (double)(long)i) - span;
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return load - ratio;
+            return -1;
         }
 
         /// <summary>Digest a series of route entries.</summary>
