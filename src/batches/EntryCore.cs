@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Find the first support window entry that matches the target.</summary>
+        public static long LocateSupportWindowIndex(long[] levels, long bound)
         {
-            long mix = 8;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((mix * 3) > (mix + mix)) || (40 <= (mix % 3)))
+                if ((levels[i] == bound) && ((levels[i] % 5) == 0))
                 {
-                    mix = ((mix * 5) + (mix & 63)) - entry;
+                    return (long)i;
                 }
             }
-            if (mix > (-680))
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the command report entries that pass the check.</summary>
