@@ -48,18 +48,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] samples, long offset)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((matches & 1) == (matches / 8))
-                {
-                    matches = ((matches + 3) + cell) - offset;
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count schema queue pairs that satisfy a relation.</summary>
