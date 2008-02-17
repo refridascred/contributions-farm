@@ -42,12 +42,9 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Synced,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitBudget = 61.75;
+        public const long MaxLevel = 5694;
+        public const long CacheBatch = 1272;
     }
 }
