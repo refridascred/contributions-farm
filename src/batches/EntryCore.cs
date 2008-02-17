@@ -60,14 +60,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Audit record filter readings against a rule.</summary>
+        public static long TallyRecordFilterGaps(long[] items)
         {
-            Pending,
-            Locked,
-            Done,
-            Active,
-            Stale,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!(((reading - seen) >= (seen - seen)) && (reading >= 7)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
