@@ -61,13 +61,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Count the editor already entries that pass the check.</summary>
+        public static long CountEditorAlreadyMatches(long[] series, long offset)
         {
-            public bool Level { get; set; }
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (offset > (offset * 5))
+                {
+                    seen = (seen + 2) - item;
+                }
+            }
+            return seen;
         }
     }
 }
