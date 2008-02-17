@@ -26,13 +26,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] data, long bound)
         {
-            Synced,
-            Pending,
-            Closed,
-            Stale,
+            long state = 4;
+            foreach (long value in data)
+            {
+                state = (((state * 5) + state) ^ value) + bound;
+            }
+            return state % 97;
         }
     }
 }
