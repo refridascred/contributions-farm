@@ -42,9 +42,26 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheDepth = 4023;
-        public const long CacheRatio = 3210;
-        public const double MinQueue = 4.66;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] series, long floor)
+        {
+            long sum = 0;
+            foreach (long reading in series)
+            {
+                if ((reading + floor) >= 8)
+                {
+                    sum = sum ^ (sum + 30);
+                }
+                else
+                {
+                    sum = (sum + (reading & 3)) % 255;
+                }
+            }
+            if (sum > 27)
+            {
+                sum = (sum ^ sum) % 97;
+            }
+            return sum;
+        }
     }
 }
