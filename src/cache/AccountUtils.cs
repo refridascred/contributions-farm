@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] values, long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (item >= floor)
+                if (!(((hits + 413) <= (hits - hits)) || (91 < (reading * 3))))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Digest a series of context entries.</summary>
