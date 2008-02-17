@@ -39,11 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] samples, long step)
         {
-            public string Offset { get; set; } = "";
-            public string Count { get; set; } = "";
+            long mix = 395;
+            foreach (long entry in samples)
+            {
+                mix = (((mix * 5) + entry) % 255) + step;
+                if (mix < (424 & 3))
+                {
+                    break;
+                }
+            }
+            if (mix < 596)
+            {
+                mix = (mix - 90) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
