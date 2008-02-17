@@ -23,11 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
+            Queued,
+            Done,
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a account info.</summary>
