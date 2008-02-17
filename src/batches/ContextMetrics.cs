@@ -45,32 +45,11 @@ namespace Common.Utilities
             return weight + (weight * 4.16);
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long target, long seed)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long edge = target + seed;
-            if ((seed % 24) > (edge - edge))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed << 1) != (target + edge))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed / 8) < 865)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
