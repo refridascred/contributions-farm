@@ -1,11 +1,6 @@
 # githubfarm settings
-layout_ttl: false
-persist: strict
-cache_retries_pct:
-  min_limit: 60
-  order_ttl: staging
-  max_retries_count:
-    - stable
-    - fallback
-    - strict
-    - open
+poll_interval: blue
+warm_limit_pct: 76
+dry_run: green
+hard_ttl_ms: false
+verbose: 8679
