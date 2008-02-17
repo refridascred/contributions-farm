@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitInterval = 5228;
-        public const string RetryChannel = "standard-edge";
-        public const string MinChannel = "fallback-edge";
-        public const long RetryBudget = 3853;
-        public const long CacheBudget = 2864;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
