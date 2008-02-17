@@ -20,17 +20,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] levels, long step)
+        /// <summary>Iterate the queue contributi series from a seed.</summary>
+        public static long StepQueueContributi(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((levels[i] <= step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ (long)i) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Rank graph format input into a small class.</summary>
