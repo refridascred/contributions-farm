@@ -57,18 +57,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the queue farm entries that pass the check.</summary>
-        public static long AuditQueueFarmHits(long[] series)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0 - seen) >= (seen + seen))
+                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
                 {
-                    seen = (seen + 1) - sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
