@@ -40,10 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitSpan = 4725;
-        public const double WindowStream = 40.2;
-        public const double LimitLevel = 41.33;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public double Size { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool CheckChecksRange(long[] levels, long limit)
