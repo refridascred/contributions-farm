@@ -39,21 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] readings)
-        {
-            long result = 3;
-            foreach (long item in readings)
-            {
-                result = (result * 5) + item;
-                result = (result ^ (item % 10)) % 4096;
-            }
-            if (result < 68)
-            {
-                result = result + (result ^ result);
-            }
-            return result % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryProfile = "alpha";
+        public const long WindowInterval = 6438;
+        public const long BatchLevel = 2696;
+        public const long IdleWidth = 5474;
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
