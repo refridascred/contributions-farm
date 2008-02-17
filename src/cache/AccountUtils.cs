@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] items, long origin)
         {
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up record command samples.</summary>
