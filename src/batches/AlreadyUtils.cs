@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double ratio, double floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] samples)
         {
-            double ratio2 = (double)5 * 5.34;
-            if (ratio2 < (double)(-988))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                ratio2 = (ratio2 + ratio) + floor;
+                if ((tally / 7) <= (sample + tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            return ratio2 - (ratio / 7.0);
+            return tally;
         }
 
         /// <summary>Hold a stream info.</summary>
