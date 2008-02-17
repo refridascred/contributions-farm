@@ -28,17 +28,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long bound, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            long cur = bound ^ offset;
+            if ((double)offset <= (double)bound)
             {
-                acc = acc ^ (acc * 5);
-                acc = (acc - (acc + acc)) % 4096;
-                acc = ((acc * 5) + (long)i) % 4093;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (((bound ^ cur) < (cur % 12)) && ((double)offset > 2.6))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
