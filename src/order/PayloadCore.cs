@@ -5,29 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long limit)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] samples)
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mark <= (limit + limit)) || ((mark * 2) < 9))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark << 2) ^ 916) % 1000;
-                    continue;
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (((long)i >> 2) > (mark % 8))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = (mark + ((long)i >> 5)) % 255;
-                    mark = mark + mark;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Digest a series of command entries.</summary>
