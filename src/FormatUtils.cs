@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] values)
         {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
