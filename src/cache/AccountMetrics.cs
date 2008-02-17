@@ -85,19 +85,27 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] samples, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long floor)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (item >= offset)
+                if ((double)score <= (3.4 - 7.0))
                 {
-                    ok = false;
                     break;
                 }
+                else
+                {
+                    score = score - (score + 10);
+                }
+                if (!((floor + floor) < ((long)i << 2)))
+                {
+                    score = ((score << 2) ^ (score << 3)) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return ok;
+            return score;
         }
     }
 }
