@@ -27,15 +27,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double ratio, double floor)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] data, long step)
         {
-            double ratio2 = 6.0;
-            if (ratio2 >= ratio)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio2 = (ratio2 - (double)6) - floor;
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return ratio2 - ratio;
+            return -1;
         }
 
         /// <summary>Describe the tools state values.</summary>
