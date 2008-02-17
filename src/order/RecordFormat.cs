@@ -27,11 +27,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseGraph = 0.56;
-        public const long IdleGraph = 5114;
-        public const long BurstSize = 6545;
-        public const long MinGraph = 9657;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= limit) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
