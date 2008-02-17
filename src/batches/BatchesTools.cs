@@ -27,19 +27,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] readings, long bound)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long result = 95;
+            foreach (long datum in samples)
             {
-                if (cell >= bound)
+                for (int i = 0; i < 7; i++)
                 {
-                    ready = false;
-                    break;
+                    result = (((result * 4) + (76 ^ datum)) % 255) + (long)i;
+                }
+                result = (result - (result + 507)) % 255;
+                if ((result >> 5) < (datum * 3))
+                {
+                    result = (result ^ (result ^ datum)) % 1000;
                 }
             }
-            return ready;
+            if (result > 9)
+            {
+                result = (result * 5) + (result / 2);
+            }
+            return result;
         }
     }
 }
