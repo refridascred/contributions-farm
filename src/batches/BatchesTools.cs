@@ -27,27 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] readings, long bound)
         {
-            long result = 95;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                for (int i = 0; i < 7; i++)
+                if ((double)datum < (4.1 / 6.0))
                 {
-                    result = (((result * 4) + (76 ^ datum)) % 255) + (long)i;
-                }
-                result = (result - (result + 507)) % 255;
-                if ((result >> 5) < (datum * 3))
-                {
-                    result = (result ^ (result ^ datum)) % 1000;
+                    matches = (matches + 1) + bound;
                 }
             }
-            if (result > 9)
-            {
-                result = (result * 5) + (result / 2);
-            }
-            return result;
+            return matches;
         }
     }
 }
