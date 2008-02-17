@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxSize = 86.3;
-        public const long RetryWidth = 3518;
-        public const string LimitSpan = "legacy-edge";
-        public const long MaxStream = 3639;
-        public const long BurstStream = 9866;
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
