@@ -1,11 +1,13 @@
 # githubfarm settings
-persist: 89.01
-warm_limit_count:
-  - green
-  - local
-  - edge
-hard_size: 8912
-strict:
-  - standard
-  - open
-  - green
+strict: false
+idle_size: 61.95
+retry_timeout_ms:
+  channel_timeout:
+    - open
+    - edge
+    - staging
+    - legacy
+  cache_retries_pct: blue
+  metrics_limit: 41
+cluster_delay: strict
+sync_ratio_s: true
