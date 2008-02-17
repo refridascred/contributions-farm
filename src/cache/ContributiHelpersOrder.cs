@@ -14,18 +14,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
+        /// <summary>Classify a filter tools pair into a bucket.</summary>
+        public static long BucketFilterTools(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long diff = floor - floor2;
+            if (!((4 + floor2) < (diff * 3)))
             {
-                if ((cell % 2) < matches)
+                return 2;
+            }
+            else
+            {
+                if (diff >= (floor / 9))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((6 >> 4) != (floor2 << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
