@@ -34,18 +34,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order buffer readings against a rule.</summary>
-        public static long TallyOrderBufferHits(long[] readings, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long bound, long limit)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if (((limit >> 5) > limit) || ((double)limit != (7.91 * 9.6)))
             {
-                if (!((6 - matches) >= (2 >> 4)) && ((target - (-9)) != (target + matches)))
+                return 6;
+            }
+            else
+            {
+                if (bound < (bound + bound))
                 {
-                    matches = (matches + 1) + item;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
     }
 }
