@@ -58,13 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Draft,
-            Locked,
-            Stale,
-            Active,
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
