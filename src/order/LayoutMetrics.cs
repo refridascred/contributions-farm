@@ -16,11 +16,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public double Level { get; set; }
-            public bool Weight { get; set; }
+            Pending,
+            Failed,
+            Retry,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a buffer header.</summary>
