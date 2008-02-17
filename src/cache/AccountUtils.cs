@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] items, long origin)
+        /// <summary>Digest a series of window record entries.</summary>
+        public static long DigestWindowRecord(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long anchor = 35;
+            foreach (long datum in series)
             {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (anchor + anchor)) - datum;
             }
-            return stale;
+            if (anchor > 85)
+            {
+                anchor = (anchor * 2) + (bound >> 4);
+            }
+            return anchor;
         }
 
         /// <summary>Match up record command samples.</summary>
