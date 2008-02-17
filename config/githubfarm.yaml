@@ -1,6 +1,29 @@
 # githubfarm settings
-idle_size_pct: false
-strict: 41.23
-sync_interval: 9548
-readonly: 19
-checks_retries: standard
+idle_timeout: true
+audit: staging
+min_threshold_pct:
+  - staging
+  - fallback
+  - blue
+  - standard
+flush_depth:
+  strict: 7357
+  cache_ttl_ms:
+    editor_window: true
+    base_limit: 74
+    command_window:
+      - latest
+      - open
+    command_size:
+      - 488
+      - 286
+      - 14
+    max_depth_s: 1950
+  notes_threshold: eu-west
+  counter_size: open
+flush_delay: false
+dry_run:
+  - 11
+  - 101
+  - 11
+  - 95
