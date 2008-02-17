@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 1858;
+        public const long LimitRatio = 753;
+        public const long BatchSize = 8221;
+        public const long WindowDepth = 2647;
 
         /// <summary>Roll a editor farm counter forward.</summary>
         public static long DeriveEditorFarm(long target)
