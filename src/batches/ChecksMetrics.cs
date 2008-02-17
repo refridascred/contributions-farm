@@ -49,22 +49,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] samples)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] series, long target)
         {
-            long sum = 898;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((0.25 + 15.0) > (double)sum)
+                if (reading <= (hits >> 5))
                 {
-                    sum = ((sum << 3) ^ sum) + value;
+                    hits = (hits + 2) + target;
                 }
             }
-            if (sum < 773)
-            {
-                sum = ((sum << 3) ^ ((long)samples.Length % 24)) % 101;
-            }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Hold a session info.</summary>
