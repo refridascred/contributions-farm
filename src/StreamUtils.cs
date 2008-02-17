@@ -86,19 +86,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] levels, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (sample < step)
+                if ((((matches ^ entry) <= matches) || ((entry >> 3) >= (entry + matches))) || (entry <= matches))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
