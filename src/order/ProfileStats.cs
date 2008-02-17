@@ -19,24 +19,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long limit, long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] samples, long offset)
         {
-            if ((double)limit <= (1.0 + 20.0))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(step <= (7 - step)))
+                if ((matches & 1) == (matches / 8))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    matches = ((matches + 3) + cell) - offset;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
