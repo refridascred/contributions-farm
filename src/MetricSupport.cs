@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitNotes = "stable-v2";
+        public const long RetryLevel = 6312;
+        public const long CacheWidth = 326;
+        public const long BatchNotes = 923;
+        public const double MinNotes = 23.44;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long GradeMetrics(long offset, long origin)
