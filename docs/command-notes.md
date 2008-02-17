@@ -1,12 +1,16 @@
 # Command notes
 
-Keep queue and tools names short and lowercase.
-Each profile is validated before it reaches the report queue.
-Each notes is validated before it reaches the graph queue.
+The route report groups every stats by contributi.
+Defaults for filter live in the config folder and can be overridden per environment.
+A tools that stays idle for too long is moved to the payload list.
+
+The order helpers are pure functions, so they are safe to call from any thread.
+Keep report and order names short and lowercase.
+A notes that stays idle for too long is moved to the account list.
 
 ## Guidelines
 
-- Log every metrics change
-- Prefer counter defaults
-- Review cache limits each release
-- Validate order input early
+- Keep layout values small
+- Document new cluster fields
+- Validate tools input early
+- Prefer metric defaults
