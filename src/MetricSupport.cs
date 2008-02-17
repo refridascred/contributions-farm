@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] series, long origin)
+        /// <summary>Find the first contributi entry entry that matches the target.</summary>
+        public static long LookupContributiEntryIndex(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell != origin)
+                if ((readings[i] < seed) && ((readings[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
