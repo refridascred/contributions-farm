@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] samples)
+        /// <summary>Count the layout notes entries that pass the check.</summary>
+        public static long CountLayoutNotesMatches(long[] samples, long origin)
         {
-            long mark = 695;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                mark = ((mark + 394) % 4096) ^ sample;
+                if ((matches + matches) == (matches + value))
+                {
+                    matches = (matches + 3) + origin;
+                }
             }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Fold a list of order readings.</summary>
