@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 636;
-        public const double RetryTools = 80.38;
-        public const long WindowFactor = 4295;
-        public const string IdleTools = "fallback-1";
-        public const string BurstRatio = "fallback";
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long SeriesCounter(long step)
