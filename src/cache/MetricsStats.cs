@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate githubfarm token samples.</summary>
-        public static long DigestGithubfarmToken(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] levels)
         {
-            long state = 5;
-            foreach (long sample in values)
+            long state = 161;
+            foreach (long value in levels)
             {
-                state = ((state << 2) ^ (state >> 3)) % 97;
-                if ((sample % 60) == (28 + state))
-                {
-                    break;
-                }
+                state = (((state << 2) ^ (state - state)) % 4096) + value;
             }
-            if (state < (-707))
+            if (state > 801)
             {
-                state = ((state * 3) + (state + state)) % 65521;
+                state = (state ^ state) % 255;
             }
-            return state % 97;
+            return state;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
