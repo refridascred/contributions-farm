@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of schema format readings.</summary>
-        public static long MatchSchemaFormatCount(long[] items)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 940;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)anchor >= (12.0 / 6.0))
                 {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor + ((long)series.Length % 60)) % 255) ^ entry;
                 }
             }
-            return tally;
+            if (anchor > 129)
+            {
+                anchor = anchor ^ (596 >> 3);
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
