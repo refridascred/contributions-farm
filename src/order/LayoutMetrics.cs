@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Retry,
-            Ready,
-            Failed,
-            Pending,
-            New,
+            public string Owner { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Project the next queue value.</summary>
