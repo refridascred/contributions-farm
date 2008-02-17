@@ -43,17 +43,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long target)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long limit, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
+            if (limit > (limit & 3))
             {
-                carry = (carry ^ 3) % 255;
-                carry = (carry ^ ((long)i * 4)) % 101;
-                carry = ((carry * 5) + (long)i) % 4093;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((double)origin <= (4.67 + 15.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
