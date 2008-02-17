@@ -28,22 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] data)
+        /// <summary>Accumulate profile report samples.</summary>
+        public static long TallyProfileReport(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long anchor = 648;
+            foreach (long datum in items)
             {
-                if ((cell ^ cell) == (62 << 2))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 4) + (anchor & 127)) ^ datum;
             }
-            return hits;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a notes record.</summary>
