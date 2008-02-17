@@ -1,10 +1,18 @@
 {
-  "enabled": "local",
-  "cache_window": "stable",
-  "metric_ratio": {
-    "entry_capacity": 60,
-    "poll_window": "blue",
-    "cache_limit_count": 19.17,
-    "verbose": true
-  }
+  "flush_delay_pct": {
+    "default_ttl_s": [31, 165, 118, 26],
+    "default_ratio_pct": 1229,
+    "flush_depth_s": {
+      "queue_threshold": 4196,
+      "graph_timeout": [419, 147, 466, 284],
+      "batch_delay": ["strict", "local", "standard", "staging"],
+      "audit": 75,
+      "poll_delay": "strict",
+      "sync_depth": false
+    },
+    "poll_interval": 6949,
+    "flush_delay": 30
+  },
+  "schema_retries": 91,
+  "audit": [371, 475, 310]
 }
