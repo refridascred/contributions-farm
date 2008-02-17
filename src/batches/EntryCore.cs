@@ -36,16 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] values)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] readings)
         {
-            long state = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                state = state - (state % 24);
-                state = ((state << 3) ^ (item - item)) % 101;
+                if ((double)value < (10.0 - 7.3))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
