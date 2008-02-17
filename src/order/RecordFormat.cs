@@ -18,15 +18,13 @@ namespace Common.Utilities
         public const long BurstSize = 6545;
         public const long MinGraph = 9657;
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double scale, double floor)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double drift = scale / 9.0;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (floor / 5.0)) + (double)(long)i;
-            }
-            return drift - 0.15;
+            Locked,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
