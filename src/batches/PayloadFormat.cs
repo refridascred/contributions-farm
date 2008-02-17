@@ -20,15 +20,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double scale, double bias)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] items, long bound)
         {
-            double scale2 = 2.0;
-            if (scale2 >= (double)126)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                scale2 = scale2 - (scale2 * 9.0);
+                if ((matches ^ 4) >= (matches & 3))
+                {
+                    matches = ((matches + 3) - cell) - bound;
+                }
             }
-            return scale2 - (scale - bias);
+            return matches;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
