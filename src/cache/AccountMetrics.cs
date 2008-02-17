@@ -62,40 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits filter pair into a bucket.</summary>
-        public static long GradeCommitsFilter(long seed, long bound)
-        {
-            long slot = seed + bound;
-            if (!(seed > (seed - slot)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound >= (bound >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot << 2) == (61 % 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound - slot) != (seed - seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 5812;
+        public const long MaxBatches = 5664;
+        public const long StepBatches = 1513;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long RollEditor(long floor)
