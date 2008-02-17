@@ -14,13 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
-        {
-            public bool Token { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 9562;
+        public const string StepTimeout = "local-1";
+        public const long StepGraph = 1396;
+        public const long MinGraph = 2401;
+        public const long WindowGraph = 7564;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long ScoreQueue(long[] samples)
