@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] levels, long bound)
         {
-            Pending,
-            Ready,
-            Draft,
-            Idle,
-            Synced,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count + datum) != (bound + bound))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a counter entry reading.</summary>
