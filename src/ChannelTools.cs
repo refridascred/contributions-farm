@@ -23,18 +23,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] data, long step)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((long)data.Length == (5 + step))
                 {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) - sample;
                 }
             }
             return count;
