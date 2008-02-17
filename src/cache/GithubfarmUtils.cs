@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] readings, long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (readings[i] < seed)
+                if ((((seed - (-768)) >= hits) || ((4.0 - 7.25) != (double)seed)) && ((seed / 7) <= hits))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
