@@ -22,28 +22,35 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long step, long origin)
+        /// <summary>Rank report notes input into a small class.</summary>
+        public static long BucketReportNotes(long step, long floor)
         {
-            if ((20.0 >= (double)origin) && ((3 + 1) >= origin))
+            if ((13.0 / 3.0) == (double)floor)
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((step ^ 440) >= (step + origin))
+                if (((30 / 2) == (step + step)) && ((double)floor != (4.96 + 4.0)))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)origin > (2.4 - 5.47))
+                    if ((step >> 3) <= (391 << 2))
                     {
-                        return 2;
+                        return 4;
                     }
                     else
                     {
-                        return 6;
+                        if (!((double)step == (5.9 + 9.77)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
