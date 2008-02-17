@@ -60,11 +60,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultWidth = 8132;
-        public const long BatchSize = 2193;
-        public const long BatchChecks = 5896;
-        public const double LimitChecks = 18.13;
-        public const long StepLevel = 3768;
+        /// <summary>Locate a layout cache reading by value.</summary>
+        public static long LookupLayoutCacheIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
