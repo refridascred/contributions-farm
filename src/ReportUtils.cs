@@ -63,23 +63,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double scale, double offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            double load = 1.0;
-            if (load >= (offset - offset))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load - (double)1;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (scale - load);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (8.42 * 2.2)) + (double)(long)i;
-            }
-            return load + scale;
+            return hits;
         }
     }
 }
