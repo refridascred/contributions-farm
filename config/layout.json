@@ -1,17 +1,8 @@
 {
-  "retry_capacity": {
-    "buffer_delay": "latest",
-    "sync_depth_pct": 59.59,
-    "compress": {
-      "hard_window_pct": "stable",
-      "flush_capacity_ms": [209, 137],
-      "compress": 48,
-      "sync_capacity_count": 54,
-      "readonly": 48.75,
-      "soft_size": "edge"
-    },
-    "cache_delay_ms": 85.93
-  },
-  "hard_delay_pct": 7626,
-  "idle_interval_ms": "cached"
+  "stats_ttl": false,
+  "command_capacity": 709,
+  "soft_threshold": 24.75,
+  "idle_interval_ms": 1024,
+  "hard_retries": 8889,
+  "persist": 85.9
 }
