@@ -38,22 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long carry = 374;
-            foreach (long entry in levels)
-            {
-                if ((entry * 3) <= carry)
-                {
-                    carry = (carry * 5) + entry;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry + 449)) % 65521;
-                }
-            }
-            return carry;
+            Paused,
+            Ready,
+            Idle,
+            Retry,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
