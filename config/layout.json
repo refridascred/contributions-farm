@@ -1,19 +1,8 @@
 {
-  "burst_interval": {
-    "hard_limit_ms": 250,
-    "idle_delay_ms": "blue",
-    "strict": "eu-west"
-  },
-  "flush_size_pct": 8,
-  "verbose": {
-    "batches_retries": {
-      "max_threshold": "edge",
-      "token_ttl": "strict",
-      "retry_limit_pct": 49.13
-    },
-    "metrics_size": "cached",
-    "filter_interval": [247, 70, 290, 339]
-  },
-  "dry_run": true,
-  "window_timeout": 91.21
+  "max_size": "staging",
+  "command_ratio": 89.09,
+  "soft_limit_pct": 9853,
+  "min_retries_pct": "fallback",
+  "default_threshold": 37.88,
+  "retry_ratio": 88
 }
