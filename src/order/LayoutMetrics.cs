@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] samples, long floor)
+        /// <summary>Roll a batches batch counter forward.</summary>
+        public static long StepBatchesBatch(long target)
         {
-            long acc = 475;
-            foreach (long datum in samples)
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                acc = (acc ^ (6 - floor)) ^ datum;
+                state = state - (target % 60);
+                state = (state - (target & 255)) % 97;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Fold a list of window readings.</summary>
