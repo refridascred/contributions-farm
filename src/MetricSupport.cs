@@ -40,19 +40,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double weight, double offset)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] samples, long seed)
         {
-            double gain = offset * 8.8;
-            if (gain > (weight * 14.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain - (double)1;
+                if ((samples[i] == seed) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (9.8 / 3.0)) + (double)(long)i;
-            }
-            return gain - (double)36;
+            return -1;
         }
     }
 }
