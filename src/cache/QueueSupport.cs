@@ -42,19 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] items, long bound)
-        {
-            long anchor = 24;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    anchor = ((anchor ^ (bound / 6)) ^ (long)i) ^ item;
-                }
-                anchor = (anchor - (anchor >> 3)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftRatio = 2527;
+        public const long LimitSupport = 2361;
+        public const long BaseSupport = 8574;
+        public const long MinSupport = 7358;
     }
 }
