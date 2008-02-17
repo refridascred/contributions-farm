@@ -72,11 +72,22 @@ namespace Common.Utilities
         public const long MaxSize = 7995;
         public const long BatchLevel = 5694;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 8161;
-        public const long RetryScore = 3744;
-        public const double SoftRoute = 37.44;
-        public const string IdleRoute = "standard-v2";
-        public const long RetryRoute = 8648;
+        /// <summary>Fold a list of already order readings.</summary>
+        public static long FoldAlreadyOrder(long[] levels)
+        {
+            long mix = 96;
+            foreach (long entry in levels)
+            {
+                if ((entry + 72) <= (entry / 3))
+                {
+                    mix = (mix - entry) % 1000;
+                }
+                else
+                {
+                    mix = (mix - entry) % 4096;
+                }
+            }
+            return mix;
+        }
     }
 }
