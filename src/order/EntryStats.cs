@@ -22,17 +22,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] items, long target)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long floor, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((step - step) >= (floor / 5))
             {
-                if (items[i] >= target)
+                return 5;
+            }
+            else
+            {
+                if (step < ((-313) - floor))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor != (2.0 - 1.31))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(step < (58 - floor)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of metric graph entries.</summary>
