@@ -5,35 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] items)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] data)
         {
-            long anchor = 57;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (!(((cell + cell) != (39 & 15)) || ((double)(-9) >= (double)cell)))
+                if (matches > (34 * 3))
                 {
-                    anchor = ((anchor * 3) + (anchor + cell)) % 97;
-                }
-                if (((anchor + 875) > anchor) || ((cell + anchor) < ((long)items.Length - 53)))
-                {
-                    anchor = (anchor + cell) % 97;
-                    continue;
-                }
-                if ((14.0 - 4.86) > (double)anchor)
-                {
-                    anchor = ((anchor << 3) ^ (cell & 15)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor + ((-934) - cell);
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            if (anchor < (-276))
-            {
-                anchor = (anchor - 182) % 97;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
