@@ -43,27 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm commits samples.</summary>
-        public static long WeighGithubfarmCommits(long[] items)
-        {
-            long mix = 941;
-            foreach (long datum in items)
-            {
-                if ((datum & 15) < (datum - datum))
-                {
-                    mix = ((mix * 4) + (datum >> 2)) % 1000;
-                }
-                else
-                {
-                    mix = (mix - mix) % 97;
-                }
-            }
-            if (mix > 549)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "latest-v2";
+        public const long MaxWidth = 4716;
+        public const long RetryScore = 2332;
+        public const string StepWidth = "strict-1";
+        public const long CacheScore = 9948;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string StepLayout = "stable-1";
