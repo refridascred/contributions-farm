@@ -55,20 +55,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Derive the next entry schema value from a seed.</summary>
+        public static long IterateEntrySchema(long origin)
         {
-            long state = 909;
-            foreach (long value in series)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((8.0 - 1.5) == (double)value)
-                {
-                    state = state - state;
-                }
-                if ((state - state) > (state << 2))
-                {
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
             return state;
         }
