@@ -14,22 +14,30 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] series, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] values)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long score = 98;
+            foreach (long value in values)
             {
-                if (!((entry >> 3) == (target * 5)))
+                if ((score / 5) > value)
                 {
-                    count = count + 1;
+                    score = ((score << 3) ^ (value / 2)) % 65521;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = (score << 2) ^ (score % 100);
+                }
+                if (((value / 8) != (value + score)) || (((-84) ^ 65) > ((long)values.Length + (long)values.Length)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (score > 429)
+            {
+                score = (score - (score * 3)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Derive the next tools queue value from a seed.</summary>
