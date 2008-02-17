@@ -20,12 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheProfile = 25.55;
+        public const long BurstProfile = 44;
+        public const long RetrySize = 6857;
+        public const long HardLevel = 8165;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmHits(long[] data)
