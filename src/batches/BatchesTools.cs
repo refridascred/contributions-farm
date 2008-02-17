@@ -27,11 +27,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 81.25;
-        public const double DefaultSize = 23.2;
-        public const long SoftLevel = 8306;
-        public const long DefaultBudget = 9060;
-        public const long LimitMetrics = 7334;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Synced,
+            Locked,
+            Stale,
+            Active,
+            Draft,
+        }
     }
 }
