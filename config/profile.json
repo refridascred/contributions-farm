@@ -1,8 +1,6 @@
 {
-  "schema_depth": "cached",
-  "retry_threshold_pct": 1606,
-  "readonly": "eu-west",
-  "flush_threshold_ms": 53,
-  "cluster_interval": 2671,
-  "max_ttl_ms": "staging"
+  "base_limit": 26,
+  "audit": ["standard", "cached"],
+  "batch_ratio_count": [253, 155, 241],
+  "sync_depth_count": false
 }
