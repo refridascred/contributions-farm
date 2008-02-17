@@ -47,13 +47,18 @@ namespace Common.Utilities
         public const long BurstSpan = 9170;
         public const long MaxBatches = 506;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Roll a schema githubfarm counter forward.</summary>
+        public static long SeriesSchemaGithubfarm(long origin)
         {
-            public double Ratio { get; set; }
-            public double Rank { get; set; }
-            public bool Label { get; set; }
-            public long Limit { get; set; }
+            long state = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                state = (state - (state >> 1)) % 101;
+                state = (state + (long)i) % 1000;
+                state = state - (305 * 3);
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
