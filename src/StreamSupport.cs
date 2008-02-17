@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long WindowSession = 7188;
         public const long CacheInterval = 9835;
 
-        /// <summary>Count the batches window entries that pass the check.</summary>
-        public static long TallyBatchesWindowOutliers(long[] series)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits - cell) < (cell / 5))
+                if (data[i] <= seed)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a support reading by value.</summary>
