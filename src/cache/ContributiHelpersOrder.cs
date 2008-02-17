@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] data, long origin)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
             long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)cell >= (1.8 * 2.34))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) - origin;
+                    if ((series[i] + series[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
