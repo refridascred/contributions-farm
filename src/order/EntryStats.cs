@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] items, long target)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample >= target)
+                if (values[i] >= origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Accumulate support stats samples.</summary>
