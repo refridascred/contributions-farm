@@ -27,14 +27,9 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Done,
-            Ready,
-            Idle,
-            Active,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowTools = "open";
+        public const long DefaultTools = 1269;
+        public const string IdleSize = "standard-edge";
     }
 }
