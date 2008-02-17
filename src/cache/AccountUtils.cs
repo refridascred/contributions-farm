@@ -37,14 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] samples, long origin)
         {
-            Pending,
-            Queued,
-            Idle,
-            New,
-            Synced,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((origin >> 5) <= (tally * 4))
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
