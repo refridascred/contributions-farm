@@ -23,20 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long offset)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!(((long)i << 3) <= ((long)i / 6)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = mix - (offset * 2);
+                    if ((samples[i] ^ samples[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = mix - (offset + offset);
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
