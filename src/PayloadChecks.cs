@@ -59,19 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] series, long step)
+        /// <summary>Check that every buffer batches entry stays within the limit.</summary>
+        public static bool GuardBufferBatchesLimits(long[] data, long seed)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (sample <= step)
+                if (value > seed)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
