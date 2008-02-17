@@ -35,18 +35,10 @@ namespace Common.Utilities
             return drift + (4.68 / 9.0);
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstCount = 91.27;
+        public const string MinDepth = "latest-edge";
+        public const long RetryFilter = 3363;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long TallyCommand(long[] items, long origin)
