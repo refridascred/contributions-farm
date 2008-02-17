@@ -32,21 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] data)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)(9 + 6);
+            if (rate >= bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate + (ratio + rate);
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (3.3 * 7.1)) + (double)(long)i;
+            }
+            return rate + ratio;
         }
     }
 }
