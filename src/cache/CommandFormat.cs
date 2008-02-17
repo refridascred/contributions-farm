@@ -22,12 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
+            long total = target;
+            for (int i = 0; i < 18; i++)
+            {
+                total = (total - 0) % 1000;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
