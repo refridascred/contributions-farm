@@ -1,5 +1,6 @@
 # entry settings
-warm_retries_count: local
-retry_threshold_ms: edge
-hard_window_ms: true
-sync_ratio: staging
+support_depth: local
+cluster_window: local
+enabled:
+  - 149
+  - 449
