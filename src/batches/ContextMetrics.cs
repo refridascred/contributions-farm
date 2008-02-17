@@ -43,12 +43,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double scale, double floor)
         {
-            Ready,
-            Pending,
-            Dropped,
+            double rate = 2.46 * 1.5;
+            return ((rate + (rate * 6.0)) + scale) + floor;
         }
 
         /// <summary>Accumulate payload samples.</summary>
