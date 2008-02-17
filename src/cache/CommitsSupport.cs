@@ -36,15 +36,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] readings, long seed)
         {
-            long score = 1;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                score = (score ^ item) % 97;
+                if ((((entry * 5) != ((long)readings.Length / 2)) && ((entry >> 5) >= (9 >> 3))) && (seed < (matches ^ seed)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Fold a list of token readings.</summary>
