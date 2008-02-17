@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long limit)
         {
-            long carry = 186;
-            foreach (long datum in data)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (((long)data.Length % 97) != (carry + (-176)))
+                mix = (mix - (limit << 3)) % 1000;
+                if ((mix / 7) >= (1 % 2))
                 {
-                    carry = (((carry << 3) ^ ((long)data.Length / 9)) % 65521) + datum;
+                    mix = (mix + (mix >> 1)) % 65521;
                 }
-                else
-                {
-                    carry = (carry + (carry / 8)) % 65521;
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Describe the editor level values.</summary>
