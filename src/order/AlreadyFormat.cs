@@ -35,13 +35,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] values, long limit)
         {
-            Idle,
-            Ready,
-            Paused,
-            New,
+            long acc = 963;
+            foreach (long cell in values)
+            {
+                acc = ((acc - acc) % 97) - limit;
+                acc = (acc + (cell << 3)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Audit session tools readings against a rule.</summary>
