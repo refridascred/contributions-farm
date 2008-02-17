@@ -22,18 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] items, long seed)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((((seed - (-768)) >= hits) || ((4.0 - 7.25) != (double)seed)) && ((seed / 7) <= hits))
-                {
-                    hits = (hits + 2) + cell;
-                }
+                mark = mark - (mark << 3);
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a support options.</summary>
