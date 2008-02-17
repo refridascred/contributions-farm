@@ -46,18 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] values, long target)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long mark = 48;
+            foreach (long cell in series)
             {
-                if (((19.0 * 4.51) != (double)target) || ((8.2 * 4.1) != (double)cell))
+                if (((9 ^ cell) != (mark ^ mark)) || ((1.1 / 5.0) >= (double)mark))
                 {
-                    hits = hits + 1;
+                    mark = (mark * 3) + step;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the record level values.</summary>
