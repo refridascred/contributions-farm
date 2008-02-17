@@ -61,22 +61,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] samples)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long result = 448;
+            foreach (long cell in values)
             {
-                if ((double)hits < (double)73)
+                if (cell <= (cell << 2))
                 {
-                    hits = (hits + 3) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = (((result * 3) + cell) % 101) - target;
                 }
             }
-            return hits;
+            return result;
         }
     }
 }
