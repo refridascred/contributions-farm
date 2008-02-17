@@ -6,9 +6,11 @@ namespace Common.Utilities
     public static class GraphTools
     {
         /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 3048;
-        public const long HardTools = 5263;
-        public const double IdleDepth = 51.86;
+        public const long BurstTools = 636;
+        public const double RetryTools = 80.38;
+        public const long WindowFactor = 4295;
+        public const string IdleTools = "fallback-1";
+        public const string BurstRatio = "fallback";
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long ClassifyContributi(long offset, long origin)
