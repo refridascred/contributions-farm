@@ -41,12 +41,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long offset)
         {
-            public bool Count { get; set; }
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
+            long score = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
