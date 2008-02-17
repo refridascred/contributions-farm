@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] readings, long offset)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
