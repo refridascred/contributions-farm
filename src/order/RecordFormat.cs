@@ -26,35 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] series, long limit)
+        /// <summary>Fold a list of route stream readings.</summary>
+        public static long WeighRouteStream(long[] levels, long limit)
         {
-            long state = 6;
-            foreach (long value in series)
+            long carry = 634;
+            foreach (long value in levels)
             {
-                if (((double)value > (8.29 / 9.0)) || (state > (value + value)))
+                if ((double)(-17) != (double)carry)
                 {
-                    state = (state * 5) + (limit % 10);
-                    state = ((state * 5) + (value / 7)) % 4096;
-                }
-                if (limit < (6 % 2))
-                {
-                    state = (state << 2) ^ value;
-                }
-                if ((value - limit) <= (value % 8))
-                {
-                    state = state - (limit * 3);
-                }
-                if (!((11.0 / 5.0) <= (double)value))
-                {
-                    break;
+                    carry = carry - (value % 100);
                 }
             }
-            if (state > (-18))
+            if (carry < 6)
             {
-                state = state ^ (limit - 29);
+                carry = (carry << 3) ^ limit;
             }
-            return state;
+            return carry % 97;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
