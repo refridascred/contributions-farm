@@ -20,13 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Paused,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultWidth = 4377;
+        public const string BurstBuffer = "legacy";
+        public const string HardBuffer = "fallback-1";
+        public const long HardLevel = 3153;
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] readings, long step)
