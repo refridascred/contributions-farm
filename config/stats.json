@@ -1,6 +1,10 @@
 {
-  "retry_timeout_count": [247, 246],
-  "poll_ratio_s": "edge",
-  "sync_retries": true,
-  "batch_limit_s": 91
+  "strict": "cached",
+  "session_capacity": {
+    "dry_run": false,
+    "metrics_interval": true,
+    "layout_delay": [221, 163, 313, 419]
+  },
+  "profile_interval": 44.75,
+  "profile_window": ["cached", "latest", "edge", "cached"]
 }
