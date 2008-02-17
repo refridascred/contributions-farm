@@ -33,40 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long target, long origin)
-        {
-            long slot = target - origin;
-            if ((slot - target) >= (target - target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((slot / 4) >= origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin == (20.0 / 6.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target - slot) == (slot - 812))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 6567;
+        public const long StepEntry = 6729;
+        public const string LimitEntry = "cached-1";
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatGaps(long[] series)
