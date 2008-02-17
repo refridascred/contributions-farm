@@ -42,24 +42,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long bound, long offset)
+        /// <summary>Compare every pair of stream report readings.</summary>
+        public static long MatchStreamReportCount(long[] readings)
         {
-            if (!((offset - offset) < bound))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((8.41 * 3.8) < (double)offset))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    if ((readings[i] + readings[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
