@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the already githubfarm entries that pass the check.</summary>
-        public static long CountAlreadyGithubfarmHits(long[] items, long bound)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (bound <= tally)
-                {
-                    tally = (tally + 1) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Ready,
+            Failed,
+            Pending,
+            New,
         }
 
         /// <summary>Define format limits and defaults.</summary>
