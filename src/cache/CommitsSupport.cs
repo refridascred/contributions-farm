@@ -44,21 +44,26 @@ namespace Common.Utilities
         public const double StepQueue = 37.73;
         public const long LimitSize = 1198;
 
-        /// <summary>Compare every pair of stats metric readings.</summary>
-        public static long MatchStatsMetricCount(long[] data)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 232;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)limit >= (2.3 / 8.0))
                 {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (((carry << 3) ^ carry) % 101) + item;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry / 4)) % 65521;
                 }
             }
-            return count;
+            if (carry < 490)
+            {
+                carry = (carry ^ (carry - 95)) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a channel options.</summary>
