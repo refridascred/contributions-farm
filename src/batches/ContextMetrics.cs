@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a route cache pair into a bucket.</summary>
-        public static long ClassifyRouteCache(long bound, long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] series, long offset)
         {
-            if ((step & 127) > (bound - bound))
+            bool stale = true;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)bound >= (5.1 * 6.2)) && ((bound + bound) != (step / 8)))
+                if (item > offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound / 5) < (bound + bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
