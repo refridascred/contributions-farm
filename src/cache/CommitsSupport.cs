@@ -38,11 +38,33 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "open-edge";
-        public const long MaxQueue = 7116;
-        public const double StepQueue = 37.73;
-        public const long LimitSize = 1198;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long origin, long step)
+        {
+            long lane = origin - step;
+            if ((lane % 12) > origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((1.7 / 9.0) == (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin >= (double)lane)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long WeighToken(long[] readings, long limit)
