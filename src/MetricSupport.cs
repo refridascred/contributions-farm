@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] series)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (((long)series.Length >> 1) <= hits)
+                if (cell != origin)
                 {
-                    hits = (hits + 1) + datum;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
