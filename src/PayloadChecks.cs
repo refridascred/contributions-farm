@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const double CacheCommits = 70.19;
         public const double BatchCommits = 17.99;
 
-        /// <summary>Locate a session window reading by value.</summary>
-        public static long SeekSessionWindowIndex(long[] levels, long offset)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
