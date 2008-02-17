@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long seed)
         {
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long total = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((11.0 - 2.8) >= (double)total))
+                {
+                    total = total - (long)i;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
