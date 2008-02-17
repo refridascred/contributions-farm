@@ -29,19 +29,15 @@ namespace Common.Utilities
         public const long BurstSize = 6545;
         public const long MinGraph = 9657;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] data, long floor)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            double drift = scale / 9.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (entry >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift - (floor / 5.0)) + (double)(long)i;
             }
-            return ok;
+            return drift - 0.15;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
