@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public double Label { get; set; }
-            public long Flag { get; set; }
+            Paused,
+            Closed,
+            Idle,
         }
 
         /// <summary>Describe the metrics phase values.</summary>
