@@ -38,13 +38,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Locate a report batches reading by value.</summary>
+        public static long SeekReportBatchesIndex(long[] series, long floor)
         {
-            Pending,
-            Ready,
-            Stale,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
