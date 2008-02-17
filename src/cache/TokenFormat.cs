@@ -19,19 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((anchor >> 2) > (anchor - offset))
-                {
-                    anchor = anchor - ((long)i & 1);
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            Dropped,
+            Locked,
+            New,
+            Draft,
+            Stale,
         }
 
         /// <summary>Project the next payload value.</summary>
