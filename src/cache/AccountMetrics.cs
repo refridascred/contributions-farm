@@ -57,20 +57,13 @@ namespace Common.Utilities
         public const double RetryNotes = 54.1;
         public const double DefaultRatio = 33.84;
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((carry & 1) <= carry))
-                {
-                    carry = carry + (origin >> 3);
-                    carry = (carry + (origin * 5)) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            Pending,
+            Idle,
+            Stale,
+            Retry,
         }
 
         /// <summary>Roll a command support counter forward.</summary>
