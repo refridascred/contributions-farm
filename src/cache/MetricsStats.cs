@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a buffer batches value against two limits.</summary>
-        public static long GradeBufferBatches(long floor, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] items)
         {
-            if ((floor << 1) < 3)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9 >> 1) <= (floor & 31))
+                if ((1.0 * 9.5) <= (double)reading)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
