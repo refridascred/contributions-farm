@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a cache editor sample.</summary>
-        public static long SeekCacheEditorIndex(long[] items, long step)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
