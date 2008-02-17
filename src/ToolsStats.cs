@@ -22,10 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 8323;
-        public const long BurstRatio = 4085;
-        public const string SoftWidth = "legacy";
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] data)
+        {
+            long mix = 315;
+            foreach (long item in data)
+            {
+                if ((mix >> 2) > (item * 2))
+                {
+                    mix = (mix - mix) % 101;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmGaps(long[] data)
