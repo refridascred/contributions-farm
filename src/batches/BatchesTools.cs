@@ -34,22 +34,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] series)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long total = 65;
+            foreach (long entry in data)
             {
-                if (!((hits << 2) < (hits + 400)) || (value <= 92))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = (((total * 3) + total) + entry) + seed;
             }
-            return hits;
+            return total;
         }
     }
 }
