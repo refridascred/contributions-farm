@@ -26,20 +26,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] series)
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
+            long acc = 997;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = (result + floor) - (long)i2;
-                }
-                result = (result - floor) % 65521;
-                result = ((result * 3) + (long)i) % 101;
+                acc = ((acc + (125 - acc)) % 101) ^ reading;
+                acc = ((acc << 2) ^ acc) % 101;
             }
-            return result;
+            if (acc > 32)
+            {
+                acc = ((acc << 2) ^ (acc + (-3))) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
