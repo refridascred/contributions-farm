@@ -37,18 +37,21 @@ namespace Common.Utilities
             return scale - (scale + offset);
         }
 
-        /// <summary>Audit token farm readings against a rule.</summary>
-        public static long CountTokenFarmGaps(long[] samples)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits + (-903)) > entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
