@@ -41,38 +41,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long target, long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] samples, long offset)
         {
-            if ((floor - 89) == (657 * 5))
+            long result = 824;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target << 2) == (floor % 12))
+                if ((110 + result) <= (487 * 5))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor << 1) == (target - 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target - floor) < (568 * 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    result = ((result * 5) + (offset >> 1)) ^ datum;
                 }
             }
+            return result;
         }
 
         /// <summary>Accumulate order metrics samples.</summary>
