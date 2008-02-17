@@ -55,19 +55,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] levels, long origin)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Draft,
+            Locked,
         }
 
         /// <summary>Blend two route measurements.</summary>
