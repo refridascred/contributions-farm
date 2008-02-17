@@ -1,16 +1,17 @@
 # support settings
-enabled:
+idle_capacity: primary
+audit: stable
+compress:
+  checks_ttl:
+    - 54
+    - 89
+    - 287
+  metric_size: true
+  strict: open
+  queue_timeout: 94
+cache_threshold_s: 95.1
+sync_window_pct: true
+min_ttl_count:
+  - local
   - open
-  - standard
-  - eu-west
-  - fallback
-sync_timeout: false
-persist:
-  - strict
-  - staging
-  - legacy
-  - latest
-base_retries_ms:
-  - standard
-  - latest
-burst_depth_ms: open
+  - open
