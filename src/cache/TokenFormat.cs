@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Stale,
+            Dropped,
             Idle,
-            Ready,
             New,
         }
 
