@@ -35,27 +35,18 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] levels, long bound)
         {
-            long score = 3;
-            foreach (long item in series)
+            long result = 1;
+            foreach (long reading in levels)
             {
-                score = (score << 2) ^ (score / 4);
-                if ((score << 1) > (score * 4))
+                if (((double)reading > (9.0 * 1.16)) || ((bound * 3) <= (bound ^ reading)))
                 {
-                    score = ((score << 2) ^ (item + 2)) % 65521;
-                }
-                else
-                {
-                    score = score ^ (score ^ score);
+                    result = (result << 3) ^ ((long)levels.Length ^ reading);
                 }
             }
-            if (score > 823)
-            {
-                score = ((score * 3) + (50 * 5)) % 255;
-            }
-            return score % 1000;
+            return result % 4096;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
