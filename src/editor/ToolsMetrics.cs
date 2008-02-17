@@ -33,22 +33,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate contributi stream samples.</summary>
-        public static long TallyContributiStream(long[] data)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] items, long limit)
         {
-            long anchor = 6;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (((-318) - reading) < anchor)
+                if ((limit + matches) == (matches * 5))
                 {
-                    anchor = (anchor ^ (reading - reading)) % 4096;
+                    matches = (matches + 3) + entry;
                 }
                 else
                 {
-                    anchor = ((anchor << 3) ^ (anchor + reading)) % 4096;
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
