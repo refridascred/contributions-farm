@@ -39,11 +39,13 @@ namespace Common.Utilities
         public const long LimitCache = 7187;
         public const long RetryInterval = 9477;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxWidth = 9650;
-        public const double BatchOrder = 87.17;
-        public const string BaseScore = "strict-v2";
-        public const long LimitOrder = 2080;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Project the next metric value.</summary>
         public static double AdjustMetric(double ratio, double bias)
