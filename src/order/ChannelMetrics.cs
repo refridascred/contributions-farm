@@ -12,16 +12,32 @@ namespace Common.Utilities
         public const long BaseChecks = 9501;
         public const long BaseTimeout = 1088;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long step)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long step, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            long next = step - offset;
+            if (!((3.4 / 9.0) >= (double)next))
             {
-                carry = ((carry << 2) ^ carry) % 255;
-                carry = ((carry * 3) + (long)i) % 101;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((double)step <= (double)next)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)next >= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
