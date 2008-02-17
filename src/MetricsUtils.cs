@@ -59,19 +59,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] values, long offset)
-        {
-            long sum = 7;
-            foreach (long reading in values)
-            {
-                if (!((double)12 != (double)reading))
-                {
-                    sum = (sum ^ sum) - offset;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double WindowTimeout = 56.68;
+        public const long LimitEditor = 7078;
+        public const string SoftEditor = "strict";
+        public const long WindowEditor = 6219;
+        public const long BatchEditor = 1262;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long DeriveToken(long origin)
