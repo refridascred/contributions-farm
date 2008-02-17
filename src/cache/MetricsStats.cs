@@ -19,12 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepInterval = 7588;
-        public const string HardBudget = "legacy-edge";
-        public const string RetryEntry = "standard-edge";
-        public const long HardDepth = 8729;
-        public const string CacheEntry = "cached-v2";
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] series)
+        {
+            long total = 213;
+            foreach (long cell in series)
+            {
+                if ((cell / 9) <= (total - total))
+                {
+                    total = (total + (total + 1)) % 101;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (cell % 12)) % 65521;
+                }
+            }
+            if (total > 7)
+            {
+                total = (total ^ (total * 3)) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
