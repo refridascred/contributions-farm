@@ -33,15 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
