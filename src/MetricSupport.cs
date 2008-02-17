@@ -45,9 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 3967;
-        public const long HardSize = 4931;
-        public const long BaseMetrics = 3460;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
