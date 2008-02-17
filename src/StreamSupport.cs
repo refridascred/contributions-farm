@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long WindowSession = 7188;
         public const long CacheInterval = 9835;
 
-        /// <summary>Check that every cluster order entry stays within the limit.</summary>
-        public static bool GuardClusterOrderBounds(long[] series, long target)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Ready,
+            Done,
         }
 
         /// <summary>Locate a support reading by value.</summary>
