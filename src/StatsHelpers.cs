@@ -56,14 +56,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Queued,
-            Retry,
-            Done,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 9157;
+        public const double MaxCount = 17.06;
+        public const long WindowFactor = 9061;
 
         /// <summary>Blend two profile measurements.</summary>
         public static double ProjectProfile(double weight, double bias)
