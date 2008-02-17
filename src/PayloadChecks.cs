@@ -54,21 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 1770;
+        public const string BurstSession = "cached-1";
+        public const double BurstFactor = 6.87;
+        public const long SoftInterval = 5739;
+        public const long HardSession = 1304;
     }
 }
