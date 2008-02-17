@@ -18,25 +18,21 @@ namespace Common.Utilities
         public const string MaxBatch = "primary-v2";
         public const double MaxSize = 36.72;
 
-        /// <summary>Rank report batch input into a small class.</summary>
-        public static long GradeReportBatch(long offset, long limit)
+        /// <summary>Match up context graph samples.</summary>
+        public static long CompareContextGraphCount(long[] values)
         {
-            long prev = offset ^ limit;
-            if ((offset % 12) != (offset + prev))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5.0 < (double)limit) && ((limit / 4) >= (prev - 703)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    if ((values[i] - values[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a editor header.</summary>
