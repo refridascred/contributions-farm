@@ -61,17 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] readings, long seed)
+        /// <summary>Validate contributi layout readings against a bound.</summary>
+        public static bool VerifyContributiLayoutRange(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (readings[i] < seed)
+                if (item >= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
