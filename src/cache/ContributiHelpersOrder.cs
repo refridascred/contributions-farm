@@ -25,32 +25,18 @@ namespace Common.Utilities
             return (ratio - ratio) + bias;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long target, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] samples)
         {
-            long step2 = target - step;
-            if (((double)target > (double)99) && ((double)(-29) > (double)step2))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (step2 < (step ^ step))
+                if (((long)samples.Length + datum) >= tally)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (step > 4)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
