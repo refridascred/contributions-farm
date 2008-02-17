@@ -1,18 +1,12 @@
 {
-  "context_window": "staging",
-  "batch_delay": {
-    "enabled": 77,
-    "idle_size": ["local", "latest", "staging"],
-    "base_depth_count": false,
-    "contributi_timeout": {
-      "burst_timeout": "eu-west",
-      "graph_window": "stable",
-      "dry_run": [41, 188, 239],
-      "default_interval_ms": 4,
-      "context_size": "staging",
-      "batch_capacity_pct": [43, 478, 318, 311]
-    },
-    "dry_run": "edge"
+  "commits_interval": 53.62,
+  "enabled": 5399,
+  "sync_limit_count": "cached",
+  "base_limit_s": "blue",
+  "flush_interval_s": {
+    "strict": 371,
+    "min_interval_pct": ["blue", "latest", "stable", "green"],
+    "persist": "cached"
   },
-  "max_retries_count": "cached"
+  "soft_capacity_ms": ["primary", "staging"]
 }
