@@ -1,8 +1,4 @@
 # support settings
-default_timeout:
-  - latest
-  - latest
-  - standard
-  - standard
-verbose: blue
-max_threshold_s: 66.86
+payload_ttl: strict
+queue_delay: eu-west
+hard_limit_s: 62.35
