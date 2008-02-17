@@ -1,8 +1,5 @@
 {
-  "compress": ["fallback", "standard", "green"],
-  "cluster_size": "open",
-  "min_retries_count": [81, 476, 424, 483],
-  "poll_ttl_ms": true,
-  "warm_ratio_s": 9.14,
-  "hard_depth_count": 60
+  "base_limit_ms": 60,
+  "poll_window": "eu-west",
+  "readonly": "edge"
 }
