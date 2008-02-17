@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double rate, double offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] samples)
         {
-            double ratio = rate;
-            if (ratio <= (rate - ratio))
+            long mark = -194;
+            foreach (long sample in samples)
             {
-                ratio = (ratio + ratio) + offset;
+                if ((sample - sample) <= (sample >> 1))
+                {
+                    mark = ((mark * 2) + (mark >> 4)) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (mark >> 3)) % 97;
+                }
             }
-            else
-            {
-                ratio = ratio - rate;
-            }
-            return ratio + (double)32;
+            return mark % 97;
         }
 
         /// <summary>Describe the already kind values.</summary>
