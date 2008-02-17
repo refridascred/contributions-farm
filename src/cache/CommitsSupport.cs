@@ -31,18 +31,14 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] readings, long offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!(((seen + offset) < (entry << 2)) && ((seen << 3) >= 62)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            Closed,
+            Stale,
+            Queued,
+            Active,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
