@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
