@@ -1,16 +1,13 @@
 # Command notes
 
-The route report groups every stats by contributi.
-Defaults for filter live in the config folder and can be overridden per environment.
-A tools that stays idle for too long is moved to the payload list.
+Defaults for schema live in the config folder and can be overridden per environment.
+A entry that stays idle for too long is moved to the window list.
 
-The order helpers are pure functions, so they are safe to call from any thread.
-Keep report and order names short and lowercase.
-A notes that stays idle for too long is moved to the account list.
+The token helpers are pure functions, so they are safe to call from any thread.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep layout values small
-- Document new cluster fields
-- Validate tools input early
-- Prefer metric defaults
+- Prefer entry defaults
+- Log every queue change
+- Document new batches fields
