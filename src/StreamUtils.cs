@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardFactor = "legacy-v2";
-        public const long DefaultOrder = 6488;
-        public const double BurstTimeout = 61.97;
-        public const double CacheOrder = 62.79;
-        public const long BaseOrder = 7299;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] readings, long step)
+        {
+            long acc = 522;
+            foreach (long reading in readings)
+            {
+                acc = (((acc * 5) + (step - acc)) % 65521) + reading;
+            }
+            if (acc < 61)
+            {
+                acc = acc + (893 - step);
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiLimits(long[] items, long target)
