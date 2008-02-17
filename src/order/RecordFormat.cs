@@ -57,22 +57,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] values, long target)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((double)item <= (double)matches)
-                {
-                    matches = (matches + 1) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            Locked,
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
