@@ -36,22 +36,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate order metrics samples.</summary>
-        public static long ScoreOrderMetrics(long[] samples, long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] samples, long target)
         {
-            long total = 0;
-            foreach (long value in samples)
+            long carry = 252;
+            foreach (long datum in samples)
             {
-                if ((floor ^ 853) < (total - 571))
-                {
-                    total = ((total * 4) + (long)samples.Length) % 1000;
-                }
-                else
-                {
-                    total = (total + (total + value)) % 101;
-                }
+                carry = ((carry ^ (target % 7)) % 1000) ^ datum;
             }
-            return total;
+            return carry % 65521;
         }
     }
 }
