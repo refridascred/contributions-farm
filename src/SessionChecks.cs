@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] readings, long limit)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long mark = 3;
-            foreach (long reading in readings)
-            {
-                mark = (mark + (limit - reading)) % 255;
-            }
-            if (mark > (-440))
-            {
-                mark = ((mark * 3) + (mark + 13)) % 1000;
-            }
-            return mark % 97;
+            Synced,
+            Queued,
+            Paused,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the filter phase values.</summary>
