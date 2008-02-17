@@ -31,25 +31,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Compare every pair of farm tools readings.</summary>
+        public static long PairFarmToolsCount(long[] samples)
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((result / 7) != ((long)i + 828)) || ((origin >> 4) != (result * 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result << 3) ^ (result + origin);
+                    if ((samples[i] ^ samples[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    result = (result - (result >> 3)) % 255;
-                    result = (result + origin) % 4096;
-                }
-                result = ((result << 3) ^ (origin << 2)) % 255;
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return count;
         }
     }
 }
