@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor ^ (long)i) % 255;
-                long delta = anchor;
-                anchor = (anchor + (delta >> 5)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepInterval = 7588;
+        public const string HardBudget = "legacy-edge";
+        public const string RetryEntry = "standard-edge";
+        public const long HardDepth = 8729;
+        public const string CacheEntry = "cached-v2";
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
