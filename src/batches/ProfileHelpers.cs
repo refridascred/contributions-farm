@@ -28,34 +28,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] samples, long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] items)
         {
-            long carry = 544;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell - carry) != (origin + origin))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry ^ ((long)samples.Length & 255)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ (cell - 6)) % 255;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = (carry + (origin + cell)) ^ (long)i;
-                }
-                if (65 > (cell - origin))
-                {
-                    carry = carry ^ (origin - origin);
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > 92)
-            {
-                carry = (carry - (27 - origin)) % 101;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
