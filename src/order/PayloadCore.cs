@@ -12,17 +12,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster githubfarm sample.</summary>
-        public static long SeekClusterGithubfarmIndex(long[] samples, long offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit already window readings against a rule.</summary>
