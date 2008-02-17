@@ -1,10 +1,40 @@
 # githubfarm settings
-sync_ratio_s: true
-default_timeout: 96.89
-layout_threshold: strict
-graph_ttl: 66.5
-poll_timeout_ms:
-  - blue
-  - open
-  - eu-west
+notes_window:
+  - 88
+  - 377
+soft_threshold_count:
+  compress:
+    - standard
+    - primary
+    - blue
+    - stable
+  warm_threshold: 14.77
+  cache_timeout_s:
+    idle_retries_s: 39.83
+    batch_ratio_ms:
+      - 431
+      - 443
+      - 237
+      - 210
+    hard_ratio: open
+    counter_timeout:
+      - fallback
+      - strict
+    max_timeout_ms: 60
+    base_ttl_ms:
+      - 43
+      - 153
+  retry_window_count: edge
+  poll_depth_count: 61.26
+  burst_delay_ms: green
+dry_run:
+  - 358
+  - 123
+  - 22
+  - 468
+hard_delay_ms:
   - cached
+  - local
+  - primary
+  - staging
+entry_capacity: 3.24
