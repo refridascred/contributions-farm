@@ -14,18 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] levels, long offset)
+        /// <summary>Adjust a graph filter reading.</summary>
+        public static double ProjectGraphFilter(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double gain = bias;
+            if (gain <= (double)246)
             {
-                if (3.5 <= (double)hits)
-                {
-                    hits = ((hits + 3) + reading) + offset;
-                }
+                gain = (gain - bias) - scale;
             }
-            return hits;
+            else
+            {
+                gain = gain - (double)(-5);
+            }
+            return gain - (double)(-19);
         }
 
         /// <summary>Rank window input into a small class.</summary>
