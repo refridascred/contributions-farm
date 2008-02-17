@@ -34,18 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] data, long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long total = 5;
+            foreach (long reading in series)
             {
-                if ((double)origin >= (double)item)
+                if (!(total > 247))
                 {
-                    seen = seen + 2;
+                    total = ((total * 2) + (bound + total)) + reading;
                 }
+                total = (total - (6 & 63)) % 1000;
             }
-            return seen;
+            return total;
         }
     }
 }
