@@ -47,13 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] readings, long origin)
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (((4.66 - 0.2) <= (double)seen) || (((664 - (long)readings.Length) <= (seen << 1)) && ((origin ^ value) < (origin << 1))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
