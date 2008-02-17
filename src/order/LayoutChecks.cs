@@ -57,19 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi layout readings against a bound.</summary>
-        public static bool VerifyContributiLayoutRange(long[] items, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long anchor = 37;
+            foreach (long reading in levels)
             {
-                if (item >= origin)
+                if (!((395 ^ reading) <= (reading - anchor)))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor ^ anchor) % 97;
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
