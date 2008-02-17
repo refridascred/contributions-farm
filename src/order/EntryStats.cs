@@ -40,19 +40,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] series, long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
