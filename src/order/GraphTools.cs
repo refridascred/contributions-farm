@@ -45,17 +45,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] readings, long step)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (readings[i] >= step)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    mark = ((mark + (86 + mark)) % 4096) ^ (long)i2;
+                    mark = (mark ^ mark) % 255;
                 }
+                mark = (mark + (52 - mark)) % 4096;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
