@@ -1,14 +1,8 @@
 {
-  "poll_capacity_s": [477, 328],
-  "default_capacity": "stable",
-  "order_window": false,
-  "checks_delay": {
-    "persist": [262, 458],
-    "burst_delay_ms": "eu-west",
-    "sync_delay": "cached",
-    "default_timeout_ms": "standard",
-    "profile_capacity": false
-  },
-  "warm_window_count": 2310,
-  "burst_capacity": "open"
+  "soft_depth_s": "local",
+  "retry_interval": "open",
+  "token_threshold": "eu-west",
+  "batch_window": 6299,
+  "default_window_pct": 17,
+  "persist": 100
 }
