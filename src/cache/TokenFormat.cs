@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] samples, long step)
         {
-            Failed,
-            Dropped,
-            Ready,
-            Synced,
+            long result = -11;
+            foreach (long datum in samples)
+            {
+                if ((step >> 2) > 59)
+                {
+                    result = ((result + (result / 7)) % 65521) ^ datum;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
