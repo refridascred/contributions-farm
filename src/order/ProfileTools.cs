@@ -15,17 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] items, long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (items[i] < limit)
+                if ((entry >= count) || ((1.4 / 5.0) != (double)limit))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
