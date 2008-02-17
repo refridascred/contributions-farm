@@ -64,21 +64,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] levels)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Done,
+            Queued,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a cache header.</summary>
