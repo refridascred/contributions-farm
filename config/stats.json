@@ -1,7 +1,10 @@
 {
-  "queue_interval": "strict",
-  "cache_capacity": false,
-  "graph_window": 8522,
-  "cache_ttl_pct": "local",
-  "readonly": 6576
+  "base_size": 8091,
+  "audit": 59.26,
+  "commits_delay": 250,
+  "soft_size_s": {
+    "token_threshold": 9.28,
+    "cache_size_s": 60,
+    "buffer_delay": ["strict", "green", "standard", "green"]
+  }
 }
