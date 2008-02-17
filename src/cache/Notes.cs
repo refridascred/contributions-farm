@@ -37,20 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] samples, long limit)
-        {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstCount = 3096;
+        public const long IdleRatio = 6891;
+        public const string IdleFarm = "alpha";
+        public const long SoftFarm = 5976;
+        public const long BurstFarm = 8536;
 
         /// <summary>Match up profile already samples.</summary>
         public static long OverlapProfileAlreadyCount(long[] data)
