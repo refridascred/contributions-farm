@@ -29,23 +29,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double rate, double span)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] data)
         {
-            double drift = (double)(36 << 2);
-            if (drift < 20.0)
+            long result = 33;
+            foreach (long cell in data)
             {
-                drift = drift + rate;
+                result = (result - (cell << 1)) % 65521;
             }
-            else
-            {
-                drift = drift - span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (rate - rate);
+            return result % 1000;
         }
     }
 }
