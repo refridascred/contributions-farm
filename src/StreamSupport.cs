@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long step, long origin)
+        /// <summary>Scale a editor window figure with a bias.</summary>
+        public static double ProjectEditorWindow(double scale, double bias)
         {
-            long step2 = step ^ origin;
-            if (((-529) > (origin ^ origin)) && ((0 - step2) >= (step ^ step2)))
+            double weight = bias;
+            if (weight > weight)
             {
-                return 8;
+                weight = (weight + (double)31) - scale;
             }
-            else
-            {
-                if ((double)step == (3.49 / 5.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step2 != (2.0 / 9.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((46 ^ origin) <= (367 >> 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return weight - weight;
         }
 
         /// <summary>Adjust a support reading.</summary>
