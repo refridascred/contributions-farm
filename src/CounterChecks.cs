@@ -67,11 +67,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long offset)
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 3) + (offset >> 1)) % 255;
+                anchor = anchor ^ ((-703) + anchor);
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
