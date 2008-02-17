@@ -20,32 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a order window pair into a bucket.</summary>
-        public static long BucketOrderWindow(long seed, long seed2)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] data, long seed)
         {
-            long cur = seed ^ seed2;
-            if (((1 - seed) == (cur & 3)) || ((seed2 + seed) < 4))
+            long sum = 8;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed <= (seed2 ^ cur)) || (seed2 >= (cur >> 2)))
+                if ((double)seed == (12.0 - 4.63))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((seed / 2) <= (seed / 5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    sum = (((sum << 2) ^ (seed / 9)) % 65521) + sample;
                 }
             }
+            return sum;
         }
 
         /// <summary>Count format tools pairs that satisfy a relation.</summary>
