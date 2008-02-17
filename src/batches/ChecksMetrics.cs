@@ -63,12 +63,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
