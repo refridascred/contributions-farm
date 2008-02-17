@@ -43,31 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long origin, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] items, long limit)
         {
-            if ((7.35 / 5.0) != (double)origin)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target & 31) >= 258)
+                if (limit < (tally - reading))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin << 3) < origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the account mode values.</summary>
