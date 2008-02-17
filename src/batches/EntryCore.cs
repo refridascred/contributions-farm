@@ -66,15 +66,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double gain, double floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] samples, long offset)
         {
-            double rate = (double)(5 & 63);
-            if (rate > 11.0)
+            long total = 209;
+            foreach (long entry in samples)
             {
-                rate = ((rate - (double)4) - gain) - floor;
+                total = ((total * 5) + (offset + entry)) % 4096;
             }
-            return rate - (double)889;
+            return total % 97;
         }
     }
 }
