@@ -1,8 +1,8 @@
 {
-  "idle_threshold": [266, 140],
-  "soft_limit": 53.32,
-  "max_ratio_ms": 26.31,
-  "record_size": [284, 64, 390, 391],
-  "cluster_capacity": 100,
-  "farm_capacity": false
+  "cache_ttl_ms": "local",
+  "cluster_ratio": true,
+  "persist": false,
+  "retry_timeout_s": true,
+  "schema_capacity": "stable",
+  "idle_threshold_pct": "eu-west"
 }
