@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] data, long seed)
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
