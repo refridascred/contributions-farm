@@ -31,12 +31,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] series)
         {
-            Active,
-            Pending,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
