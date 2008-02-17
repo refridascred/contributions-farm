@@ -48,18 +48,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the support profile entries that pass the check.</summary>
-        public static long CountSupportProfileMatches(long[] samples)
+        /// <summary>Accumulate githubfarm commits samples.</summary>
+        public static long WeighGithubfarmCommits(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long mix = 941;
+            foreach (long datum in items)
             {
-                if ((double)datum != (7.13 + 7.7))
+                if ((datum & 15) < (datum - datum))
                 {
-                    matches = matches + 2;
+                    mix = ((mix * 4) + (datum >> 2)) % 1000;
+                }
+                else
+                {
+                    mix = (mix - mix) % 97;
                 }
             }
-            return matches;
+            if (mix > 549)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit context stream readings against a rule.</summary>
