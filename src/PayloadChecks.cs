@@ -32,18 +32,31 @@ namespace Common.Utilities
         public const long MinGraph = 2033;
         public const double BaseGraph = 66.64;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] readings, long origin)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if ((floor * 3) > floor)
             {
-                if ((value & 15) > (462 >> 5))
+                return 2;
+            }
+            else
+            {
+                if ((offset - floor) <= offset)
                 {
-                    tally = (tally + 3) + origin;
+                    return 7;
+                }
+                else
+                {
+                    if ((60 + offset) != (floor / 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
