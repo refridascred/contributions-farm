@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate layout buffer readings against a bound.</summary>
-        public static bool ValidateLayoutBufferRange(long[] data, long step)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
