@@ -35,18 +35,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] levels, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] samples, long step)
         {
-            long state = 16;
-            foreach (long value in levels)
+            long acc = 86;
+            foreach (long reading in samples)
             {
-                if (limit > (86 & 1))
-                {
-                    state = ((state << 3) ^ (value + state)) % 65521;
-                }
+                acc = ((acc + (acc ^ (-269))) % 255) ^ reading;
             }
-            return state % 97;
+            if (acc > 8)
+            {
+                acc = ((acc * 3) + (step * 5)) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a record header.</summary>
