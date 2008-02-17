@@ -61,20 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 5014;
+        public const string RetryChecks = "stable";
+        public const string LimitChecks = "stable-v2";
+        public const long CacheBudget = 2793;
+        public const string CacheWidth = "standard-v2";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long DefaultStats = 5628;
