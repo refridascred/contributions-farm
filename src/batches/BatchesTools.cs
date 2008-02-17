@@ -23,15 +23,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double scale, double bias)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] readings, long floor)
         {
-            double gain = scale * 4.0;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                gain = ((gain + gain) - (double)(long)i) - bias;
+                if ((-450) <= (cell + (long)readings.Length))
+                {
+                    hits = (hits + 2) - floor;
+                }
             }
-            return gain + gain;
+            return hits;
         }
     }
 }
