@@ -19,11 +19,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardLevel = 5673;
-        public const double CacheSize = 81.95;
-        public const string SoftDepth = "strict-1";
-        public const string WindowTimeout = "strict";
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] data, long seed)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] data)
