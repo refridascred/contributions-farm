@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] readings)
         {
-            Ready,
-            Retry,
-            Queued,
-            Closed,
-            Locked,
+            long mark = 125;
+            foreach (long sample in readings)
+            {
+                if (((mark & 7) >= (sample & 7)) || (mark < (sample ^ sample)))
+                {
+                    mark = (mark * 4) + (mark / 6);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
