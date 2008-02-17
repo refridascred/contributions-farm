@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] readings)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] data)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long mark = 59;
+            foreach (long item in data)
             {
-                if ((double)item > (5.07 - 14.0))
+                if ((double)item == (18.0 - 18.0))
                 {
-                    tally = tally + 2;
+                    mark = (mark - (item * 2)) % 4096;
                 }
             }
-            return tally;
+            if (mark < 51)
+            {
+                mark = (mark ^ (mark % 64)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
