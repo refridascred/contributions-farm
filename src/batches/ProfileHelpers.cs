@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate batch metrics samples.</summary>
-        public static long DigestBatchMetrics(long[] data, long step)
+        /// <summary>Accumulate record editor samples.</summary>
+        public static long DigestRecordEditor(long[] values)
         {
-            long result = 17;
-            foreach (long datum in data)
+            long mix = 33;
+            foreach (long item in values)
             {
-                result = (result ^ (step * 3)) - datum;
+                mix = mix - item;
             }
-            if (result > 29)
-            {
-                result = (result - result) % 4096;
-            }
-            return result;
+            return mix % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
