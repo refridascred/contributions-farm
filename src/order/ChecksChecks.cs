@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many entry report samples are out of range.</summary>
+        public static long CountEntryReportMatches(long[] readings)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((27 & 1) < matches)
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
