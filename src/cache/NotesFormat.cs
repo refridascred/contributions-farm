@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            Closed,
+            Paused,
+            Idle,
+            Pending,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
