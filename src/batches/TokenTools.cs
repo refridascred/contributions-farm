@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count report payload pairs that satisfy a relation.</summary>
-        public static long PairReportPayloadCount(long[] values)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (offset - scale) / 9.0;
+            if (ratio > scale)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio - (double)423;
             }
-            return count;
+            else
+            {
+                ratio = ratio + (ratio - scale);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (offset - offset)) + (double)(long)i;
+            }
+            return ratio - (double)98;
         }
 
         /// <summary>Hold a support info.</summary>
