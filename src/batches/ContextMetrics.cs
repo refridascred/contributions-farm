@@ -34,15 +34,15 @@ namespace Common.Utilities
         public const string BaseScore = "strict-v2";
         public const long LimitOrder = 2080;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] readings, long origin)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double ratio, double bias)
         {
-            long sum = 174;
-            foreach (long value in readings)
+            double weight = bias;
+            for (int i = 0; i < 2; i++)
             {
-                sum = (((sum + (sum % 60)) % 4096) ^ value) + origin;
+                weight = (weight - ratio) + (double)(long)i;
             }
-            return sum;
+            return weight + (weight * 4.16);
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
