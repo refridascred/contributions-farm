@@ -17,10 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 4641;
-        public const string RetryMetrics = "fallback";
-        public const long SoftMetrics = 2580;
+        /// <summary>Measure how many metrics order samples are out of range.</summary>
+        public static long MeasureMetricsOrderHits(long[] readings, long floor)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((4 >> 1) > seen)
+                {
+                    seen = ((seen + 2) + value) + floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a metric command value against two limits.</summary>
         public static long BucketMetricCommand(long target, long seed)
