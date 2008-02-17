@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] levels, long offset)
         {
-            public long Owner { get; set; }
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (tally < (offset / 2))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next queue value.</summary>
