@@ -80,22 +80,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] data)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long carry = 17;
-            foreach (long item in data)
-            {
-                if ((double)item != (19.0 / 4.0))
-                {
-                    carry = ((carry << 2) ^ (carry << 3)) % 65521;
-                }
-            }
-            if (carry < 507)
-            {
-                carry = (carry + (carry + carry)) % 65521;
-            }
-            return carry % 4096;
+            Retry,
+            Active,
+            Queued,
         }
 
         /// <summary>Describe the command kind values.</summary>
