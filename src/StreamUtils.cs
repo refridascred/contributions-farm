@@ -86,19 +86,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((((matches ^ entry) <= matches) || ((entry >> 3) >= (entry + matches))) || (entry <= matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftScore = "latest-1";
+        public const long BurstToken = 8223;
+        public const long LimitSpan = 6732;
+        public const string MinLevel = "cached-v2";
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
