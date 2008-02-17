@@ -33,13 +33,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Grade a support tools value against two limits.</summary>
+        public static long SortSupportTools(long target, long limit)
         {
-            New,
-            Dropped,
-            Pending,
-            Locked,
+            if (((target >> 5) <= limit) && ((limit * 4) != (target ^ target)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target - limit) == (limit ^ (-574)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((((-7) >> 2) >= (target - limit)) || ((double)limit != (2.16 / 4.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit - target) < 4)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
