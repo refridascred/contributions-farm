@@ -20,18 +20,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] items, long bound)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            double mean = (offset + 13.0) + (offset + 1.0);
+            if (mean > mean)
             {
-                if ((matches ^ 4) >= (matches & 3))
-                {
-                    matches = ((matches + 3) - cell) - bound;
-                }
+                mean = (mean - (double)78) - rate;
             }
-            return matches;
+            return mean + (double)326;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
