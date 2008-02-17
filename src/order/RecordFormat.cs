@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const long BurstSize = 6545;
         public const long MinGraph = 9657;
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double weight, double floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] items, long floor)
         {
-            double weight2 = weight - floor;
-            if (weight2 >= (double)20)
+            long hits = 0;
+            foreach (long item in items)
             {
-                weight2 = weight2 + (weight2 * 15.0);
+                if ((hits & 1) <= (62 + hits))
+                {
+                    hits = ((hits + 2) + item) + floor;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 + weight2) + (double)(long)i;
-            }
-            return weight2 + (floor - floor);
+            return hits;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
