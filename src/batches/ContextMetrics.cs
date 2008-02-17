@@ -43,11 +43,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double scale, double floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double rate = 2.46 * 1.5;
-            return ((rate + (rate * 6.0)) + scale) + floor;
+            Active,
+            Locked,
+            Paused,
         }
 
         /// <summary>Accumulate payload samples.</summary>
