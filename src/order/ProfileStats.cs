@@ -12,12 +12,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] items)
         {
-            Pending,
-            Stale,
-            Synced,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((double)seen != (1.19 / 2.0))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
