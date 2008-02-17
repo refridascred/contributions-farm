@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] samples, long step)
         {
-            long mix = 3;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix + (mix >> 1)) - cell;
+                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
