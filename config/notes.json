@@ -1,6 +1,5 @@
 {
-  "persist": ["open", "eu-west"],
-  "entry_ttl": true,
-  "default_delay_s": false,
-  "metric_ttl": 1024
+  "route_window": 62,
+  "cache_ttl": "fallback",
+  "enabled": 58.13
 }
