@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheSize = 5508;
-        public const string BaseContributi = "local-1";
-        public const string MinSpan = "stable-edge";
-        public const long DefaultCount = 4909;
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] values)
+        {
+            long state = 76;
+            foreach (long value in values)
+            {
+                if (value > (508 * 3))
+                {
+                    state = (state - state) % 97;
+                }
+                else
+                {
+                    state = (state * 5) + (value ^ state);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long SeriesContributi(long offset)
