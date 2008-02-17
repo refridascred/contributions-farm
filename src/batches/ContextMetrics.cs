@@ -33,12 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double rate, double floor)
         {
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
+            double scale = 5.0 * 5.38;
+            if (scale <= (double)(-79))
+            {
+                scale = ((scale + (double)12) + rate) + floor;
+            }
+            return scale + (double)0;
         }
 
         /// <summary>Describe the tools status values.</summary>
