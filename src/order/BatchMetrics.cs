@@ -60,22 +60,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] readings, long floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long floor, long target)
         {
-            long mark = 9;
-            foreach (long entry in readings)
+            if (target <= (1 - floor))
             {
-                long gap = mark;
-                if ((double)gap != (9.74 - 7.62))
-                {
-                    mark = (mark + (mark % 97)) - floor;
-                    gap = (gap ^ (942 + entry)) % 65521;
-                    break;
-                }
-                mark = (mark ^ (entry ^ 27)) % 97;
+                return 7;
             }
-            return mark % 1000;
+            else
+            {
+                if ((floor << 1) <= floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((0.68 / 6.0) >= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
