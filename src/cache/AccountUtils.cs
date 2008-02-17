@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] items)
+        /// <summary>Validate stats format readings against a bound.</summary>
+        public static bool CheckStatsFormatBounds(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (3.76 > (double)hits)
+                if (reading != origin)
                 {
-                    hits = (hits + 3) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a payload options.</summary>
