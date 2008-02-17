@@ -13,15 +13,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine already window values into a single score.</summary>
-        public static long DigestAlreadyWindow(long[] readings, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] samples, long limit)
         {
-            long result = -354;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                result = ((result - (result - result)) + reading) + limit;
+                if (value < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Check that every counter stats entry stays within the limit.</summary>
