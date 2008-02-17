@@ -15,39 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long offset, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] samples)
         {
-            long slot = offset + origin;
-            if (!((origin - offset) != (725 - origin)))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((17.0 * 6.15) < (double)origin)
+                if ((sample << 1) < (sample / 4))
                 {
-                    return 8;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((9 + offset) >= (-567))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((0 + slot) >= origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a order snapshot.</summary>
