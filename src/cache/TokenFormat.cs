@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchSize = 36.21;
-        public const string SoftSpan = "strict";
-        public const long StepBudget = 1487;
-        public const long BurstDepth = 1452;
+        /// <summary>Audit schema buffer readings against a rule.</summary>
+        public static long AuditSchemaBufferOutliers(long[] levels, long origin)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value - value) < value)
+                {
+                    matches = (matches + 1) - origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two batches measurements.</summary>
         public static double BlendBatches(double gain, double floor)
