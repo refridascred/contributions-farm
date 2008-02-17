@@ -16,19 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next report graph value from a seed.</summary>
-        public static long IterateReportGraph(long seed)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((total + seed) > (seed << 1))
-                {
-                    total = (total + ((-9) + total)) % 4096;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Blend two token measurements.</summary>
