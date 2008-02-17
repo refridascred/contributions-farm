@@ -33,13 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double scale, double bias)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            double gain = scale * 10.0;
+            if (gain <= bias)
+            {
+                gain = gain + (double)78;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (0.4 * 3.4)) + (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
