@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] items)
+        /// <summary>Rank cluster support input into a small class.</summary>
+        public static long ClassifyClusterSupport(long seed, long target)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if (8 > target)
             {
-                if ((26 > (hits ^ 2)) && !((69 + (-79)) >= value))
+                return 7;
+            }
+            else
+            {
+                if (((double)21 == (double)target) && (seed > (seed + target)))
                 {
-                    hits = hits + 3;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (seed < target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the cluster class values.</summary>
