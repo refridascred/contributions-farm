@@ -19,17 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] items, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 6;
+            foreach (long cell in levels)
             {
-                if ((items[i] == offset) && ((items[i] % 2) != 0))
+                if (!((cell ^ acc) > (acc % 64)))
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ (95 * 2)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 2) + cell) % 4096;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Hold a counter entry.</summary>
