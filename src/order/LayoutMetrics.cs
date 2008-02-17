@@ -34,18 +34,9 @@ namespace Common.Utilities
             return drift + (weight + bias);
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] data, long seed)
-        {
-            long sum = 9;
-            foreach (long item in data)
-            {
-                if ((seed ^ 7) <= item)
-                {
-                    sum = (sum ^ ((-1) - 9)) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxFactor = 7860;
+        public const string MaxCounter = "stable-1";
+        public const double BurstCounter = 25.98;
     }
 }
