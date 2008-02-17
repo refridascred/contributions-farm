@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] levels)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long anchor = 580;
-            foreach (long entry in levels)
-            {
-                anchor = ((anchor * 2) + (anchor << 2)) + entry;
-            }
-            return anchor % 65521;
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a metric entry.</summary>
