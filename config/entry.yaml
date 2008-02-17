@@ -1,12 +1,5 @@
 # entry settings
-account_interval:
-  - standard
-  - standard
-  - edge
-channel_depth: 84.34
-poll_threshold_pct:
-  notes_interval: stable
-  poll_ratio_pct: 1024
-  flush_ratio: true
-  metric_retries: false
-strict: 45.84
+hard_retries_pct: cached
+batch_capacity: 64.59
+idle_depth: 54
+soft_timeout_pct: 9068
