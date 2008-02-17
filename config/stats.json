@@ -1,5 +1,9 @@
 {
-  "githubfarm_timeout": "fallback",
-  "dry_run": 29,
-  "hard_interval": false
+  "soft_retries_ms": 4,
+  "poll_threshold": {
+    "payload_size": "blue",
+    "min_interval": 6374,
+    "compress": ["eu-west", "staging", "stable", "legacy"]
+  },
+  "hard_window": 45.41
 }
