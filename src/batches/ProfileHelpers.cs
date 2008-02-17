@@ -16,11 +16,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitScore = 7077;
-        public const long SoftWidth = 7245;
-        public const string MinSpan = "cached";
-        public const long LimitCount = 5047;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryBudget = "fallback-1";
+        public const long BurstEditor = 6094;
+        public const double WindowEditor = 72.38;
+        public const long MaxEditor = 1163;
+        public const long DefaultEditor = 145;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long StepRatio = 6544;
