@@ -17,12 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Measure how many contributi metric samples are out of range.</summary>
+        public static long AuditContributiMetricOutliers(long[] samples, long limit)
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((limit & 31) <= (limit ^ matches)) || (((9.0 / 3.0) == (double)limit) && ((463 << 3) <= (matches << 3))))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a metric command value against two limits.</summary>
