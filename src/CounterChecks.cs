@@ -61,18 +61,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm order samples are out of range.</summary>
-        public static long MeasureFarmOrderGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (((59 % 8) <= (seen >> 4)) || ((80 / 9) > (85 + seen)))
-                {
-                    seen = (seen + 2) - sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitScore = 1851;
+        public const long IdleNotes = 3252;
+        public const long SoftTimeout = 2429;
+        public const double WindowNotes = 83.77;
     }
 }
