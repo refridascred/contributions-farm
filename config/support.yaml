@@ -1,28 +1,15 @@
 # support settings
-channel_ratio: cached
-flush_capacity: primary
-default_timeout_count: 250
-stats_limit: strict
-strict: 80
-dry_run:
-  command_interval:
-    persist:
-      - 209
-      - 123
-      - 43
-      - 212
-    verbose: staging
-    flush_limit_ms: false
-    warm_limit: 21
-    contributi_delay: stable
-    cache_ttl_pct: 1878
-  hard_delay_s:
-    warm_timeout_count: 1.78
-    flush_delay: blue
-    hard_ttl_ms: 63.66
-    report_capacity:
-      - 301
-      - 153
-    buffer_capacity: 51.96
-    verbose: 1024
-  persist: true
+min_retries: 1024
+max_ttl_pct: blue
+burst_timeout_s: false
+default_delay:
+  checks_delay: 250
+  commits_ratio: 2737
+  audit:
+    default_limit_ms: false
+    enabled: 47.5
+    sync_retries_s: 60
+  retry_depth: 597
+  counter_size: 500
+  profile_limit: true
+audit: local
