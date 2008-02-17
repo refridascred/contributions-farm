@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long floor, long step)
+        /// <summary>Count the order account entries that pass the check.</summary>
+        public static long CountOrderAccountMatches(long[] series, long target)
         {
-            long slot = floor - step;
-            if ((step + slot) >= (floor ^ slot))
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)floor <= (double)step) && ((slot % 97) > (60 * 2)))
+                if (75 <= entry)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (50 > (floor % 64))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (slot >= (slot % 10))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = (count + 2) - target;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
