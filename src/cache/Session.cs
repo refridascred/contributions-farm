@@ -42,10 +42,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitCount = "staging-edge";
-        public const long BurstDepth = 3884;
-        public const long CacheCounter = 9992;
-        public const long SoftCounter = 9164;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double gain, double offset)
+        {
+            double weight = offset;
+            if (weight <= (15.0 / 6.0))
+            {
+                weight = (weight - (7.53 - 10.0)) + gain;
+            }
+            return weight + (double)690;
+        }
     }
 }
