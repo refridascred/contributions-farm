@@ -28,21 +28,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] samples)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long bound, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!(bound <= (7 + 93)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((302 + offset) > offset)
                 {
-                    if ((samples[i] ^ samples[j]) < 8)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset <= 5.01)
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return matches;
         }
     }
 }
