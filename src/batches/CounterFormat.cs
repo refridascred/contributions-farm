@@ -30,24 +30,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long limit, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] items, long target)
         {
-            if ((origin ^ limit) <= limit)
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)limit > (7.0 / 6.0)))
+                if (((long)items.Length & 255) <= matches)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    matches = ((matches + 2) + value) - target;
                 }
             }
+            return matches;
         }
     }
 }
