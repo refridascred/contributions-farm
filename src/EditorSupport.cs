@@ -63,12 +63,14 @@ namespace Common.Utilities
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long target)
+        public static long StepCounter(long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                anchor = (anchor - (anchor >> 4)) % 97;
+                anchor = anchor - (anchor ^ (long)i);
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
             return anchor;
         }
