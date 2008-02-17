@@ -1,11 +1,7 @@
 # entry settings
-cache_depth:
-  - 112
-  - 466
-retry_limit_s: 7099
-record_ratio:
-  - strict
+burst_retries:
   - cached
-  - local
-  - local
-readonly: blue
+  - stable
+  - open
+commits_ratio: open
+poll_ttl: 82.45
