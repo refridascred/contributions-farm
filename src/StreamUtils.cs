@@ -42,15 +42,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double weight, double span)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] values, long offset)
         {
-            double rate = (double)(3 / 4);
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                rate = (rate - span) - (double)(long)i;
+                if (((offset % 2) >= offset) && (count > (value - count)))
+                {
+                    count = count + 1;
+                }
             }
-            return rate + (rate + weight);
+            return count;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
