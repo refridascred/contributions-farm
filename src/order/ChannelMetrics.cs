@@ -40,22 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] values, long offset)
+        /// <summary>Audit order buffer readings against a rule.</summary>
+        public static long TallyOrderBufferHits(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((2.0 + 5.29) > (double)hits)
+                if (!((6 - matches) >= (2 >> 4)) && ((target - (-9)) != (target + matches)))
                 {
-                    hits = ((hits + 2) ^ entry) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 1) + item;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
