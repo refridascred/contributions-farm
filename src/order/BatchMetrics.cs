@@ -48,19 +48,16 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] levels, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long total = 20;
+            foreach (long item in samples)
             {
-                if (item != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total + ((long)samples.Length + 962)) % 97) ^ item;
+                total = (total * 5) + (total - bound);
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Find the first counter support entry that matches the target.</summary>
