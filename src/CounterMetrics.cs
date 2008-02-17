@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] values, long step)
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
