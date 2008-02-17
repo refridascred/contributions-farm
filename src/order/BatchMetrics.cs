@@ -54,16 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] samples, long bound)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long total = 20;
-            foreach (long item in samples)
-            {
-                total = ((total + ((long)samples.Length + 962)) % 97) ^ item;
-                total = (total * 5) + (total - bound);
-            }
-            return total;
+            public double Flag { get; set; }
+            public double Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Find the first counter support entry that matches the target.</summary>
