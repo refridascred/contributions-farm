@@ -67,15 +67,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double bias, double span)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double gain = (double)82 - (double)(-60);
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain - gain) + (double)(long)i) - bias;
-            }
-            return gain - span;
+            Pending,
+            Locked,
+            Done,
+            Active,
+            Stale,
         }
     }
 }
