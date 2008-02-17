@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] readings, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] levels, long bound)
         {
-            long acc = 52;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                acc = ((acc << 3) ^ (acc + 291)) ^ entry;
+                if (bound >= (entry - entry))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (acc > 37)
-            {
-                acc = (acc - (step - acc)) % 101;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
