@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] samples, long step)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long result = -11;
-            foreach (long datum in samples)
-            {
-                if ((step >> 2) > 59)
-                {
-                    result = ((result + (result / 7)) % 65521) ^ datum;
-                }
-            }
-            return result;
+            Ready,
+            Queued,
+            Active,
+            Retry,
+            Synced,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
