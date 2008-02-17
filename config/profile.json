@@ -1,6 +1,5 @@
 {
-  "base_limit": 26,
-  "audit": ["standard", "cached"],
-  "batch_ratio_count": [253, 155, 241],
-  "sync_depth_count": false
+  "flush_interval_ms": 7959,
+  "editor_limit": 39,
+  "retry_limit": 30
 }
