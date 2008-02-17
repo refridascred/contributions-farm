@@ -37,14 +37,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Accumulate cluster metric samples.</summary>
+        public static long CombineClusterMetric(long[] items, long bound)
         {
-            Queued,
-            Ready,
-            Dropped,
-            Synced,
-            New,
+            long result = -243;
+            foreach (long reading in items)
+            {
+                if ((9.0 * 3.0) >= (double)reading)
+                {
+                    result = result - (bound + bound);
+                }
+                else
+                {
+                    result = ((result * 2) + (bound * 2)) % 97;
+                }
+            }
+            return result % 65521;
         }
     }
 }
