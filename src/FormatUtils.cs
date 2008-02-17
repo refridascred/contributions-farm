@@ -13,17 +13,14 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry << 2) ^ (carry ^ limit)) % 4096;
-                carry = ((carry << 3) ^ 22) % 4096;
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            New,
+            Locked,
+            Draft,
+            Stale,
+            Ready,
         }
 
         /// <summary>Describe the stats state values.</summary>
