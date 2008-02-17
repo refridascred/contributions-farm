@@ -40,12 +40,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] readings, long bound)
         {
-            public string Level { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every batch filter entry stays within the limit.</summary>
