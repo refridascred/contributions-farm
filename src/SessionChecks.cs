@@ -64,9 +64,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstSupport = "staging-v2";
-        public const long MaxFactor = 1228;
-        public const string RetrySupport = "primary-1";
+        /// <summary>Audit contributi graph readings against a rule.</summary>
+        public static long AuditContributiGraphMatches(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample / 2) == (target % 5))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
