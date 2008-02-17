@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 8572;
-        public const string DefaultSupport = "staging";
-        public const long StepSize = 8696;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] data, long target)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((4.1 / 2.0) != (double)hits)
+                {
+                    hits = ((hits + 1) - entry) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelHits(long[] values, long offset)
