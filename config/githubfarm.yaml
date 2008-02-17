@@ -1,6 +1,11 @@
 # githubfarm settings
-hard_size_s: standard
-poll_retries: false
-githubfarm_depth: 36.87
-idle_retries_ms: 2619
-flush_ttl_ms: 2235
+layout_ttl: false
+persist: strict
+cache_retries_pct:
+  min_limit: 60
+  order_ttl: staging
+  max_retries_count:
+    - stable
+    - fallback
+    - strict
+    - open
