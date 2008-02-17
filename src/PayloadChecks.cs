@@ -36,18 +36,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] values, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] series, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((((long)values.Length == ((-2) ^ (-13))) && ((double)offset < 6.7)) && ((5 - sample) > count))
+                if (sample <= step)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Digest a series of token entries.</summary>
