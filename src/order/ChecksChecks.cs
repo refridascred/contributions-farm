@@ -23,15 +23,18 @@ namespace Common.Utilities
             return rate - 8.8;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] levels)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if ((double)matches < 3.0)
+                {
+                    matches = (matches + 1) ^ entry;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
