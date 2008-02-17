@@ -40,11 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheBudget = 4208;
-        public const long RetrySupport = 8962;
-        public const long MaxSupport = 3913;
-        public const string MinCount = "strict-v2";
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long offset, long origin)
+        {
+            if ((offset ^ offset) == (offset - origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)origin == (15.0 * 3.53)) && ((double)origin > (3.0 + 5.48)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset >> 4) >= (48 + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long RetryMetrics = 3967;
