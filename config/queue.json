@@ -1,12 +1,7 @@
 {
-  "order_ratio": 19,
-  "dry_run": ["staging", "eu-west"],
-  "filter_depth": 30,
-  "token_depth": {
-    "soft_interval_ms": 100,
-    "profile_limit": 20.32,
-    "filter_ratio": 250,
-    "cache_interval": 22,
-    "enabled": true
-  }
+  "readonly": [379, 167],
+  "retry_capacity_pct": false,
+  "sync_capacity_ms": 78,
+  "dry_run": false,
+  "poll_ttl": [488, 433, 482, 87]
 }
