@@ -1,6 +1,8 @@
 {
-  "batch_ratio_count": false,
-  "persist": 500,
-  "flush_timeout_count": [116, 256, 438, 387],
-  "cache_delay_ms": 93
+  "idle_threshold_s": "edge",
+  "queue_interval": ["open", "primary", "green"],
+  "already_interval": "edge",
+  "compress": 500,
+  "enabled": 55,
+  "dry_run": "green"
 }
