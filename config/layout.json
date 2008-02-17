@@ -1,17 +1,5 @@
 {
-  "sync_ttl": 77.15,
-  "route_ratio": 14.08,
-  "sync_depth_pct": "staging",
-  "soft_capacity_pct": {
-    "base_window_ms": "local",
-    "flush_depth_ms": 165,
-    "compress": {
-      "cache_interval": 53.58,
-      "sync_limit": [279, 288, 313],
-      "idle_limit_s": 38.06,
-      "warm_limit_s": "standard",
-      "buffer_ratio": ["eu-west", "legacy"]
-    },
-    "already_timeout": "stable"
-  }
+  "contributi_window": 39,
+  "audit": [235, 56],
+  "retry_limit_count": 500
 }
