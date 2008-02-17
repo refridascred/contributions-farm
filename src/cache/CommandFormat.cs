@@ -28,10 +28,20 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstCount = 91.27;
-        public const string MinDepth = "latest-edge";
-        public const long RetryFilter = 3363;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Find the first graph filter entry that matches the target.</summary>
         public static long FindGraphFilterIndex(long[] data, long offset)
