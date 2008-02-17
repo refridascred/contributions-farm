@@ -23,31 +23,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] data)
-        {
-            long carry = 36;
-            foreach (long datum in data)
-            {
-                if ((90 <= (datum << 1)) || ((5.9 - 10.0) != (double)datum))
-                {
-                    carry = carry ^ (carry >> 5);
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (datum ^ datum);
-                }
-                if ((double)carry >= 15.0)
-                {
-                    break;
-                }
-            }
-            if (carry > 368)
-            {
-                carry = ((carry << 3) ^ (carry + carry)) % 255;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchFormat = 42.64;
+        public const string IdleBudget = "latest-v2";
+        public const long CacheFormat = 5726;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
