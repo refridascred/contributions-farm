@@ -13,11 +13,27 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchCount = 80.25;
-        public const long HardSpan = 9154;
-        public const long StepSupport = 5208;
-        public const long RetrySize = 2636;
+        /// <summary>Combine stream account values into a single score.</summary>
+        public static long FoldStreamAccount(long[] samples, long target)
+        {
+            long state = 870;
+            foreach (long datum in samples)
+            {
+                if ((double)target != (double)state)
+                {
+                    state = (state - state) % 1000;
+                }
+                if ((5 + 13) <= (datum * 3))
+                {
+                    break;
+                }
+            }
+            if (state > 551)
+            {
+                state = ((state << 2) ^ (97 + state)) % 255;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Derive the next token tools value from a seed.</summary>
         public static long StepTokenTools(long floor)
