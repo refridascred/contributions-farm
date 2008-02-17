@@ -1,29 +1,10 @@
 # githubfarm settings
-idle_timeout: true
-audit: staging
-min_threshold_pct:
-  - staging
-  - fallback
+sync_ratio_s: true
+default_timeout: 96.89
+layout_threshold: strict
+graph_ttl: 66.5
+poll_timeout_ms:
   - blue
-  - standard
-flush_depth:
-  strict: 7357
-  cache_ttl_ms:
-    editor_window: true
-    base_limit: 74
-    command_window:
-      - latest
-      - open
-    command_size:
-      - 488
-      - 286
-      - 14
-    max_depth_s: 1950
-  notes_threshold: eu-west
-  counter_size: open
-flush_delay: false
-dry_run:
-  - 11
-  - 101
-  - 11
-  - 95
+  - open
+  - eu-west
+  - cached
