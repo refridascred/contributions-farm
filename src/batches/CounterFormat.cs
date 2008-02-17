@@ -11,27 +11,18 @@ namespace Common.Utilities
         public const string WindowEntry = "fallback-1";
         public const long HardTimeout = 6441;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] data)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] values)
         {
-            long total = -260;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (!((6.18 / 7.0) <= (13.0 * 6.9)))
+                if (((matches & 127) < (matches + datum)) && ((double)datum < (2.7 / 8.0)))
                 {
-                    total = ((total * 2) + (total * 5)) % 101;
-                }
-                else
-                {
-                    total = total ^ (total % 64);
-                    total = total - item;
-                }
-                if ((total - total) < total)
-                {
-                    total = total ^ (37 - total);
+                    matches = matches + 1;
                 }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
