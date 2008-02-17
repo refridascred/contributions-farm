@@ -18,14 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Derive the next metric context value from a seed.</summary>
+        public static long RollMetricContext(long origin)
         {
-            Draft,
-            Failed,
-            Pending,
-            Retry,
-            Paused,
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = (carry * 4) + origin;
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
