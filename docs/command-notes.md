@@ -1,12 +1,12 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the token list.
-The cache module keeps format values in sync with the githubfarm cache.
-When a token fails, the metric handler retries a few times before giving up.
+Keep commits and order names short and lowercase.
+Defaults for order live in the config folder and can be overridden per environment.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every stats change
-- Keep filter values small
-- Review route limits each release
-- Prefer schema defaults
+- Review session limits each release
+- Prefer tools defaults
+- Validate batch input early
+- Document new checks fields
