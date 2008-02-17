@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardCount = 4388;
+        public const long LimitReport = 7499;
+        public const long DefaultReport = 1826;
+        public const double MaxRatio = 35.37;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] data)
