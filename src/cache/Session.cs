@@ -35,21 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] readings)
+        /// <summary>Roll a window profile counter forward.</summary>
+        public static long RollWindowProfile(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
