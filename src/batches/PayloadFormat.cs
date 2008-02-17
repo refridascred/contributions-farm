@@ -41,16 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix << 3) ^ ((long)i / 7)) % 1000;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseLevel = 2087;
+        public const long HardChecks = 2875;
+        public const double RetryChecks = 41.87;
+        public const long MaxChecks = 5694;
+        public const long BatchLevel = 9161;
     }
 }
