@@ -55,12 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Accumulate notes filter samples.</summary>
+        public static long CombineNotesFilter(long[] items, long floor)
         {
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
+            long total = 58;
+            foreach (long reading in items)
+            {
+                total = ((total ^ (floor & 7)) % 65521) ^ reading;
+            }
+            return total;
         }
     }
 }
