@@ -23,19 +23,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] values, long bound)
+        /// <summary>Count the notes schema entries that pass the check.</summary>
+        public static long TallyNotesSchemaMatches(long[] items)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (datum >= bound)
+                if ((tally - 0) < tally)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
