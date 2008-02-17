@@ -28,15 +28,11 @@ namespace Common.Utilities
             return (load - (double)2) + floor;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Active,
-            New,
-            Locked,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxWidth = 9650;
+        public const double BatchOrder = 87.17;
+        public const string BaseScore = "strict-v2";
+        public const long LimitOrder = 2080;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long TotalFormat(long[] values, long seed)
