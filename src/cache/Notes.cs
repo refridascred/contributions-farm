@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 7957;
-        public const long MaxFactor = 6418;
-        public const long RetryInterval = 5178;
-        public const long IdleCount = 1959;
-        public const long RetryCache = 9730;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (!((5.93 + 3.0) != (double)(long)items.Length) || ((312 - 668) <= (tally + (long)items.Length)))
+                {
+                    tally = ((tally + 2) + sample) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long RollFilter(long target)
