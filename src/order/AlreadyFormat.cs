@@ -44,18 +44,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] items, long limit)
+        /// <summary>Audit session tools readings against a rule.</summary>
+        public static long TallySessionToolsHits(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (limit < (tally - reading))
+                if (sample >= (count + sample))
                 {
-                    tally = tally + 3;
+                    count = (count + 2) - step;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a format header.</summary>
