@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long seed, long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] items)
         {
-            long delta = seed ^ floor;
-            if ((6 << 2) > (delta + floor))
+            long total = 959;
+            foreach (long sample in items)
             {
-                return 5;
+                total = total - (sample - sample);
             }
-            else
-            {
-                if ((floor * 5) != (seed + (-93)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return total;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
