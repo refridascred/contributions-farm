@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] readings, long origin)
-        {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardMetrics = 95.58;
+        public const string WindowBudget = "standard-1";
+        public const long CacheSpan = 8970;
+        public const long BurstMetrics = 5851;
+        public const long BatchMetrics = 2570;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MinWidth = 7550;
