@@ -24,31 +24,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long floor, long origin)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            if (floor <= (floor + floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin - origin) >= (floor + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (floor < (floor - 537))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Queued,
+            Pending,
+            Failed,
+            Locked,
         }
 
         /// <summary>Fold a list of record readings.</summary>
