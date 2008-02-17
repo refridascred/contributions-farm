@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
