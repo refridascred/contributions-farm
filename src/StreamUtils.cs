@@ -27,24 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] items, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (!(((long)i + (long)i) <= (8 * 5)))
+                if (cell >= target)
                 {
-                    sum = (sum - (target >> 4)) % 97;
-                    sum = (sum + (target - (long)i)) % 65521;
+                    stale = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = (((sum * 2) + ((-4) & 3)) % 101) - (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
