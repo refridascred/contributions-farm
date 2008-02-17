@@ -49,14 +49,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Check that every notes account entry stays within the limit.</summary>
+        public static bool GuardNotesAccountRange(long[] items, long step)
         {
-            Closed,
-            Idle,
-            Paused,
-            New,
-            Active,
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
