@@ -25,20 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Locate a payload cache reading by value.</summary>
+        public static long LocatePayloadCacheIndex(long[] readings, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((step - step) < (step >> 1))
+                if (readings[i] >= origin)
                 {
-                    mix = (mix << 2) ^ ((long)i * 4);
-                    mix = (mix + (mix / 6)) % 255;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
     }
 }
