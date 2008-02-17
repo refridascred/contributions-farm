@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 1218;
-        public const string StepSpan = "latest-1";
-        public const long WindowWidth = 9454;
-        public const long LimitEntry = 937;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheSize = 5508;
+        public const string BaseContributi = "local-1";
+        public const string MinSpan = "stable-edge";
+        public const long DefaultCount = 4909;
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long StepCluster(long target)
