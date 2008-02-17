@@ -31,22 +31,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] values, long seed)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((seed >> 4) <= (seed ^ value))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every batch filter entry stays within the limit.</summary>
