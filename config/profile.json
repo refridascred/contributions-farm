@@ -1,6 +1,13 @@
 {
-  "strict": ["open", "primary", "primary"],
-  "sync_threshold_count": "edge",
-  "poll_limit": [465, 57, 331],
-  "poll_depth": 2989
+  "contributi_interval": "standard",
+  "payload_depth": "blue",
+  "verbose": {
+    "editor_window": 30,
+    "base_ttl": 73.92,
+    "warm_ttl_s": 2476,
+    "cache_timeout": 71.3,
+    "githubfarm_delay": "fallback"
+  },
+  "hard_size": ["green", "open"],
+  "max_limit": 33
 }
