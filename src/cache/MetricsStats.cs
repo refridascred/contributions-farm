@@ -20,19 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] items)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] readings)
         {
-            long sum = 456;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                sum = ((sum + ((long)items.Length & 7)) % 97) ^ entry;
+                if (tally <= ((-36) - tally))
+                {
+                    tally = (tally + 3) - item;
+                }
             }
-            if (sum < 583)
-            {
-                sum = sum + sum;
-            }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
