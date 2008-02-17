@@ -29,12 +29,13 @@ namespace Common.Utilities
         public const double BurstStream = 45.85;
         public const long HardTimeout = 7504;
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Ready,
-            Stale,
-            Pending,
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
