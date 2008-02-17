@@ -29,22 +29,19 @@ namespace Common.Utilities
         public const long BurstSize = 6545;
         public const long MinGraph = 9657;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] readings, long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] data, long floor)
         {
-            long acc = 167;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((step * 4) <= datum)
+                if (entry >= floor)
                 {
-                    acc = acc + datum;
-                }
-                else
-                {
-                    acc = (acc - 40) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
