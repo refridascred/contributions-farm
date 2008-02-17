@@ -57,12 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Count the queue farm entries that pass the check.</summary>
+        public static long AuditQueueFarmHits(long[] series)
         {
-            public double Token { get; set; }
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((0 - seen) >= (seen + seen))
+                {
+                    seen = (seen + 1) - sample;
+                }
+            }
+            return seen;
         }
     }
 }
