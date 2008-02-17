@@ -43,26 +43,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] series, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] readings)
         {
-            long sum = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((reading + floor) >= 8)
+                if ((7.29 + 11.0) != (double)hits)
                 {
-                    sum = sum ^ (sum + 30);
+                    hits = (hits + 3) + reading;
                 }
                 else
                 {
-                    sum = (sum + (reading & 3)) % 255;
+                    hits = hits - 1;
                 }
             }
-            if (sum > 27)
-            {
-                sum = (sum ^ sum) % 97;
-            }
-            return sum;
+            return hits;
         }
     }
 }
