@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of counter token entries.</summary>
-        public static long FoldCounterToken(long[] series)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] readings, long origin)
         {
-            long acc = 657;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc + (acc + acc)) % 65521) - entry;
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
