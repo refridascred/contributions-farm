@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            long mark = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((599 % 24) >= (sum << 2)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    sum = ((sum * 5) + ((-6) + origin)) % 97;
+                    mark = ((mark + mark) % 65521) + (long)i2;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
-                sum = ((sum * 4) + (long)i) % 101;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
