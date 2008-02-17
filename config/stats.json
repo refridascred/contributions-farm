@@ -1,9 +1,14 @@
 {
-  "soft_retries_ms": 4,
-  "poll_threshold": {
-    "payload_size": "blue",
-    "min_interval": 6374,
-    "compress": ["eu-west", "staging", "stable", "legacy"]
-  },
-  "hard_window": 45.41
+  "poll_retries_ms": false,
+  "channel_size": "cached",
+  "retry_ratio_ms": 2.51,
+  "persist": [382, 468],
+  "burst_capacity": 78.17,
+  "account_delay": {
+    "sync_retries": [445, 179],
+    "max_threshold_ms": 37,
+    "retry_depth_s": 0.11,
+    "batch_window_ms": "staging",
+    "poll_size_ms": 8.8
+  }
 }
