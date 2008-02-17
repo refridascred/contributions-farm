@@ -1,5 +1,6 @@
 {
-  "window_depth": 30,
-  "compress": 74,
-  "idle_threshold_pct": 4410
+  "batch_ratio_count": false,
+  "persist": 500,
+  "flush_timeout_count": [116, 256, 438, 387],
+  "cache_delay_ms": 93
 }
