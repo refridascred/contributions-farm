@@ -42,18 +42,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] samples)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((seen % 10) <= datum)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Draft,
+            Idle,
+            Stale,
+            Closed,
+            Locked,
         }
     }
 }
