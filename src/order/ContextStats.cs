@@ -13,12 +13,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] levels, long floor)
         {
-            New,
-            Closed,
-            Synced,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every counter stats entry stays within the limit.</summary>
