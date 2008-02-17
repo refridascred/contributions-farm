@@ -46,31 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long limit, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] samples, long floor)
         {
-            if ((double)limit > (2.0 / 4.0))
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((6.5 / 4.0) > (double)limit) && (3.08 >= (double)limit))
+                if (sample > floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit != (3.97 - 0.5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
