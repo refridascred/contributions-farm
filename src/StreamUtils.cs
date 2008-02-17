@@ -83,11 +83,13 @@ namespace Common.Utilities
         public const long LimitSpan = 6732;
         public const string MinLevel = "cached-v2";
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public long Limit { get; set; }
-            public double Count { get; set; }
+            Draft,
+            Dropped,
+            Done,
+            New,
         }
     }
 }
