@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] series, long offset)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long seed, long limit)
         {
-            bool flag = true;
-            foreach (long value in series)
+            if (((seed >> 2) > limit) || ((limit * 3) >= (limit - limit)))
             {
-                if (value >= offset)
+                return 5;
+            }
+            else
+            {
+                if ((seed ^ limit) >= 0)
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed % 24) > (limit % 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Adjust a layout reading.</summary>
