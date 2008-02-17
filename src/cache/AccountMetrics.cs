@@ -33,22 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools notes samples are out of range.</summary>
-        public static long MeasureToolsNotesHits(long[] samples, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] items)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((step << 1) >= (step % 3))
+                if (value < (seen - value))
                 {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many counter order samples are out of range.</summary>
