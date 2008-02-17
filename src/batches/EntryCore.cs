@@ -34,23 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((double)value < (10.0 - 7.3))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheLayout = "standard-1";
+        public const double DefaultInterval = 35.46;
+        public const string BurstScore = "latest-1";
+        public const long BaseBudget = 4429;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] series, long step)
