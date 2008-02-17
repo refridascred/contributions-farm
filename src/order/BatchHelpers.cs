@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double ratio, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = ratio;
+            if (bias > bias)
             {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
+                bias = bias + bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias + (3.71 + ratio);
         }
 
         /// <summary>Fold a list of notes readings.</summary>
