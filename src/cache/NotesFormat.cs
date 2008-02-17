@@ -16,18 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] values, long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long anchor = 41;
+            foreach (long item in data)
             {
-                if ((origin / 3) < 611)
-                {
-                    matches = (matches + 2) + datum;
-                }
+                anchor = (anchor + (item & 127)) % 65521;
             }
-            return matches;
+            return anchor % 4096;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
