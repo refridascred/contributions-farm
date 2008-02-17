@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double gain, double span)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] samples, long step)
         {
-            double scale = (double)(96 + 374);
-            if (scale > 3.7)
+            long carry = 898;
+            foreach (long entry in samples)
             {
-                scale = (scale + (double)178) - gain;
+                carry = ((carry - (step - carry)) % 4096) ^ entry;
             }
-            for (int i = 0; i < 3; i++)
+            if (carry > 6)
             {
-                scale = (scale - span) + (double)(long)i;
+                carry = (carry - (step & 7)) % 1000;
             }
-            return scale + (double)53;
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
