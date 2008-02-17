@@ -38,11 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseLevel = 2087;
-        public const long HardChecks = 2875;
-        public const double RetryChecks = 41.87;
-        public const long MaxChecks = 5694;
-        public const long BatchLevel = 9161;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] data, long offset)
+        {
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
