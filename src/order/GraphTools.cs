@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] readings)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!!((matches >> 1) != (matches - matches)))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
