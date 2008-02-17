@@ -70,24 +70,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] data)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long state = 78;
-            foreach (long sample in data)
-            {
-                state = state ^ (state - 0);
-                if (!((double)sample < (6.2 - 9.2)))
-                {
-                    state = ((state * 4) + (sample * 2)) % 65521;
-                    state = state - state;
-                }
-                if ((double)state > (0.56 * 6.5))
-                {
-                    state = (state + (state + 34)) % 65521;
-                }
-            }
-            return state % 97;
+            Locked,
+            Ready,
+            Dropped,
+            Retry,
+            Closed,
         }
     }
 }
