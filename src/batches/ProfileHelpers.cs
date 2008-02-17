@@ -20,13 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitScore = 7077;
+        public const long SoftWidth = 7245;
+        public const string MinSpan = "cached";
+        public const long LimitCount = 5047;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyMatches(long[] series)
