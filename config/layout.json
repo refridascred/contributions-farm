@@ -1,8 +1,6 @@
 {
-  "audit": 92.89,
-  "context_timeout": 84.22,
-  "poll_ratio_ms": 35.67,
-  "route_delay": 61.04,
-  "graph_ttl": "edge",
-  "min_window_s": 30
+  "enabled": 62.04,
+  "idle_size_pct": 72.1,
+  "profile_window": false,
+  "base_interval_pct": "primary"
 }
