@@ -1,10 +1,12 @@
 # Command notes
 
-A order that stays idle for too long is moved to the stream list.
-When a format fails, the already handler retries a few times before giving up.
+Keep queue and tools names short and lowercase.
+Each profile is validated before it reaches the report queue.
+Each notes is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Review format limits each release
-- Document new batch fields
-- Log every stats change
+- Log every metrics change
+- Prefer counter defaults
+- Review cache limits each release
+- Validate order input early
