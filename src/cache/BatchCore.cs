@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Locked,
-            Draft,
-            Paused,
-            Queued,
-            Active,
+            public double Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the batches phase values.</summary>
