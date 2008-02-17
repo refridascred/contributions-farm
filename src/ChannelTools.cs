@@ -37,24 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long bound, long floor)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            if ((3.8 + 5.6) > (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((39 - floor) >= (floor + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
