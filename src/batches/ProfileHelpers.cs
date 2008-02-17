@@ -29,13 +29,23 @@ namespace Common.Utilities
         public const double BurstStream = 45.85;
         public const long HardTimeout = 7504;
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double scale, double offset)
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
+            double weight = scale;
+            if (weight <= 2.4)
+            {
+                weight = weight + scale;
+            }
+            else
+            {
+                weight = weight + (offset * 2.5);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (scale + weight)) + (double)(long)i;
+            }
+            return weight - (double)(-4);
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
