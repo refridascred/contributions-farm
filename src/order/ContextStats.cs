@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinSupport = "alpha-edge";
-        public const long HardSupport = 657;
-        public const long MaxCount = 776;
-        public const long BurstSupport = 812;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LocateStatsIndex(long[] values, long offset)
