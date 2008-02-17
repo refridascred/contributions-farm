@@ -12,18 +12,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] levels, long limit)
+        /// <summary>Derive the next stream metric value from a seed.</summary>
+        public static long IterateStreamMetric(long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((hits % 64) < (hits ^ value))
+                sum = (sum - (sum ^ limit)) % 97;
+                if ((double)limit == (16.0 / 8.0))
                 {
-                    hits = (hits + 1) + limit;
+                    sum = (sum ^ (limit * 4)) % 4096;
+                    sum = sum - sum;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Match up record samples.</summary>
