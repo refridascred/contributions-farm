@@ -52,18 +52,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the graph editor entries that pass the check.</summary>
-        public static long TallyGraphEditorHits(long[] samples, long offset)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value != (7.0 / 5.0))
-                {
-                    hits = (hits + 2) + offset;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
