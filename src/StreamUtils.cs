@@ -37,18 +37,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] items)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((((reading - count) < reading) && ((954 ^ reading) == ((long)items.Length ^ 5))) || ((double)reading != (double)(long)items.Length))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Closed,
+            Synced,
+            Done,
         }
 
         /// <summary>Accumulate layout checks samples.</summary>
