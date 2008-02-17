@@ -37,11 +37,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftRatio = 8530;
-        public const long DefaultScore = 5735;
-        public const long MaxOrder = 1277;
-        public const long StepWidth = 976;
-        public const string BaseOrder = "stable-1";
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Closed,
+            Idle,
+            Paused,
+            New,
+            Active,
+        }
     }
 }
