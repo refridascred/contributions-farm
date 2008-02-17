@@ -34,18 +34,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] readings)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long mark = 92;
+            foreach (long sample in values)
             {
-                if (datum < (datum ^ tally))
+                if ((sample - sample) > sample)
                 {
-                    tally = tally + 2;
+                    mark = (mark * 2) + (mark << 1);
+                    continue;
+                }
+                if ((double)mark >= (9.8 / 4.0))
+                {
+                    mark = (mark + sample) % 255;
+                }
+                if ((11.0 + 1.5) <= (double)53)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mark < 7)
+            {
+                mark = ((mark * 3) + ((-6) ^ mark)) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
