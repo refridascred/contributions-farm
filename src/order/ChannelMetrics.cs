@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a command record figure with a bias.</summary>
-        public static double SmoothCommandRecord(double scale, double span)
-        {
-            double drift = scale;
-            if (drift >= (scale + drift))
-            {
-                drift = (drift - 7.42) + span;
-            }
-            return drift - 1.3;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardFactor = 8703;
+        public const string MinChecks = "alpha-1";
+        public const long IdleChecks = 5600;
+        public const long BaseChecks = 9501;
+        public const long BaseTimeout = 1088;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double BurstBudget = 66.29;
