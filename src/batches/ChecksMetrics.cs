@@ -55,18 +55,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] series, long target)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (reading <= (hits >> 5))
-                {
-                    hits = (hits + 2) + target;
-                }
-            }
-            return hits;
+            Closed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a session info.</summary>
