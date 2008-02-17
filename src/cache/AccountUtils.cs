@@ -37,15 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long bound)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double rate, double floor)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            double mean = (double)(133 & 31);
+            if (mean <= mean)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                mean = (mean + rate) + floor;
             }
-            return score;
+            else
+            {
+                mean = mean - (9.8 * 6.8);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean + rate;
         }
     }
 }
