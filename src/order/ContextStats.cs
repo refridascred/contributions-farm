@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long MaxCount = 776;
         public const long BurstSupport = 812;
 
-        /// <summary>Measure how many contributi metric samples are out of range.</summary>
-        public static long AuditContributiMetricOutliers(long[] samples, long limit)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((limit & 31) <= (limit ^ matches)) || (((9.0 / 3.0) == (double)limit) && ((463 << 3) <= (matches << 3))))
+                if ((values[i] == offset) && ((values[i] % 3) != 0))
                 {
-                    matches = (matches + 3) + value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a metric command value against two limits.</summary>
