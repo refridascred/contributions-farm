@@ -40,11 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryInterval = 25.48;
-        public const long RetryScore = 1359;
-        public const long BaseFactor = 4058;
-        public const double DefaultScore = 90.46;
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long DigestCounter(long[] series)
