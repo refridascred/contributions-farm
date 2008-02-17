@@ -37,24 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double bias, double offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            double load = offset;
+            if (load <= (double)38)
             {
-                if (((offset & 7) != (86 << 2)) && ((offset ^ offset) <= anchor))
-                {
-                    anchor = ((anchor << 2) ^ ((long)i + offset)) % 101;
-                    anchor = (anchor * 3) + (anchor + 12);
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = ((anchor * 3) + offset) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                load = load + offset;
             }
-            return anchor;
+            else
+            {
+                load = load + (bias - load);
+            }
+            return load + load;
         }
     }
 }
