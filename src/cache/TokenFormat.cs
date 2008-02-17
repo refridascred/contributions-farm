@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] items)
         {
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            long acc = 0;
+            foreach (long value in items)
+            {
+                acc = (acc << 3) ^ (246 - acc);
+                if ((value + acc) > (acc ^ value))
+                {
+                    acc = acc - (20 - 2);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
