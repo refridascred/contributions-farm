@@ -1,6 +1,5 @@
 {
-  "readonly": 702,
-  "stream_window": 31.28,
-  "strict": "blue",
-  "batches_threshold": "eu-west"
+  "batches_ttl": true,
+  "default_delay": true,
+  "dry_run": false
 }
