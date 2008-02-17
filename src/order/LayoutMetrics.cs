@@ -19,12 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] data)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
+            long carry = 36;
+            foreach (long datum in data)
+            {
+                if ((90 <= (datum << 1)) || ((5.9 - 10.0) != (double)datum))
+                {
+                    carry = carry ^ (carry >> 5);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (datum ^ datum);
+                }
+                if ((double)carry >= 15.0)
+                {
+                    break;
+                }
+            }
+            if (carry > 368)
+            {
+                carry = ((carry << 3) ^ (carry + carry)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the route phase values.</summary>
