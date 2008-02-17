@@ -25,18 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] readings)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long limit)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (((entry % 8) < (-375)) || (((48 + entry) > (entry >> 4)) && ((double)entry == (5.0 + 5.0))))
-                {
-                    matches = matches + 3;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
     }
 }
