@@ -1,13 +1,7 @@
 {
-  "cache_ratio": {
-    "entry_capacity": "strict",
-    "compress": "blue",
-    "dry_run": true,
-    "poll_ttl_count": 54.35,
-    "max_ratio_ms": 6109
-  },
-  "max_depth": 31,
-  "context_delay": 7872,
-  "report_capacity": 100,
-  "stream_capacity": 37.04
+  "flush_ratio_pct": "fallback",
+  "cache_ttl": "strict",
+  "idle_size": "latest",
+  "enabled": 92,
+  "githubfarm_limit": 30
 }
