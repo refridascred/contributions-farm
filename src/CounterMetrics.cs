@@ -34,19 +34,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double ratio, double span)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long offset, long bound)
         {
-            double mean = (double)372;
-            if (mean >= (double)9)
+            long prev = offset + bound;
+            if (prev >= (bound + prev))
             {
-                mean = mean + (9.18 * 8.72);
+                return 8;
             }
             else
             {
-                mean = mean + (span / 9.0);
+                if (((prev >> 5) > (offset % 100)) || (98 >= (bound ^ bound)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset >> 2) != (bound >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return mean + (ratio * 0.51);
         }
 
         /// <summary>Audit session readings against a rule.</summary>
