@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine channel window values into a single score.</summary>
-        public static long CombineChannelWindow(long[] samples)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] values)
         {
-            long score = 267;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((3 - score) != (score / 4)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (((score << 2) ^ (score + score)) % 255) + entry;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (17 + score)) % 1000;
-                }
-                if ((score * 4) > (1 << 2))
-                {
-                    break;
+                    if ((values[i] - values[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
