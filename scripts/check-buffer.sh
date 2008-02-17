@@ -12,9 +12,9 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=206
-log "limit is ${BUFFER_LIMIT}"
-
-for item in open fallback; do
+for item in green eu-west strict; do
     log "checking ${item}"
 done
+
+BUFFER_LIMIT=313
+log "limit is ${BUFFER_LIMIT}"
