@@ -56,14 +56,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Iterate the account checks series from a seed.</summary>
+        public static long StepAccountChecks(long bound)
         {
-            Dropped,
-            Paused,
-            Stale,
-            Failed,
-            Closed,
+            long state = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if (bound <= 97)
+                {
+                    state = ((state * 4) + (long)i) % 4096;
+                }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = (state - (state << 3)) + (long)i2;
+                }
+                state = (state << 3) ^ (state * 3);
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
