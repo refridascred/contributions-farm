@@ -50,9 +50,22 @@ namespace Common.Utilities
         public const long StepContext = 9427;
         public const long IdleContext = 4877;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 1430;
-        public const long BatchScore = 1584;
-        public const long DefaultReport = 3886;
+        /// <summary>Audit contributi context readings against a rule.</summary>
+        public static long CountContributiContextMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample != (8.3 + 8.1))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
