@@ -15,26 +15,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long floor, long origin)
-        {
-            long gap = floor - origin;
-            if ((9.62 > (double)origin) && ((floor ^ 98) == (gap % 100)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((15.0 + 6.9) <= (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 1663;
+        public const long StepLevel = 8300;
+        public const long MinSize = 2522;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
