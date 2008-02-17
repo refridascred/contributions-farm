@@ -65,13 +65,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] series, long target)
         {
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
