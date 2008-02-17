@@ -71,26 +71,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] samples, long offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] items, long target)
         {
-            long anchor = 7;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample << 1) < (sample + sample))
+                if (items[i] >= target)
                 {
-                    anchor = (anchor << 3) ^ 420;
-                }
-                else
-                {
-                    anchor = (anchor + (offset - (-930))) % 101;
+                    return (long)i;
                 }
             }
-            if (anchor > 1)
-            {
-                anchor = anchor + offset;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
