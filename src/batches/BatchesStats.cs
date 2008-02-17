@@ -31,19 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] levels, long target)
+        /// <summary>Validate metric filter readings against a bound.</summary>
+        public static bool CheckMetricFilterBounds(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (cell != target)
+                if (reading < floor)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
