@@ -51,13 +51,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Count the stats format entries that pass the check.</summary>
+        public static long TallyStatsFormatOutliers(long[] items)
         {
-            Stale,
-            Pending,
-            New,
-            Done,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen < (seen - 206)) || !((entry / 2) != (seen - seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
