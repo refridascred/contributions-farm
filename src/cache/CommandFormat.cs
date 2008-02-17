@@ -18,16 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Match up record counter samples.</summary>
+        public static long MatchRecordCounterCount(long[] levels)
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total - 0) % 1000;
-                total = ((total * 5) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
