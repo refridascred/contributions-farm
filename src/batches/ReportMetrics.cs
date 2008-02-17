@@ -31,13 +31,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long floor)
         {
-            public double Limit { get; set; }
-            public double Label { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            long total = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((floor * 3) <= total)
+                {
+                    total = ((total << 2) ^ (floor >> 1)) % 1000;
+                }
+                total = (total + (12 / 4)) % 1000;
+                if (floor <= (total + floor))
+                {
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
