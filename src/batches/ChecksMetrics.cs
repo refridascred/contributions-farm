@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] items, long limit)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long mark = 66;
-            foreach (long entry in items)
-            {
-                if ((mark - 509) != (limit % 10))
-                {
-                    mark = ((mark + (limit - limit)) % 1000) + entry;
-                }
-            }
-            return mark % 4096;
+            Draft,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a cache header.</summary>
