@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long limit)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double gain, double span)
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
+            double scale = (double)(96 + 374);
+            if (scale > 3.7)
             {
-                mix = (mix - (limit << 3)) % 1000;
-                if ((mix / 7) >= (1 % 2))
-                {
-                    mix = (mix + (mix >> 1)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
+                scale = (scale + (double)178) - gain;
             }
-            return mix;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - span) + (double)(long)i;
+            }
+            return scale + (double)53;
         }
 
         /// <summary>Describe the editor level values.</summary>
