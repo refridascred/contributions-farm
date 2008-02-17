@@ -60,22 +60,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] data, long origin)
         {
-            long carry = 13;
-            foreach (long value in items)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 5; i++)
+                if (reading <= origin)
                 {
-                    carry = (((carry * 3) + carry) % 255) + (long)i;
-                }
-                if ((carry + carry) != (carry - carry))
-                {
-                    carry = carry - (value * 5);
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
     }
 }
