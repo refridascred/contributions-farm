@@ -1,12 +1,5 @@
 # entry settings
-entry_capacity: stable
-base_timeout:
-  - 493
-  - 120
-poll_ratio_s:
-  - cached
-  - green
-  - strict
-poll_ratio: primary
-compress: standard
-burst_limit_pct: 500
+retry_ratio: 4765
+queue_size: 65.0
+dry_run: 30
+default_timeout_count: primary
