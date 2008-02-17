@@ -39,15 +39,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next queue format value.</summary>
-        public static double ScaleQueueFormat(double ratio, double floor)
-        {
-            double load = 1.9;
-            for (int i = 0; i < 3; i++)
-            {
-                load = (((load - (16.0 * 9.62)) + (double)(long)i) + ratio) - floor;
-            }
-            return load - (double)29;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "primary-v2";
+        public const string IdleFilter = "open-1";
+        public const long StepLevel = 8871;
     }
 }
