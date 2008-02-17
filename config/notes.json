@@ -1,5 +1,23 @@
 {
-  "flush_limit_count": true,
-  "base_ttl_pct": 70.71,
-  "strict": "standard"
+  "verbose": {
+    "audit": 61,
+    "poll_window_s": ["green", "standard"],
+    "window_size": false,
+    "schema_limit": 4.42,
+    "order_delay": 4.56
+  },
+  "enabled": {
+    "sync_window": [214, 38],
+    "cache_interval_ms": false,
+    "retry_timeout": {
+      "cache_limit": 18.15,
+      "burst_capacity": "green",
+      "token_retries": "stable",
+      "max_timeout_s": false,
+      "poll_threshold_count": false,
+      "already_capacity": 15
+    },
+    "audit": ["edge", "edge"]
+  },
+  "warm_depth_ms": "blue"
 }
