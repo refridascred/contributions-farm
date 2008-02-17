@@ -14,17 +14,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] samples, long seed)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (samples[i] == seed)
+                if (reading <= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Match up queue samples.</summary>
