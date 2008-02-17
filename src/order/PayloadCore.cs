@@ -27,22 +27,23 @@ namespace Common.Utilities
         public const long StepBudget = 1068;
         public const double LimitSpan = 44.31;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] data, long bound)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double bias, double span)
         {
-            long acc = 74;
-            foreach (long entry in data)
+            double weight = bias;
+            if (weight <= bias)
             {
-                if ((4 + bound) > ((long)data.Length ^ acc))
-                {
-                    acc = (((acc * 3) + (bound % 64)) % 65521) - entry;
-                }
+                weight = weight - weight;
             }
-            if (acc < (-3))
+            else
             {
-                acc = (acc << 2) ^ (bound & 7);
+                weight = weight + (span - bias);
             }
-            return acc;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (double)55) + (double)(long)i;
+            }
+            return weight - 8.9;
         }
     }
 }
