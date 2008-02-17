@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] items, long seed)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long gap = floor + seed;
+            if (!(seed >= (56 ^ floor)))
             {
-                if (!((5.93 + 3.0) != (double)(long)items.Length) || ((312 - 668) <= (tally + (long)items.Length)))
+                return 5;
+            }
+            else
+            {
+                if ((double)floor < 19.0)
                 {
-                    tally = ((tally + 2) + sample) + seed;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor >> 5) >= gap)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
