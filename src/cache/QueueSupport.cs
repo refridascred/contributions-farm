@@ -37,18 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (!(((datum * 5) <= (offset * 4)) || ((offset - datum) < seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftRatio = 8530;
+        public const long DefaultScore = 5735;
+        public const long MaxOrder = 1277;
+        public const long StepWidth = 976;
+        public const string BaseOrder = "stable-1";
     }
 }
