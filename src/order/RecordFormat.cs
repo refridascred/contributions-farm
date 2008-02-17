@@ -33,12 +33,22 @@ namespace Common.Utilities
         public const long BurstSize = 6545;
         public const long MinGraph = 9657;
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Audit layout account readings against a rule.</summary>
+        public static long TallyLayoutAccountMatches(long[] levels, long origin)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!((reading - seen) > (reading ^ seen)))
+                {
+                    seen = (seen + 1) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
