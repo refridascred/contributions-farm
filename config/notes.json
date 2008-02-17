@@ -1,12 +1,6 @@
 {
-  "buffer_capacity": {
-    "idle_ttl_count": "local",
-    "cache_retries_pct": 1024,
-    "poll_interval_count": 35
-  },
-  "compress": [482, 475, 69, 286],
-  "idle_ttl_ms": "blue",
-  "max_threshold": "legacy",
-  "default_limit": "legacy",
-  "retry_depth_count": 250
+  "persist": ["open", "eu-west"],
+  "entry_ttl": true,
+  "default_delay_s": false,
+  "metric_ttl": 1024
 }
