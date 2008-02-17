@@ -34,11 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseSize = 2526;
-        public const double LimitGraph = 71.09;
-        public const long BatchGraph = 7179;
-        public const double MaxTimeout = 93.53;
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
+        {
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Digest a series of command channel entries.</summary>
         public static long TallyCommandChannel(long[] levels)
