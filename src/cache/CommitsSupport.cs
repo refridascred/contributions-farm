@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double scale, double span)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            double drift = scale;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = ((drift + (scale / 9.0)) + (double)(long)i) - span;
-            }
-            return drift - (drift - drift);
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Blend two order measurements.</summary>
