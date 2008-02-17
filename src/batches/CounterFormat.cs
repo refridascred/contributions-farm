@@ -38,15 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] items)
+        /// <summary>Count entry route pairs that satisfy a relation.</summary>
+        public static long PairEntryRouteCount(long[] items)
         {
             long tally = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] + items[j]) > 8)
+                    if ((items[i] + items[j]) == 19)
                     {
                         tally = tally + 1;
                     }
