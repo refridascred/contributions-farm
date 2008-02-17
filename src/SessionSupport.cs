@@ -17,22 +17,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] readings, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((limit / 9) < (matches + matches))
+                if (!!((seen % 3) <= (entry >> 1)))
                 {
-                    matches = (matches + 1) + entry;
+                    seen = (seen + 2) + target;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
