@@ -52,12 +52,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] values, long bound)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((((double)cell <= (1.89 / 5.0)) && ((bound - cell) >= bound)) || ((double)hits == (double)992))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
