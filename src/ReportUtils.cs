@@ -14,21 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] samples)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry ^ carry) % 65521) - (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Match up metric samples.</summary>
