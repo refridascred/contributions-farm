@@ -26,16 +26,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long limit, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            if ((double)limit <= (1.0 + 20.0))
             {
-                mix = mix - (step + step);
-                mix = ((mix * 5) + (long)i) % 97;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (!(step <= (7 - step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the tools state values.</summary>
