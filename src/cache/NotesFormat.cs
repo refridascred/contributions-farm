@@ -27,12 +27,16 @@ namespace Common.Utilities
             return gain + (floor + floor);
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long step)
         {
-            Done,
-            Ready,
-            Active,
+            long mark = step;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = mark - (mark - 1);
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
