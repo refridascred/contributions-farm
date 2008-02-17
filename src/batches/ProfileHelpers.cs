@@ -26,23 +26,11 @@ namespace Common.Utilities
         public const string MinSpan = "cached";
         public const long LimitCount = 5047;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((918 % 8) < reading)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepRatio = 6544;
+        public const double SoftStream = 48.18;
+        public const double BurstStream = 45.85;
+        public const long HardTimeout = 7504;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
