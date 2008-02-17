@@ -29,19 +29,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] readings, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (datum >= bound)
+                if ((seed >> 4) <= (seed ^ value))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Check that every batch filter entry stays within the limit.</summary>
