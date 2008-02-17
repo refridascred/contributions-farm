@@ -1,11 +1,13 @@
 {
-  "base_interval": true,
-  "stream_ttl": [185, 81],
-  "default_ttl_pct": 60,
-  "max_threshold": 94.59,
-  "soft_retries_count": {
-    "idle_ratio": "green",
-    "default_size_s": true,
-    "cache_ratio_s": 46
-  }
+  "compress": true,
+  "max_size": {
+    "stats_interval": 100,
+    "poll_ttl_ms": false,
+    "sync_interval_count": "open",
+    "sync_retries": [11, 133, 292, 49],
+    "record_ttl": [192, 456]
+  },
+  "poll_delay": 43.68,
+  "retry_retries_ms": "cached",
+  "cache_ttl": 8757
 }
