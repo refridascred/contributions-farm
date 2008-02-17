@@ -23,12 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] series, long origin)
         {
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
