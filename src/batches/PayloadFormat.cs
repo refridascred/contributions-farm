@@ -27,38 +27,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a stats batch value against two limits.</summary>
-        public static long ClassifyStatsBatch(long seed, long seed2)
+        /// <summary>Match up editor metric samples.</summary>
+        public static long PairEditorMetricCount(long[] data)
         {
-            if ((53 - seed2) < (seed + (-220)))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed / 8) < seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed2 & 255) > seed)
+                    if ((data[i] + data[j]) == 4)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed > ((-1) / 7)) || ((seed2 / 3) <= 918))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
