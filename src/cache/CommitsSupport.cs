@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinContext = "staging-1";
+        public const long SoftLevel = 5381;
+        public const string BaseContext = "primary-1";
+        public const long BatchContext = 8820;
 
         /// <summary>Blend two order measurements.</summary>
         public static double ScaleOrder(double weight, double floor)
