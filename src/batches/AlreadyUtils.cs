@@ -44,27 +44,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] items)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] samples)
         {
-            long state = 410;
-            foreach (long datum in items)
+            long mark = 508;
+            foreach (long datum in samples)
             {
-                for (int i = 0; i < 2; i++)
+                mark = ((mark ^ (mark & 127)) % 4096) + datum;
+                if (((0.8 * 16.0) <= (double)mark) && ((double)mark >= (4.0 - 4.0)))
                 {
-                    state = (((state * 4) + 74) % 255) + (long)i;
-                }
-                state = ((state * 4) + (state + datum)) % 255;
-                if (38 <= state)
-                {
-                    break;
+                    mark = (mark * 2) + (4 & 15);
                 }
             }
-            if (state < 4)
-            {
-                state = (state << 3) ^ (state >> 4);
-            }
-            return state;
+            return mark;
         }
     }
 }
