@@ -15,15 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double weight, double floor)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long target)
         {
-            double drift = (double)(61 & 1);
+            long total = target;
             for (int i = 0; i < 8; i++)
             {
-                drift = (((drift - (double)14) + (double)(long)i) - weight) + floor;
+                total = total - (target - 249);
+                total = (total - (long)i) % 1000;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return drift + drift;
+            return total;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
