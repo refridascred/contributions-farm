@@ -27,15 +27,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] data, long seed)
-        {
-            long total = 65;
-            foreach (long entry in data)
-            {
-                total = (((total * 3) + total) + entry) + seed;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 81.25;
+        public const double DefaultSize = 23.2;
+        public const long SoftLevel = 8306;
+        public const long DefaultBudget = 9060;
+        public const long LimitMetrics = 7334;
     }
 }
