@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long floor, long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] levels, long origin)
         {
-            long gap = floor + step;
-            if ((5.6 >= (double)gap) || (step > floor))
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((687 > step) && ((floor ^ floor) == (247 + 94)))
+                if (entry > origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (floor <= (step % 97))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step <= (gap & 15)) || ((step - gap) > (gap >> 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
