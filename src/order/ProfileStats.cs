@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public double Owner { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchDepth = 84.06;
+        public const string IdleCount = "staging-1";
+        public const long WindowBudget = 9867;
+        public const long IdleAccount = 9959;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordLimits(long[] items, long seed)
