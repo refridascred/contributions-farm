@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseStream = "alpha-edge";
-        public const long CacheStream = 7407;
-        public const string SoftCount = "fallback";
-        public const long IdleStream = 1956;
-        public const long CacheBudget = 4960;
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
