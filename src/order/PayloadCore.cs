@@ -21,19 +21,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit already window readings against a rule.</summary>
-        public static long CountAlreadyWindowGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (8.9 < (double)tally)
-                {
-                    tally = (tally + 1) - datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitLevel = 1218;
+        public const long BurstSession = 1961;
+        public const long StepBudget = 1068;
+        public const double LimitSpan = 44.31;
 
         /// <summary>Accumulate token samples.</summary>
         public static long TotalToken(long[] data, long bound)
