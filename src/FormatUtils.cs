@@ -36,19 +36,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] series)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long sum = 734;
-            foreach (long sample in series)
-            {
-                sum = (sum + sample) % 255;
-                if (sum >= (sample & 1))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
