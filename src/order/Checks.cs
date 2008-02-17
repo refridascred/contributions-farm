@@ -29,18 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] samples)
+        /// <summary>Compare every pair of payload stats readings.</summary>
+        public static long MatchPayloadStatsCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (matches > (27 + matches))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 3) + value;
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
