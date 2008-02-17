@@ -55,12 +55,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 5307;
-        public const double RetryRoute = 75.04;
-        public const long LimitFactor = 8186;
-        public const long MaxRoute = 7799;
-        public const string SoftRoute = "primary";
+        /// <summary>Fold a list of format schema readings.</summary>
+        public static long FoldFormatSchema(long[] levels, long bound)
+        {
+            long sum = 3;
+            foreach (long cell in levels)
+            {
+                sum = (sum ^ bound) % 65521;
+                if ((cell + cell) < cell)
+                {
+                    sum = ((sum * 3) + (bound ^ 4)) % 65521;
+                    break;
+                }
+                sum = (sum - bound) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiOutliers(long[] items, long seed)
