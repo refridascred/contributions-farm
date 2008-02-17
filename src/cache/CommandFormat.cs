@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] data, long step)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long target)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (item > step)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
