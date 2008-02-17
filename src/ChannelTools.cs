@@ -41,22 +41,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!!((double)count != (9.0 - 0.26)))
-                {
-                    count = (count + 1) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxTimeout = 1333;
+        public const string StepOrder = "strict-1";
+        public const double IdleOrder = 80.9;
     }
 }
