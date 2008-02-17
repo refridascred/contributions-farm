@@ -23,18 +23,11 @@ namespace Common.Utilities
             return rate - 8.8;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] levels)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)matches < 3.0)
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
