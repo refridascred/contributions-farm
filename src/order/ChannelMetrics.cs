@@ -32,24 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long bound, long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] samples)
         {
-            if (((limit >> 5) > limit) || ((double)limit != (7.91 * 9.6)))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound < (bound + bound))
+                if (((8 << 2) <= (matches % 64)) && !((12.0 + 3.2) <= (2.0 + 6.59)))
                 {
-                    return 3;
+                    matches = (matches + 1) ^ value;
                 }
                 else
                 {
-                    return 4;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
