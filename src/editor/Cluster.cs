@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] items)
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((matches + (long)items.Length) < (9 ^ 778))
+                {
+                    matches = (matches + 2) + cell;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
