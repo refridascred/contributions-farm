@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Idle,
             Done,
-            Pending,
+            Stale,
+            Ready,
             Locked,
+            Dropped,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
