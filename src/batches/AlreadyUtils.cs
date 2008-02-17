@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] samples)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long step)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long state = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally / 7) <= (sample + tally))
-                {
-                    tally = tally + 1;
-                }
+                state = (state ^ ((long)i / 6)) % 97;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
