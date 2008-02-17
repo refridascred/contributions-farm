@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const string IdleOrder = "local-edge";
         public const long SoftOrder = 7099;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            Locked,
+            Paused,
+            Synced,
+            Done,
+            Ready,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
