@@ -27,18 +27,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] readings, long floor)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((-450) <= (cell + (long)readings.Length))
-                {
-                    hits = (hits + 2) - floor;
-                }
-            }
-            return hits;
+            Locked,
+            Ready,
+            Pending,
+            Retry,
+            Failed,
         }
     }
 }
