@@ -35,16 +35,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next farm route value from a seed.</summary>
-        public static long RollFarmRoute(long origin)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] values)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total << 2) ^ (673 - total)) % 65521;
-                total = ((total * 5) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the account mode values.</summary>
