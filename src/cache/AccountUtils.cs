@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftSpan = 1161;
-        public const long DefaultLayout = 9934;
-        public const long SoftLayout = 5467;
-        public const long BatchLayout = 6379;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] data, long floor)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Blend two support counter measurements.</summary>
         public static double AdjustSupportCounter(double weight, double bias)
