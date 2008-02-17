@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] samples)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (hits < (item - 653))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
