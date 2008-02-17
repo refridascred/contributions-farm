@@ -1,6 +1,6 @@
 {
-  "compress": true,
-  "githubfarm_ratio": "legacy",
-  "max_ttl": "legacy",
-  "retry_depth_count": "primary"
+  "buffer_delay": false,
+  "min_size": 71.99,
+  "retry_size_pct": "stable",
+  "retry_depth": 0.68
 }
