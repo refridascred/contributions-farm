@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
