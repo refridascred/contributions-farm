@@ -40,14 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Failed,
-            Pending,
-            Active,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryInterval = 25.48;
+        public const long RetryScore = 1359;
+        public const long BaseFactor = 4058;
+        public const double DefaultScore = 90.46;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long DigestCounter(long[] series)
