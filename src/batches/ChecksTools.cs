@@ -24,13 +24,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Match up buffer commits samples.</summary>
+        public static long MatchBufferCommitsCount(long[] values)
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
