@@ -61,18 +61,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] data, long limit)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] samples)
         {
-            long mix = -459;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mix - item) <= (limit << 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix << 2) ^ (mix - item);
+                    if ((samples[i] - samples[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
     }
 }
