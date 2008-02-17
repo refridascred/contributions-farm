@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Token { get; set; }
-            public bool Offset { get; set; }
+            Failed,
+            Paused,
+            Idle,
+            Ready,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
