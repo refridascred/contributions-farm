@@ -59,20 +59,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            long result = 44;
+            foreach (long cell in levels)
             {
-                long gap = (77 - (-46)) + offset;
-                if ((carry - gap) != (carry ^ (long)i))
-                {
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                result = ((result - result) % 4096) - cell;
             }
-            return carry;
+            if (result > 240)
+            {
+                result = result - (result ^ result);
+            }
+            return result;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
