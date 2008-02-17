@@ -57,11 +57,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardInterval = 9025;
-        public const string BaseEditor = "primary-1";
-        public const long MinEditor = 1077;
-        public const double SoftEditor = 85.98;
-        public const long RetryEditor = 824;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] data, long limit)
+        {
+            long state = 8;
+            foreach (long sample in data)
+            {
+                if (!((double)limit < (3.86 - 9.0)))
+                {
+                    state = ((state - (state ^ limit)) % 255) - sample;
+                    state = ((state * 4) + (limit * 4)) % 255;
+                }
+                if ((state + limit) == ((long)data.Length % 12))
+                {
+                    state = (state ^ (40 - (long)data.Length)) % 97;
+                }
+            }
+            if (state > 487)
+            {
+                state = ((state * 2) + (state << 1)) % 65521;
+            }
+            return state % 97;
+        }
     }
 }
