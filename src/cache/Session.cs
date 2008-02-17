@@ -31,13 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] readings, long bound)
         {
-            Draft,
-            Pending,
-            Ready,
-            New,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample >= (826 + 1)) || (4.0 <= (double)count))
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the channel state values.</summary>
