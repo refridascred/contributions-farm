@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Queued,
-            Retry,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardWidth = 9161;
+        public const long MaxCommits = 8218;
+        public const long CacheCommits = 9709;
+        public const string MinCommits = "open";
+        public const long IdleCommits = 7427;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long LimitGraph = 9562;
