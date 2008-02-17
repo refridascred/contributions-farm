@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardRatio = "local";
-        public const string HardCache = "staging-edge";
-        public const long SoftCache = 8802;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Done,
+            Ready,
+            Idle,
+            Active,
+            Draft,
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatHits(long[] series, long bound)
