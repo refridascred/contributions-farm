@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long BaseBudget = 300;
         public const double LimitSession = 42.13;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] levels, long floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Synced,
+            Ready,
+            Locked,
+            Queued,
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
