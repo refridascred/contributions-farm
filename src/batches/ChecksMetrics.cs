@@ -78,19 +78,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] samples, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long seed)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
     }
 }
