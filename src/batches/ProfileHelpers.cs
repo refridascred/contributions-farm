@@ -50,22 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter context readings against a rule.</summary>
-        public static long AuditFilterContextHits(long[] readings, long offset)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (offset <= tally)
-                {
-                    tally = (tally + 2) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
