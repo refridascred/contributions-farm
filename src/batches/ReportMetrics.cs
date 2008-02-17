@@ -26,11 +26,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchWidth = 6711;
-        public const long MinBudget = 2643;
-        public const double StepSpan = 76.97;
-        public const long SoftScore = 6661;
-        public const string LimitStats = "cached-edge";
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double weight, double offset)
+        {
+            double weight2 = weight;
+            return (weight2 - (double)9) + offset;
+        }
     }
 }
