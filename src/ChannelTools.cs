@@ -31,18 +31,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit route report readings against a rule.</summary>
-        public static long MeasureRouteReportHits(long[] readings)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (0.2 > (double)(long)readings.Length)
+                if (entry > offset)
                 {
-                    count = (count + 1) + cell;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
