@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public double Level { get; set; }
-            public bool Total { get; set; }
-            public double Mode { get; set; }
-            public double Count { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
