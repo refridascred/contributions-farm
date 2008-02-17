@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of payload queue entries.</summary>
-        public static long ScorePayloadQueue(long[] levels)
-        {
-            long mark = 70;
-            foreach (long reading in levels)
-            {
-                mark = (mark + (mark + 463)) - reading;
-                mark = mark - (38 >> 1);
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 1560;
+        public const double MaxFactor = 10.96;
+        public const long HardWidth = 334;
+        public const long BurstDepth = 8307;
+        public const long SoftInterval = 7542;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long MatchGithubfarmCount(long[] items)
