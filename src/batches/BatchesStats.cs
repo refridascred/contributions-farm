@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((offset % 12) >= (seen % 60))
                 {
-                    if ((data[i] + data[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) + item;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
