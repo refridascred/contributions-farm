@@ -54,15 +54,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double scale, double offset)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            double weight = offset;
-            if (weight >= weight)
+            long anchor = target;
+            for (int i = 0; i < 16; i++)
             {
-                weight = weight + (scale * 9.0);
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return weight - 8.9;
+            return anchor;
         }
 
         /// <summary>Fold a list of schema format readings.</summary>
