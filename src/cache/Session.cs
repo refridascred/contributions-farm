@@ -44,19 +44,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double scale, double floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] readings)
         {
-            double bias = floor + (scale * 17.0);
-            if (bias < scale)
+            long anchor = -7;
+            foreach (long item in readings)
             {
-                bias = bias - floor;
+                if ((item + item) != (704 * 5))
+                {
+                    anchor = (anchor << 3) ^ (anchor % 2);
+                    anchor = (anchor * 5) + (758 & 1);
+                }
+                if (0 >= (item + item))
+                {
+                    anchor = anchor - (item - anchor);
+                }
             }
-            else
+            if (anchor < 27)
             {
-                bias = bias + (scale / 7.0);
+                anchor = (anchor + (anchor % 60)) % 1000;
             }
-            return bias - bias;
+            return anchor % 4096;
         }
     }
 }
