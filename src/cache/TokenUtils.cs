@@ -33,13 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double rate, double span)
         {
-            Synced,
-            Dropped,
-            Closed,
-            Ready,
+            double bias = span;
+            if (bias < span)
+            {
+                bias = bias + (bias + rate);
+            }
+            else
+            {
+                bias = bias - (span * 5.5);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + (bias / 5.0);
         }
     }
 }
