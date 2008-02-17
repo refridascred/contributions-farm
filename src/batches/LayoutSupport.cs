@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] samples, long target)
+        /// <summary>Validate counter stream readings against a bound.</summary>
+        public static bool CheckCounterStreamLimits(long[] items, long origin)
         {
-            long total = 156;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((double)769 >= (double)sample)
+                if (datum <= origin)
                 {
-                    total = (total * 5) + target;
+                    ready = false;
+                    break;
                 }
             }
-            if (total < 756)
-            {
-                total = (total + (total % 8)) % 1000;
-            }
-            return total % 1000;
+            return ready;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
