@@ -28,21 +28,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((offset + 252) < (offset + offset))
                 {
-                    if ((items[i] + items[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum << 2) ^ (sum & 7)) % 101;
                 }
+                sum = sum ^ 861;
+                if (!(((long)i % 10) <= (offset + (long)i)))
+                {
+                    sum = (sum * 5) + (sum ^ sum);
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the account mode values.</summary>
