@@ -44,22 +44,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate cluster metric samples.</summary>
-        public static long CombineClusterMetric(long[] items, long bound)
+        /// <summary>Measure how many filter context samples are out of range.</summary>
+        public static long AuditFilterContextGaps(long[] levels, long step)
         {
-            long result = -243;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((9.0 * 3.0) >= (double)reading)
+                if ((double)tally < (double)step)
                 {
-                    result = result - (bound + bound);
-                }
-                else
-                {
-                    result = ((result * 2) + (bound * 2)) % 97;
+                    tally = (tally + 2) - sample;
                 }
             }
-            return result % 65521;
+            return tally;
         }
     }
 }
