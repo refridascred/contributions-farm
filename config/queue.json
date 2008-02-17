@@ -1,6 +1,7 @@
 {
-  "retry_depth_pct": 60,
-  "hard_ratio_pct": "stable",
-  "report_delay": 13,
-  "default_limit_s": true
+  "readonly": [420, 63, 79, 479],
+  "warm_interval_s": false,
+  "strict": false,
+  "metric_ratio": 60.71,
+  "context_limit": 60
 }
