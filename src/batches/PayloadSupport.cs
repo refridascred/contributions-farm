@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next cache format value.</summary>
-        public static double ProjectCacheFormat(double scale, double offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] samples)
         {
-            double scale2 = scale + (scale - offset);
-            if (scale2 >= offset)
+            long total = 15;
+            foreach (long value in samples)
             {
-                scale2 = scale2 + (scale + offset);
+                if ((total - total) > (total % 2))
+                {
+                    total = (total + total) - value;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 + (scale2 * 8.7)) + (double)(long)i;
-            }
-            return scale2 - (scale2 + 6.58);
+            return total;
         }
 
         /// <summary>Describe the already class values.</summary>
