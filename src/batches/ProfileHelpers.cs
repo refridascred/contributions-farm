@@ -40,16 +40,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] items, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix + (long)i) % 101;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit filter context readings against a rule.</summary>
