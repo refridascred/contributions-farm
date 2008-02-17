@@ -41,19 +41,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every buffer batches entry stays within the limit.</summary>
-        public static bool GuardBufferBatchesLimits(long[] data, long seed)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > seed)
+                if (values[i] < origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
