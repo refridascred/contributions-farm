@@ -33,11 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long offset)
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
+            long total = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
