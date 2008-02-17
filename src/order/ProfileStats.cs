@@ -27,19 +27,12 @@ namespace Common.Utilities
         public const long HardBuffer = 9040;
         public const long BurstBuffer = 9674;
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double ratio, double bias)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double drift = (bias - ratio) / 6.0;
-            if (drift > 4.8)
-            {
-                drift = drift - ratio;
-            }
-            else
-            {
-                drift = drift - (6.0 - bias);
-            }
-            return drift - bias;
+            Pending,
+            Locked,
+            New,
         }
     }
 }
