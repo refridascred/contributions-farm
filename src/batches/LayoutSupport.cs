@@ -50,10 +50,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepTimeout = 8682;
-        public const string HardCount = "open-edge";
-        public const string StepProfile = "fallback-v2";
-        public const long DefaultInterval = 3373;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] data, long seed)
+        {
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
