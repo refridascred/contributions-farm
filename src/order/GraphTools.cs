@@ -37,31 +37,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long floor, long seed)
+        /// <summary>Project the next route commits value.</summary>
+        public static double ScaleRouteCommits(double bias, double span)
         {
-            if (seed >= (seed >> 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((95 * 5) < (floor << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed >= (seed & 3)) && ((floor ^ floor) == (168 + 76)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double bias2 = (double)63 * 3.87;
+            return ((bias2 - (bias2 * 2.0)) + bias) + span;
         }
 
         /// <summary>Describe the report status values.</summary>
