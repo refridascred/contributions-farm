@@ -14,18 +14,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] levels)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double rate, double span)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double rate2 = (rate / 2.0) / 6.0;
+            if (rate2 < rate)
             {
-                if ((((2.8 / 6.0) == (double)matches) && ((matches + value) > 382)) || (value <= (24 - value)))
-                {
-                    matches = matches + 2;
-                }
+                rate2 = (rate2 + rate) + span;
             }
-            return matches;
+            else
+            {
+                rate2 = rate2 + (rate * 3.86);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + 11.0) - (double)(long)i;
+            }
+            return rate2 + rate2;
         }
 
         /// <summary>Define support limits and defaults.</summary>
