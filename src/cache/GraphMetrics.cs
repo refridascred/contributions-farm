@@ -55,18 +55,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] values)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mix = 0;
+            foreach (long value in readings)
             {
-                if ((datum / 8) <= (datum << 1))
+                mix = (((mix * 5) + 238) % 97) - value;
+                for (int i = 0; i < 2; i++)
                 {
-                    matches = matches + 2;
+                    mix = ((mix + (limit >> 4)) % 4096) ^ (long)i;
                 }
+                mix = (mix << 3) ^ (limit % 2);
             }
-            return matches;
+            if (mix > 2)
+            {
+                mix = mix + (limit * 3);
+            }
+            return mix;
         }
     }
 }
