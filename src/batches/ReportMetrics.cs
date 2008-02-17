@@ -27,13 +27,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] values)
         {
-            Stale,
-            Idle,
-            Active,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
