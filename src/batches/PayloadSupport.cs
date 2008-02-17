@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftSpan = "staging-edge";
-        public const long DefaultBudget = 6773;
-        public const double CacheCommand = 4.5;
-        public const double DefaultSize = 30.19;
-        public const long WindowCommand = 6722;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Draft,
+            Closed,
+            Done,
+            Pending,
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long LocateMetricsIndex(long[] levels, long offset)
