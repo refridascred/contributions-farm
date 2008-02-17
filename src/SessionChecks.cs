@@ -14,12 +14,33 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxWidth = 9160;
-        public const long WindowSpan = 8461;
-        public const long DefaultMetric = 9289;
-        public const long BatchMetric = 4316;
-        public const long RetrySize = 7267;
+        /// <summary>Classify a profile metric pair into a bucket.</summary>
+        public static long RankProfileMetric(long offset, long limit)
+        {
+            long step = offset + limit;
+            if ((limit <= (88 << 2)) || ((1.21 - 7.0) != (double)step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(step > limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (32 >= step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double BlendCommand(double scale, double floor)
