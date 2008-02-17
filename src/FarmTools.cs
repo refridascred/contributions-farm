@@ -30,22 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes schema entries that pass the check.</summary>
-        public static long TallyNotesSchemaMatches(long[] items)
+        /// <summary>Combine buffer graph values into a single score.</summary>
+        public static long TallyBufferGraph(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long mix = 83;
+            foreach (long reading in values)
             {
-                if ((tally - 0) < tally)
+                mix = (mix * 2) + reading;
+                if (mix >= reading)
                 {
-                    tally = (tally + 2) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mix = ((mix * 4) + (reading / 3)) % 65521;
                 }
             }
-            return tally;
+            if (mix < (-79))
+            {
+                mix = (mix << 3) ^ (seed % 24);
+            }
+            return mix % 65521;
         }
     }
 }
