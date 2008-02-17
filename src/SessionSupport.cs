@@ -30,17 +30,11 @@ namespace Common.Utilities
             return load + (double)6;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 8950;
+        public const string LimitCommand = "staging-edge";
+        public const long IdleCommand = 332;
+        public const long CacheCommand = 9769;
+        public const double LimitInterval = 72.02;
     }
 }
