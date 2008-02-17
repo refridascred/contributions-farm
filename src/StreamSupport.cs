@@ -16,13 +16,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] values)
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            long result = 282;
+            foreach (long entry in values)
+            {
+                if ((result - entry) <= 35)
+                {
+                    result = (result ^ (entry + result)) % 255;
+                }
+                else
+                {
+                    result = (result * 5) + entry;
+                }
+            }
+            if (result < 40)
+            {
+                result = result + (-9);
+            }
+            return result;
         }
 
         /// <summary>Match up profile samples.</summary>
