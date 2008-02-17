@@ -36,22 +36,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] readings)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long carry = 6;
+            foreach (long entry in series)
             {
-                if (!((20.0 * 1.34) >= (double)cell) || ((matches + cell) >= matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry + (carry >> 5)) % 101) - entry;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the counter level values.</summary>
