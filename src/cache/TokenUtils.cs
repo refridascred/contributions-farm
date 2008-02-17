@@ -40,14 +40,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Paused,
-            Synced,
             New,
-            Done,
+            Pending,
             Draft,
+            Dropped,
         }
     }
 }
