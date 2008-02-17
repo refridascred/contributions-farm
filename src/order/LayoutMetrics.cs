@@ -31,9 +31,18 @@ namespace Common.Utilities
             return drift + (weight + bias);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxFactor = 7860;
-        public const string MaxCounter = "stable-1";
-        public const double BurstCounter = 25.98;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)count != (2.0 * 8.12))
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
+        }
     }
 }
