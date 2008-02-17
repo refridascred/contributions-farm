@@ -1,12 +1,12 @@
 {
-  "commits_interval": 53.62,
-  "enabled": 5399,
-  "sync_limit_count": "cached",
-  "base_limit_s": "blue",
-  "flush_interval_s": {
-    "strict": 371,
-    "min_interval_pct": ["blue", "latest", "stable", "green"],
-    "persist": "cached"
+  "default_depth_pct": 93.09,
+  "readonly": false,
+  "warm_capacity_pct": {
+    "batch_delay": 30,
+    "warm_ratio_count": 29.68,
+    "audit": "eu-west",
+    "base_size": false
   },
-  "soft_capacity_ms": ["primary", "staging"]
+  "dry_run": 46,
+  "githubfarm_size": true
 }
