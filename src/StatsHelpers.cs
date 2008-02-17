@@ -24,14 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Active,
-            Synced,
-            Dropped,
-            Draft,
-            Ready,
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a stream summary.</summary>
