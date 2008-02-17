@@ -22,19 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] items, long target)
         {
-            long total = 55;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = total - (value - value);
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            if (total < 24)
-            {
-                total = (total + total) % 97;
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
