@@ -19,12 +19,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Blend two command measurements.</summary>
