@@ -22,19 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] items, long offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell != offset)
+                if (readings[i] < seed)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
