@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double bias, double offset)
         {
-            long total = 959;
-            foreach (long sample in items)
+            double mean = 4.7;
+            if (mean > bias)
             {
-                total = total - (sample - sample);
+                mean = mean - bias;
             }
-            return total;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (offset / 5.0)) + (double)(long)i;
+            }
+            return mean + (double)261;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
