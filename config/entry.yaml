@@ -1,10 +1,5 @@
 # entry settings
-persist:
-  - 467
-  - 402
-  - 468
-idle_delay:
-  - 301
-  - 252
-route_depth: 21.41
-retry_threshold: 33.95
+warm_retries_count: local
+retry_threshold_ms: edge
+hard_window_ms: true
+sync_ratio: staging
