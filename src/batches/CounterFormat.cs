@@ -13,22 +13,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of batches buffer entries.</summary>
-        public static long ScoreBatchesBuffer(long[] items, long step)
-        {
-            long anchor = 1;
-            foreach (long item in items)
-            {
-                if ((step % 2) > 2)
-                {
-                    anchor = (anchor * 4) + (step ^ item);
-                    anchor = ((anchor * 3) + (0 ^ anchor)) % 101;
-                    continue;
-                }
-                anchor = (anchor - (anchor / 2)) % 101;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 53;
+        public const double LimitScore = 74.28;
+        public const long RetryContext = 8647;
+        public const long BatchSpan = 7395;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long CountQueueGaps(long[] items, long target)
