@@ -59,19 +59,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] data, long origin)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] series, long target)
         {
-            long acc = 4;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc + sample) % 255) + origin;
-                if (((-323) >> 1) > (sample % 64))
+                if ((series[i] < target) && ((series[i] % 5) != 0))
                 {
-                    acc = ((acc << 2) ^ (sample >> 2)) % 101;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
