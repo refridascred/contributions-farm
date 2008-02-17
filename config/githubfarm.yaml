@@ -1,5 +1,24 @@
 # githubfarm settings
-max_delay: 500
-context_capacity: cached
-dry_run: local
-min_ttl_s: 58.33
+warm_depth:
+  - fallback
+  - strict
+  - local
+idle_ratio_pct: green
+warm_limit_ms:
+  batch_size_count:
+    sync_capacity: true
+    compress: false
+    poll_capacity_count: 83.32
+    burst_capacity:
+      - 304
+      - 367
+      - 163
+      - 176
+  flush_retries:
+    - stable
+    - latest
+  default_window_pct: 100
+  cluster_ttl: green
+  strict: 30
+  dry_run: 60
+retry_threshold: local
