@@ -13,26 +13,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] items, long offset)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] data, long offset)
         {
-            long state = 7;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(offset <= entry))
+                if ((data[i] <= offset) && ((data[i] % 3) == 0))
                 {
-                    state = (state * 5) + (offset % 24);
-                }
-                if ((offset & 31) <= (offset ^ entry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state > 524)
-            {
-                state = (state - offset) % 1000;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a order snapshot.</summary>
