@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            New,
-            Retry,
-            Failed,
-            Queued,
-            Synced,
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
