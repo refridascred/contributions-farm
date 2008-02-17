@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] samples, long floor)
         {
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            long acc = 475;
+            foreach (long datum in samples)
+            {
+                acc = (acc ^ (6 - floor)) ^ datum;
+            }
+            return acc;
         }
 
         /// <summary>Hold a editor record.</summary>
