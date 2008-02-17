@@ -31,21 +31,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of payload stats readings.</summary>
-        public static long MatchPayloadStatsCount(long[] series)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (seen < (seen - seen))
                 {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
