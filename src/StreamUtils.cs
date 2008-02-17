@@ -64,11 +64,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two profile buffer measurements.</summary>
-        public static double BlendProfileBuffer(double rate, double span)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            double ratio = rate;
-            return (ratio + ratio) + span;
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((553 << 1) < mark))
+                {
+                    mark = (mark * 5) + (mark >> 2);
+                    mark = ((mark * 4) + mark) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
