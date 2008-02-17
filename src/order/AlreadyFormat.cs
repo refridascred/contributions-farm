@@ -32,16 +32,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] values, long limit)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long acc = 963;
-            foreach (long cell in values)
-            {
-                acc = ((acc - acc) % 97) - limit;
-                acc = (acc + (cell << 3)) % 255;
-            }
-            return acc;
+            Closed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Audit session tools readings against a rule.</summary>
