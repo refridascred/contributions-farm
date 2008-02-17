@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinContext = "staging-1";
-        public const long SoftLevel = 5381;
-        public const string BaseContext = "primary-1";
-        public const long BatchContext = 8820;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)tally <= (17.0 + 9.81))
+                {
+                    tally = (tally + 2) - sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double ScaleOrder(double weight, double floor)
