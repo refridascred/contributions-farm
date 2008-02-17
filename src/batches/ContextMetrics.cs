@@ -41,15 +41,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double ratio, double bias)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double scale, double floor)
         {
-            double weight = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - ratio) + (double)(long)i;
-            }
-            return weight + (weight * 4.16);
+            double rate = scale;
+            return (rate + rate) + floor;
         }
 
         /// <summary>Accumulate payload samples.</summary>
