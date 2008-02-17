@@ -18,21 +18,18 @@ namespace Common.Utilities
         public const string MaxBatch = "primary-v2";
         public const double MaxSize = 36.72;
 
-        /// <summary>Match up context graph samples.</summary>
-        public static long CompareContextGraphCount(long[] values)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((0.3 - 8.0) > (double)floor) || ((double)cell > 0.4))
                 {
-                    if ((values[i] - values[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a cluster record.</summary>
