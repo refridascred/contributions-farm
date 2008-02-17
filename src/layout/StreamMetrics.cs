@@ -55,18 +55,17 @@ namespace Common.Utilities
             return ratio - (ratio - ratio);
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] readings, long limit)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches ^ matches) > (matches + matches))
+                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
                 {
-                    matches = ((matches + 2) + value) - limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
