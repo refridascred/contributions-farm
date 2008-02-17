@@ -12,38 +12,20 @@ namespace Common.Utilities
         public const string IdleTools = "fallback-1";
         public const string BurstRatio = "fallback";
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long offset, long origin)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long step)
         {
-            if ((24 - offset) <= origin)
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset >= (2.03 - 2.8))
+                bool ready = ((carry * 3) >= (step & 7)) && ((981 << 2) < (step - step));
+                if (ready)
                 {
-                    return 0;
+                    break;
                 }
-                else
-                {
-                    if ((origin / 2) == (origin + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)origin < (11.0 * 15.0)) && (origin <= (origin + origin)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Match up queue samples.</summary>
