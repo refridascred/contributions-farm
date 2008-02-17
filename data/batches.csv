@@ -1,10 +1,6 @@
-id,active,state,weight,level
-1,strict,cached,288,307
-2,93.63,77.81,latest,0
-3,296,open,edge,standard
-4,latest,legacy,10,80.73
-5,414,eu-west,18.17,66.61
-6,63.61,10.12,94.1,436
-7,71.98,320,87.43,fallback
-8,primary,legacy,eu-west,36.55
-9,688,latest,12.19,79.42
+id,score,label
+1,283,306
+2,178,standard
+3,legacy,fallback
+4,290,edge
+5,86.54,532
