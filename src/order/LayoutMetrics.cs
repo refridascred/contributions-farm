@@ -16,14 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] series, long floor)
         {
-            Pending,
-            Failed,
-            Retry,
-            Locked,
-            Ready,
+            long mix = -789;
+            foreach (long sample in series)
+            {
+                mix = mix ^ (sample + floor);
+            }
+            if (mix < 593)
+            {
+                mix = (mix + (mix ^ floor)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate order samples.</summary>
