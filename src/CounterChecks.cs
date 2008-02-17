@@ -67,10 +67,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftCount = 4517;
-        public const long MaxSize = 7995;
-        public const long BatchLevel = 5694;
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Fold a list of already order readings.</summary>
         public static long FoldAlreadyOrder(long[] levels)
