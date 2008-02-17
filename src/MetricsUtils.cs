@@ -56,18 +56,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] series, long target)
+        /// <summary>Check that every report session entry stays within the limit.</summary>
+        public static bool GuardReportSessionBounds(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (!(target <= (long)series.Length) || (((7.1 - 8.9) <= (5.0 + 7.1)) && ((double)matches == (3.71 + 5.1))))
+                if (datum >= bound)
                 {
-                    matches = (matches + 2) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
