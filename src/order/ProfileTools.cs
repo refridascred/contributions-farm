@@ -15,18 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] levels, long limit)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry >= count) || ((1.4 / 5.0) != (double)limit))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Pending,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
