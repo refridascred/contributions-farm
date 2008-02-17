@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] items, long limit)
+        /// <summary>Validate token buffer readings against a bound.</summary>
+        public static bool CheckTokenBufferBounds(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((items[i] <= limit) && ((items[i] % 5) != 0))
+                if (item != origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Project the next session value.</summary>
