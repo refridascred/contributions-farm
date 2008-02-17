@@ -1,6 +1,4 @@
 # githubfarm settings
-poll_interval: blue
-warm_limit_pct: 76
-dry_run: green
-hard_ttl_ms: false
-verbose: 8679
+context_depth: 100
+retry_threshold_s: 5215
+buffer_retries: 25.16
