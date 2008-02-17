@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const long BurstSize = 6545;
         public const long MinGraph = 9657;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] items, long floor)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits & 1) <= (62 + hits))
-                {
-                    hits = ((hits + 2) + item) + floor;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
