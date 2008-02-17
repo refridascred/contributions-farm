@@ -1,22 +1,8 @@
 {
-  "hard_ratio_s": true,
-  "editor_ttl": false,
-  "retry_interval_s": {
-    "burst_timeout_pct": {
-      "session_size": "cached",
-      "cache_retries": "open",
-      "persist": 500,
-      "retry_limit_count": 59.69,
-      "batch_retries_ms": false,
-      "compress": 38
-    },
-    "readonly": "staging",
-    "soft_ttl_ms": 33.31,
-    "window_ratio": "latest",
-    "burst_interval_count": 94.33,
-    "verbose": true
-  },
-  "persist": 46,
-  "compress": 23.3,
-  "idle_retries_ms": 7773
+  "flush_retries_s": 69,
+  "cache_threshold": 51,
+  "checks_window": 30,
+  "soft_capacity": "standard",
+  "compress": "eu-west",
+  "burst_window": ["staging", "staging", "edge", "cached"]
 }
