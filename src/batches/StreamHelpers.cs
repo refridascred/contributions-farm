@@ -12,15 +12,25 @@ namespace Common.Utilities
         public const long MaxScore = 3282;
         public const long RetryStats = 738;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] data)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long bound, long bound2)
         {
-            long total = 67;
-            foreach (long datum in data)
+            long span = bound + bound2;
+            if (((bound >> 4) <= bound) && (span >= (span - 132)))
             {
-                total = ((total ^ total) % 65521) + datum;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((span + bound) >= (8 + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate layout filter samples.</summary>
