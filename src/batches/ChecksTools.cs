@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] data, long step)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((796 + step) != (step & 3))
-                {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Done,
+            Queued,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the checks mode values.</summary>
