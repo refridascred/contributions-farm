@@ -1,6 +1,5 @@
 # entry settings
-support_depth: local
-cluster_window: local
-enabled:
-  - 149
-  - 449
+cache_timeout: 250
+route_capacity: 500
+max_depth: strict
+readonly: true
