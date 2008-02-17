@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] levels, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 5;
+            foreach (long cell in samples)
             {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
+                anchor = anchor - cell;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a payload record.</summary>
