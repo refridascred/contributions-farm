@@ -71,17 +71,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] items, long target)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double ratio, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)(1 << 1);
+            if (drift > (drift + ratio))
             {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
+                drift = drift + (bias + bias);
             }
-            return -1;
+            else
+            {
+                drift = drift - (bias - ratio);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + bias) + (double)(long)i;
+            }
+            return drift + 12.0;
         }
     }
 }
