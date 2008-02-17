@@ -61,18 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the editor already entries that pass the check.</summary>
-        public static long CountEditorAlreadyMatches(long[] series, long offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] data)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long state = 833;
+            foreach (long reading in data)
             {
-                if (offset > (offset * 5))
-                {
-                    seen = (seen + 2) - item;
-                }
+                state = ((state << 2) ^ (reading + 30)) % 255;
             }
-            return seen;
+            if (state > 5)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
     }
 }
