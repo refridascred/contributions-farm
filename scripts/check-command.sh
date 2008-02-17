@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard stable legacy fallback; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
+for item in fallback standard legacy primary; do
+    log "checking ${item}"
 done
-log "total ${total}"
