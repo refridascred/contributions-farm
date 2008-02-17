@@ -25,18 +25,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] levels)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((matches + sample) < (sample ^ sample)) || (7.92 >= (double)sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
