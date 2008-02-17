@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Roll a batch cluster counter forward.</summary>
+        public static long RollBatchCluster(long seed)
         {
-            public bool Token { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Combine counter stats values into a single score.</summary>
