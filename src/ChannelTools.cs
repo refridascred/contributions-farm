@@ -35,38 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long bound, long step)
+        /// <summary>Audit route report readings against a rule.</summary>
+        public static long MeasureRouteReportHits(long[] readings)
         {
-            if ((double)bound > 6.3)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (step <= (bound & 255))
+                if (0.2 > (double)(long)readings.Length)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step >> 4) <= (step - bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((87 >> 4) < (step / 7)) || ((double)bound < 19.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = (count + 1) + cell;
                 }
             }
+            return count;
         }
     }
 }
