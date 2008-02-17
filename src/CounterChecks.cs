@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Queued,
-            Retry,
-            Draft,
-            Locked,
-            New,
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
