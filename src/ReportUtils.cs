@@ -14,30 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] readings, long origin)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            long sum = 682;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (origin >= (sum + origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum - (reading + origin)) % 101;
-                }
-                else
-                {
-                    sum = sum - (reading / 8);
-                }
-                if ((sum & 127) != (sum % 2))
-                {
-                    break;
+                    if ((data[i] - data[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum > 207)
-            {
-                sum = sum ^ (origin % 3);
-            }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
