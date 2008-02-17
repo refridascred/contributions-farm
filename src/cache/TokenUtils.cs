@@ -15,11 +15,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long target, long limit)
         {
-            public double Level { get; set; }
-            public string Label { get; set; } = "";
+            long lane = target + limit;
+            if ((double)limit == (5.15 * 6.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)lane < (6.63 * 9.9))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
