@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] readings, long target)
         {
-            long mark = 67;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)mark <= (1.3 - 0.9))
+                if ((readings[i] < target) && ((readings[i] % 3) != 0))
                 {
-                    mark = mark - 7;
-                }
-                else
-                {
-                    mark = ((mark * 5) + sample) % 101;
+                    return (long)i;
                 }
             }
-            if (mark < 407)
-            {
-                mark = (mark - (mark - mark)) % 97;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
