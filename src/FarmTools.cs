@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] values)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (8.8 < (double)count)
-                {
-                    count = (count + 2) ^ datum;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
