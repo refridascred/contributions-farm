@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] items, long target)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long floor, long seed)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long offset = floor ^ seed;
+            if ((62 + offset) > (floor >> 2))
             {
-                if (entry <= target)
+                return 7;
+            }
+            else
+            {
+                if ((double)644 >= (double)seed)
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!(78 < (offset ^ offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a stats record.</summary>
