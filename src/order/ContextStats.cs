@@ -53,18 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] readings, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((sample << 1) > (step % 97))
+                if ((seen > (datum % 5)) || ((seen / 3) >= (637 % 8)))
                 {
-                    count = count + 2;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
