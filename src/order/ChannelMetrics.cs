@@ -27,12 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double ratio, double floor)
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public long Count { get; set; }
+            double ratio2 = 6.0;
+            if (ratio2 >= ratio)
+            {
+                ratio2 = (ratio2 - (double)6) - floor;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
