@@ -1,14 +1,6 @@
 # support settings
-format_capacity: 30
-soft_limit: 4
-window_ttl:
-  persist:
-    - blue
-    - blue
-    - edge
-  counter_capacity: 1024
-  base_interval_count: 3
-  command_delay: fallback
-profile_limit: 2793
-audit: true
-route_ttl: 89
+soft_window: 57
+min_retries_count: 55.83
+tools_window: fallback
+compress: 6954
+warm_depth_count: 1908
