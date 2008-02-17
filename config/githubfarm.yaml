@@ -1,7 +1,6 @@
 # githubfarm settings
-cache_retries: 95
-hard_ratio: false
-profile_delay:
-  - strict
-  - edge
-burst_ttl: 69
+idle_size_pct: false
+strict: 41.23
+sync_interval: 9548
+readonly: 19
+checks_retries: standard
