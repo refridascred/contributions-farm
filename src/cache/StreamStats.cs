@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (matches > (34 * 3))
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryLevel = "fallback-edge";
+        public const long DefaultMetric = 9383;
+        public const long MaxScore = 5738;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long CombineCounter(long[] values)
