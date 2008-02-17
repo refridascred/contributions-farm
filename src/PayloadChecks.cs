@@ -56,21 +56,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of command checks readings.</summary>
-        public static long OverlapCommandChecksCount(long[] samples)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 18)
+                    if ((series[i] ^ series[j]) > 4)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
