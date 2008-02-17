@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const double MaxTimeout = 20.62;
         public const string BurstSize = "standard-1";
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long step)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            long sum = step;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = (((sum << 3) ^ (17 - sum)) % 97) ^ (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Rank report notes input into a small class.</summary>
