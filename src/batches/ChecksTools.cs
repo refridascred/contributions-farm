@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next batches checks value.</summary>
-        public static double BlendBatchesChecks(double ratio, double bias)
+        /// <summary>Measure how many cluster metric samples are out of range.</summary>
+        public static long TallyClusterMetricHits(long[] samples, long origin)
         {
-            double mean = (double)(932 + 322);
-            if (mean >= 5.0)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                mean = (mean + ratio) - bias;
+                if (!((origin * 4) > (matches + matches)))
+                {
+                    matches = (matches + 2) - sample;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean / 5.0)) + (double)(long)i;
-            }
-            return mean - mean;
+            return matches;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
