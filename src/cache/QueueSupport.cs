@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] series)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long step, long step2)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long slot = step - step2;
+            if (!((slot - step) <= slot))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)slot > (6.7 * 4.44))
                 {
-                    if ((series[i] ^ series[j]) < 17)
+                    return 4;
+                }
+                else
+                {
+                    if ((step2 << 2) <= (step2 & 31))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step <= (4.0 - 9.16))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
