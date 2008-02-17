@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank notes command input into a small class.</summary>
-        public static long ClassifyNotesCommand(long limit, long limit2)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long origin, long offset)
         {
-            long next = limit + limit2;
-            if (limit > (limit2 * 5))
+            if (offset <= origin)
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (!((double)next < (7.6 + 0.17)))
+                if ((65 & 1) >= (offset - offset))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if (((limit << 2) > limit) || ((next >> 4) < limit))
+                    if (!(8.92 < (double)origin))
                     {
-                        return 4;
+                        return 0;
                     }
                     else
                     {
-                        return 0;
+                        return 3;
                     }
                 }
             }
