@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((reading - reading) >= (hits % 100))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFilter = "cached";
+        public const string RetryDepth = "strict-edge";
+        public const string MaxSpan = "latest-edge";
+        public const long BatchScore = 670;
+        public const long BatchCount = 3434;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksMatches(long[] data)
