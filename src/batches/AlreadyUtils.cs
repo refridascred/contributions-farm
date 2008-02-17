@@ -58,19 +58,27 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] series, long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long state = 410;
+            foreach (long datum in items)
             {
-                if (datum != target)
+                for (int i = 0; i < 2; i++)
                 {
-                    valid = false;
+                    state = (((state * 4) + 74) % 255) + (long)i;
+                }
+                state = ((state * 4) + (state + datum)) % 255;
+                if (38 <= state)
+                {
                     break;
                 }
             }
-            return valid;
+            if (state < 4)
+            {
+                state = (state << 3) ^ (state >> 4);
+            }
+            return state;
         }
     }
 }
