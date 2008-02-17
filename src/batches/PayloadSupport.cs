@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowCluster = "standard-v2";
+        public const long HardCluster = 5926;
+        public const long DefaultCluster = 1398;
+        public const long BatchCluster = 7225;
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long LocateMetricsIndex(long[] levels, long offset)
