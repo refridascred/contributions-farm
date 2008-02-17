@@ -1,11 +1,8 @@
 {
-  "batch_limit": true,
-  "soft_timeout_count": "primary",
-  "session_threshold": 4.77,
-  "batch_interval_count": {
-    "route_delay": true,
-    "schema_ratio": 83.91,
-    "idle_limit": "cached",
-    "cluster_retries": 35
-  }
+  "warm_window": "eu-west",
+  "hard_ttl_pct": "blue",
+  "default_limit": ["edge", "standard", "cached", "standard"],
+  "warm_delay_count": ["staging", "fallback"],
+  "buffer_ttl": "stable",
+  "githubfarm_threshold": ["cached", "green"]
 }
