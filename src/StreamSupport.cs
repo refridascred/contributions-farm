@@ -12,18 +12,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the record format entries that pass the check.</summary>
-        public static long AuditRecordFormatOutliers(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long sum = 712;
+            foreach (long cell in values)
             {
-                if (reading <= (3 - reading))
-                {
-                    seen = seen + 3;
-                }
+                sum = ((sum << 2) ^ cell) % 65521;
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
