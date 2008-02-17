@@ -19,31 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long offset, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] data)
         {
-            if ((offset ^ offset) == (offset - origin))
+            long carry = 771;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)origin == (15.0 * 3.53)) && ((double)origin > (3.0 + 5.48)))
+                if (!((cell << 3) < (cell >> 1)))
                 {
-                    return 1;
+                    carry = (carry + (carry + cell)) % 4096;
                 }
-                else
-                {
-                    if ((offset >> 4) >= (48 + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                carry = carry - (cell * 2);
             }
+            return carry % 1000;
         }
 
         /// <summary>Hold a command info.</summary>
