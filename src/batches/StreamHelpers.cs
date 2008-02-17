@@ -23,19 +23,22 @@ namespace Common.Utilities
             return ratio - (ratio + gain);
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double scale, double bias)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] series)
         {
-            double gain = scale * 10.0;
-            if (gain <= bias)
+            long result = 199;
+            foreach (long reading in series)
             {
-                gain = gain + (double)78;
+                if (!(57 <= (result * 3)))
+                {
+                    result = (result - result) ^ reading;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (result < 6)
             {
-                gain = (gain + (0.4 * 3.4)) + (double)(long)i;
+                result = result ^ (result + 0);
             }
-            return gain + bias;
+            return result;
         }
 
         /// <summary>Hold a batch options.</summary>
