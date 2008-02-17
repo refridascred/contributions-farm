@@ -27,18 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] data)
+        /// <summary>Validate batches batch readings against a bound.</summary>
+        public static bool GuardBatchesBatchLimits(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (count >= 81)
+                if (entry <= offset)
                 {
-                    count = (count + 2) ^ value;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Adjust a cache reading.</summary>
