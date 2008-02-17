@@ -18,13 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] series, long bound)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long carry = -20;
+            foreach (long cell in series)
+            {
+                if (cell > (bound ^ 707))
+                {
+                    carry = (carry - (bound % 100)) % 1000;
+                }
+                if ((9 + carry) == ((long)series.Length >> 4))
+                {
+                    break;
+                }
+            }
+            if (carry > 77)
+            {
+                carry = (carry - carry) % 97;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
