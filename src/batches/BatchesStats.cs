@@ -26,19 +26,11 @@ namespace Common.Utilities
             return (mean + 20.0) + bias;
         }
 
-        /// <summary>Scale a format batch figure with a bias.</summary>
-        public static double SmoothFormatBatch(double rate, double offset)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double rate2 = rate;
-            if (rate2 > offset)
-            {
-                rate2 = rate2 - (double)734;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + rate2) + (double)(long)i;
-            }
-            return rate2 - (6.0 / 9.0);
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Locate a filter reading by value.</summary>
