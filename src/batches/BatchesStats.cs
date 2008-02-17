@@ -60,18 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] levels, long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] levels, long target)
         {
-            long total = 8;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (total < (508 - total))
+                if (cell != target)
                 {
-                    total = (total ^ (total + reading)) + origin;
+                    ready = false;
+                    break;
                 }
             }
-            return total % 65521;
+            return ready;
         }
     }
 }
