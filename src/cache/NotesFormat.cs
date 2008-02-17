@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] data, long bound)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
