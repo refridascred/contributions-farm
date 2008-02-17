@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] samples)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((((seen + value) > (value / 3)) && (2.3 <= (double)value)) && ((seen <= (7 - seen)) || ((value + value) > seen)))
+                if ((double)step != (2.83 - 7.4))
                 {
-                    seen = seen + 2;
+                    count = (count + 1) ^ value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a checks summary.</summary>
