@@ -44,19 +44,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double weight, double bias)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] levels, long seed)
         {
-            double load = (double)(13 ^ 686);
-            if (load < (weight * 7.7))
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - load) - bias;
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (double)1;
+            return -1;
         }
 
         /// <summary>Hold a editor options.</summary>
