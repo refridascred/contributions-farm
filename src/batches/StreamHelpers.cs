@@ -34,15 +34,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long offset)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            Active,
+            Paused,
+            Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define route limits and defaults.</summary>
