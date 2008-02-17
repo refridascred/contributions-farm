@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] items, long origin)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            New,
+            Stale,
+            Closed,
+            Draft,
         }
 
         /// <summary>Locate a support reading by value.</summary>
