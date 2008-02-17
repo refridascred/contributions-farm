@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 4730;
+        public const long SoftToken = 6357;
+        public const long BaseToken = 4498;
+        public const long RetryToken = 5085;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
