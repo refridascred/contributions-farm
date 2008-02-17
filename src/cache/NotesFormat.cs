@@ -31,21 +31,15 @@ namespace Common.Utilities
             return gain + (floor + floor);
         }
 
-        /// <summary>Count format tools pairs that satisfy a relation.</summary>
-        public static long CompareFormatToolsCount(long[] levels)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 60;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix - limit) % 4096) + reading;
             }
-            return hits;
+            return mix % 4096;
         }
     }
 }
