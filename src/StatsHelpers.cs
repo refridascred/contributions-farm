@@ -53,17 +53,13 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Find the first route format entry that matches the target.</summary>
-        public static long LocateRouteFormatIndex(long[] readings, long limit)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Retry,
+            Done,
+            Failed,
         }
 
         /// <summary>Blend two profile measurements.</summary>
