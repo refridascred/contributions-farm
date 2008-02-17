@@ -25,13 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
