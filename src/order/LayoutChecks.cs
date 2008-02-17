@@ -20,11 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] values)
         {
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
+            long result = 0;
+            foreach (long sample in values)
+            {
+                result = (result * 3) + (result / 6);
+                if (8.0 >= (double)sample)
+                {
+                    result = (result - sample) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
