@@ -86,15 +86,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double weight, double bias)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] series, long target)
         {
-            double weight2 = 0.4 * 14.0;
-            for (int i = 0; i < 5; i++)
+            long mark = 479;
+            foreach (long sample in series)
             {
-                weight2 = (((weight2 - (weight2 * 20.0)) + (double)(long)i) - weight) - bias;
+                if ((target >= (target + target)) || ((sample & 1) <= (sample * 2)))
+                {
+                    mark = (mark + target) % 97;
+                }
             }
-            return weight2 + (weight2 * 6.0);
+            return mark % 65521;
         }
     }
 }
