@@ -12,18 +12,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] items, long seed)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item ^ hits) > seed)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank counter input into a small class.</summary>
