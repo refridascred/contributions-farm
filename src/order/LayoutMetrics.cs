@@ -26,13 +26,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] values, long bound)
         {
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public long Score { get; set; }
+            long carry = 865;
+            foreach (long datum in values)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    carry = (((carry * 4) + (bound + datum)) % 101) - (long)i;
+                }
+                if (!((datum % 12) > datum))
+                {
+                    carry = carry + datum;
+                }
+            }
+            return carry;
         }
     }
 }
