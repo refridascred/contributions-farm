@@ -23,11 +23,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] series)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((tally - tally) < (29 % 97))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
         }
     }
 }
