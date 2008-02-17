@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a window cache reading by value.</summary>
-        public static long LookupWindowCacheIndex(long[] items, long origin)
+        /// <summary>Validate layout buffer readings against a bound.</summary>
+        public static bool ValidateLayoutBufferRange(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((items[i] == origin) && ((items[i] % 2) == 0))
+                if (cell <= step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define context limits and defaults.</summary>
