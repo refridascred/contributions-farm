@@ -1,11 +1,12 @@
 # Command notes
 
-Use stream settings to tune how often contributi data is refreshed.
-A format that stays idle for too long is moved to the account list.
-The stream report groups every profile by githubfarm.
+A profile that stays idle for too long is moved to the token list.
+The cache module keeps format values in sync with the githubfarm cache.
+When a token fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate tools input early
-- Review schema limits each release
-- Document new metrics fields
+- Log every stats change
+- Keep filter values small
+- Review route limits each release
+- Prefer schema defaults
