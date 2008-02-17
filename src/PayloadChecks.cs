@@ -45,18 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context schema readings against a rule.</summary>
-        public static long CountContextSchemaMatches(long[] items, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (4.07 < (double)datum)
+                if ((((long)values.Length == ((-2) ^ (-13))) && ((double)offset < 6.7)) && ((5 - sample) > count))
                 {
-                    tally = (tally + 2) + origin;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of token entries.</summary>
