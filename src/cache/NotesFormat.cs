@@ -47,18 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] data, long target)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((6 + entry) <= target) && ((3.38 * 9.54) == (double)target))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            New,
+            Closed,
+            Done,
+            Dropped,
         }
     }
 }
