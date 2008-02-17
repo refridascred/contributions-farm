@@ -23,14 +23,12 @@ namespace Common.Utilities
             return rate - 8.8;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Stale,
-            Done,
-            Idle,
-            New,
-            Active,
+            Dropped,
+            Retry,
+            Queued,
         }
     }
 }
