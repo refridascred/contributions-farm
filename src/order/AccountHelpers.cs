@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] levels, long step)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long step, long bound)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long gap = step + bound;
+            if (bound > (step + bound))
             {
-                if ((double)step != (2.83 - 7.4))
+                return 1;
+            }
+            else
+            {
+                if (853 < gap)
                 {
-                    count = (count + 1) ^ value;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of stats order entries.</summary>
