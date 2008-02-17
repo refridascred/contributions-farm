@@ -41,13 +41,26 @@ namespace Common.Utilities
         public const string BaseCount = "local";
         public const long WindowBudget = 9207;
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] levels, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Weight { get; set; }
+            long total = 730;
+            foreach (long reading in levels)
+            {
+                if (((limit & 127) != (63 - reading)) && ((8.0 / 8.0) > (double)total))
+                {
+                    total = total - (64 - 43);
+                }
+                else
+                {
+                    total = (total + limit) % 255;
+                }
+                if ((reading - 28) == (reading ^ reading))
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
