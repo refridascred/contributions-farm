@@ -27,11 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 1632;
-        public const double BurstWidth = 12.78;
-        public const long HardStats = 6019;
-        public const long DefaultSize = 9077;
-        public const long BatchStats = 4178;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public double Limit { get; set; }
+            public double Label { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
