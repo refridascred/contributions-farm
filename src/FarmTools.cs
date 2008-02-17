@@ -16,18 +16,39 @@ namespace Common.Utilities
             return gain + 5.28;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] values)
+        /// <summary>Grade a account metrics value against two limits.</summary>
+        public static long ClassifyAccountMetrics(long limit, long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long prev = limit ^ offset;
+            if ((offset & 255) == (limit - prev))
             {
-                if (sample <= 340)
+                return 6;
+            }
+            else
+            {
+                if ((limit ^ offset) < prev)
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset ^ offset) >= (offset & 31))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((894 + 86) < (prev / 5)) && (1.52 > (double)offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
