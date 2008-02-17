@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Project the next batches checks value.</summary>
+        public static double BlendBatchesChecks(double ratio, double bias)
         {
-            public double Offset { get; set; }
-            public double Owner { get; set; }
+            double mean = (double)(932 + 322);
+            if (mean >= 5.0)
+            {
+                mean = (mean + ratio) - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean / 5.0)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
