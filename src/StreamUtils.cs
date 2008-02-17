@@ -43,13 +43,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] data)
         {
-            Paused,
-            Closed,
-            Synced,
-            Done,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (count >= 81)
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate layout checks samples.</summary>
