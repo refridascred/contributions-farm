@@ -35,12 +35,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Locked,
+            Retry,
             Done,
-            Queued,
+            Idle,
+            Ready,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
