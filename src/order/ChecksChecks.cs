@@ -20,12 +20,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] series, long origin)
         {
-            Dropped,
-            Retry,
-            Queued,
+            long mark = 266;
+            foreach (long sample in series)
+            {
+                if ((385 ^ sample) == (mark << 1))
+                {
+                    mark = (mark - (origin ^ (long)series.Length)) % 97;
+                }
+            }
+            return mark;
         }
     }
 }
