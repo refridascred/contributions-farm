@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long offset)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double bias, double span)
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
+            double mean = (double)(695 + 79);
+            if (mean > (double)3)
             {
-                state = state - ((long)i - offset);
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    state = (state ^ offset) ^ (long)i3;
-                }
-                state = ((state * 4) + (long)i) % 1000;
+                mean = (mean - 14.0) - span;
             }
-            return state;
+            return mean - bias;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
