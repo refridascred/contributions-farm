@@ -40,22 +40,18 @@ namespace Common.Utilities
         public const string MinDepth = "latest-edge";
         public const long RetryFilter = 3363;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] items, long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] samples, long offset)
         {
-            long mix = 72;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (((mix + origin) <= (origin + 18)) && ((double)cell > (6.4 / 4.0)))
+                if ((value + value) > (offset / 6))
                 {
-                    mix = ((mix << 2) ^ (mix >> 4)) % 4096;
-                }
-                if (!(mix > (origin & 31)))
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return mix % 97;
+            return tally;
         }
     }
 }
