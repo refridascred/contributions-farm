@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowInterval = 8244;
+        public const long BurstCommits = 9526;
+        public const long CacheCommits = 8396;
 
         /// <summary>Adjust a layout reading.</summary>
         public static double AdjustLayout(double ratio, double floor)
