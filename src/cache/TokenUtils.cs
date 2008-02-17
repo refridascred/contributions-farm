@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value - 44) != (99 ^ 7))
                 {
-                    if ((levels[i] ^ levels[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Compare every pair of layout batch readings.</summary>
