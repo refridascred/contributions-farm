@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if (sum > 44)
-                {
-                    sum = (sum << 3) ^ (long)i;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
