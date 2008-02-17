@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Dropped,
-            Draft,
-            Ready,
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
