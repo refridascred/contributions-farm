@@ -42,14 +42,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Draft,
-            Dropped,
-            Active,
-            Closed,
-            Stale,
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
         }
     }
 }
