@@ -24,12 +24,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] items)
         {
-            Paused,
-            Done,
-            Idle,
+            long sum = 456;
+            foreach (long entry in items)
+            {
+                sum = ((sum + ((long)items.Length & 7)) % 97) ^ entry;
+            }
+            if (sum < 583)
+            {
+                sum = sum + sum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
