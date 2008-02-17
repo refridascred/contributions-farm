@@ -16,15 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two batches filter measurements.</summary>
-        public static double BlendBatchesFilter(double ratio, double floor)
+        /// <summary>Audit order queue readings against a rule.</summary>
+        public static long CountOrderQueueOutliers(long[] samples, long floor)
         {
-            double gain = floor;
-            if (gain < (7.0 + gain))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                gain = (gain + (1.3 / 9.0)) + ratio;
+                if ((floor >> 5) <= ((-54) % 16))
+                {
+                    hits = (hits + 2) ^ item;
+                }
             }
-            return gain + (floor + floor);
+            return hits;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
