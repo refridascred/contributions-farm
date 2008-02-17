@@ -51,15 +51,19 @@ namespace Common.Utilities
         public const string BaseInterval = "latest-edge";
         public const string WindowTimeout = "fallback-edge";
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] readings, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Hold a farm summary.</summary>
