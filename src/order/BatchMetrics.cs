@@ -66,11 +66,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
