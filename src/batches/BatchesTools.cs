@@ -27,14 +27,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] series)
         {
-            Locked,
-            Ready,
-            Pending,
-            Retry,
-            Failed,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (!(sample > (sample * 4)) || (sample >= (sample * 3)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
