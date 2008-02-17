@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double ratio, double offset)
         {
-            Synced,
-            Closed,
-            New,
-            Retry,
-            Draft,
+            double rate = offset;
+            if (rate < (rate * 7.9))
+            {
+                rate = (rate - (offset / 9.0)) - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - 8.0;
         }
 
         /// <summary>Hold a counter summary.</summary>
