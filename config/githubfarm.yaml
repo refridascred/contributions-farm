@@ -1,30 +1,5 @@
 # githubfarm settings
-record_delay: false
-cache_timeout:
-  readonly:
-    - 415
-    - 33
-    - 183
-  layout_threshold: 5364
-  dry_run:
-    base_window:
-      - legacy
-      - fallback
-      - open
-    default_interval: 85.95
-    sync_window_s:
-      - 337
-      - 426
-  retry_delay:
-    entry_window:
-      - 148
-      - 398
-      - 7
-      - 244
-    hard_threshold: green
-    poll_ttl: open
-    min_capacity_s: 46.41
-  soft_delay_count: 12.71
-flush_interval: 3
-sync_timeout_s: latest
-min_threshold_pct: 500
+cache_delay: true
+stream_window: true
+persist: 22
+max_size_s: false
