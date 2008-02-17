@@ -16,20 +16,11 @@ namespace Common.Utilities
             return gain - (5.24 + span);
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double bias, double floor)
-        {
-            double drift = 4.4;
-            if (drift > bias)
-            {
-                drift = (drift - (double)9) - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (drift - 11.0)) + (double)(long)i;
-            }
-            return drift - bias;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 50.23;
+        public const long CacheReport = 102;
+        public const long BatchSize = 6192;
+        public const long MinLevel = 786;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long ScoreGraph(long[] values)
