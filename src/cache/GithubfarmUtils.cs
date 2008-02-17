@@ -20,11 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheProfile = 25.55;
-        public const long BurstProfile = 44;
-        public const long RetrySize = 6857;
-        public const long HardLevel = 8165;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] items, long offset)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmHits(long[] data)
