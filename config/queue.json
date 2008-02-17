@@ -1,6 +1,16 @@
 {
-  "sync_ratio": "edge",
-  "queue_ratio": 88.52,
-  "schema_ratio": 39.42,
-  "readonly": 2813
+  "max_interval_count": [39, 98, 20, 437],
+  "retry_limit_count": {
+    "audit": "latest",
+    "strict": 24,
+    "flush_window_pct": 6575,
+    "poll_size_pct": false
+  },
+  "cache_threshold_s": {
+    "dry_run": 44.17,
+    "idle_ratio_ms": 8059,
+    "verbose": "latest",
+    "buffer_retries": true,
+    "poll_capacity_s": "standard"
+  }
 }
