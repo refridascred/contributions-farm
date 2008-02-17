@@ -19,23 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine account session values into a single score.</summary>
-        public static long FoldAccountSession(long[] levels, long step)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long anchor = 642;
-            foreach (long entry in levels)
-            {
-                anchor = anchor ^ (entry - anchor);
-                if (step >= (step >> 2))
-                {
-                    break;
-                }
-            }
-            if (anchor > (-637))
-            {
-                anchor = (anchor * 2) + (anchor << 3);
-            }
-            return anchor;
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
