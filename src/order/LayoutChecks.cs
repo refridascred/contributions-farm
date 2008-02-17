@@ -61,22 +61,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats channel samples.</summary>
-        public static long DigestStatsChannel(long[] series, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long limit, long step)
         {
-            long mix = 1;
-            foreach (long cell in series)
+            if (((step - limit) != (limit + step)) || ((limit + 2) >= 78))
             {
-                if (((double)cell < (1.65 * 8.44)) || (cell >= (29 + 2)))
+                return 3;
+            }
+            else
+            {
+                if ((step * 2) != (step ^ 1))
                 {
-                    mix = (mix - ((-57) ^ cell)) + step;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit > step) || ((limit % 24) > step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((20.0 * 15.0) >= (double)step) && (limit >= step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (mix < 713)
-            {
-                mix = (mix << 2) ^ (6 >> 2);
-            }
-            return mix;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
