@@ -31,11 +31,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every batch filter entry stays within the limit.</summary>
