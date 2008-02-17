@@ -53,10 +53,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitWidth = 5484;
-        public const long MaxMetrics = 4539;
-        public const string DefaultTimeout = "latest-v2";
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public double Token { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
