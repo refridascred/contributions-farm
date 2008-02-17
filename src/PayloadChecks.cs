@@ -33,12 +33,14 @@ namespace Common.Utilities
         public const long MinGraph = 2033;
         public const double BaseGraph = 66.64;
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Synced,
-            New,
-            Ready,
+            Retry,
+            Queued,
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
