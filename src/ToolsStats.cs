@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long DefaultReport = 1826;
         public const double MaxRatio = 35.37;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] data)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] data, long seed)
         {
-            long mix = 315;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((mix >> 2) > (item * 2))
+                if (cell < seed)
                 {
-                    mix = (mix - mix) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return mix % 1000;
+            return flag;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
