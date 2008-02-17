@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (cell <= (matches & 3))
+                if ((((sample * 4) > (tally + sample)) && ((tally % 3) == (tally << 2))) && ((double)tally <= (11.0 - 0.03)))
                 {
-                    matches = matches + 1;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a window stats.</summary>
