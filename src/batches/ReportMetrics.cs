@@ -19,21 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Combine account session values into a single score.</summary>
+        public static long FoldAccountSession(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 642;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                anchor = anchor ^ (entry - anchor);
+                if (step >= (step >> 2))
                 {
-                    if ((series[i] - series[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            if (anchor > (-637))
+            {
+                anchor = (anchor * 2) + (anchor << 3);
+            }
+            return anchor;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
