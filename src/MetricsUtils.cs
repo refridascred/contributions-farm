@@ -44,15 +44,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long target)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((double)sum < (2.86 * 2.9))
+                {
+                    sum = sum - (750 * 5);
+                }
+                if (((sum * 2) <= origin) || (origin >= (origin / 6)))
+                {
+                    sum = sum ^ (origin >> 2);
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return acc;
+            return sum;
         }
     }
 }
