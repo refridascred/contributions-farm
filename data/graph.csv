@@ -1,7 +1,7 @@
-id,ratio,level
-1,194,244
-2,82.87,22.9
-3,547,848
-4,822,standard
-5,462,17.44
-6,legacy,75.69
+id,region,state
+1,69.94,primary
+2,stable,staging
+3,497,816
+4,551,strict
+5,245,97.26
+6,10.08,209
