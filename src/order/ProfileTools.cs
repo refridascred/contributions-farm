@@ -30,18 +30,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] data)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long diff = offset + limit;
+            if (((limit % 16) <= (limit + limit)) || ((limit - diff) > (offset ^ diff)))
             {
-                if ((double)704 <= (double)entry)
+                return 3;
+            }
+            else
+            {
+                if ((-75) > offset)
                 {
-                    matches = matches + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a stats summary.</summary>
