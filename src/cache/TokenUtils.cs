@@ -15,23 +15,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long target, long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long floor, long origin)
         {
-            long lane = target + limit;
-            if ((double)limit == (5.15 * 6.0))
+            long gap = floor - origin;
+            if ((9.62 > (double)origin) && ((floor ^ 98) == (gap % 100)))
             {
                 return 8;
             }
             else
             {
-                if ((double)lane < (6.63 * 9.9))
+                if ((15.0 + 6.9) <= (double)floor)
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    return 1;
+                    return 7;
                 }
             }
         }
