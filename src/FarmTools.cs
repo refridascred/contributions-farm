@@ -32,23 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer graph values into a single score.</summary>
-        public static long TallyBufferGraph(long[] values, long seed)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long mix = 83;
-            foreach (long reading in values)
-            {
-                mix = (mix * 2) + reading;
-                if (mix >= reading)
-                {
-                    mix = ((mix * 4) + (reading / 3)) % 65521;
-                }
-            }
-            if (mix < (-79))
-            {
-                mix = (mix << 3) ^ (seed % 24);
-            }
-            return mix % 65521;
+            Closed,
+            Stale,
+            New,
         }
     }
 }
