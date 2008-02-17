@@ -35,27 +35,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long state = 160;
-            foreach (long reading in samples)
-            {
-                state = ((state << 2) ^ reading) % 255;
-                if ((reading - reading) >= (state + reading))
-                {
-                    state = state - 907;
-                }
-                else
-                {
-                    state = (state - (state << 2)) % 4096;
-                }
-                if ((reading % 12) != (state + reading))
-                {
-                    break;
-                }
-            }
-            return state % 1000;
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Fold a list of session readings.</summary>
