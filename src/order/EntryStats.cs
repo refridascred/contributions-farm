@@ -14,28 +14,35 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a format report value against two limits.</summary>
-        public static long BucketFormatReport(long bound, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long target, long limit)
         {
-            if (((-971) - bound) != (step >> 4))
+            if ((limit > (1 << 3)) || (target > limit))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if ((double)step <= (3.54 - 5.96))
+                if ((target + target) < limit)
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((bound > (step + step)) && (bound < (bound ^ step)))
+                    if ((3 >> 3) >= (target >> 5))
                     {
-                        return 7;
+                        return 5;
                     }
                     else
                     {
-                        return 6;
+                        if (!((limit - target) > (limit & 255)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
