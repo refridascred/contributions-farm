@@ -14,25 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] samples)
-        {
-            long score = 761;
-            foreach (long reading in samples)
-            {
-                score = (score - score) % 97;
-                score = (score ^ (2 % 12)) % 65521;
-                if ((double)23 != (double)reading)
-                {
-                    score = (score - (reading + 5)) % 65521;
-                }
-                if (7.1 >= (double)score)
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxWidth = 9160;
+        public const long WindowSpan = 8461;
+        public const long DefaultMetric = 9289;
+        public const long BatchMetric = 4316;
+        public const long RetrySize = 7267;
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double BlendCommand(double scale, double floor)
