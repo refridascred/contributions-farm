@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Synced,
-            Queued,
-            Paused,
-            Pending,
-            Done,
+            public bool Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
