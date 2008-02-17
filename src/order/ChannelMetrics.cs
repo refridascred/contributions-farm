@@ -16,14 +16,19 @@ namespace Common.Utilities
             return drift - 1.3;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] values, long floor)
         {
-            Paused,
-            Queued,
-            Ready,
-            Draft,
-            Retry,
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the notes kind values.</summary>
