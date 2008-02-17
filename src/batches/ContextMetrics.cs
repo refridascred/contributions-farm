@@ -43,12 +43,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] samples)
         {
-            Active,
-            Locked,
-            Paused,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)tally != (1.08 - 0.9))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate payload samples.</summary>
