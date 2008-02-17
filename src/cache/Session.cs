@@ -22,10 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 1441;
-        public const double CacheContributi = 38.82;
-        public const double DefaultInterval = 71.52;
+        /// <summary>Look up the position of a metrics commits sample.</summary>
+        public static long LookupMetricsCommitsIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] readings)
