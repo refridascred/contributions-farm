@@ -23,9 +23,15 @@ namespace Common.Utilities
             return rate - 8.8;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepStream = "staging-edge";
-        public const long LimitStream = 1291;
-        public const long MaxStream = 7574;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
