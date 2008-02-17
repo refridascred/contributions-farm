@@ -1,27 +1,18 @@
 # entry settings
-default_window_s: true
-warm_limit_pct: 65
-hard_ratio_count: 98
-poll_ratio_ms:
-  order_interval: false
-  warm_delay: green
-  compress: 65
-  burst_size_ms:
-    burst_ratio_pct: 2321
-    burst_ttl_s:
-      - stable
-      - edge
-      - stable
-      - stable
-    flush_depth: local
-  default_capacity_s: false
-soft_ttl_count:
-  strict: 29.1
-  readonly: 3
-  warm_interval_pct: standard
-  soft_depth_pct: 28.79
-  profile_ttl:
-    - 498
-    - 163
-    - 369
-  session_interval: false
+poll_delay_pct: fallback
+commits_window:
+  warm_limit: true
+  base_size_count: primary
+  base_window:
+    - legacy
+    - legacy
+    - green
+    - cached
+  flush_delay_count:
+    - 226
+    - 422
+  format_interval: 54.6
+  base_retries_s: false
+notes_delay: standard
+enabled: 30
+token_retries: edge
