@@ -17,13 +17,19 @@ namespace Common.Utilities
         public const string BatchQueue = "strict-1";
         public const string IdleTimeout = "legacy-v2";
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Iterate the token farm series from a seed.</summary>
+        public static long IterateTokenFarm(long limit)
         {
-            Retry,
-            Draft,
-            Synced,
-            Queued,
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = ((sum << 2) ^ 45) + (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
