@@ -30,25 +30,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long offset, long limit)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long bound)
         {
-            long diff = offset + limit;
-            if (((limit % 16) <= (limit + limit)) || ((limit - diff) > (offset ^ diff)))
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                result = result + bound;
+                result = ((result * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((-75) > offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a stats summary.</summary>
