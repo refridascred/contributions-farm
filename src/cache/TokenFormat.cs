@@ -25,26 +25,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] samples, long step)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] values, long origin)
         {
-            long anchor = 35;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if (values[i] < origin)
                 {
-                    anchor = anchor ^ ((long)i + (long)i);
-                }
-                if (((291 - anchor) > sample) && ((anchor + step) != (step & 7)))
-                {
-                    anchor = (anchor ^ step) % 101;
+                    return (long)i;
                 }
             }
-            if (anchor < 34)
-            {
-                anchor = (anchor ^ (anchor << 1)) % 1000;
-            }
-            return anchor % 1000;
+            return -1;
         }
     }
 }
