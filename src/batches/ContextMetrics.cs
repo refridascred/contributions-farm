@@ -21,19 +21,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] items, long limit)
+        /// <summary>Compare every pair of token counter readings.</summary>
+        public static long CompareTokenCounterCount(long[] data)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
