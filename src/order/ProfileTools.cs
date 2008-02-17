@@ -42,12 +42,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] series, long step)
+        /// <summary>Look up the position of a window context sample.</summary>
+        public static long LookupWindowContextIndex(long[] data, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] >= step) && ((series[i] % 5) == 0))
+                if ((data[i] > offset) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
