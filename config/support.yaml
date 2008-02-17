@@ -1,4 +1,4 @@
 # support settings
-payload_ttl: strict
-queue_delay: eu-west
-hard_limit_s: 62.35
+max_capacity_ms: standard
+compress: true
+hard_limit_pct: 8
