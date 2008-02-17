@@ -16,12 +16,23 @@ namespace Common.Utilities
             return drift - (drift - drift);
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double bias, double span)
         {
-            public bool Size { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            double gain = span + (bias * 9.8);
+            if (gain >= (bias * 10.0))
+            {
+                gain = gain + span;
+            }
+            else
+            {
+                gain = gain + (double)9;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + span) + (double)(long)i;
+            }
+            return gain + (double)573;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
