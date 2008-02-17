@@ -33,11 +33,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepLevel = 5964;
-        public const string CacheDepth = "cached";
-        public const long BatchScore = 3624;
-        public const string HardDepth = "cached-v2";
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
