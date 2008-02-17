@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] readings, long target)
+        /// <summary>Scale a command record figure with a bias.</summary>
+        public static double SmoothCommandRecord(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = scale;
+            if (drift >= (scale + drift))
             {
-                if ((readings[i] < target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - 7.42) + span;
             }
-            return -1;
+            return drift - 1.3;
         }
 
         /// <summary>Describe the order status values.</summary>
