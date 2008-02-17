@@ -45,11 +45,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 5669;
-        public const double MinTimeout = 35.67;
-        public const long CacheSchema = 196;
-        public const long CacheBudget = 355;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double rate, double bias)
+        {
+            double weight = rate * 1.15;
+            if (weight < (rate + weight))
+            {
+                weight = (weight - (weight / 5.0)) - bias;
+            }
+            else
+            {
+                weight = weight - (double)17;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - rate) - (double)(long)i;
+            }
+            return weight - (double)583;
+        }
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
