@@ -46,12 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 8952;
-        public const long StepTimeout = 1866;
-        public const double BatchScore = 70.36;
-        public const long BurstSpan = 9170;
-        public const long MaxBatches = 506;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultCount = "local-1";
+        public const long BurstCommand = 5044;
+        public const long BatchInterval = 5798;
+        public const double HardWidth = 29.75;
+        public const long LimitDepth = 3888;
 
         /// <summary>Roll a schema githubfarm counter forward.</summary>
         public static long SeriesSchemaGithubfarm(long origin)
