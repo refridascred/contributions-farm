@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the order account entries that pass the check.</summary>
-        public static long CountOrderAccountMatches(long[] series, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mark = 695;
+            foreach (long sample in samples)
             {
-                if (75 <= entry)
-                {
-                    count = (count + 2) - target;
-                }
+                mark = ((mark + 394) % 4096) ^ sample;
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of order readings.</summary>
