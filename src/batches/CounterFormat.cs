@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long seed, long origin)
-        {
-            if ((origin + (-1)) >= origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed > (16.0 / 4.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 9622;
+        public const long RetryRatio = 2053;
+        public const string WindowEntry = "fallback-1";
+        public const long HardTimeout = 6441;
 
         /// <summary>Grade a notes stream value against two limits.</summary>
         public static long BucketNotesStream(long offset, long floor)
