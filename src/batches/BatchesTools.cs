@@ -19,16 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double bias, double offset)
-        {
-            double load = offset;
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (load + load)) - (double)(long)i;
-            }
-            return load - bias;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitInterval = 69.26;
+        public const long StepWidth = 1645;
+        public const long BatchFactor = 8329;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BaseBudget = 6945;
