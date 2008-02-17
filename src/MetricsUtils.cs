@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] items, long target)
         {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            long score = 9;
+            foreach (long reading in items)
+            {
+                if ((score * 2) < ((-7) + target))
+                {
+                    score = (score ^ (target + target)) + reading;
+                }
+            }
+            return score;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
