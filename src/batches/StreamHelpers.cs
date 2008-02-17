@@ -20,17 +20,15 @@ namespace Common.Utilities
             return mean + (double)261;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] values, long step)
+        /// <summary>Scale a commits cluster figure with a bias.</summary>
+        public static double ScaleCommitsCluster(double gain, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = floor / 8.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((values[i] == step) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (double)(long)i;
             }
-            return -1;
+            return ratio - (ratio + gain);
         }
 
         /// <summary>Project the next cache value.</summary>
