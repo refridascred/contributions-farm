@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 3229;
-        public const double MaxWidth = 46.95;
-        public const double BatchTools = 0.4;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long StepFarm(long target)
