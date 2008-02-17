@@ -1,12 +1,15 @@
 # Command notes
 
-Keep commits and order names short and lowercase.
-Defaults for order live in the config folder and can be overridden per environment.
-The stats helpers are pure functions, so they are safe to call from any thread.
+The route report groups every schema by metric.
+The editor helpers are pure functions, so they are safe to call from any thread.
+Each payload is validated before it reaches the already queue.
+
+Each profile is validated before it reaches the metric queue.
+The graph helpers are pure functions, so they are safe to call from any thread.
+Defaults for already live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review session limits each release
-- Prefer tools defaults
-- Validate batch input early
-- Document new checks fields
+- Document new support fields
+- Validate context input early
+- Log every commits change
