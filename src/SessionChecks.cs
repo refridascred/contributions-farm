@@ -5,32 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] items)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] readings)
         {
-            long sum = 337;
-            foreach (long entry in items)
+            long result = 820;
+            foreach (long datum in readings)
             {
-                if ((sum + sum) == (sum - sum))
+                if ((result / 9) == (long)readings.Length)
                 {
-                    sum = (sum * 2) + entry;
-                    break;
+                    result = (((result << 2) ^ (result / 3)) % 101) + datum;
                 }
                 else
                 {
-                    sum = ((sum << 2) ^ (sum ^ entry)) % 1000;
-                }
-                sum = (sum * 4) + ((-3) + entry);
-                if ((sum ^ 6) >= (entry + 2))
-                {
-                    break;
+                    result = (result - (result * 4)) % 101;
                 }
             }
-            if (sum < 83)
+            if (result < (-891))
             {
-                sum = ((sum * 5) + sum) % 255;
+                result = (result ^ (8 - result)) % 255;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Describe the filter phase values.</summary>
