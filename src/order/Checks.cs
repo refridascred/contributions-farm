@@ -44,15 +44,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the checks counter series from a seed.</summary>
-        public static long DeriveChecksCounter(long limit)
+        /// <summary>Look up the position of a command report sample.</summary>
+        public static long LocateCommandReportIndex(long[] levels, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
