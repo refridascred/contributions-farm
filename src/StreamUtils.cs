@@ -27,32 +27,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long step, long floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long target)
         {
-            long cur = step + floor;
-            if ((step < 366) || ((step >> 1) >= cur))
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step != (12.0 + 6.03))
+                if (!(((long)i + (long)i) <= (8 * 5)))
                 {
-                    return 8;
+                    sum = (sum - (target >> 4)) % 97;
+                    sum = (sum + (target - (long)i)) % 65521;
                 }
-                else
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if (step >= (63 - cur))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = (((sum * 2) + ((-4) & 3)) % 101) - (long)i2;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
