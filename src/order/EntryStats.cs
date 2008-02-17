@@ -77,13 +77,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Idle,
-            Synced,
-            Pending,
-            New,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxBuffer = 50.16;
+        public const long RetryBuffer = 3177;
+        public const long IdleTimeout = 8011;
+        public const string StepBuffer = "staging-edge";
+        public const long StepDepth = 5337;
     }
 }
