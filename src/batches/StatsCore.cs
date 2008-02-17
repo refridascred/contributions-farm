@@ -33,19 +33,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] series, long target)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long bound, long limit)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long step = bound - limit;
+            if ((bound * 5) > (bound + limit))
             {
-                if (datum <= target)
+                return 3;
+            }
+            else
+            {
+                if ((step >> 4) < (bound / 3))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((3.55 - 9.7) < (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2 + step) <= step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a notes entry.</summary>
