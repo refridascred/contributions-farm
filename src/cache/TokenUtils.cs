@@ -40,13 +40,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Queued,
-            Stale,
-            Ready,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 9105;
+        public const long BatchMetrics = 4116;
+        public const double WindowLevel = 6.37;
+        public const long MinTimeout = 3288;
     }
 }
