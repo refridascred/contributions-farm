@@ -31,19 +31,32 @@ namespace Common.Utilities
             return mean + (double)326;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] data, long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long offset, long offset2)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long gap = offset + offset2;
+            if ((3.0 * 1.54) > (double)offset)
             {
-                if (reading <= offset)
+                return 3;
+            }
+            else
+            {
+                if ((-84) <= (gap ^ gap))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (offset2 >= (offset2 + offset2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
