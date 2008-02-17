@@ -35,21 +35,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long bound, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)bound > 6.3)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (step <= (bound & 255))
                 {
-                    if ((levels[i] + levels[j]) != 16)
+                    return 0;
+                }
+                else
+                {
+                    if ((step >> 4) <= (step - bound))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((87 >> 4) < (step / 7)) || ((double)bound < 19.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
