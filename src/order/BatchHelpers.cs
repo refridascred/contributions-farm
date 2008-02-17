@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = ratio * 8.31;
+            if (scale > (double)34)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale + (9.0 * 9.0)) + bias;
             }
-            return hits;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale + (ratio - ratio);
         }
 
         /// <summary>Describe the entry mode values.</summary>
