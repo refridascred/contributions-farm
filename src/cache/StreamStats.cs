@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] readings, long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            long result = 318;
-            foreach (long datum in readings)
+            long sum = 38;
+            foreach (long value in items)
             {
-                result = (((result * 5) + 928) ^ datum) + limit;
+                if (!((sum / 7) < value))
+                {
+                    sum = (sum << 3) ^ 21;
+                }
+                sum = (sum * 4) + 853;
+                if ((value << 1) != ((-6) & 255))
+                {
+                    sum = sum ^ ((long)items.Length ^ 297);
+                }
+                if (((sum % 3) >= (sum - sum)) || (((long)items.Length / 5) > (sum * 4)))
+                {
+                    break;
+                }
             }
-            return result;
+            if (sum < (-4))
+            {
+                sum = ((sum * 4) + (713 - sum)) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
