@@ -1,4 +1,6 @@
 # githubfarm settings
-soft_delay_s: local
-enabled: 1024
-retry_limit: 22
+persist: primary
+soft_delay_count: 56
+sync_timeout: open
+hard_ttl_pct: latest
+soft_ratio: cached
