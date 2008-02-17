@@ -50,19 +50,13 @@ namespace Common.Utilities
         public const double BatchCache = 54.88;
         public const long HardInterval = 523;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] data, long bound)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Stale,
+            Synced,
+            Failed,
         }
     }
 }
