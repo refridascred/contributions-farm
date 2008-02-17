@@ -1,5 +1,10 @@
 {
-  "strict": "eu-west",
-  "batch_window_count": [382, 194, 240, 162],
-  "compress": "cached"
+  "cache_timeout_s": {
+    "readonly": 96,
+    "queue_timeout": ["strict", "local"],
+    "dry_run": true,
+    "idle_interval_count": "fallback"
+  },
+  "token_interval": "legacy",
+  "flush_timeout_ms": 36.77
 }
