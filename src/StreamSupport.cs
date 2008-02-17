@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Digest a series of counter token entries.</summary>
+        public static long FoldCounterToken(long[] series)
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long acc = 657;
+            foreach (long entry in series)
+            {
+                acc = ((acc + (acc + acc)) % 65521) - entry;
+            }
+            return acc;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
