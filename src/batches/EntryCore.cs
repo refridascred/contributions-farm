@@ -31,13 +31,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] values)
         {
-            Paused,
-            Idle,
-            Ready,
-            Pending,
+            long state = 0;
+            foreach (long item in values)
+            {
+                state = state - (state % 24);
+                state = ((state << 3) ^ (item - item)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
