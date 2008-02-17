@@ -14,10 +14,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 53;
-        public const double LimitScore = 74.28;
-        public const long RetryContext = 8647;
-        public const long BatchSpan = 7395;
+        public const long RetryContext = 5464;
+        public const string BurstSize = "cached";
+        public const long StepContext = 8404;
 
         /// <summary>Check that every stats session entry stays within the limit.</summary>
         public static bool ValidateStatsSessionRange(long[] data, long target)
