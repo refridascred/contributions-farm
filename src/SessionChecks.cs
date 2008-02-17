@@ -42,19 +42,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double scale, double floor)
+        /// <summary>Compare every pair of channel format readings.</summary>
+        public static long MatchChannelFormatCount(long[] levels)
         {
-            double rate = floor;
-            if (rate > (floor * 18.0))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - (rate - floor);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + scale) + (double)(long)i;
-            }
-            return rate + (floor * 4.49);
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
