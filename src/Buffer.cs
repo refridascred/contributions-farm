@@ -38,15 +38,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double bias, double bias2)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] levels, long bound)
         {
-            double weight = 9.7;
-            if (weight < weight)
+            long score = 8;
+            foreach (long cell in levels)
             {
-                weight = (weight - (bias - weight)) - bias2;
+                if ((bound * 2) <= 805)
+                {
+                    score = ((score - (score & 31)) % 101) - cell;
+                }
             }
-            return weight - (double)(-331);
+            return score % 1000;
         }
     }
 }
