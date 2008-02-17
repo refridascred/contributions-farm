@@ -53,13 +53,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Draft,
-            Active,
-            Closed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 5307;
+        public const double RetryRoute = 75.04;
+        public const long LimitFactor = 8186;
+        public const long MaxRoute = 7799;
+        public const string SoftRoute = "primary";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long WindowQueue = 4545;
