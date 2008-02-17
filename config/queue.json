@@ -1,6 +1,5 @@
 {
-  "channel_size": 8623,
-  "queue_retries": "cached",
-  "warm_delay_count": ["latest", "latest", "strict"],
-  "cache_ratio": 15.46
+  "window_depth": 30,
+  "compress": 74,
+  "idle_threshold_pct": 4410
 }
