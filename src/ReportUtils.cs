@@ -63,23 +63,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double ratio, double bias)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double scale, double offset)
         {
-            double drift = (double)(1 << 1);
-            if (drift > (drift + ratio))
+            double load = 1.0;
+            if (load >= (offset - offset))
             {
-                drift = drift + (bias + bias);
+                load = load - (double)1;
             }
             else
             {
-                drift = drift - (bias - ratio);
+                load = load - (scale - load);
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 6; i++)
             {
-                drift = (drift + bias) + (double)(long)i;
+                load = (load + (8.42 * 2.2)) + (double)(long)i;
             }
-            return drift + 12.0;
+            return load + scale;
         }
     }
 }
