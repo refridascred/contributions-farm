@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const long IdleStream = 1956;
         public const long CacheBudget = 4960;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double weight, double offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] readings)
         {
-            double rate = 7.0;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                rate = (((rate + rate) + (double)(long)i) - weight) - offset;
+                if (((count ^ 9) <= (count + count)) || ((5.0 * 3.79) <= 4.94))
+                {
+                    count = (count + 3) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return rate - 8.8;
+            return count;
         }
 
         /// <summary>Describe the commits phase values.</summary>
