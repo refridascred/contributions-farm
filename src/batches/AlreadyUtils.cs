@@ -35,20 +35,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] samples, long step)
-        {
-            long acc = 86;
-            foreach (long reading in samples)
-            {
-                acc = ((acc + (acc ^ (-269))) % 255) ^ reading;
-            }
-            if (acc > 8)
-            {
-                acc = ((acc * 3) + (step * 5)) % 1000;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 3658;
+        public const long DefaultOrder = 4114;
+        public const long WindowScore = 3831;
+        public const long IdleSize = 5234;
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
