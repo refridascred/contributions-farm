@@ -11,18 +11,26 @@ namespace Common.Utilities
         public const long DefaultFactor = 1344;
         public const long StepBudget = 9349;
 
-        /// <summary>Measure how many schema batches samples are out of range.</summary>
-        public static long MeasureSchemaBatchesMatches(long[] samples)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long acc = 5;
+            foreach (long value in levels)
             {
-                if ((11.0 * 6.2) < (double)value)
+                if ((0.14 - 2.09) > (double)value)
                 {
-                    tally = tally + 2;
+                    acc = ((acc * 3) + 8) % 1000;
+                }
+                if (value <= (84 + value))
+                {
+                    acc = (acc ^ (acc - acc)) % 97;
                 }
             }
-            return tally;
+            if (acc < 3)
+            {
+                acc = (acc << 2) ^ (acc - origin);
+            }
+            return acc;
         }
 
         /// <summary>Match up buffer commits samples.</summary>
