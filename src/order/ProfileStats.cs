@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            public double Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
