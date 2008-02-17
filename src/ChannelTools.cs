@@ -13,15 +13,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double gain, double offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] readings)
         {
-            double ratio = 9.06;
-            if (ratio > ratio)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio - gain) - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio - (double)(-195);
+            return count;
         }
 
         /// <summary>Digest a series of session entries.</summary>
