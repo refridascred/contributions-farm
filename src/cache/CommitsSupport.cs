@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] samples)
+        /// <summary>Validate buffer tools readings against a bound.</summary>
+        public static bool ValidateBufferToolsLimits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((double)tally <= (17.0 + 9.81))
+                if (reading <= floor)
                 {
-                    tally = (tally + 2) - sample;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Blend two order measurements.</summary>
