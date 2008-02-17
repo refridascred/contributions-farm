@@ -90,15 +90,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 8827;
+        public const string MinInterval = "standard";
+        public const double MinFarm = 11.19;
     }
 }
