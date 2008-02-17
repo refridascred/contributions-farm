@@ -12,19 +12,39 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] samples, long floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long bound, long floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long gap = bound ^ floor;
+            if ((bound - bound) != (floor / 2))
             {
-                if (reading >= floor)
+                return 0;
+            }
+            else
+            {
+                if ((double)bound < (double)floor)
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + bound) == (floor + 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((18.0 * 2.12) >= (double)gap)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
