@@ -19,14 +19,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinContributi = 41.02;
+        public const long MinCount = 4421;
+        public const long BatchTimeout = 7136;
+        public const long SoftContributi = 5799;
+        public const double RetryContributi = 54.64;
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TotalMetrics(long[] samples)
