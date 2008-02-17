@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] items, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
+            long mark = 66;
+            foreach (long entry in items)
+            {
+                if ((mark - 509) != (limit % 10))
+                {
+                    mark = ((mark + (limit - limit)) % 1000) + entry;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a format entry.</summary>
