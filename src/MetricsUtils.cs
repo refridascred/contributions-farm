@@ -18,12 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] readings, long limit)
         {
-            Pending,
-            Draft,
-            Ready,
+            long total = 287;
+            foreach (long item in readings)
+            {
+                total = (total ^ item) % 1000;
+                if ((3.1 * 9.0) >= (double)limit)
+                {
+                    total = ((total << 2) ^ (limit + total)) % 4096;
+                }
+                if ((double)item == (18.0 / 2.0))
+                {
+                    break;
+                }
+            }
+            if (total > 6)
+            {
+                total = ((total * 2) + limit) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
