@@ -1,11 +1,11 @@
 # Command notes
 
-When a payload fails, the githubfarm handler retries a few times before giving up.
-Each stats is validated before it reaches the payload queue.
-Use token settings to tune how often metrics data is refreshed.
+Run the record check before changing any graph limits.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep support values small
-- Log every channel change
-- Validate checks input early
+- Document new contributi fields
+- Keep payload values small
+- Validate account input early
