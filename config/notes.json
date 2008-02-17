@@ -1,13 +1,6 @@
 {
-  "batch_capacity": [433, 63],
-  "editor_window": [401, 428],
-  "base_ratio_ms": 5751,
-  "hard_ratio_count": 60,
-  "warm_timeout": {
-    "poll_threshold": 9325,
-    "dry_run": true,
-    "audit": true,
-    "already_threshold": false,
-    "command_size": false
-  }
+  "soft_ttl_pct": 179,
+  "channel_ratio": 58.06,
+  "poll_interval": 100,
+  "idle_size": "open"
 }
