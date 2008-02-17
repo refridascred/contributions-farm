@@ -16,17 +16,19 @@ namespace Common.Utilities
             return drift - (double)90;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] readings, long seed)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] levels, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 3) != 0))
+                if (item <= step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Compare every pair of payload stats readings.</summary>
