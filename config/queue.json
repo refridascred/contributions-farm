@@ -1,8 +1,9 @@
 {
-  "idle_threshold_s": "edge",
-  "queue_interval": ["open", "primary", "green"],
-  "already_interval": "edge",
-  "compress": 500,
-  "enabled": 55,
-  "dry_run": "green"
+  "default_size_count": "primary",
+  "max_interval": "blue",
+  "base_capacity_pct": {
+    "default_limit_count": 39.43,
+    "soft_limit": 500,
+    "sync_window_s": 91.05
+  }
 }
