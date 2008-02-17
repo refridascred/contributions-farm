@@ -52,13 +52,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] readings)
         {
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public double Offset { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (2.9 < (double)entry)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
