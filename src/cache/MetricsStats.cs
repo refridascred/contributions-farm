@@ -55,23 +55,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] values)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long mark = -945;
-            foreach (long entry in values)
-            {
-                mark = (((mark * 2) + (404 & 63)) % 101) ^ entry;
-                if ((mark + 17) > (488 + mark))
-                {
-                    break;
-                }
-            }
-            if (mark < 35)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
