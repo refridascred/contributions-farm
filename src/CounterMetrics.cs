@@ -53,11 +53,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseScore = 2319;
-        public const double LimitSchema = 96.03;
-        public const string RetrySchema = "legacy-v2";
-        public const string BatchSchema = "latest-v2";
-        public const long BaseSchema = 237;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
