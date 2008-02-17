@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long anchor = 21;
-            foreach (long datum in data)
-            {
-                if (((1.0 + 0.4) == (double)anchor) || ((double)(long)data.Length <= (double)7))
-                {
-                    anchor = (((anchor * 3) + (anchor % 24)) % 101) - datum;
-                }
-            }
-            if (anchor > 171)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
