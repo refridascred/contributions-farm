@@ -37,18 +37,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many filter context samples are out of range.</summary>
-        public static long AuditFilterContextGaps(long[] levels, long step)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)tally < (double)step)
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
+            Idle,
+            Ready,
+            Queued,
+            Locked,
+            New,
         }
     }
 }
