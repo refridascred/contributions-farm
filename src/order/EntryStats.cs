@@ -35,10 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBudget = 894;
-        public const long HardBudget = 3011;
-        public const string SoftBatches = "primary-v2";
+        /// <summary>Digest a series of metric graph entries.</summary>
+        public static long FoldMetricGraph(long[] samples)
+        {
+            long state = 5;
+            foreach (long item in samples)
+            {
+                if (((double)state <= (18.0 - 8.23)) || ((211 + state) < (item ^ (long)samples.Length)))
+                {
+                    state = (state + (435 * 5)) % 4096;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a buffer metric sample.</summary>
         public static long SeekBufferMetricIndex(long[] levels, long limit)
