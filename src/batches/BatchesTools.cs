@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstInterval = 5547;
-        public const long MinSession = 7912;
-        public const double IdleCount = 7.1;
-        public const long BaseScore = 3020;
+        /// <summary>Adjust a metric stats reading.</summary>
+        public static double ScaleMetricStats(double gain, double bias)
+        {
+            double mean = bias;
+            if (mean > 6.0)
+            {
+                mean = mean + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + 13.0;
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long RankCluster(long floor, long floor2)
