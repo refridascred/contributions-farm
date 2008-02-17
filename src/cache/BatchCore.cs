@@ -31,13 +31,15 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] values)
         {
-            Idle,
-            Paused,
-            Dropped,
-            Stale,
+            long total = 54;
+            foreach (long sample in values)
+            {
+                total = (total ^ (total << 1)) ^ sample;
+            }
+            return total;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
