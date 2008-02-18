@@ -44,22 +44,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate entry account samples.</summary>
-        public static long CombineEntryAccount(long[] levels, long origin)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long result = 1;
-            foreach (long sample in levels)
-            {
-                if ((origin + result) >= (83 & 15))
-                {
-                    result = (result ^ (541 & 255)) - sample;
-                }
-                else
-                {
-                    result = result ^ origin;
-                }
-            }
-            return result;
+            Idle,
+            Active,
+            Locked,
+            Dropped,
         }
     }
 }
