@@ -20,18 +20,9 @@ namespace Common.Utilities
         public const long BaseSize = 2199;
         public const double MaxSpan = 74.31;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (!((item - (-8)) >= (tally >> 1)))
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 150;
+        public const long SoftCount = 5133;
+        public const long RetryInterval = 8602;
     }
 }
