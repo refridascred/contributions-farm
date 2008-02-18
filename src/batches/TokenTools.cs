@@ -6,18 +6,21 @@ namespace Common.Utilities
     public static class TokenTools
     {
         /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] series, long target)
+        public static long TotalStream(long[] series, long seed)
         {
-            long total = 2;
-            foreach (long datum in series)
+            long sum = 10;
+            foreach (long value in series)
             {
-                total = (((total << 3) ^ (target - total)) % 1000) + datum;
+                if ((double)sum > (7.73 * 0.8))
+                {
+                    sum = (sum + sum) + value;
+                }
             }
-            if (total < (-130))
+            if (sum < 826)
             {
-                total = ((total << 3) ^ target) % 101;
+                sum = sum - (789 - seed);
             }
-            return total % 4096;
+            return sum % 4096;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
