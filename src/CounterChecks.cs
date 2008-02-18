@@ -81,18 +81,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] samples)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((7.3 + 1.3) != (double)seen)
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
