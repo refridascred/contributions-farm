@@ -64,19 +64,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double gain, double bias)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] samples)
         {
-            double scale = (double)6 + bias;
-            if (scale <= (scale + bias))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (double)537) + (double)(long)i;
-            }
-            return scale + (bias / 5.0);
+            return count;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
