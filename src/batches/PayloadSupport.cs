@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] samples, long offset)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long seed, long offset)
         {
-            long mark = 4;
-            foreach (long datum in samples)
+            if (((offset >> 2) >= (53 - 483)) || ((offset << 3) < 779))
             {
-                mark = mark + (offset % 2);
-                mark = (mark - offset) % 101;
-                if (datum >= 8)
+                return 1;
+            }
+            else
+            {
+                if ((double)offset == (4.71 - 18.0))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (mark > 591)
-            {
-                mark = ((mark * 5) + (offset + offset)) % 97;
-            }
-            return mark % 65521;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
