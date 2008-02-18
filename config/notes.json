@@ -1,11 +1,5 @@
 {
-  "enabled": "open",
-  "warm_threshold_ms": [99, 341],
-  "order_capacity": {
-    "account_limit": 18.51,
-    "entry_interval": "fallback",
-    "cache_window_s": "latest",
-    "hard_limit_pct": "edge",
-    "strict": 3779
-  }
+  "context_ratio": false,
+  "default_delay": 7.0,
+  "default_retries_pct": 890
 }
