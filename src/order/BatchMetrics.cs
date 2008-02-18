@@ -47,12 +47,19 @@ namespace Common.Utilities
         public const string BaseInterval = "latest-edge";
         public const string WindowTimeout = "fallback-edge";
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] readings, long limit)
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
