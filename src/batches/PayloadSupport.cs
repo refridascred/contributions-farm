@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] values, long floor)
         {
-            Closed,
-            Stale,
-            Failed,
-            Ready,
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
