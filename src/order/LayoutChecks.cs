@@ -44,18 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] readings)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample * 2) > hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
