@@ -32,15 +32,21 @@ namespace Common.Utilities
         public const double LimitBatch = 14.48;
         public const double HardBatch = 40.14;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] readings)
         {
-            long mix = 7;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 2) + (mix & 255)) + sample;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a metrics header.</summary>
