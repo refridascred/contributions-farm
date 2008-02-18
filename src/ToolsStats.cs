@@ -57,13 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Validate counter filter readings against a bound.</summary>
+        public static bool GuardCounterFilterLimits(long[] readings, long bound)
         {
-            public double Score { get; set; }
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public bool Count { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
