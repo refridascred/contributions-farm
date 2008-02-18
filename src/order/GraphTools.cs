@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double rate, double bias)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            double bias2 = (double)(17 - 88);
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor - bound) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                bias2 = ((bias2 + rate) + (double)(long)i) - bias;
             }
-            return anchor;
+            return bias2 + (bias2 / 5.0);
         }
 
         /// <summary>Accumulate session samples.</summary>
