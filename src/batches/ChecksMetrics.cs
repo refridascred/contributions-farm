@@ -57,19 +57,29 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double scale, double offset)
+        /// <summary>Digest a series of cache githubfarm entries.</summary>
+        public static long CombineCacheGithubfarm(long[] readings, long floor)
         {
-            double load = scale;
-            if (load >= (scale / 5.0))
+            long mix = 298;
+            foreach (long item in readings)
             {
-                load = load + (load + scale);
+                if ((3.0 - 20.0) > (double)item)
+                {
+                    mix = (((mix << 3) ^ (item * 2)) % 101) + floor;
+                    continue;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (item & 15)) % 101;
+                }
+                mix = (mix + (584 ^ mix)) % 65521;
+                mix = (mix * 4) + mix;
+                if (mix <= (item + mix))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (3.2 - scale)) + (double)(long)i;
-            }
-            return load + (offset + load);
+            return mix % 97;
         }
 
         /// <summary>Hold a command stats.</summary>
