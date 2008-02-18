@@ -47,13 +47,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Closed,
-            Draft,
-            Idle,
-            Pending,
+            public double Rank { get; set; }
+            public double Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
