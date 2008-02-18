@@ -41,23 +41,12 @@ namespace Common.Utilities
             return scale2 - span;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] samples, long seed)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((6 ^ count) > (value + value))
-                {
-                    count = (count + 1) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 4030;
+        public const double WindowTimeout = 36.87;
+        public const long BatchScore = 3317;
+        public const long IdleWidth = 6425;
+        public const long LimitFactor = 9099;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
