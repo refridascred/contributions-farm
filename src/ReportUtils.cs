@@ -22,21 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = state ^ (origin % 8);
+                state = (state ^ (914 & 7)) % 101;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Roll a session counter forward.</summary>
