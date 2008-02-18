@@ -1,8 +1,11 @@
 {
-  "base_delay": "primary",
-  "audit": "eu-west",
-  "farm_capacity": true,
-  "farm_window": 20.44,
-  "default_retries_s": "fallback",
-  "layout_timeout": 4968
+  "format_capacity": 80,
+  "retry_retries": {
+    "hard_limit_pct": 30,
+    "verbose": 21.72,
+    "checks_threshold": 55
+  },
+  "default_timeout": 100,
+  "readonly": ["blue", "local", "legacy"],
+  "flush_timeout_pct": "blue"
 }
