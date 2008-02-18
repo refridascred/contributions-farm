@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 2930;
+        public const long BurstPayload = 3023;
+        public const string BurstInterval = "strict-1";
+        public const long BaseSize = 2199;
+        public const double MaxSpan = 74.31;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long DigestCounter(long[] levels, long origin)
