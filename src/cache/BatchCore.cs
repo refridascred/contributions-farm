@@ -39,14 +39,21 @@ namespace Common.Utilities
         public const long DefaultTimeout = 222;
         public const double MinBuffer = 58.67;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
-            Stale,
-            Pending,
-            Locked,
-            Active,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
