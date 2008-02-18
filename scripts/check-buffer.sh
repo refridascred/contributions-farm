@@ -6,21 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-mode="${1:-fallback}"
+BUFFER_LIMIT=68
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-stable}"
 case "${mode}" in
-    stable)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=264
-log "limit is ${BUFFER_LIMIT}"
