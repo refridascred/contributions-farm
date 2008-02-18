@@ -1,7 +1,8 @@
 # githubfarm settings
-batch_delay_pct: 401
-batch_capacity: 9344
-burst_depth_s: 99
-sync_capacity_s: true
-entry_delay: 74
-metrics_capacity: false
+idle_retries: strict
+entry_delay: 34
+burst_ratio:
+  - cached
+  - primary
+base_ttl_pct: 89.77
+batch_retries: true
