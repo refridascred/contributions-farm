@@ -45,11 +45,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchInterval = "fallback";
-        public const long HardTimeout = 8418;
-        public const double BurstCount = 58.58;
-        public const long BaseWindow = 1490;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Active,
+            Synced,
+            Paused,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Find the first order command entry that matches the target.</summary>
         public static long LookupOrderCommandIndex(long[] readings, long seed)
