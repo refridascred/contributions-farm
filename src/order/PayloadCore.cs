@@ -39,23 +39,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double bias, double span)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] items, long origin)
         {
-            double weight = bias;
-            if (weight <= bias)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                weight = weight - weight;
+                if (origin < (origin & 7))
+                {
+                    tally = (tally + 2) + cell;
+                }
             }
-            else
-            {
-                weight = weight + (span - bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (double)55) + (double)(long)i;
-            }
-            return weight - 8.9;
+            return tally;
         }
     }
 }
