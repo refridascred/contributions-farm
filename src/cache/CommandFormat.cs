@@ -50,32 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long bound, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] values)
         {
-            long span = bound ^ limit;
-            if (span >= (limit * 5))
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((span << 2) < (span % 2))
+                if (!((double)item <= (2.4 + 9.8)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((9.32 + 4.7) <= (double)span)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
