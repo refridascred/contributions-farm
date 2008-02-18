@@ -1,10 +1,10 @@
 # support settings
-poll_interval: false
-report_ttl: 42
-notes_window: 27.19
-warm_limit: standard
-max_retries:
-  soft_ttl_count: cached
-  default_capacity_ms: 6716
-  metric_timeout: true
-editor_interval: standard
+record_interval: blue
+metric_ratio: blue
+readonly: true
+channel_ratio:
+  - 246
+  - 456
+  - 291
+  - 480
+idle_interval_count: 77.03
