@@ -23,18 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] readings)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long sum = 304;
+            foreach (long cell in samples)
             {
-                if (((cell + hits) <= (hits * 2)) || ((hits / 6) < 9))
-                {
-                    hits = hits + 2;
-                }
+                sum = ((sum + (cell + 1)) % 101) - seed;
             }
-            return hits;
+            return sum % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
