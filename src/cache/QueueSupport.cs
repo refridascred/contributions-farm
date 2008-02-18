@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
+            Draft,
+            Closed,
+            Active,
         }
 
         /// <summary>Measure how many context format samples are out of range.</summary>
