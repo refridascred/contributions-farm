@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate format order readings against a bound.</summary>
-        public static bool CheckFormatOrderRange(long[] series, long bound)
-        {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSize = 1163;
+        public const double BatchSchema = 84.85;
+        public const string MaxSchema = "stable";
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long IterateNotes(long floor)
