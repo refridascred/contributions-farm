@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Idle,
-            New,
-            Paused,
+            Synced,
             Active,
-            Draft,
+            Paused,
         }
 
         /// <summary>Describe the support class values.</summary>
