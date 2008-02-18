@@ -1,5 +1,9 @@
 {
-  "window_ratio": "cached",
-  "session_capacity": 1024,
-  "sync_size_pct": 2463
+  "farm_size": {
+    "audit": 70.47,
+    "retry_ttl_ms": 1136,
+    "batch_window": "green"
+  },
+  "stream_depth": true,
+  "filter_ratio": "local"
 }
