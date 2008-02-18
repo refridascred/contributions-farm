@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstSize = 4682;
-        public const long BaseMetric = 9791;
-        public const long IdleMetric = 1128;
+        /// <summary>Match up notes cluster samples.</summary>
+        public static long MatchNotesClusterCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string LimitFactor = "alpha-v2";
