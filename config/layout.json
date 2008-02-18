@@ -1,7 +1,5 @@
 {
-  "poll_retries_count": "open",
-  "poll_delay": "strict",
-  "channel_ttl": 9571,
-  "cluster_retries": [41, 351, 458],
-  "poll_ttl_count": true
+  "dry_run": 85,
+  "idle_interval_ms": 6,
+  "sync_depth_pct": 7
 }
