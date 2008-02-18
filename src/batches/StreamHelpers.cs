@@ -14,11 +14,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryStats = 65.83;
-        public const long DefaultStats = 9942;
-        public const long BurstStats = 6212;
-        public const double HardSize = 42.26;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Locked,
+            Retry,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long RollCluster(long limit)
