@@ -51,18 +51,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] series, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((4.0 - 4.25) != (double)matches)
+                if (reading <= (hits - floor))
                 {
-                    matches = ((matches + 1) ^ entry) + floor;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of stream batch entries.</summary>
