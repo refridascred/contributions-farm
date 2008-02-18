@@ -21,19 +21,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen + 592) == (seen & 127))
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitRatio = 699;
+        public const double LimitSize = 33.87;
+        public const long BaseWidth = 4144;
+        public const long IdleProfile = 9232;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string MaxAlready = "open";
