@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] series, long seed)
+        /// <summary>Derive the next buffer token value from a seed.</summary>
+        public static long SeriesBufferToken(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] == seed)
+                if ((result << 3) >= seed)
                 {
-                    return (long)i;
+                    result = result ^ result;
+                    result = (result ^ result) % 4096;
                 }
+                if ((1.97 - 1.65) == (double)result)
+                {
+                    result = result - (137 / 4);
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
