@@ -57,9 +57,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 4941;
-        public const long DefaultSession = 4330;
-        public const long MinSize = 120;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell - 88) >= (matches + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
