@@ -53,19 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] samples, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long mix = 138;
+            foreach (long datum in readings)
             {
-                if (entry < step)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((((mix * 2) + (mix - mix)) % 1000) + datum) + seed;
             }
-            return ready;
+            return mix % 4096;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
