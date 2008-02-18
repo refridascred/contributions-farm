@@ -70,13 +70,19 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] series, long seed)
         {
-            Closed,
-            Retry,
-            Ready,
-            Active,
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
