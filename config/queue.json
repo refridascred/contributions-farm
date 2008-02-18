@@ -1,5 +1,6 @@
 {
-  "idle_retries": 63.85,
-  "context_interval": ["legacy", "strict", "latest"],
-  "flush_threshold_count": "cached"
+  "cache_capacity_ms": false,
+  "min_depth_s": "fallback",
+  "readonly": "local",
+  "cache_limit": 6785
 }
