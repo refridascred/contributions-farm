@@ -31,13 +31,18 @@ namespace Common.Utilities
             return ratio + (gain * 10.0);
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Count the profile window entries that pass the check.</summary>
+        public static long MeasureProfileWindowHits(long[] readings)
         {
-            New,
-            Ready,
-            Dropped,
-            Failed,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (((item & 255) < ((long)readings.Length - seen)) && ((843 & 15) > seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
