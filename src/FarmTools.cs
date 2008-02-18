@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long anchor = 5;
-            foreach (long cell in samples)
-            {
-                anchor = anchor - cell;
-            }
-            return anchor;
+            Locked,
+            Done,
+            Paused,
+            Pending,
+            Queued,
         }
 
         /// <summary>Iterate the queue contributi series from a seed.</summary>
