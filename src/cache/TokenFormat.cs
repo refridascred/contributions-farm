@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long bound, long floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] series)
         {
-            long prev = bound - floor;
-            if ((floor - floor) >= (prev + floor))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((floor >> 5) <= bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    if ((series[i] + series[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two batches measurements.</summary>
