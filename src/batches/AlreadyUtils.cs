@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardDepth = 1836;
-        public const string CacheTimeout = "stable";
-        public const long BaseFormat = 883;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 16; i++)
+            {
+                result = (result + (517 << 2)) % 255;
+                if (((result - result) <= result) && ((double)target <= 2.91))
+                {
+                    break;
+                }
+                result = (result + target) % 97;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool GuardEntryBounds(long[] items, long step)
