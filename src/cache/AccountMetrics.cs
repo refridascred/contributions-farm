@@ -56,33 +56,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine format cache values into a single score.</summary>
-        public static long TotalFormatCache(long[] series)
-        {
-            long mix = 312;
-            foreach (long sample in series)
-            {
-                if (79 < (sample * 3))
-                {
-                    long tally = (mix - 97) % 64;
-                    mix = ((mix * 3) + (sample + tally)) % 101;
-                }
-                if ((mix / 9) > (mix * 2))
-                {
-                    break;
-                }
-                else
-                {
-                    mix = (mix - (-9)) % 255;
-                }
-                mix = (mix - (sample % 60)) % 4096;
-            }
-            if (mix < 30)
-            {
-                mix = (mix - (mix - mix)) % 101;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinCommits = "cached";
+        public const double RetryCount = 87.72;
+        public const long CacheInterval = 1891;
+        public const double CacheRatio = 11.13;
 
         /// <summary>Classify a token window pair into a bucket.</summary>
         public static long BucketTokenWindow(long origin, long floor)
