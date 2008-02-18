@@ -13,15 +13,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the tools metric series from a seed.</summary>
-        public static long StepToolsMetric(long seed)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
