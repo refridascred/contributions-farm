@@ -50,12 +50,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSpan = 16.91;
-        public const long BaseSupport = 6515;
-        public const long MinSupport = 8224;
-        public const long RetrySpan = 2215;
-        public const long BurstSize = 1106;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Paused,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Adjust a entry reading.</summary>
         public static double ScaleEntry(double rate, double span)
