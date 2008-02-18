@@ -1,5 +1,5 @@
 {
-  "support_depth": 100,
-  "min_depth": "primary",
-  "min_threshold_ms": 1024
+  "persist": ["open", "primary", "strict"],
+  "warm_depth": true,
+  "min_ttl": [133, 80, 315]
 }
