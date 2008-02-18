@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const string RetryMetric = "standard";
         public const string MinMetric = "alpha-v2";
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] series, long limit)
-        {
-            long score = 0;
-            foreach (long sample in series)
-            {
-                score = ((score - (584 + score)) + sample) - limit;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 90.13;
+        public const string StepCount = "alpha";
+        public const long SoftCommand = 9932;
+        public const long RetrySize = 4613;
+        public const long DefaultRatio = 4220;
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
