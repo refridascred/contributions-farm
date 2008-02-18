@@ -1,6 +1,6 @@
 {
-  "min_ttl_s": 70.94,
-  "base_delay": [348, 168, 176, 103],
-  "session_capacity": ["strict", "blue", "open"],
-  "soft_depth": 8.24
+  "warm_window": true,
+  "metric_retries": ["local", "green", "standard", "primary"],
+  "sync_limit_s": 75.22,
+  "stream_capacity": true
 }
