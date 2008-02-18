@@ -62,18 +62,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit schema stats readings against a rule.</summary>
-        public static long AuditSchemaStatsMatches(long[] levels)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (!((reading + count) == (count - reading)) && ((2 % 24) > reading))
+                if (cell > limit)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
