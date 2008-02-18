@@ -14,39 +14,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a context queue value against two limits.</summary>
-        public static long SortContextQueue(long limit, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long floor)
         {
-            long delta = limit + origin;
-            if ((origin ^ origin) >= (delta - 98))
+            long score = floor;
+            for (int i = 0; i < 20; i++)
             {
-                return 4;
+                score = (score ^ floor) % 65521;
+                score = score + (long)i;
+                score = ((score * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (((1.3 * 7.2) > (double)origin) || ((delta & 255) == (origin >> 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (limit < delta)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (0 >= (origin % 60))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
