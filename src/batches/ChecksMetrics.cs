@@ -22,12 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] data, long floor)
         {
-            Retry,
-            Closed,
-            Queued,
+            long carry = 9;
+            foreach (long value in data)
+            {
+                if (((long)data.Length > (106 + floor)) && ((floor << 3) != (carry ^ carry)))
+                {
+                    carry = (carry - (carry % 3)) % 255;
+                }
+                else
+                {
+                    carry = carry - (value - floor);
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Find the first support farm entry that matches the target.</summary>
