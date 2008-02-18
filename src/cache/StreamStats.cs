@@ -33,13 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] samples, long limit)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public bool Level { get; set; }
-            public long Mode { get; set; }
+            long score = 400;
+            foreach (long value in samples)
+            {
+                score = ((score + limit) % 101) ^ value;
+                if ((score ^ 6) > (limit * 2))
+                {
+                    score = (score + score) % 101;
+                }
+            }
+            if (score > 50)
+            {
+                score = ((score << 3) ^ (score & 1)) % 97;
+            }
+            return score;
         }
     }
 }
