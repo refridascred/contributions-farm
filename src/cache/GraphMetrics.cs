@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 9562;
-        public const string StepTimeout = "local-1";
-        public const long StepGraph = 1396;
-        public const long MinGraph = 2401;
-        public const long WindowGraph = 7564;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long TallyEditorOutliers(long[] readings, long step)
