@@ -58,23 +58,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] readings, long origin)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long result = 65;
-            foreach (long datum in readings)
-            {
-                result = result + (origin + datum);
-                if (result < (origin - result))
-                {
-                    result = ((result << 3) ^ ((-63) << 1)) % 101;
-                }
-            }
-            if (result < 702)
-            {
-                result = (result + (result / 3)) % 97;
-            }
-            return result;
+            public double Ratio { get; set; }
+            public double Count { get; set; }
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
