@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a checks graph figure with a bias.</summary>
-        public static double SmoothChecksGraph(double bias, double floor)
-        {
-            double mean = bias + (double)10;
-            return (mean - (double)14) + floor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 3033;
+        public const long MaxRatio = 651;
+        public const string LimitFactor = "legacy";
 
         /// <summary>Combine record command values into a single score.</summary>
         public static long ScoreRecordCommand(long[] levels)
