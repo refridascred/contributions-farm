@@ -44,27 +44,18 @@ namespace Common.Utilities
         public const long HardDepth = 7287;
         public const long RetryCounter = 4323;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] values)
         {
-            long sum = 659;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                sum = (sum - sum) % 4096;
-                if ((cell + cell) < cell)
+                if ((sample > matches) && (((double)56 < (double)matches) && (sample < matches)))
                 {
-                    sum = sum ^ (cell & 1);
-                }
-                else
-                {
-                    sum = sum ^ (sum - cell);
-                }
-                if (12.0 <= (double)sum)
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
