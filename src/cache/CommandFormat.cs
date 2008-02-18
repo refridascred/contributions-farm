@@ -39,19 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((seed >> 3) > seed)
-                {
-                    result = (result ^ (seed + seed)) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
