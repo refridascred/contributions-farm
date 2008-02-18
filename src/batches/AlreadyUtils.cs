@@ -21,12 +21,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 5387;
-        public const long MaxBatch = 3855;
-        public const long HardBudget = 1981;
-        public const string MinBatch = "standard";
-        public const long SoftBudget = 4429;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] series)
+        {
+            long total = 8;
+            foreach (long reading in series)
+            {
+                total = (((total << 3) ^ (total * 4)) % 1000) ^ reading;
+            }
+            return total;
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
