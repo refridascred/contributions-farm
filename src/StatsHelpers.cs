@@ -23,12 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((cell + hits) <= (hits * 2)) || ((hits / 6) < 9))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
