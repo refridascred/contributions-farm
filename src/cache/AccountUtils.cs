@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long limit)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Accumulate already graph samples.</summary>
