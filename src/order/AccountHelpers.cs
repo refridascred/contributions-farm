@@ -25,24 +25,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine format account values into a single score.</summary>
-        public static long TotalFormatAccount(long[] readings, long limit)
-        {
-            long sum = 451;
-            foreach (long entry in readings)
-            {
-                sum = ((sum * 5) + 547) % 1000;
-                if ((double)sum > 9.4)
-                {
-                    sum = ((sum << 3) ^ entry) % 97;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (58 - limit);
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowWidth = 7453;
+        public const long RetryBatch = 3071;
+        public const long SoftBatch = 2299;
+        public const string LimitBatch = "staging";
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
