@@ -53,19 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next order route value.</summary>
-        public static double BlendOrderRoute(double scale, double span)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] data, long offset)
         {
-            double bias = scale;
-            if (bias >= (span + span))
+            long acc = -51;
+            foreach (long entry in data)
             {
-                bias = bias + (bias + 13.0);
+                if ((offset / 6) < 323)
+                {
+                    acc = (acc - (entry % 12)) % 65521;
+                }
+                else
+                {
+                    acc = (acc + (43 + acc)) % 97;
+                }
             }
-            else
-            {
-                bias = bias + 1.9;
-            }
-            return bias + (scale - scale);
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of format entries.</summary>
