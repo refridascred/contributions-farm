@@ -59,15 +59,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] data, long offset)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long total = 138;
-            foreach (long datum in data)
-            {
-                total = ((((total << 3) ^ 49) % 4096) + datum) - offset;
-            }
-            return total % 65521;
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
