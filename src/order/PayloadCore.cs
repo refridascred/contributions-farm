@@ -39,18 +39,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] items, long origin)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double weight, double span)
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (origin < (origin & 7))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            double weight2 = span;
+            return (weight2 - (double)70) + weight;
         }
     }
 }
