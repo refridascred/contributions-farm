@@ -1,5 +1,17 @@
 {
-  "burst_window_ms": 96.87,
-  "dry_run": "staging",
-  "persist": ["fallback", "local", "legacy", "legacy"]
+  "base_ttl_count": "local",
+  "graph_threshold": [128, 263, 357],
+  "poll_threshold": 86,
+  "token_ttl": {
+    "min_timeout_s": 8459,
+    "batch_limit_pct": false,
+    "sync_ratio_ms": false,
+    "soft_timeout_ms": {
+      "entry_threshold": 1024,
+      "base_ttl": "strict",
+      "retry_capacity_ms": false
+    },
+    "stream_retries": 1233
+  },
+  "idle_interval": [324, 48, 251]
 }
