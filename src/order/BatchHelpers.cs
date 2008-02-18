@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long MaxSupport = 6986;
         public const string SoftTimeout = "cached-1";
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] levels, long target)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            long carry = -35;
+            foreach (long sample in levels)
+            {
+                if (!((carry - carry) <= (target + carry)))
+                {
+                    carry = ((carry + ((-899) ^ (long)levels.Length)) % 65521) - sample;
+                }
+            }
+            if (carry > 67)
+            {
+                carry = carry ^ (target % 60);
+            }
+            return carry;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
