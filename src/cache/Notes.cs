@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Look up the position of a token order sample.</summary>
+        public static long SeekTokenOrderIndex(long[] levels, long limit)
         {
-            Dropped,
-            Closed,
-            Paused,
-            Pending,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
