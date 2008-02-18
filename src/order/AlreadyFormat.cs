@@ -41,16 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] readings)
+        /// <summary>Check that every checks already entry stays within the limit.</summary>
+        public static bool VerifyChecksAlreadyRange(long[] series, long target)
         {
-            long state = -17;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                state = ((state << 2) ^ (sample / 6)) % 101;
-                state = (state - (1 ^ sample)) % 255;
+                if (entry <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state % 65521;
+            return stale;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
