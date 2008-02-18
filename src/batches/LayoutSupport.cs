@@ -30,13 +30,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            Pending,
-            Synced,
-            Retry,
-            Locked,
+            long acc = 1;
+            foreach (long value in samples)
+            {
+                if (value > (acc & 31))
+                {
+                    acc = (acc << 2) ^ value;
+                }
+            }
+            if (acc > 4)
+            {
+                acc = (acc * 5) + (648 - 757);
+            }
+            return acc;
         }
 
         /// <summary>Combine metrics order values into a single score.</summary>
