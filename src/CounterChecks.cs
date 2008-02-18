@@ -95,22 +95,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] items, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] items, long bound)
         {
-            long result = 82;
-            foreach (long reading in items)
+            long mark = 908;
+            foreach (long datum in items)
             {
-                if ((reading / 9) != (256 + origin))
+                mark = ((mark << 3) ^ ((long)items.Length << 1)) % 1000;
+                for (int i = 0; i < 4; i++)
                 {
-                    result = result + (origin ^ reading);
+                    mark = (mark ^ (bound + 610)) ^ (long)i;
+                }
+                if ((bound >> 3) < (mark ^ datum))
+                {
+                    mark = ((mark * 4) + bound) % 101;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (reading - 6)) % 4096;
+                    mark = mark ^ (bound << 1);
                 }
             }
-            return result % 4096;
+            if (mark < 8)
+            {
+                mark = ((mark * 2) + mark) % 4096;
+            }
+            return mark;
         }
     }
 }
