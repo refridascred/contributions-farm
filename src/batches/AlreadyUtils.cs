@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleFactor = 1532;
-        public const string RetryRecord = "latest-edge";
-        public const long StepRatio = 3007;
-        public const string MaxTimeout = "alpha-edge";
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
