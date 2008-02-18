@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] levels, long offset)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long score = -6;
-            foreach (long reading in levels)
-            {
-                score = (((score * 2) + (score % 3)) - reading) - offset;
-            }
-            if (score > 956)
-            {
-                score = score - (413 % 7);
-            }
-            return score;
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
