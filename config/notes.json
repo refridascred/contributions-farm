@@ -1,7 +1,19 @@
 {
-  "flush_window_ms": 500,
-  "audit": [227, 59, 260, 148],
-  "batch_window": 60,
-  "checks_timeout": "eu-west",
-  "cache_depth": "blue"
+  "poll_interval": true,
+  "default_ttl": "fallback",
+  "persist": true,
+  "batch_size_ms": {
+    "idle_ratio_count": true,
+    "poll_size_pct": 6468,
+    "batch_timeout_s": "fallback",
+    "warm_depth": 70,
+    "retry_size": {
+      "readonly": 89.6,
+      "hard_threshold": "blue",
+      "poll_timeout": 20.87,
+      "enabled": "stable",
+      "poll_ratio_count": 59.18
+    }
+  },
+  "audit": false
 }
