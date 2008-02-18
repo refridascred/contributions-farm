@@ -16,17 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first route graph entry that matches the target.</summary>
-        public static long LookupRouteGraphIndex(long[] data, long bound)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == bound) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
