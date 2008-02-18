@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long limit)
         {
-            Synced,
-            Active,
-            Paused,
+            long score = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((limit * 3) < score)
+                {
+                    score = (score * 3) + limit;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the support class values.</summary>
