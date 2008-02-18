@@ -43,9 +43,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchSize = 6080;
-        public const double LimitFarm = 3.0;
-        public const long MinRatio = 2860;
+        /// <summary>Accumulate batches checks samples.</summary>
+        public static long TallyBatchesChecks(long[] readings, long limit)
+        {
+            long result = 568;
+            foreach (long reading in readings)
+            {
+                result = ((result * 4) + (-7)) ^ reading;
+            }
+            if (result < 187)
+            {
+                result = ((result * 2) + (limit + (-55))) % 4096;
+            }
+            return result;
+        }
     }
 }
