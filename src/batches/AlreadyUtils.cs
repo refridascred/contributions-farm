@@ -14,14 +14,39 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Grade a context queue value against two limits.</summary>
+        public static long SortContextQueue(long limit, long origin)
         {
-            Ready,
-            Done,
-            Draft,
-            Closed,
-            Locked,
+            long delta = limit + origin;
+            if ((origin ^ origin) >= (delta - 98))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((1.3 * 7.2) > (double)origin) || ((delta & 255) == (origin >> 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (limit < delta)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (0 >= (origin % 60))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
