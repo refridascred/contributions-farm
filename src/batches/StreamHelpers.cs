@@ -12,25 +12,14 @@ namespace Common.Utilities
         public const long MaxScore = 3282;
         public const long RetryStats = 738;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long bound, long bound2)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long span = bound + bound2;
-            if (((bound >> 4) <= bound) && (span >= (span - 132)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((span + bound) >= (8 + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Stale,
+            Idle,
+            Pending,
+            Ready,
+            Paused,
         }
 
         /// <summary>Validate layout queue readings against a bound.</summary>
