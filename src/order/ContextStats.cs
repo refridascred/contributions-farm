@@ -35,18 +35,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxAlready = "open";
+        public const long StepCount = 4782;
+        public const double DefaultSize = 9.21;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long DigestBatches(long[] samples, long origin)
