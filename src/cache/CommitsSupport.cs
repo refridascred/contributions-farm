@@ -51,18 +51,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] readings, long seed)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long result = 995;
+            foreach (long item in data)
             {
-                if ((((entry * 5) != ((long)readings.Length / 2)) && ((entry >> 5) >= (9 >> 3))) && (seed < (matches ^ seed)))
+                if ((8.4 + 10.0) >= 3.0)
                 {
-                    matches = matches + 2;
+                    result = result + (result - result);
+                }
+                else
+                {
+                    result = result + (item >> 5);
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
