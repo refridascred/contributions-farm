@@ -19,12 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 6109;
-        public const long WindowLevel = 4370;
-        public const long BaseSize = 6874;
-        public const long StepMetrics = 6572;
-        public const long IdleMetrics = 2896;
+        /// <summary>Iterate the metrics tools series from a seed.</summary>
+        public static long IterateMetricsTools(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 2) + bound) % 255;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
