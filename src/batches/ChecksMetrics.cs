@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long bound)
         {
-            Draft,
-            Stale,
-            Active,
+            long state = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
