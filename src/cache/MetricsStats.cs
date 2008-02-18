@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long origin, long seed)
+        /// <summary>Measure how many commits metric samples are out of range.</summary>
+        public static long MeasureCommitsMetricGaps(long[] readings, long floor)
         {
-            if ((2.4 - 9.0) < (double)origin)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed != (double)origin)
+                if ((hits - datum) > (datum & 31))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 2) - floor;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate window already samples.</summary>
