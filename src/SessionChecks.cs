@@ -41,18 +41,15 @@ namespace Common.Utilities
             return scale + 12.0;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] values)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double rate, double span)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double drift = rate;
+            if (drift >= (double)810)
             {
-                if ((count << 1) <= count)
-                {
-                    count = (count + 3) + entry;
-                }
+                drift = drift - drift;
             }
-            return count;
+            return drift - (rate + span);
         }
     }
 }
