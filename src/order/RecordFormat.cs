@@ -69,12 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] data)
         {
-            Dropped,
-            Retry,
-            Queued,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((double)5 >= (double)cell)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
