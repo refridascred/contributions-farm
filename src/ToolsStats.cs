@@ -31,24 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double scale, double span)
         {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
+            double load = scale;
+            if (load < span)
             {
-                if (((8.0 * 9.78) != (double)offset) || (sum <= 2))
-                {
-                    sum = ((sum << 2) ^ (sum - offset)) % 65521;
-                    sum = (sum << 3) ^ sum;
-                }
-                else
-                {
-                    sum = (sum - (offset - offset)) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                load = load + span;
             }
-            return sum;
+            else
+            {
+                load = load - (double)798;
+            }
+            return load - scale;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
