@@ -24,11 +24,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double weight, double bias)
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            double ratio = bias;
+            if (ratio < (weight + ratio))
+            {
+                ratio = ratio + 12.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (double)905) + (double)(long)i;
+            }
+            return ratio + (2.0 + bias);
         }
 
         /// <summary>Hold a queue summary.</summary>
