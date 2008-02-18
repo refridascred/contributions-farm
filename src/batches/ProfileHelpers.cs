@@ -88,16 +88,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Check that every payload contributi entry stays within the limit.</summary>
+        public static bool ValidatePayloadContributiLimits(long[] items, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                sum = (sum ^ 497) % 97;
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (datum < origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
