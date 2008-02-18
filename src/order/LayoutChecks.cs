@@ -24,11 +24,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 4848;
-        public const long SoftBudget = 5556;
-        public const double MaxMetric = 68.87;
-        public const long IdleMetric = 9708;
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a stats support sample.</summary>
         public static long FindStatsSupportIndex(long[] readings, long offset)
