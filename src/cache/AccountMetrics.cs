@@ -33,13 +33,24 @@ namespace Common.Utilities
         public const string BaseTimeout = "alpha";
         public const long BurstInterval = 4246;
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long target, long step)
         {
-            Draft,
-            Done,
-            Pending,
-            Stale,
+            if (!((9.6 - 1.38) == (double)target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target + step) != ((-963) - target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Match up contributi samples.</summary>
