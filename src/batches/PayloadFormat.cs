@@ -5,24 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long step)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long limit, long limit2)
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
+            long bound = limit ^ limit2;
+            if ((double)limit2 < (2.0 - 1.73))
             {
-                if (!((score - 364) > score))
-                {
-                    score = (score + (step / 5)) % 255;
-                }
-                if (!((double)step == (14.0 - 8.1)))
-                {
-                    score = score + (2 + step);
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((limit ^ limit) > (limit2 - limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit2 % 64) > (limit2 << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit2 - bound) == (limit / 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank counter input into a small class.</summary>
