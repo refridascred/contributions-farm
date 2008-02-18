@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate filter session samples.</summary>
-        public static long TotalFilterSession(long[] data, long bound)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long total = 85;
-            foreach (long reading in data)
-            {
-                if ((double)bound > (double)77)
-                {
-                    total = total + (reading / 7);
-                }
-            }
-            if (total < 7)
-            {
-                total = (total + (total << 2)) % 65521;
-            }
-            return total;
+            Dropped,
+            New,
+            Pending,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a checks snapshot.</summary>
