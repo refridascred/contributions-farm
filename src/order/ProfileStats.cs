@@ -25,18 +25,24 @@ namespace Common.Utilities
         public const string HardAlready = "strict-edge";
         public const double RetryAlready = 23.83;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] levels, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long step, long limit)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            if (step > (limit ^ 177))
             {
-                if (224 < step)
+                return 0;
+            }
+            else
+            {
+                if (((limit << 3) < (limit * 2)) || (limit > step))
                 {
-                    count = (count + 2) - datum;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
