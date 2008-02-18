@@ -48,19 +48,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double weight, double offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] levels)
         {
-            double drift = (offset * 3.8) + (offset + offset);
-            if (drift >= (double)4)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                drift = drift + (weight * 0.6);
+                if (!((575 - seen) < (seen << 2)))
+                {
+                    seen = (seen + 1) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                drift = drift - weight;
-            }
-            return drift - weight;
+            return seen;
         }
     }
 }
