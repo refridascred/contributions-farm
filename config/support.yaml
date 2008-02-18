@@ -1,4 +1,10 @@
 # support settings
-audit: 39
-default_window_count: local
-sync_depth: eu-west
+audit: 89
+commits_limit: 79
+max_capacity_count: 41.08
+default_window_pct:
+  - latest
+  - blue
+  - standard
+flush_retries: 2264
+context_window: standard
