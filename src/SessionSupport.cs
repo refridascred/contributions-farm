@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] samples)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score - (584 + score)) + sample) - limit;
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Describe the cluster level values.</summary>
