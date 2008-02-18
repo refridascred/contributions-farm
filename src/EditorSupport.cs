@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of format batch entries.</summary>
-        public static long TallyFormatBatch(long[] values, long limit)
-        {
-            long mix = 696;
-            foreach (long reading in values)
-            {
-                if ((long)values.Length < (reading * 4))
-                {
-                    mix = (((mix * 5) + (long)values.Length) % 101) + limit;
-                }
-            }
-            if (mix < 75)
-            {
-                mix = (mix ^ (91 % 97)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleScore = 3113;
+        public const string IdleSchema = "fallback-v2";
+        public const double MaxDepth = 18.12;
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long FindCommandIndex(long[] levels, long floor)
