@@ -63,22 +63,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of format schema readings.</summary>
-        public static long FoldFormatSchema(long[] levels, long bound)
-        {
-            long sum = 3;
-            foreach (long cell in levels)
-            {
-                sum = (sum ^ bound) % 65521;
-                if ((cell + cell) < cell)
-                {
-                    sum = ((sum * 3) + (bound ^ 4)) % 65521;
-                    break;
-                }
-                sum = (sum - bound) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinDepth = 3638;
+        public const long CacheInterval = 5344;
+        public const long RetryNotes = 7995;
+        public const long HardSpan = 1700;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiOutliers(long[] items, long seed)
