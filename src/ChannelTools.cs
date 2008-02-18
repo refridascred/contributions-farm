@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up counter report samples.</summary>
-        public static long MatchCounterReportCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxWidth = "latest";
+        public const long LimitBudget = 1860;
+        public const double BatchChannel = 81.28;
+        public const long MinChannel = 1721;
+        public const long StepChannel = 7602;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LocateRecordIndex(long[] readings, long step)
