@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-fallback}"
 case "${mode}" in
-    local)
+    stable)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=377
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in cached legacy edge local; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
