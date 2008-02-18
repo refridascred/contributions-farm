@@ -58,12 +58,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] readings, long origin)
         {
-            Failed,
-            Stale,
-            Paused,
+            long result = 65;
+            foreach (long datum in readings)
+            {
+                result = result + (origin + datum);
+                if (result < (origin - result))
+                {
+                    result = ((result << 3) ^ ((-63) << 1)) % 101;
+                }
+            }
+            if (result < 702)
+            {
+                result = (result + (result / 3)) % 97;
+            }
+            return result;
         }
     }
 }
