@@ -34,11 +34,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] samples, long floor)
         {
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
+            long mark = 59;
+            foreach (long datum in samples)
+            {
+                mark = (((mark << 2) ^ (floor * 4)) % 65521) + datum;
+                mark = (mark - (mark * 2)) % 4096;
+            }
+            if (mark > 202)
+            {
+                mark = mark - mark;
+            }
+            return mark % 1000;
         }
     }
 }
