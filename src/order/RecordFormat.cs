@@ -23,13 +23,39 @@ namespace Common.Utilities
             return (drift - drift) + gain;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long seed, long floor)
         {
-            Ready,
-            Stale,
-            Locked,
-            Retry,
+            long slot = seed - floor;
+            if ((seed - slot) >= slot)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)slot > (10.0 - 6.5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(1.6 > (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((slot + seed) >= floor) && (14.0 <= (double)slot))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema record.</summary>
