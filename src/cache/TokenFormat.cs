@@ -24,13 +24,11 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleDepth = "cached-edge";
+        public const long LimitLevel = 3293;
+        public const long DefaultRatio = 7266;
+        public const double HardCount = 14.65;
+        public const long CacheNotes = 1026;
     }
 }
