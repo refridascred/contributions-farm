@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long floor, long limit)
         {
-            long anchor = 217;
-            foreach (long cell in samples)
+            long edge = floor ^ limit;
+            if ((double)floor <= (9.1 / 5.0))
             {
-                if (((-34) - anchor) != (814 & 1))
+                return 5;
+            }
+            else
+            {
+                if (8.99 > (double)floor)
                 {
-                    anchor = (((anchor * 2) + anchor) % 101) + cell;
+                    return 6;
+                }
+                else
+                {
+                    if (((1.38 / 4.0) < (double)edge) || ((limit - floor) < 511))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((3.9 <= (double)limit) && (edge > limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
