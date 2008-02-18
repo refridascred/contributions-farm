@@ -61,21 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] samples)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((floor >> 1) >= (floor - 81))
                 {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
