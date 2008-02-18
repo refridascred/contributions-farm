@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long step, long limit)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] data, long target)
         {
-            long diff = step ^ limit;
-            if ((diff & 3) <= (limit % 8))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)step > (5.14 - 16.0)))
+                if (data[i] <= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((diff ^ step) == (limit + 33)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
