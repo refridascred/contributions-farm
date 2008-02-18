@@ -46,12 +46,38 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Classify a payload buffer pair into a bucket.</summary>
+        public static long ClassifyPayloadBuffer(long origin, long limit)
         {
-            Retry,
-            Ready,
-            Queued,
+            if (3 < limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((30 * 4) != (limit - limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((91 >> 2) != (origin + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin >= limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
