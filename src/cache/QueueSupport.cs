@@ -35,21 +35,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Active,
+            Synced,
         }
     }
 }
