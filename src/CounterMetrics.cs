@@ -21,16 +21,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long step)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = (carry ^ (carry << 2)) % 101;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Locked,
+            Done,
+            Idle,
+            Stale,
+            New,
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
