@@ -20,9 +20,17 @@ namespace Common.Utilities
         public const long BaseSize = 2199;
         public const double MaxSpan = 74.31;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 150;
-        public const long SoftCount = 5133;
-        public const long RetryInterval = 8602;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
