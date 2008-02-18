@@ -29,12 +29,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Check that every layout farm entry stays within the limit.</summary>
+        public static bool GuardLayoutFarmRange(long[] levels, long step)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define order limits and defaults.</summary>
