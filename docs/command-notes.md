@@ -1,10 +1,10 @@
 # Command notes
 
-A session that stays idle for too long is moved to the checks list.
-Each entry is validated before it reaches the support queue.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new schema fields
-- Prefer command defaults
-- Keep route values small
+- Keep window values small
+- Prefer order defaults
+- Log every metric change
