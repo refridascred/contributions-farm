@@ -1,6 +1,30 @@
 {
-  "idle_delay_ms": 4794,
-  "retry_ratio_pct": true,
-  "cluster_depth": 34,
-  "retry_threshold_ms": 5.14
+  "dry_run": {
+    "metric_limit": "legacy",
+    "persist": {
+      "dry_run": 27,
+      "compress": 1791,
+      "payload_depth": 71,
+      "enabled": "open",
+      "base_threshold_s": true,
+      "order_limit": "staging"
+    },
+    "base_delay_s": 73,
+    "base_interval": 99,
+    "report_delay": 86.7,
+    "hard_size_ms": "green"
+  },
+  "cluster_ratio": "blue",
+  "flush_capacity_count": "cached",
+  "compress": {
+    "cache_retries": 72,
+    "soft_ratio": {
+      "cache_ratio": 24.7,
+      "enabled": 1.42,
+      "readonly": 12
+    },
+    "batch_depth_pct": 1846,
+    "poll_retries": 60,
+    "max_interval_count": 59
+  }
 }
