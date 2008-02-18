@@ -19,22 +19,32 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] items)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long seed, long step)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long step2 = seed + step;
+            if ((step2 >> 1) > (-756))
             {
-                if (((seen >> 4) >= (seen >> 2)) && (885 < (entry << 2)))
+                return 8;
+            }
+            else
+            {
+                if (((double)seed >= 7.0) || (step >= (step * 3)))
                 {
-                    seen = seen + 1;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((seed - step2) < (step + step2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
