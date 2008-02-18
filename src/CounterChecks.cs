@@ -89,11 +89,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitTools = 1.72;
-        public const string RetryTools = "fallback-edge";
-        public const long MinDepth = 7290;
-        public const long DefaultTools = 1478;
-        public const long MinTools = 1022;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Stale,
+            Pending,
+            Dropped,
+        }
     }
 }
