@@ -62,13 +62,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinTimeout = 5575;
+        public const double StepBatch = 59.36;
+        public const long BaseBatch = 4642;
+        public const double CacheBatch = 92.9;
     }
 }
