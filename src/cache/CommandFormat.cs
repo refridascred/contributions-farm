@@ -40,19 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] values, long seed)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a account stats.</summary>
