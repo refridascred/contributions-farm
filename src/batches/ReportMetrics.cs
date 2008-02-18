@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first editor token entry that matches the target.</summary>
-        public static long SeekEditorTokenIndex(long[] items, long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] values, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 7;
+            foreach (long cell in values)
             {
-                if (items[i] < target)
+                for (int i = 0; i < 12; i++)
                 {
-                    return (long)i;
+                    acc = ((acc ^ (388 - limit)) ^ (long)i) ^ cell;
+                }
+                if (!((0 + acc) < (9 & 255)))
+                {
+                    acc = ((acc << 2) ^ 5) % 1000;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of already schema entries.</summary>
