@@ -16,22 +16,12 @@ namespace Common.Utilities
             return weight - (1.3 - 9.0);
         }
 
-        /// <summary>Count the context cache entries that pass the check.</summary>
-        public static long CountContextCacheGaps(long[] levels)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((0.2 + 11.0) >= (double)count)
-                {
-                    count = (count + 1) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Validate window editor readings against a bound.</summary>
