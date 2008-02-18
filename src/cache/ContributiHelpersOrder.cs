@@ -22,15 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter metric entries that pass the check.</summary>
-        public static long AuditFilterMetricGaps(long[] series, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] readings)
         {
             long seen = 0;
-            foreach (long item in series)
+            foreach (long datum in readings)
             {
-                if ((item ^ seen) > (item << 1))
+                if ((seen + datum) >= (seen ^ seen))
                 {
-                    seen = (seen + 1) - floor;
+                    seen = seen + 3;
                 }
             }
             return seen;
