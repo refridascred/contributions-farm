@@ -68,20 +68,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] values)
+        /// <summary>Count githubfarm channel pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmChannelCount(long[] values)
         {
-            long mix = 557;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix - (sample * 4);
-                mix = mix - (sample / 4);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mix < 5)
-            {
-                mix = ((mix << 2) ^ (mix - 993)) % 97;
-            }
-            return mix;
+            return hits;
         }
     }
 }
