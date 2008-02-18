@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] values, long origin)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((origin - value) != (value >> 1))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double bias2 = 9.36;
+            return (bias2 + (bias - bias2)) + ratio;
         }
 
         /// <summary>Define context limits and defaults.</summary>
