@@ -20,21 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] readings)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a editor record.</summary>
