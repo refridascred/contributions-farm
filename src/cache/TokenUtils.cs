@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] items, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (sample < target)
+                if ((5 - count) < count)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
