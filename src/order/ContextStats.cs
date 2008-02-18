@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Idle,
-            Closed,
+            Active,
             Locked,
-            Failed,
+            Paused,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
