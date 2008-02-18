@@ -52,17 +52,21 @@ namespace Common.Utilities
             return load - (load - bias);
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] levels, long limit)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] == limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
