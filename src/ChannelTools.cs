@@ -35,9 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxCount = 6350;
-        public const long SoftRatio = 883;
-        public const string SoftScore = "alpha";
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Queued,
+            Failed,
+            Active,
+            Idle,
+        }
     }
 }
