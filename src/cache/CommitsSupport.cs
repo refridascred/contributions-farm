@@ -14,10 +14,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinOrder = "alpha-edge";
-        public const double DefaultOrder = 50.64;
-        public const long CacheOrder = 9976;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public double Count { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long IterateQueue(long origin)
