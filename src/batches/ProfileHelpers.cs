@@ -88,19 +88,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] values, long limit)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long floor)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry >= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (sum ^ 497) % 97;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
