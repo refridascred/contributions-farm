@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double scale, double span)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] samples)
         {
-            double weight = span;
-            if (weight <= scale)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (scale / 9.0)) - (double)(long)i;
-            }
-            return weight - (weight / 5.0);
+            return tally;
         }
 
         /// <summary>Describe the context mode values.</summary>
