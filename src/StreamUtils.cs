@@ -46,18 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] readings, long origin)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (((4.66 - 0.2) <= (double)seen) || (((664 - (long)readings.Length) <= (seen << 1)) && ((origin ^ value) < (origin << 1))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
