@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] samples, long target)
         {
-            long score = step;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (score < (30 % 100))
+                if ((target >> 5) <= count)
                 {
-                    score = score + score;
+                    count = (count + 1) + cell;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Accumulate already samples.</summary>
