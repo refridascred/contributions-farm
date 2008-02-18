@@ -35,11 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long bound)
         {
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the stream state values.</summary>
