@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            New,
+            Retry,
+            Closed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
