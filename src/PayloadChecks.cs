@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long limit)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long origin, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
+            if (!((1 << 2) >= (offset << 2)))
             {
-                state = ((state * 3) + (long)i) % 97;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (!(origin > (origin - offset)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset < (offset + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
