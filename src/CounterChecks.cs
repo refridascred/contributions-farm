@@ -84,19 +84,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate githubfarm session readings against a bound.</summary>
-        public static bool ValidateGithubfarmSessionRange(long[] data, long bound)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > bound)
+                if (readings[i] == offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
