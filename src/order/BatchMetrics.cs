@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] samples, long target)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((target >> 5) <= count)
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
