@@ -71,20 +71,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((state >> 5) >= (state << 1))
-                {
-                    state = state - (step / 5);
-                }
-                state = state + (58 + step);
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "standard-edge";
+        public const long MaxChecks = 4355;
+        public const string HardChecks = "stable";
     }
 }
