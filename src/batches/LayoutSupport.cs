@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double weight, double offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] series, long bound)
         {
-            double drift = 4.0;
-            if (drift <= (drift * 18.0))
+            bool ok = true;
+            foreach (long entry in series)
             {
-                drift = (drift + offset) - weight;
+                if (entry > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - 16.0;
+            return ok;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
