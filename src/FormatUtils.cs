@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const double BurstGraph = 61.78;
         public const double WindowGraph = 40.57;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleWidth = 33.89;
-        public const long BaseBudget = 3758;
-        public const long StepTools = 5853;
-        public const double BurstDepth = 29.55;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long MatchRecordCount(long[] values)
