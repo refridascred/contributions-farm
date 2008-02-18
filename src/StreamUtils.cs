@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] values, long offset)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long limit, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((step ^ limit) == (limit - step))
             {
-                if (values[i] < offset)
+                return 1;
+            }
+            else
+            {
+                if ((limit & 31) <= (limit - step))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit >> 5) >= (step % 12))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
