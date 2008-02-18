@@ -79,10 +79,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 6216;
-        public const string IdleWidth = "standard-1";
-        public const long DefaultSize = 1871;
-        public const double BaseTimeout = 54.41;
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((mix <= (mix - offset)) && ((double)(long)i != (8.9 / 6.0)))
+                {
+                    mix = (mix ^ ((long)i % 2)) % 97;
+                }
+                else
+                {
+                    mix = mix ^ 21;
+                }
+                double drift = (7.89 + 5.38) + (double)offset;
+                if ((drift * 19.0) >= 5.32)
+                {
+                    mix = mix + (long)i;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
