@@ -41,11 +41,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] items, long step)
         {
-            public double Token { get; set; }
-            public double Score { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((seen & 127) != (cell / 7))
+                {
+                    seen = (seen + 2) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
