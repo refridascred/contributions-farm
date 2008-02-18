@@ -27,12 +27,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Locked,
-            Stale,
-            Draft,
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
