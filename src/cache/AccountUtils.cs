@@ -32,9 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowGraph = "cached";
-        public const string BaseFactor = "strict";
-        public const string BatchGraph = "legacy-edge";
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = state - (offset - (long)i2);
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
