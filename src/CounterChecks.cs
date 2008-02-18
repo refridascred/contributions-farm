@@ -84,15 +84,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long acc = 9;
-            foreach (long cell in items)
-            {
-                acc = ((acc * 4) + (acc & 127)) + cell;
-            }
-            return acc;
+            Pending,
+            New,
+            Dropped,
+            Done,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
