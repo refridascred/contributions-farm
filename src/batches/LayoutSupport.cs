@@ -39,18 +39,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] series, long target)
+        /// <summary>Combine metrics order values into a single score.</summary>
+        public static long ScoreMetricsOrder(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long result = -935;
+            foreach (long value in series)
             {
-                if ((seen + seen) < seen)
+                if ((step + (long)series.Length) >= (value / 2))
                 {
-                    seen = ((seen + 3) + sample) + target;
+                    result = (result ^ ((long)series.Length + result)) % 101;
                 }
             }
-            return seen;
+            if (result > 611)
+            {
+                result = (result * 5) + (result * 4);
+            }
+            return result;
         }
     }
 }
