@@ -19,19 +19,17 @@ namespace Common.Utilities
         public const long DefaultSpan = 7991;
         public const long CacheBudget = 7309;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] samples, long origin)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > origin)
+                if (series[i] > seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
