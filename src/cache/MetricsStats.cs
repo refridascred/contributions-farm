@@ -35,11 +35,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Classify a farm queue pair into a bucket.</summary>
+        public static long GradeFarmQueue(long origin, long limit)
         {
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
+            if ((limit * 4) > (origin + limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((limit / 6) < origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin < (double)95)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit - limit) <= (limit ^ limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks state values.</summary>
