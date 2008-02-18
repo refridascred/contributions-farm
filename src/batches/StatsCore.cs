@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 4551;
-        public const long StepSize = 8973;
-        public const string BurstWidth = "fallback-1";
-        public const double RetryCount = 42.91;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] samples, long limit)
+        {
+            long mark = -375;
+            foreach (long datum in samples)
+            {
+                if ((datum >> 2) > (85 ^ limit))
+                {
+                    mark = ((mark * 5) + mark) % 65521;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long RollProfile(long seed)
