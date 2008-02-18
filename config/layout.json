@@ -1,7 +1,16 @@
 {
-  "window_threshold": 18,
-  "default_size_pct": 17,
-  "cache_depth": "open",
-  "soft_ratio": "legacy",
-  "poll_window_pct": true
+  "default_capacity_s": 62,
+  "base_delay": {
+    "idle_depth": ["fallback", "standard"],
+    "command_capacity": true,
+    "checks_window": "stable",
+    "strict": {
+      "base_threshold": true,
+      "warm_timeout_ms": ["standard", "local", "open", "fallback"],
+      "flush_interval_ms": 63.59,
+      "dry_run": "green"
+    },
+    "verbose": false
+  },
+  "cache_retries": "fallback"
 }
