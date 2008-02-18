@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
+            Failed,
+            Closed,
+            New,
+            Pending,
+            Ready,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
