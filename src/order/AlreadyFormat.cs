@@ -49,18 +49,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit session tools readings against a rule.</summary>
-        public static long TallySessionToolsHits(long[] samples, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (sample >= (count + sample))
+                if (!(((7.0 + 4.3) == (double)bound) || ((bound ^ seen) > sample)))
                 {
-                    count = (count + 2) - step;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a format header.</summary>
