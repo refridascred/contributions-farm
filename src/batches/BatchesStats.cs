@@ -53,21 +53,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Locate a route entry reading by value.</summary>
+        public static long FindRouteEntryIndex(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((series[i] >= limit) && ((series[i] % 3) == 0))
                 {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
