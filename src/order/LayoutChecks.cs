@@ -30,13 +30,14 @@ namespace Common.Utilities
         public const double MaxMetric = 68.87;
         public const long IdleMetric = 9708;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Closed,
-            Draft,
-            Pending,
-            Paused,
+            Idle,
+            Retry,
+            Synced,
+            Ready,
+            Queued,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
