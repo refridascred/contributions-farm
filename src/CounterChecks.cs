@@ -97,19 +97,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] levels, long offset)
+        /// <summary>Validate githubfarm session readings against a bound.</summary>
+        public static bool ValidateGithubfarmSessionRange(long[] data, long bound)
         {
-            long carry = 310;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long item in data)
             {
-                carry = (carry * 5) + item;
+                if (item > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (carry > 49)
-            {
-                carry = (carry << 2) ^ (offset + 0);
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
