@@ -70,22 +70,13 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] data)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (782 >= cell)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Retry,
+            Ready,
+            Active,
         }
     }
 }
