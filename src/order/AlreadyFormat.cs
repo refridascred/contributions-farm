@@ -58,21 +58,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
