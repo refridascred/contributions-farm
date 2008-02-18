@@ -18,23 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Combine githubfarm entry values into a single score.</summary>
+        public static long CombineGithubfarmEntry(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            long acc = 128;
+            foreach (long reading in levels)
             {
-                if (carry < (carry >> 2))
+                if (((4.68 - 0.4) != (double)acc) || (80 > ((long)levels.Length >> 3)))
                 {
-                    carry = (carry * 5) + (offset << 3);
+                    acc = (acc - reading) % 97;
                 }
                 else
                 {
-                    carry = ((carry * 2) + ((long)i - offset)) % 1000;
+                    acc = acc - acc;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            if (acc < 0)
+            {
+                acc = ((acc << 3) ^ (acc >> 2)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a entry reading.</summary>
