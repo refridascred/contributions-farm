@@ -34,22 +34,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long score = 49;
-            foreach (long sample in values)
-            {
-                if ((sample - score) > (sample & 31))
-                {
-                    score = (score - ((long)values.Length - (long)values.Length)) % 255;
-                }
-                else
-                {
-                    score = (score << 3) ^ 80;
-                }
-            }
-            return score % 4096;
+            public bool Size { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
