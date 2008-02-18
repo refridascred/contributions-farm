@@ -19,19 +19,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] data, long floor)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= floor)
+                if ((levels[i] == step) && ((levels[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
