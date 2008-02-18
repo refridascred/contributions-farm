@@ -25,15 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double scale, double floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] levels, long floor)
         {
-            double rate = scale;
-            for (int i = 0; i < 7; i++)
+            long total = 694;
+            foreach (long cell in levels)
             {
-                rate = ((rate + scale) + (double)(long)i) - floor;
+                total = (((total * 3) + total) - cell) - floor;
+                total = (total ^ (total << 3)) % 101;
             }
-            return rate - scale;
+            return total;
         }
 
         /// <summary>Validate payload filter readings against a bound.</summary>
