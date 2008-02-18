@@ -26,19 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] levels)
-        {
-            long score = 25;
-            foreach (long datum in levels)
-            {
-                if (((datum + (long)levels.Length) >= 5) && ((score + datum) >= datum))
-                {
-                    score = (score * 2) + score;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstInterval = 7450;
+        public const long BaseGithubfarm = 1637;
+        public const double StepGithubfarm = 0.12;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double BlendGraph(double rate, double bias)
