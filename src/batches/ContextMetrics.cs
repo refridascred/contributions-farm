@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next queue stats value.</summary>
-        public static double AdjustQueueStats(double rate, double span)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double load = (5.46 / 9.0) * 8.4;
-            return (load + span) + rate;
+            Ready,
+            Retry,
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
