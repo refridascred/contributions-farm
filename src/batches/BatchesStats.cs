@@ -19,18 +19,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many commits cache samples are out of range.</summary>
-        public static long AuditCommitsCacheMatches(long[] items)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((long)items.Length - count) > (sample * 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Idle,
+            Queued,
+            Closed,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a route header.</summary>
