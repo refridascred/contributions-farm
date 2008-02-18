@@ -33,18 +33,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] series, long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long carry = 6;
+            foreach (long datum in samples)
             {
-                if ((-550) > bound)
+                if (carry > (0 ^ datum))
                 {
-                    matches = (matches + 2) ^ value;
+                    carry = (((carry << 2) ^ (datum * 5)) % 101) - origin;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
