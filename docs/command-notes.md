@@ -1,12 +1,12 @@
 # Command notes
 
-The channel module keeps cluster values in sync with the layout cache.
-Run the queue check before changing any entry limits.
-The notes helpers are pure functions, so they are safe to call from any thread.
+Use graph settings to tune how often report data is refreshed.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Use window settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Log every token change
-- Validate token input early
-- Keep payload values small
-- Review filter limits each release
+- Document new editor fields
+- Log every layout change
+- Keep editor values small
+- Validate record input early
