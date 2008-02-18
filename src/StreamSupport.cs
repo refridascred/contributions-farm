@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] samples)
+        /// <summary>Compare every pair of batch profile readings.</summary>
+        public static long PairBatchProfileCount(long[] samples)
         {
-            long carry = 69;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry - entry) >= entry)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry << 3) ^ entry) % 255;
-                    carry = carry + (entry % 97);
-                }
-                if ((carry << 2) < (carry ^ carry))
-                {
-                    carry = (carry - ((long)samples.Length % 8)) % 4096;
+                    if ((samples[i] + samples[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
