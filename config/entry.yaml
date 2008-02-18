@@ -1,13 +1,6 @@
 # entry settings
-base_threshold_pct: 95.53
-already_window:
-  audit: open
-  idle_ttl: 9223
-  persist: 50.88
-  idle_window:
-    - blue
-    - latest
-    - local
-    - eu-west
-default_window: stable
-sync_capacity: staging
+readonly: fallback
+cache_ratio: legacy
+account_interval: 5992
+metrics_window: 1266
+warm_retries_s: 3.26
