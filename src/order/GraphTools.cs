@@ -17,22 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long carry = -9;
+            foreach (long cell in levels)
             {
-                if (!((860 + item) == (item ^ item)))
+                if ((58 - cell) <= (carry * 3))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = carry ^ (cell + carry);
                 }
             }
-            return tally;
+            if (carry < 92)
+            {
+                carry = ((carry * 5) + (carry - 24)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of payload schema entries.</summary>
