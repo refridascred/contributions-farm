@@ -41,13 +41,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Draft,
-            New,
-            Locked,
-            Synced,
+            Dropped,
+            Stale,
+            Active,
+            Ready,
         }
     }
 }
