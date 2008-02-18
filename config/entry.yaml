@@ -1,4 +1,8 @@
 # entry settings
-strict: 20
-burst_depth_count: 8043
-idle_limit_s: 93.64
+idle_capacity_count: 500
+default_ttl: 31.02
+record_limit: 8725
+dry_run: strict
+min_retries_s:
+  - 14
+  - 402
