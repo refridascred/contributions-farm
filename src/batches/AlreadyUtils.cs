@@ -42,18 +42,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric batches entries that pass the check.</summary>
-        public static long MeasureMetricBatchesOutliers(long[] levels)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long sum = 79;
+            foreach (long item in items)
             {
-                if ((seen / 7) >= seen)
+                if (!(item <= (25 + item)))
                 {
-                    seen = (seen + 3) - value;
+                    sum = (sum + (item >> 4)) + seed;
                 }
             }
-            return seen;
+            if (sum > 33)
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next queue support value from a seed.</summary>
