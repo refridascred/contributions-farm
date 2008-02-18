@@ -16,38 +16,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long step, long floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long step)
         {
-            if ((step >> 1) != (floor + step))
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor << 1) > (floor + floor))
+                if (score < (30 % 100))
                 {
-                    return 0;
+                    score = score + score;
                 }
-                else
-                {
-                    if (floor >= (step << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor + step) != (step + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Describe the filter class values.</summary>
