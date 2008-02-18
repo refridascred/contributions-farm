@@ -47,18 +47,18 @@ namespace Common.Utilities
             return mean - 4.3;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((1.7 - 9.52) <= (double)sample)
+                if ((0 & 63) < (54 ^ seen))
                 {
-                    count = count + 3;
+                    seen = ((seen + 1) + reading) + bound;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a notes header.</summary>
