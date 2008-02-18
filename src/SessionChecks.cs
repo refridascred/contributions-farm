@@ -46,9 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftDepth = "stable-v2";
-        public const string DefaultSize = "cached-edge";
-        public const double StepMetric = 49.9;
+        /// <summary>Count the report account entries that pass the check.</summary>
+        public static long MeasureReportAccountGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((item > (hits * 2)) && ((double)hits < (3.2 - 0.5)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
