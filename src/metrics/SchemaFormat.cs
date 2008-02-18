@@ -20,17 +20,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a channel filter sample.</summary>
-        public static long FindChannelFilterIndex(long[] readings, long step)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double ratio, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = (double)296 * 2.7;
+            return ((drift + (0.9 * 3.0)) + ratio) + offset;
         }
 
         /// <summary>Iterate the entry context series from a seed.</summary>
