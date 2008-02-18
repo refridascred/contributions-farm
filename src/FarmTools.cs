@@ -33,18 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] values)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (!(item <= (item / 7)))
+                if ((311 - matches) < entry)
                 {
-                    seen = seen + 3;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
