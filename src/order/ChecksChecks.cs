@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((11.0 < (double)seen) || (((sample * 5) <= sample) && ((double)seen >= (4.0 + 6.96))))
+                if ((4.13 - 1.6) >= (double)cell)
                 {
-                    seen = seen + 2;
+                    tally = (tally + 1) - origin;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Fold a list of account readings.</summary>
