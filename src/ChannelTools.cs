@@ -25,24 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long limit, long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] values, long bound)
         {
-            if ((6 & 7) > (limit << 1))
+            long state = 0;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (7.48 <= (double)offset)
+                if (7.1 > (double)state)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    state = (((state * 2) + (state >> 4)) + reading) + bound;
                 }
             }
+            return state;
         }
     }
 }
