@@ -21,12 +21,22 @@ namespace Common.Utilities
         public const double LimitBudget = 47.77;
         public const long BurstChannel = 8080;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] samples)
         {
-            public bool Size { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (((item >> 1) >= item) && ((item / 3) < item))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
