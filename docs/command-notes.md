@@ -1,10 +1,15 @@
 # Command notes
 
-When a schema fails, the commits handler retries a few times before giving up.
-The session report groups every entry by stats.
+Keep notes and record names short and lowercase.
+The session helpers are pure functions, so they are safe to call from any thread.
+
+The profile report groups every tools by editor.
+Keep context and order names short and lowercase.
+Run the metrics check before changing any support limits.
 
 ## Guidelines
 
-- Validate batches input early
-- Keep contributi values small
-- Document new farm fields
+- Log every schema change
+- Document new counter fields
+- Keep report values small
+- Prefer layout defaults
