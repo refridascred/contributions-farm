@@ -43,19 +43,19 @@ namespace Common.Utilities
         public const double BatchEntry = 57.71;
         public const string WindowInterval = "open";
 
-        /// <summary>Blend two account graph measurements.</summary>
-        public static double AdjustAccountGraph(double rate, double span)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double rate, double span)
         {
-            double mean = (rate - rate) * 1.0;
-            if (mean < span)
+            double bias = (span * 3.0) / 2.0;
+            if (bias < 8.0)
             {
-                mean = mean + (double)27;
+                bias = bias - rate;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 9; i++)
             {
-                mean = (mean + mean) - (double)(long)i;
+                bias = (bias + rate) + (double)(long)i;
             }
-            return mean + (double)64;
+            return bias - 10.0;
         }
     }
 }
