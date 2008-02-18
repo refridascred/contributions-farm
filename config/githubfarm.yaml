@@ -1,12 +1,18 @@
 # githubfarm settings
-flush_limit_s: 53.24
-readonly: 87.44
-default_ratio_count: 30
-retry_size_ms: true
-report_threshold:
-  cache_ratio: 3873
-  warm_depth_pct: true
-  compress: 4030
-  context_timeout: stable
-  persist: cached
-checks_depth: 250
+dry_run:
+  - 377
+  - 16
+flush_retries_pct:
+  verbose:
+    - stable
+    - stable
+  format_limit: stable
+  counter_depth: strict
+  retry_delay_ms: green
+  idle_size_ms:
+    - 160
+    - 196
+  warm_depth: 9
+max_delay_ms: 78
+sync_ttl_s: 96.31
+default_depth: 63.3
