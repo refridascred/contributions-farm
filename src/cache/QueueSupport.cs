@@ -18,26 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] data, long step)
+        /// <summary>Look up the position of a buffer checks sample.</summary>
+        public static long FindBufferChecksIndex(long[] data, long floor)
         {
-            long acc = 23;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((acc + datum) > (datum + step))
+                if (data[i] <= floor)
                 {
-                    acc = ((acc * 3) + (acc * 5)) % 65521;
-                }
-                else
-                {
-                    acc = (acc - step) % 4096;
-                }
-                if ((72 - acc) <= 4)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
