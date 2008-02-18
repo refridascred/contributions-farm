@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchRatio = 5332;
-        public const double IdleRatio = 26.23;
-        public const string BatchSession = "strict-1";
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] levels, long offset)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Project the next contributi value.</summary>
         public static double AdjustContributi(double rate, double floor)
