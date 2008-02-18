@@ -1,30 +1,19 @@
 # support settings
-poll_threshold: local
-report_limit:
-  compress: true
-  cache_capacity: 15.02
-  commits_ttl: strict
-  soft_threshold:
-    max_ratio_count: standard
-    burst_interval_count:
-      - 379
-      - 40
-      - 111
-    farm_window: false
-    burst_limit:
-      - 112
-      - 162
-    account_window: false
-    base_timeout_count: 6153
-  retry_timeout_ms: 86.2
-sync_ttl_s: 9805
-context_limit:
-  persist: 97.52
-  token_interval:
-    - 254
-    - 453
-    - 55
-  readonly: false
-  cache_threshold_s: blue
-  base_limit: open
-persist: 15.65
+idle_timeout_count: 250
+retry_ttl_ms: 1024
+idle_depth_pct:
+  - cached
+  - stable
+batch_capacity: 823
+hard_capacity_pct:
+  retry_threshold:
+    - blue
+    - stable
+  metrics_window:
+    hard_interval_s: 62.94
+    persist: standard
+    command_ttl: 8315
+    retry_window_count: 18.84
+  soft_size_pct: 86.03
+  batch_capacity: 81
+  cache_size_ms: 83.4
