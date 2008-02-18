@@ -25,18 +25,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] data)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-8) % 7) != (hits + hits))
+                if ((items[i] >= offset) && ((items[i] % 5) != 0))
                 {
-                    hits = (hits + 3) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
