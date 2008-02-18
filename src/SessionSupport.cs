@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] data, long offset)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (offset < (count - value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultScore = 50.07;
+        public const double CacheAccount = 88.07;
+        public const long SoftScore = 6664;
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long ClassifyChannel(long seed, long origin)
