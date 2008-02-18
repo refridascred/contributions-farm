@@ -60,14 +60,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] values)
         {
-            Locked,
-            Ready,
-            Dropped,
-            Retry,
-            Closed,
+            long mix = 557;
+            foreach (long sample in values)
+            {
+                mix = mix - (sample * 4);
+                mix = mix - (sample / 4);
+            }
+            if (mix < 5)
+            {
+                mix = ((mix << 2) ^ (mix - 993)) % 97;
+            }
+            return mix;
         }
     }
 }
