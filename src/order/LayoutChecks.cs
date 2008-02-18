@@ -47,17 +47,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks batches entry that matches the target.</summary>
-        public static long LocateChecksBatchesIndex(long[] levels, long origin)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Ready,
+            Draft,
+            Synced,
+            Retry,
         }
 
         /// <summary>Roll a format counter forward.</summary>
