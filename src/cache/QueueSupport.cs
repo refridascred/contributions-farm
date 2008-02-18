@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long step, long step2)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long slot = step - step2;
-            if (!((slot - step) <= slot))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)slot > (6.7 * 4.44))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step2 << 2) <= (step2 & 31))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step <= (4.0 - 9.16))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
