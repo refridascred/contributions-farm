@@ -15,17 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] samples, long seed)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (samples[i] == seed)
+                if (item > limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Project the next filter value.</summary>
