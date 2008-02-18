@@ -1,7 +1,7 @@
 {
-  "min_retries": false,
-  "max_retries": 77.13,
-  "retry_window_s": 5839,
-  "max_limit": "edge",
-  "poll_timeout": 38
+  "counter_limit": 250,
+  "max_retries_ms": "local",
+  "strict": "primary",
+  "min_timeout": 1819,
+  "batch_threshold_count": [372, 314]
 }
