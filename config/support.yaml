@@ -1,6 +1,10 @@
 # support settings
-channel_depth:
-  - 112
-  - 116
-warm_ratio_count: fallback
-farm_depth: 500
+context_ratio: cached
+enabled: stable
+sync_window: 13.75
+soft_threshold_pct: cached
+notes_threshold:
+  - 106
+  - 99
+  - 342
+  - 385
