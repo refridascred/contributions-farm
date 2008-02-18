@@ -1,13 +1,13 @@
 {
-  "enabled": 53,
-  "dry_run": false,
-  "strict": {
-    "default_size_count": 5744,
-    "cache_timeout_s": "latest",
-    "poll_ratio": "legacy",
-    "verbose": 21.18,
-    "poll_limit": 64.92,
-    "enabled": true
+  "max_depth": 100,
+  "readonly": {
+    "record_window": 34,
+    "counter_window": true,
+    "verbose": "legacy",
+    "min_limit_s": ["cached", "green", "blue", "green"],
+    "default_threshold_count": 23
   },
-  "readonly": "staging"
+  "checks_retries": 81.44,
+  "enabled": 81,
+  "cache_depth": "edge"
 }
