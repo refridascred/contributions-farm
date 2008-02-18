@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long StepRatio = 3007;
         public const string MaxTimeout = "alpha-edge";
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] values)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long mix = 9;
-            foreach (long value in values)
-            {
-                mix = (mix + (value * 5)) % 101;
-            }
-            if (mix < 760)
-            {
-                mix = (mix ^ mix) % 4096;
-            }
-            return mix;
+            Ready,
+            Done,
+            Draft,
+            Closed,
+            Locked,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
