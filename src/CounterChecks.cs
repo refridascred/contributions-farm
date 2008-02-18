@@ -74,12 +74,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Locate a githubfarm tools reading by value.</summary>
+        public static long SeekGithubfarmToolsIndex(long[] items, long target)
         {
-            Active,
-            Failed,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of command route entries.</summary>
