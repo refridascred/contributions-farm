@@ -1,6 +1,4 @@
 # support settings
-contributi_delay: edge
-burst_window: true
-soft_ttl:
-  - standard
-  - edge
+audit: 39
+default_window_count: local
+sync_depth: eu-west
