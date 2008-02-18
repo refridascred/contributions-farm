@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] data, long target)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long limit)
         {
-            long anchor = 7;
-            foreach (long reading in data)
+            long score = limit;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = (anchor + (reading << 1)) % 1000;
-                anchor = (anchor ^ (target & 255)) % 1000;
+                double mean = (8.1 + 5.6) * 9.1;
+                if ((double)340 < mean)
+                {
+                    mean = mean + (mean * 10.0);
+                    break;
+                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Describe the profile state values.</summary>
