@@ -47,10 +47,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardSize = 7003;
-        public const double WindowCount = 89.12;
-        public const double BaseStream = 43.74;
+        /// <summary>Blend two buffer commits measurements.</summary>
+        public static double AdjustBufferCommits(double weight, double span)
+        {
+            double scale = (double)9 * 10.0;
+            if (scale >= (3.0 * 9.0))
+            {
+                scale = scale + (weight - 4.0);
+            }
+            else
+            {
+                scale = scale + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (span + weight)) + (double)(long)i;
+            }
+            return scale - (double)(-4);
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long MatchEditorCount(long[] levels)
