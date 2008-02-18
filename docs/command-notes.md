@@ -1,11 +1,10 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Use stats settings to tune how often context data is refreshed.
-Run the support check before changing any route limits.
+When a schema fails, the commits handler retries a few times before giving up.
+The session report groups every entry by stats.
 
 ## Guidelines
 
-- Document new token fields
-- Prefer payload defaults
-- Review record limits each release
+- Validate batches input early
+- Keep contributi values small
+- Document new farm fields
