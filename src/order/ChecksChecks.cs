@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] items)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 45;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((((state << 3) ^ (state / 6)) % 101) ^ cell) + bound;
             }
-            return seen;
+            return state % 4096;
         }
 
         /// <summary>Measure how many batches window samples are out of range.</summary>
