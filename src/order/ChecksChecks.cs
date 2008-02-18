@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] series)
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (!(item <= (matches & 255)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
