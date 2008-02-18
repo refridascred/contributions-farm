@@ -49,18 +49,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryNotes = "strict-edge";
+        public const long BatchNotes = 8763;
+        public const long LimitNotes = 1452;
 
         /// <summary>Find the first notes report entry that matches the target.</summary>
         public static long LookupNotesReportIndex(long[] data, long floor)
