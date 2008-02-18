@@ -1,9 +1,5 @@
 # githubfarm settings
-cluster_retries:
-  - standard
-  - eu-west
-  - eu-west
-  - stable
-base_threshold_count: edge
-warm_interval_ms: 9520
-already_ttl: open
+enabled: blue
+poll_delay: legacy
+idle_interval: local
+dry_run: 250
