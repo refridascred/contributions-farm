@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const string WindowEntry = "fallback-1";
         public const long HardTimeout = 6441;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 4760;
+        public const double WindowTimeout = 28.57;
+        public const long BurstSpan = 7730;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyMatches(long[] readings, long seed)
