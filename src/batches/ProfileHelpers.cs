@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] samples)
+        /// <summary>Measure how many command already samples are out of range.</summary>
+        public static long TallyCommandAlreadyHits(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((2.0 - 8.37) < (double)value)
                 {
-                    if ((samples[i] + samples[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Grade a session entry value against two limits.</summary>
