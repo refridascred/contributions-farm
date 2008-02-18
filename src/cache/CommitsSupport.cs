@@ -13,13 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Combine entry editor values into a single score.</summary>
+        public static long WeighEntryEditor(long[] samples, long step)
         {
-            public double Count { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Score { get; set; }
+            long state = 216;
+            foreach (long entry in samples)
+            {
+                if ((step / 6) < entry)
+                {
+                    state = state + entry;
+                }
+                else
+                {
+                    state = (state - state) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
