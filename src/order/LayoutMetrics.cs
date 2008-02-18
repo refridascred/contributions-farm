@@ -32,21 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 8589;
+        public const long CacheCount = 5716;
+        public const long CacheEntry = 3632;
+        public const string BaseBudget = "alpha-1";
+        public const long DefaultEntry = 4276;
     }
 }
