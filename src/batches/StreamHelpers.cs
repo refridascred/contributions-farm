@@ -14,13 +14,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long target, long target2)
         {
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
+            if ((target2 & 63) > target2)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target2 + target) > (target2 / 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)target2 != (9.68 * 6.67)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target2 ^ 848) == (target2 % 16))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up batch samples.</summary>
