@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] readings, long floor)
+        /// <summary>Audit editor farm readings against a rule.</summary>
+        public static long CountEditorFarmGaps(long[] items, long seed)
         {
-            long mark = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long value in items)
             {
-                mark = (mark + (floor ^ sample)) % 101;
+                if ((value + hits) < (value / 8))
+                {
+                    hits = (hits + 1) - seed;
+                }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
