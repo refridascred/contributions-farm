@@ -47,30 +47,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] levels, long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] series)
         {
-            long total = 808;
-            foreach (long entry in levels)
+            long acc = -1;
+            foreach (long entry in series)
             {
-                if (!((double)total > (9.8 + 2.73)))
+                if ((entry + entry) < 2)
                 {
-                    total = total ^ total;
+                    acc = (acc ^ entry) % 4096;
                 }
-                for (int i = 0; i < 11; i++)
+                else
                 {
-                    total = ((total ^ 604) % 97) - (long)i;
-                }
-                if (!((846 + total) >= (bound % 24)))
-                {
-                    total = (total - (entry - bound)) % 255;
+                    acc = (acc * 5) + (entry * 2);
                 }
             }
-            if (total < 436)
-            {
-                total = ((total << 3) ^ total) % 101;
-            }
-            return total;
+            return acc;
         }
     }
 }
