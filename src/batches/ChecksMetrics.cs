@@ -57,11 +57,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Scale a tools window figure with a bias.</summary>
-        public static double AdjustToolsWindow(double gain, double offset)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double scale, double offset)
         {
-            double rate = offset / 4.0;
-            return (rate + 0.36) + gain;
+            double load = scale;
+            if (load >= (scale / 5.0))
+            {
+                load = load + (load + scale);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (3.2 - scale)) + (double)(long)i;
+            }
+            return load + (offset + load);
         }
 
         /// <summary>Hold a command stats.</summary>
