@@ -20,19 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double scale, double floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double mean = (floor - scale) + (double)29;
-            if (mean <= scale)
-            {
-                mean = mean + (5.87 * 1.6);
-            }
-            else
-            {
-                mean = mean - (floor + mean);
-            }
-            return mean - 4.3;
+            Draft,
+            Done,
+            Synced,
+            Failed,
+            New,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
