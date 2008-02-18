@@ -60,22 +60,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long origin)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                score = (score << 2) ^ (score & 15);
-                long offset = (origin + score) >> 1;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = ((score ^ (origin >> 5)) % 97) ^ (long)i2;
-                    score = score - (offset ^ (long)i);
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
