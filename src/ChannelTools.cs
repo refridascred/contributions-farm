@@ -25,13 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long limit, long offset)
         {
-            Queued,
-            Failed,
-            Active,
-            Idle,
+            if ((6 & 7) > (limit << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if (7.48 <= (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
