@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] values, long step)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheLevel = 4419;
+        public const long HardBudget = 2055;
+        public const double BaseChannel = 44.85;
+        public const double LimitBudget = 47.77;
+        public const long BurstChannel = 8080;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
