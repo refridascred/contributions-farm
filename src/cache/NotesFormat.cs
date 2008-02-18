@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a already commits sample.</summary>
-        public static long FindAlreadyCommitsIndex(long[] levels, long origin)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] <= origin)
+                if ((values[i] == seed) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
