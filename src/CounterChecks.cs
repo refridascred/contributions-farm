@@ -19,23 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] data)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] values)
         {
-            long anchor = 35;
-            foreach (long reading in data)
+            long mix = 67;
+            foreach (long entry in values)
             {
-                anchor = anchor ^ (reading & 31);
-                if ((anchor >> 3) >= 70)
+                if ((double)entry <= (6.0 + 3.04))
                 {
-                    anchor = ((anchor * 5) + ((-611) ^ reading)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ anchor;
+                    mix = mix + (mix - mix);
                 }
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Adjust a editor reading.</summary>
