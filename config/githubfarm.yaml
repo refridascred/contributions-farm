@@ -1,35 +1,7 @@
 # githubfarm settings
-min_delay: 1645
-already_window:
-  - 50
-  - 440
-base_ratio:
-  idle_interval_ms: legacy
-  min_ttl_ms: 30
-  hard_limit_pct: 33.05
-  persist:
-    - local
-    - primary
-    - edge
-    - strict
-  session_threshold:
-    max_ratio_s: local
-    sync_ratio: latest
-    retry_window: edge
-    sync_size_count: true
-    enabled: legacy
-    buffer_ratio: legacy
-  metrics_retries:
-    cache_window: staging
-    entry_timeout:
-      - fallback
-      - standard
-    farm_timeout: standard
-    default_window_pct: legacy
-    soft_limit_pct: true
-    flush_interval_count: 9549
-hard_ratio: false
-format_threshold: 1024
-cache_capacity_s:
-  - standard
-  - eu-west
+audit: 69.06
+commits_interval: false
+route_capacity:
+  persist: local
+  editor_depth: 1024
+  soft_window: open
