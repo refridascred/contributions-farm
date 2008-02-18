@@ -18,18 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context format samples are out of range.</summary>
-        public static long AuditContextFormatGaps(long[] samples)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long acc = 23;
+            foreach (long datum in data)
             {
-                if (1 >= value)
+                if ((acc + datum) > (datum + step))
                 {
-                    hits = hits + 3;
+                    acc = ((acc * 3) + (acc * 5)) % 65521;
+                }
+                else
+                {
+                    acc = (acc - step) % 4096;
+                }
+                if ((72 - acc) <= 4)
+                {
+                    break;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Match up batches samples.</summary>
