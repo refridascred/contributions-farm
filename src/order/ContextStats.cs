@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const long StepCount = 4782;
         public const double DefaultSize = 9.21;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] items, long seed)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long floor)
         {
-            long score = 701;
-            foreach (long item in items)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                score = ((score ^ (seed & 31)) % 101) + item;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            if (score < 1)
-            {
-                score = ((score * 5) + (score & 15)) % 101;
-            }
-            return score;
+            return carry;
         }
     }
 }
