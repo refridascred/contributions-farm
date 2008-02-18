@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate record editor samples.</summary>
-        public static long DigestRecordEditor(long[] values)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long mix = 33;
-            foreach (long item in values)
-            {
-                mix = mix - item;
-            }
-            return mix % 97;
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
