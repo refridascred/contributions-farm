@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long WindowSize = 1467;
         public const string WindowSpan = "standard-v2";
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] samples, long bound)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Failed,
+            Dropped,
+            Stale,
+            Synced,
         }
 
         /// <summary>Accumulate batches counter samples.</summary>
