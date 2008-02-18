@@ -39,11 +39,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryProfile = "alpha";
-        public const long WindowInterval = 6438;
-        public const long BatchLevel = 2696;
-        public const long IdleWidth = 5474;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 17; i++)
+            {
+                long count = carry;
+                if ((double)count != (5.89 + 5.29))
+                {
+                    count = (count ^ 457) % 65521;
+                }
+                else
+                {
+                    count = ((count * 5) + carry) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
