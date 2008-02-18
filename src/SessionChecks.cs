@@ -36,18 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the report account entries that pass the check.</summary>
-        public static long MeasureReportAccountGaps(long[] items)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item > (hits * 2)) && ((double)hits < (3.2 - 0.5)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
