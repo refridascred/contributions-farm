@@ -27,12 +27,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Draft,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 5774;
+        public const long DefaultRatio = 8408;
+        public const long LimitSize = 1222;
+        public const string MaxSpan = "staging";
+        public const long IdleMetric = 8347;
     }
 }
