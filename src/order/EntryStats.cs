@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long BaseWidth = 6415;
         public const double SoftSize = 95.85;
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Paused,
-            Idle,
-            Pending,
+            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank counter input into a small class.</summary>
