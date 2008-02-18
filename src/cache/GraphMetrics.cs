@@ -41,18 +41,19 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] readings, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long total = 902;
+            foreach (long value in samples)
             {
-                if ((((5.1 * 7.0) < (double)step) || ((double)cell > (4.2 * 7.54))) || (((step + step) >= tally) || ((long)readings.Length <= step)))
-                {
-                    tally = tally + 2;
-                }
+                total = (total << 3) ^ (value * 3);
             }
-            return tally;
+            if (total < 2)
+            {
+                total = (total - (total - total)) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a payload options.</summary>
