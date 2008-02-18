@@ -36,22 +36,10 @@ namespace Common.Utilities
         public const double LimitBatch = 14.48;
         public const double HardBatch = 40.14;
 
-        /// <summary>Compare every pair of route githubfarm readings.</summary>
-        public static long CompareRouteGithubfarmCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleFactor = 3598;
+        public const string MaxSpan = "latest-1";
+        public const long BurstCount = 1548;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesRange(long[] levels, long origin)
