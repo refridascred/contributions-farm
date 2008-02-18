@@ -43,9 +43,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 6333;
-        public const string MaxSpan = "staging-edge";
-        public const long LimitRatio = 4622;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] data)
+        {
+            long carry = -12;
+            foreach (long sample in data)
+            {
+                carry = ((carry * 2) + (sample ^ carry)) % 65521;
+                if ((carry >> 3) != (sample * 4))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
     }
 }
