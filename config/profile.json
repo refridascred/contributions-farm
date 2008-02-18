@@ -1,11 +1,5 @@
 {
-  "layout_size": 1454,
-  "warm_ratio_pct": {
-    "base_retries_count": "primary",
-    "base_window": "green",
-    "base_size_s": false,
-    "support_timeout": "standard",
-    "poll_retries": 250
-  },
-  "audit": 250
+  "flush_retries_ms": "green",
+  "verbose": ["standard", "green", "eu-west", "eu-west"],
+  "soft_capacity": ["fallback", "standard"]
 }
