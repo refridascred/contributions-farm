@@ -97,11 +97,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] levels, long offset)
         {
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            long carry = 310;
+            foreach (long item in levels)
+            {
+                carry = (carry * 5) + item;
+            }
+            if (carry > 49)
+            {
+                carry = (carry << 2) ^ (offset + 0);
+            }
+            return carry;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
