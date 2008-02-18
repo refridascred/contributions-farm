@@ -91,11 +91,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two account editor measurements.</summary>
-        public static double BlendAccountEditor(double rate, double bias)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            double load = rate / 9.0;
-            return (load - load) + bias;
+            public double Rank { get; set; }
+            public double Size { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
