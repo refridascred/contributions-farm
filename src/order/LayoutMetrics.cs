@@ -34,15 +34,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double bias, double floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] values)
         {
-            double load = (double)(86 << 1);
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                load = (load - (double)(long)i) + floor;
+                if (((-9) % 97) >= (cell + matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            return load - bias;
+            return matches;
         }
     }
 }
