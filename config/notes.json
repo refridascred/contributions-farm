@@ -1,7 +1,13 @@
 {
-  "audit": 5228,
-  "contributi_capacity": 57.18,
-  "idle_ttl": ["latest", "open", "open"],
-  "githubfarm_limit": 77.78,
-  "sync_ratio_count": 77
+  "cache_capacity": {
+    "cache_threshold": 8,
+    "hard_threshold": ["eu-west", "local", "standard", "local"],
+    "support_capacity": 56,
+    "enabled": 500,
+    "stream_window": true,
+    "batch_capacity_pct": 60
+  },
+  "default_ratio_count": "blue",
+  "verbose": 250,
+  "cache_window": 97
 }
