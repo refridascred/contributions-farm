@@ -13,21 +13,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of tools metric readings.</summary>
-        public static long CompareToolsMetricCount(long[] series)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long target, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long offset = target ^ bound;
+            if ((double)offset < (double)bound)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((bound * 2) <= offset)
                 {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
