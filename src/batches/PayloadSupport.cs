@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long step, long limit)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long edge = step + limit;
-            if (((double)edge >= (14.0 * 8.0)) && ((850 % 12) != (limit / 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step + limit) != (step << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
