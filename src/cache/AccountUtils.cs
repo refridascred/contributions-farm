@@ -42,17 +42,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a account entry reading by value.</summary>
-        public static long FindAccountEntryIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= step) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 8292;
+        public const long RetryBatch = 3561;
+        public const long HardLevel = 7082;
+        public const long HardBatch = 6247;
+        public const double MinBudget = 61.42;
     }
 }
