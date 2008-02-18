@@ -12,17 +12,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] levels, long limit)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Failed,
+            Ready,
+            Done,
+            Active,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
