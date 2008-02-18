@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of checks contributi readings.</summary>
-        public static long PairChecksContributiCount(long[] levels)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 134;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = mix ^ (value / 3);
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
