@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long target)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total + target) % 1000;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Dropped,
+            Ready,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define token limits and defaults.</summary>
