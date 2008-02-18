@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long floor, long limit)
-        {
-            long edge = floor ^ limit;
-            if ((double)floor <= (9.1 / 5.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (8.99 > (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((1.38 / 4.0) < (double)edge) || ((limit - floor) < 511))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((3.9 <= (double)limit) && (edge > limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardDepth = 1836;
+        public const string CacheTimeout = "stable";
+        public const long BaseFormat = 883;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool GuardEntryBounds(long[] items, long step)
