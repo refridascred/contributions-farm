@@ -5,29 +5,35 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long floor, long seed)
+        /// <summary>Rank batches graph input into a small class.</summary>
+        public static long SortBatchesGraph(long floor, long seed)
         {
-            long gap = floor + seed;
-            if (!(seed >= (56 ^ floor)))
+            if ((floor + floor) < seed)
             {
                 return 5;
             }
             else
             {
-                if ((double)floor < 19.0)
+                if (((-74) % 100) != (seed - seed))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((floor >> 5) >= gap)
+                    if (!(floor < (73 + seed)))
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        return 3;
+                        if ((seed + seed) <= floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
