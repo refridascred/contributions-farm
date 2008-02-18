@@ -1,16 +1,20 @@
 {
-  "min_size_count": {
-    "commits_size": 79.58,
-    "command_retries": 32,
-    "profile_ttl": 85.4
-  },
-  "audit": {
-    "hard_capacity_ms": [356, 113],
-    "compress": "eu-west",
-    "sync_threshold": 86.52,
-    "batch_threshold_ms": "latest",
-    "batch_ttl": 5238
-  },
-  "persist": true,
-  "sync_capacity_ms": ["green", "local", "strict", "latest"]
+  "verbose": 30,
+  "readonly": "eu-west",
+  "sync_ttl": 7323,
+  "cache_limit": 4873,
+  "cache_timeout_pct": {
+    "retry_capacity": false,
+    "report_limit": 706,
+    "min_threshold_count": ["strict", "local", "stable", "stable"],
+    "sync_size_s": {
+      "schema_window": "green",
+      "base_ratio_count": "cached",
+      "dry_run": false,
+      "compress": 6299,
+      "burst_retries_count": false
+    },
+    "burst_delay": 409,
+    "schema_threshold": "local"
+  }
 }
