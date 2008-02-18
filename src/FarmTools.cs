@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double bias, double span)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
-            double gain = (double)(26 << 3);
-            if (gain >= (span / 2.0))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain + (bias * 9.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (gain / 6.0);
-            }
-            return gain + bias;
+            return matches;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
