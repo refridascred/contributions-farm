@@ -1,18 +1,5 @@
 {
-  "cache_capacity": 100,
-  "retry_depth_pct": 13,
-  "readonly": true,
-  "default_threshold": {
-    "base_depth_count": {
-      "poll_window_s": ["fallback", "blue", "staging"],
-      "flush_capacity_count": 2826,
-      "sync_window_ms": [397, 446, 147, 143],
-      "report_interval": false,
-      "min_window": "fallback"
-    },
-    "compress": 90.25,
-    "counter_ratio": 8.43,
-    "poll_depth": 60,
-    "poll_window_pct": 30
-  }
+  "burst_capacity_ms": ["edge", "blue", "open"],
+  "dry_run": 65.25,
+  "idle_depth_count": 1277
 }
