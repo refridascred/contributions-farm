@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of commits entry entries.</summary>
-        public static long TotalCommitsEntry(long[] samples)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] items, long step)
         {
-            long score = 1;
-            foreach (long sample in samples)
+            long anchor = 63;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    score = (score - (long)i) % 255;
-                }
-                score = ((score << 2) ^ (sample % 64)) % 255;
+                anchor = (((anchor << 2) ^ 4) + value) + step;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
