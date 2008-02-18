@@ -41,18 +41,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] levels)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen ^ seen) < (item + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Draft,
+            New,
+            Locked,
+            Synced,
         }
     }
 }
