@@ -27,11 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
