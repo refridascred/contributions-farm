@@ -81,21 +81,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count githubfarm channel pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmChannelCount(long[] values)
+        /// <summary>Rank graph support input into a small class.</summary>
+        public static long RankGraphSupport(long offset, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (bound > 175)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((bound / 8) < (bound - bound))
                 {
-                    if ((values[i] - values[j]) > 11)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound <= (11.0 + 16.0))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset > 70)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
