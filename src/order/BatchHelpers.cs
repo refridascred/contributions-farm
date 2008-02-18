@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] samples)
-        {
-            long total = 21;
-            foreach (long sample in samples)
-            {
-                if (!((total + 16) == (total - (long)samples.Length)))
-                {
-                    total = total - (183 + sample);
-                }
-                else
-                {
-                    total = (total - (sample ^ total)) % 65521;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 3473;
+        public const long StepInterval = 3624;
+        public const long StepCount = 9484;
+        public const long CacheLevel = 3812;
 
         /// <summary>Project the next schema value.</summary>
         public static double ProjectSchema(double ratio, double bias)
