@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many order farm samples are out of range.</summary>
-        public static long CountOrderFarmHits(long[] samples)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((((item + 2) <= (item + item)) && (item < (780 + seen))) || (item < 464))
+                if ((double)matches == (double)9)
                 {
-                    seen = seen + 1;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
