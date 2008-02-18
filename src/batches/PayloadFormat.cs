@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const double IdleRatio = 26.23;
         public const string BatchSession = "strict-1";
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double rate, double floor)
         {
-            public double Count { get; set; }
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
+            double rate2 = floor;
+            if (rate2 <= 7.95)
+            {
+                rate2 = rate2 - (rate * 20.0);
+            }
+            else
+            {
+                rate2 = rate2 - 7.7;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - rate) + (double)(long)i;
+            }
+            return rate2 - (double)15;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
