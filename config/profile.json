@@ -1,6 +1,8 @@
 {
-  "min_ratio": "legacy",
-  "enabled": 40,
-  "max_delay_s": true,
-  "audit": 54
+  "batches_retries": false,
+  "format_window": "staging",
+  "audit": "blue",
+  "enabled": 30,
+  "base_timeout": [286, 52, 197],
+  "command_timeout": ["local", "fallback"]
 }
