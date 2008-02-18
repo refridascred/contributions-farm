@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] samples, long bound)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long carry = 2;
-            foreach (long cell in samples)
-            {
-                carry = ((carry ^ carry) ^ cell) - bound;
-            }
-            return carry % 1000;
+            public long Owner { get; set; }
+            public double Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
