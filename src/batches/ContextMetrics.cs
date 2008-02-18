@@ -18,19 +18,13 @@ namespace Common.Utilities
         public const long WindowCount = 4238;
         public const long LimitEditor = 9570;
 
-        /// <summary>Check that every order contributi entry stays within the limit.</summary>
-        public static bool ValidateOrderContributiBounds(long[] data, long step)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Mode { get; set; }
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a payload options.</summary>
