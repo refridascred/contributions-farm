@@ -36,15 +36,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] samples, long origin)
         {
-            long mark = 9;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                mark = (((mark << 3) ^ (mark ^ mark)) % 97) + reading;
+                if ((double)tally < (double)origin)
+                {
+                    tally = (tally + 1) ^ sample;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a token record.</summary>
