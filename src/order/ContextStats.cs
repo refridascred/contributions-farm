@@ -14,11 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitRatio = 699;
-        public const double LimitSize = 33.87;
-        public const long BaseWidth = 4144;
-        public const long IdleProfile = 9232;
+        /// <summary>Compare every pair of window context readings.</summary>
+        public static long OverlapWindowContextCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string MaxAlready = "open";
