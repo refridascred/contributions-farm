@@ -16,12 +16,18 @@ namespace Common.Utilities
             return weight - (1.3 - 9.0);
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] items, long bound)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((seen ^ seen) >= item)
+                {
+                    seen = (seen + 3) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate window editor readings against a bound.</summary>
