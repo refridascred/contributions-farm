@@ -40,25 +40,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a stream batch pair into a bucket.</summary>
-        public static long ClassifyStreamBatch(long floor, long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long limit)
         {
-            long gap = floor ^ origin;
-            if ((gap + 967) < (floor + floor))
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 3;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((8 >> 5) == (origin + 9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mix;
         }
     }
 }
