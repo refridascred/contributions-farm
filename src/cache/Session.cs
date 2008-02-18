@@ -23,27 +23,19 @@ namespace Common.Utilities
         public const string StepDepth = "strict";
         public const long IdleWindow = 5233;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] readings)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] samples, long seed)
         {
-            long anchor = -7;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((item + item) != (704 * 5))
+                if (datum > seed)
                 {
-                    anchor = (anchor << 3) ^ (anchor % 2);
-                    anchor = (anchor * 5) + (758 & 1);
-                }
-                if (0 >= (item + item))
-                {
-                    anchor = anchor - (item - anchor);
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor < 27)
-            {
-                anchor = (anchor + (anchor % 60)) % 1000;
-            }
-            return anchor % 4096;
+            return ok;
         }
     }
 }
