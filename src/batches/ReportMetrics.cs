@@ -23,22 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of already schema entries.</summary>
-        public static long DigestAlreadySchema(long[] data)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] values, long floor)
         {
-            long carry = 200;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((sample + (-285)) > carry)
+                if (entry >= floor)
                 {
-                    carry = (carry ^ (sample - carry)) % 1000;
-                }
-                else
-                {
-                    carry = (carry * 3) + (carry * 4);
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
