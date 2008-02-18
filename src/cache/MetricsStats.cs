@@ -25,22 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Accumulate window already samples.</summary>
+        public static long FoldWindowAlready(long[] items, long seed)
         {
-            long total = 5;
-            foreach (long entry in items)
+            long total = 3;
+            foreach (long cell in items)
             {
-                if ((2 + total) >= (entry + entry))
-                {
-                    total = (total + (entry % 8)) % 255;
-                }
+                total = (((total ^ (total ^ total)) % 255) ^ cell) - seed;
             }
-            if (total < 5)
-            {
-                total = (total - (total ^ total)) % 65521;
-            }
-            return total % 65521;
+            return total;
         }
 
         /// <summary>Hold a stats stats.</summary>
