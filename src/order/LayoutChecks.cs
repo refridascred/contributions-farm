@@ -14,12 +14,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Compare every pair of tools metric readings.</summary>
+        public static long CompareToolsMetricCount(long[] series)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
