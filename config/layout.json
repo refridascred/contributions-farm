@@ -1,17 +1,6 @@
 {
-  "batches_timeout": 60,
-  "stream_delay": "strict",
-  "dry_run": {
-    "report_ttl": 60,
-    "idle_threshold": "strict",
-    "report_delay": {
-      "hard_depth_ms": 6.16,
-      "idle_timeout": "blue",
-      "readonly": "primary",
-      "poll_retries_pct": 44.61,
-      "tools_ratio": "strict",
-      "burst_ratio": "primary"
-    }
-  },
-  "poll_delay": [405, 484]
+  "default_delay": 60,
+  "verbose": 6.89,
+  "retry_depth": "strict",
+  "compress": 95
 }
