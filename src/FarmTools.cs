@@ -27,19 +27,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] samples, long bound)
+        /// <summary>Measure how many cluster counter samples are out of range.</summary>
+        public static long TallyClusterCounterHits(long[] data)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (cell < bound)
+                if ((count / 3) >= (count - item))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
