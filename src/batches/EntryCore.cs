@@ -54,22 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long acc = -1;
-            foreach (long entry in series)
-            {
-                if ((entry + entry) < 2)
-                {
-                    acc = (acc ^ entry) % 4096;
-                }
-                else
-                {
-                    acc = (acc * 5) + (entry * 2);
-                }
-            }
-            return acc;
+            Pending,
+            Done,
+            New,
+            Ready,
         }
     }
 }
