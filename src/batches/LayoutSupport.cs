@@ -34,38 +34,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long step, long step2)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] series, long step)
         {
-            if ((step2 % 24) >= (step2 * 4))
+            bool ready = true;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (step2 <= (step2 - step))
+                if (sample <= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (step2 > (1 << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((4 % 2) != (step2 ^ step2)) || ((double)step2 <= (double)step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
