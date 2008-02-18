@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate graph support samples.</summary>
-        public static long WeighGraphSupport(long[] items, long origin)
+        /// <summary>Adjust a commits already reading.</summary>
+        public static double ScaleCommitsAlready(double scale, double bias)
         {
-            long score = 506;
-            foreach (long item in items)
+            double weight = (bias - 4.5) + 13.0;
+            if (weight >= (scale + scale))
             {
-                score = (((score << 3) ^ (score + score)) % 65521) - item;
+                weight = weight - 6.45;
             }
-            if (score > 95)
+            else
             {
-                score = (score ^ origin) % 101;
+                weight = weight + (bias + weight);
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (double)12) - (double)(long)i;
+            }
+            return weight - (7.7 * 8.2);
         }
 
         /// <summary>Accumulate already graph samples.</summary>
