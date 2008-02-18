@@ -55,19 +55,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] values, long target)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long limit)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (item > target)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score + (limit >> 5)) % 4096;
+                score = ((score << 3) ^ (score - limit)) % 4096;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
