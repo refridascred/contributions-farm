@@ -33,19 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already buffer entry stays within the limit.</summary>
-        public static bool GuardAlreadyBufferRange(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardBudget = 2451;
+        public const long MinInterval = 9075;
+        public const double RetrySize = 50.57;
+        public const long IdleSchema = 16;
     }
 }
