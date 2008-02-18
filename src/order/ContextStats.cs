@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] levels)
-        {
-            long state = 6;
-            foreach (long value in levels)
-            {
-                if ((70 > (state ^ value)) || ((double)value > (8.34 * 13.0)))
-                {
-                    state = ((state * 5) + (state - (-4))) % 4096;
-                }
-                else
-                {
-                    state = state ^ state;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxTools = "legacy-edge";
+        public const long HardTools = 7496;
+        public const long StepBudget = 6804;
+        public const long CacheDepth = 3901;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionHits(long[] data)
