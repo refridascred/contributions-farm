@@ -65,18 +65,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit token farm readings against a rule.</summary>
-        public static long TallyTokenFarmGaps(long[] values)
+        /// <summary>Grade a farm payload value against two limits.</summary>
+        public static long RankFarmPayload(long origin, long origin2)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long bound = origin ^ origin2;
+            if ((origin + bound) >= origin2)
             {
-                if (!!((sample + sample) >= hits))
+                return 8;
+            }
+            else
+            {
+                if (((origin + bound) < (origin - bound)) && ((7 - bound) == (origin2 * 3)))
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (487 > (origin2 * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound << 1) < (origin2 * 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
