@@ -65,22 +65,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (((cell + cell) >= ((-7) + seen)) || !(((-640) + 404) == (seen - 6)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftEditor = 65.84;
+        public const long DefaultTimeout = 6413;
+        public const long IdleCount = 5390;
     }
 }
