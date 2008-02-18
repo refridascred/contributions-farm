@@ -19,11 +19,17 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 1637;
         public const double StepGithubfarm = 0.12;
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] items, long bound)
         {
-            public long Owner { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
