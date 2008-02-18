@@ -24,27 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long target)
+        /// <summary>Find the first farm cluster entry that matches the target.</summary>
+        public static long SeekFarmClusterIndex(long[] series, long step)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)total >= (9.7 - 14.0))
+                if ((series[i] >= step) && ((series[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    total = ((total << 2) ^ (target / 9)) % 97;
-                }
-                if ((((long)i % 8) == ((long)i + total)) || (((long)i << 2) <= (-1)))
-                {
-                    total = (total - ((-4) & 127)) % 255;
-                }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
     }
 }
