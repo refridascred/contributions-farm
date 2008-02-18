@@ -32,22 +32,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine token commits values into a single score.</summary>
-        public static long TallyTokenCommits(long[] data)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long score = 61;
-            foreach (long reading in data)
-            {
-                if ((302 + reading) > reading)
-                {
-                    score = ((score << 2) ^ (score - reading)) % 1000;
-                }
-            }
-            if (score > 54)
-            {
-                score = ((score * 3) + (score + score)) % 255;
-            }
-            return score % 65521;
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
