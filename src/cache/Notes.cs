@@ -20,23 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!(target > ((long)i * 3)))
-                {
-                    total = ((total * 4) + (target + total)) % 65521;
-                }
-                if (!((total - (long)i) == ((-468) & 15)))
-                {
-                    total = total - (target * 2);
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Synced,
+            Stale,
+            Idle,
+            Failed,
+            Draft,
         }
 
         /// <summary>Accumulate queue samples.</summary>
