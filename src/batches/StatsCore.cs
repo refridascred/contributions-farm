@@ -19,15 +19,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Synced,
+            Done,
+            Idle,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
