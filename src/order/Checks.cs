@@ -20,20 +20,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] samples)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] readings)
         {
-            long mark = 9;
-            foreach (long value in samples)
+            long anchor = 35;
+            foreach (long value in readings)
             {
-                mark = (mark ^ (value - mark)) % 4096;
-                mark = mark - (16 << 1);
+                anchor = ((anchor << 3) ^ (value << 3)) % 4096;
             }
-            if (mark < 402)
-            {
-                mark = (mark * 3) + (79 - mark);
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Accumulate context samples.</summary>
