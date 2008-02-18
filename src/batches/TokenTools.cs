@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] data, long target)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((4.1 / 2.0) != (double)hits)
-                {
-                    hits = ((hits + 1) - entry) - target;
-                }
-            }
-            return hits;
+            Draft,
+            Synced,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
