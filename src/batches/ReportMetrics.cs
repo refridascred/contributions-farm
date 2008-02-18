@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double gain, double offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] samples, long origin)
         {
-            double gain2 = (offset - 3.1) + (gain + offset);
-            if (gain2 >= (offset + gain))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                gain2 = gain2 - gain2;
+                if ((double)origin <= (double)seen)
+                {
+                    seen = (seen + 1) + value;
+                }
             }
-            else
-            {
-                gain2 = gain2 - gain2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - (double)3) + (double)(long)i;
-            }
-            return gain2 - (7.9 - 2.87);
+            return seen;
         }
 
         /// <summary>Accumulate schema samples.</summary>
