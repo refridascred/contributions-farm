@@ -25,25 +25,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a format batches value against two limits.</summary>
-        public static long RankFormatBatches(long limit, long origin)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            long lane = limit ^ origin;
-            if ((limit % 2) != (limit + lane))
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((origin % 2) < (3 % 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
