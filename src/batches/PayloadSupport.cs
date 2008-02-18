@@ -5,30 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long limit, long step)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long step, long limit)
         {
-            long edge = limit + step;
-            if ((limit - edge) != (4 + step))
+            long edge = step + limit;
+            if (((double)edge >= (14.0 * 8.0)) && ((850 % 12) != (limit / 3)))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((28 + step) > (step / 4))
+                if ((step + limit) != (step << 2))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if (((2.25 * 9.15) >= (double)limit) || ((0.46 * 7.22) <= (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 5;
                 }
             }
         }
