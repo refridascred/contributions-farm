@@ -17,23 +17,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples, long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] samples, long seed)
         {
-            long mix = 8;
-            foreach (long sample in samples)
+            long sum = 8;
+            foreach (long cell in samples)
             {
-                mix = (((mix << 3) ^ (0 * 2)) % 65521) + sample;
-                if (mix < limit)
-                {
-                    break;
-                }
+                sum = ((((sum << 2) ^ sum) % 4096) ^ cell) + seed;
+                sum = (sum << 2) ^ sum;
             }
-            if (mix < 62)
-            {
-                mix = (mix + limit) % 65521;
-            }
-            return mix % 1000;
+            return sum % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
