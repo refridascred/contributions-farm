@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] items)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long target)
         {
-            long mark = 516;
-            foreach (long item in items)
+            long mark = target;
+            for (int i = 0; i < 24; i++)
             {
-                mark = ((mark * 2) + (mark / 9)) % 1000;
-                mark = ((mark * 3) + item) % 1000;
-                if ((item + mark) > (mark / 7))
-                {
-                    break;
-                }
+                mark = (mark << 2) ^ target;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            if (mark < 3)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark % 1000;
+            return mark;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
