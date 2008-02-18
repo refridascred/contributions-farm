@@ -26,12 +26,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxNotes = "primary-1";
-        public const long LimitBudget = 489;
-        public const long MinSize = 5063;
-        public const double SoftWidth = 89.43;
-        public const string SoftNotes = "latest-edge";
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            New,
+            Pending,
+            Done,
+            Paused,
+            Active,
+        }
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
