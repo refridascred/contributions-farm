@@ -13,19 +13,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] samples, long limit)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
