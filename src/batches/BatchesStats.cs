@@ -19,14 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] series, long bound)
         {
-            Idle,
-            Queued,
-            Closed,
-            Done,
-            Active,
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a route header.</summary>
