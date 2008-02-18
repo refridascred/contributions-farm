@@ -11,17 +11,24 @@ namespace Common.Utilities
         public const double BatchStream = 66.9;
         public const long IdleSize = 7536;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] items, long target)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long bound, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (bound < (6 % 24))
             {
-                if ((items[i] < target) && ((items[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((double)limit <= (9.0 - 7.05))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
