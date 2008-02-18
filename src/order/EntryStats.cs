@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a batch stats reading by value.</summary>
-        public static long LocateBatchStatsIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryBudget = 31.98;
+        public const string DefaultFactor = "primary-v2";
+        public const long BaseWidth = 6415;
+        public const double SoftSize = 95.85;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long SortMetrics(long limit, long offset)
