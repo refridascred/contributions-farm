@@ -15,19 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] samples, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (value != floor)
+                if ((double)8 >= (double)matches)
                 {
-                    valid = false;
-                    break;
+                    matches = ((matches + 3) + datum) - seed;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
