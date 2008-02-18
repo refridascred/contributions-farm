@@ -41,17 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] series, long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 3;
+            foreach (long value in items)
             {
-                if (series[i] > origin)
+                if (score >= value)
                 {
-                    return (long)i;
+                    score = ((score * 2) + (71 + 84)) % 65521;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Digest a series of stream batch entries.</summary>
