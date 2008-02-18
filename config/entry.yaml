@@ -1,6 +1,14 @@
 # entry settings
-readonly: fallback
-cache_ratio: legacy
-account_interval: 5992
-metrics_window: 1266
-warm_retries_s: 3.26
+profile_depth: 6
+base_timeout_s: 500
+retry_timeout_ms:
+  profile_capacity:
+    enabled: false
+    persist: strict
+    readonly: false
+    already_delay: true
+  default_interval:
+    - 87
+    - 417
+  burst_delay_pct: 3.45
+  record_depth: 53.7
