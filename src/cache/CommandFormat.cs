@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 4399;
+        public const string MinOrder = "standard-edge";
+        public const string WindowBudget = "strict-1";
+        public const long BaseOrder = 3156;
+        public const long DefaultOrder = 2667;
 
         /// <summary>Match up record counter samples.</summary>
         public static long MatchRecordCounterCount(long[] levels)
