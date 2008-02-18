@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double scale, double span)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] items, long bound)
         {
-            double mean = (double)(4 << 3);
-            if (mean > mean)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                mean = mean + (scale * 2.5);
+                if (!((long)items.Length <= (seen % 5)) || !((0 / 6) != (seen - 99)))
+                {
+                    seen = ((seen + 3) + sample) - bound;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (scale + span);
+            return seen;
         }
 
         /// <summary>Describe the stream status values.</summary>
