@@ -51,20 +51,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Iterate the window batches series from a seed.</summary>
-        public static long RollWindowBatches(long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] items)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (((long)i / 8) > target)
+                if ((cell / 9) >= (660 << 3))
                 {
-                    long prev = target;
-                    score = (score << 2) ^ prev;
+                    count = count + 1;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return count;
         }
     }
 }
