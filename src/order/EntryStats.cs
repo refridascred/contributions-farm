@@ -66,18 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == origin) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowAccount = 86.94;
+        public const long CacheDepth = 7021;
+        public const long RetryAccount = 2320;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long IterateToken(long offset)
