@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] samples, long offset)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Flag { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
