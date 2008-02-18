@@ -25,25 +25,14 @@ namespace Common.Utilities
             return weight + 5.67;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long target, long origin)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long slot = target + origin;
-            if ((1 + 43) <= (slot - origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target > 92) && ((5 << 2) >= (target - target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Draft,
+            Paused,
+            Synced,
+            Idle,
+            Stale,
         }
     }
 }
