@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public bool Size { get; set; }
-            public double Count { get; set; }
+            Queued,
+            Idle,
+            Pending,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a filter record.</summary>
