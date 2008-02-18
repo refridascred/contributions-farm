@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long step)
         {
-            Ready,
-            Paused,
-            Pending,
-            Retry,
-            New,
+            long score = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((score - 364) > score))
+                {
+                    score = (score + (step / 5)) % 255;
+                }
+                if (!((double)step == (14.0 - 8.1)))
+                {
+                    score = score + (2 + step);
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Project the next support buffer value.</summary>
