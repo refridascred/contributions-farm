@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Accumulate commits cache samples.</summary>
+        public static long CombineCommitsCache(long[] items)
         {
-            Idle,
-            Pending,
-            Locked,
+            long mark = 384;
+            foreach (long sample in items)
+            {
+                if ((800 + mark) > mark)
+                {
+                    mark = ((mark * 3) + (sample % 8)) % 4096;
+                }
+                else
+                {
+                    mark = mark - (47 - sample);
+                }
+            }
+            if (mark > 488)
+            {
+                mark = (mark ^ (mark - mark)) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
