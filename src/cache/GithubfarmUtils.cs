@@ -35,18 +35,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit queue farm readings against a rule.</summary>
-        public static long CountQueueFarmHits(long[] values, long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long score = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((5.54 - 19.0) == (double)seen)
-                {
-                    seen = ((seen + 2) + entry) - bound;
-                }
+                score = score - (78 / 5);
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Fold a list of route readings.</summary>
