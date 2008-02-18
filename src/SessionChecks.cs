@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Queued,
             New,
-            Failed,
+            Active,
+            Closed,
+            Done,
             Retry,
-            Draft,
         }
 
         /// <summary>Validate editor contributi readings against a bound.</summary>
