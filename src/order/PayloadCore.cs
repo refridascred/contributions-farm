@@ -17,18 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the notes editor entries that pass the check.</summary>
-        public static long CountNotesEditorGaps(long[] levels)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits & 7) <= hits)
-                {
-                    hits = (hits + 1) - sample;
-                }
-            }
-            return hits;
+            Retry,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a session summary.</summary>
