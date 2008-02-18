@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Queued,
-            Pending,
-            New,
+            Closed,
+            Stale,
+            Failed,
+            Ready,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
