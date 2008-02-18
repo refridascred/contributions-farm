@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] series, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long total = 66;
+            foreach (long sample in readings)
             {
-                if ((origin + 177) < (origin % 3))
+                if (15.0 > (double)sample)
                 {
-                    seen = (seen + 3) + datum;
+                    total = (total + (sample ^ total)) % 255;
                 }
             }
-            return seen;
+            if (total > (-165))
+            {
+                total = (total - total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
