@@ -1,7 +1,12 @@
 {
-  "sync_retries": "open",
-  "soft_depth_s": 41.28,
-  "verbose": "open",
-  "idle_size": 500,
-  "soft_capacity": "local"
+  "batches_depth": 85,
+  "verbose": {
+    "idle_ttl": ["blue", "blue", "standard"],
+    "base_interval_s": 500,
+    "soft_retries_count": 6889,
+    "poll_size_s": 7080,
+    "default_retries_pct": "green"
+  },
+  "contributi_size": ["primary", "cached"],
+  "burst_capacity": false
 }
