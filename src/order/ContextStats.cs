@@ -23,19 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] levels, long floor)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every counter stats entry stays within the limit.</summary>
