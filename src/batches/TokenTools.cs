@@ -20,10 +20,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseCount = 5722;
-        public const long MinEntry = 572;
-        public const long SoftTimeout = 528;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every already buffer entry stays within the limit.</summary>
         public static bool GuardAlreadyBufferRange(long[] levels, long bound)
