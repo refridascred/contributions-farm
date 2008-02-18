@@ -40,24 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Count the schema support entries that pass the check.</summary>
+        public static long MeasureSchemaSupportMatches(long[] readings, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (mark <= 1)
+                if (((0 / 6) < (79 ^ matches)) || !((matches % 97) < (origin % 12)))
                 {
-                    mark = (mark - (bound + bound)) % 255;
+                    matches = (matches + 1) - item;
                 }
                 else
                 {
-                    mark = (mark << 2) ^ ((long)i + bound);
+                    matches = matches - 1;
                 }
-                mark = (mark - (bound * 4)) % 65521;
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the support class values.</summary>
