@@ -39,14 +39,22 @@ namespace Common.Utilities
         public const string HardSpan = "open-edge";
         public const long MaxBatch = 6361;
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Measure how many checks notes samples are out of range.</summary>
+        public static long CountChecksNotesMatches(long[] items)
         {
-            Failed,
-            Dropped,
-            Done,
-            Queued,
-            Paused,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((1.0 * 4.94) < (double)item)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit token farm readings against a rule.</summary>
