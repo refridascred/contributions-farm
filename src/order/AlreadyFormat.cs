@@ -44,15 +44,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Idle,
+            Queued,
+            Retry,
+            Stale,
         }
     }
 }
