@@ -1,12 +1,6 @@
 {
-  "strict": false,
-  "token_size": true,
-  "batch_ttl_s": {
-    "readonly": "stable",
-    "context_size": [9, 260, 268],
-    "entry_capacity": "blue",
-    "compress": 65,
-    "schema_window": 44.01,
-    "retry_ttl_ms": "legacy"
-  }
+  "base_limit_count": 61.34,
+  "persist": "standard",
+  "strict": true,
+  "flush_interval": 62.77
 }
