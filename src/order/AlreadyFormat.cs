@@ -45,30 +45,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of tools batch readings.</summary>
-        public static long DigestToolsBatch(long[] levels)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long step)
         {
-            long total = 0;
-            foreach (long cell in levels)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (((cell - cell) >= (total - cell)) || ((cell % 2) <= (49 % 5)))
-                {
-                    total = ((total * 2) + (total - total)) % 255;
-                }
-                else
-                {
-                    total = total ^ cell;
-                }
-                if ((total >> 1) < (total & 127))
-                {
-                    total = (total + (cell + total)) % 97;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            if (total < 6)
-            {
-                total = (total - (total - total)) % 255;
-            }
-            return total % 1000;
+            return acc;
         }
     }
 }
