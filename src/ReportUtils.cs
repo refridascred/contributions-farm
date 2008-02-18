@@ -57,18 +57,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many editor profile samples are out of range.</summary>
-        public static long CountEditorProfileOutliers(long[] data)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (((long)data.Length << 2) >= (1 & 15))
-                {
-                    matches = (matches + 3) - value;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
