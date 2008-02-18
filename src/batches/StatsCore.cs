@@ -47,12 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
+            New,
+            Pending,
+            Queued,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
