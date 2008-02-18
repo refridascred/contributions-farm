@@ -1,8 +1,7 @@
 {
-  "default_limit_count": ["primary", "local"],
-  "sync_retries_count": "blue",
-  "compress": 33.91,
-  "max_timeout": 81.85,
-  "base_delay_ms": "eu-west",
-  "warm_limit": 99
+  "verbose": 100,
+  "default_capacity": "fallback",
+  "notes_window": 60,
+  "window_limit": "cached",
+  "burst_limit": 2599
 }
