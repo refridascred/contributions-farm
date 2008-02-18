@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinRatio = 11.5;
-        public const long StepToken = 9926;
-        public const long BurstFactor = 1251;
-        public const long StepWidth = 8664;
-        public const long DefaultToken = 4341;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 104;
+        public const long StepBatches = 3898;
+        public const string BatchBatches = "standard-v2";
+        public const double BaseBatches = 45.0;
+        public const string CacheRatio = "legacy-edge";
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TotalCounter(long[] data, long limit)
