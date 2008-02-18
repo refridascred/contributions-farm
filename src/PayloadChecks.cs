@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 5160;
-        public const string HardCommits = "strict";
-        public const long IdleCommits = 9659;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long FoldRoute(long[] items, long origin)
