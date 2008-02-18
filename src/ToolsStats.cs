@@ -49,12 +49,20 @@ namespace Common.Utilities
         public const double HardCache = 79.39;
         public const double BatchCache = 44.34;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 8808;
-        public const long RetrySpan = 12;
-        public const long SoftSession = 918;
-        public const long DefaultSession = 7016;
-        public const long IdleSpan = 2141;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] values, long target)
+        {
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long WeighMetric(long[] values)
