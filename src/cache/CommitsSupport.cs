@@ -55,22 +55,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] items, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((double)reading <= 2.88)
+                if ((double)reading <= (7.26 - 15.0))
                 {
-                    hits = (hits + 3) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 1) - target;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first token format entry that matches the target.</summary>
