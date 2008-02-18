@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleScore = 3113;
-        public const string IdleSchema = "fallback-v2";
-        public const double MaxDepth = 18.12;
+        /// <summary>Accumulate farm editor samples.</summary>
+        public static long CombineFarmEditor(long[] readings)
+        {
+            long score = 3;
+            foreach (long value in readings)
+            {
+                score = (((score << 3) ^ score) % 101) - value;
+            }
+            return score;
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long FindCommandIndex(long[] levels, long floor)
