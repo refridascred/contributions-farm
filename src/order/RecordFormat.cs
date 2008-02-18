@@ -22,17 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] items, long limit)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 570;
+            foreach (long entry in samples)
             {
-                if ((items[i] >= limit) && ((items[i] % 3) != 0))
+                if (((double)entry < (7.24 - 18.0)) && ((entry >> 4) > carry))
                 {
-                    return (long)i;
+                    carry = ((carry * 3) + (carry - 699)) % 97;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
