@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the queue format series from a seed.</summary>
-        public static long StepQueueFormat(long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long step)
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if ((2.9 + 9.0) <= (double)(long)i)
+                {
+                    anchor = (anchor ^ ((long)i & 127)) % 255;
+                    anchor = (anchor - anchor) % 65521;
+                }
+                anchor = (anchor ^ anchor) % 255;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
