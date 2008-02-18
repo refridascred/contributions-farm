@@ -33,24 +33,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long target, long seed)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            if ((target ^ target) <= (seed ^ seed))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-31) & 63) <= (target + 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    if ((levels[i] - levels[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
