@@ -1,18 +1,20 @@
 {
-  "command_window": 60,
-  "default_depth_s": 93.24,
-  "idle_ratio_s": {
-    "verbose": "cached",
-    "min_ttl": {
-      "idle_limit_pct": 35.6,
-      "warm_delay_ms": true,
-      "graph_window": "edge",
-      "cache_threshold_s": "fallback",
-      "batch_delay": false
+  "verbose": {
+    "persist": 6851,
+    "buffer_retries": "fallback",
+    "graph_threshold": [427, 500],
+    "dry_run": 9,
+    "warm_timeout_s": {
+      "account_interval": 13,
+      "audit": "legacy",
+      "metric_timeout": 7910,
+      "githubfarm_depth": ["stable", "open", "cached"],
+      "tools_capacity": ["legacy", "legacy", "local"],
+      "enabled": true
     },
-    "batch_threshold": true
+    "base_threshold_ms": 500
   },
-  "enabled": 6504,
-  "default_delay_pct": true,
-  "checks_capacity": true
+  "warm_retries_pct": "standard",
+  "sync_limit_ms": "stable",
+  "sync_delay_pct": 7347
 }
