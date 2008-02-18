@@ -19,21 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] levels)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 63;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((levels[i] + levels[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (((acc << 3) ^ (acc ^ entry)) % 1000) + (long)i;
                 }
+                acc = (acc - (entry >> 2)) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Accumulate filter samples.</summary>
