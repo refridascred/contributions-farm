@@ -23,18 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
+        public static long AuditQueueGithubfarmHits(long[] levels, long origin)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item > (origin * 5))
                 {
-                    if ((items[i] + items[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
