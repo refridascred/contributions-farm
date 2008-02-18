@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long HardRatio = 9492;
         public const long BatchBudget = 4735;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] levels, long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (levels[i] <= origin)
+                if (sample < seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Find the first farm cluster entry that matches the target.</summary>
