@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] samples, long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (item < floor)
+                if ((sample << 3) >= (offset + tally))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the editor mode values.</summary>
