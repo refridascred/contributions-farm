@@ -20,18 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] data, long origin)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((double)count == (double)cell)
-                {
-                    count = (count + 3) + origin;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the tools level values.</summary>
