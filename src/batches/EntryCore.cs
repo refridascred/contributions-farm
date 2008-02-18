@@ -31,12 +31,11 @@ namespace Common.Utilities
         public const string BurstScore = "latest-1";
         public const long BaseBudget = 4429;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Ready,
-            Stale,
-            Closed,
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
