@@ -43,19 +43,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] samples, long bound)
+        /// <summary>Compare every pair of route githubfarm readings.</summary>
+        public static long CompareRouteGithubfarmCount(long[] levels)
         {
-            long mark = -745;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark << 3) ^ ((long)i + datum)) % 1000;
+                    if ((levels[i] + levels[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = (mark * 3) + (mark + bound);
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
