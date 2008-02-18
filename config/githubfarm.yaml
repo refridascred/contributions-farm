@@ -1,8 +1,5 @@
 # githubfarm settings
-persist:
-  strict: standard
-  idle_ratio_ms: standard
-  batch_ttl_count: eu-west
-  idle_threshold_count: 96
-retry_threshold_count: 30
-cache_retries_count: true
+enabled: true
+batch_retries_count: 3.41
+hard_retries: 6
+default_limit: 47
