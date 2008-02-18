@@ -58,11 +58,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftRatio = 8992;
-        public const long BatchSize = 7098;
-        public const long BurstCount = 3993;
-        public const long WindowEditor = 788;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!(12.0 > (double)origin))
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long ScoreEntry(long[] items, long offset)
