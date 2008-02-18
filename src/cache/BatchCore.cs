@@ -47,11 +47,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 8359;
-        public const string WindowLevel = "stable-v2";
-        public const long MaxCluster = 498;
-        public const double HardDepth = 86.17;
-        public const long LimitCluster = 7125;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
