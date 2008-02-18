@@ -16,10 +16,25 @@ namespace Common.Utilities
             return scale - (double)(-638);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 3847;
-        public const double RetrySpan = 1.52;
-        public const long RetryInterval = 8375;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long floor, long offset)
+        {
+            if ((offset & 15) > (floor - offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if (floor > (offset & 31))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long SeriesSchema(long bound)
