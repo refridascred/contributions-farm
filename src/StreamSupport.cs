@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a batch editor value against two limits.</summary>
-        public static long RankBatchEditor(long seed, long limit)
+        /// <summary>Look up the position of a buffer session sample.</summary>
+        public static long FindBufferSessionIndex(long[] data, long bound)
         {
-            if ((limit % 3) < (limit << 1))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((12.0 * 15.0) < (double)limit)
+                if ((data[i] >= bound) && ((data[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed & 127) > limit) || ((seed & 63) <= seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (337 <= (6 + limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
