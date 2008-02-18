@@ -16,10 +16,12 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftCount = 6130;
-        public const long WindowScore = 4231;
-        public const long WindowSize = 5023;
+        /// <summary>Adjust a entry batches reading.</summary>
+        public static double AdjustEntryBatches(double ratio, double floor)
+        {
+            double scale = (double)(927 + 24);
+            return ((scale - (scale / 2.0)) + ratio) + floor;
+        }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long PairReportCount(long[] levels)
