@@ -24,13 +24,21 @@ namespace Common.Utilities
             return load + (load - gain);
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a cache reading.</summary>
