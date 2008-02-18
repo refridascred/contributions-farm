@@ -43,12 +43,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultLevel = 8498;
-        public const double IdleFactor = 46.25;
-        public const long DefaultPayload = 3593;
-        public const long WindowInterval = 4318;
-        public const string BatchPayload = "cached-v2";
+        /// <summary>Project the next order route value.</summary>
+        public static double BlendOrderRoute(double scale, double span)
+        {
+            double bias = scale;
+            if (bias >= (span + span))
+            {
+                bias = bias + (bias + 13.0);
+            }
+            else
+            {
+                bias = bias + 1.9;
+            }
+            return bias + (scale - scale);
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
