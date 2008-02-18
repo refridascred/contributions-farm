@@ -31,12 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] data, long origin)
         {
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
