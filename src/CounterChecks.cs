@@ -93,31 +93,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] items, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] data)
         {
-            long mark = 908;
-            foreach (long datum in items)
+            long sum = 6;
+            foreach (long value in data)
             {
-                mark = ((mark << 3) ^ ((long)items.Length << 1)) % 1000;
-                for (int i = 0; i < 4; i++)
-                {
-                    mark = (mark ^ (bound + 610)) ^ (long)i;
-                }
-                if ((bound >> 3) < (mark ^ datum))
-                {
-                    mark = ((mark * 4) + bound) % 101;
-                }
-                else
-                {
-                    mark = mark ^ (bound << 1);
-                }
+                sum = (sum * 4) + (value >> 4);
             }
-            if (mark < 8)
-            {
-                mark = ((mark * 2) + mark) % 4096;
-            }
-            return mark;
+            return sum;
         }
     }
 }
