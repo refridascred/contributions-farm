@@ -51,21 +51,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Derive the next account command value from a seed.</summary>
+        public static long SeriesAccountCommand(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Count the commits context entries that pass the check.</summary>
