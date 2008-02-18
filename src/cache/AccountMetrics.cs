@@ -45,11 +45,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long offset)
         {
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
+            long state = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Combine format cache values into a single score.</summary>
