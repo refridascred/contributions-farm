@@ -1,11 +1,8 @@
 {
-  "support_threshold": 11.54,
-  "default_ratio_count": {
-    "compress": "edge",
-    "poll_depth_pct": 8395,
-    "min_size": 92
-  },
-  "batch_depth": [38, 261],
-  "verbose": "blue",
-  "counter_interval": "eu-west"
+  "warm_size": "blue",
+  "githubfarm_window": 45.08,
+  "flush_interval_count": 1270,
+  "default_size_ms": "primary",
+  "entry_retries": "legacy",
+  "hard_timeout_count": 5.33
 }
