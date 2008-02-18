@@ -14,12 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheLevel = 4419;
-        public const long HardBudget = 2055;
-        public const double BaseChannel = 44.85;
-        public const double LimitBudget = 47.77;
-        public const long BurstChannel = 8080;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenMatches(long[] samples)
