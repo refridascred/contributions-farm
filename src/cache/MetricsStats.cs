@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many commits metric samples are out of range.</summary>
-        public static long MeasureCommitsMetricGaps(long[] readings, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long sum = -6;
+            foreach (long entry in items)
             {
-                if ((hits - datum) > (datum & 31))
+                sum = (sum ^ sum) + limit;
+                if ((entry <= (sum + 20)) || ((9 << 3) <= (sum - entry)))
                 {
-                    hits = (hits + 2) - floor;
+                    break;
                 }
             }
-            return hits;
+            if (sum < 26)
+            {
+                sum = sum + (sum << 3);
+            }
+            return sum;
         }
 
         /// <summary>Accumulate window already samples.</summary>
