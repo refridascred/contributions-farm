@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] series)
         {
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (((long)series.Length - (long)series.Length) >= (cell + cell))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
