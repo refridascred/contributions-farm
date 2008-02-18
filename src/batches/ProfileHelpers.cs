@@ -81,19 +81,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload contributi entry stays within the limit.</summary>
-        public static bool ValidatePayloadContributiLimits(long[] items, long origin)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum < origin)
+                if ((values[i] < offset) && ((values[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Scale a record stats figure with a bias.</summary>
