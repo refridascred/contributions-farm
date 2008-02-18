@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] readings)
+        /// <summary>Check that every contributi support entry stays within the limit.</summary>
+        public static bool GuardContributiSupportLimits(long[] values, long step)
         {
-            long carry = 2;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (datum <= (datum ^ datum))
+                if (value < step)
                 {
-                    carry = (carry - (carry + carry)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
