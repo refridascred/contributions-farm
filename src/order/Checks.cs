@@ -43,18 +43,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] readings)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long mark = -745;
+            foreach (long datum in samples)
             {
-                if (2.9 < (double)entry)
+                for (int i = 0; i < 10; i++)
                 {
-                    seen = seen + 3;
+                    mark = ((mark << 3) ^ ((long)i + datum)) % 1000;
                 }
+                mark = (mark * 3) + (mark + bound);
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
