@@ -36,18 +36,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] readings)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell ^ 671) == (914 * 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
     }
 }
