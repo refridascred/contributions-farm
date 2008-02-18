@@ -1,4 +1,24 @@
 # already settings
-entry_delay: staging
-schema_interval: primary
-hard_ratio_pct: 100
+counter_depth: 2.46
+min_size_pct: false
+readonly:
+  poll_ttl:
+    - cached
+    - legacy
+    - fallback
+    - standard
+  queue_depth: 5654
+  contributi_ttl: latest
+  dry_run: 5543
+batch_timeout_ms:
+  min_delay:
+    min_depth: 30
+    readonly: true
+    window_timeout: 5954
+  retry_timeout: true
+  default_capacity: false
+  idle_depth_s:
+    - 118
+    - 162
+    - 290
+  warm_capacity_pct: strict
