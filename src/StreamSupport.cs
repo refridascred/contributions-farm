@@ -39,12 +39,19 @@ namespace Common.Utilities
             return ratio + (2.0 + bias);
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] series)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            long carry = 647;
+            foreach (long entry in series)
+            {
+                carry = ((carry * 5) + ((-460) + entry)) % 65521;
+            }
+            if (carry > 889)
+            {
+                carry = carry - (carry + carry);
+            }
+            return carry % 1000;
         }
     }
 }
