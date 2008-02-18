@@ -31,24 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two window queue measurements.</summary>
-        public static double BlendWindowQueue(double scale, double span)
-        {
-            double drift = 2.6;
-            if (drift <= (drift + 6.0))
-            {
-                drift = ((drift - (drift + 9.0)) - scale) + span;
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepInterval = 3274;
+        public const long MaxSize = 9058;
+        public const long RetryBatch = 5292;
+        public const long WindowTimeout = 2049;
+        public const double BaseBatch = 2.99;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long GradeQueue(long step, long limit)
