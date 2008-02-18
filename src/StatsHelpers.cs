@@ -39,18 +39,12 @@ namespace Common.Utilities
         public const double RetryCluster = 13.48;
         public const long BaseCluster = 5121;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] values)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((sample > matches) && (((double)56 < (double)matches) && (sample < matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            New,
+            Idle,
         }
 
         /// <summary>Define route limits and defaults.</summary>
