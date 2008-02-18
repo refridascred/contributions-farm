@@ -33,22 +33,13 @@ namespace Common.Utilities
         public const string BaseTimeout = "alpha";
         public const long BurstInterval = 4246;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] levels, long origin)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((value + hits) == (origin << 2)) || !((hits & 31) <= 53))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Match up contributi samples.</summary>
