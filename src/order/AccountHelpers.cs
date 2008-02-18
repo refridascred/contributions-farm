@@ -26,15 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats order entries.</summary>
-        public static long TallyStatsOrder(long[] series)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long step)
         {
-            long acc = -16;
-            foreach (long entry in series)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc - (7 << 1)) % 97) - entry;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the schema phase values.</summary>
