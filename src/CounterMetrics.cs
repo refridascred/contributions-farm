@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples, long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] readings, long target)
         {
-            long total = 87;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                total = total + (sample % 5);
-                total = total + (sample ^ total);
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (total > 219)
-            {
-                total = ((total * 5) + (limit + (long)samples.Length)) % 101;
-            }
-            return total % 1000;
+            return found;
         }
 
         /// <summary>Compare every pair of route contributi readings.</summary>
