@@ -42,13 +42,21 @@ namespace Common.Utilities
         public const double WindowCount = 89.12;
         public const double BaseStream = 43.74;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] levels)
         {
-            public long Level { get; set; }
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
