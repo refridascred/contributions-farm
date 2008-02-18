@@ -25,15 +25,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of entry cluster readings.</summary>
-        public static long CombineEntryCluster(long[] samples)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long seed)
         {
-            long score = 54;
-            foreach (long reading in samples)
+            long result = seed;
+            for (int i = 0; i < 5; i++)
             {
-                score = (((score * 3) + 1) % 101) + reading;
+                if ((seed & 63) <= (seed & 7))
+                {
+                    result = (result << 2) ^ (seed + result);
+                    result = result - (result - result);
+                }
+                result = result - result;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return score % 65521;
+            return result;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
