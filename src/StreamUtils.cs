@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] data, long offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] == offset)
+                if (values[i] < offset)
                 {
                     return (long)i;
                 }
