@@ -43,24 +43,11 @@ namespace Common.Utilities
         public const long BaseFarm = 2952;
         public const double CacheFactor = 13.12;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long target, long step)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            if (!((9.6 - 1.38) == (double)target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target + step) != ((-963) - target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
