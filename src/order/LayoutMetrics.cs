@@ -16,31 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long bound, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] data, long offset)
         {
-            if ((bound >> 3) <= (bound - step))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step ^ step) > bound)
+                if (data[i] <= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + step) != (step - step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up cluster samples.</summary>
