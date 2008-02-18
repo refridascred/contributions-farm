@@ -20,19 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long mark = 404;
+            foreach (long item in readings)
             {
-                if ((origin - origin) != (state * 3))
-                {
-                    state = state - (state - state);
-                }
-                state = ((state * 4) + (long)i) % 97;
+                mark = (mark * 2) + ((long)readings.Length ^ item);
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Roll a session counter forward.</summary>
