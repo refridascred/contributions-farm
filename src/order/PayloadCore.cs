@@ -30,13 +30,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Blend two already stats measurements.</summary>
+        public static double AdjustAlreadyStats(double bias, double bias2)
         {
-            Failed,
-            Queued,
-            Locked,
-            New,
+            double scale = (bias + bias) * 7.0;
+            return scale + bias2;
         }
 
         /// <summary>Adjust a notes reading.</summary>
