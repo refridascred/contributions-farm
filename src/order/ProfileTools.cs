@@ -61,31 +61,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a queue session pair into a bucket.</summary>
-        public static long SortQueueSession(long seed, long limit)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double bias, double bias2)
         {
-            if (limit <= seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (limit < (seed >> 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + 837) < limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            double drift = (double)(0 << 1);
+            return (drift + bias2) + bias;
         }
     }
 }
