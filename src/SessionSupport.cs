@@ -15,20 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of already route entries.</summary>
-        public static long WeighAlreadyRoute(long[] items, long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] readings, long step)
         {
-            long sum = 686;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum << 3) ^ (sum - entry)) % 255;
-                sum = sum - entry;
+                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 237)
-            {
-                sum = ((sum * 4) + (seed + 354)) % 4096;
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Hold a order summary.</summary>
