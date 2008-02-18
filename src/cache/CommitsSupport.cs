@@ -13,18 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] values, long floor)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)floor >= (13.0 / 4.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 1) ^ entry;
+                    if ((data[i] - data[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
