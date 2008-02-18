@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long origin, long offset)
-        {
-            if (!((1 << 2) >= (offset << 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(origin > (origin - offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset < (offset + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 5160;
+        public const string HardCommits = "strict";
+        public const long IdleCommits = 9659;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyGaps(long[] items, long seed)
