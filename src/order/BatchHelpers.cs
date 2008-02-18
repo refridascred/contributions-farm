@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long step, long seed)
+        /// <summary>Check that every farm tools entry stays within the limit.</summary>
+        public static bool VerifyFarmToolsBounds(long[] levels, long bound)
         {
-            long gap = step + seed;
-            if (!((seed + step) >= gap))
+            bool found = true;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (step > (seed + gap))
+                if (value <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a order info.</summary>
