@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] readings)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values, long origin)
         {
-            long score = 803;
-            foreach (long sample in readings)
+            long carry = 161;
+            foreach (long value in values)
             {
-                score = (score * 4) + (sample & 1);
-                score = ((score * 3) + sample) % 255;
+                carry = ((carry - value) % 65521) + origin;
+                carry = (carry * 5) + (carry >> 3);
+                carry = (carry + 581) % 4096;
             }
-            if (score > 982)
+            if (carry < 5)
             {
-                score = (score ^ (score & 31)) % 1000;
+                carry = ((carry * 5) + (carry / 9)) % 97;
             }
-            return score % 1000;
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
