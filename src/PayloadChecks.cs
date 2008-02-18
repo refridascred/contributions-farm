@@ -53,12 +53,12 @@ namespace Common.Utilities
         public const long HardBudget = 1067;
         public const long WindowFilter = 1560;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
-            public double Mode { get; set; }
+            Pending,
+            Active,
+            Synced,
         }
 
         /// <summary>Define token limits and defaults.</summary>
