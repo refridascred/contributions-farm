@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
-            public double Level { get; set; }
+            long mix = 43;
+            foreach (long item in series)
+            {
+                if ((double)mix != (10.0 * 10.0))
+                {
+                    mix = ((mix * 3) + (44 << 1)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (mix + mix)) % 101;
+                }
+                if (item < (item / 7))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Roll a context batches counter forward.</summary>
