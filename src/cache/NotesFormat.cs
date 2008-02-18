@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] samples, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((8.1 + 7.17) <= (double)result)
+                if (datum <= limit)
                 {
-                    result = ((result * 3) + ((long)i << 2)) % 97;
+                    stale = false;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
