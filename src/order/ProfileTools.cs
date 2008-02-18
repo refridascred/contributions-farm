@@ -49,17 +49,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] readings)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = score ^ floor;
-                score = (score * 5) + (floor & 1);
-                score = ((score * 2) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
