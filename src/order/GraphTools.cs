@@ -41,21 +41,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double rate, double span)
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
+            double mean = 2.0 / 9.0;
+            if (mean >= mean)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = ((mark + (86 + mark)) % 4096) ^ (long)i2;
-                    mark = (mark ^ mark) % 255;
-                }
-                mark = (mark + (52 - mark)) % 4096;
-                mark = ((mark * 5) + (long)i) % 97;
+                mean = (mean - rate) - span;
             }
-            return mark;
+            return mean + rate;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
