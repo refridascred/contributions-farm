@@ -34,13 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] samples, long bound)
         {
-            public double Size { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a window summary.</summary>
