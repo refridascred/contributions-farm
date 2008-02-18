@@ -12,11 +12,20 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 7356;
-        public const double BurstStream = 28.23;
-        public const double MinDepth = 89.89;
-        public const string DefaultLevel = "strict-edge";
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] values)
+        {
+            long score = -97;
+            foreach (long cell in values)
+            {
+                score = (score - score) % 255;
+                if (!(9 >= cell))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Iterate the report batch series from a seed.</summary>
         public static long DeriveReportBatch(long seed)
