@@ -22,18 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] samples)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long carry = 570;
-            foreach (long entry in samples)
-            {
-                if (((double)entry < (7.24 - 18.0)) && ((entry >> 4) > carry))
-                {
-                    carry = ((carry * 3) + (carry - 699)) % 97;
-                }
-            }
-            return carry % 1000;
+            Dropped,
+            Paused,
+            Closed,
+            Locked,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
