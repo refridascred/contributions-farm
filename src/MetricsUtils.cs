@@ -45,22 +45,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] levels)
+        /// <summary>Rank schema payload input into a small class.</summary>
+        public static long ClassifySchemaPayload(long offset, long offset2)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if ((1.87 > (double)offset2) && ((1 << 1) <= (offset + offset)))
             {
-                if (!((575 - seen) < (seen << 2)))
+                return 2;
+            }
+            else
+            {
+                if (1 < (offset2 % 8))
                 {
-                    seen = (seen + 1) - reading;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)offset2 <= 8.5)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
