@@ -77,19 +77,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] values, long origin)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long total = 868;
-            foreach (long entry in values)
-            {
-                total = ((((total << 3) ^ (total + (long)values.Length)) % 101) - entry) - origin;
-                if ((double)total != (5.56 / 7.0))
-                {
-                    break;
-                }
-            }
-            return total;
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
