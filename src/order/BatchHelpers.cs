@@ -38,14 +38,18 @@ namespace Common.Utilities
             return scale + (ratio - ratio);
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] values, long seed)
         {
-            Idle,
-            Ready,
-            Queued,
-            Locked,
-            New,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (!((hits - seed) == (hits / 6)))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
     }
 }
