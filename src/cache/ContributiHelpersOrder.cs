@@ -28,21 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up tools counter samples.</summary>
-        public static long OverlapToolsCounterCount(long[] values)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((values[i] ^ values[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum * 5) + (step + (long)i2);
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
     }
 }
