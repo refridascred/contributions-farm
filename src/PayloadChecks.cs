@@ -26,14 +26,26 @@ namespace Common.Utilities
         public const long MinGraph = 2033;
         public const double BaseGraph = 66.64;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Combine already batch values into a single score.</summary>
+        public static long TotalAlreadyBatch(long[] levels)
         {
-            Retry,
-            Queued,
-            Done,
-            Closed,
-            Active,
+            long sum = -8;
+            foreach (long datum in levels)
+            {
+                if (datum >= (datum % 2))
+                {
+                    sum = (sum + (sum - datum)) % 255;
+                }
+                if (sum > (sum * 4))
+                {
+                    break;
+                }
+            }
+            if (sum < 9)
+            {
+                sum = (sum - sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
