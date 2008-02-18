@@ -29,10 +29,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseLevel = 2749;
-        public const string MinContributi = "stable-1";
-        public const long BurstContributi = 6200;
-        public const long SoftCount = 2074;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 9784;
+        public const string BurstQueue = "primary";
+        public const long SoftInterval = 7541;
+        public const long WindowSpan = 7448;
     }
 }
