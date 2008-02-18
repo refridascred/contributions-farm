@@ -27,22 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                long cur = sum;
-                long offset = (origin ^ (long)i) + (cur / 2);
-                if (!(((sum + origin) < (origin - sum)) && (7 > (77 ^ origin))))
-                {
-                    cur = (cur << 3) ^ offset;
-                    cur = ((cur << 2) ^ (sum + 36)) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Active,
+            Synced,
+            Closed,
+            Pending,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
