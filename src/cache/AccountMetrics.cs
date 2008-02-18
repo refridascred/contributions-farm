@@ -51,18 +51,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] data, long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)value < (1.0 * 4.2))
-                {
-                    matches = (matches + 2) + seed;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next githubfarm channel value from a seed.</summary>
