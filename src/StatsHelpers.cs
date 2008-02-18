@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftSpan = 84.11;
-        public const long RetryBudget = 7975;
-        public const double RetryRecord = 60.52;
-        public const long WindowRecord = 5828;
-        public const long BatchRecord = 8418;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] values, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (bound <= (seen - reading))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
