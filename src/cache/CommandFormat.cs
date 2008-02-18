@@ -39,18 +39,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] readings)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long target, long seed)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            if ((target ^ target) <= (seed ^ seed))
             {
-                if (((double)hits == (4.22 - 10.0)) && (hits < cell))
+                return 2;
+            }
+            else
+            {
+                if (((-31) & 63) <= (target + 7))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
