@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate cache window samples.</summary>
-        public static long FoldCacheWindow(long[] data)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] samples, long origin)
         {
-            long total = 14;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total + 57;
-                for (int i = 0; i < 3; i++)
+                if (samples[i] > origin)
                 {
-                    total = (total - ((long)data.Length ^ (long)i)) % 1000;
-                    total = (total - (total >> 3)) % 4096;
+                    return (long)i;
                 }
-                total = (total + (datum ^ 0)) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
