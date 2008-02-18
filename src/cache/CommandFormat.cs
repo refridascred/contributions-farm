@@ -23,21 +23,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up record counter samples.</summary>
-        public static long MatchRecordCounterCount(long[] levels)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Failed,
+            Closed,
+            Queued,
+            Done,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
