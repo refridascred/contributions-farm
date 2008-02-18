@@ -35,15 +35,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double rate, double bias)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] levels, long seed)
         {
-            double drift = bias;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift - (bias - rate)) + (double)(long)i;
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (drift * 3.7);
+            return -1;
         }
 
         /// <summary>Compare every pair of tools profile readings.</summary>
