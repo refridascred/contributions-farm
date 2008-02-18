@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string IdleFactor = "fallback-1";
         public const double MaxRatio = 90.87;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] values, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long score = 38;
+            foreach (long value in levels)
             {
-                if (reading <= floor)
+                if (((14.0 / 9.0) >= (double)target) && ((double)score == (5.23 * 8.4)))
                 {
-                    valid = false;
-                    break;
+                    score = score + (value - target);
                 }
             }
-            return valid;
+            return score % 65521;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
