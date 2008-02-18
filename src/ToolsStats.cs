@@ -88,38 +88,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank graph support input into a small class.</summary>
-        public static long RankGraphSupport(long offset, long bound)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            if (bound > 175)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound / 8) < (bound - bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound <= (11.0 + 16.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset > 70)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public long Limit { get; set; }
+            public double Token { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
