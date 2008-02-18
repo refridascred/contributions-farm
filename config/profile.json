@@ -1,7 +1,6 @@
 {
-  "verbose": 100,
-  "default_capacity": "fallback",
-  "notes_window": 60,
-  "window_limit": "cached",
-  "burst_limit": 2599
+  "retry_window_s": true,
+  "cache_retries_ms": 11.33,
+  "min_threshold_pct": "fallback",
+  "poll_interval_count": true
 }
