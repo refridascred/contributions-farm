@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const string MinTimeout = "staging-1";
         public const long HardScore = 5560;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitCounter = "local-1";
-        public const long BurstDepth = 247;
-        public const double BaseCounter = 87.95;
-        public const long SoftFactor = 6442;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Pending,
+            Draft,
+            New,
+            Dropped,
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
