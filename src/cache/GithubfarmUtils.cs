@@ -31,17 +31,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            long mark = 771;
+            foreach (long cell in series)
             {
-                anchor = anchor ^ (82 ^ bound);
-                anchor = (anchor + (bound * 2)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (!((mark / 2) >= (mark - cell)))
+                {
+                    mark = mark + (cell * 5);
+                }
             }
-            return anchor;
+            if (mark < (-6))
+            {
+                mark = (mark << 2) ^ (mark >> 2);
+            }
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
