@@ -58,12 +58,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] data, long origin)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] < origin)
+                if (levels[i] == limit)
                 {
                     return (long)i;
                 }
