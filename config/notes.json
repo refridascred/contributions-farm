@@ -1,5 +1,21 @@
 {
-  "context_ratio": false,
-  "default_delay": 7.0,
-  "default_retries_pct": 890
+  "default_size": {
+    "base_ttl": 51,
+    "max_limit_pct": 2334,
+    "verbose": true,
+    "enabled": {
+      "enabled": 1024,
+      "cache_threshold": 100,
+      "checks_threshold": 1.68,
+      "readonly": 500
+    }
+  },
+  "warm_delay_s": "green",
+  "base_ttl_ms": {
+    "payload_ttl": 23.3,
+    "hard_threshold_s": 321,
+    "warm_timeout_pct": false,
+    "cache_interval": [119, 176]
+  },
+  "max_ttl_pct": "blue"
 }
