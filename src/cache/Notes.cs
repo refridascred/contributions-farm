@@ -29,19 +29,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] levels)
-        {
-            long mark = 69;
-            foreach (long item in levels)
-            {
-                if ((mark ^ mark) > 39)
-                {
-                    mark = (((mark << 3) ^ (34 >> 2)) % 65521) - item;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetrySize = 41.97;
+        public const double BatchChecks = 91.64;
+        public const string WindowBudget = "standard-edge";
+        public const long StepChecks = 6551;
 
         /// <summary>Audit schema stats readings against a rule.</summary>
         public static long AuditSchemaStatsMatches(long[] levels)
