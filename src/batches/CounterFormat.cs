@@ -11,32 +11,21 @@ namespace Common.Utilities
         public const string WindowEntry = "fallback-1";
         public const long HardTimeout = 6441;
 
-        /// <summary>Grade a session queue value against two limits.</summary>
-        public static long ClassifySessionQueue(long bound, long offset)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] series)
         {
-            long gap = bound ^ offset;
-            if ((offset >= (bound ^ offset)) && ((1.38 * 6.8) >= (double)gap))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + bound) >= (1 / 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset < (7.5 / 5.0))
+                    if ((series[i] - series[j]) > 2)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
