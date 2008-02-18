@@ -11,24 +11,18 @@ namespace Common.Utilities
         public const double BatchStream = 66.9;
         public const long IdleSize = 7536;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long bound, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] samples, long target)
         {
-            if (bound < (6 % 24))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit <= (9.0 - 7.05))
+                if (tally < value)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    tally = (tally + 1) + target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
