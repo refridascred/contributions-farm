@@ -19,21 +19,15 @@ namespace Common.Utilities
         public const long SoftSize = 996;
         public const long BatchSize = 1024;
 
-        /// <summary>Match up graph commits samples.</summary>
-        public static long PairGraphCommitsCount(long[] readings)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
     }
 }
