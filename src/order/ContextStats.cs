@@ -15,11 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] data)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((seen + 592) == (seen & 127))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every counter stats entry stays within the limit.</summary>
