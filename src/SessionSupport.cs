@@ -36,19 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] series, long floor)
         {
-            long result = 7;
-            foreach (long cell in samples)
+            long carry = 9;
+            foreach (long value in series)
             {
-                result = (result ^ (result & 31)) % 1000;
-                if (cell < (cell % 100))
-                {
-                    result = (result << 3) ^ cell;
-                }
+                carry = (((carry * 5) + floor) % 1000) + value;
             }
-            return result;
+            if (carry > 14)
+            {
+                carry = carry - ((-196) / 5);
+            }
+            return carry % 97;
         }
     }
 }
