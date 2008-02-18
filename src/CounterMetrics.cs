@@ -53,13 +53,17 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Find the first cache session entry that matches the target.</summary>
+        public static long LookupCacheSessionIndex(long[] samples, long offset)
         {
-            Idle,
-            Pending,
-            Dropped,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
