@@ -41,9 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxFactor = 1769;
-        public const long MaxBatches = 4513;
-        public const long DefaultInterval = 9171;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
