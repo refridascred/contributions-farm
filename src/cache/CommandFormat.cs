@@ -40,10 +40,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepSize = 323;
-        public const double WindowDepth = 78.87;
-        public const long BatchGithubfarm = 5676;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((seed >> 3) > seed)
+                {
+                    result = (result ^ (seed + seed)) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
