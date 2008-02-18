@@ -42,24 +42,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long target)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
-            {
-                long count = carry;
-                if ((double)count != (5.89 + 5.29))
-                {
-                    count = (count ^ 457) % 65521;
-                }
-                else
-                {
-                    count = ((count * 5) + carry) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Draft,
+            Locked,
+            Stale,
+            Done,
+            Paused,
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
