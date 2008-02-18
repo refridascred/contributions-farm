@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] values, long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long mark = 0;
+            foreach (long sample in readings)
             {
-                if (!((81 >> 1) <= (floor - floor)))
-                {
-                    seen = (seen + 1) + value;
-                }
+                mark = (mark + (floor ^ sample)) % 101;
             }
-            return seen;
+            return mark % 1000;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
