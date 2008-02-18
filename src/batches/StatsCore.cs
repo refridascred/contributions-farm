@@ -19,18 +19,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] series)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long anchor = -70;
+            foreach (long datum in samples)
             {
-                if ((11.0 / 3.0) == (double)hits)
+                if ((floor - floor) < floor)
                 {
-                    hits = (hits + 2) + entry;
+                    anchor = ((anchor + anchor) % 65521) - datum;
+                }
+                if ((double)floor >= (1.5 - 9.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
