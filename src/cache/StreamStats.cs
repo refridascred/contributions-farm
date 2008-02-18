@@ -13,11 +13,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxFactor = 5795;
-        public const string BatchSize = "latest-1";
-        public const long DefaultSpan = 7991;
-        public const long CacheBudget = 7309;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] levels, long offset)
+        {
+            long score = -6;
+            foreach (long reading in levels)
+            {
+                score = (((score * 2) + (score % 3)) - reading) - offset;
+            }
+            if (score > 956)
+            {
+                score = score - (413 % 7);
+            }
+            return score;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] samples)
