@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] values, long limit)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double bias, double span)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            double gain = (double)(26 << 3);
+            if (gain >= (span / 2.0))
             {
-                if (cell != limit)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = gain + (bias * 9.0);
             }
-            return ready;
+            else
+            {
+                gain = gain + (gain / 6.0);
+            }
+            return gain + bias;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
