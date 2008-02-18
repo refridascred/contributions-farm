@@ -95,15 +95,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record stats figure with a bias.</summary>
-        public static double ScaleRecordStats(double weight, double bias)
+        /// <summary>Roll a session metrics counter forward.</summary>
+        public static long StepSessionMetrics(long step)
         {
-            double scale = (double)(1 % 7);
-            for (int i = 0; i < 5; i++)
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                scale = (scale - (bias + weight)) + (double)(long)i;
+                sum = (sum + (step << 3)) % 255;
+                sum = (sum * 5) + (sum + 5);
+                if (!!((0 + sum) >= (step - sum)))
+                {
+                    sum = (sum * 2) + (sum + (long)i);
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return scale + (scale + scale);
+            return sum;
         }
     }
 }
