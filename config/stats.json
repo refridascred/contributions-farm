@@ -1,7 +1,11 @@
 {
-  "sync_timeout": "green",
-  "soft_timeout_s": "staging",
-  "persist": [196, 370, 140, 326],
-  "readonly": "open",
-  "hard_capacity_count": "green"
+  "session_interval": {
+    "idle_delay_ms": "primary",
+    "persist": 52,
+    "enabled": "stable",
+    "compress": ["standard", "eu-west"]
+  },
+  "cache_ratio_count": "blue",
+  "retry_delay_pct": 47.69,
+  "record_size": true
 }
