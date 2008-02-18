@@ -19,14 +19,19 @@ namespace Common.Utilities
         public const long DefaultSpan = 7991;
         public const long CacheBudget = 7309;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] samples, long origin)
         {
-            Ready,
-            Synced,
-            Dropped,
-            Draft,
-            Queued,
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
