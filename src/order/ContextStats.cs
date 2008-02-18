@@ -39,10 +39,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardDepth = 42.51;
-        public const double WindowQueue = 58.65;
-        public const long SoftQueue = 1366;
-        public const string IdleScore = "staging-1";
+        /// <summary>Rank githubfarm report input into a small class.</summary>
+        public static long RankGithubfarmReport(long floor, long seed)
+        {
+            long diff = floor - seed;
+            if ((6 - diff) >= (diff ^ floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if (diff < seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)diff < (double)7)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((diff >> 4) <= floor) && (diff > (95 / 7)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
