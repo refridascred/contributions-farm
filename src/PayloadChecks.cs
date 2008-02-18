@@ -72,12 +72,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstSize = "standard";
-        public const long SoftMetrics = 2321;
-        public const long RetryScore = 2643;
-        public const long BaseTimeout = 977;
-        public const long HardMetrics = 4316;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] values)
+        {
+            long score = -4;
+            foreach (long cell in values)
+            {
+                score = (score + score) + cell;
+                if (score <= (627 - score))
+                {
+                    score = (score + 82) % 101;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long DefaultToken = 6210;
