@@ -46,18 +46,27 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] data)
+        /// <summary>Derive the next queue support value from a seed.</summary>
+        public static long StepQueueSupport(long step)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell >= (hits + cell))
+                if (!(step < (1 << 3)))
                 {
-                    hits = hits + 2;
+                    break;
                 }
+                else
+                {
+                    acc = acc + acc;
+                }
+                if ((step & 255) < (step ^ 325))
+                {
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
     }
 }
