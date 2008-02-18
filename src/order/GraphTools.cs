@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate commits cache samples.</summary>
-        public static long CombineCommitsCache(long[] items)
-        {
-            long mark = 384;
-            foreach (long sample in items)
-            {
-                if ((800 + mark) > mark)
-                {
-                    mark = ((mark * 3) + (sample % 8)) % 4096;
-                }
-                else
-                {
-                    mark = mark - (47 - sample);
-                }
-            }
-            if (mark > 488)
-            {
-                mark = (mark ^ (mark - mark)) % 65521;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseInterval = "open";
+        public const double HardCache = 15.37;
+        public const double LimitCache = 8.62;
+        public const long BaseCache = 2496;
+        public const long WindowCache = 5469;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchMatches(long[] series)
