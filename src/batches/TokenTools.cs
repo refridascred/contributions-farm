@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseFactor = 9341;
-        public const long SoftSize = 6894;
-        public const long HardRatio = 9492;
-        public const long BatchBudget = 4735;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long bound, long bound2)
+        {
+            if ((bound % 3) >= 47)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((92 - bound) > (bound % 24))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound != (double)bound2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool ValidateStreamRange(long[] levels, long seed)
