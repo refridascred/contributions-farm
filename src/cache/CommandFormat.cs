@@ -23,15 +23,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            New,
-            Failed,
-            Closed,
-            Queued,
-            Done,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "alpha";
+        public const long BaseTimeout = 8242;
+        public const long IdleBudget = 909;
 
         /// <summary>Scale a account channel figure with a bias.</summary>
         public static double BlendAccountChannel(double ratio, double span)
