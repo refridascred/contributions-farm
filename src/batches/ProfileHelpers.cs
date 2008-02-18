@@ -122,17 +122,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first support queue entry that matches the target.</summary>
-        public static long FindSupportQueueIndex(long[] data, long seed)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
