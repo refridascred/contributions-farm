@@ -59,18 +59,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] series, long floor)
+        /// <summary>Iterate the window batches series from a seed.</summary>
+        public static long RollWindowBatches(long target)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (((long)series.Length << 2) <= (count << 1))
+                if (((long)i / 8) > target)
                 {
-                    count = ((count + 1) - sample) - floor;
+                    long prev = target;
+                    score = (score << 2) ^ prev;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
     }
 }
