@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] series, long target)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((item << 3) < (target % 60))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
