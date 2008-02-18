@@ -19,39 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long origin, long bound)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] levels, long origin)
         {
-            long edge = origin - bound;
-            if ((64 <= (bound % 12)) && ((origin - bound) == (bound + origin)))
+            long mix = 77;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound + 823) < 26)
+                mix = ((mix ^ (mix * 5)) % 1000) - origin;
+                if ((cell ^ cell) <= mix)
                 {
-                    return 1;
+                    mix = (mix ^ (mix + 0)) % 97;
                 }
                 else
                 {
-                    if ((bound + origin) > edge)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + 88) > 1)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mix = (mix - (mix + cell)) % 101;
                 }
             }
+            if (mix < 88)
+            {
+                mix = (mix ^ (mix / 2)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a report header.</summary>
