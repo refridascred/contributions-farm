@@ -21,19 +21,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Measure how many account buffer samples are out of range.</summary>
+        public static long CountAccountBufferHits(long[] data, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (((limit ^ hits) > (sample - sample)) && (89 < sample))
                 {
-                    mark = ((mark ^ mark) % 255) ^ (long)i2;
+                    hits = hits + 2;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
     }
 }
