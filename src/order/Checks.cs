@@ -29,18 +29,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleBatch = 73.5;
+        public const double BaseBatch = 50.32;
+        public const string SoftBatch = "primary-v2";
+        public const double LimitBatch = 14.48;
+        public const double HardBatch = 40.14;
 
         /// <summary>Compare every pair of route githubfarm readings.</summary>
         public static long CompareRouteGithubfarmCount(long[] levels)
