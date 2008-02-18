@@ -1,4 +1,21 @@
 # githubfarm settings
-cache_ttl: 23
-hard_timeout_ms: green
-cache_capacity: stable
+retry_ttl_count: local
+soft_depth:
+  burst_retries_count: 45.43
+  farm_capacity: fallback
+  compress: false
+  soft_interval:
+    - 469
+    - 327
+    - 345
+    - 469
+  farm_window:
+    - 337
+    - 462
+  cache_depth_ms: 2033
+enabled: edge
+batch_retries: primary
+poll_size_pct: 53.13
+cache_limit_ms:
+  - 299
+  - 483
