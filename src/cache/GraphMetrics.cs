@@ -22,23 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double weight, double floor)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long target)
         {
-            double scale = floor;
-            if (scale >= 10.0)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                scale = (scale - 3.6) + weight;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            else
-            {
-                scale = scale - (double)50;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - floor;
+            return mix;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
