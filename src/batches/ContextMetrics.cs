@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardRatio = 360;
-        public const long BaseTimeout = 763;
-        public const double BatchContext = 6.81;
-        public const long WindowBudget = 1853;
-        public const long BaseContext = 8868;
+        /// <summary>Classify a payload filter pair into a bucket.</summary>
+        public static long RankPayloadFilter(long limit, long floor)
+        {
+            long bound = limit ^ floor;
+            if (((limit + floor) > 881) && ((double)limit <= (3.99 + 4.9)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (10.0 > (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((limit % 3) < bound) && (limit >= (limit + 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((49 * 3) > limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string BurstTimeout = "latest-edge";
