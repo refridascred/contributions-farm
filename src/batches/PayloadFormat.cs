@@ -23,18 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
-        public static long AuditQueueGithubfarmHits(long[] levels, long origin)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double scale = bias;
+            if (scale <= (double)41)
             {
-                if (item > (origin * 5))
-                {
-                    matches = matches + 3;
-                }
+                scale = scale - (scale - scale);
             }
-            return matches;
+            else
+            {
+                scale = scale - (rate / 8.0);
+            }
+            return scale + (double)481;
         }
 
         /// <summary>Describe the entry status values.</summary>
