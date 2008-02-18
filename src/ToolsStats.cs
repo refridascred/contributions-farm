@@ -35,11 +35,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 4401;
-        public const long DefaultSupport = 6584;
-        public const string BurstSupport = "latest";
-        public const long IdleSupport = 6091;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((((double)sample < 3.1) && ((sample ^ sample) > (937 - 581))) || ((913 - count) == (sample + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string RetryScore = "staging";
