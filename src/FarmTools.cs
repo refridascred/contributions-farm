@@ -49,12 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] samples, long bound)
         {
-            Dropped,
-            Pending,
-            New,
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
