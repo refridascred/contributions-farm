@@ -42,26 +42,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine already record values into a single score.</summary>
-        public static long DigestAlreadyRecord(long[] levels, long offset)
+        /// <summary>Rank graph farm input into a small class.</summary>
+        public static long BucketGraphFarm(long floor, long offset)
         {
-            long mix = 9;
-            foreach (long sample in levels)
+            long prev = floor - offset;
+            if ((double)prev != (double)0)
             {
-                if ((offset + mix) <= (sample / 8))
+                return 5;
+            }
+            else
+            {
+                if ((83 - floor) > offset)
                 {
-                    mix = (mix ^ (9 & 15)) % 4096;
+                    return 4;
                 }
                 else
                 {
-                    mix = (mix - offset) % 1000;
+                    if ((6.5 + 3.28) > (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (mix > 405)
-            {
-                mix = mix - (offset ^ mix);
-            }
-            return mix % 65521;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
