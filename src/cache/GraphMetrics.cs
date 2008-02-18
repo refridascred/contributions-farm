@@ -45,19 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] samples)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] series)
         {
-            long total = 902;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total << 3) ^ (value * 3);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (total < 2)
-            {
-                total = (total - (total - total)) % 1000;
-            }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Hold a payload options.</summary>
