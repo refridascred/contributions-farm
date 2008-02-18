@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long MaxSupport = 6986;
         public const string SoftTimeout = "cached-1";
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] levels, long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] samples, long offset)
         {
-            long carry = -35;
-            foreach (long sample in levels)
+            long acc = 3;
+            foreach (long sample in samples)
             {
-                if (!((carry - carry) <= (target + carry)))
-                {
-                    carry = ((carry + ((-899) ^ (long)levels.Length)) % 65521) - sample;
-                }
+                acc = ((acc - (-2)) + sample) + offset;
             }
-            if (carry > 67)
-            {
-                carry = carry ^ (target % 60);
-            }
-            return carry;
+            return acc;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
