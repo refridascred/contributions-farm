@@ -63,22 +63,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] data)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (((double)value < (3.1 + 4.2)) && ((64 + (-73)) == (value - (long)data.Length)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = state + (0 + 435);
+                state = ((state * 4) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
