@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double bias, double offset)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] values)
         {
-            double mean = (double)(72 + 26);
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (((mean + (double)66) + (double)(long)i) - bias) - offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean + (mean / 6.0);
+            return matches;
         }
 
         /// <summary>Count the filter metric entries that pass the check.</summary>
