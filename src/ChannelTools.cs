@@ -29,19 +29,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every layout farm entry stays within the limit.</summary>
-        public static bool GuardLayoutFarmRange(long[] levels, long step)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
