@@ -68,18 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support stats samples are out of range.</summary>
-        public static long MeasureSupportStatsOutliers(long[] data)
+        /// <summary>Validate already record readings against a bound.</summary>
+        public static bool VerifyAlreadyRecordBounds(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((count * 2) < (entry >> 2))
+                if (sample > bound)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Check that every payload contributi entry stays within the limit.</summary>
