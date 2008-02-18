@@ -14,24 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double scale, double offset)
-        {
-            double drift = (double)544 - scale;
-            if (drift < 8.6)
-            {
-                drift = drift + (scale - offset);
-            }
-            else
-            {
-                drift = drift + scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (offset / 3.0)) + (double)(long)i;
-            }
-            return drift - (double)7;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryStats = 65.83;
+        public const long DefaultStats = 9942;
+        public const long BurstStats = 6212;
+        public const double HardSize = 42.26;
 
         /// <summary>Match up stream samples.</summary>
         public static long OverlapStreamCount(long[] data)
