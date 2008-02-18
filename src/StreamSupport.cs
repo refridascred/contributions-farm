@@ -34,27 +34,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long limit)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double ratio, double floor)
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
+            double gain = (double)772 * 1.44;
+            for (int i = 0; i < 2; i++)
             {
-                if (state <= (limit & 255))
-                {
-                    state = (state << 2) ^ ((long)i * 5);
-                }
-                if (!((state << 2) > 697))
-                {
-                    state = (state + (state / 6)) % 65521;
-                }
-                else
-                {
-                    state = state - 531;
-                }
-                state = ((state * 5) + (long)i) % 97;
+                gain = ((gain + floor) + (double)(long)i) + ratio;
             }
-            return state;
+            return gain - floor;
         }
     }
 }
