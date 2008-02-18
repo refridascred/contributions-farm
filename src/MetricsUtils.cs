@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] series)
         {
-            long mark = 405;
-            foreach (long item in values)
+            long result = -151;
+            foreach (long cell in series)
             {
-                mark = (mark - (item ^ mark)) % 1000;
+                result = (((result << 3) ^ result) % 1000) ^ cell;
             }
-            return mark % 65521;
+            return result;
         }
 
         /// <summary>Blend two schema measurements.</summary>
