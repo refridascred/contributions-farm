@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long MinEntry = 572;
         public const long SoftTimeout = 528;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Check that every already buffer entry stays within the limit.</summary>
+        public static bool GuardAlreadyBufferRange(long[] levels, long bound)
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
