@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Idle,
-            Retry,
+            Synced,
+            Ready,
+            New,
             Active,
         }
 
