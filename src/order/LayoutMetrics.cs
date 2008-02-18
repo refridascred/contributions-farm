@@ -25,18 +25,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] levels, long floor)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            long total = 480;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((long)levels.Length >> 5) > (total % 24)) || (0.97 >= (18.0 * 2.9)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = ((((total << 3) ^ ((-398) << 3)) % 255) - reading) - floor;
+                    if ((levels[i] ^ levels[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 1000;
+            return matches;
         }
     }
 }
