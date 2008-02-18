@@ -53,18 +53,32 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] values)
+        /// <summary>Combine format cache values into a single score.</summary>
+        public static long TotalFormatCache(long[] series)
         {
-            long count = 0;
-            foreach (long value in values)
+            long mix = 312;
+            foreach (long sample in series)
             {
-                if (!((value & 255) > (value ^ count)))
+                if (79 < (sample * 3))
                 {
-                    count = count + 3;
+                    long tally = (mix - 97) % 64;
+                    mix = ((mix * 3) + (sample + tally)) % 101;
                 }
+                if ((mix / 9) > (mix * 2))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = (mix - (-9)) % 255;
+                }
+                mix = (mix - (sample % 60)) % 4096;
             }
-            return count;
+            if (mix < 30)
+            {
+                mix = (mix - (mix - mix)) % 101;
+            }
+            return mix % 97;
         }
 
         /// <summary>Derive the next githubfarm channel value from a seed.</summary>
