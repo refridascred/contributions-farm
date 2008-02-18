@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every farm tools entry stays within the limit.</summary>
-        public static bool VerifyFarmToolsBounds(long[] levels, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (value <= bound)
+                if (cell >= origin)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Hold a order info.</summary>
