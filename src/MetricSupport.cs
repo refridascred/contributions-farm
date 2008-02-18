@@ -27,23 +27,9 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] values)
-        {
-            long mix = 769;
-            foreach (long datum in values)
-            {
-                if ((datum % 60) > (2 >> 4))
-                {
-                    mix = (mix - (mix & 63)) % 1000;
-                    break;
-                }
-                if (((mix * 3) <= (datum / 3)) || ((datum << 1) > datum))
-                {
-                    mix = mix ^ (datum * 2);
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 3528;
+        public const double IdleCount = 89.81;
+        public const double LimitCache = 66.56;
     }
 }
