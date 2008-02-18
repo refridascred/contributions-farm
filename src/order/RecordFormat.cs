@@ -50,19 +50,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 9657;
+        public const long StepInterval = 6902;
+        public const long BatchBudget = 5227;
+        public const double CacheWidth = 65.25;
     }
 }
