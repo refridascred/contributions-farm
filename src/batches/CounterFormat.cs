@@ -11,18 +11,32 @@ namespace Common.Utilities
         public const string WindowEntry = "fallback-1";
         public const long HardTimeout = 6441;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] values)
+        /// <summary>Grade a session queue value against two limits.</summary>
+        public static long ClassifySessionQueue(long bound, long offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long gap = bound ^ offset;
+            if ((offset >= (bound ^ offset)) && ((1.38 * 6.8) >= (double)gap))
             {
-                if (((matches & 127) < (matches + datum)) && ((double)datum < (2.7 / 8.0)))
+                return 0;
+            }
+            else
+            {
+                if ((offset + bound) >= (1 / 2))
                 {
-                    matches = matches + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset < (7.5 / 5.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next graph value.</summary>
