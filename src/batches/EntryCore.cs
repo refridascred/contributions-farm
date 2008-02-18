@@ -41,11 +41,22 @@ namespace Common.Utilities
             return scale2 - span;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] samples, long seed)
         {
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((6 ^ count) > (value + value))
+                {
+                    count = (count + 1) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the commits level values.</summary>
