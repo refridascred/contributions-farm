@@ -16,18 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] data)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long acc = -78;
+            foreach (long entry in data)
             {
-                if (hits > (-4))
-                {
-                    hits = (hits + 2) - value;
-                }
+                acc = ((acc * 2) + (entry - limit)) % 97;
             }
-            return hits;
+            if (acc > 911)
+            {
+                acc = (acc * 4) + acc;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Classify a layout already pair into a bucket.</summary>
