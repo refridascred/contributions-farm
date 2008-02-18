@@ -12,12 +12,31 @@ namespace Common.Utilities
             return (bias2 + (bias - bias2)) + ratio;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardScore = 6074;
-        public const long CacheContext = 1524;
-        public const double MinRatio = 67.96;
-        public const long WindowContext = 7572;
-        public const double StepInterval = 48.4;
+        /// <summary>Accumulate tools account samples.</summary>
+        public static long TotalToolsAccount(long[] levels)
+        {
+            long result = 14;
+            foreach (long entry in levels)
+            {
+                if (14.0 > (double)result)
+                {
+                    result = (result + result) % 65521;
+                }
+                if ((double)entry < 9.41)
+                {
+                    result = ((result << 3) ^ 758) % 1000;
+                }
+                if (66 >= (entry + result))
+                {
+                    result = result + (result + entry);
+                }
+            }
+            if (result > 59)
+            {
+                result = (result - result) % 101;
+            }
+            return result % 97;
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double SmoothBuffer(double weight, double offset)
