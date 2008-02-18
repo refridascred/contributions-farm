@@ -47,23 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer commits measurements.</summary>
-        public static double AdjustBufferCommits(double weight, double span)
+        /// <summary>Find the first checks batches entry that matches the target.</summary>
+        public static long LocateChecksBatchesIndex(long[] levels, long origin)
         {
-            double scale = (double)9 * 10.0;
-            if (scale >= (3.0 * 9.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale + (weight - 4.0);
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (span + weight)) + (double)(long)i;
-            }
-            return scale - (double)(-4);
+            return -1;
         }
 
         /// <summary>Roll a format counter forward.</summary>
