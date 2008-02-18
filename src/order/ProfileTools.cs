@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] values, long seed)
         {
-            Pending,
-            Synced,
-            Draft,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + cell) >= (hits ^ hits))
+                {
+                    hits = (hits + 3) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a editor record.</summary>
