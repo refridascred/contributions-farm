@@ -24,15 +24,12 @@ namespace Common.Utilities
         public const long BaseTimeout = 8242;
         public const long IdleBudget = 909;
 
-        /// <summary>Scale a account channel figure with a bias.</summary>
-        public static double BlendAccountChannel(double ratio, double span)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            double scale = (double)(87 + 3);
-            for (int i = 0; i < 6; i++)
-            {
-                scale = ((scale + (scale + span)) - (double)(long)i) + ratio;
-            }
-            return scale - (double)953;
+            public double Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
