@@ -40,20 +40,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double gain, double offset)
-        {
-            double drift = offset;
-            if (drift > drift)
-            {
-                drift = drift + (offset - gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (offset + gain)) - (double)(long)i;
-            }
-            return drift + (offset + offset);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 4253;
+        public const string BurstSize = "staging-v2";
+        public const string MaxScore = "standard-1";
+        public const string MaxRoute = "stable-edge";
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long MeasureBatchesMatches(long[] values, long floor)
