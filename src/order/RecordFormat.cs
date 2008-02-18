@@ -32,13 +32,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long limit, long seed)
         {
-            Stale,
-            New,
-            Closed,
-            Queued,
+            long step = limit + seed;
+            if (((limit + limit) > (limit + seed)) || (limit <= seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((20.0 - 5.3) == (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step % 5) >= seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed < 1) && (seed >= (limit >> 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks status values.</summary>
