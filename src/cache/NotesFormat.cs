@@ -32,22 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] values, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] items)
         {
-            long score = 44;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((score + origin) >= (item << 1))
+                if ((double)tally < 3.0)
                 {
-                    score = (score + (score * 2)) % 1000;
+                    tally = (tally + 2) + value;
                 }
             }
-            if (score < (-5))
-            {
-                score = ((score << 2) ^ origin) % 4096;
-            }
-            return score % 1000;
+            return tally;
         }
     }
 }
