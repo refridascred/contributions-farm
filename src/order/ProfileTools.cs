@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate order session samples.</summary>
-        public static long DigestOrderSession(long[] levels, long origin)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            long mix = -7;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mix - origin) < sample)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix * 2) + ((long)levels.Length - origin)) % 65521;
-                    mix = (mix * 2) + origin;
-                }
-                if ((sample >> 1) == ((-4) >> 3))
-                {
-                    mix = ((mix << 3) ^ (origin * 4)) % 101;
+                    if ((samples[i] + samples[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix > 496)
-            {
-                mix = (mix * 4) + origin;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
