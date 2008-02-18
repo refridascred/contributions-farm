@@ -1,10 +1,6 @@
 # githubfarm settings
-commits_capacity: 30.47
-graph_window:
-  - cached
-  - green
-  - stable
-  - legacy
-min_window:
-  - latest
-  - standard
+notes_window: green
+queue_ratio: edge
+default_size: 500
+context_limit: standard
+base_interval_ms: stable
