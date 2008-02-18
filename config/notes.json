@@ -1,8 +1,15 @@
 {
-  "cache_ratio": [183, 442],
-  "flush_retries": [21, 476, 184],
-  "queue_threshold": "cached",
-  "metrics_ttl": 2.74,
-  "max_depth_pct": 13,
-  "persist": "eu-west"
+  "retry_limit_s": {
+    "counter_retries": {
+      "report_ratio": 94.93,
+      "layout_ratio": true,
+      "readonly": 45,
+      "farm_limit": 77.9
+    },
+    "persist": 100,
+    "stream_interval": 0.48
+  },
+  "dry_run": 82,
+  "soft_delay_ms": 57,
+  "burst_depth_ms": 50.8
 }
