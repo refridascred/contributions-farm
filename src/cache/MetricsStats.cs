@@ -69,14 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] series, long origin)
         {
-            Ready,
-            Stale,
-            Closed,
-            Dropped,
-            Queued,
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first notes report entry that matches the target.</summary>
