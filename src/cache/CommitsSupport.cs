@@ -49,18 +49,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] samples, long target)
+        /// <summary>Fold a list of support context readings.</summary>
+        public static long DigestSupportContext(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long state = 429;
+            foreach (long value in data)
             {
-                if ((double)reading <= (7.26 - 15.0))
-                {
-                    tally = (tally + 1) - target;
-                }
+                state = ((state - (78 << 1)) % 97) + value;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Find the first token format entry that matches the target.</summary>
