@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] values, long offset)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (((tally + offset) < offset) && (datum < offset))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 2785;
+        public const double StepStats = 56.24;
+        public const double RetryTimeout = 44.4;
+        public const long BaseWidth = 9033;
+        public const double LimitDepth = 17.67;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string HardSize = "local-v2";
