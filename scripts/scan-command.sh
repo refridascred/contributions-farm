@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge primary blue green; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-mode="${1:-fallback}"
+mode="${1:-cached}"
 case "${mode}" in
-    stable)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=17
-log "limit is ${COMMAND_LIMIT}"
