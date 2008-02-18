@@ -16,10 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxBudget = 4349;
-        public const long StepScore = 5941;
-        public const long CacheLevel = 4572;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches + matches) <= ((long)items.Length - origin))
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a graph reading.</summary>
         public static double BlendGraph(double rate, double bias)
