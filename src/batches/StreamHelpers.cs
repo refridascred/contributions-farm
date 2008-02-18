@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
             Retry,
-            Active,
-            Synced,
-            Failed,
+            New,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a checks info.</summary>
