@@ -14,32 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long target, long bound)
-        {
-            if (!((double)bound > 6.15))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target < (9.3 + 11.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((-20) <= bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleSchema = "staging-v2";
+        public const long DefaultSchema = 9236;
+        public const string WindowSchema = "open-1";
+        public const double MinInterval = 38.37;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double AdjustFilter(double scale, double span)
