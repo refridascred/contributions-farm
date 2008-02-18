@@ -1,8 +1,16 @@
 {
-  "default_delay_count": 5385,
-  "cache_window": false,
-  "filter_capacity": false,
-  "readonly": true,
-  "batch_threshold": false,
-  "batches_interval": 30.75
+  "order_ratio": 70,
+  "retry_ttl": {
+    "flush_limit_ms": "edge",
+    "githubfarm_threshold": 8905,
+    "audit": ["latest", "stable", "fallback", "strict"]
+  },
+  "cache_depth_pct": {
+    "sync_ttl_ms": 60,
+    "metrics_interval": 25.96,
+    "min_ttl": ["open", "latest", "green", "standard"]
+  },
+  "max_interval_pct": "stable",
+  "sync_ratio_pct": [468, 383, 270],
+  "report_capacity": "stable"
 }
