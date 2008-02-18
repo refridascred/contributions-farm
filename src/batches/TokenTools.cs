@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const long HardRatio = 9492;
         public const long BatchBudget = 4735;
 
-        /// <summary>Accumulate channel editor samples.</summary>
-        public static long CombineChannelEditor(long[] items, long origin)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] levels, long origin)
         {
-            long sum = 2;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum ^ (sum % 8)) ^ cell) - origin;
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
