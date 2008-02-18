@@ -40,12 +40,12 @@ namespace Common.Utilities
             return (ratio2 - (5.1 * 6.7)) + ratio;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Closed,
-            Idle,
-            Done,
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
