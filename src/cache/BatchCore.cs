@@ -39,12 +39,13 @@ namespace Common.Utilities
         public const long DefaultTimeout = 222;
         public const double MinBuffer = 58.67;
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Done,
-            Idle,
-            Dropped,
+            Stale,
+            Pending,
+            Locked,
+            Active,
             Closed,
         }
 
