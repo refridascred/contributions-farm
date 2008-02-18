@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every contributi support entry stays within the limit.</summary>
-        public static bool GuardContributiSupportLimits(long[] values, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long sum = 778;
+            foreach (long reading in readings)
             {
-                if (value < step)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (sum + reading) % 65521;
             }
-            return stale;
+            return sum % 97;
         }
 
         /// <summary>Describe the support class values.</summary>
