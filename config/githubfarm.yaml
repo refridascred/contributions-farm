@@ -1,11 +1,4 @@
 # githubfarm settings
-payload_ratio: false
-hard_depth_pct: primary
-min_timeout: 38.45
-enabled:
-  - legacy
-  - legacy
-  - green
-  - edge
-order_ttl: 30
-warm_interval_pct: staging
+cache_ttl: 23
+hard_timeout_ms: green
+cache_capacity: stable
