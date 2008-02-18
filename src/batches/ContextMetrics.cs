@@ -38,12 +38,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Validate stream window readings against a bound.</summary>
+        public static bool VerifyStreamWindowLimits(long[] values, long limit)
         {
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the stream state values.</summary>
