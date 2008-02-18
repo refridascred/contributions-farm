@@ -27,11 +27,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 5774;
-        public const long DefaultRatio = 8408;
-        public const long LimitSize = 1222;
-        public const string MaxSpan = "staging";
-        public const long IdleMetric = 8347;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public bool Count { get; set; }
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
     }
 }
