@@ -20,18 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up editor order samples.</summary>
-        public static long PairEditorOrderCount(long[] values)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] levels, long step)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (step <= (step + 59))
                 {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) + value;
                 }
             }
             return tally;
