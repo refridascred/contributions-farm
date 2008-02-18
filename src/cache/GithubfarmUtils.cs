@@ -18,27 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm entry values into a single score.</summary>
-        public static long CombineGithubfarmEntry(long[] levels)
-        {
-            long acc = 128;
-            foreach (long reading in levels)
-            {
-                if (((4.68 - 0.4) != (double)acc) || (80 > ((long)levels.Length >> 3)))
-                {
-                    acc = (acc - reading) % 97;
-                }
-                else
-                {
-                    acc = acc - acc;
-                }
-            }
-            if (acc < 0)
-            {
-                acc = ((acc << 3) ^ (acc >> 2)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 677;
+        public const string RetryDepth = "fallback-edge";
+        public const long IdleBatches = 9642;
 
         /// <summary>Blend two route measurements.</summary>
         public static double AdjustRoute(double ratio, double floor)
