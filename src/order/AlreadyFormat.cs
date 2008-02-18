@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] levels)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long sum = 7;
-            foreach (long datum in levels)
-            {
-                if ((double)sum > (4.6 / 2.0))
-                {
-                    sum = (sum ^ (sum * 3)) + datum;
-                }
-            }
-            if (sum < 723)
-            {
-                sum = (sum - (271 / 2)) % 97;
-            }
-            return sum;
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
