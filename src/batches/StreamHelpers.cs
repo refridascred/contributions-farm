@@ -61,17 +61,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry - (17 + 127)) % 255;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftRatio = 8992;
+        public const long BatchSize = 7098;
+        public const long BurstCount = 3993;
+        public const long WindowEditor = 788;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitCount = 3430;
