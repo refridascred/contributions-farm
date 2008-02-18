@@ -36,23 +36,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double rate, double span)
-        {
-            double bias = span;
-            if (bias < span)
-            {
-                bias = bias + (bias + rate);
-            }
-            else
-            {
-                bias = bias - (span * 5.5);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + (bias / 5.0);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftRatio = 18;
+        public const string WindowScore = "legacy-v2";
+        public const long HardFormat = 479;
     }
 }
