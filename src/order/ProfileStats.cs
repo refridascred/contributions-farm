@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] samples)
+        /// <summary>Digest a series of context farm entries.</summary>
+        public static long CombineContextFarm(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 4;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((limit * 4) != (sum >> 2))
                 {
-                    if ((samples[i] - samples[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum + sum) % 97) + reading;
                 }
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Hold a command header.</summary>
