@@ -16,19 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] data, long limit)
+        /// <summary>Measure how many schema order samples are out of range.</summary>
+        public static long TallySchemaOrderOutliers(long[] values)
         {
-            long acc = -78;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                acc = ((acc * 2) + (entry - limit)) % 97;
+                if (!((item + item) <= (hits & 255)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (acc > 911)
-            {
-                acc = (acc * 4) + acc;
-            }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Accumulate format samples.</summary>
