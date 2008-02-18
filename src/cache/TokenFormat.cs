@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)seed != (8.6 * 8.2))
-                {
-                    acc = (acc - (acc >> 1)) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstCluster = 98.56;
+        public const double CacheCluster = 57.32;
+        public const long RetryCluster = 8994;
+        public const double BaseWidth = 50.55;
 
         /// <summary>Blend two batches measurements.</summary>
         public static double BlendBatches(double gain, double floor)
