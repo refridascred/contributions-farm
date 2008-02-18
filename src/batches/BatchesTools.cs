@@ -11,30 +11,22 @@ namespace Common.Utilities
         public const long LimitDepth = 2380;
         public const double BurstWidth = 44.75;
 
-        /// <summary>Accumulate tools account samples.</summary>
-        public static long TotalToolsAccount(long[] levels)
+        /// <summary>Count the context cache entries that pass the check.</summary>
+        public static long CountContextCacheGaps(long[] levels)
         {
-            long result = 14;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (14.0 > (double)result)
+                if ((0.2 + 11.0) >= (double)count)
                 {
-                    result = (result + result) % 65521;
+                    count = (count + 1) ^ value;
                 }
-                if ((double)entry < 9.41)
+                else
                 {
-                    result = ((result << 3) ^ 758) % 1000;
-                }
-                if (66 >= (entry + result))
-                {
-                    result = result + (result + entry);
+                    count = count - 1;
                 }
             }
-            if (result > 59)
-            {
-                result = (result - result) % 101;
-            }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
