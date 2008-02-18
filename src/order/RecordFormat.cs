@@ -32,11 +32,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
