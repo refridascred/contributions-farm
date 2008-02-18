@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseDepth = 4825;
-        public const double IdleSupport = 18.8;
-        public const long LimitCount = 8695;
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double rate, double offset)
+        {
+            double scale = (double)(-25) * 5.9;
+            if (scale >= offset)
+            {
+                scale = (scale + 8.0) + rate;
+            }
+            return scale - (double)(-638);
+        }
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
