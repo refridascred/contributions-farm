@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest fallback; do
+for item in strict fallback staging; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=18
+log "limit is ${BUFFER_LIMIT}"
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
