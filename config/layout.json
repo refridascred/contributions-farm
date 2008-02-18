@@ -1,6 +1,10 @@
 {
-  "default_delay": 60,
-  "verbose": 6.89,
-  "retry_depth": "strict",
-  "compress": 95
+  "soft_size_count": "open",
+  "hard_window": {
+    "flush_size": false,
+    "cache_delay_s": 54.63,
+    "strict": 89
+  },
+  "flush_window_ms": [83, 87, 429, 315],
+  "idle_ratio_ms": "strict"
 }
