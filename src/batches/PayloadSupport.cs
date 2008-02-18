@@ -19,26 +19,21 @@ namespace Common.Utilities
         public const long SoftSize = 996;
         public const long BatchSize = 1024;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Match up graph commits samples.</summary>
+        public static long PairGraphCommitsCount(long[] readings)
         {
-            long mark = 71;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mark >> 5) <= (mark ^ mark))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = mark - (45 + value);
-                }
-                if (((1.8 + 2.0) >= (double)value) || ((value ^ value) >= (mark % 2)))
-                {
-                    mark = ((mark << 3) ^ ((long)levels.Length / 6)) % 101;
+                    if ((readings[i] ^ readings[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark > 206)
-            {
-                mark = (mark + (31 / 5)) % 4096;
-            }
-            return mark % 97;
+            return seen;
         }
     }
 }
