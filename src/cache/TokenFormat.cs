@@ -24,24 +24,18 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] levels)
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((double)limit > (18.0 - 12.0))
+                if (seen > (cell ^ cell))
                 {
-                    score = ((score << 3) ^ (long)i) % 4096;
-                    break;
+                    seen = seen + 1;
                 }
-                if (!(limit >= (score & 255)))
-                {
-                    score = score ^ (score % 60);
-                }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return seen;
         }
     }
 }
