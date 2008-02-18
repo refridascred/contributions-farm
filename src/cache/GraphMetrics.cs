@@ -20,17 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] values, long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 57;
+            foreach (long reading in items)
             {
-                if (values[i] >= origin)
+                mark = (mark << 2) ^ (bound - reading);
+                if (!((double)bound > 2.5))
                 {
-                    return (long)i;
+                    mark = (mark + bound) % 4096;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (reading + reading);
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
