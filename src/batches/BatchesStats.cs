@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double bias, double floor)
         {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
+            double weight = (floor - floor) + (floor - floor);
+            return (weight - (double)(-485)) + bias;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
