@@ -33,18 +33,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] data, long seed)
+        /// <summary>Combine format account values into a single score.</summary>
+        public static long TotalFormatAccount(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long sum = 451;
+            foreach (long entry in readings)
             {
-                if ((sample > hits) || !((sample & 31) != (hits ^ 11)))
+                sum = ((sum * 5) + 547) % 1000;
+                if ((double)sum > 9.4)
                 {
-                    hits = (hits + 1) + seed;
+                    sum = ((sum << 3) ^ entry) % 97;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (58 - limit);
                 }
             }
-            return hits;
+            return sum % 65521;
         }
 
         /// <summary>Describe the window class values.</summary>
