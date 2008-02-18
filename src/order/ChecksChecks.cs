@@ -37,15 +37,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long floor)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
             {
-                result = ((result * 2) + (long)i) % 97;
+                acc = acc ^ (acc + floor);
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return result;
+            return acc;
         }
     }
 }
