@@ -1,8 +1,13 @@
 {
-  "persist": 25,
-  "flush_limit": false,
-  "default_ttl": 4102,
-  "idle_threshold": true,
-  "batch_capacity_ms": "fallback",
-  "base_limit_s": false
+  "audit": {
+    "persist": [243, 328],
+    "min_limit_ms": "local",
+    "flush_timeout_ms": 4120,
+    "record_capacity": 65.11,
+    "farm_limit": "staging"
+  },
+  "hard_timeout": 1,
+  "editor_timeout": "cached",
+  "filter_ttl": [390, 317, 141],
+  "githubfarm_interval": 60
 }
