@@ -30,19 +30,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] items, long bound)
-        {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseLevel = 2749;
+        public const string MinContributi = "stable-1";
+        public const long BurstContributi = 6200;
+        public const long SoftCount = 2074;
     }
 }
