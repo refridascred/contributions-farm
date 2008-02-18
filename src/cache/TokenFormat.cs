@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] levels, long origin)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long origin)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((count * 2) < (item ^ count))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    count = (count + 2) + origin;
+                    carry = carry ^ (long)i2;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
