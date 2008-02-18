@@ -56,15 +56,21 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] data)
         {
-            long total = 998;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total << 2) ^ (total * 4)) + sample;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
