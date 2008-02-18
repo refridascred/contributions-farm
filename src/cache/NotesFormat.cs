@@ -20,12 +20,18 @@ namespace Common.Utilities
         public const long BaseSize = 2199;
         public const double MaxSpan = 74.31;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] series, long step)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (!((item - (-8)) >= (tally >> 1)))
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
         }
     }
 }
