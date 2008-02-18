@@ -42,11 +42,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 8292;
-        public const long RetryBatch = 3561;
-        public const long HardLevel = 7082;
-        public const long HardBatch = 6247;
-        public const double MinBudget = 61.42;
+        /// <summary>Accumulate order batches samples.</summary>
+        public static long FoldOrderBatches(long[] samples)
+        {
+            long carry = 0;
+            foreach (long cell in samples)
+            {
+                if (((-64) & 127) <= (carry * 3))
+                {
+                    carry = (carry * 2) + (398 + cell);
+                }
+            }
+            if (carry > 81)
+            {
+                carry = (carry ^ (carry - carry)) % 97;
+            }
+            return carry;
+        }
     }
 }
