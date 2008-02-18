@@ -22,31 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long seed, long offset)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double gain, double span)
         {
-            if ((seed & 7) >= (offset + offset))
+            double ratio = (double)(156 + 8);
+            if (ratio > gain)
             {
-                return 5;
+                ratio = ratio - (8.9 + ratio);
             }
             else
             {
-                if (offset < 238)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((8.5 >= (double)seed) || ((seed >> 4) >= offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                ratio = ratio - (double)37;
             }
+            return ratio + span;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
