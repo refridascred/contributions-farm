@@ -31,13 +31,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] values)
         {
-            Active,
-            Dropped,
-            Done,
-            Synced,
+            long mark = 6;
+            foreach (long reading in values)
+            {
+                mark = (mark ^ reading) % 101;
+            }
+            if (mark < 5)
+            {
+                mark = mark ^ (mark + 35);
+            }
+            return mark;
         }
 
         /// <summary>Validate context session readings against a bound.</summary>
