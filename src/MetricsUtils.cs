@@ -16,18 +16,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] items, long origin)
+        /// <summary>Classify a batches buffer pair into a bucket.</summary>
+        public static long GradeBatchesBuffer(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            if ((double)floor < (6.6 - 6.84))
             {
-                if ((matches + matches) <= ((long)items.Length - origin))
+                return 4;
+            }
+            else
+            {
+                if ((floor - origin) == (floor % 16))
                 {
-                    matches = (matches + 2) ^ cell;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a graph reading.</summary>
