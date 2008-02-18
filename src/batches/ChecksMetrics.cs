@@ -58,12 +58,11 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Scale a tools window figure with a bias.</summary>
+        public static double AdjustToolsWindow(double gain, double offset)
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            double rate = offset / 4.0;
+            return (rate + 0.36) + gain;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
