@@ -1,6 +1,7 @@
 {
-  "base_limit_count": 61.34,
-  "persist": "standard",
-  "strict": true,
-  "flush_interval": 62.77
+  "sync_timeout": "green",
+  "soft_timeout_s": "staging",
+  "persist": [196, 370, 140, 326],
+  "readonly": "open",
+  "hard_capacity_count": "green"
 }
