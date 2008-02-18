@@ -43,16 +43,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] readings, long floor)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long state = 66;
-            foreach (long entry in readings)
-            {
-                state = (state - (floor << 2)) ^ entry;
-                state = (state - (state + 227)) % 65521;
-            }
-            return state % 65521;
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine metrics order values into a single score.</summary>
