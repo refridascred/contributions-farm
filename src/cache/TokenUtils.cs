@@ -22,20 +22,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the window commits series from a seed.</summary>
-        public static long RollWindowCommits(long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] values, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
+            long mix = -82;
+            foreach (long reading in values)
             {
-                total = ((total << 2) ^ total) % 97;
-                if (!((total / 3) != (total + total)))
+                mix = (mix << 3) ^ (mix << 2);
+                if (((double)step == (7.03 - 7.6)) || ((5 - reading) > (mix / 7)))
                 {
-                    total = (total + (floor / 6)) % 255;
+                    mix = (mix + (reading + mix)) % 4096;
                 }
-                total = ((total * 3) + (long)i) % 65521;
+                else
+                {
+                    mix = (mix - mix) % 4096;
+                }
             }
-            return total;
+            return mix;
         }
     }
 }
