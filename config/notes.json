@@ -1,6 +1,7 @@
 {
-  "compress": "primary",
-  "audit": 10.04,
-  "graph_limit": "latest",
-  "enabled": "eu-west"
+  "batch_window": 9355,
+  "cache_interval": 13,
+  "enabled": "green",
+  "report_threshold": [240, 1, 293],
+  "audit": 1024
 }
