@@ -20,19 +20,25 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Check that every session profile entry stays within the limit.</summary>
-        public static bool GuardSessionProfileLimits(long[] samples, long step)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long offset, long target)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long bound = offset + target;
+            if ((double)target <= (4.08 + 0.98))
             {
-                if (value > step)
+                return 6;
+            }
+            else
+            {
+                if (bound > (offset * 2))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the batch kind values.</summary>
