@@ -35,12 +35,23 @@ namespace Common.Utilities
             return ratio + (2.0 + bias);
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] series)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
+            long result = 5;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    result = ((result * 3) + (datum - result)) + (long)i;
+                    result = ((result * 2) + (datum << 1)) % 97;
+                }
+                if ((3.2 * 8.33) == (double)datum)
+                {
+                    result = ((result << 3) ^ (result / 6)) % 255;
+                }
+            }
+            return result;
         }
     }
 }
