@@ -34,21 +34,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] == offset)
                 {
-                    if ((items[i] ^ items[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
