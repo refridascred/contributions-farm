@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] series)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long seed, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = seed ^ target;
+            if ((target << 2) > target)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((double)delta == (double)target) || ((target + target) < (91 << 1)))
                 {
-                    if ((series[i] + series[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
