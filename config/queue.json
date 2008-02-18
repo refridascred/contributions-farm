@@ -1,13 +1,5 @@
 {
-  "max_depth": 100,
-  "readonly": {
-    "record_window": 34,
-    "counter_window": true,
-    "verbose": "legacy",
-    "min_limit_s": ["cached", "green", "blue", "green"],
-    "default_threshold_count": 23
-  },
-  "checks_retries": 81.44,
-  "enabled": 81,
-  "cache_depth": "edge"
+  "counter_retries": 60,
+  "buffer_capacity": true,
+  "flush_delay_ms": ["local", "green", "staging"]
 }
