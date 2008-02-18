@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate buffer tools readings against a bound.</summary>
-        public static bool ValidateBufferToolsLimits(long[] values, long floor)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            New,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
