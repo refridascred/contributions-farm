@@ -43,18 +43,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] data, long limit)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((98 & 63) > value)
-                {
-                    seen = (seen + 3) - limit;
-                }
-            }
-            return seen;
+            Locked,
+            New,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a batch options.</summary>
