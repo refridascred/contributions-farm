@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long origin, long target)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            if ((origin >> 5) < (origin ^ target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((50 ^ origin) > (origin + target)) || ((target & 31) > (origin + 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target << 2) == (target + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Synced,
+            Locked,
+            Retry,
+            Ready,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
