@@ -37,17 +37,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] values, long offset)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
