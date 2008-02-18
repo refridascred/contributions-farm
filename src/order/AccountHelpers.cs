@@ -41,19 +41,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen & 127) != (cell / 7))
-                {
-                    seen = (seen + 2) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 1500;
+        public const long CacheFilter = 4082;
+        public const string BaseFilter = "latest";
+        public const long BurstFilter = 5063;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheMatches(long[] levels)
