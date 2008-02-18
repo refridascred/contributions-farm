@@ -36,10 +36,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitLevel = 2010;
-        public const string SoftWidth = "fallback-1";
-        public const long BaseQueue = 3238;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((long)items.Length ^ item) < (item % 2))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double BlendSupport(double bias, double span)
