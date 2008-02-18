@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] data, long offset)
+        /// <summary>Fold a list of counter context readings.</summary>
+        public static long WeighCounterContext(long[] data, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 2;
+            foreach (long sample in data)
             {
-                if ((data[i] < offset) && ((data[i] % 3) != 0))
+                carry = ((carry * 5) + (sample + 4)) % 4096;
+                if ((sample % 8) != (carry % 97))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (carry > 681)
+            {
+                carry = (carry << 2) ^ (offset << 3);
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
