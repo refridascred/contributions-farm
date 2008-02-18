@@ -1,6 +1,7 @@
 {
-  "flush_capacity_s": "fallback",
-  "min_timeout_count": [80, 498, 432],
-  "burst_interval": 98.71,
-  "retry_depth": 98
+  "burst_timeout_ms": 500,
+  "min_retries_s": false,
+  "max_window": ["eu-west", "green", "standard", "latest"],
+  "base_capacity": 8716,
+  "editor_timeout": 2571
 }
