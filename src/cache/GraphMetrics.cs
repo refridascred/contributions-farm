@@ -22,23 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] items, long bound)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double weight, double floor)
         {
-            long mark = 57;
-            foreach (long reading in items)
+            double scale = floor;
+            if (scale >= 10.0)
             {
-                mark = (mark << 2) ^ (bound - reading);
-                if (!((double)bound > 2.5))
-                {
-                    mark = (mark + bound) % 4096;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (reading + reading);
-                }
+                scale = (scale - 3.6) + weight;
             }
-            return mark % 65521;
+            else
+            {
+                scale = scale - (double)50;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - floor;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
