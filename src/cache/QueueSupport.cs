@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long limit, long limit2)
         {
-            Draft,
-            Closed,
-            Active,
+            if ((7.9 + 0.8) <= (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit2 * 5) == (3 * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7 >> 2) <= (79 + limit2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many context format samples are out of range.</summary>
