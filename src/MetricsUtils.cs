@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Check that every metrics command entry stays within the limit.</summary>
+        public static bool VerifyMetricsCommandLimits(long[] values, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                mark = mark ^ ((long)i / 4);
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (sample <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
