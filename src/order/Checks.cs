@@ -45,18 +45,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] items)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] items)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (sample > (count ^ count))
+                if ((43 - datum) <= (hits - hits))
                 {
-                    count = count + 3;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count notes profile pairs that satisfy a relation.</summary>
