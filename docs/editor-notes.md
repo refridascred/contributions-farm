@@ -1,11 +1,14 @@
 # Editor notes
 
-Keep profile and graph names short and lowercase.
-The metrics module keeps cache values in sync with the already cache.
-Run the buffer check before changing any filter limits.
+Defaults for stream live in the config folder and can be overridden per environment.
+Each order is validated before it reaches the buffer queue.
+
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+The queue report groups every session by farm.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate buffer input early
-- Log every window change
-- Prefer schema defaults
+- Validate command input early
+- Log every session change
+- Document new payload fields
