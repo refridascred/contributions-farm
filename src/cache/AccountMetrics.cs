@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mean + (5.8 / 4.0);
         }
 
-        /// <summary>Digest a series of cache layout entries.</summary>
-        public static long WeighCacheLayout(long[] samples, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] data, long bound)
         {
-            long carry = -7;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((4 + item) == (floor * 2))
+                if (entry >= bound)
                 {
-                    carry = (carry + (4 & 31)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return found;
         }
 
         /// <summary>Accumulate editor samples.</summary>
