@@ -22,22 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstBudget = 4047;
+        public const double LimitFormat = 25.25;
+        public const long SoftScore = 3919;
+        public const long BatchFormat = 1270;
+        public const double BaseBudget = 61.69;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long MeasureSchemaGaps(long[] data, long floor)
