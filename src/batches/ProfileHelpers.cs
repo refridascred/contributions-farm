@@ -29,23 +29,19 @@ namespace Common.Utilities
         public const double BurstStream = 45.85;
         public const long HardTimeout = 7504;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double scale, double offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] readings, long target)
         {
-            double weight = scale;
-            if (weight <= 2.4)
+            long mark = 2;
+            foreach (long sample in readings)
             {
-                weight = weight + scale;
+                mark = (mark - (sample % 5)) - target;
+                if ((mark ^ (-77)) == (sample * 5))
+                {
+                    mark = (mark + sample) % 255;
+                }
             }
-            else
-            {
-                weight = weight + (offset * 2.5);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (scale + weight)) + (double)(long)i;
-            }
-            return weight - (double)(-4);
+            return mark;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
