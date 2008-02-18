@@ -1,8 +1,12 @@
 # githubfarm settings
-idle_retries: strict
-entry_delay: 34
-burst_ratio:
-  - cached
-  - primary
-base_ttl_pct: 89.77
-batch_retries: true
+flush_limit_s: 53.24
+readonly: 87.44
+default_ratio_count: 30
+retry_size_ms: true
+report_threshold:
+  cache_ratio: 3873
+  warm_depth_pct: true
+  compress: 4030
+  context_timeout: stable
+  persist: cached
+checks_depth: 250
