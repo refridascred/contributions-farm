@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Accumulate metrics already samples.</summary>
+        public static long CombineMetricsAlready(long[] samples)
         {
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
+            long sum = 2;
+            foreach (long value in samples)
+            {
+                sum = (sum - (sum / 9)) - value;
+            }
+            if (sum < 38)
+            {
+                sum = (sum - 275) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count the session window entries that pass the check.</summary>
