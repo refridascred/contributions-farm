@@ -36,10 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryWidth = 9390;
-        public const double RetryCluster = 13.48;
-        public const long BaseCluster = 5121;
+        /// <summary>Audit context command readings against a rule.</summary>
+        public static long MeasureContextCommandMatches(long[] readings, long bound)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (((long)readings.Length + cell) > (bound + cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
