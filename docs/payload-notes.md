@@ -1,14 +1,12 @@
 # Payload notes
 
-The already report groups every tools by checks.
-A graph that stays idle for too long is moved to the record list.
-
-Use layout settings to tune how often schema data is refreshed.
-A report that stays idle for too long is moved to the stats list.
-Keep checks and cluster names short and lowercase.
+When a context fails, the session handler retries a few times before giving up.
+Run the commits check before changing any checks limits.
+The order module keeps contributi values in sync with the metric cache.
 
 ## Guidelines
 
-- Log every entry change
-- Validate batches input early
-- Document new command fields
+- Prefer command defaults
+- Review payload limits each release
+- Log every stream change
+- Document new queue fields
