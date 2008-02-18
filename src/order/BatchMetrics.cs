@@ -24,18 +24,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] levels)
+        /// <summary>Rank buffer queue input into a small class.</summary>
+        public static long BucketBufferQueue(long seed, long origin)
         {
-            long carry = 946;
-            foreach (long item in levels)
+            if (!((origin + seed) < (origin - seed)))
             {
-                if (!((310 + 3) < (34 - item)))
+                return 4;
+            }
+            else
+            {
+                if (((double)origin >= (4.29 * 8.0)) || ((origin - origin) <= (seed >> 5)))
                 {
-                    carry = ((carry << 3) ^ (item + item)) % 101;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed / 6) <= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (51 >= origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
