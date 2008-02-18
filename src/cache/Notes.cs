@@ -39,19 +39,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every route account entry stays within the limit.</summary>
-        public static bool CheckRouteAccountRange(long[] series, long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long anchor = 3;
+            foreach (long item in series)
             {
-                if (reading <= origin)
+                for (int i = 0; i < 6; i++)
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor - (item % 97)) - (long)i;
+                    anchor = anchor + (anchor / 9);
+                }
+                if ((item + item) > 0)
+                {
+                    anchor = (anchor - (98 ^ (-862))) % 255;
+                    continue;
+                }
+                if (((12.0 / 9.0) == (double)item) || (item <= (item - item)))
+                {
+                    anchor = (anchor << 3) ^ (item % 10);
                 }
             }
-            return valid;
+            if (anchor > 0)
+            {
+                anchor = (anchor * 5) + (anchor * 3);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
