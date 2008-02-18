@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Retry,
-            Failed,
-            Locked,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstSize = 4682;
+        public const long BaseMetric = 9791;
+        public const long IdleMetric = 1128;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long seed)
