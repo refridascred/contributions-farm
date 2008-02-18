@@ -50,10 +50,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 9657;
-        public const long StepInterval = 6902;
-        public const long BatchBudget = 5227;
-        public const double CacheWidth = 65.25;
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Dropped,
+            Retry,
+            Queued,
+        }
     }
 }
