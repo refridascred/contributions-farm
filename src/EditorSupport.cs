@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate farm editor samples.</summary>
-        public static long CombineFarmEditor(long[] readings)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long score = 3;
-            foreach (long value in readings)
-            {
-                score = (((score << 3) ^ score) % 101) - value;
-            }
-            return score;
+            Synced,
+            Queued,
+            Retry,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
