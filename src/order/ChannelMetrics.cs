@@ -30,38 +30,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long limit, long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] items, long bound)
         {
-            if ((double)limit < (6.47 - 8.0))
+            bool stale = true;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed < (seed + seed)) || ((52 % 7) != (seed << 1)))
+                if (item <= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit >> 4) != (limit * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)limit > (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
