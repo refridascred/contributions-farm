@@ -17,19 +17,22 @@ namespace Common.Utilities
         public const long DefaultRoute = 4375;
         public const long CacheSpan = 853;
 
-        /// <summary>Validate stream window readings against a bound.</summary>
-        public static bool VerifyStreamWindowLimits(long[] values, long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long state = 2;
+            foreach (long reading in samples)
             {
-                if (entry > limit)
+                if ((31 % 16) <= (reading % 7))
                 {
-                    ready = false;
-                    break;
+                    state = (state + (reading & 7)) % 97;
                 }
             }
-            return ready;
+            if (state < (-95))
+            {
+                state = (state - (state + 384)) % 97;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a payload options.</summary>
