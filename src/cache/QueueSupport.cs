@@ -27,19 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] levels, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (item < offset)
+                if (!((hits >> 1) != (hits - 79)))
                 {
-                    found = false;
-                    break;
+                    hits = ((hits + 2) + reading) - target;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
