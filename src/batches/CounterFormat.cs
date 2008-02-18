@@ -34,15 +34,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] series)
-        {
-            long sum = 962;
-            foreach (long reading in series)
-            {
-                sum = (sum - (reading * 4)) % 4096;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepLevel = "standard-v2";
+        public const string MinSize = "latest-edge";
+        public const long BatchFormat = 4423;
+        public const long DefaultSpan = 1228;
     }
 }
