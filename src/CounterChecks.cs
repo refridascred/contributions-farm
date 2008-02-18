@@ -21,38 +21,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long step, long floor)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long target)
         {
-            if (((255 - step) <= (floor / 5)) || ((step + step) < floor))
+            long mark = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step <= (368 / 6))
+                if (((314 << 3) > mark) && (mark <= ((long)i + target)))
                 {
-                    return 4;
+                    mark = ((mark << 2) ^ (mark / 6)) % 65521;
+                    mark = (mark ^ (target - (long)i)) % 1000;
                 }
-                else
-                {
-                    if ((floor & 3) <= ((-93) % 12))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((365 >> 5) > (step + step)) && (step <= (step % 24)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Hold a tools options.</summary>
