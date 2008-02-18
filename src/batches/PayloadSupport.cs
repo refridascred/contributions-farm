@@ -37,19 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate payload filter readings against a bound.</summary>
-        public static bool CheckPayloadFilterBounds(long[] levels, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (value <= step)
+                if ((-550) > bound)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
