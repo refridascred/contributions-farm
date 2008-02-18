@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=480
+log "limit is ${RECORD_LIMIT}"
+
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-for item in staging eu-west strict; do
-    log "checking ${item}"
-done
