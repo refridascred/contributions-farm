@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Validate counter tools readings against a bound.</summary>
+        public static bool GuardCounterToolsRange(long[] levels, long target)
         {
-            Retry,
-            Synced,
-            Pending,
-            Idle,
-            Active,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
