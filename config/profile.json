@@ -1,7 +1,11 @@
 {
-  "min_size": true,
-  "flush_ratio_s": "cached",
-  "burst_ratio_count": 4876,
-  "profile_size": [417, 149],
-  "default_delay_count": [322, 116, 198, 326]
+  "layout_size": 1454,
+  "warm_ratio_pct": {
+    "base_retries_count": "primary",
+    "base_window": "green",
+    "base_size_s": false,
+    "support_timeout": "standard",
+    "poll_retries": 250
+  },
+  "audit": 250
 }
