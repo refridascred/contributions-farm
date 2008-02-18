@@ -41,18 +41,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] values, long seed)
+        /// <summary>Project the next checks channel value.</summary>
+        public static double AdjustChecksChannel(double scale, double floor)
         {
-            long mark = -1;
-            foreach (long value in values)
-            {
-                if (value < (value + 603))
-                {
-                    mark = ((mark + ((-149) ^ mark)) % 101) - seed;
-                }
-            }
-            return mark % 97;
+            double rate = floor - (scale * 19.0);
+            return rate - rate;
         }
 
         /// <summary>Define context limits and defaults.</summary>
