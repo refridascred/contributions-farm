@@ -50,17 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Validate entry notes readings against a bound.</summary>
+        public static bool GuardEntryNotesBounds(long[] readings, long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                mix = ((mix * 2) + (origin + origin)) % 65521;
-                mix = (mix << 2) ^ ((long)i * 4);
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (value >= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Audit token farm readings against a rule.</summary>
