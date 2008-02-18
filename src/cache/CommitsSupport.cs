@@ -36,16 +36,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Classify a context command pair into a bucket.</summary>
+        public static long BucketContextCommand(long origin, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
+            if (!(3 > (limit + limit)))
             {
-                result = (result - 953) % 255;
-                result = ((result * 3) + (long)i) % 101;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((double)limit <= (4.84 - 18.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a report header.</summary>
