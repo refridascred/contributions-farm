@@ -41,15 +41,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] items)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long mix = 82;
-            foreach (long item in items)
-            {
-                mix = ((mix - (mix - mix)) % 101) ^ item;
-            }
-            return mix;
+            public double Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
