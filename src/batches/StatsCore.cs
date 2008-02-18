@@ -19,22 +19,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] samples, long floor)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            long anchor = -70;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor - floor) < floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor + anchor) % 65521) - datum;
-                }
-                if ((double)floor >= (1.5 - 9.0))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
