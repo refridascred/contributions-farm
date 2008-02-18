@@ -40,22 +40,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] values)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double bias, double span)
         {
-            long mix = 2;
-            foreach (long entry in values)
+            double load = (double)(375 - 87);
+            if (load > load)
             {
-                if (!((entry + entry) < (mix ^ mix)))
-                {
-                    mix = mix ^ mix;
-                }
-                else
-                {
-                    mix = (mix ^ (mix + mix)) % 97;
-                }
+                load = (load + bias) - span;
             }
-            return mix;
+            return load - (load - bias);
         }
 
         /// <summary>Locate a queue reading by value.</summary>
