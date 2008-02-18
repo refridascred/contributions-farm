@@ -32,22 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Match up window already samples.</summary>
+        public static long MatchWindowAlreadyCount(long[] items)
         {
-            long score = 3;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry + 6) != (score >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score * 3) + (422 ^ entry);
+                    if ((items[i] ^ items[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > 212)
-            {
-                score = score + (score / 8);
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
