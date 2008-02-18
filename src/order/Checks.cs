@@ -32,39 +32,15 @@ namespace Common.Utilities
         public const double LimitBatch = 14.48;
         public const double HardBatch = 40.14;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long seed, long step)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            long bound = seed + step;
-            if ((seed - seed) >= seed)
+            long mix = 7;
+            foreach (long sample in readings)
             {
-                return 2;
+                mix = ((mix * 2) + (mix & 255)) + sample;
             }
-            else
-            {
-                if (bound <= (step >> 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed == (11.0 / 5.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((-6) * 5) > seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a metrics header.</summary>
