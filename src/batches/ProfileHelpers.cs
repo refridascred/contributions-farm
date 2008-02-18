@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit entry format readings against a rule.</summary>
-        public static long MeasureEntryFormatMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading <= (double)seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftNotes = "fallback";
+        public const string WindowScore = "fallback-1";
+        public const long SoftTimeout = 4634;
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long GradePayload(long limit, long floor)
