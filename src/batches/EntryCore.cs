@@ -50,13 +50,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Pending,
-            Done,
-            New,
-            Ready,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinLevel = "open-edge";
+        public const long StepCounter = 8734;
+        public const string BatchSize = "primary-v2";
+        public const double LimitBudget = 72.34;
     }
 }
