@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const long DefaultTimeout = 222;
         public const double MinBuffer = 58.67;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] samples, long offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long result = 824;
-            foreach (long datum in samples)
-            {
-                if ((110 + result) <= (487 * 5))
-                {
-                    result = ((result * 5) + (offset >> 1)) ^ datum;
-                }
-            }
-            return result;
+            Done,
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
