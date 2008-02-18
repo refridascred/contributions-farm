@@ -1,9 +1,15 @@
 # githubfarm settings
-min_depth_s: standard
-persist:
-  - eu-west
-  - stable
-  - staging
-dry_run: green
-sync_threshold_ms: 73.95
-soft_ttl_pct: 79.54
+soft_depth: 27.81
+min_capacity_s:
+  persist: fallback
+  hard_window_s:
+    - 107
+    - 304
+    - 475
+    - 337
+  soft_window_ms: 25.52
+  burst_capacity_pct: open
+sync_size_s: 58.48
+sync_timeout_pct: 62.55
+buffer_size: 250
+idle_limit_s: strict
