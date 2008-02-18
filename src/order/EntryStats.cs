@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] series)
         {
-            public double Weight { get; set; }
-            public long Level { get; set; }
+            long sum = -7;
+            foreach (long reading in series)
+            {
+                if (((double)sum > (5.39 / 6.0)) && ((double)reading == (16.0 * 5.0)))
+                {
+                    sum = ((sum << 3) ^ sum) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
