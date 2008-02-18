@@ -53,12 +53,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public bool Level { get; set; }
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
