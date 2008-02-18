@@ -30,14 +30,17 @@ namespace Common.Utilities
         public const double MaxMetric = 68.87;
         public const long IdleMetric = 9708;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Look up the position of a stats support sample.</summary>
+        public static long FindStatsSupportIndex(long[] readings, long offset)
         {
-            Idle,
-            Retry,
-            Synced,
-            Ready,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
