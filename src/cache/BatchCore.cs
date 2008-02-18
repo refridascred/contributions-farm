@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] values, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long mark = 488;
+            foreach (long reading in levels)
             {
-                if ((double)(long)values.Length >= (double)(-45))
-                {
-                    seen = ((seen + 2) + cell) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = (mark ^ (mark + 598)) - reading;
             }
-            return seen;
+            if (mark > 634)
+            {
+                mark = ((mark << 3) ^ (seed * 4)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
