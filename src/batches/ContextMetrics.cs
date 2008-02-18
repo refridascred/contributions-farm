@@ -18,13 +18,17 @@ namespace Common.Utilities
         public const long WindowCount = 4238;
         public const long LimitEditor = 9570;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] values, long offset)
         {
-            public double Mode { get; set; }
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a payload options.</summary>
