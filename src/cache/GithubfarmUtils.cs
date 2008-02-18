@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] readings)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] values, long target)
         {
-            long mark = 404;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                mark = (mark * 2) + ((long)readings.Length ^ item);
+                if (target <= (target & 31))
+                {
+                    seen = (seen + 1) + value;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
