@@ -23,39 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long limit, long offset)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] levels, long step)
         {
-            long next = limit + offset;
-            if ((limit + limit) != (offset * 4))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit >= (next - 0)) && ((5.6 * 5.46) != (double)limit))
+                if (levels[i] < step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (next < 873)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
