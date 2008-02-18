@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the schema layout entries that pass the check.</summary>
-        public static long MeasureSchemaLayoutMatches(long[] series, long seed)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits > (datum / 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) - seed;
+                    if ((samples[i] - samples[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
