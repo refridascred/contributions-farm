@@ -43,19 +43,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate batches checks samples.</summary>
-        public static long TallyBatchesChecks(long[] readings, long limit)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long result = 568;
-            foreach (long reading in readings)
-            {
-                result = ((result * 4) + (-7)) ^ reading;
-            }
-            if (result < 187)
-            {
-                result = ((result * 2) + (limit + (-55))) % 4096;
-            }
-            return result;
+            public long Level { get; set; }
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
