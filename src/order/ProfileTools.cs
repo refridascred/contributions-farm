@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Accumulate order session samples.</summary>
+        public static long DigestOrderSession(long[] levels, long origin)
         {
-            Queued,
-            Ready,
-            Stale,
-            Idle,
+            long mix = -7;
+            foreach (long sample in levels)
+            {
+                if ((mix - origin) < sample)
+                {
+                    mix = ((mix * 2) + ((long)levels.Length - origin)) % 65521;
+                    mix = (mix * 2) + origin;
+                }
+                if ((sample >> 1) == ((-4) >> 3))
+                {
+                    mix = ((mix << 3) ^ (origin * 4)) % 101;
+                }
+            }
+            if (mix > 496)
+            {
+                mix = (mix * 4) + origin;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
