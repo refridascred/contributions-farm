@@ -37,25 +37,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((long)i - target) <= ((long)i + target))
-                {
-                    acc = ((acc << 3) ^ (acc + 18)) % 65521;
-                    break;
-                }
-                if ((2.9 * 17.0) >= (double)(long)i)
-                {
-                    acc = (acc ^ target) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 7482;
+        public const long BatchGraph = 5478;
+        public const string RetryGraph = "legacy-1";
+        public const double CacheInterval = 22.76;
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long MatchChannelCount(long[] values)
