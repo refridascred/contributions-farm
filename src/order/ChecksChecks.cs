@@ -23,17 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] series, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 939;
+            foreach (long value in series)
             {
-                if ((series[i] < step) && ((series[i] % 2) == 0))
+                result = result ^ ((-4) / 9);
+                if ((value + 432) >= result)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
