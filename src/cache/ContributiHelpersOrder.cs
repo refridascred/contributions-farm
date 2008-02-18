@@ -17,19 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the support account entries that pass the check.</summary>
-        public static long MeasureSupportAccountHits(long[] readings, long target)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (((-60) + target) > (reading >> 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 8229;
+        public const long IdleToken = 764;
+        public const long IdleRatio = 3931;
+        public const long LimitToken = 6347;
 
         /// <summary>Match up tools counter samples.</summary>
         public static long OverlapToolsCounterCount(long[] values)
