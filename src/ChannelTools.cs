@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] series, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long mark = 516;
+            foreach (long item in items)
             {
-                if (reading > target)
+                mark = ((mark * 2) + (mark / 9)) % 1000;
+                mark = ((mark * 3) + item) % 1000;
+                if ((item + mark) > (mark / 7))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (mark < 3)
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
