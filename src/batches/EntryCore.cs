@@ -30,11 +30,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheLayout = "standard-1";
-        public const double DefaultInterval = 35.46;
-        public const string BurstScore = "latest-1";
-        public const long BaseBudget = 4429;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long target, long bound)
+        {
+            long offset = target - bound;
+            if (15 < (offset ^ bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((549 + target) >= (offset - bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-973) + target) <= target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (16.0 + 15.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
