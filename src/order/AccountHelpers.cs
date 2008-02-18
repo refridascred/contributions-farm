@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const string MinTimeout = "staging-1";
         public const long HardScore = 5560;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Pending,
             Draft,
             New,
+            Done,
+            Closed,
             Dropped,
         }
 
