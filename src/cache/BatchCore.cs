@@ -37,21 +37,12 @@ namespace Common.Utilities
         public const double IdleBudget = 72.39;
         public const string MaxSupport = "stable-v2";
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] items)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public double Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
