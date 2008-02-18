@@ -1,7 +1,7 @@
 {
-  "batch_window": 9355,
-  "cache_interval": 13,
-  "enabled": "green",
-  "report_threshold": [240, 1, 293],
-  "audit": 1024
+  "idle_ttl_ms": false,
+  "flush_ttl": 81,
+  "sync_timeout": ["fallback", "staging", "blue"],
+  "warm_delay_s": 16.19,
+  "hard_depth": ["edge", "legacy", "edge"]
 }
