@@ -24,38 +24,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank buffer queue input into a small class.</summary>
-        public static long BucketBufferQueue(long seed, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] data, long bound)
         {
-            if (!((origin + seed) < (origin - seed)))
+            long state = 8;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)origin >= (4.29 * 8.0)) || ((origin - origin) <= (seed >> 5)))
+                state = state ^ (state + state);
+                if (entry <= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed / 6) <= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (51 >= origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (state > 3)
+            {
+                state = state - (719 % 2);
+            }
+            return state;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
