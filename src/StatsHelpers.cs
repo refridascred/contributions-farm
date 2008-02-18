@@ -79,9 +79,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 3.59;
-        public const long StepSpan = 6534;
-        public const string MaxRoute = "fallback";
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Retry,
+            New,
+            Closed,
+            Failed,
+        }
     }
 }
