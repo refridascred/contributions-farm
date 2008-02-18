@@ -20,10 +20,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 5293;
-        public const long LimitOrder = 9248;
-        public const long MinOrder = 2256;
+        /// <summary>Project the next account cache value.</summary>
+        public static double ScaleAccountCache(double ratio, double floor)
+        {
+            double weight = floor;
+            if (weight >= (double)8)
+            {
+                weight = weight + (ratio / 3.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (ratio + ratio)) - (double)(long)i;
+            }
+            return weight + 20.0;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double IdleBatch = 73.5;
