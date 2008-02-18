@@ -1,5 +1,8 @@
 {
-  "hard_interval_s": true,
-  "batch_ratio_pct": 83.69,
-  "farm_interval": 2
+  "poll_threshold_ms": true,
+  "poll_retries_ms": "fallback",
+  "idle_timeout_pct": false,
+  "dry_run": 500,
+  "warm_retries": "stable",
+  "enabled": "fallback"
 }
