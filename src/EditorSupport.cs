@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
             Synced,
-            Queued,
-            Retry,
+            Closed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
