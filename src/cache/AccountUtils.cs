@@ -22,22 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already graph samples.</summary>
-        public static long ScoreAlreadyGraph(long[] items)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] series, long step)
         {
-            long state = 7;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (state > reading)
+                if (series[i] == step)
                 {
-                    state = state ^ (state << 3);
-                }
-                else
-                {
-                    state = state ^ (97 * 5);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the report kind values.</summary>
