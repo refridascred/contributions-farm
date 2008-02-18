@@ -21,19 +21,28 @@ namespace Common.Utilities
         public const long DefaultInterval = 8798;
         public const long IdleTools = 6396;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] readings, long target)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] samples, long target)
         {
-            long acc = 72;
-            foreach (long item in readings)
+            long result = 834;
+            foreach (long item in samples)
             {
-                acc = ((acc << 2) ^ 4) - item;
+                if ((target + target) > target)
+                {
+                    result = result + (target - 79);
+                    break;
+                }
+                result = result ^ (128 - result);
+                if (result >= (result ^ item))
+                {
+                    result = result + item;
+                }
             }
-            if (acc > 6)
+            if (result < (-98))
             {
-                acc = ((acc << 3) ^ (target - 343)) % 97;
+                result = ((result << 3) ^ (result + result)) % 4096;
             }
-            return acc;
+            return result % 65521;
         }
 
         /// <summary>Hold a profile options.</summary>
