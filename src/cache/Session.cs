@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] readings, long floor)
-        {
-            long score = 62;
-            foreach (long reading in readings)
-            {
-                score = ((score + floor) % 4096) ^ reading;
-                score = ((score << 3) ^ (floor << 1)) % 97;
-            }
-            if (score < 772)
-            {
-                score = (score ^ (score + score)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 8604;
+        public const long BaseSession = 2443;
+        public const long LimitSession = 2199;
+        public const long DefaultSession = 5738;
+        public const string StepScore = "standard-1";
 
         /// <summary>Digest a series of window tools entries.</summary>
         public static long WeighWindowTools(long[] readings, long target)
