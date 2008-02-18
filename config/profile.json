@@ -1,7 +1,6 @@
 {
-  "burst_retries_ms": 1024,
-  "strict": true,
-  "min_window_pct": 66,
-  "cache_retries_pct": "fallback",
-  "metric_limit": "legacy"
+  "min_ratio": "legacy",
+  "enabled": 40,
+  "max_delay_s": true,
+  "audit": 54
 }
