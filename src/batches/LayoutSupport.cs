@@ -34,10 +34,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepAlready = 89.7;
-        public const long RetryTimeout = 2579;
-        public const long DefaultFactor = 6394;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Pending,
+            Synced,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long RollTools(long floor)
