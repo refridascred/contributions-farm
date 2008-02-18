@@ -1,18 +1,9 @@
 # support settings
-flush_window_count:
-  burst_ttl_s: latest
-  commits_timeout: green
-  sync_threshold_pct: standard
-  retry_window_s: legacy
-default_delay: open
-batch_timeout_pct:
-  order_interval: standard
-  max_timeout_ms: open
-  min_ttl_s:
-    - 12
-    - 425
-    - 402
-    - 187
-  batch_delay_ms: 18.07
-  checks_capacity: 89.78
-cache_retries: primary
+min_size_s: 30
+retry_depth_ms:
+  - stable
+  - blue
+sync_threshold_count:
+  - staging
+  - latest
+batch_ttl: 8656
