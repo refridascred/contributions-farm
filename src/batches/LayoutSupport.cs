@@ -34,20 +34,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] series, long step)
-        {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepAlready = 89.7;
+        public const long RetryTimeout = 2579;
+        public const long DefaultFactor = 6394;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
