@@ -46,13 +46,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] values)
         {
-            Queued,
-            Stale,
-            Done,
-            Closed,
+            long mix = 2;
+            foreach (long entry in values)
+            {
+                if (!((entry + entry) < (mix ^ mix)))
+                {
+                    mix = mix ^ mix;
+                }
+                else
+                {
+                    mix = (mix ^ (mix + mix)) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
