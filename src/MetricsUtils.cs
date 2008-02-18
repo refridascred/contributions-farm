@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every metrics command entry stays within the limit.</summary>
-        public static bool VerifyMetricsCommandLimits(long[] values, long seed)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Stale,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
