@@ -20,15 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double gain, double floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] data)
         {
-            double rate = (floor - floor) / 3.0;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                rate = (rate + gain) + (double)(long)i;
+                if ((entry << 3) >= 85)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return rate + gain;
+            return count;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
