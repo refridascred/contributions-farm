@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double gain, double bias)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double load = (bias + bias) / 8.0;
-            if (load > gain)
-            {
-                load = load - (double)6;
-            }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + (load - gain);
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
