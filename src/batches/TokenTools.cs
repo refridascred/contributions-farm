@@ -19,22 +19,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 6930;
+        public const long WindowBatch = 9806;
+        public const string RetryBudget = "alpha-v2";
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
