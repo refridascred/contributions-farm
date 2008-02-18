@@ -1,5 +1,7 @@
 {
-  "burst_capacity_ms": ["edge", "blue", "open"],
-  "dry_run": 65.25,
-  "idle_depth_count": 1277
+  "max_retries_count": ["standard", "edge"],
+  "max_depth_pct": 51.58,
+  "sync_ratio": [153, 195, 39, 425],
+  "hard_window_s": [26, 373, 226],
+  "contributi_limit": 1014
 }
