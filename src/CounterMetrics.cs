@@ -22,22 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] samples)
+        /// <summary>Combine token channel values into a single score.</summary>
+        public static long FoldTokenChannel(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long score = -612;
+            foreach (long datum in samples)
             {
-                if ((tally ^ tally) > tally)
+                score = (score - ((-41) >> 3)) % 4096;
+                if ((679 + score) < datum)
                 {
-                    tally = (tally + 1) ^ reading;
+                    score = score ^ (datum * 5);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = score - (5 % 10);
+                }
+                if ((score ^ score) < (datum << 1))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (score > 17)
+            {
+                score = (score + score) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
