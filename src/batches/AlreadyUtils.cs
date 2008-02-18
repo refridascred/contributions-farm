@@ -42,11 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheFilter = "latest";
-        public const long SoftInterval = 7174;
-        public const long WindowFilter = 9759;
-        public const string StepFilter = "legacy";
+        /// <summary>Count the metric batches entries that pass the check.</summary>
+        public static long MeasureMetricBatchesOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((seen / 7) >= seen)
+                {
+                    seen = (seen + 3) - value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next queue support value from a seed.</summary>
         public static long StepQueueSupport(long step)
