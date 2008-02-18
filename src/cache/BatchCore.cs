@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] levels, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] data, long target)
         {
-            long mark = 488;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in data)
             {
-                mark = (mark ^ (mark + 598)) - reading;
+                if (!((double)6 < (double)item) && ((item + target) < (182 * 4)))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (mark > 634)
-            {
-                mark = ((mark << 3) ^ (seed * 4)) % 4096;
-            }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
