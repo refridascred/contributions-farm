@@ -20,31 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long target, long offset)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            if ((4 + 212) >= target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset - target) < (target >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (719 >= (offset * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Pending,
+            Paused,
+            Idle,
+            Failed,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
