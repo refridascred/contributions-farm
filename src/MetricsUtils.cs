@@ -49,14 +49,21 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Compare every pair of session record readings.</summary>
+        public static long PairSessionRecordCount(long[] levels)
         {
-            Dropped,
-            Retry,
-            Idle,
-            Paused,
-            New,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
