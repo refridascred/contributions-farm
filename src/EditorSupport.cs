@@ -15,12 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public long Score { get; set; }
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
