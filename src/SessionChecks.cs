@@ -19,17 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] items, long floor)
+        /// <summary>Validate editor contributi readings against a bound.</summary>
+        public static bool CheckEditorContributiLimits(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if ((items[i] >= floor) && ((items[i] % 2) != 0))
+                if (entry > origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
