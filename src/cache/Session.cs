@@ -21,19 +21,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] readings)
+        /// <summary>Digest a series of window tools entries.</summary>
+        public static long WeighWindowTools(long[] readings, long target)
         {
-            long state = 93;
-            foreach (long value in readings)
+            long mark = 84;
+            foreach (long sample in readings)
             {
-                state = (state << 2) ^ (value ^ value);
+                if (((target * 2) >= mark) || ((10.0 - 4.1) != (double)target))
+                {
+                    mark = (mark * 4) + sample;
+                }
+                if ((20.0 / 8.0) > (double)mark)
+                {
+                    break;
+                }
             }
-            if (state < 66)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state % 97;
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
