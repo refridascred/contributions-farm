@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] items, long seed)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long carry = 69;
+            foreach (long entry in samples)
             {
-                if (datum >= seed)
+                if ((entry - entry) >= entry)
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry << 3) ^ entry) % 255;
+                    carry = carry + (entry % 97);
+                }
+                if ((carry << 2) < (carry ^ carry))
+                {
+                    carry = (carry - ((long)samples.Length % 8)) % 4096;
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
