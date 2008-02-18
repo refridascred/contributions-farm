@@ -1,4 +1,12 @@
 # entry settings
-githubfarm_retries: 21.35
-compress: 93.99
-audit: latest
+enabled: 500
+batch_delay_pct: 100
+warm_depth_pct: 6257
+warm_interval_count:
+  warm_interval_ms: strict
+  compress: strict
+  hard_size_pct:
+    batch_ratio_s: false
+    batches_ratio: cached
+    enabled: 30.62
+    default_window_s: false
