@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long step, long limit)
         {
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
+            long step2 = step + limit;
+            if (((step2 - limit) < ((-4) & 255)) || ((limit - limit) <= step2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + limit) >= (step2 ^ step2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((limit - step2) >= (step + 279)) || ((step2 * 3) < (step2 + 882)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)(-377) != (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema options.</summary>
