@@ -1,16 +1,10 @@
 # support settings
-soft_capacity:
-  readonly: staging
-  retry_ttl_count: true
-  metrics_timeout:
-    - cached
-    - local
-    - blue
-  warm_timeout_pct:
-    - latest
-    - eu-west
-    - green
-soft_capacity_pct: true
-burst_timeout: open
-hard_timeout_ms: primary
-window_ratio: 2190
+poll_interval: false
+report_ttl: 42
+notes_window: 27.19
+warm_limit: standard
+max_retries:
+  soft_ttl_count: cached
+  default_capacity_ms: 6716
+  metric_timeout: true
+editor_interval: standard
