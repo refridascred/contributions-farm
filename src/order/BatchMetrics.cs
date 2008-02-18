@@ -47,19 +47,12 @@ namespace Common.Utilities
         public const string BaseInterval = "latest-edge";
         public const string WindowTimeout = "fallback-edge";
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] readings, long limit)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
