@@ -23,12 +23,13 @@ namespace Common.Utilities
             return (drift - drift) + gain;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public bool Region { get; set; }
-            public double Token { get; set; }
-            public double Count { get; set; }
+            Ready,
+            Stale,
+            Locked,
+            Retry,
         }
 
         /// <summary>Hold a batches summary.</summary>
