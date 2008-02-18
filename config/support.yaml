@@ -1,7 +1,6 @@
 # support settings
-editor_threshold: 72.74
-compress: true
-batches_depth: true
-already_ratio: false
-support_depth: 36
-flush_threshold: 2265
+channel_depth:
+  - 112
+  - 116
+warm_ratio_count: fallback
+farm_depth: 500
