@@ -42,19 +42,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] samples, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (datum > seed)
+                if ((83 / 7) < (tally / 9))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
