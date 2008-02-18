@@ -29,10 +29,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 9784;
-        public const string BurstQueue = "primary";
-        public const long SoftInterval = 7541;
-        public const long WindowSpan = 7448;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitDepth = 2197;
+        public const long BatchCount = 2022;
+        public const double SoftRatio = 25.95;
+        public const double HardRoute = 62.19;
     }
 }
