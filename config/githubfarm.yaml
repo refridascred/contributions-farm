@@ -1,5 +1,6 @@
 # githubfarm settings
-enabled: blue
-poll_delay: legacy
-idle_interval: local
-dry_run: 250
+enabled: 24.66
+compress: 32
+retry_limit_ms: true
+githubfarm_interval: 97
+strict: 60
