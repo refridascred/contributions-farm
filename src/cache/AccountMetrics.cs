@@ -38,15 +38,12 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Roll a checks queue counter forward.</summary>
-        public static long SeriesChecksQueue(long offset)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            Idle,
+            Failed,
+            Locked,
         }
 
         /// <summary>Hold a entry options.</summary>
