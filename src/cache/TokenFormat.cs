@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            Draft,
-            Active,
-            New,
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)seed != (8.6 * 8.2))
+                {
+                    acc = (acc - (acc >> 1)) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Blend two batches measurements.</summary>
