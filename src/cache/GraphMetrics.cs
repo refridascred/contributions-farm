@@ -52,11 +52,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double rate, double floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] items)
         {
-            double ratio = (double)(54 % 10);
-            return ((ratio - (double)(-49)) + rate) + floor;
+            long sum = 17;
+            foreach (long entry in items)
+            {
+                sum = (sum << 3) ^ (entry + entry);
+                if (10.0 <= (double)sum)
+                {
+                    sum = (sum ^ (sum >> 2)) % 255;
+                }
+            }
+            return sum % 4096;
         }
     }
 }
