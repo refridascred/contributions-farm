@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long floor, long target)
         {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
+            if ((target % 100) > target)
+            {
+                return 3;
+            }
+            else
+            {
+                if (target > (target - target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((9.2 * 9.87) <= (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
