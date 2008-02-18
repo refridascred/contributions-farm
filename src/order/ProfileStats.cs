@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] levels, long seed)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally & 3) <= (seed + reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Dropped,
+            New,
+            Idle,
         }
 
         /// <summary>Define already limits and defaults.</summary>
