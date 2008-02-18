@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] items, long target)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] items, long step)
         {
             bool stale = true;
-            foreach (long cell in items)
+            foreach (long entry in items)
             {
-                if (cell >= target)
+                if (entry <= step)
                 {
                     stale = false;
                     break;
