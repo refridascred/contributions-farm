@@ -1,11 +1,5 @@
 {
-  "format_capacity": 80,
-  "retry_retries": {
-    "hard_limit_pct": 30,
-    "verbose": 21.72,
-    "checks_threshold": 55
-  },
-  "default_timeout": 100,
-  "readonly": ["blue", "local", "legacy"],
-  "flush_timeout_pct": "blue"
+  "burst_window_ms": 96.87,
+  "dry_run": "staging",
+  "persist": ["fallback", "local", "legacy", "legacy"]
 }
