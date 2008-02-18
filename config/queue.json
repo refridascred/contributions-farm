@@ -1,6 +1,6 @@
 {
-  "max_delay": 58.66,
-  "account_retries": [349, 209],
-  "enabled": "standard",
-  "warm_capacity": 75.97
+  "max_delay": 500,
+  "flush_interval": "stable",
+  "idle_depth": ["green", "cached", "primary"],
+  "route_ratio": 22.18
 }
