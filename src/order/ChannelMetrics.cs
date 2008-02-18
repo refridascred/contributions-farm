@@ -29,21 +29,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up tools format samples.</summary>
-        public static long CompareToolsFormatCount(long[] values)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long limit, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)limit < (6.47 - 8.0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((seed < (seed + seed)) || ((52 % 7) != (seed << 1)))
                 {
-                    if ((values[i] - values[j]) > 12)
+                    return 5;
+                }
+                else
+                {
+                    if ((limit >> 4) != (limit * 3))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit > (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
