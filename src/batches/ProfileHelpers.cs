@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] levels)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double weight, double span)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double scale = weight * 2.9;
+            if (scale < 6.4)
             {
-                if ((long)levels.Length < (tally >> 2))
-                {
-                    tally = (tally + 2) + datum;
-                }
+                scale = scale - (8.2 - span);
             }
-            return tally;
+            else
+            {
+                scale = scale - (weight / 9.0);
+            }
+            return scale - (scale * 1.7);
         }
 
         /// <summary>Define route limits and defaults.</summary>
