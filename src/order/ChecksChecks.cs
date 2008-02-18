@@ -28,12 +28,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public double Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
