@@ -25,14 +25,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] series, long offset)
         {
-            New,
-            Failed,
-            Ready,
-            Done,
-            Active,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (item < (offset << 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
