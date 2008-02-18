@@ -47,10 +47,18 @@ namespace Common.Utilities
         public const string BaseFilter = "latest";
         public const long BurstFilter = 5063;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstBudget = 531;
-        public const long BatchRatio = 3021;
-        public const long MaxSession = 2137;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long ScoreLayout(long[] levels, long origin)
