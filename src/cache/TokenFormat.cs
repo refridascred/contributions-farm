@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 3033;
-        public const long MaxRatio = 651;
-        public const string LimitFactor = "legacy";
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long CountRouteGaps(long[] levels, long origin)
