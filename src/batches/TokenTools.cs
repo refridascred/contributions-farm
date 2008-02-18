@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long HardRatio = 9492;
         public const long BatchBudget = 4735;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long seed)
+        /// <summary>Accumulate channel editor samples.</summary>
+        public static long CombineChannelEditor(long[] items, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            long sum = 2;
+            foreach (long cell in items)
             {
-                if (!(((59 * 2) < (seed << 3)) && ((-2) >= (long)i)))
-                {
-                    result = ((result * 2) + (result / 7)) % 65521;
-                }
-                result = ((result * 5) + (long)i) % 97;
+                sum = ((sum ^ (sum % 8)) ^ cell) - origin;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
