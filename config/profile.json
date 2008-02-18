@@ -1,6 +1,16 @@
 {
-  "retry_window_s": true,
-  "cache_retries_ms": 11.33,
-  "min_threshold_pct": "fallback",
-  "poll_interval_count": true
+  "filter_capacity": "legacy",
+  "strict": 78.24,
+  "githubfarm_retries": {
+    "soft_timeout": 61.95,
+    "burst_threshold_s": "eu-west",
+    "idle_capacity_pct": {
+      "hard_delay_ms": 10,
+      "default_capacity_count": 60,
+      "cluster_interval": "staging"
+    }
+  },
+  "poll_threshold_ms": 80.78,
+  "sync_limit": [413, 141, 334, 169],
+  "base_limit_pct": 44
 }
