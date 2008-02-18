@@ -84,17 +84,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] readings, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 9;
+            foreach (long cell in items)
             {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (acc & 127)) + cell;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
