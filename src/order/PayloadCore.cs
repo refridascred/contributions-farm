@@ -29,11 +29,14 @@ namespace Common.Utilities
             return scale + bias2;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardCount = 4845;
-        public const long StepSize = 7975;
-        public const string LimitContributi = "legacy-1";
-        public const long WindowContributi = 976;
-        public const double LimitInterval = 49.38;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Idle,
+            Draft,
+            Failed,
+            Paused,
+            Synced,
+        }
     }
 }
