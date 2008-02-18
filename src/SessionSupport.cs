@@ -22,14 +22,13 @@ namespace Common.Utilities
         public const long RetrySize = 4613;
         public const long DefaultRatio = 4220;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Paused,
-            Ready,
-            New,
-            Idle,
-            Queued,
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public double Level { get; set; }
         }
     }
 }
