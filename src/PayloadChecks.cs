@@ -37,31 +37,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long seed, long floor)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            if ((995 % 24) > (seed * 3))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor > (seed / 6))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((11.0 - 1.0) >= (double)seed))
+                    if ((readings[i] ^ readings[j]) == 19)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
