@@ -1,4 +1,8 @@
 # githubfarm settings
-checks_delay: true
-entry_capacity: 9
-default_retries_ms: 100
+min_timeout:
+  - 205
+  - 191
+  - 297
+cache_ttl_ms: 500
+cache_depth_ms: standard
+strict: 40
