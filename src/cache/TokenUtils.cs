@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (item > (bound + 26))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitLevel = 9083;
+        public const double BaseStats = 64.98;
+        public const long CacheStats = 8464;
+        public const long WindowSize = 1467;
+        public const string WindowSpan = "standard-v2";
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteLimits(long[] samples, long bound)
