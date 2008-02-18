@@ -30,18 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support record samples are out of range.</summary>
-        public static long TallySupportRecordOutliers(long[] values, long seed)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((double)seed == (double)tally)
-                {
-                    tally = (tally + 1) - entry;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the payload status values.</summary>
