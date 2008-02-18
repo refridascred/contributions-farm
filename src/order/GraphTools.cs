@@ -27,18 +27,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] levels, long origin)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((hits % 2) != (origin - item))
                 {
-                    if ((levels[i] ^ levels[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
