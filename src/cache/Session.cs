@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const long BaseMetric = 9791;
         public const long IdleMetric = 1128;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!(((long)i - acc) < seed))
-                {
-                    acc = acc ^ (acc & 63);
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitFactor = "alpha-v2";
+        public const long MinReport = 7462;
+        public const double MaxReport = 31.79;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long RollReport(long target)
