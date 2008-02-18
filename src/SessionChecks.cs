@@ -23,13 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
+            Retry,
+            Pending,
+            Synced,
+            Draft,
+            Locked,
         }
 
         /// <summary>Define report limits and defaults.</summary>
