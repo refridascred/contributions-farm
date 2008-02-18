@@ -1,8 +1,9 @@
-id,count,owner,token,score
-1,746,617,877,245
-2,71.32,82.38,38.71,legacy
-3,562,768,legacy,primary
-4,local,110,867,65.98
-5,98.24,826,332,564
-6,16.14,local,805,eu-west
-7,74.45,strict,668,eu-west
+id,weight,token,rank,region
+1,green,staging,19.42,fallback
+2,standard,71.89,eu-west,strict
+3,local,21.29,525,196
+4,10.65,181,legacy,legacy
+5,7.74,823,stable,708
+6,527,stable,34.08,27.52
+7,staging,558,34.7,666
+8,primary,394,edge,47
