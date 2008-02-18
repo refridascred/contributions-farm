@@ -59,21 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up stats context samples.</summary>
-        public static long PairStatsContextCount(long[] samples)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 30;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                sum = ((sum * 4) + (value << 3)) % 1000;
+                if (sum > (sum + sum))
                 {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum * 3) + (value + 46)) % 1000;
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
