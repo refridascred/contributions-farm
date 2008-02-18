@@ -68,10 +68,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 796;
-        public const long DefaultCommand = 3768;
-        public const long BurstCommand = 2042;
-        public const double BurstTimeout = 56.5;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total << 3) ^ seed;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
