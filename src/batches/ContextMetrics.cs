@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] levels, long limit)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardRatio = 360;
+        public const long BaseTimeout = 763;
+        public const double BatchContext = 6.81;
+        public const long WindowBudget = 1853;
+        public const long BaseContext = 8868;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool GuardStatsLimits(long[] data, long origin)
