@@ -1,23 +1,7 @@
 {
-  "metrics_ratio": 94.89,
-  "hard_interval": false,
-  "stats_window": {
-    "idle_limit": 8.71,
-    "base_retries_s": 84.66,
-    "persist": 60.63,
-    "batch_retries_s": 37.17,
-    "base_timeout": {
-      "flush_interval": true,
-      "poll_capacity_count": "eu-west",
-      "max_size_ms": 250
-    },
-    "min_limit_ms": {
-      "soft_retries_ms": "primary",
-      "min_interval_pct": 11,
-      "base_window_s": "open",
-      "strict": 1852,
-      "compress": 54.68,
-      "enabled": "strict"
-    }
-  }
+  "idle_interval_count": true,
+  "retry_threshold_count": "eu-west",
+  "retry_window_ms": 55.31,
+  "max_ttl_count": "latest",
+  "min_capacity": "stable"
 }
