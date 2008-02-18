@@ -20,18 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the session window entries that pass the check.</summary>
-        public static long MeasureSessionWindowHits(long[] data)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)datum < (double)tally) && (8.92 <= (double)tally))
+                if ((items[i] < target) && ((items[i] % 5) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
