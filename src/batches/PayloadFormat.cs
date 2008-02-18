@@ -40,18 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] samples)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((7.6 * 9.7) >= (double)reading) || ((reading % 64) >= (reading << 1)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the cache level values.</summary>
