@@ -1,18 +1,34 @@
 # githubfarm settings
+session_retries: blue
+burst_delay_count: eu-west
 dry_run:
-  - 377
-  - 16
-flush_retries_pct:
-  verbose:
+  - 483
+  - 424
+warm_threshold: true
+batch_timeout_ms:
+  - cached
+  - eu-west
+  - local
+support_size:
+  default_delay_ms:
+    - staging
+    - green
     - stable
-    - stable
-  format_limit: stable
-  counter_depth: strict
-  retry_delay_ms: green
-  idle_size_ms:
-    - 160
-    - 196
-  warm_depth: 9
-max_delay_ms: 78
-sync_ttl_s: 96.31
-default_depth: 63.3
+    - local
+  strict: eu-west
+  hard_depth_s: 3175
+  sync_limit: 98.03
+  max_interval:
+    poll_delay_count: open
+    enabled: 100
+    account_delay:
+      - 305
+      - 318
+    notes_capacity: 30
+    compress:
+      - 205
+      - 170
+      - 329
+      - 209
+    warm_limit_pct: primary
+  batch_size_ms: false
