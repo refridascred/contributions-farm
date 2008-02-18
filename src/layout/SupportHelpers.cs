@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] samples)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public bool Score { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum < (2.82 + 0.19))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a format record.</summary>
