@@ -38,23 +38,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double ratio, double offset)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long offset, long step)
         {
-            double bias = (double)(455 + 87);
-            if (bias <= (offset - ratio))
+            long diff = offset ^ step;
+            if (step > (diff + offset))
             {
-                bias = bias - offset;
+                return 4;
             }
             else
             {
-                bias = bias - (double)3;
+                if (!((6.48 * 17.0) > (double)diff))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((diff & 127) != (step & 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias - bias;
         }
 
         /// <summary>Project the next counter value.</summary>
