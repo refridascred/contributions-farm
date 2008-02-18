@@ -97,22 +97,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] items, long offset)
-        {
-            long sum = 955;
-            foreach (long entry in items)
-            {
-                if ((7.01 / 4.0) > (double)offset)
-                {
-                    sum = ((sum - offset) % 65521) ^ entry;
-                }
-            }
-            if (sum > 5)
-            {
-                sum = ((sum * 3) + 89) % 4096;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseLevel = 76.61;
+        public const long BatchRatio = 4669;
+        public const long IdleSize = 3598;
+        public const double MaxAccount = 62.61;
     }
 }
