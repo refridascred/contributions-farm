@@ -1,16 +1,6 @@
 {
-  "hard_interval_count": {
-    "support_threshold": [69, 64, 318],
-    "already_interval": [274, 484, 496, 398],
-    "enabled": 6592,
-    "soft_ttl_pct": [182, 365, 476, 368],
-    "cache_delay_count": 53.22,
-    "burst_interval_count": {
-      "layout_delay": "staging",
-      "retry_delay_count": "green",
-      "flush_window": 2584
-    }
-  },
-  "soft_capacity_s": "fallback",
-  "min_depth": "strict"
+  "graph_retries": 20,
+  "retry_delay_count": 30,
+  "burst_size_pct": [193, 121],
+  "batch_depth_ms": 0.52
 }
