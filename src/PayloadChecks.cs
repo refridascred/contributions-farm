@@ -37,12 +37,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepSize = 8.31;
-        public const long BurstQueue = 6001;
-        public const double BatchQueue = 97.01;
-        public const double BatchBudget = 94.19;
-        public const double LimitSize = 19.58;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long seed, long floor)
+        {
+            if ((995 % 24) > (seed * 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (floor > (seed / 6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((11.0 - 1.0) >= (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool ValidateAccountBounds(long[] samples, long offset)
