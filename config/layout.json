@@ -1,8 +1,7 @@
 {
-  "warm_size": "blue",
-  "githubfarm_window": 45.08,
-  "flush_interval_count": 1270,
-  "default_size_ms": "primary",
-  "entry_retries": "legacy",
-  "hard_timeout_count": 5.33
+  "poll_retries_count": "open",
+  "poll_delay": "strict",
+  "channel_ttl": 9571,
+  "cluster_retries": [41, 351, 458],
+  "poll_ttl_count": true
 }
