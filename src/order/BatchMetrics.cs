@@ -21,23 +21,13 @@ namespace Common.Utilities
         public const double IdleBudget = 89.83;
         public const long SoftSpan = 5935;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] data, long bound)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long state = 8;
-            foreach (long entry in data)
-            {
-                state = state ^ (state + state);
-                if (entry <= bound)
-                {
-                    break;
-                }
-            }
-            if (state > 3)
-            {
-                state = state - (719 % 2);
-            }
-            return state;
+            Active,
+            Dropped,
+            Done,
+            Synced,
         }
 
         /// <summary>Validate context session readings against a bound.</summary>
