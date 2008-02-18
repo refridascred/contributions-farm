@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long IdleInterval = 6300;
         public const long BurstCount = 2195;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long seed)
         {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!(((long)i - acc) < seed))
+                {
+                    acc = acc ^ (acc & 63);
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
