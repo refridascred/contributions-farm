@@ -49,11 +49,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinSize = 2178;
-        public const long WindowCluster = 3952;
-        public const string StepRatio = "latest-edge";
-        public const double BaseLevel = 44.16;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] items)
+        {
+            long mix = 82;
+            foreach (long item in items)
+            {
+                mix = ((mix - (mix - mix)) % 101) ^ item;
+            }
+            return mix;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchHits(long[] levels)
