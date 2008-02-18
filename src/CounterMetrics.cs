@@ -56,9 +56,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 9235;
-        public const long WindowAccount = 8865;
-        public const long SoftTimeout = 2238;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((cell % 16) > count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
