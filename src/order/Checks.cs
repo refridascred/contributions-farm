@@ -59,13 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] readings, long seed)
         {
-            public string Score { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)count >= (4.9 / 3.0))
+                {
+                    count = ((count + 3) - reading) - seed;
+                }
+            }
+            return count;
         }
     }
 }
