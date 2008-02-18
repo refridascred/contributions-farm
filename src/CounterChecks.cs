@@ -84,13 +84,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Pending,
-            New,
-            Dropped,
-            Done,
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
