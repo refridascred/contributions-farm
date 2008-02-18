@@ -1,12 +1,7 @@
 {
-  "cluster_ttl": {
-    "poll_capacity_ms": 66.08,
-    "layout_delay": 33.36,
-    "retry_delay_ms": 5537,
-    "record_retries": "blue",
-    "persist": false
-  },
-  "soft_size": "strict",
-  "buffer_limit": false,
-  "idle_depth": 91.22
+  "command_threshold": "strict",
+  "soft_limit_ms": ["cached", "standard"],
+  "poll_retries": "blue",
+  "readonly": 48.34,
+  "notes_ratio": 250
 }
