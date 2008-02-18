@@ -50,15 +50,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long total = 602;
-            foreach (long sample in readings)
-            {
-                total = ((total - (total + 761)) % 1000) ^ sample;
-            }
-            return total % 65521;
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the layout mode values.</summary>
