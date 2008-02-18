@@ -53,17 +53,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a route entry reading by value.</summary>
-        public static long FindRouteEntryIndex(long[] series, long limit)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Done,
+            Closed,
+            Draft,
+            New,
         }
     }
 }
