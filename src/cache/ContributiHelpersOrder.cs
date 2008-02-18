@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public bool Total { get; set; }
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
+            Locked,
+            Queued,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the session status values.</summary>
