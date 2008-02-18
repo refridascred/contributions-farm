@@ -56,15 +56,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] samples, long target)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long origin)
         {
-            long carry = 252;
-            foreach (long datum in samples)
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                carry = ((carry ^ (target % 7)) % 1000) ^ datum;
+                score = (score << 2) ^ (score & 15);
+                long offset = (origin + score) >> 1;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = ((score ^ (origin >> 5)) % 97) ^ (long)i2;
+                    score = score - (offset ^ (long)i);
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return carry % 65521;
+            return score;
         }
     }
 }
