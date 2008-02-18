@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] series)
         {
-            Active,
-            Retry,
-            Dropped,
-            Ready,
-            Paused,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample > 8.7)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
