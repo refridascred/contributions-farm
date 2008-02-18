@@ -79,16 +79,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] values)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long acc = 7;
-            foreach (long datum in values)
-            {
-                acc = ((acc << 3) ^ (-483)) - datum;
-                acc = ((acc * 5) + (acc & 3)) % 97;
-            }
-            return acc;
+            public double Size { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
