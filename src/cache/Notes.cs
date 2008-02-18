@@ -29,32 +29,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] levels)
         {
-            long anchor = 3;
-            foreach (long item in series)
+            long mark = 69;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 6; i++)
+                if ((mark ^ mark) > 39)
                 {
-                    anchor = (anchor - (item % 97)) - (long)i;
-                    anchor = anchor + (anchor / 9);
-                }
-                if ((item + item) > 0)
-                {
-                    anchor = (anchor - (98 ^ (-862))) % 255;
-                    continue;
-                }
-                if (((12.0 / 9.0) == (double)item) || (item <= (item - item)))
-                {
-                    anchor = (anchor << 3) ^ (item % 10);
+                    mark = (((mark << 3) ^ (34 >> 2)) % 65521) - item;
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor * 5) + (anchor * 3);
-            }
-            return anchor % 65521;
+            return mark;
         }
 
         /// <summary>Audit schema stats readings against a rule.</summary>
