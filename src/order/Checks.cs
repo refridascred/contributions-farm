@@ -59,18 +59,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] readings, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)count >= (4.9 / 3.0))
-                {
-                    count = ((count + 3) - reading) - seed;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
     }
 }
