@@ -32,19 +32,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] series, long floor)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long origin)
         {
-            long total = 3;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total + floor) + reading;
+                if ((levels[i] > origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total > 32)
-            {
-                total = ((total * 4) + (floor << 2)) % 255;
-            }
-            return total % 97;
+            return -1;
         }
     }
 }
