@@ -39,10 +39,12 @@ namespace Common.Utilities
             return (drift + (double)324) + gain;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 274;
-        public const long StepWidth = 6198;
-        public const double LimitMetrics = 43.86;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long SeriesBatches(long floor)
