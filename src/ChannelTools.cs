@@ -23,18 +23,9 @@ namespace Common.Utilities
         public const double DefaultCluster = 44.4;
         public const long LimitWidth = 9871;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((item * 3) != (item & 255))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxCount = 6350;
+        public const long SoftRatio = 883;
+        public const string SoftScore = "alpha";
     }
 }
