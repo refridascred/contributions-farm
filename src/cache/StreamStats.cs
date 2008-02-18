@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Roll a channel support counter forward.</summary>
+        public static long IterateChannelSupport(long floor)
         {
-            Queued,
-            Idle,
-            Pending,
-            Dropped,
-            Draft,
+            long score = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a filter record.</summary>
