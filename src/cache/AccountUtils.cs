@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            New,
+            Paused,
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
