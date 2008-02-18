@@ -37,18 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] readings, long floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + 7) == (cell - (-507)))
-                {
-                    seen = (seen + 2) - floor;
-                }
-            }
-            return seen;
+            Closed,
+            Active,
+            Idle,
+            Ready,
+            New,
         }
     }
 }
