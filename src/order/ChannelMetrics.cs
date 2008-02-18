@@ -25,18 +25,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] readings)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count & 7) != (count & 1))
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
+            Draft,
+            Stale,
+            New,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a profile record.</summary>
