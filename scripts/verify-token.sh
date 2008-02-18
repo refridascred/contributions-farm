@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy green fallback; do
+for item in primary stable; do
     log "checking ${item}"
 done
 
-TOKEN_LIMIT=234
-log "limit is ${TOKEN_LIMIT}"
+mode="${1:-strict}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
