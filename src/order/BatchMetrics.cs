@@ -58,11 +58,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 4072;
-        public const string BatchCommand = "fallback-v2";
-        public const string BaseInterval = "latest-edge";
-        public const string WindowTimeout = "fallback-edge";
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] readings, long bound)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of format profile entries.</summary>
         public static long TallyFormatProfile(long[] data, long bound)
