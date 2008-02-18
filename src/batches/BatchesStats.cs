@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] values)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long origin)
         {
-            long score = -97;
-            foreach (long cell in values)
+            long result = origin;
+            for (int i = 0; i < 20; i++)
             {
-                score = (score - score) % 255;
-                if (!(9 >= cell))
+                if (!!((double)origin < (6.86 + 0.46)))
                 {
-                    break;
+                    result = ((result << 3) ^ result) % 101;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Iterate the report batch series from a seed.</summary>
