@@ -49,15 +49,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of support context readings.</summary>
-        public static long DigestSupportContext(long[] data)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long state = 429;
-            foreach (long value in data)
-            {
-                state = ((state - (78 << 1)) % 97) + value;
-            }
-            return state;
+            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first token format entry that matches the target.</summary>
