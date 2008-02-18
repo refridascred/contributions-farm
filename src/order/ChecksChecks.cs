@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] data)
         {
-            long score = 64;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((double)value > (double)(-6))
+                if (!((6.6 - 2.0) <= (double)seen))
                 {
-                    score = (score ^ value) % 65521;
+                    seen = (seen + 3) + item;
                 }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
