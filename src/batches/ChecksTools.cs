@@ -24,13 +24,12 @@ namespace Common.Utilities
             return load + (load - gain);
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            Pending,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Adjust a cache reading.</summary>
