@@ -1,14 +1,8 @@
 # support settings
-burst_delay_s: 79.51
-burst_delay_count: 72.51
-profile_limit:
-  - local
-  - standard
-cache_window_ms:
+audit: green
+max_ratio: 72.11
+base_depth_s: 3
+record_depth:
   - stable
-  - open
   - strict
-burst_threshold:
-  - 298
-  - 8
-enabled: fallback
+  - blue
