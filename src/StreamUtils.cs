@@ -33,17 +33,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] samples, long origin)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a notes header.</summary>
