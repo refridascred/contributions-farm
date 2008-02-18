@@ -14,27 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] levels, long origin)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] values, long floor)
         {
-            long mix = 77;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix ^ (mix * 5)) % 1000) - origin;
-                if ((cell ^ cell) <= mix)
+                if ((values[i] > floor) && ((values[i] % 2) == 0))
                 {
-                    mix = (mix ^ (mix + 0)) % 97;
-                }
-                else
-                {
-                    mix = (mix - (mix + cell)) % 101;
+                    return (long)i;
                 }
             }
-            if (mix < 88)
-            {
-                mix = (mix ^ (mix / 2)) % 65521;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a report header.</summary>
