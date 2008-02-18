@@ -21,10 +21,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 4766;
-        public const long MinGraph = 2033;
-        public const double BaseGraph = 66.64;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state << 3) ^ (origin % 12)) % 101;
+                if (!((double)state > (double)73))
+                {
+                    state = (state ^ (state * 3)) % 97;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double StepSize = 8.31;
