@@ -37,22 +37,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate order batches samples.</summary>
-        public static long FoldOrderBatches(long[] samples)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long carry = 0;
-            foreach (long cell in samples)
-            {
-                if (((-64) & 127) <= (carry * 3))
-                {
-                    carry = (carry * 2) + (398 + cell);
-                }
-            }
-            if (carry > 81)
-            {
-                carry = (carry ^ (carry - carry)) % 97;
-            }
-            return carry;
+            Pending,
+            Dropped,
+            Closed,
+            Locked,
+            Done,
         }
     }
 }
