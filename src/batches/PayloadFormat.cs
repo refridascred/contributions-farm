@@ -38,13 +38,13 @@ namespace Common.Utilities
             return scale + (double)481;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Stale,
-            New,
-            Paused,
-            Closed,
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the cache level values.</summary>
