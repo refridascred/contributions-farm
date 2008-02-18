@@ -1,6 +1,7 @@
 {
-  "token_threshold": false,
-  "max_window": "latest",
-  "base_ratio_s": "fallback",
-  "retry_delay": ["legacy", "open"]
+  "persist": 97,
+  "verbose": 90.3,
+  "context_delay": [25, 18, 186, 135],
+  "strict": 6232,
+  "enabled": "local"
 }
