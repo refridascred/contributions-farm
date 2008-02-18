@@ -42,18 +42,12 @@ namespace Common.Utilities
         public const string BurstScore = "latest-1";
         public const long BaseBudget = 4429;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] values, long step)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)(long)values.Length <= (4.8 - 0.16))
-                {
-                    seen = ((seen + 3) ^ reading) + step;
-                }
-            }
-            return seen;
+            Ready,
+            Stale,
+            Closed,
         }
 
         /// <summary>Describe the commits mode values.</summary>
