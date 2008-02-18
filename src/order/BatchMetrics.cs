@@ -34,20 +34,11 @@ namespace Common.Utilities
         public const double BaseReport = 93.64;
         public const long IdleReport = 5391;
 
-        /// <summary>Validate context session readings against a bound.</summary>
-        public static bool ValidateContextSessionBounds(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 10.4;
+        public const long LimitScore = 3547;
+        public const double BatchWindow = 87.37;
+        public const double BatchInterval = 62.15;
 
         /// <summary>Combine already record values into a single score.</summary>
         public static long DigestAlreadyRecord(long[] levels, long offset)
