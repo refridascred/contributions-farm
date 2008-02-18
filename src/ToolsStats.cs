@@ -52,12 +52,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryScore = "staging";
-        public const double IdleDepth = 9.98;
-        public const long BurstProfile = 5351;
-        public const long MinProfile = 1481;
-        public const long SoftProfile = 3879;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 8808;
+        public const long RetrySpan = 12;
+        public const long SoftSession = 918;
+        public const long DefaultSession = 7016;
+        public const long IdleSpan = 2141;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long WeighMetric(long[] values)
