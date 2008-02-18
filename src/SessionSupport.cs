@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long seed, long offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            if (((double)offset > (0.7 / 6.0)) && ((seed + offset) == ((-82) << 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (seed < (-8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Draft,
+            New,
+            Closed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Define command limits and defaults.</summary>
