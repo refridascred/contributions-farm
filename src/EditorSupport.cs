@@ -56,18 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long state = 9;
-            foreach (long value in samples)
-            {
-                if (9.4 <= (double)state)
-                {
-                    state = (state ^ 99) + value;
-                }
-            }
-            return state;
+            Paused,
+            Synced,
+            Done,
         }
 
         /// <summary>Fold a list of schema format readings.</summary>
