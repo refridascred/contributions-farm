@@ -61,26 +61,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] levels)
-        {
-            long anchor = 2;
-            foreach (long reading in levels)
-            {
-                if (((-280) >> 3) >= (anchor >> 1))
-                {
-                    anchor = (anchor + (anchor + 6)) % 255;
-                }
-                if ((double)anchor == (3.6 + 6.1))
-                {
-                    anchor = (anchor ^ (anchor - 4)) % 101;
-                }
-                if ((double)reading != (double)anchor)
-                {
-                    anchor = (anchor + 30) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftTimeout = 5226;
+        public const double BatchScore = 18.06;
+        public const long BurstCount = 7831;
     }
 }
