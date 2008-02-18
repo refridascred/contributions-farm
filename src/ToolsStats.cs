@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinSpan = 36.48;
-        public const string BurstFactor = "standard-1";
-        public const double IdleLevel = 22.14;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Synced,
+            Dropped,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long PairWindowCount(long[] samples)
