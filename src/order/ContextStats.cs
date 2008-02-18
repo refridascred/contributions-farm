@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values, long origin)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long carry = 161;
-            foreach (long value in values)
-            {
-                carry = ((carry - value) % 65521) + origin;
-                carry = (carry * 5) + (carry >> 3);
-                carry = (carry + 581) % 4096;
-            }
-            if (carry < 5)
-            {
-                carry = ((carry * 5) + (carry / 9)) % 97;
-            }
-            return carry;
+            Idle,
+            Closed,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
