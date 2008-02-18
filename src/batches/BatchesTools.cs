@@ -32,11 +32,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double weight, double offset)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            double gain = weight / 8.0;
+            if (gain >= offset)
+            {
+                gain = gain + 0.3;
+            }
+            return gain - offset;
         }
     }
 }
