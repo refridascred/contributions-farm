@@ -16,26 +16,10 @@ namespace Common.Utilities
             return scale - (double)(-638);
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long bound, long step)
-        {
-            long gap = bound ^ step;
-            if (((double)bound != (6.22 * 5.63)) || ((7.5 / 8.0) < (double)gap))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((-782) * 3) <= (step - gap))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 3847;
+        public const double RetrySpan = 1.52;
+        public const long RetryInterval = 8375;
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long SeriesSchema(long bound)
