@@ -30,18 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] levels, long origin)
+        /// <summary>Digest a series of payload schema entries.</summary>
+        public static long CombinePayloadSchema(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long anchor = -33;
+            foreach (long sample in items)
             {
-                if ((hits % 2) != (origin - item))
+                anchor = (((anchor * 3) + sample) % 1000) + offset;
+                if (!((double)anchor < (1.2 - 6.53)))
                 {
-                    hits = hits + 2;
+                    break;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
