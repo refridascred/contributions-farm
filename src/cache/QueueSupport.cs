@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long limit, long limit2)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] items, long origin)
         {
-            if ((7.9 + 0.8) <= (double)limit)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit2 * 5) == (3 * 3))
+                if (items[i] > origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((7 >> 2) <= (79 + limit2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many context format samples are out of range.</summary>
