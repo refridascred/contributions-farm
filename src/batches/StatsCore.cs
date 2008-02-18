@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a profile format reading by value.</summary>
-        public static long SeekProfileFormatIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 4551;
+        public const long StepSize = 8973;
+        public const string BurstWidth = "fallback-1";
+        public const double RetryCount = 42.91;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] samples, long origin)
