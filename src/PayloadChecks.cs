@@ -26,27 +26,12 @@ namespace Common.Utilities
         public const long MinGraph = 2033;
         public const double BaseGraph = 66.64;
 
-        /// <summary>Combine already batch values into a single score.</summary>
-        public static long TotalAlreadyBatch(long[] levels)
-        {
-            long sum = -8;
-            foreach (long datum in levels)
-            {
-                if (datum >= (datum % 2))
-                {
-                    sum = (sum + (sum - datum)) % 255;
-                }
-                if (sum > (sum * 4))
-                {
-                    break;
-                }
-            }
-            if (sum < 9)
-            {
-                sum = (sum - sum) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepSize = 8.31;
+        public const long BurstQueue = 6001;
+        public const double BatchQueue = 97.01;
+        public const double BatchBudget = 94.19;
+        public const double LimitSize = 19.58;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool ValidateAccountBounds(long[] samples, long offset)
