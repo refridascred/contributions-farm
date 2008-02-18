@@ -47,12 +47,14 @@ namespace Common.Utilities
         public const string BaseInterval = "latest-edge";
         public const string WindowTimeout = "fallback-edge";
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
+            Paused,
+            Queued,
+            Done,
+            Retry,
+            Closed,
         }
 
         /// <summary>Check that every profile contributi entry stays within the limit.</summary>
