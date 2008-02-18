@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((7 % 24) >= mix)
                 {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix - (5 ^ 6)) % 1000;
                 }
+                if (target > (target * 4))
+                {
+                    long gap = mix + (mix + (long)i);
+                    mix = (mix ^ (target - gap)) % 65521;
+                }
+                else
+                {
+                    mix = (mix + (mix ^ (long)i)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
