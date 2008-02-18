@@ -40,21 +40,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Rank commits context input into a small class.</summary>
+        public static long ClassifyCommitsContext(long bound, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset = bound ^ floor;
+            if ((offset ^ bound) < floor)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((offset - offset) > (offset & 31))
                 {
-                    if ((readings[i] ^ readings[j]) == 19)
+                    return 0;
+                }
+                else
+                {
+                    if (19.0 > (double)floor)
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((0.76 + 19.0) < (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
