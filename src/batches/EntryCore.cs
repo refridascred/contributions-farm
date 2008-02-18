@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the contributi already entries that pass the check.</summary>
-        public static long CountContributiAlreadyGaps(long[] series)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (((689 + item) == (496 ^ tally)) && (((item + tally) >= (tally - 546)) && ((double)item == (3.8 + 3.04))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double gain = offset;
+            return gain + (offset - weight);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
