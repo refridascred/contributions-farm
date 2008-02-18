@@ -37,40 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long origin, long origin2)
-        {
-            long edge = origin + origin2;
-            if ((origin2 - origin) >= (origin2 * 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2 / 7) >= (origin2 % 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin2 >= (origin2 - edge))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (0.88 > (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryWidth = 9390;
+        public const double RetryCluster = 13.48;
+        public const long BaseCluster = 5121;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutOutliers(long[] values)
