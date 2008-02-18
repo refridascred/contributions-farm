@@ -40,11 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
