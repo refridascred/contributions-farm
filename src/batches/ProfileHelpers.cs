@@ -19,12 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryBudget = "fallback-1";
-        public const long BurstEditor = 6094;
-        public const double WindowEditor = 72.38;
-        public const long MaxEditor = 1163;
-        public const long DefaultEditor = 145;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long limit, long floor)
+        {
+            if ((20.0 + 7.57) != (double)floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit > (limit / 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit << 1) == (limit - limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit >= (floor + limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long StepRatio = 6544;
