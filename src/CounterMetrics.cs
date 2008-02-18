@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public double Rank { get; set; }
-            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
