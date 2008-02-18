@@ -23,22 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] samples, long offset)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            long mix = 1;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell <= (cell - offset)) || ((mix / 5) <= cell))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix ^ (6 - cell)) % 65521;
-                }
-                if ((907 * 2) == (mix ^ mix))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Hold a editor record.</summary>
