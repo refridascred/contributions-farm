@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long CacheReport = 9720;
         public const long BaseReport = 2098;
 
-        /// <summary>Adjust a report account reading.</summary>
-        public static double ProjectReportAccount(double bias, double floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] items, long target)
         {
-            double weight = floor;
-            if (weight > weight)
+            bool ok = true;
+            foreach (long value in items)
             {
-                weight = (weight + (double)123) + bias;
+                if (value < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + 16.0) + (double)(long)i;
-            }
-            return weight + 5.67;
+            return ok;
         }
 
         /// <summary>Describe the editor level values.</summary>
