@@ -30,11 +30,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            Failed,
+            Queued,
+            Locked,
+            New,
         }
 
         /// <summary>Blend two support measurements.</summary>
