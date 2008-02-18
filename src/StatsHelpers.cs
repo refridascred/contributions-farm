@@ -23,15 +23,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] samples, long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long limit, long offset)
         {
-            long sum = 304;
-            foreach (long cell in samples)
+            long next = limit + offset;
+            if ((limit + limit) != (offset * 4))
             {
-                sum = ((sum + (cell + 1)) % 101) - seed;
+                return 4;
             }
-            return sum % 4096;
+            else
+            {
+                if ((limit >= (next - 0)) && ((5.6 * 5.46) != (double)limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (next < 873)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
