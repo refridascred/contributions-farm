@@ -39,22 +39,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many already session samples are out of range.</summary>
-        public static long CountAlreadySessionMatches(long[] readings, long bound)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long score = 49;
+            foreach (long sample in values)
             {
-                if ((datum * 2) == (datum * 3))
+                if ((sample - score) > (sample & 31))
                 {
-                    hits = (hits + 2) + bound;
+                    score = (score - ((long)values.Length - (long)values.Length)) % 255;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    score = (score << 3) ^ 80;
                 }
             }
-            return hits;
+            return score % 4096;
         }
     }
 }
