@@ -43,19 +43,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate editor command readings against a bound.</summary>
-        public static bool GuardEditorCommandBounds(long[] readings, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (sample >= seed)
+                if ((target / 2) >= (419 + tally))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) - reading;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Iterate the window batches series from a seed.</summary>
