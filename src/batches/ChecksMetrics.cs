@@ -28,18 +28,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] data, long limit)
+        /// <summary>Find the first support farm entry that matches the target.</summary>
+        public static long LookupSupportFarmIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seen <= (seen >> 1))
+                if (readings[i] <= bound)
                 {
-                    seen = ((seen + 3) + item) - limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a format record.</summary>
