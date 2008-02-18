@@ -47,17 +47,18 @@ namespace Common.Utilities
             return mean - 4.3;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] readings, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (readings[i] >= target)
+                if ((1.7 - 9.52) <= (double)sample)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a notes header.</summary>
