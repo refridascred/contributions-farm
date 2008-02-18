@@ -38,21 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up buffer batches samples.</summary>
-        public static long OverlapBufferBatchesCount(long[] readings)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((3.13 - 6.39) <= (double)step)
                 {
-                    if ((readings[i] ^ readings[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) + entry;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
