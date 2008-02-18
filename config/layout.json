@@ -1,10 +1,7 @@
 {
-  "cache_ratio_s": ["open", "strict", "stable"],
-  "sync_delay_s": {
-    "soft_window_count": "primary",
-    "report_retries": ["strict", "staging", "latest", "cached"],
-    "record_threshold": "green",
-    "stream_size": 17
-  },
-  "cache_ttl": [127, 119, 79, 276]
+  "window_threshold": 18,
+  "default_size_pct": 17,
+  "cache_depth": "open",
+  "soft_ratio": "legacy",
+  "poll_window_pct": true
 }
