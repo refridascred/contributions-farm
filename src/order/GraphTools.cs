@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseInterval = "open";
-        public const double HardCache = 15.37;
-        public const double LimitCache = 8.62;
-        public const long BaseCache = 2496;
-        public const long WindowCache = 5469;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = (anchor - bound) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchMatches(long[] series)
