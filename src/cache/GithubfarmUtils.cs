@@ -67,16 +67,18 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] values, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                total = (total << 3) ^ seed;
-                total = ((total * 4) + (long)i) % 1000;
+                if (count < floor)
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
