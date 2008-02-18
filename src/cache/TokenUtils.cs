@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] series, long bound)
+        /// <summary>Measure how many schema metric samples are out of range.</summary>
+        public static long MeasureSchemaMetricMatches(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (cell >= bound)
+                if (((value << 1) > (value / 9)) || ((value & 127) <= value))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Adjust a layout reading.</summary>
