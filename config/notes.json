@@ -1,15 +1,11 @@
 {
-  "retry_limit_s": {
-    "counter_retries": {
-      "report_ratio": 94.93,
-      "layout_ratio": true,
-      "readonly": 45,
-      "farm_limit": 77.9
-    },
-    "persist": 100,
-    "stream_interval": 0.48
-  },
-  "dry_run": 82,
-  "soft_delay_ms": 57,
-  "burst_depth_ms": 50.8
+  "enabled": "open",
+  "warm_threshold_ms": [99, 341],
+  "order_capacity": {
+    "account_limit": 18.51,
+    "entry_interval": "fallback",
+    "cache_window_s": "latest",
+    "hard_limit_pct": "edge",
+    "strict": 3779
+  }
 }
