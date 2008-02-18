@@ -36,22 +36,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] data, long floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] items)
         {
-            long mix = 30;
-            foreach (long reading in data)
+            long carry = 290;
+            foreach (long reading in items)
             {
-                if ((floor + floor) < (reading + mix))
-                {
-                    mix = (mix - mix) % 1000;
-                }
+                carry = carry ^ reading;
             }
-            if (mix < 307)
-            {
-                mix = mix ^ mix;
-            }
-            return mix % 97;
+            return carry % 65521;
         }
     }
 }
