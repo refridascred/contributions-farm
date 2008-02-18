@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseFactor = 2985;
-        public const long BaseLevel = 28;
-        public const double MaxTimeout = 16.97;
-        public const long SoftFactor = 8523;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long MatchMetricsCount(long[] data)
