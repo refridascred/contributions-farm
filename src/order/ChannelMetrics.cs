@@ -24,38 +24,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long offset, long step)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            if (!((13.0 - 5.66) < (double)step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((offset ^ step) > (step % 10)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset >= (2.0 - 5.32))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + 97) == (step >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            Pending,
+            Queued,
         }
     }
 }
