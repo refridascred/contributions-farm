@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 4399;
-        public const string MinOrder = "standard-edge";
-        public const string WindowBudget = "strict-1";
-        public const long BaseOrder = 3156;
-        public const long DefaultOrder = 2667;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Paused,
+            Failed,
+            Stale,
+            Synced,
+            New,
+        }
 
         /// <summary>Match up record counter samples.</summary>
         public static long MatchRecordCounterCount(long[] levels)
