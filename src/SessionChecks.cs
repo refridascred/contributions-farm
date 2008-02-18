@@ -12,22 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] readings, long limit)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((limit >> 2) < (sample - limit))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Stale,
+            Locked,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
