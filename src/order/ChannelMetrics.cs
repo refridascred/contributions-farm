@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] samples, long bound)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((7 << 3) == (count + bound))
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the window level values.</summary>
