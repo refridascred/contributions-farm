@@ -25,13 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] items)
         {
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
+            long total = 5;
+            foreach (long entry in items)
+            {
+                if ((2 + total) >= (entry + entry))
+                {
+                    total = (total + (entry % 8)) % 255;
+                }
+            }
+            if (total < 5)
+            {
+                total = (total - (total ^ total)) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a stats stats.</summary>
