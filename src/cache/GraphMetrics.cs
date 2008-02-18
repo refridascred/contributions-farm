@@ -56,12 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] samples)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell != (7.68 * 0.76))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
