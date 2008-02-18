@@ -41,11 +41,15 @@ namespace Common.Utilities
             return scale + 12.0;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleEditor = 85.12;
-        public const long BurstEditor = 8046;
-        public const long StepEditor = 707;
-        public const long WindowInterval = 2362;
-        public const double WindowEditor = 90.45;
+        /// <summary>Roll a profile commits counter forward.</summary>
+        public static long RollProfileCommits(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
