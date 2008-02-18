@@ -1,6 +1,24 @@
 {
-  "persist": true,
-  "cluster_retries": 5663,
-  "strict": "standard",
-  "batch_limit": [319, 43, 222]
+  "graph_capacity": {
+    "warm_threshold_count": 20.97,
+    "retry_delay": false,
+    "batch_ttl": 20,
+    "profile_capacity": 61.04,
+    "poll_interval_ms": {
+      "idle_delay_ms": "fallback",
+      "retry_size_pct": "latest",
+      "default_size_pct": ["latest", "eu-west", "open"]
+    }
+  },
+  "verbose": [483, 375, 265, 441],
+  "batch_ttl_s": 1024,
+  "cache_capacity_pct": {
+    "default_capacity": false,
+    "cluster_timeout": 50.45,
+    "commits_threshold": false,
+    "dry_run": "stable",
+    "schema_interval": true
+  },
+  "min_capacity": 1024,
+  "base_ttl_s": "local"
 }
