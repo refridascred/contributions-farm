@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long step, long target)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long step, long origin)
         {
-            if ((step + step) < (1 * 5))
+            long lane = step + origin;
+            if (8.32 >= (double)step)
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if ((4.5 / 4.0) >= (double)step)
+                if (!((11.0 + 19.0) > (double)step))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    return 1;
+                    if (((origin << 1) <= step) && ((origin ^ step) >= (lane / 9)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
