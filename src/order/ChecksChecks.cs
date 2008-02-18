@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long mix = 6;
-            foreach (long reading in levels)
-            {
-                mix = ((mix + 2) % 101) - reading;
-            }
-            if (mix < 0)
-            {
-                mix = (mix + (mix / 5)) % 65521;
-            }
-            return mix % 65521;
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
