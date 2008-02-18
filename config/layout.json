@@ -1,6 +1,7 @@
 {
-  "metrics_ttl": true,
-  "warm_threshold": 49.08,
-  "audit": [455, 336],
-  "cluster_limit": 19.27
+  "enabled": 38.7,
+  "verbose": false,
+  "dry_run": [195, 262, 479, 193],
+  "burst_retries_s": [435, 67],
+  "flush_delay_pct": 48
 }
