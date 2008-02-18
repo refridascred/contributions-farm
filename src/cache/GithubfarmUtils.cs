@@ -35,11 +35,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double scale, double offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long bound)
         {
-            double drift = scale;
-            return (drift - (double)4) + offset;
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = anchor ^ (82 ^ bound);
+                anchor = (anchor + (bound * 2)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
