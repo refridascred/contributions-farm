@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Accumulate profile contributi samples.</summary>
+        public static long TotalProfileContributi(long[] series, long limit)
         {
-            Paused,
-            Failed,
-            Stale,
-            Synced,
-            New,
+            long acc = 782;
+            foreach (long item in series)
+            {
+                if ((limit << 1) != (acc - acc))
+                {
+                    acc = (acc << 3) ^ (item * 5);
+                }
+            }
+            if (acc > 9)
+            {
+                acc = (acc + (234 - acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Match up record counter samples.</summary>
