@@ -41,11 +41,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitNotes = 83.97;
-        public const long StepRatio = 839;
-        public const long MaxBudget = 6949;
-        public const double IdleNotes = 28.9;
-        public const double LimitScore = 79.05;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Active,
+            New,
+            Synced,
+            Queued,
+            Ready,
+        }
     }
 }
