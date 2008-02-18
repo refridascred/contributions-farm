@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const string HardScore = "fallback";
         public const string WindowCount = "local-edge";
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] readings)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen + datum) >= (seen ^ seen))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] - values[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up tools counter samples.</summary>
