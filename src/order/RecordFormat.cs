@@ -47,24 +47,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long seed, long origin)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            if ((origin << 2) != (26 / 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed / 6) < origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Closed,
+            Draft,
+            Idle,
+            Pending,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
