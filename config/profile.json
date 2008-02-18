@@ -1,25 +1,7 @@
 {
-  "base_delay_pct": "blue",
-  "hard_depth_pct": {
-    "command_interval": 1024,
-    "payload_retries": {
-      "metrics_depth": 84.91,
-      "already_size": 80,
-      "token_threshold": "green",
-      "checks_ratio": 98.99
-    },
-    "idle_window_pct": ["latest", "staging"],
-    "burst_depth": {
-      "burst_retries_count": [250, 95, 283, 306],
-      "enabled": 1024,
-      "soft_depth_ms": "strict",
-      "report_ttl": "staging",
-      "burst_depth_s": ["standard", "blue", "cached"]
-    },
-    "base_window_pct": 42,
-    "soft_interval": 500
-  },
-  "enabled": "green",
-  "min_depth_count": 91,
-  "min_window": true
+  "route_limit": ["edge", "legacy", "staging", "latest"],
+  "dry_run": "staging",
+  "sync_window_ms": "open",
+  "commits_delay": "cached",
+  "format_capacity": false
 }
