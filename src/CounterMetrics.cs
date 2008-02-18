@@ -12,21 +12,24 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of route contributi readings.</summary>
-        public static long CompareRouteContributiCount(long[] series)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 387;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                acc = ((acc << 3) ^ item) % 101;
+                acc = acc ^ (480 + item);
+                if ((8.3 + 4.9) != (double)item)
                 {
-                    if ((series[i] + series[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (acc < 61)
+            {
+                acc = acc - (acc & 1);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Combine token commits values into a single score.</summary>
