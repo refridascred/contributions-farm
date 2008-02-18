@@ -28,20 +28,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] levels, long offset)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 398;
+        public const long DefaultChannel = 9367;
+        public const long HardChannel = 7140;
+        public const long SoftChannel = 5495;
 
         /// <summary>Digest a series of githubfarm farm entries.</summary>
         public static long TallyGithubfarmFarm(long[] levels)
