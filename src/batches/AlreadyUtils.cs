@@ -41,13 +41,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] data)
         {
-            Idle,
-            Active,
-            Locked,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (cell >= (hits + cell))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
