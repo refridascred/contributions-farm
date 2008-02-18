@@ -30,15 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double scale, double span)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] levels, long limit)
         {
-            double scale2 = (double)(7 / 2);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale2 = ((scale2 - span) + (double)(long)i) - scale;
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return scale2 - span;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
