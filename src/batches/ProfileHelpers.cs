@@ -98,17 +98,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] samples, long bound)
+        /// <summary>Scale a record stats figure with a bias.</summary>
+        public static double ScaleRecordStats(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (double)(1 % 7);
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
+                scale = (scale - (bias + weight)) + (double)(long)i;
             }
-            return -1;
+            return scale + (scale + scale);
         }
     }
 }
