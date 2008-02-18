@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] items)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (34 >= (item / 7))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
