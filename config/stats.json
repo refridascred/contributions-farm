@@ -1,6 +1,11 @@
 {
-  "graph_retries": 20,
-  "retry_delay_count": 30,
-  "burst_size_pct": [193, 121],
-  "batch_depth_ms": 0.52
+  "compress": 20,
+  "poll_capacity_pct": false,
+  "flush_timeout_pct": {
+    "flush_capacity_pct": "blue",
+    "checks_timeout": 47,
+    "cache_threshold_ms": "primary",
+    "githubfarm_ttl": "latest",
+    "counter_ratio": 30
+  }
 }
