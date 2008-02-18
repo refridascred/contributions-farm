@@ -22,10 +22,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxInterval = "strict-1";
-        public const string WindowSpan = "legacy-v2";
-        public const double WindowInterval = 56.13;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long seed, long offset)
+        {
+            if ((seed & 7) >= (offset + offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset < 238)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((8.5 >= (double)seed) || ((seed >> 4) >= offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetrySpan = 9404;
