@@ -1,12 +1,30 @@
 # githubfarm settings
-stats_limit: 1024
-persist: 100
-buffer_depth:
-  batch_threshold: latest
-  metric_interval: 60
-  counter_interval: latest
-  cache_limit: false
-dry_run: 62
-route_delay:
-  - open
-  - standard
+enabled:
+  cache_ratio_s:
+    - eu-west
+    - open
+    - eu-west
+    - latest
+  default_ratio_ms:
+    - standard
+    - local
+  hard_threshold: 8932
+  readonly: 1024
+  graph_ttl:
+    base_depth_count:
+      - 487
+      - 29
+      - 241
+      - 424
+    persist: true
+    burst_retries_count: stable
+    verbose: 8702
+    sync_ttl_s: false
+retry_threshold_s: cached
+idle_ratio:
+  sync_window_s: 97.11
+  hard_ratio:
+    - cached
+    - open
+    - standard
+  persist: 40.36
