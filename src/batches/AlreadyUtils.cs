@@ -37,14 +37,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Project the next window queue value.</summary>
+        public static double ProjectWindowQueue(double weight, double floor)
         {
-            Stale,
-            Draft,
-            New,
-            Dropped,
-            Pending,
+            double drift = weight;
+            if (drift >= (double)400)
+            {
+                drift = drift - (double)2;
+            }
+            else
+            {
+                drift = drift - (floor * 6.38);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (floor + weight)) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Fold a list of command readings.</summary>
