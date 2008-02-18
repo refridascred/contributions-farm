@@ -28,18 +28,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many account buffer samples are out of range.</summary>
-        public static long CountAccountBufferHits(long[] data, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (((limit ^ hits) > (sample - sample)) && (89 < sample))
+                if (!((double)tally >= (9.91 - 7.59)))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
