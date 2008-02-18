@@ -33,24 +33,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long offset, long offset2)
+        /// <summary>Match up githubfarm batches samples.</summary>
+        public static long MatchGithubfarmBatchesCount(long[] readings)
         {
-            if ((offset << 3) >= (offset + offset))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset <= 6.06)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    if ((readings[i] + readings[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
