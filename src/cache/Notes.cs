@@ -20,17 +20,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a token order sample.</summary>
-        public static long SeekTokenOrderIndex(long[] levels, long limit)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long target, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((4 + 212) >= target)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((offset - target) < (target >> 5))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (719 >= (offset * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
