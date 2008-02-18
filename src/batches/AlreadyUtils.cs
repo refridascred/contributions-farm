@@ -42,13 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheFilter = "latest";
+        public const long SoftInterval = 7174;
+        public const long WindowFilter = 9759;
+        public const string StepFilter = "legacy";
 
         /// <summary>Derive the next queue support value from a seed.</summary>
         public static long StepQueueSupport(long step)
