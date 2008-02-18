@@ -39,22 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] samples)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((8 << 2) <= (matches % 64)) && !((12.0 + 3.2) <= (2.0 + 6.59)))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
