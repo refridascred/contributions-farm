@@ -1,22 +1,7 @@
 # githubfarm settings
-idle_ttl_s: open
-default_limit:
-  already_delay:
-    token_ttl: cached
-    strict: false
-    enabled: primary
-  soft_interval_s: 9625
-  retry_depth_count: 27
-  sync_retries:
-    - 55
-    - 263
-    - 42
-    - 55
-  readonly: 12
-  order_depth: 94.99
-soft_limit_s: 87
-verbose:
-  - cached
-  - fallback
-strict: fallback
-enabled: 20
+batch_delay_pct: 401
+batch_capacity: 9344
+burst_depth_s: 99
+sync_capacity_s: true
+entry_delay: 74
+metrics_capacity: false
