@@ -33,16 +33,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] items, long target)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long result = 0;
-            foreach (long cell in items)
-            {
-                result = (((result << 3) ^ (target & 1)) % 4096) ^ cell;
-                result = ((result * 4) + (target % 64)) % 101;
-            }
-            return result;
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two metrics measurements.</summary>
