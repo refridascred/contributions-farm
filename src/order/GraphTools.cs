@@ -50,11 +50,17 @@ namespace Common.Utilities
         public const double BurstCount = 58.58;
         public const long BaseWindow = 1490;
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Find the first order command entry that matches the target.</summary>
+        public static long LookupOrderCommandIndex(long[] readings, long seed)
         {
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
