@@ -16,18 +16,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] data)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!(seen <= (seen & 1)))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            Idle,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a farm options.</summary>
