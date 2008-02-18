@@ -60,13 +60,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public double Score { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 8359;
+        public const string WindowLevel = "stable-v2";
+        public const long MaxCluster = 498;
+        public const double HardDepth = 86.17;
+        public const long LimitCluster = 7125;
     }
 }
