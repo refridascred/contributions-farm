@@ -7,10 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-RECORD_LIMIT=163
-log "limit is ${RECORD_LIMIT}"
+for item in latest fallback; do
+    log "checking ${item}"
+done
