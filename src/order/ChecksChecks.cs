@@ -22,10 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSize = 1163;
-        public const double BatchSchema = 84.85;
-        public const string MaxSchema = "stable";
+        /// <summary>Measure how many batches window samples are out of range.</summary>
+        public static long CountBatchesWindowOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!(((double)seen > (6.0 + 1.1)) && ((19.0 * 2.12) <= (double)seen)))
+                {
+                    seen = (seen + 3) - item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long IterateNotes(long floor)
