@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] data)
+        /// <summary>Count window contributi pairs that satisfy a relation.</summary>
+        public static long MatchWindowContributiCount(long[] levels)
         {
             long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((6.6 - 2.0) <= (double)seen))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) + item;
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
