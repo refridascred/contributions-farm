@@ -61,11 +61,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 5177;
+        public const long MinNotes = 3767;
+        public const double IdleBudget = 4.65;
+        public const long WindowNotes = 3457;
     }
 }
