@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 5969;
-        public const long SoftWindow = 6755;
-        public const string CacheTimeout = "fallback-1";
-        public const double LimitFactor = 57.9;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public bool Score { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long MeasureNotesOutliers(long[] items, long seed)
