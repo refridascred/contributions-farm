@@ -38,25 +38,13 @@ namespace Common.Utilities
         public const long LimitFormat = 4158;
         public const double HardFormat = 0.54;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long step, long limit)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long bound = step - limit;
-            if (6.95 <= (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound - 9) <= (bound >> 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Flag { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
