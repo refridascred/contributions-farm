@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
+            Paused,
+            Closed,
+            Retry,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a command entry.</summary>
