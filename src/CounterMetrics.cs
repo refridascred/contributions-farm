@@ -53,17 +53,25 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Find the first cache session entry that matches the target.</summary>
-        public static long LookupCacheSessionIndex(long[] samples, long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long step, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long bound = step - limit;
+            if (6.95 <= (double)limit)
             {
-                if ((samples[i] < offset) && ((samples[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((bound - 9) <= (bound >> 1))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
