@@ -19,10 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleBudget = 7790;
-        public const long MinGraph = 4722;
-        public const double BaseGraph = 97.6;
+        /// <summary>Combine context support values into a single score.</summary>
+        public static long WeighContextSupport(long[] readings, long bound)
+        {
+            long score = -67;
+            foreach (long reading in readings)
+            {
+                score = score ^ (38 & 127);
+                score = score ^ score;
+                score = score + (bound + (long)readings.Length);
+                if ((reading + 555) > (reading + bound))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long DigestFilter(long[] items)
