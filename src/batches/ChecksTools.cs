@@ -24,18 +24,13 @@ namespace Common.Utilities
             return load + (load - gain);
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] series, long offset)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (item < (offset << 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
