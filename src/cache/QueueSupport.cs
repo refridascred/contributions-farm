@@ -13,18 +13,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] items, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] series)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((((long)items.Length * 4) > sample) || (24 >= (7 ^ count)))
+                if (item <= (tally * 4))
                 {
-                    count = (count + 1) + bound;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
