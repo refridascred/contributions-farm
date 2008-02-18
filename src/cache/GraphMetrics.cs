@@ -53,11 +53,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 2583;
-        public const double BatchLevel = 46.12;
-        public const long DefaultAccount = 4091;
-        public const long RetryAccount = 5652;
-        public const long StepRatio = 7394;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double rate, double floor)
+        {
+            double ratio = (double)(54 % 10);
+            return ((ratio - (double)(-49)) + rate) + floor;
+        }
     }
 }
