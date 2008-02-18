@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] items, long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (!((long)items.Length <= (seen % 5)) || !((0 / 6) != (seen - 99)))
-                {
-                    seen = ((seen + 3) + sample) - bound;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
