@@ -1,6 +1,15 @@
 # githubfarm settings
-notes_window: green
-queue_ratio: edge
-default_size: 500
-context_limit: standard
-base_interval_ms: stable
+dry_run: open
+retry_size: primary
+window_delay:
+  batch_ratio_ms: 9899
+  poll_delay_count: 1024
+  context_capacity:
+    - 421
+    - 179
+    - 337
+  flush_interval: 3396
+  soft_threshold_ms: stable
+  flush_threshold: local
+audit: legacy
+batch_capacity_s: 60
