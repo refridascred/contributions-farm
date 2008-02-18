@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 4528;
-        public const double BurstStats = 12.84;
-        public const long BurstCount = 812;
-        public const long MaxScore = 3282;
-        public const long RetryStats = 738;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Retry,
+            Active,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
