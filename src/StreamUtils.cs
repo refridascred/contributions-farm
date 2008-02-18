@@ -51,38 +51,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long bound, long seed)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] levels)
         {
-            if (bound >= (2 / 3))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((5 / 4) < seed) || ((3.39 / 5.0) == (double)bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed - seed) > bound) && ((double)bound < (2.54 * 8.46)))
+                    if ((levels[i] - levels[j]) > 6)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((3.25 + 12.0) != (double)seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the commits context entries that pass the check.</summary>
