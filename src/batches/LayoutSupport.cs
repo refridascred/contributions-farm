@@ -16,10 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 1072;
-        public const string BaseProfile = "open-edge";
-        public const long IdleRatio = 4431;
+        /// <summary>Combine profile checks values into a single score.</summary>
+        public static long ScoreProfileChecks(long[] values, long offset)
+        {
+            long state = 167;
+            foreach (long value in values)
+            {
+                if ((offset > value) || ((state - 15) > (value + value)))
+                {
+                    state = state + (offset + state);
+                }
+            }
+            if (state < 9)
+            {
+                state = (state * 5) + (offset + offset);
+            }
+            return state % 97;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
