@@ -31,16 +31,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultScore = 46.94;
+        public const long BurstEntry = 4842;
+        public const string IdleEntry = "primary-v2";
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LocateWindowIndex(long[] values, long offset)
