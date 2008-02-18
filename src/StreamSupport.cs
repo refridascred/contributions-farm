@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit contributi counter readings against a rule.</summary>
-        public static long CountContributiCounterGaps(long[] levels, long limit)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell >> 3) > (cell & 3)) || ((cell ^ cell) <= (cell - seen)))
-                {
-                    seen = (seen + 2) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Compare every pair of farm tools readings.</summary>
