@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] items, long step)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            double mean = (floor - scale) + (double)29;
+            if (mean <= scale)
             {
-                if (entry <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean + (5.87 * 1.6);
             }
-            return stale;
+            else
+            {
+                mean = mean - (floor + mean);
+            }
+            return mean - 4.3;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
