@@ -39,12 +39,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Validate commits account readings against a bound.</summary>
+        public static bool VerifyCommitsAccountBounds(long[] series, long step)
         {
-            public long Label { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
