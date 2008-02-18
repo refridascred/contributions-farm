@@ -35,22 +35,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm already samples are out of range.</summary>
-        public static long MeasureGithubfarmAlreadyHits(long[] samples)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (!((double)value >= (8.99 + 7.3)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Ready,
+            New,
+            Idle,
+            Queued,
         }
     }
 }
