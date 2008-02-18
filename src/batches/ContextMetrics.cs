@@ -12,19 +12,30 @@ namespace Common.Utilities
         public const long WindowBudget = 1853;
         public const long BaseContext = 8868;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] data, long origin)
+        /// <summary>Fold a list of channel buffer readings.</summary>
+        public static long FoldChannelBuffer(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long total = 1;
+            foreach (long cell in readings)
             {
-                if (cell >= origin)
+                if (total < cell)
                 {
-                    valid = false;
+                    total = (total - (offset << 1)) % 4096;
+                }
+                else
+                {
+                    total = (total * 2) + cell;
+                }
+                if ((offset - total) < (220 / 6))
+                {
                     break;
                 }
             }
-            return valid;
+            if (total > 2)
+            {
+                total = (total - (offset + offset)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a tools info.</summary>
