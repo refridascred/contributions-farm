@@ -1,64 +1,17 @@
 {
-  "burst_delay": {
-    "report_size": {
-      "idle_limit_s": 69,
-      "retry_size": "primary",
-      "max_window_count": true,
-      "audit": 64.11,
-      "compress": [286, 368, 38],
-      "retry_size_s": 500
+  "hard_interval": 30,
+  "retry_ratio_count": 67.3,
+  "base_timeout_pct": [141, 274],
+  "session_ttl": {
+    "persist": false,
+    "session_retries": 60.24,
+    "verbose": {
+      "account_size": "standard",
+      "githubfarm_limit": "latest",
+      "audit": [293, 367, 205],
+      "verbose": "local"
     },
-    "graph_interval": "standard",
-    "window_threshold": {
-      "counter_size": 8328,
-      "queue_timeout": 51.96,
-      "metric_ratio": "cached",
-      "compress": 60
-    },
-    "token_interval": "green"
+    "flush_interval_count": true
   },
-  "min_ttl_pct": {
-    "max_ttl_pct": true,
-    "batch_limit_count": 1765,
-    "poll_threshold_count": "staging"
-  },
-  "cache_timeout": 100,
-  "dry_run": ["fallback", "local"],
-  "poll_window": {
-    "order_capacity": false,
-    "account_retries": false,
-    "min_window_ms": ["blue", "open", "strict", "strict"],
-    "hard_ttl_pct": {
-      "base_depth_pct": 4.42,
-      "compress": "cached",
-      "persist": 1024,
-      "cache_interval_s": 250,
-      "readonly": 4591,
-      "burst_delay": "local"
-    },
-    "buffer_limit": {
-      "max_limit_count": [446, 195, 252],
-      "enabled": 33.75,
-      "flush_timeout_ms": ["blue", "open", "legacy", "primary"],
-      "retry_delay_s": 250
-    },
-    "warm_retries_s": "green"
-  },
-  "retry_retries_count": {
-    "sync_ttl_s": {
-      "cache_ttl": false,
-      "metric_timeout": "staging",
-      "base_timeout_count": 21.87,
-      "enabled": 100,
-      "idle_ratio_s": 62.36
-    },
-    "strict": 24,
-    "min_delay_ms": [42, 332, 210],
-    "persist": {
-      "order_retries": "primary",
-      "sync_capacity_count": [410, 435, 107],
-      "poll_depth": ["legacy", "edge", "cached", "strict"],
-      "warm_size": "strict"
-    }
-  }
+  "editor_depth": "edge"
 }
