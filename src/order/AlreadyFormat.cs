@@ -41,19 +41,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every graph stream entry stays within the limit.</summary>
-        public static bool CheckGraphStreamRange(long[] items, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long state = -17;
+            foreach (long sample in readings)
             {
-                if (entry > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state << 2) ^ (sample / 6)) % 101;
+                state = (state - (1 ^ sample)) % 255;
             }
-            return flag;
+            return state % 65521;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
