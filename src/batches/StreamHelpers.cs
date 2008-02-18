@@ -33,12 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchTimeout = 2073;
-        public const long LimitQueue = 7295;
-        public const long MaxQueue = 142;
-        public const long BurstQueue = 1083;
-        public const long WindowLevel = 5426;
+        /// <summary>Validate layout queue readings against a bound.</summary>
+        public static bool CheckLayoutQueueBounds(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaGaps(long[] readings)
