@@ -25,12 +25,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Grade a format batches value against two limits.</summary>
+        public static long RankFormatBatches(long limit, long origin)
         {
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            long lane = limit ^ origin;
+            if ((limit % 2) != (limit + lane))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin % 2) < (3 % 8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate buffer samples.</summary>
