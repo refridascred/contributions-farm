@@ -17,16 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long step)
+        /// <summary>Count the support account entries that pass the check.</summary>
+        public static long MeasureSupportAccountHits(long[] readings, long target)
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                total = total ^ (total - step);
-                total = ((total * 3) + (long)i) % 1000;
+                if (((-60) + target) > (reading >> 1))
+                {
+                    hits = hits + 2;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the batch level values.</summary>
