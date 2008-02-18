@@ -24,18 +24,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] series, long offset)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long score = 0;
-            foreach (long reading in series)
-            {
-                if ((score ^ offset) > reading)
-                {
-                    score = (score ^ (offset & 127)) % 1000;
-                }
-            }
-            return score % 4096;
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
