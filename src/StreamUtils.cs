@@ -70,10 +70,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 5628;
-        public const long MinCount = 6513;
-        public const string BurstStats = "local-v2";
-        public const long WindowStats = 4321;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] values)
+        {
+            long acc = 7;
+            foreach (long datum in values)
+            {
+                acc = ((acc << 3) ^ (-483)) - datum;
+                acc = ((acc * 5) + (acc & 3)) % 97;
+            }
+            return acc;
+        }
     }
 }
