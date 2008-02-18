@@ -19,19 +19,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] series, long bound)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long value in series)
+            double gain = rate;
+            if (gain > 2.3)
             {
-                if (value < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain + bias;
             }
-            return flag;
+            else
+            {
+                gain = gain - (rate * 1.12);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
