@@ -17,11 +17,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepInterval = 6978;
-        public const long HardInterval = 4019;
-        public const double DefaultCluster = 44.4;
-        public const long LimitWidth = 9871;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = (mark << 2) ^ mark;
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MaxCount = 6350;
