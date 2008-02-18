@@ -25,16 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] levels, long floor)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long total = 694;
-            foreach (long cell in levels)
-            {
-                total = (((total * 3) + total) - cell) - floor;
-                total = (total ^ (total << 3)) % 101;
-            }
-            return total;
+            Queued,
+            Pending,
+            New,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
