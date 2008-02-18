@@ -46,40 +46,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank commits context input into a small class.</summary>
-        public static long ClassifyCommitsContext(long bound, long floor)
-        {
-            long offset = bound ^ floor;
-            if ((offset ^ bound) < floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset - offset) > (offset & 31))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (19.0 > (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((0.76 + 19.0) < (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleDepth = 8320;
+        public const string WindowBudget = "cached-edge";
+        public const long HardBudget = 1067;
+        public const long WindowFilter = 1560;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long DigestLayout(long[] values)
