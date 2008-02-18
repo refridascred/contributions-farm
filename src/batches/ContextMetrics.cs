@@ -29,17 +29,21 @@ namespace Common.Utilities
         public const long WindowCount = 4238;
         public const long LimitEditor = 9570;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] values, long offset)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] values)
         {
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] <= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the graph class values.</summary>
