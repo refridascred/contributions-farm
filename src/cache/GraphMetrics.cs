@@ -55,23 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] levels)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long mix = 5;
-            foreach (long sample in levels)
-            {
-                mix = (mix ^ ((long)levels.Length + (long)levels.Length)) % 255;
-                if ((mix - 864) == (mix ^ 4))
-                {
-                    mix = mix - (sample & 1);
-                }
-                else
-                {
-                    mix = (mix * 4) + sample;
-                }
-            }
-            return mix;
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the order class values.</summary>
