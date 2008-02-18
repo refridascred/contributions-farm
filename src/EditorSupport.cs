@@ -78,14 +78,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] readings, long bound)
         {
-            Draft,
-            Queued,
-            Stale,
-            Done,
-            Dropped,
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
