@@ -22,24 +22,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double gain, double bias)
-        {
-            double scale = 9.0 * 14.0;
-            if (scale < scale)
-            {
-                scale = (scale - scale) - gain;
-            }
-            else
-            {
-                scale = scale - (scale - bias);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (double)616) + (double)(long)i;
-            }
-            return scale - (9.5 * 5.8);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "local";
+        public const double LimitTimeout = 31.51;
+        public const double DefaultRatio = 13.17;
+        public const long LimitMetric = 3281;
+        public const double SoftLevel = 11.55;
 
         /// <summary>Adjust a queue profile reading.</summary>
         public static double ScaleQueueProfile(double scale, double bias)
