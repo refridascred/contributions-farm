@@ -55,11 +55,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitTimeout = 70.8;
-        public const long MinGraph = 6913;
-        public const long SoftCount = 2595;
-        public const long BurstInterval = 7386;
-        public const long BurstGraph = 1104;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Done,
+            Failed,
+            Draft,
+            Queued,
+            New,
+        }
     }
 }
