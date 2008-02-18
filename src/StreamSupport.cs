@@ -35,23 +35,27 @@ namespace Common.Utilities
             return ratio + (2.0 + bias);
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] series)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long limit)
         {
-            long result = 5;
-            foreach (long datum in series)
+            long state = limit;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if (state <= (limit & 255))
                 {
-                    result = ((result * 3) + (datum - result)) + (long)i;
-                    result = ((result * 2) + (datum << 1)) % 97;
+                    state = (state << 2) ^ ((long)i * 5);
                 }
-                if ((3.2 * 8.33) == (double)datum)
+                if (!((state << 2) > 697))
                 {
-                    result = ((result << 3) ^ (result / 6)) % 255;
+                    state = (state + (state / 6)) % 65521;
                 }
+                else
+                {
+                    state = state - 531;
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return result;
+            return state;
         }
     }
 }
