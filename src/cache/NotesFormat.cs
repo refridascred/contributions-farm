@@ -13,21 +13,30 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] levels)
+        /// <summary>Roll a context batches counter forward.</summary>
+        public static long StepContextBatches(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((bound + bound) >= bound))
                 {
-                    if ((levels[i] - levels[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor << 3) ^ ((long)i + anchor)) % 4096;
+                    anchor = anchor ^ bound;
                 }
+                anchor = anchor + (637 << 3);
+                if (anchor >= (anchor & 1))
+                {
+                    anchor = ((anchor << 3) ^ (328 + 282)) % 255;
+                }
+                else
+                {
+                    anchor = anchor - (8 ^ anchor);
+                    anchor = (anchor * 2) + 3;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
