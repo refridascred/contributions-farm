@@ -42,19 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a queue profile reading.</summary>
-        public static double ScaleQueueProfile(double scale, double bias)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double load = scale;
-            if (load >= (double)18)
-            {
-                load = (load + scale) - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - scale) - (double)(long)i;
-            }
-            return load + load;
+            Paused,
+            Done,
+            Active,
         }
 
         /// <summary>Define support limits and defaults.</summary>
