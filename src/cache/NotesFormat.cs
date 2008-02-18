@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 5513;
-        public const long MaxInterval = 2627;
-        public const double MaxWidth = 98.91;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Closed,
+            Queued,
+            Locked,
+            Done,
+            Active,
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] values)
