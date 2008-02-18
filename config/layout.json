@@ -1,6 +1,7 @@
 {
-  "sync_size_pct": ["local", "stable", "staging"],
-  "layout_threshold": "edge",
-  "base_retries_s": true,
-  "enabled": 65
+  "layout_threshold": "local",
+  "warm_interval_s": 500,
+  "min_size": 60,
+  "audit": false,
+  "soft_capacity_ms": "staging"
 }
