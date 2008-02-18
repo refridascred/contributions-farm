@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double weight, double span)
         {
-            long total = 66;
-            foreach (long sample in readings)
+            double gain = span - (4.9 + weight);
+            if (gain <= weight)
             {
-                if (15.0 > (double)sample)
-                {
-                    total = (total + (sample ^ total)) % 255;
-                }
+                gain = gain - (weight * 10.0);
             }
-            if (total > (-165))
+            else
             {
-                total = (total - total) % 4096;
+                gain = gain - span;
             }
-            return total;
+            return gain - weight;
         }
 
         /// <summary>Combine record command values into a single score.</summary>
