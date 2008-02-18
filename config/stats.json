@@ -1,20 +1,12 @@
 {
-  "verbose": 30,
-  "readonly": "eu-west",
-  "sync_ttl": 7323,
-  "cache_limit": 4873,
-  "cache_timeout_pct": {
-    "retry_capacity": false,
-    "report_limit": 706,
-    "min_threshold_count": ["strict", "local", "stable", "stable"],
-    "sync_size_s": {
-      "schema_window": "green",
-      "base_ratio_count": "cached",
-      "dry_run": false,
-      "compress": 6299,
-      "burst_retries_count": false
-    },
-    "burst_delay": 409,
-    "schema_threshold": "local"
+  "strict": false,
+  "token_size": true,
+  "batch_ttl_s": {
+    "readonly": "stable",
+    "context_size": [9, 260, 268],
+    "entry_capacity": "blue",
+    "compress": 65,
+    "schema_window": 44.01,
+    "retry_ttl_ms": "legacy"
   }
 }
