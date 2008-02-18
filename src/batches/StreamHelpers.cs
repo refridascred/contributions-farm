@@ -23,15 +23,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] samples)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            long total = 2;
+            foreach (long value in samples)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                total = total + (value + (-862));
             }
-            return sum;
+            if (total < (-55))
+            {
+                total = ((total << 2) ^ total) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
