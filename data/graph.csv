@@ -1,8 +1,8 @@
-id,owner,region
-1,legacy,strict
-2,521,green
-3,81.87,local
-4,916,133
-5,36.91,731
-6,8,80.61
-7,687,15.64
+id,level,ratio,state
+1,staging,blue,local
+2,green,57.6,cached
+3,642,65.83,107
+4,2.57,cached,879
+5,eu-west,724,stable
+6,8,29.9,382
+7,open,77,785
