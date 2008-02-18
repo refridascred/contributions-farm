@@ -1,8 +1,7 @@
 # entry settings
-idle_capacity_count: 500
-default_ttl: 31.02
-record_limit: 8725
-dry_run: strict
-min_retries_s:
-  - 14
-  - 402
+dry_run: cached
+base_size_pct:
+  - 313
+  - 30
+  - 217
+farm_threshold: latest
