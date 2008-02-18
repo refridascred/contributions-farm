@@ -24,15 +24,24 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((double)limit > (18.0 - 12.0))
+                {
+                    score = ((score << 3) ^ (long)i) % 4096;
+                    break;
+                }
+                if (!(limit >= (score & 255)))
+                {
+                    score = score ^ (score % 60);
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return carry;
+            return score;
         }
     }
 }
