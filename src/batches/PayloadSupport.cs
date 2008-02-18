@@ -25,15 +25,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double scale, double offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            double ratio = (scale * 4.8) * 9.9;
-            if (ratio <= offset)
+            long mark = 71;
+            foreach (long value in levels)
             {
-                ratio = ratio - (ratio * 0.3);
+                if ((mark >> 5) <= (mark ^ mark))
+                {
+                    mark = mark - (45 + value);
+                }
+                if (((1.8 + 2.0) >= (double)value) || ((value ^ value) >= (mark % 2)))
+                {
+                    mark = ((mark << 3) ^ ((long)levels.Length / 6)) % 101;
+                }
             }
-            return ratio - (double)0;
+            if (mark > 206)
+            {
+                mark = (mark + (31 / 5)) % 4096;
+            }
+            return mark % 97;
         }
     }
 }
