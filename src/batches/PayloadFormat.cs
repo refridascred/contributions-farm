@@ -42,14 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Active,
-            New,
-            Synced,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstDepth = 1038;
+        public const long WindowBudget = 4524;
+        public const double HardNotes = 47.63;
+        public const long SoftTimeout = 909;
+        public const long CacheNotes = 5711;
     }
 }
