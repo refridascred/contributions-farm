@@ -22,31 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token channel values into a single score.</summary>
-        public static long FoldTokenChannel(long[] samples)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long step)
         {
-            long score = -612;
-            foreach (long datum in samples)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                score = (score - ((-41) >> 3)) % 4096;
-                if ((679 + score) < datum)
-                {
-                    score = score ^ (datum * 5);
-                }
-                else
-                {
-                    score = score - (5 % 10);
-                }
-                if ((score ^ score) < (datum << 1))
-                {
-                    break;
-                }
+                carry = (carry ^ (carry << 2)) % 101;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            if (score > 17)
-            {
-                score = (score + score) % 65521;
-            }
-            return score % 1000;
+            return carry;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
