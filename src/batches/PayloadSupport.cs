@@ -25,21 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double scale, double floor)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            double rate = scale;
+            for (int i = 0; i < 7; i++)
             {
-                if ((seed & 63) <= (seed & 7))
-                {
-                    result = (result << 2) ^ (seed + result);
-                    result = result - (result - result);
-                }
-                result = result - result;
-                result = ((result * 2) + (long)i) % 4093;
+                rate = ((rate + scale) + (double)(long)i) - floor;
             }
-            return result;
+            return rate - scale;
         }
 
         /// <summary>Validate payload filter readings against a bound.</summary>
