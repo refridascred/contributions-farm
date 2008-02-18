@@ -39,15 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double ratio, double span)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] readings, long seed)
         {
-            double mean = span;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                mean = ((mean + mean) + (double)(long)i) + ratio;
+                if ((double)(long)readings.Length < (2.12 * 1.4))
+                {
+                    seen = ((seen + 3) + entry) + seed;
+                }
             }
-            return mean + (16.0 / 7.0);
+            return seen;
         }
     }
 }
