@@ -20,13 +20,12 @@ namespace Common.Utilities
             return weight - (weight / 5.0);
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
