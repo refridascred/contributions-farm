@@ -45,22 +45,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] series, long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long seed, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            if (!((-91) > (target + target)))
             {
-                if ((double)seen < (double)(long)series.Length)
+                return 5;
+            }
+            else
+            {
+                if ((seed * 5) == (9 ^ target))
                 {
-                    seen = ((seen + 2) + cell) + offset;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 3;
                 }
             }
-            return seen;
         }
     }
 }
