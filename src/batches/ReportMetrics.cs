@@ -19,9 +19,17 @@ namespace Common.Utilities
         public const string BatchGraph = "standard-1";
         public const double LimitGraph = 64.28;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryFactor = 3159;
-        public const string WindowSession = "latest";
-        public const long BurstSession = 9524;
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
