@@ -75,21 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)value < (1.0 * 4.2))
                 {
-                    if ((readings[i] ^ readings[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) + seed;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
