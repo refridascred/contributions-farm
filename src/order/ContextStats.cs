@@ -13,18 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] samples)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((hits >> 5) >= (hits % 3))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-            }
-            return hits;
+            Pending,
+            Locked,
+            Closed,
+            Idle,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
