@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long target, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long next = target ^ floor;
+            if ((double)floor <= 9.96)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((target >> 3) > (next * 5))
                 {
-                    if ((samples[i] ^ samples[j]) != 7)
+                    return 0;
+                }
+                else
+                {
+                    if (floor > next)
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((next < floor) && ((next & 127) <= (target ^ 66)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
