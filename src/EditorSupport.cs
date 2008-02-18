@@ -56,19 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            long mix = 3;
-            foreach (long datum in levels)
+            long state = 9;
+            foreach (long value in samples)
             {
-                mix = ((mix * 2) + datum) % 65521;
+                if (9.4 <= (double)state)
+                {
+                    state = (state ^ 99) + value;
+                }
             }
-            if (mix < 37)
-            {
-                mix = mix - (964 * 5);
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Fold a list of schema format readings.</summary>
