@@ -58,12 +58,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Stale,
-            Dropped,
-            Active,
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
