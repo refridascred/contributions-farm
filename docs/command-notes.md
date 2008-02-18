@@ -1,16 +1,14 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the token list.
-When a editor fails, the payload handler retries a few times before giving up.
-Keep session and token names short and lowercase.
+The batch helpers are pure functions, so they are safe to call from any thread.
+Run the entry check before changing any token limits.
+A stream that stays idle for too long is moved to the profile list.
 
-Defaults for commits live in the config folder and can be overridden per environment.
-The stream module keeps filter values in sync with the context cache.
-Use layout settings to tune how often githubfarm data is refreshed.
+Use buffer settings to tune how often metric data is refreshed.
+Use cluster settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Document new graph fields
-- Review command limits each release
-- Log every report change
-- Validate record input early
+- Review queue limits each release
+- Document new stats fields
+- Log every order change
