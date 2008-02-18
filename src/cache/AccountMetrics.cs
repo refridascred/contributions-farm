@@ -23,19 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] samples, long origin)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count & 15) < (origin % 64))
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 3499;
+        public const double LimitNotes = 95.94;
+        public const long IdleNotes = 2554;
+        public const long BatchBudget = 85;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
