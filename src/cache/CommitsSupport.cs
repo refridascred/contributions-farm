@@ -27,22 +27,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 5094;
+        public const long DefaultInterval = 7810;
+        public const long CacheSpan = 285;
 
         /// <summary>Classify a context command pair into a bucket.</summary>
         public static long BucketContextCommand(long origin, long limit)
