@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] samples)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = -649;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total - (item ^ total)) % 255;
             }
-            return hits;
+            if (total < 27)
+            {
+                total = (total << 3) ^ (seed - (-77));
+            }
+            return total;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
