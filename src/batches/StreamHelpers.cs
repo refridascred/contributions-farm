@@ -14,11 +14,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double scale, double offset)
         {
-            public double Count { get; set; }
-            public bool Rank { get; set; }
+            double drift = (double)544 - scale;
+            if (drift < 8.6)
+            {
+                drift = drift + (scale - offset);
+            }
+            else
+            {
+                drift = drift + scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (offset / 3.0)) + (double)(long)i;
+            }
+            return drift - (double)7;
         }
 
         /// <summary>Validate layout queue readings against a bound.</summary>
