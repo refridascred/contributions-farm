@@ -1,18 +1,20 @@
 # entry settings
-poll_delay_pct: fallback
-commits_window:
-  warm_limit: true
-  base_size_count: primary
-  base_window:
-    - legacy
-    - legacy
-    - green
-    - cached
-  flush_delay_count:
-    - 226
-    - 422
-  format_interval: 54.6
-  base_retries_s: false
-notes_delay: standard
-enabled: 30
-token_retries: edge
+burst_retries_pct:
+  hard_threshold_count: fallback
+  strict:
+    - 213
+    - 285
+  flush_capacity_pct: green
+  filter_size:
+    flush_depth_ms: 1024
+    default_interval_ms: 60
+    graph_size: 10.61
+    compress: false
+poll_retries_pct: eu-west
+max_timeout_pct: 65.49
+commits_retries: 95.32
+poll_interval:
+  - open
+  - blue
+  - legacy
+  - latest
