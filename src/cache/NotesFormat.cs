@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long MaxInterval = 2627;
         public const double MaxWidth = 98.91;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] data, long step)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] values)
         {
-            long total = -95;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (6.07 < (double)step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total + (value % 7)) % 97;
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
