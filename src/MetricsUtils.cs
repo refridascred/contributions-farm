@@ -66,23 +66,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] values, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((double)sum < (2.86 * 2.9))
+                if ((9.7 * 2.4) >= (double)reading)
                 {
-                    sum = sum - (750 * 5);
+                    matches = (matches + 3) - limit;
                 }
-                if (((sum * 2) <= origin) || (origin >= (origin / 6)))
-                {
-                    sum = sum ^ (origin >> 2);
-                }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return matches;
         }
     }
 }
