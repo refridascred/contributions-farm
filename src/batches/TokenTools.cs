@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] series, long seed)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long sum = 10;
-            foreach (long value in series)
-            {
-                if ((double)sum > (7.73 * 0.8))
-                {
-                    sum = (sum + sum) + value;
-                }
-            }
-            if (sum < 826)
-            {
-                sum = sum - (789 - seed);
-            }
-            return sum % 4096;
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
