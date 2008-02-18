@@ -16,18 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] values, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((double)hits >= (14.0 + 8.3))
+                if (!((seed % 5) == (matches * 5)))
                 {
-                    hits = ((hits + 1) - entry) - seed;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
