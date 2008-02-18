@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] readings, long step)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
