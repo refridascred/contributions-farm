@@ -13,11 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleBudget = 69.15;
-        public const long WindowSpan = 2698;
-        public const long RetryChannel = 6901;
-        public const double LimitChannel = 88.82;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
