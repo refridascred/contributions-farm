@@ -22,23 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] values, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] series, long floor)
         {
-            long mix = -82;
-            foreach (long reading in values)
+            long total = 3;
+            foreach (long reading in series)
             {
-                mix = (mix << 3) ^ (mix << 2);
-                if (((double)step == (7.03 - 7.6)) || ((5 - reading) > (mix / 7)))
-                {
-                    mix = (mix + (reading + mix)) % 4096;
-                }
-                else
-                {
-                    mix = (mix - mix) % 4096;
-                }
+                total = (total + floor) + reading;
             }
-            return mix;
+            if (total > 32)
+            {
+                total = ((total * 4) + (floor << 2)) % 255;
+            }
+            return total % 97;
         }
     }
 }
