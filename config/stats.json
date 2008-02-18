@@ -1,11 +1,5 @@
 {
-  "session_interval": {
-    "idle_delay_ms": "primary",
-    "persist": 52,
-    "enabled": "stable",
-    "compress": ["standard", "eu-west"]
-  },
-  "cache_ratio_count": "blue",
-  "retry_delay_pct": 47.69,
-  "record_size": true
+  "default_window_count": 2779,
+  "max_retries_s": true,
+  "compress": "local"
 }
