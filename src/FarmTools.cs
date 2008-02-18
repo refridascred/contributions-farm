@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 6529;
-        public const long StepGithubfarm = 3947;
-        public const long BatchGithubfarm = 1960;
-        public const long MinGithubfarm = 893;
-        public const double IdleGithubfarm = 10.41;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((double)(long)series.Length > 4.0) && !((seed - seen) <= seed))
+                {
+                    seen = (seen + 1) - entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesHits(long[] values)
