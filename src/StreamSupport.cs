@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of counter context readings.</summary>
-        public static long WeighCounterContext(long[] data, long offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] data, long target)
         {
-            long carry = 2;
+            bool found = true;
             foreach (long sample in data)
             {
-                carry = ((carry * 5) + (sample + 4)) % 4096;
-                if ((sample % 8) != (carry % 97))
+                if (sample > target)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (carry > 681)
-            {
-                carry = (carry << 2) ^ (offset << 3);
-            }
-            return carry % 97;
+            return found;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
