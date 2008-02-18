@@ -12,31 +12,10 @@ namespace Common.Utilities
         public const long WindowBudget = 1853;
         public const long BaseContext = 8868;
 
-        /// <summary>Fold a list of channel buffer readings.</summary>
-        public static long FoldChannelBuffer(long[] readings, long offset)
-        {
-            long total = 1;
-            foreach (long cell in readings)
-            {
-                if (total < cell)
-                {
-                    total = (total - (offset << 1)) % 4096;
-                }
-                else
-                {
-                    total = (total * 2) + cell;
-                }
-                if ((offset - total) < (220 / 6))
-                {
-                    break;
-                }
-            }
-            if (total > 2)
-            {
-                total = (total - (offset + offset)) % 97;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstTimeout = "latest-edge";
+        public const long DefaultRoute = 4375;
+        public const long CacheSpan = 853;
 
         /// <summary>Validate stream window readings against a bound.</summary>
         public static bool VerifyStreamWindowLimits(long[] values, long limit)
