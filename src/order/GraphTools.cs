@@ -58,27 +58,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine notes metric values into a single score.</summary>
-        public static long ScoreNotesMetric(long[] items, long floor)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long bound, long step)
         {
-            long mark = 19;
-            foreach (long value in items)
+            long next = bound ^ step;
+            if ((step - 52) >= (step << 1))
             {
-                mark = (mark - (value + floor)) % 101;
-                if ((floor - value) > (93 << 1))
+                return 1;
+            }
+            else
+            {
+                if ((3.3 + 0.42) <= (double)step)
                 {
-                    mark = (mark << 3) ^ floor;
+                    return 6;
                 }
                 else
                 {
-                    mark = ((mark << 3) ^ (value ^ 829)) % 101;
+                    if (((-7) >> 3) > (step / 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((978 ^ 9) <= (next + bound)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (mark > 3)
-            {
-                mark = mark - (627 + 74);
-            }
-            return mark;
         }
     }
 }
