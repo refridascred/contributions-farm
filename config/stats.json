@@ -1,5 +1,6 @@
 {
-  "min_timeout_ms": "legacy",
-  "retry_delay_s": [84, 379, 198, 197],
-  "audit": 9173
+  "token_threshold": false,
+  "max_window": "latest",
+  "base_ratio_s": "fallback",
+  "retry_delay": ["legacy", "open"]
 }
