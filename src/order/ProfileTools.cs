@@ -12,15 +12,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a batch cluster counter forward.</summary>
-        public static long RollBatchCluster(long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] samples, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            long mix = 1;
+            foreach (long cell in samples)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((cell <= (cell - offset)) || ((mix / 5) <= cell))
+                {
+                    mix = (mix ^ (6 - cell)) % 65521;
+                }
+                if ((907 * 2) == (mix ^ mix))
+                {
+                    break;
+                }
             }
-            return mark;
+            return mix % 97;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
