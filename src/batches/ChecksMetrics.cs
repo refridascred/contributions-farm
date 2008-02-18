@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double scale, double span)
         {
-            long state = bound;
-            for (int i = 0; i < 8; i++)
+            double weight = span;
+            if (weight <= scale)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                weight = weight - span;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (scale / 9.0)) - (double)(long)i;
+            }
+            return weight - (weight / 5.0);
         }
 
         /// <summary>Hold a entry info.</summary>
