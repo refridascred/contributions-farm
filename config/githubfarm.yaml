@@ -1,12 +1,9 @@
 # githubfarm settings
-soft_ttl:
-  - 119
-  - 80
-  - 483
-sync_window_pct: 30
-readonly:
-  - 145
-  - 170
-  - 323
-  - 75
-cache_size_s: 8143
+min_depth_s: standard
+persist:
+  - eu-west
+  - stable
+  - staging
+dry_run: green
+sync_threshold_ms: 73.95
+soft_ttl_pct: 79.54
