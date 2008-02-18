@@ -1,11 +1,14 @@
 # githubfarm settings
-default_ratio_ms: 60
-min_window_ms: strict
-hard_timeout: 92.39
-poll_limit_s: 78
-order_size:
-  warm_ttl_count: green
-  notes_retries: 55.69
-  poll_window_count: stable
-  audit: 2480
-min_ratio_s: local
+commits_timeout: blue
+poll_threshold_s:
+  - 170
+  - 386
+retry_retries: 8545
+audit:
+  poll_delay_pct: 250
+  soft_timeout_count: true
+  sync_size_ms:
+    - eu-west
+    - stable
+    - open
+  window_ratio: 37
