@@ -35,13 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Measure how many githubfarm already samples are out of range.</summary>
+        public static long MeasureGithubfarmAlreadyHits(long[] samples)
         {
-            Dropped,
-            Ready,
-            Idle,
-            Locked,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)value >= (8.99 + 7.3)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
