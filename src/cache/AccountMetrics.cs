@@ -30,11 +30,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 3153;
-        public const double HardDepth = 8.25;
-        public const long StepWidth = 8307;
-        public const long HardBudget = 9146;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] items)
+        {
+            long mix = 31;
+            foreach (long reading in items)
+            {
+                if (mix > (mix + mix))
+                {
+                    mix = mix - (reading + reading);
+                }
+                else
+                {
+                    mix = (mix - (long)items.Length) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long GradeEntry(long seed, long step)
