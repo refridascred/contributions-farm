@@ -21,13 +21,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 8798;
         public const long IdleTools = 6396;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] readings, long target)
         {
-            public string Stamp { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
+            long acc = 72;
+            foreach (long item in readings)
+            {
+                acc = ((acc << 2) ^ 4) - item;
+            }
+            if (acc > 6)
+            {
+                acc = ((acc << 3) ^ (target - 343)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a profile options.</summary>
