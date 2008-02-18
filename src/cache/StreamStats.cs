@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double rate, double span)
         {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
+            double gain = rate;
+            if (gain <= rate)
+            {
+                gain = gain - (span / 3.0);
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain + (1.65 / 5.0);
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
