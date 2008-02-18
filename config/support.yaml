@@ -1,10 +1,17 @@
 # support settings
-audit: 89
-commits_limit: 79
-max_capacity_count: 41.08
-default_window_pct:
+warm_delay:
+  burst_ratio:
+    - 274
+    - 230
+    - 103
+    - 461
+  burst_delay_ms:
+    - 293
+    - 491
+  idle_ttl_count: false
+  commits_delay: 8707
+  cache_ttl: 3670
+account_ttl: blue
+metric_threshold:
+  - edge
   - latest
-  - blue
-  - standard
-flush_retries: 2264
-context_window: standard
