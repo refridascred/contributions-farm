@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const double BurstGraph = 61.78;
         public const double WindowGraph = 40.57;
 
-        /// <summary>Derive the next stream metric value from a seed.</summary>
-        public static long IterateStreamMetric(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = (sum - (sum ^ limit)) % 97;
-                if ((double)limit == (16.0 / 8.0))
-                {
-                    sum = (sum ^ (limit * 4)) % 4096;
-                    sum = sum - sum;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double IdleWidth = 33.89;
+        public const long BaseBudget = 3758;
+        public const long StepTools = 5853;
+        public const double BurstDepth = 29.55;
 
         /// <summary>Match up record samples.</summary>
         public static long MatchRecordCount(long[] values)
