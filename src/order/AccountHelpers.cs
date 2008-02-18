@@ -55,14 +55,18 @@ namespace Common.Utilities
         public const string StepRatio = "latest-edge";
         public const double BaseLevel = 44.16;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] levels)
         {
-            Failed,
-            Queued,
-            Closed,
-            Pending,
-            New,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= (9.3 * 2.9))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
