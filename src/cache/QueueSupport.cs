@@ -32,11 +32,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] samples)
         {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
