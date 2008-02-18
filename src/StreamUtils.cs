@@ -62,18 +62,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the commits context entries that pass the check.</summary>
-        public static long TallyCommitsContextMatches(long[] data, long floor)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!(((entry / 3) == (matches * 2)) || (floor >= (entry + entry))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Queued,
+            Retry,
+            Closed,
+            Failed,
         }
     }
 }
