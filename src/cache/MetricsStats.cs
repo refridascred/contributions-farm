@@ -50,15 +50,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double bias, double span)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            double load = (double)(375 - 87);
-            if (load > load)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load + bias) - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load - (load - bias);
+            return hits;
         }
 
         /// <summary>Match up filter samples.</summary>
