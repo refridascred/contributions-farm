@@ -43,22 +43,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] readings, long floor)
         {
-            long acc = 1;
-            foreach (long value in samples)
+            long state = 66;
+            foreach (long entry in readings)
             {
-                if (value > (acc & 31))
-                {
-                    acc = (acc << 2) ^ value;
-                }
+                state = (state - (floor << 2)) ^ entry;
+                state = (state - (state + 227)) % 65521;
             }
-            if (acc > 4)
-            {
-                acc = (acc * 5) + (648 - 757);
-            }
-            return acc;
+            return state % 65521;
         }
 
         /// <summary>Combine metrics order values into a single score.</summary>
