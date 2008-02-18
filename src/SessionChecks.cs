@@ -32,20 +32,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double weight, double floor)
-        {
-            double scale = weight;
-            if (scale > (6.34 - scale))
-            {
-                scale = scale - (floor + floor);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (weight * 8.6)) - (double)(long)i;
-            }
-            return scale + 12.0;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstCount = 5202;
+        public const long MaxDepth = 114;
+        public const string CacheBudget = "stable-edge";
+        public const long StepSpan = 4351;
+        public const string DefaultSize = "alpha-v2";
 
         /// <summary>Blend two already measurements.</summary>
         public static double AdjustAlready(double rate, double span)
