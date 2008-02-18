@@ -35,19 +35,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the counter buffer series from a seed.</summary>
-        public static long DeriveCounterBuffer(long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] series, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
+            long total = 532;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((double)offset > (15.0 * 8.8))
                 {
-                    mark = (mark + (mark + (long)i)) + (long)i2;
+                    total = ((total << 2) ^ total) % 101;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
+                else
+                {
+                    total = ((total * 4) + (sample * 5)) % 1000;
+                }
             }
-            return mark;
+            return total % 97;
         }
     }
 }
