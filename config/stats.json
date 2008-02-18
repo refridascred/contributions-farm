@@ -1,8 +1,11 @@
 {
-  "enabled": "primary",
-  "warm_window_pct": "staging",
-  "cluster_delay": 9922,
-  "audit": 64.73,
-  "sync_limit_count": "cached",
-  "soft_ttl": "legacy"
+  "base_limit_count": ["eu-west", "eu-west", "open"],
+  "max_ttl_count": "edge",
+  "idle_size_pct": "local",
+  "idle_window": {
+    "dry_run": "edge",
+    "persist": ["staging", "open", "green", "local"],
+    "readonly": false
+  },
+  "layout_limit": true
 }
