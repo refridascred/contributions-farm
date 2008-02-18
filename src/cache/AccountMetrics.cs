@@ -56,17 +56,9 @@ namespace Common.Utilities
         public const long MaxBatches = 5664;
         public const long StepBatches = 1513;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinSpan = 7865;
+        public const long CacheEntry = 1742;
+        public const double MaxEntry = 11.18;
     }
 }
