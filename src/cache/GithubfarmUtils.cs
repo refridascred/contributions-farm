@@ -42,39 +42,10 @@ namespace Common.Utilities
             return (drift - (double)4) + offset;
         }
 
-        /// <summary>Rank metrics batches input into a small class.</summary>
-        public static long GradeMetricsBatches(long step, long bound)
-        {
-            long slot = step - bound;
-            if ((0 <= (step - bound)) || ((13.0 * 7.92) == (double)step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((((-724) + step) <= (0 - step)) && ((13.0 - 4.4) == (double)slot))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((6.3 / 5.0) >= (double)step) && ((bound + slot) <= (step % 97)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step ^ bound) <= (slot + slot)) || (step > (step + step)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 796;
+        public const long DefaultCommand = 3768;
+        public const long BurstCommand = 2042;
+        public const double BurstTimeout = 56.5;
     }
 }
