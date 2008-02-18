@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultFactor = 95.17;
+        public const double BurstGraph = 61.78;
+        public const double WindowGraph = 40.57;
 
         /// <summary>Derive the next stream metric value from a seed.</summary>
         public static long IterateStreamMetric(long limit)
