@@ -1,11 +1,14 @@
 # Command notes
 
-The githubfarm report groups every githubfarm by stats.
-Keep commits and farm names short and lowercase.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Keep report and window names short and lowercase.
+
+Keep context and githubfarm names short and lowercase.
+Each counter is validated before it reaches the payload queue.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review tools limits each release
-- Prefer farm defaults
-- Validate session input early
-- Document new channel fields
+- Validate buffer input early
+- Keep channel values small
+- Document new cache fields
