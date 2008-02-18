@@ -40,12 +40,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepSize = 323;
+        public const double WindowDepth = 78.87;
+        public const long BatchGithubfarm = 5676;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
