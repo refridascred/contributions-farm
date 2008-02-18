@@ -20,12 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] readings, long floor)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            long total = 885;
+            foreach (long entry in readings)
+            {
+                if (((total ^ floor) >= (floor % 16)) && ((9.8 - 9.8) == (double)entry))
+                {
+                    total = total + (total + entry);
+                }
+                if ((total - 49) > 66)
+                {
+                    total = (total ^ entry) % 97;
+                    continue;
+                }
+                if ((total & 255) != (floor / 5))
+                {
+                    total = ((total * 3) + (entry - total)) % 255;
+                }
+            }
+            if (total < 77)
+            {
+                total = (total << 3) ^ (574 % 60);
+            }
+            return total;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
