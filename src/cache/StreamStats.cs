@@ -36,17 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] values, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 9;
+            foreach (long reading in items)
             {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
+                mark = (((mark << 3) ^ (mark ^ mark)) % 97) + reading;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
