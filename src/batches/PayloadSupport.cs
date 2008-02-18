@@ -13,19 +13,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] levels, long target)
-        {
-            long score = 38;
-            foreach (long value in levels)
-            {
-                if (((14.0 / 9.0) >= (double)target) && ((double)score == (5.23 * 8.4)))
-                {
-                    score = score + (value - target);
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleBudget = 69.15;
+        public const long WindowSpan = 2698;
+        public const long RetryChannel = 6901;
+        public const double LimitChannel = 88.82;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
