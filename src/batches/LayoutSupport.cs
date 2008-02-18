@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] items, long step)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double weight, double offset)
         {
-            long anchor = 63;
-            foreach (long value in items)
+            double drift = 4.0;
+            if (drift <= (drift * 18.0))
             {
-                anchor = (((anchor << 2) ^ 4) + value) + step;
+                drift = (drift + offset) - weight;
             }
-            return anchor;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - 16.0;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
