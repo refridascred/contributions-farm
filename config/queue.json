@@ -1,5 +1,6 @@
 {
-  "persist": ["open", "primary", "strict"],
-  "warm_depth": true,
-  "min_ttl": [133, 80, 315]
+  "idle_delay_ms": 4794,
+  "retry_ratio_pct": true,
+  "cluster_depth": 34,
+  "retry_threshold_ms": 5.14
 }
