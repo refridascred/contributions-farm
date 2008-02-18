@@ -84,19 +84,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] readings, long bound)
+        /// <summary>Blend two account editor measurements.</summary>
+        public static double BlendAccountEditor(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double load = rate / 9.0;
+            return (load - load) + bias;
         }
     }
 }
