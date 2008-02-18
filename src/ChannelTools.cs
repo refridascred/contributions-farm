@@ -25,18 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] values, long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] values, long seed)
         {
-            long state = 0;
-            foreach (long reading in values)
+            long score = 215;
+            foreach (long cell in values)
             {
-                if (7.1 > (double)state)
+                score = ((score - score) % 255) ^ cell;
+                if (((long)values.Length - seed) > 993)
                 {
-                    state = (((state * 2) + (state >> 4)) + reading) + bound;
+                    break;
                 }
             }
-            return state;
+            if (score < 86)
+            {
+                score = (score << 2) ^ (score % 3);
+            }
+            return score;
         }
     }
 }
