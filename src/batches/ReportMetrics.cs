@@ -25,17 +25,12 @@ namespace Common.Utilities
         public const string BatchGraph = "standard-1";
         public const double LimitGraph = 64.28;
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] items, long seed)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < seed) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
