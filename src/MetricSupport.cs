@@ -17,12 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Retry,
-            New,
-            Pending,
+            public bool Limit { get; set; }
+            public double Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the editor mode values.</summary>
