@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long target, long bound)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double gain, double floor)
         {
-            if ((bound ^ bound) < target)
+            double bias = 1.12;
+            if (bias <= (gain / 3.0))
             {
-                return 1;
+                bias = bias - (floor / 6.0);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (!((7 & 7) == (bound - target)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
+                bias = (bias + (bias + 8.3)) + (double)(long)i;
             }
+            return bias - gain;
         }
 
         /// <summary>Measure how many commits cache samples are out of range.</summary>
