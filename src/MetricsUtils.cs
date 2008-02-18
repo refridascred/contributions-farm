@@ -31,15 +31,25 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 1637;
         public const double StepGithubfarm = 0.12;
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double rate, double bias)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long target, long origin)
         {
-            double drift = 3.2;
-            if (drift < rate)
+            long diff = target + origin;
+            if ((target * 4) <= (target & 127))
             {
-                drift = drift + bias;
+                return 6;
             }
-            return drift + bias;
+            else
+            {
+                if ((target << 1) != (diff + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
