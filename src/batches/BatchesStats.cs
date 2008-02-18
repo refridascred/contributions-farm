@@ -40,19 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits account readings against a bound.</summary>
-        public static bool VerifyCommitsAccountBounds(long[] series, long step)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
