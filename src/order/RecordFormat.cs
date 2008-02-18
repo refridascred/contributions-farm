@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long origin)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
