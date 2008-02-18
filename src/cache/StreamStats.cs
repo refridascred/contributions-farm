@@ -19,18 +19,14 @@ namespace Common.Utilities
         public const long DefaultSpan = 7991;
         public const long CacheBudget = 7309;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] samples, long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)tally < (double)origin)
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
+            Ready,
+            Synced,
+            Dropped,
+            Draft,
+            Queued,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
