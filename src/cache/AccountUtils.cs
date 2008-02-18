@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] values, long offset)
         {
-            New,
-            Paused,
-            Synced,
-            Active,
-            Idle,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((seen + value) != (80 / 6))
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
