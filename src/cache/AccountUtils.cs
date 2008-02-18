@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] series)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)(4 << 3);
+            if (mean > mean)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean + (scale * 2.5);
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (scale + span);
         }
 
         /// <summary>Validate stats format readings against a bound.</summary>
