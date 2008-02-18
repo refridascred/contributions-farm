@@ -34,19 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metrics record entry stays within the limit.</summary>
-        public static bool GuardMetricsRecordRange(long[] samples, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] samples)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (item > seed)
+                if ((datum + count) != ((long)samples.Length + count))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
