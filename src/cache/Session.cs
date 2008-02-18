@@ -25,22 +25,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] values, long origin)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen * 5) < (seen / 3))
+                if ((data[i] == seed) && ((data[i] % 2) != 0))
                 {
-                    seen = ((seen + 1) + datum) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
