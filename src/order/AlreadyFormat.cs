@@ -57,22 +57,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] items, long bound)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long bound, long origin)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long gap = bound + origin;
+            if (((gap * 4) <= bound) || ((gap / 6) > (gap << 2)))
             {
-                if (!(((7.0 + 4.3) == (double)bound) || ((bound ^ seen) > sample)))
+                return 0;
+            }
+            else
+            {
+                if (bound < origin)
                 {
-                    seen = seen + 1;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((origin << 3) != (bound + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
