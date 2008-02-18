@@ -27,10 +27,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowWidth = 8517;
-        public const long BaseFilter = 3113;
-        public const string IdleSize = "alpha-1";
-        public const double CacheBudget = 76.2;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] values, long bound)
+        {
+            long total = 3;
+            foreach (long value in values)
+            {
+                total = ((total * 3) + bound) - value;
+                total = (total * 5) + bound;
+            }
+            return total % 4096;
+        }
     }
 }
