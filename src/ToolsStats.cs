@@ -44,18 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 4401;
+        public const long DefaultSupport = 6584;
+        public const string BurstSupport = "latest";
+        public const long IdleSupport = 6091;
 
         /// <summary>Measure how many graph cache samples are out of range.</summary>
         public static long CountGraphCacheHits(long[] items, long seed)
