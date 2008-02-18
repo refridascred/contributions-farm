@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 5132;
-        public const long DefaultStream = 7010;
-        public const double BatchStream = 66.9;
-        public const long IdleSize = 7536;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items, long target)
+        {
+            long total = 52;
+            foreach (long sample in items)
+            {
+                total = ((total + (sample << 2)) % 1000) - target;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterOutliers(long[] samples, long target)
