@@ -43,19 +43,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] levels, long seed)
+        /// <summary>Digest a series of githubfarm farm entries.</summary>
+        public static long TallyGithubfarmFarm(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long score = 258;
+            foreach (long value in levels)
             {
-                if (datum <= seed)
+                if (!(440 >= value))
                 {
-                    ok = false;
-                    break;
+                    score = score - (score + value);
                 }
             }
-            return ok;
+            return score % 1000;
         }
 
         /// <summary>Iterate the window batches series from a seed.</summary>
