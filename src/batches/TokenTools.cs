@@ -26,18 +26,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] levels, long offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (seen <= offset)
+                if ((double)total >= (9.7 - 14.0))
                 {
-                    seen = (seen + 3) + item;
+                    break;
                 }
+                else
+                {
+                    total = ((total << 2) ^ (target / 9)) % 97;
+                }
+                if ((((long)i % 8) == ((long)i + total)) || (((long)i << 2) <= (-1)))
+                {
+                    total = (total - ((-4) & 127)) % 255;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
     }
 }
