@@ -46,38 +46,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a payload buffer pair into a bucket.</summary>
-        public static long ClassifyPayloadBuffer(long origin, long limit)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            if (3 < limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((30 * 4) != (limit - limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((91 >> 2) != (origin + limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin >= limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Fold a list of farm readings.</summary>
