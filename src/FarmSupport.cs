@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm support helpers.</summary>
     public static class FarmSupport
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double bias, double floor)
         {
-            Paused,
-            Queued,
-            Stale,
-            Draft,
+            double mean = 4.59;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (bias * 3.61)) + (double)(long)i;
+            }
+            return mean + (floor / 2.0);
         }
 
         /// <summary>Digest a series of context entries.</summary>
