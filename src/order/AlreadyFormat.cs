@@ -35,19 +35,38 @@ namespace Common.Utilities
         public const string LimitFactor = "local-1";
         public const long StepScore = 1177;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] readings, long offset)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long origin, long limit)
         {
-            long result = -548;
-            foreach (long item in readings)
+            if (((double)origin > (17.0 + 15.0)) && (limit < origin))
             {
-                result = (result - (offset >> 2)) ^ item;
-                if (result > (3 << 3))
+                return 7;
+            }
+            else
+            {
+                if (((limit * 2) >= (limit & 7)) && ((8.11 / 2.0) > (double)origin))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((15 >> 5) != (limit + limit)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((8.3 - 8.7) != (double)origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Describe the filter phase values.</summary>
