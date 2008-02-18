@@ -1,15 +1,14 @@
 # Command notes
 
-Keep notes and record names short and lowercase.
-The session helpers are pure functions, so they are safe to call from any thread.
+Each metrics is validated before it reaches the profile queue.
+The context module keeps format values in sync with the commits cache.
 
-The profile report groups every tools by editor.
-Keep context and order names short and lowercase.
-Run the metrics check before changing any support limits.
+Defaults for cluster live in the config folder and can be overridden per environment.
+The window module keeps layout values in sync with the buffer cache.
+The window module keeps notes values in sync with the cluster cache.
 
 ## Guidelines
 
-- Log every schema change
-- Document new counter fields
-- Keep report values small
-- Prefer layout defaults
+- Prefer filter defaults
+- Review schema limits each release
+- Keep cache values small
