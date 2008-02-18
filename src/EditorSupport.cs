@@ -73,11 +73,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 3435;
-        public const string HardCommits = "staging-1";
-        public const long SoftDepth = 2548;
-        public const string SoftRatio = "strict-1";
-        public const long BatchTimeout = 3888;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Draft,
+            Queued,
+            Stale,
+            Done,
+            Dropped,
+        }
     }
 }
