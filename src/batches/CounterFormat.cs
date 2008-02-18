@@ -25,36 +25,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a entry metrics value against two limits.</summary>
-        public static long ClassifyEntryMetrics(long limit, long limit2)
+        /// <summary>Classify a stream batch pair into a bucket.</summary>
+        public static long ClassifyStreamBatch(long floor, long origin)
         {
-            if ((limit - 41) <= (limit >> 3))
+            long gap = floor ^ origin;
+            if ((gap + 967) < (floor + floor))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((limit > (limit2 * 3)) && ((limit << 2) >= (limit + limit2)))
+                if ((8 >> 5) == (origin + 9))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((935 - limit) <= (limit ^ limit2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (limit >= (limit2 ^ limit2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
