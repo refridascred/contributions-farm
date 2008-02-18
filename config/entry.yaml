@@ -1,15 +1,7 @@
 # entry settings
-cache_window_s: 250
-max_capacity_s: true
-stats_delay:
-  soft_delay: latest
-  graph_threshold:
-    - open
-    - legacy
-    - edge
-  poll_delay_count: green
-  session_interval: fallback
-  flush_size: cached
-min_timeout: 500
-soft_threshold: latest
-strict: false
+batch_limit: false
+route_delay: staging
+notes_delay: 2992
+githubfarm_window: false
+warm_delay_s: false
+flush_threshold: false
