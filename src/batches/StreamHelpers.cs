@@ -38,12 +38,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] series, long step)
         {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a already reading by value.</summary>
