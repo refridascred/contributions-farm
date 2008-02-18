@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((score ^ offset) > reading)
                 {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score ^ (offset & 127)) % 1000;
                 }
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
