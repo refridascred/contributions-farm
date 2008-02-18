@@ -65,19 +65,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] readings, long target)
+        /// <summary>Count the stream context entries that pass the check.</summary>
+        public static long CountStreamContextHits(long[] samples)
         {
-            long mark = 2;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                mark = (mark - (sample % 5)) - target;
-                if ((mark ^ (-77)) == (sample * 5))
+                if ((seen << 1) >= seen)
                 {
-                    mark = (mark + sample) % 255;
+                    seen = (seen + 1) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
