@@ -50,14 +50,15 @@ namespace Common.Utilities
         public const long IdleWidth = 6425;
         public const long LimitFactor = 9099;
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double rate, double floor)
         {
-            Queued,
-            Locked,
-            Active,
-            Failed,
-            Closed,
+            double rate2 = (double)(41 + 5);
+            if (rate2 <= (floor - rate))
+            {
+                rate2 = rate2 - floor;
+            }
+            return rate2 + rate2;
         }
     }
 }
