@@ -32,21 +32,17 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Compare every pair of session record readings.</summary>
-        public static long PairSessionRecordCount(long[] levels)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((series[i] > floor) && ((series[i] % 2) == 0))
                 {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Compare every pair of farm channel readings.</summary>
