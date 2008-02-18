@@ -12,18 +12,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 3550;
+        public const long IdleSpan = 9719;
+        public const string SoftSession = "latest-v2";
+        public const long SoftSize = 996;
+        public const long BatchSize = 1024;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long WeighSchema(long[] levels)
