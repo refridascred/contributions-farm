@@ -1,11 +1,11 @@
 # Command notes
 
-The tools report groups every schema by counter.
-Keep buffer and session names short and lowercase.
+The githubfarm report groups every githubfarm by stats.
+Keep commits and farm names short and lowercase.
 
 ## Guidelines
 
-- Review support limits each release
-- Keep counter values small
-- Document new stats fields
-- Validate format input early
+- Review tools limits each release
+- Prefer farm defaults
+- Validate session input early
+- Document new channel fields
