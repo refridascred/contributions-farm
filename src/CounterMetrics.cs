@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] data, long seed)
+        /// <summary>Measure how many editor batches samples are out of range.</summary>
+        public static long TallyEditorBatchesOutliers(long[] readings, long offset)
         {
-            long sum = 3;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                sum = sum - (cell - seed);
+                if (hits >= ((-369) ^ offset))
+                {
+                    hits = (hits + 3) - cell;
+                }
             }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
