@@ -50,11 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            public bool Count { get; set; }
-            public string Size { get; set; } = "";
+            long total = 602;
+            foreach (long sample in readings)
+            {
+                total = ((total - (total + 761)) % 1000) ^ sample;
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the layout mode values.</summary>
