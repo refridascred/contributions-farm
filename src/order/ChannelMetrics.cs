@@ -14,38 +14,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long origin, long seed)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] samples, long floor)
         {
-            if ((double)origin != (double)seed)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5 >= (seed + 3)) || (4.92 < (double)seed))
+                if (value != floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((4 / 7) != (origin + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin <= 3.72)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Match up tools format samples.</summary>
