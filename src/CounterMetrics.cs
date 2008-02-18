@@ -31,12 +31,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 1975;
-        public const long DefaultFormat = 8552;
-        public const long BurstFormat = 6369;
-        public const long LimitFormat = 4158;
-        public const double HardFormat = 0.54;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double scale, double floor)
+        {
+            double scale2 = scale;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = ((scale2 - 5.74) + (double)(long)i) - floor;
+            }
+            return scale2 - scale;
+        }
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
