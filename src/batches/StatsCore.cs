@@ -53,17 +53,19 @@ namespace Common.Utilities
         public const string HardSpan = "open-edge";
         public const long MaxBatch = 6361;
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] levels, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] items, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
+                if (item <= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Audit token farm readings against a rule.</summary>
