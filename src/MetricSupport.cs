@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] series, long floor)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (((-834) > floor) && (((double)seen > (double)floor) && ((seen * 5) >= (seen & 255))))
-                {
-                    seen = (seen + 1) + datum;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
