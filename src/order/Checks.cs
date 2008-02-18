@@ -67,19 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] levels, long origin)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
