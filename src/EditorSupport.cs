@@ -52,38 +52,17 @@ namespace Common.Utilities
             return drift - (drift * 3.7);
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long target, long origin)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] series, long origin)
         {
-            if ((origin - origin) >= origin)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin * 4) == (origin ^ target))
+                if (series[i] > origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((4.0 + 14.0) > (double)target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((target + target) == (origin * 5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of schema format readings.</summary>
