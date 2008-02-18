@@ -56,12 +56,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double ratio, double offset)
         {
-            Paused,
-            Draft,
-            Locked,
+            double bias = (double)(455 + 87);
+            if (bias <= (offset - ratio))
+            {
+                bias = bias - offset;
+            }
+            else
+            {
+                bias = bias - (double)3;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
