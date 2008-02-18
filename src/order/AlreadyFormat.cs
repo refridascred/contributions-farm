@@ -41,12 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Check that every graph stream entry stays within the limit.</summary>
+        public static bool CheckGraphStreamRange(long[] items, long floor)
         {
-            Closed,
-            Queued,
-            Synced,
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
