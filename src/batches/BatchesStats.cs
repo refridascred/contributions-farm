@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] data)
+        /// <summary>Measure how many commits cache samples are out of range.</summary>
+        public static long AuditCommitsCacheMatches(long[] items)
         {
-            long mix = 5;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (entry < (mix % 2))
+                if (((long)items.Length - count) > (sample * 3))
                 {
-                    mix = ((mix * 2) + mix) % 1000;
+                    count = count + 2;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Look up the position of a stream stats sample.</summary>
