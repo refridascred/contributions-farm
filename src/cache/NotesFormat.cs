@@ -20,26 +20,12 @@ namespace Common.Utilities
         public const long BaseSize = 2199;
         public const double MaxSpan = 74.31;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] levels, long origin)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long mix = 37;
-            foreach (long item in levels)
-            {
-                if ((item - mix) != (origin + mix))
-                {
-                    mix = ((mix * 3) + (item >> 1)) % 65521;
-                }
-                else
-                {
-                    mix = (mix - (5 / 3)) % 97;
-                }
-            }
-            if (mix < 518)
-            {
-                mix = (mix ^ (origin - origin)) % 4096;
-            }
-            return mix % 65521;
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
