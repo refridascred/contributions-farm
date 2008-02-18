@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 7;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (anchor + (reading << 1)) % 1000;
+                anchor = (anchor ^ (target & 255)) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Count the notes editor entries that pass the check.</summary>
