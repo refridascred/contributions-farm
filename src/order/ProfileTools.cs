@@ -32,25 +32,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long seed)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                long gap = result;
-                if ((19 + result) < (seed - gap))
-                {
-                    result = ((result << 3) ^ (seed ^ gap)) % 1000;
-                    gap = (gap ^ seed) % 97;
-                }
-                else
-                {
-                    result = ((result * 2) + (gap % 7)) % 255;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Retry,
+            Ready,
+            Queued,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
