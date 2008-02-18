@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the farm graph entries that pass the check.</summary>
-        public static long AuditFarmGraphMatches(long[] data, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long carry = 1;
+            foreach (long entry in data)
             {
-                if (((matches * 3) >= (offset ^ matches)) && (matches < (823 + matches)))
+                long hits = entry % 10;
+                if (hits >= (carry + hits))
                 {
-                    matches = (matches + 2) - value;
+                    carry = (carry + (entry % 24)) % 255;
                 }
+                carry = carry - target;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
