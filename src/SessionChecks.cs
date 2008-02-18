@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = (carry + bound) % 101;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a schema options.</summary>
