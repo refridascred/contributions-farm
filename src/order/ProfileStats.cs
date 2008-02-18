@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of context farm entries.</summary>
-        public static long CombineContextFarm(long[] items, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] items, long target)
         {
-            long sum = 4;
-            foreach (long reading in items)
+            long sum = 13;
+            foreach (long cell in items)
             {
-                if ((limit * 4) != (sum >> 2))
+                if ((sum + 34) >= (cell + cell))
                 {
-                    sum = ((sum + sum) % 97) + reading;
+                    sum = (sum - (target % 2)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum ^ 4)) % 4096;
                 }
             }
-            return sum % 1000;
+            if (sum > (-8))
+            {
+                sum = (sum ^ (target * 3)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a command header.</summary>
