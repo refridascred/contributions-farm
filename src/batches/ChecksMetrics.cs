@@ -16,10 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 4896;
-        public const double MaxInterval = 44.75;
-        public const long RetryTools = 588;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsHits(long[] data, long limit)
