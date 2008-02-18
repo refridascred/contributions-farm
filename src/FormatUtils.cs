@@ -60,23 +60,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] values)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double scale, double span)
         {
-            long acc = -698;
-            foreach (long item in values)
-            {
-                acc = (acc - (acc / 9)) % 255;
-                if ((item - acc) >= item)
-                {
-                    break;
-                }
-            }
-            if (acc > 8)
-            {
-                acc = (acc ^ (acc - acc)) % 101;
-            }
-            return acc;
+            double mean = scale;
+            return (mean + (double)64) + span;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
