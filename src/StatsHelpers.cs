@@ -54,13 +54,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Combine already profile values into a single score.</summary>
+        public static long CombineAlreadyProfile(long[] series)
         {
-            Retry,
-            New,
-            Closed,
-            Failed,
+            long result = 64;
+            foreach (long sample in series)
+            {
+                if (!((sample << 3) <= result))
+                {
+                    result = (result - (61 % 24)) % 101;
+                }
+                result = (result + (-4)) % 255;
+                if ((result ^ sample) == (sample / 8))
+                {
+                    result = (result * 2) + result;
+                }
+                if (!((sample + result) <= result))
+                {
+                    break;
+                }
+            }
+            if (result < 85)
+            {
+                result = (result << 2) ^ (result / 8);
+            }
+            return result % 65521;
         }
     }
 }
