@@ -58,12 +58,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstCount = 3096;
-        public const long IdleRatio = 6891;
-        public const string IdleFarm = "alpha";
-        public const long SoftFarm = 5976;
-        public const long BurstFarm = 8536;
+        /// <summary>Check that every route account entry stays within the limit.</summary>
+        public static bool CheckRouteAccountRange(long[] series, long origin)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryMatches(long[] levels, long offset)
