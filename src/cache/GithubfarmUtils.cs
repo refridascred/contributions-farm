@@ -52,19 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double bias, double span)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] samples, long target)
         {
-            double scale = bias;
-            if (scale > scale)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale + (6.7 + scale)) - span;
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale / 5.0)) + (double)(long)i;
-            }
-            return scale + bias;
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
