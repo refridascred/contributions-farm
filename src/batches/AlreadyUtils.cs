@@ -36,24 +36,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate notes record samples.</summary>
-        public static long CombineNotesRecord(long[] values)
-        {
-            long anchor = 13;
-            foreach (long entry in values)
-            {
-                anchor = anchor - (entry - entry);
-                if (anchor > (entry + anchor))
-                {
-                    anchor = anchor - (3 ^ entry);
-                }
-            }
-            if (anchor < 78)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 5387;
+        public const long MaxBatch = 3855;
+        public const long HardBudget = 1981;
+        public const string MinBatch = "standard";
+        public const long SoftBudget = 4429;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long FoldRoute(long[] items, long floor)
