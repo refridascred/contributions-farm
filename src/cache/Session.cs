@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long DefaultSession = 5738;
         public const string StepScore = "standard-1";
 
-        /// <summary>Digest a series of window tools entries.</summary>
-        public static long WeighWindowTools(long[] readings, long target)
+        /// <summary>Find the first queue graph entry that matches the target.</summary>
+        public static long LocateQueueGraphIndex(long[] readings, long seed)
         {
-            long mark = 84;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((target * 2) >= mark) || ((10.0 - 4.1) != (double)target))
+                if (readings[i] == seed)
                 {
-                    mark = (mark * 4) + sample;
-                }
-                if ((20.0 / 8.0) > (double)mark)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
