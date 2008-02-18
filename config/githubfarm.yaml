@@ -1,6 +1,4 @@
 # githubfarm settings
-enabled: 24.66
-compress: 32
-retry_limit_ms: true
-githubfarm_interval: 97
-strict: 60
+base_ratio_s: true
+verbose: edge
+soft_size: 21
