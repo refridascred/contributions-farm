@@ -57,12 +57,19 @@ namespace Common.Utilities
             return scale + (bias / 5.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinInterval = 4852;
-        public const long IdleBudget = 7230;
-        public const long DefaultSize = 8028;
-        public const long LimitLevel = 4882;
-        public const long MaxGraph = 5577;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((7.3 + 1.3) != (double)seen)
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long FoldEntry(long[] items, long bound)
