@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 3473;
-        public const long StepInterval = 3624;
-        public const long StepCount = 9484;
-        public const long CacheLevel = 3812;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowInterval = 9739;
+        public const long MaxSupport = 6986;
+        public const string SoftTimeout = "cached-1";
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
