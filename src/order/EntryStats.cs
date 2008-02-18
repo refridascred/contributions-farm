@@ -74,26 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] levels, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
+            long mix = 3;
+            foreach (long reading in levels)
             {
-                if ((mix <= (mix - offset)) && ((double)(long)i != (8.9 / 6.0)))
-                {
-                    mix = (mix ^ ((long)i % 2)) % 97;
-                }
-                else
-                {
-                    mix = mix ^ 21;
-                }
-                double drift = (7.89 + 5.38) + (double)offset;
-                if ((drift * 19.0) >= 5.32)
-                {
-                    mix = mix + (long)i;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
+                mix = (mix ^ (reading + mix)) - offset;
             }
             return mix;
         }
