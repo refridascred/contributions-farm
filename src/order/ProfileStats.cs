@@ -22,10 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCommand = 15.04;
-        public const long LimitBudget = 9455;
-        public const string IdleCommand = "stable-1";
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public bool Total { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long ClassifySupport(long step, long limit)
