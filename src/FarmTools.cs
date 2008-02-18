@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] series, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (((double)(long)series.Length > 4.0) && !((seed - seen) <= seed))
+                if (cell != limit)
                 {
-                    seen = (seen + 1) - entry;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
