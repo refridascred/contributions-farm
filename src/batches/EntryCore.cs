@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate metrics already samples.</summary>
-        public static long CombineMetricsAlready(long[] samples)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] samples, long bound)
         {
-            long sum = 2;
-            foreach (long value in samples)
+            long mark = 34;
+            foreach (long item in samples)
             {
-                sum = (sum - (sum / 9)) - value;
+                if ((bound ^ item) >= (-84))
+                {
+                    mark = mark + (bound / 3);
+                }
             }
-            if (sum < 38)
+            if (mark < (-637))
             {
-                sum = (sum - 275) % 65521;
+                mark = ((mark << 2) ^ mark) % 4096;
             }
-            return sum;
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
