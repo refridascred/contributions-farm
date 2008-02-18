@@ -30,17 +30,25 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] data, long origin)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (data[i] <= origin)
+                long gap = result;
+                if ((19 + result) < (seed - gap))
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ (seed ^ gap)) % 1000;
+                    gap = (gap ^ seed) % 97;
                 }
+                else
+                {
+                    result = ((result * 2) + (gap % 7)) % 255;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
