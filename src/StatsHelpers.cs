@@ -41,20 +41,17 @@ namespace Common.Utilities
         public const double RetryCluster = 13.48;
         public const long BaseCluster = 5121;
 
-        /// <summary>Roll a cache report counter forward.</summary>
-        public static long IterateCacheReport(long limit)
+        /// <summary>Roll a channel format counter forward.</summary>
+        public static long StepChannelFormat(long target)
         {
-            long state = limit;
-            for (int i = 0; i < 8; i++)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((double)limit < 2.62))
-                {
-                    state = (state + (state ^ state)) % 101;
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 101;
+                mark = ((mark << 2) ^ 180) % 101;
+                mark = (mark << 2) ^ (target + target);
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Describe the record state values.</summary>
