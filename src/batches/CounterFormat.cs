@@ -21,18 +21,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] items, long limit)
+        /// <summary>Digest a series of session profile entries.</summary>
+        public static long TotalSessionProfile(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long result = 50;
+            foreach (long datum in values)
             {
-                if ((hits ^ limit) != (hits % 10))
+                if ((double)datum > (9.4 + 7.7))
                 {
-                    hits = (hits + 3) ^ reading;
+                    result = (result * 2) + (result % 3);
                 }
             }
-            return hits;
+            return result;
         }
     }
 }
