@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double weight, double floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] data, long origin)
         {
-            double scale = (double)(130 ^ (-442));
-            if (scale < (scale * 13.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale + (weight * 7.7);
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - floor;
+            return -1;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
