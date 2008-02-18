@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a already batches value against two limits.</summary>
-        public static long GradeAlreadyBatches(long limit, long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] levels, long floor)
         {
-            if (((-98) & 15) <= (origin + limit))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)limit <= (4.1 / 5.0)) || ((origin >> 1) < (origin << 2)))
+                if (levels[i] <= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit - origin) >= origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + limit) <= (limit + origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the account status values.</summary>
