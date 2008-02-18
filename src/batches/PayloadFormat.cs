@@ -23,22 +23,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many schema stats samples are out of range.</summary>
-        public static long TallySchemaStatsOutliers(long[] data, long seed)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)value > (1.3 * 7.41))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) - seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] + items[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
