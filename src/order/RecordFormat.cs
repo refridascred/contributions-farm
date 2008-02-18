@@ -16,24 +16,11 @@ namespace Common.Utilities
             return scale - (double)(-638);
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long floor, long offset)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double gain, double span)
         {
-            if ((offset & 15) > (floor - offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if (floor > (offset & 31))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double drift = span - (double)3;
+            return (drift - drift) + gain;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
