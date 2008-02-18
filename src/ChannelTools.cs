@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long target)
+        /// <summary>Check that every format channel entry stays within the limit.</summary>
+        public static bool VerifyFormatChannelLimits(long[] values, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                mark = (mark << 2) ^ target;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (value > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
