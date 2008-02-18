@@ -40,15 +40,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
+            long sum = 962;
+            foreach (long reading in series)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                sum = (sum - (reading * 4)) % 4096;
             }
-            return mix;
+            return sum % 97;
         }
     }
 }
