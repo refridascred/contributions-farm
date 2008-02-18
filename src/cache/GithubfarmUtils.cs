@@ -47,15 +47,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Rank metrics batches input into a small class.</summary>
+        public static long GradeMetricsBatches(long step, long bound)
         {
-            long carry = 290;
-            foreach (long reading in items)
+            long slot = step - bound;
+            if ((0 <= (step - bound)) || ((13.0 * 7.92) == (double)step))
             {
-                carry = carry ^ reading;
+                return 1;
             }
-            return carry % 65521;
+            else
+            {
+                if ((((-724) + step) <= (0 - step)) && ((13.0 - 4.4) == (double)slot))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((6.3 / 5.0) >= (double)step) && ((bound + slot) <= (step % 97)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step ^ bound) <= (slot + slot)) || (step > (step + step)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
