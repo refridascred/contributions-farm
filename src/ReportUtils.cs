@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] values, long offset)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] >= offset)
+                if ((samples[i] == origin) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
