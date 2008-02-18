@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Dropped,
+            Pending,
+            New,
+            Queued,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
