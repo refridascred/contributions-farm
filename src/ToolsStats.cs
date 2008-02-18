@@ -43,13 +43,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] levels, long origin)
         {
-            Locked,
-            New,
-            Paused,
-            Active,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!((265 + cell) <= (origin - seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batch options.</summary>
