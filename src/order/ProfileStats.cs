@@ -43,12 +43,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] samples, long target)
         {
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
+            long total = 60;
+            foreach (long datum in samples)
+            {
+                total = (((total - total) % 65521) - datum) - target;
+            }
+            if (total < 740)
+            {
+                total = ((total << 3) ^ total) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
