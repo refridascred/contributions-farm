@@ -46,18 +46,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] levels)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long anchor = 37;
-            foreach (long reading in levels)
-            {
-                if (!((395 ^ reading) <= (reading - anchor)))
-                {
-                    anchor = (anchor ^ anchor) % 97;
-                }
-            }
-            return anchor;
+            Closed,
+            Draft,
+            Pending,
+            Paused,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
