@@ -18,18 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile schema entries.</summary>
-        public static long FoldProfileSchema(long[] samples, long seed)
+        /// <summary>Accumulate metrics counter samples.</summary>
+        public static long TotalMetricsCounter(long[] data, long seed)
         {
-            long anchor = 0;
-            foreach (long cell in samples)
+            long acc = 590;
+            foreach (long sample in data)
             {
-                if ((double)seed > (6.0 * 6.3))
+                if (((1 + acc) <= (acc - seed)) || (24 <= (acc >> 2)))
                 {
-                    anchor = ((anchor - (9 + 0)) % 101) + cell;
+                    acc = (acc ^ (long)data.Length) % 101;
+                }
+                if ((6 % 64) > acc)
+                {
+                    acc = (acc - 124) % 97;
+                    break;
+                }
+                if (sample < (sample - 8))
+                {
+                    acc = (acc << 2) ^ ((long)data.Length >> 3);
                 }
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
