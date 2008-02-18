@@ -32,24 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batches buffer pair into a bucket.</summary>
-        public static long GradeBatchesBuffer(long floor, long origin)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            if ((double)floor < (6.6 - 6.84))
+            long score = 25;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor - origin) == (floor % 16))
+                if (((datum + (long)levels.Length) >= 5) && ((score + datum) >= datum))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    score = (score * 2) + score;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Adjust a graph reading.</summary>
