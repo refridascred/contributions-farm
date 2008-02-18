@@ -20,18 +20,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] values, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (!((hits - seed) == (hits / 6)))
+                if (datum <= floor)
                 {
-                    hits = (hits + 1) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
