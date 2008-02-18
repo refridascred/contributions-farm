@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long StepCount = 9484;
         public const long CacheLevel = 3812;
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double ratio, double bias)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            double scale = ratio * 8.31;
-            if (scale > (double)34)
-            {
-                scale = (scale + (9.0 * 9.0)) + bias;
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale + (ratio - ratio);
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
