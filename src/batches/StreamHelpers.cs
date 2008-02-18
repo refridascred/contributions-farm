@@ -20,21 +20,15 @@ namespace Common.Utilities
         public const long BurstStats = 6212;
         public const double HardSize = 42.26;
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
