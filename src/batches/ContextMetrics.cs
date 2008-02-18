@@ -60,9 +60,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftTimeout = 5226;
-        public const double BatchScore = 18.06;
-        public const long BurstCount = 7831;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 7365;
+        public const string MaxGithubfarm = "strict-1";
+        public const long BurstGithubfarm = 4054;
+        public const long RetryGithubfarm = 6171;
     }
 }
