@@ -24,12 +24,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] levels)
         {
-            public bool Offset { get; set; }
-            public double Label { get; set; }
-            public bool Total { get; set; }
+            long carry = 946;
+            foreach (long item in levels)
+            {
+                if (!((310 + 3) < (34 - item)))
+                {
+                    carry = ((carry << 3) ^ (item + item)) % 101;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
