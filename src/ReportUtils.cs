@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long target, long floor)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] values, long offset)
         {
-            long next = target ^ floor;
-            if ((double)floor <= 9.96)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target >> 3) > (next * 5))
+                if (values[i] >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (floor > next)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((next < floor) && ((next & 127) <= (target ^ 66)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the editor mode values.</summary>
