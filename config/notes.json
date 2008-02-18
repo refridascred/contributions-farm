@@ -1,8 +1,5 @@
 {
-  "batch_delay": "stable",
-  "dry_run": 5611,
-  "persist": "blue",
-  "compress": 60,
-  "readonly": "latest",
-  "poll_depth": 12
+  "batches_window": "fallback",
+  "hard_window_pct": "eu-west",
+  "report_limit": "blue"
 }
