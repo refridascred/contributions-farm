@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long limit)
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long state = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
