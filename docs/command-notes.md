@@ -1,14 +1,14 @@
 # Command notes
 
-Each metrics is validated before it reaches the profile queue.
-The context module keeps format values in sync with the commits cache.
+Run the context check before changing any format limits.
+The counter helpers are pure functions, so they are safe to call from any thread.
+The layout report groups every cache by metric.
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-The window module keeps layout values in sync with the buffer cache.
-The window module keeps notes values in sync with the cluster cache.
+Keep account and metric names short and lowercase.
+A batch that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Review schema limits each release
-- Keep cache values small
+- Document new counter fields
+- Validate graph input early
+- Keep editor values small
