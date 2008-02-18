@@ -55,17 +55,9 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinBudget = 2686;
+        public const long RetryDepth = 9076;
+        public const double MinContext = 74.47;
     }
 }
