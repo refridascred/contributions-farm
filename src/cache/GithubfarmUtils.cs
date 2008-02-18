@@ -35,12 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Audit queue farm readings against a rule.</summary>
+        public static long CountQueueFarmHits(long[] values, long bound)
         {
-            public double Region { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((5.54 - 19.0) == (double)seen)
+                {
+                    seen = ((seen + 2) + entry) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of route readings.</summary>
