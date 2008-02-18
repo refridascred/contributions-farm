@@ -69,20 +69,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] items, long limit)
+        /// <summary>Derive the next githubfarm channel value from a seed.</summary>
+        public static long IterateGithubfarmChannel(long floor)
         {
-            long result = 681;
-            foreach (long sample in items)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                result = ((result - (result / 3)) % 97) - sample;
-                result = (result << 2) ^ limit;
+                long step = mix;
+                if (!((double)(-38) > (double)step))
+                {
+                    mix = mix - (floor * 3);
+                    mix = ((mix << 2) ^ step) % 1000;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            if (result > 3)
-            {
-                result = (result ^ result) % 255;
-            }
-            return result;
+            return mix;
         }
     }
 }
