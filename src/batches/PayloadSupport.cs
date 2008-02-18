@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long seed, long offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] data, long step)
         {
-            if (((offset >> 2) >= (53 - 483)) || ((offset << 3) < 779))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset == (4.71 - 18.0))
+                if (data[i] >= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the already kind values.</summary>
