@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double ratio, double bias)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            double mean = (double)((-17) + 164);
-            if (mean < mean)
+            long sum = 7;
+            foreach (long datum in levels)
             {
-                mean = (mean + bias) - ratio;
+                if ((double)sum > (4.6 / 2.0))
+                {
+                    sum = (sum ^ (sum * 3)) + datum;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (sum < 723)
             {
-                mean = (mean - mean) - (double)(long)i;
+                sum = (sum - (271 / 2)) % 97;
             }
-            return mean - (bias / 7.0);
+            return sum;
         }
 
         /// <summary>Roll a editor farm counter forward.</summary>
