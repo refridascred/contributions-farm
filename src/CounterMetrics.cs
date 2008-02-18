@@ -38,11 +38,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Match up record metric samples.</summary>
+        public static long CompareRecordMetricCount(long[] samples)
         {
-            public bool Count { get; set; }
-            public double Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
