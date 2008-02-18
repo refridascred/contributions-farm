@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a buffer session sample.</summary>
-        public static long FindBufferSessionIndex(long[] data, long bound)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] data, long offset)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] >= bound) && ((data[i] % 3) == 0))
+                if ((data[i] < offset) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
