@@ -27,30 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a context batches counter forward.</summary>
-        public static long StepContextBatches(long bound)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] data, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
+            long total = -95;
+            foreach (long value in data)
             {
-                if (!((bound + bound) >= bound))
+                if (6.07 < (double)step)
                 {
-                    anchor = ((anchor << 3) ^ ((long)i + anchor)) % 4096;
-                    anchor = anchor ^ bound;
+                    total = (total + (value % 7)) % 97;
                 }
-                anchor = anchor + (637 << 3);
-                if (anchor >= (anchor & 1))
-                {
-                    anchor = ((anchor << 3) ^ (328 + 282)) % 255;
-                }
-                else
-                {
-                    anchor = anchor - (8 ^ anchor);
-                    anchor = (anchor * 2) + 3;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return total % 97;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
