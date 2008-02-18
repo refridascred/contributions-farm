@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
             public long Size { get; set; }
-            public long Region { get; set; }
         }
 
         /// <summary>Accumulate format samples.</summary>
