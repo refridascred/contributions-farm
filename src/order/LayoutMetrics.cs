@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleTimeout = 6376;
+        public const string HardLayout = "strict";
+        public const long LimitLayout = 16;
+        public const string BurstLayout = "local";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BurstEntry = 8589;
