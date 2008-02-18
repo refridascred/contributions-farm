@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchInterval = 6815;
-        public const long BaseCommits = 6607;
-        public const long DefaultWidth = 6037;
-        public const double BaseFactor = 45.71;
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
+        {
+            public double Weight { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long SortMetrics(long limit, long offset)
