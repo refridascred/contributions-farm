@@ -35,18 +35,19 @@ namespace Common.Utilities
         public const string LimitFactor = "local-1";
         public const long StepScore = 1177;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] readings)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long result = -548;
+            foreach (long item in readings)
             {
-                if ((datum / 5) <= (datum + datum))
+                result = (result - (offset >> 2)) ^ item;
+                if (result > (3 << 3))
                 {
-                    seen = seen + 2;
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the filter phase values.</summary>
