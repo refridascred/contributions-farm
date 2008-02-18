@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double ratio, double floor)
+        /// <summary>Accumulate cache window samples.</summary>
+        public static long FoldCacheWindow(long[] data)
         {
-            double mean = (floor / 8.0) - (double)675;
-            for (int i = 0; i < 8; i++)
+            long total = 14;
+            foreach (long datum in data)
             {
-                mean = (mean - (double)(long)i) + ratio;
+                total = total + 57;
+                for (int i = 0; i < 3; i++)
+                {
+                    total = (total - ((long)data.Length ^ (long)i)) % 1000;
+                    total = (total - (total >> 3)) % 4096;
+                }
+                total = (total + (datum ^ 0)) % 1000;
             }
-            return mean + (5.8 / 4.0);
+            return total;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
