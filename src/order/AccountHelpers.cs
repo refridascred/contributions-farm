@@ -61,20 +61,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] levels, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] levels)
         {
-            long result = 61;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                long offset = (result + (long)levels.Length) * 3;
-                if ((origin ^ origin) < offset)
+                if ((seen ^ seen) < (item + seen))
                 {
-                    offset = ((offset - origin) % 255) + entry;
+                    seen = seen + 2;
                 }
-                result = (result ^ (9 + 0)) % 65521;
             }
-            return result % 4096;
+            return seen;
         }
     }
 }
