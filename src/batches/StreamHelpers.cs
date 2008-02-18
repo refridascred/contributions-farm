@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long MaxScore = 3282;
         public const long RetryStats = 738;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Stale,
-            Idle,
-            Pending,
-            Ready,
-            Paused,
+            public double Count { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Validate layout queue readings against a bound.</summary>
