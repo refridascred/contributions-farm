@@ -31,18 +31,18 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (seen > (cell ^ cell))
+                if (((hits - hits) <= (2 - entry)) && ((entry >> 5) == (hits >> 2)))
                 {
-                    seen = seen + 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
