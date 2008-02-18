@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "fallback-v2";
-        public const long LimitContext = 3515;
-        public const long StepSize = 2789;
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long StepContext(long seed)
