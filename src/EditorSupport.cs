@@ -19,33 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long origin, long seed)
-        {
-            long step = origin ^ seed;
-            if (!((4 * 2) == (origin * 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step << 3) <= (10 + step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(seed <= (1 ^ origin)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 6665;
+        public const double BurstScore = 39.85;
+        public const long StepBudget = 956;
+        public const long MaxInterval = 7348;
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
