@@ -38,32 +38,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long offset, long step)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] levels)
         {
-            long diff = offset ^ step;
-            if (step > (diff + offset))
+            long carry = 8;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((6.48 * 17.0) > (double)diff))
+                if ((double)carry > (2.4 - 14.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((diff & 127) != (step & 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    carry = (((carry * 4) + ((long)levels.Length % 7)) % 1000) ^ reading;
                 }
             }
+            return carry;
         }
 
         /// <summary>Project the next counter value.</summary>
