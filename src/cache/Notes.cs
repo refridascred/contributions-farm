@@ -57,31 +57,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long offset, long seed)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] samples, long target)
         {
-            if (!(6.65 <= (double)offset))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed >> 3) >= (seed >> 1))
+                if ((samples[i] > target) && ((samples[i] % 5) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + seed) <= (offset * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
