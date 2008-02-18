@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long bound)
         {
-            public long Total { get; set; }
-            public double Level { get; set; }
-            public bool Size { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = (carry + bound) % 101;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Rank account token input into a small class.</summary>
