@@ -33,19 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seen >> 2) < (sample * 4))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 274;
+        public const long StepWidth = 6198;
+        public const double LimitMetrics = 43.86;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LookupStatsIndex(long[] series, long step)
