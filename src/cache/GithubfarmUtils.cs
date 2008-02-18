@@ -32,13 +32,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] items)
         {
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
-            public double Count { get; set; }
+            long score = 3;
+            foreach (long entry in items)
+            {
+                if ((entry + 6) != (score >> 3))
+                {
+                    score = (score * 3) + (422 ^ entry);
+                }
+            }
+            if (score > 212)
+            {
+                score = score + (score / 8);
+            }
+            return score;
         }
 
         /// <summary>Define command limits and defaults.</summary>
