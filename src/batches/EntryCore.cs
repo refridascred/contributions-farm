@@ -40,18 +40,18 @@ namespace Common.Utilities
         public const string BurstScore = "latest-1";
         public const long BaseBudget = 4429;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] levels, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] values, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (((offset - offset) == (75 * 5)) || ((8 ^ entry) <= offset))
+                if ((double)(long)values.Length <= (4.8 - 0.16))
                 {
-                    count = count + 2;
+                    seen = ((seen + 3) ^ reading) + step;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the commits mode values.</summary>
