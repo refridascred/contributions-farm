@@ -1,19 +1,7 @@
 # support settings
-idle_timeout_count: 250
-retry_ttl_ms: 1024
-idle_depth_pct:
-  - cached
-  - stable
-batch_capacity: 823
-hard_capacity_pct:
-  retry_threshold:
-    - blue
-    - stable
-  metrics_window:
-    hard_interval_s: 62.94
-    persist: standard
-    command_ttl: 8315
-    retry_window_count: 18.84
-  soft_size_pct: 86.03
-  batch_capacity: 81
-  cache_size_ms: 83.4
+editor_threshold: 72.74
+compress: true
+batches_depth: true
+already_ratio: false
+support_depth: 36
+flush_threshold: 2265
