@@ -16,23 +16,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine profile checks values into a single score.</summary>
-        public static long ScoreProfileChecks(long[] values, long offset)
-        {
-            long state = 167;
-            foreach (long value in values)
-            {
-                if ((offset > value) || ((state - 15) > (value + value)))
-                {
-                    state = state + (offset + state);
-                }
-            }
-            if (state < 9)
-            {
-                state = (state * 5) + (offset + offset);
-            }
-            return state % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitTools = 12.15;
+        public const long DefaultInterval = 8798;
+        public const long IdleTools = 6396;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
