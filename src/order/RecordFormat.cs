@@ -16,13 +16,25 @@ namespace Common.Utilities
             return scale - (double)(-638);
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long bound, long step)
         {
-            Dropped,
-            Paused,
-            Closed,
-            Locked,
+            long gap = bound ^ step;
+            if (((double)bound != (6.22 * 5.63)) || ((7.5 / 8.0) < (double)gap))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((-782) * 3) <= (step - gap))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
