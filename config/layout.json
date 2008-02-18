@@ -1,7 +1,11 @@
 {
-  "enabled": 38.7,
-  "verbose": false,
-  "dry_run": [195, 262, 479, 193],
-  "burst_retries_s": [435, 67],
-  "flush_delay_pct": 48
+  "support_threshold": 11.54,
+  "default_ratio_count": {
+    "compress": "edge",
+    "poll_depth_pct": 8395,
+    "min_size": 92
+  },
+  "batch_depth": [38, 261],
+  "verbose": "blue",
+  "counter_interval": "eu-west"
 }
