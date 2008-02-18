@@ -20,19 +20,14 @@ namespace Common.Utilities
             return mean + (scale + span);
         }
 
-        /// <summary>Validate stats format readings against a bound.</summary>
-        public static bool CheckStatsFormatBounds(long[] levels, long origin)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Stale,
+            Ready,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a payload options.</summary>
