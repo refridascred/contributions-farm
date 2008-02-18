@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftDepth = 2690;
+        public const double BaseCount = 60.26;
+        public const string DefaultMetric = "alpha-1";
+        public const string RetryMetric = "standard";
+        public const string MinMetric = "alpha-v2";
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long CombineEditor(long[] series, long limit)
