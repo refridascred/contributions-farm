@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] values, long offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seen + value) != (80 / 6))
-                {
-                    seen = (seen + 1) - offset;
-                }
-            }
-            return seen;
+            Active,
+            New,
+            Failed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
