@@ -19,10 +19,40 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftFactor = 5538;
-        public const long CacheRoute = 9648;
-        public const long MinRoute = 9197;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long origin, long bound)
+        {
+            long edge = origin - bound;
+            if ((64 <= (bound % 12)) && ((origin - bound) == (bound + origin)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound + 823) < 26)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + origin) > edge)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + 88) > 1)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
