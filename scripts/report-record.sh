@@ -6,11 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=78
+RECORD_LIMIT=240
 log "limit is ${RECORD_LIMIT}"
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
