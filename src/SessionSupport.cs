@@ -22,10 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultScore = 50.07;
-        public const double CacheAccount = 88.07;
-        public const long SoftScore = 6664;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long WindowWidth = 8517;
