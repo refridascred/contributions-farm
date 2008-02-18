@@ -7,20 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
+for i in $(seq 1 3); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=256
+BUFFER_LIMIT=145
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-edge}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in strict green; do
+    log "checking ${item}"
+done
