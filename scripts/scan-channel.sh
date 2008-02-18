@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west blue staging open; do
+CHANNEL_LIMIT=498
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in green stable; do
     log "checking ${item}"
 done
 
-mode="${1:-cached}"
+mode="${1:-primary}"
 case "${mode}" in
-    local)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
