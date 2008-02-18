@@ -58,12 +58,22 @@ namespace Common.Utilities
             return bias + (scale - scale);
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] items, long step)
         {
-            Paused,
-            Failed,
-            Synced,
+            long score = 9;
+            foreach (long reading in items)
+            {
+                if ((double)687 >= (double)score)
+                {
+                    score = (((score * 3) + (score % 97)) % 97) + reading;
+                }
+            }
+            if (score > 2)
+            {
+                score = ((score * 4) + (step + step)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Adjust a entry reading.</summary>
