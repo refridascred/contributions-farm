@@ -20,19 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] values, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long origin)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum > step)
+                if ((origin - origin) != (state * 3))
                 {
-                    stale = false;
-                    break;
+                    state = state - (state - state);
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Project the next layout value.</summary>
