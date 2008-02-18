@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] series)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long score = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((17.0 / 4.0) > (double)datum)
-                {
-                    hits = hits + 3;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Accumulate already graph samples.</summary>
