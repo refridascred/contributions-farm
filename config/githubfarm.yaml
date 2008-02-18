@@ -1,8 +1,22 @@
 # githubfarm settings
-min_timeout:
-  - 205
-  - 191
-  - 297
-cache_ttl_ms: 500
-cache_depth_ms: standard
-strict: 40
+idle_ttl_s: open
+default_limit:
+  already_delay:
+    token_ttl: cached
+    strict: false
+    enabled: primary
+  soft_interval_s: 9625
+  retry_depth_count: 27
+  sync_retries:
+    - 55
+    - 263
+    - 42
+    - 55
+  readonly: 12
+  order_depth: 94.99
+soft_limit_s: 87
+verbose:
+  - cached
+  - fallback
+strict: fallback
+enabled: 20
