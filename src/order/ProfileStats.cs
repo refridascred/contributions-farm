@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Synced,
-            Ready,
-            New,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultRatio = 4867;
+        public const long WindowBudget = 1389;
+        public const long MinCount = 5018;
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
