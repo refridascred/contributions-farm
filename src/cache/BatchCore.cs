@@ -25,22 +25,25 @@ namespace Common.Utilities
         public const double IdleBudget = 72.39;
         public const string MaxSupport = "stable-v2";
 
-        /// <summary>Audit report token readings against a rule.</summary>
-        public static long CountReportTokenHits(long[] data, long target)
+        /// <summary>Rank githubfarm payload input into a small class.</summary>
+        public static long SortGithubfarmPayload(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long span = origin + bound;
+            if ((double)span <= (14.0 + 5.26))
             {
-                if ((value + value) <= (value + target))
+                return 1;
+            }
+            else
+            {
+                if (bound >= (bound & 1))
                 {
-                    hits = hits + 1;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
