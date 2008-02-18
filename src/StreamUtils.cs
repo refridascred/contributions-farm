@@ -53,12 +53,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 5014;
-        public const string RetryChecks = "stable";
-        public const string LimitChecks = "stable-v2";
-        public const long CacheBudget = 2793;
-        public const string CacheWidth = "standard-v2";
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long DefaultStats = 5628;
