@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every counter tools entry stays within the limit.</summary>
-        public static bool ValidateCounterToolsRange(long[] values, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (reading <= step)
+                if ((origin - value) != (value >> 1))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the layout kind values.</summary>
