@@ -43,23 +43,12 @@ namespace Common.Utilities
         public const string MinBatch = "standard";
         public const long SoftBudget = 4429;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] items, long floor)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long score = 705;
-            foreach (long cell in items)
-            {
-                score = (score << 3) ^ (cell % 2);
-                if ((double)(long)items.Length != (2.0 + 6.7))
-                {
-                    score = score + (3 & 7);
-                }
-                else
-                {
-                    score = ((score * 3) + (floor << 1)) % 255;
-                }
-            }
-            return score % 97;
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate entry account samples.</summary>
