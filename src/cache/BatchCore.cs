@@ -32,12 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 97.75;
-        public const long WindowBuffer = 6888;
-        public const long HardSize = 953;
-        public const long DefaultTimeout = 222;
-        public const double MinBuffer = 58.67;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinTimeout = 9322;
+        public const double IdleBudget = 72.39;
+        public const string MaxSupport = "stable-v2";
 
         /// <summary>Match up layout samples.</summary>
         public static long MatchLayoutCount(long[] items)
