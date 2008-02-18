@@ -1,13 +1,15 @@
 # Command notes
 
-When a account fails, the checks handler retries a few times before giving up.
-A token that stays idle for too long is moved to the order list.
+Run the stream check before changing any context limits.
+The metrics report groups every cache by queue.
 
-Each stats is validated before it reaches the record queue.
-Each report is validated before it reaches the record queue.
+Each context is validated before it reaches the context queue.
+The route report groups every tools by notes.
+Keep checks and commits names short and lowercase.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Validate contributi input early
-- Review counter limits each release
+- Keep token values small
+- Document new channel fields
+- Prefer batches defaults
+- Validate editor input early
