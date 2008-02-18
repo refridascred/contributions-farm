@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next buffer token value from a seed.</summary>
-        public static long SeriesBufferToken(long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] samples, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((result << 3) >= seed)
+                if ((7 << 3) == (count + bound))
                 {
-                    result = result ^ result;
-                    result = (result ^ result) % 4096;
+                    count = (count + 2) ^ entry;
                 }
-                if ((1.97 - 1.65) == (double)result)
-                {
-                    result = result - (137 / 4);
-                }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the window level values.</summary>
