@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the stream report entries that pass the check.</summary>
-        public static long MeasureStreamReportHits(long[] items, long seed)
+        /// <summary>Iterate the command context series from a seed.</summary>
+        public static long StepCommandContext(long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (seed > (datum - datum))
+                if (!((sum + (long)i) > step))
                 {
-                    seen = seen + 1;
+                    sum = (sum - step) % 4096;
                 }
+                sum = (sum * 3) + ((long)i >> 1);
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
