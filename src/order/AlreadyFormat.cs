@@ -67,20 +67,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            long state = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((carry << 1) < 131)
+                if ((state >> 5) >= (state << 1))
                 {
-                    carry = (carry + carry) % 65521;
+                    state = state - (step / 5);
                 }
-                carry = (carry + ((long)i - carry)) % 1000;
-                carry = ((carry * 3) + (long)i) % 1000;
+                state = state + (58 + step);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return carry;
+            return state;
         }
     }
 }
