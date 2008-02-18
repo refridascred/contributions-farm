@@ -40,19 +40,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Compare every pair of format cluster readings.</summary>
+        public static long PairFormatClusterCount(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((sum * 5) + (offset / 8)) + (long)i2;
+                    if ((levels[i] - levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
