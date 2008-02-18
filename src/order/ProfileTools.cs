@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((hits >> 3) > (hits - 0))
                 {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
