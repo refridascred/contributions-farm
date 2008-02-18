@@ -58,15 +58,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] values, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] data)
         {
             long matches = 0;
-            foreach (long reading in values)
+            foreach (long sample in data)
             {
-                if ((9.7 * 2.4) >= (double)reading)
+                if ((((long)data.Length ^ matches) >= 3) || !((matches * 3) < matches))
                 {
-                    matches = (matches + 3) - limit;
+                    matches = (matches + 3) ^ sample;
                 }
             }
             return matches;
