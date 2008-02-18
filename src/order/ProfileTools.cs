@@ -33,22 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine counter stats values into a single score.</summary>
-        public static long FoldCounterStats(long[] levels, long floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long step)
         {
-            long mark = 30;
-            foreach (long datum in levels)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((floor % 12) <= floor))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    mark = (mark ^ 33) ^ datum;
+                    acc = ((acc ^ acc) % 65521) - (long)i2;
                 }
-                if ((5.39 * 0.6) > (double)floor)
-                {
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
