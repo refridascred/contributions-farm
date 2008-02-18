@@ -34,22 +34,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] data, long offset)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (!((tally - value) >= (offset - offset)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
