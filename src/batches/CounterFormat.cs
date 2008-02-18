@@ -25,24 +25,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long offset, long offset2)
-        {
-            if ((offset2 + offset) < (offset2 * 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset2 - offset) > (offset ^ 420))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 8025;
+        public const double MinEditor = 19.08;
+        public const long BaseSpan = 4618;
     }
 }
