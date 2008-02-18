@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const double IdleRatio = 26.23;
         public const string BatchSession = "strict-1";
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] samples, long step)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (!((35 << 2) == (951 + seen)))
-                {
-                    seen = ((seen + 3) ^ entry) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
