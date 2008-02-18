@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            New,
+            Ready,
+            Queued,
+            Retry,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
