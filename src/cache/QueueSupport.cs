@@ -13,21 +13,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of checks editor readings.</summary>
-        public static long PairChecksEditorCount(long[] samples)
+        /// <summary>Measure how many context format samples are out of range.</summary>
+        public static long AuditContextFormatGaps(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (1 >= value)
                 {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a stats options.</summary>
