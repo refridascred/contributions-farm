@@ -32,18 +32,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] values)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long mark = 2;
+            foreach (long entry in data)
             {
-                if (!((double)item <= (2.4 + 9.8)))
-                {
-                    seen = seen + 3;
-                }
+                mark = (((mark << 3) ^ (origin + (-10))) % 255) + entry;
             }
-            return seen;
+            if (mark > 4)
+            {
+                mark = mark ^ (origin * 2);
+            }
+            return mark;
         }
     }
 }
