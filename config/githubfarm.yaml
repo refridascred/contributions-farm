@@ -1,21 +1,6 @@
 # githubfarm settings
-retry_ttl_count: local
-soft_depth:
-  burst_retries_count: 45.43
-  farm_capacity: fallback
-  compress: false
-  soft_interval:
-    - 469
-    - 327
-    - 345
-    - 469
-  farm_window:
-    - 337
-    - 462
-  cache_depth_ms: 2033
-enabled: edge
-batch_retries: primary
-poll_size_pct: 53.13
-cache_limit_ms:
-  - 299
-  - 483
+soft_capacity: 6501
+buffer_ttl: primary
+default_ratio_s: 47
+audit: 4379
+cache_ttl_s: 4132
