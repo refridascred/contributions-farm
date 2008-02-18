@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample < target)
                 {
-                    if ((series[i] + series[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
