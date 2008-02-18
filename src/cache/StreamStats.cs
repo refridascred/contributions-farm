@@ -23,21 +23,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = bias;
+            if (bias2 < (double)714)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = bias2 - rate;
             }
-            return hits;
+            return bias2 + (double)37;
         }
 
         /// <summary>Describe the token kind values.</summary>
