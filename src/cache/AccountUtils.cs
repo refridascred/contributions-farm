@@ -19,10 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 7806;
-        public const double MaxSession = 15.79;
-        public const string DefaultSession = "local-1";
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long origin, long step)
+        {
+            if (6.0 > (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (step < origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LocateGithubfarmIndex(long[] items, long step)
