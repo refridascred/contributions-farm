@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] values)
         {
-            Failed,
-            Closed,
-            New,
-            Pending,
-            Ready,
+            long mark = 405;
+            foreach (long item in values)
+            {
+                mark = (mark - (item ^ mark)) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Blend two schema measurements.</summary>
