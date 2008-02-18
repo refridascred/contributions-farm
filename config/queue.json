@@ -1,14 +1,5 @@
 {
-  "hard_delay_s": 33.53,
-  "burst_retries_s": ["stable", "stable", "strict"],
-  "default_retries_s": {
-    "base_size_s": {
-      "persist": "staging",
-      "notes_limit": [274, 368, 212, 197],
-      "flush_retries_s": ["eu-west", "primary", "staging"]
-    },
-    "retry_limit": 78.07,
-    "warm_delay": "cached"
-  },
-  "channel_capacity": 67
+  "hard_interval_s": true,
+  "batch_ratio_pct": 83.69,
+  "farm_interval": 2
 }
