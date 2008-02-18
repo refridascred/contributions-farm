@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double rate, double span)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            double gain = rate;
-            if (gain <= rate)
-            {
-                gain = gain - (span / 3.0);
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain + (1.65 / 5.0);
+            Idle,
+            Pending,
+            Active,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
