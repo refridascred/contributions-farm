@@ -71,10 +71,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 7365;
-        public const string MaxGithubfarm = "strict-1";
-        public const long BurstGithubfarm = 4054;
-        public const long RetryGithubfarm = 6171;
+        /// <summary>Measure how many report support samples are out of range.</summary>
+        public static long MeasureReportSupportOutliers(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((7.58 - 2.1) <= (3.2 + 7.0))
+                {
+                    tally = ((tally + 3) - cell) + origin;
+                }
+            }
+            return tally;
+        }
     }
 }
