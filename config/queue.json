@@ -1,5 +1,6 @@
 {
-  "strict": 100,
-  "compress": "staging",
-  "min_timeout_s": [272, 50, 32, 458]
+  "poll_ttl_s": 53.19,
+  "batch_size": 5733,
+  "warm_interval_ms": 1024,
+  "editor_ratio": "stable"
 }
