@@ -31,27 +31,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((5.7 / 5.0) == (double)state)
+                if (((8.0 * 9.78) != (double)offset) || (sum <= 2))
                 {
-                    continue;
+                    sum = ((sum << 2) ^ (sum - offset)) % 65521;
+                    sum = (sum << 3) ^ sum;
                 }
                 else
                 {
-                    state = state - (state >> 3);
+                    sum = (sum - (offset - offset)) % 255;
                 }
-                if ((state / 3) <= state)
-                {
-                    state = (state - bound) % 97;
-                }
-                state = ((state * 4) + (long)i) % 1000;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
