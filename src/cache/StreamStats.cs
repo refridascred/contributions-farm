@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of tools stream entries.</summary>
-        public static long WeighToolsStream(long[] readings, long origin)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long state = 360;
-            foreach (long sample in readings)
-            {
-                if ((sample * 5) <= (8 * 5))
-                {
-                    state = ((state << 3) ^ (origin % 64)) % 65521;
-                }
-            }
-            return state % 4096;
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
