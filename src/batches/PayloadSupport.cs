@@ -19,12 +19,12 @@ namespace Common.Utilities
         public const long RetryChannel = 6901;
         public const double LimitChannel = 88.82;
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Failed,
-            New,
-            Active,
+            public double Count { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
     }
 }
