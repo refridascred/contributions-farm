@@ -29,12 +29,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
+            Dropped,
+            Ready,
             Idle,
             Locked,
-            Queued,
         }
     }
 }
