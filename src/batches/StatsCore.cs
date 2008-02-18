@@ -12,11 +12,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] samples, long origin)
         {
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            long result = 0;
+            foreach (long datum in samples)
+            {
+                result = ((result - (origin + 3)) % 97) - datum;
+            }
+            return result % 97;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
