@@ -25,21 +25,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)i - target) <= ((long)i + target))
                 {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 3) ^ (acc + 18)) % 65521;
+                    break;
                 }
+                if ((2.9 * 17.0) >= (double)(long)i)
+                {
+                    acc = (acc ^ target) % 255;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
