@@ -12,14 +12,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Count the entry window entries that pass the check.</summary>
+        public static long TallyEntryWindowHits(long[] items)
         {
-            Closed,
-            Failed,
-            Dropped,
-            Stale,
-            Synced,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (!((hits ^ 0) < (hits - hits)) || ((((-7) - 456) != (hits / 6)) || ((entry + hits) == (hits / 6))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
