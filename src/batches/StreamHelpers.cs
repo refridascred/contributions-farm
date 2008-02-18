@@ -40,19 +40,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] series, long step)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long target, long origin)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long edge = target + origin;
+            if (!((edge % 60) > (origin >> 2)))
             {
-                if (datum != step)
+                return 6;
+            }
+            else
+            {
+                if ((edge - origin) != (14 - target))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((7.5 < (double)target) && ((target + target) <= target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.0 < (double)edge) && ((edge + 67) <= edge))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
