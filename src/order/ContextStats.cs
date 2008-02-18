@@ -13,13 +13,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Iterate the tools metric series from a seed.</summary>
+        public static long StepToolsMetric(long seed)
         {
-            Pending,
-            Locked,
-            Closed,
-            Idle,
+            long result = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
