@@ -29,15 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long offset)
+        /// <summary>Validate window editor readings against a bound.</summary>
+        public static bool CheckWindowEditorBounds(long[] series, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (value != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
     }
 }
