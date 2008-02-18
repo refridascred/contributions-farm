@@ -66,21 +66,17 @@ namespace Common.Utilities
             return scale - (double)(-4);
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] levels)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark << 3) ^ (65 * 5)) % 1000;
+                mark = ((mark << 2) ^ ((long)i * 5)) % 101;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
