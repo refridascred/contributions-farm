@@ -38,21 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up record metric samples.</summary>
-        public static long CompareRecordMetricCount(long[] samples)
+        /// <summary>Combine token commits values into a single score.</summary>
+        public static long TallyTokenCommits(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 61;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((302 + reading) > reading)
                 {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score << 2) ^ (score - reading)) % 1000;
                 }
             }
-            return tally;
+            if (score > 54)
+            {
+                score = ((score * 3) + (score + score)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define account limits and defaults.</summary>
