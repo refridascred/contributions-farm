@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double bias, double span)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double scale = (span / 5.0) + (bias * 2.3);
-            if (scale <= (double)2)
-            {
-                scale = scale - (double)321;
-            }
-            else
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale + (scale + scale);
+            public bool Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
