@@ -1,6 +1,18 @@
 {
-  "warm_window": true,
-  "metric_retries": ["local", "green", "standard", "primary"],
-  "sync_limit_s": 75.22,
-  "stream_capacity": true
+  "cache_capacity": 100,
+  "retry_depth_pct": 13,
+  "readonly": true,
+  "default_threshold": {
+    "base_depth_count": {
+      "poll_window_s": ["fallback", "blue", "staging"],
+      "flush_capacity_count": 2826,
+      "sync_window_ms": [397, 446, 147, 143],
+      "report_interval": false,
+      "min_window": "fallback"
+    },
+    "compress": 90.25,
+    "counter_ratio": 8.43,
+    "poll_depth": 60,
+    "poll_window_pct": 30
+  }
 }
