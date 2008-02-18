@@ -1,12 +1,15 @@
 # entry settings
-enabled: 500
-batch_delay_pct: 100
-warm_depth_pct: 6257
-warm_interval_count:
-  warm_interval_ms: strict
-  compress: strict
-  hard_size_pct:
-    batch_ratio_s: false
-    batches_ratio: cached
-    enabled: 30.62
-    default_window_s: false
+cache_window_s: 250
+max_capacity_s: true
+stats_delay:
+  soft_delay: latest
+  graph_threshold:
+    - open
+    - legacy
+    - edge
+  poll_delay_count: green
+  session_interval: fallback
+  flush_size: cached
+min_timeout: 500
+soft_threshold: latest
+strict: false
