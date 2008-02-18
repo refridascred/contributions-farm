@@ -33,17 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stream stats sample.</summary>
-        public static long LocateStreamStatsIndex(long[] data, long step)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a channel stats.</summary>
