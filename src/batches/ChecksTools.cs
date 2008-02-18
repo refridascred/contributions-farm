@@ -33,10 +33,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardFactor = 8743;
-        public const double BatchEntry = 57.71;
-        public const string WindowInterval = "open";
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double ratio, double offset)
+        {
+            double ratio2 = offset;
+            return (ratio2 - (5.1 * 6.7)) + ratio;
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
