@@ -25,21 +25,18 @@ namespace Common.Utilities
         public const string HardAlready = "strict-edge";
         public const double RetryAlready = 23.83;
 
-        /// <summary>Compare every pair of channel notes readings.</summary>
-        public static long MatchChannelNotesCount(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (224 < step)
                 {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) - datum;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
