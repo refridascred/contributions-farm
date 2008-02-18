@@ -42,15 +42,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long limit)
+        /// <summary>Validate payload filter readings against a bound.</summary>
+        public static bool CheckPayloadFilterBounds(long[] levels, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (value <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
     }
 }
