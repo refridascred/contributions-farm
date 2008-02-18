@@ -1,11 +1,5 @@
 {
-  "compress": [65, 59],
-  "soft_delay_pct": {
-    "batch_ratio_ms": 72.61,
-    "default_threshold_pct": 22,
-    "hard_retries": false,
-    "compress": 91.59
-  },
-  "dry_run": "green",
-  "batch_depth": 500
+  "burst_delay_pct": 1024,
+  "sync_retries_ms": 30,
+  "schema_limit": 50.15
 }
