@@ -21,18 +21,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] values)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long step, long floor)
         {
-            long mix = 67;
-            foreach (long entry in values)
+            if (((255 - step) <= (floor / 5)) || ((step + step) < floor))
             {
-                if ((double)entry <= (6.0 + 3.04))
+                return 3;
+            }
+            else
+            {
+                if (step <= (368 / 6))
                 {
-                    mix = mix + (mix - mix);
+                    return 4;
+                }
+                else
+                {
+                    if ((floor & 3) <= ((-93) % 12))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((365 >> 5) > (step + step)) && (step <= (step % 24)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Hold a tools options.</summary>
