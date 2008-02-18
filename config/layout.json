@@ -1,7 +1,22 @@
 {
-  "idle_timeout": 1024,
-  "sync_threshold_pct": false,
-  "retry_timeout_pct": true,
-  "retry_ttl_pct": "open",
-  "audit": 5.77
+  "graph_capacity": "blue",
+  "route_delay": 22,
+  "default_timeout_count": "eu-west",
+  "warm_size_ms": {
+    "warm_ttl_pct": 70,
+    "tools_retries": 100,
+    "route_window": {
+      "min_depth": 7.14,
+      "cluster_retries": false,
+      "retry_threshold_count": [123, 68, 92, 293],
+      "batch_window_count": 46,
+      "report_limit": 97,
+      "entry_retries": "open"
+    },
+    "notes_retries": 1643,
+    "notes_capacity": "strict",
+    "audit": ["latest", "standard", "staging", "staging"]
+  },
+  "hard_retries_ms": 1024,
+  "soft_window_s": 7.36
 }
