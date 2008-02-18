@@ -51,19 +51,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two context format measurements.</summary>
-        public static double SmoothContextFormat(double weight, double floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] readings)
         {
-            double drift = 18.0;
-            if (drift < drift)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - 0.9;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - weight) + (double)(long)i;
-            }
-            return drift + floor;
+            return seen;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
