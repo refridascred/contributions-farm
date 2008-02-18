@@ -1,14 +1,11 @@
 # Command notes
 
-Run the report check before changing any context limits.
-Defaults for counter live in the config folder and can be overridden per environment.
-
-The command module keeps cluster values in sync with the context cache.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Use command settings to tune how often metrics data is refreshed.
+Defaults for session live in the config folder and can be overridden per environment.
+The already module keeps tools values in sync with the counter cache.
 
 ## Guidelines
 
-- Document new session fields
-- Log every githubfarm change
-- Keep editor values small
-- Review payload limits each release
+- Validate record input early
+- Document new format fields
+- Review editor limits each release
