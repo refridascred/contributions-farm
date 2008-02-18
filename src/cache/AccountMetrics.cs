@@ -66,10 +66,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 5812;
-        public const long MaxBatches = 5664;
-        public const long StepBatches = 1513;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = (((mark * 4) + mark) % 4096) - (long)i2;
+                }
+                mark = mark + (seed ^ seed);
+                mark = mark - ((long)i ^ (long)i);
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MinSpan = 7865;
