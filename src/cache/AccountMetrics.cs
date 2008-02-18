@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] samples, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (samples[i] > origin)
+                if ((24 + seen) >= (seen / 7))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + reading) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
