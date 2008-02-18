@@ -1,10 +1,7 @@
 # support settings
-cache_ratio:
-  - green
-  - open
-  - local
-  - staging
-base_interval_count: legacy
-sync_capacity_ms: fallback
-context_retries: false
-min_delay_count: local
+base_ttl_ms: 62
+enabled: strict
+warm_window_ms: legacy
+batches_threshold: 1024
+buffer_ratio: true
+compress: 28.85
