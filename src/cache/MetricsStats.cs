@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Closed,
-            New,
-            Dropped,
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a stats stats.</summary>
