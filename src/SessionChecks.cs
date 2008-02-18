@@ -15,19 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate editor contributi readings against a bound.</summary>
-        public static bool CheckEditorContributiLimits(long[] samples, long origin)
+        /// <summary>Audit payload batch readings against a rule.</summary>
+        public static long CountPayloadBatchOutliers(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (entry > origin)
+                if ((double)matches <= (17.0 - 4.8))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) ^ reading;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
