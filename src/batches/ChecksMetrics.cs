@@ -42,12 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Paused,
-            Done,
-            Active,
+            public bool Label { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
