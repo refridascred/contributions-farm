@@ -38,19 +38,24 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] samples, long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long target, long target2)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            if (target2 < (target2 >> 2))
             {
-                if (item >= bound)
+                return 5;
+            }
+            else
+            {
+                if ((target * 4) < target2)
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the checks level values.</summary>
