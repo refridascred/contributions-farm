@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] levels, long origin)
+        /// <summary>Roll a commits support counter forward.</summary>
+        public static long StepCommitsSupport(long floor)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry > origin)
+                acc = ((acc * 3) + (8 * 3)) % 65521;
+                if ((((long)i >> 4) <= (92 & 255)) || ((double)floor < (double)84))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc ^ (42 ^ acc)) % 1000;
                 }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Measure how many schema metric samples are out of range.</summary>
