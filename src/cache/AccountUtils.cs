@@ -15,24 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long origin, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] series, long limit)
         {
-            if (6.0 > (double)origin)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (step < origin)
+                if (cell != limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Accumulate editor format samples.</summary>
