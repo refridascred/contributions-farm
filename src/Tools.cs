@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools helpers.</summary>
     public static class Tools
     {
-        /// <summary>Adjust a route already reading.</summary>
-        public static double SmoothRouteAlready(double scale, double span)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            double rate = scale;
-            if (rate < (double)5)
-            {
-                rate = rate + scale;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (span - span)) - (double)(long)i;
-            }
-            return rate + rate;
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate filter account samples.</summary>
