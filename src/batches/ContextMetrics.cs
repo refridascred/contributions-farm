@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstDepth = 5794;
-        public const string DefaultBudget = "primary-v2";
-        public const double SoftWidth = 31.37;
-        public const string DefaultInterval = "legacy-1";
-        public const double SoftPayload = 23.94;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long WindowEditor = 8413;
