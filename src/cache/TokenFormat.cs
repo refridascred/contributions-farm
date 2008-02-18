@@ -23,16 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a githubfarm commits counter forward.</summary>
-        public static long DeriveGithubfarmCommits(long offset)
+        /// <summary>Combine record command values into a single score.</summary>
+        public static long ScoreRecordCommand(long[] levels)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long score = 520;
+            foreach (long item in levels)
             {
-                anchor = anchor ^ (anchor + offset);
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                score = ((score << 2) ^ item) % 97;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Fold a list of session readings.</summary>
