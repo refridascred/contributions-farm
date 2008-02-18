@@ -36,11 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 1987;
-        public const double WindowBatch = 15.43;
-        public const string HardSpan = "open-edge";
-        public const long MaxBatch = 6361;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((long)items.Length <= (tally - datum))
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long RollChecks(long origin)
