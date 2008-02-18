@@ -28,21 +28,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long bound)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((19.0 * 12.0) >= (double)state)
-                {
-                    state = (state ^ 66) % 101;
-                    state = state ^ (state << 1);
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public double Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Match up support samples.</summary>
