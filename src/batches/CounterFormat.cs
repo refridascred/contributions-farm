@@ -25,9 +25,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 8025;
-        public const double MinEditor = 19.08;
-        public const long BaseSpan = 4618;
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double ratio, double span)
+        {
+            double mean = span;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = ((mean + mean) + (double)(long)i) + ratio;
+            }
+            return mean + (16.0 / 7.0);
+        }
     }
 }
