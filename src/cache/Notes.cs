@@ -43,18 +43,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] values, long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((target / 2) >= (419 + tally))
+                if (datum <= seed)
                 {
-                    tally = (tally + 3) - reading;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Iterate the window batches series from a seed.</summary>
