@@ -1,13 +1,5 @@
 {
-  "min_capacity": 1024,
-  "hard_limit_pct": "strict",
-  "compress": 31,
-  "hard_limit_s": {
-    "verbose": true,
-    "retry_threshold": 1956,
-    "cache_window_pct": 8960,
-    "warm_threshold": 53.46,
-    "hard_size_ms": 26
-  },
-  "verbose": 8741
+  "cluster_size": "latest",
+  "command_threshold": "local",
+  "compress": 5780
 }
