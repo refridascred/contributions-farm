@@ -58,17 +58,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a githubfarm tools reading by value.</summary>
-        public static long SeekGithubfarmToolsIndex(long[] items, long target)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double bias, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = span;
+            if (rate > bias)
             {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
+                rate = rate + (double)(-63);
             }
-            return -1;
+            return rate - span;
         }
 
         /// <summary>Digest a series of command route entries.</summary>
