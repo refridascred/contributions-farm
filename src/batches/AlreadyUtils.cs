@@ -19,24 +19,21 @@ namespace Common.Utilities
         public const long WindowDepth = 1226;
         public const long CacheSize = 1549;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long offset, long limit)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] levels)
         {
-            if (!((1.9 + 4.0) != (double)offset))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset >= (2.74 - 9.1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    if ((levels[i] - levels[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a command info.</summary>
