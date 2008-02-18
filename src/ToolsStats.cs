@@ -14,11 +14,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleSchema = "staging-v2";
-        public const long DefaultSchema = 9236;
-        public const string WindowSchema = "open-1";
-        public const double MinInterval = 38.37;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandRange(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double AdjustFilter(double scale, double span)
