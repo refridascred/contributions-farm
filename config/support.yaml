@@ -1,8 +1,30 @@
 # support settings
-warm_window:
-  - blue
-  - green
-  - latest
-  - legacy
-commits_size: true
-dry_run: legacy
+poll_threshold: local
+report_limit:
+  compress: true
+  cache_capacity: 15.02
+  commits_ttl: strict
+  soft_threshold:
+    max_ratio_count: standard
+    burst_interval_count:
+      - 379
+      - 40
+      - 111
+    farm_window: false
+    burst_limit:
+      - 112
+      - 162
+    account_window: false
+    base_timeout_count: 6153
+  retry_timeout_ms: 86.2
+sync_ttl_s: 9805
+context_limit:
+  persist: 97.52
+  token_interval:
+    - 254
+    - 453
+    - 55
+  readonly: false
+  cache_threshold_s: blue
+  base_limit: open
+persist: 15.65
