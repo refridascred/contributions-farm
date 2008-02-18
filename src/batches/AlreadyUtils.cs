@@ -27,18 +27,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] data, long bound)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            if (!((1.9 + 4.0) != (double)offset))
             {
-                if (((bound + seen) <= bound) || !((7.1 - 2.0) <= (double)sample))
+                return 5;
+            }
+            else
+            {
+                if ((double)offset >= (2.74 - 9.1))
                 {
-                    seen = seen + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a command info.</summary>
