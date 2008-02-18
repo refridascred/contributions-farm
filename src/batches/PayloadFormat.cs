@@ -25,11 +25,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next support buffer value.</summary>
-        public static double BlendSupportBuffer(double ratio, double floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long limit, long origin)
         {
-            double load = (17.0 / 9.0) + (double)(-808);
-            return ((load - (double)43) + ratio) + floor;
+            long step = limit - origin;
+            if (limit <= (limit ^ origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step * 4) == (origin % 24))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a format stats.</summary>
