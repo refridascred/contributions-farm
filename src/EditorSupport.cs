@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] levels, long target)
         {
-            Synced,
-            Closed,
-            Locked,
-            Idle,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!((double)(-21) > (double)target))
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
