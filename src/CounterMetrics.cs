@@ -21,14 +21,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Compare every pair of route contributi readings.</summary>
+        public static long CompareRouteContributiCount(long[] series)
         {
-            Locked,
-            Done,
-            Idle,
-            Stale,
-            New,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a checks info.</summary>
