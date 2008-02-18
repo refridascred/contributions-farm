@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest primary legacy stable; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 7); do
     total=$((total + i * 1))
 done
 log "total ${total}"
+
+for item in strict stable green edge; do
+    log "checking ${item}"
+done
