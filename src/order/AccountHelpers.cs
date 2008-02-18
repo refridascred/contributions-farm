@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first route tools entry that matches the target.</summary>
-        public static long FindRouteToolsIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 3093;
+        public const string MinTimeout = "staging-1";
+        public const long HardScore = 5560;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string LimitCounter = "local-1";
