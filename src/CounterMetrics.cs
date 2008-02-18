@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double gain, double bias)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            double drift = bias / 8.0;
-            if (drift >= bias)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift - drift) - gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift + (double)391;
+            return seen;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
