@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
