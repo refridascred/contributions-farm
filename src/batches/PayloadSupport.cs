@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 8113;
-        public const long BaseCount = 8217;
-        public const string LimitDepth = "cached";
-        public const string IdleFactor = "fallback-1";
-        public const double MaxRatio = 90.87;
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long WeighAccount(long[] levels, long target)
