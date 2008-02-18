@@ -35,19 +35,12 @@ namespace Common.Utilities
             return mean - 4.3;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((0 & 63) < (54 ^ seen))
-                {
-                    seen = ((seen + 1) + reading) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxNotes = "primary-1";
+        public const long LimitBudget = 489;
+        public const long MinSize = 5063;
+        public const double SoftWidth = 89.43;
+        public const string SoftNotes = "latest-edge";
 
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
