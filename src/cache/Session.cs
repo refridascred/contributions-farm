@@ -42,21 +42,15 @@ namespace Common.Utilities
         public const string RetryGraph = "legacy-1";
         public const double CacheInterval = 22.76;
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] values)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = bias * 13.0;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = ((gain - (bias / 6.0)) + (double)(long)i) - rate;
             }
-            return seen;
+            return gain + bias;
         }
     }
 }
