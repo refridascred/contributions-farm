@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxDepth = 48.25;
-        public const double SoftFactor = 85.42;
-        public const long StepInterval = 1670;
-        public const string WindowWidth = "open-edge";
-        public const long SoftLevel = 5592;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseFactor = 9341;
+        public const long SoftSize = 6894;
+        public const long HardRatio = 9492;
+        public const long BatchBudget = 4735;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long StepContext(long seed)
