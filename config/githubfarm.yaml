@@ -1,7 +1,8 @@
 # githubfarm settings
-audit: 69.06
-commits_interval: false
-route_capacity:
-  persist: local
-  editor_depth: 1024
-  soft_window: open
+persist:
+  strict: standard
+  idle_ratio_ms: standard
+  batch_ttl_count: eu-west
+  idle_threshold_count: 96
+retry_threshold_count: 30
+cache_retries_count: true
