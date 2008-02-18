@@ -24,25 +24,18 @@ namespace Common.Utilities
         public const double IdleBudget = 72.39;
         public const string MaxSupport = "stable-v2";
 
-        /// <summary>Rank githubfarm payload input into a small class.</summary>
-        public static long SortGithubfarmPayload(long origin, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] values, long seed)
         {
-            long span = origin + bound;
-            if ((double)span <= (14.0 + 5.26))
+            long mark = -1;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound >= (bound & 1))
+                if (value < (value + 603))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    mark = ((mark + ((-149) ^ mark)) % 101) - seed;
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
