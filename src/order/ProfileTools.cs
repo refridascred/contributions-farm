@@ -57,19 +57,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of stream batch entries.</summary>
-        public static long TotalStreamBatch(long[] readings, long target)
+        /// <summary>Classify a queue session pair into a bucket.</summary>
+        public static long SortQueueSession(long seed, long limit)
         {
-            long sum = 5;
-            foreach (long reading in readings)
+            if (limit <= seed)
             {
-                sum = (((sum << 2) ^ (target / 9)) % 4096) + reading;
+                return 2;
             }
-            if (sum > 14)
+            else
             {
-                sum = ((sum << 2) ^ (746 % 2)) % 65521;
+                if (limit < (seed >> 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + 837) < limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return sum % 65521;
         }
     }
 }
