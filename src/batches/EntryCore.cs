@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] samples, long bound)
-        {
-            long mark = 34;
-            foreach (long item in samples)
-            {
-                if ((bound ^ item) >= (-84))
-                {
-                    mark = mark + (bound / 3);
-                }
-            }
-            if (mark < (-637))
-            {
-                mark = ((mark << 2) ^ mark) % 4096;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 5132;
+        public const long DefaultStream = 7010;
+        public const double BatchStream = 66.9;
+        public const long IdleSize = 7536;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long LocateEntryIndex(long[] items, long target)
