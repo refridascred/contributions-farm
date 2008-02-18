@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long StepCount = 4782;
         public const double DefaultSize = 9.21;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] samples, long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] items, long seed)
         {
-            long score = 9;
-            foreach (long cell in samples)
+            long score = 701;
+            foreach (long item in items)
             {
-                if ((origin >> 3) <= (279 & 1))
-                {
-                    score = ((score ^ (origin / 5)) % 101) ^ cell;
-                }
+                score = ((score ^ (seed & 31)) % 101) + item;
             }
-            return score % 1000;
+            if (score < 1)
+            {
+                score = ((score * 5) + (score & 15)) % 101;
+            }
+            return score;
         }
     }
 }
