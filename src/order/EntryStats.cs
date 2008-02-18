@@ -20,34 +20,34 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long floor, long step)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long limit, long offset)
         {
-            if ((step - step) >= (floor / 5))
+            if (limit > (limit << 1))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if (step < ((-313) - floor))
+                if ((double)offset != (17.0 * 4.9))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)floor != (2.0 - 1.31))
+                    if (!((limit + 735) > (limit - 89)))
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        if (!(step < (58 - floor)))
+                        if (offset < (offset >> 1))
                         {
-                            return 8;
+                            return 1;
                         }
                         else
                         {
-                            return 6;
+                            return 5;
                         }
                     }
                 }
