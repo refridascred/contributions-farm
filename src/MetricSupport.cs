@@ -24,22 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] samples, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if ((sample << 3) >= (offset + tally))
+                if (datum > step)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the editor mode values.</summary>
