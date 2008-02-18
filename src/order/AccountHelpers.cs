@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long step, long bound)
+        /// <summary>Find the first route tools entry that matches the target.</summary>
+        public static long FindRouteToolsIndex(long[] levels, long floor)
         {
-            long gap = step + bound;
-            if (bound > (step + bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (853 < gap)
+                if (levels[i] < floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate filter samples.</summary>
