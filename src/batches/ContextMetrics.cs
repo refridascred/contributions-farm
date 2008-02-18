@@ -40,10 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstTimeout = "latest-edge";
-        public const long DefaultRoute = 4375;
-        public const long CacheSpan = 853;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 8413;
+        public const double BaseEditor = 80.9;
+        public const long WindowCount = 4238;
+        public const long LimitEditor = 9570;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long CombineChecks(long[] samples)
