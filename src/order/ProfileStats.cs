@@ -27,19 +27,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] samples, long target)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] samples)
         {
-            long total = 60;
-            foreach (long datum in samples)
+            long score = 7;
+            foreach (long value in samples)
             {
-                total = (((total - total) % 65521) - datum) - target;
+                score = score + 465;
+                if (!((double)value == (8.46 + 4.0)))
+                {
+                    score = score ^ (244 + 35);
+                }
             }
-            if (total < 740)
-            {
-                total = ((total << 3) ^ total) % 97;
-            }
-            return total;
+            return score % 4096;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
