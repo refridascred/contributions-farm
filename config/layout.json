@@ -1,14 +1,22 @@
 {
-  "base_ttl_pct": true,
-  "verbose": 5,
-  "enabled": [281, 217],
-  "strict": {
-    "max_capacity_ms": 709,
-    "base_limit_pct": [218, 340],
-    "soft_threshold_ms": 31.12,
-    "cache_size": 30,
-    "burst_retries_s": "open",
-    "flush_window_pct": 79
+  "min_size_pct": {
+    "persist": ["standard", "eu-west", "primary"],
+    "session_ttl": {
+      "min_threshold": 500,
+      "tools_retries": false,
+      "flush_limit_ms": 8042
+    },
+    "context_capacity": {
+      "warm_delay": false,
+      "account_retries": 40,
+      "editor_size": "standard",
+      "burst_ratio": "strict",
+      "batch_ttl_s": true
+    },
+    "notes_depth": 250
   },
-  "hard_delay": "legacy"
+  "min_delay_ms": 3381,
+  "flush_ratio_count": "legacy",
+  "warm_capacity": 24.38,
+  "sync_depth_s": "green"
 }
