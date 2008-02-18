@@ -19,10 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinTimeout = 9322;
-        public const double IdleBudget = 72.39;
-        public const string MaxSupport = "stable-v2";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)tally <= (2.05 * 5.6))
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long WeighSession(long[] values, long seed)
