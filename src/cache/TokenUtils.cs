@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of session account readings.</summary>
-        public static long OverlapSessionAccountCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 1694;
+        public const string HardFactor = "legacy-v2";
+        public const long IdleRatio = 5012;
+        public const long WindowSpan = 4119;
 
         /// <summary>Measure how many schema metric samples are out of range.</summary>
         public static long MeasureSchemaMetricMatches(long[] samples)
