@@ -28,11 +28,15 @@ namespace Common.Utilities
             return scale - (scale * 1.7);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryBudget = 3111;
-        public const long StepRoute = 8854;
-        public const double StepRatio = 94.9;
-        public const long BatchRatio = 767;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            New,
+            Locked,
+            Idle,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LocateRouteIndex(long[] data, long target)
