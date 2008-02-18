@@ -1,7 +1,17 @@
 {
-  "max_retries_count": ["standard", "edge"],
-  "max_depth_pct": 51.58,
-  "sync_ratio": [153, 195, 39, 425],
-  "hard_window_s": [26, 373, 226],
-  "contributi_limit": 1014
+  "dry_run": "blue",
+  "checks_threshold": "stable",
+  "readonly": {
+    "min_interval_ms": ["open", "standard", "open"],
+    "batch_retries": 500,
+    "enabled": "primary",
+    "already_window": {
+      "burst_timeout_pct": 34,
+      "farm_timeout": "standard",
+      "format_depth": ["strict", "cached", "eu-west", "edge"],
+      "sync_window": "staging"
+    }
+  },
+  "soft_threshold_ms": true,
+  "verbose": false
 }
