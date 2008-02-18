@@ -23,19 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double gain, double span)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] samples, long origin)
         {
-            double ratio = (double)(156 + 8);
-            if (ratio > gain)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                ratio = ratio - (8.9 + ratio);
+                if ((count & 15) < (origin % 64))
+                {
+                    count = (count + 3) + sample;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)37;
-            }
-            return ratio + span;
+            return count;
         }
 
         /// <summary>Describe the already kind values.</summary>
