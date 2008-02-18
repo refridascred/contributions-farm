@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] items, long limit)
         {
-            Done,
-            Locked,
-            Paused,
-            Retry,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the session status values.</summary>
