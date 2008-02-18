@@ -65,21 +65,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 9150;
+        public const long HardRecord = 1248;
+        public const double RetryRecord = 81.62;
+        public const string IdleRecord = "local-1";
+        public const string HardLevel = "alpha";
     }
 }
