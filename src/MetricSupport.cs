@@ -39,13 +39,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Measure how many already session samples are out of range.</summary>
+        public static long CountAlreadySessionMatches(long[] readings, long bound)
         {
-            Failed,
-            Draft,
-            Ready,
-            Synced,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum * 2) == (datum * 3))
+                {
+                    hits = (hits + 2) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
