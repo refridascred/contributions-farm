@@ -22,12 +22,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two already stats measurements.</summary>
-        public static double AdjustAlreadyStats(double bias, double bias2)
-        {
-            double scale = (bias + bias) * 7.0;
-            return scale + bias2;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxLevel = 6462;
+        public const long DefaultBatch = 9522;
+        public const string LimitFactor = "open-1";
+        public const long MinBatch = 6926;
+        public const long IdleLevel = 5425;
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
