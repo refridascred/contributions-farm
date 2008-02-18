@@ -51,11 +51,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Count the token commits entries that pass the check.</summary>
+        public static long MeasureTokenCommitsMatches(long[] data)
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry + entry) <= (hits + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next githubfarm channel value from a seed.</summary>
