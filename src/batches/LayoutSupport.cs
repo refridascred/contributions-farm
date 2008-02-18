@@ -39,19 +39,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] series, long target)
         {
-            long carry = -12;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                carry = ((carry * 2) + (sample ^ carry)) % 65521;
-                if ((carry >> 3) != (sample * 4))
+                if ((seen + seen) < seen)
                 {
-                    break;
+                    seen = ((seen + 3) + sample) + target;
                 }
             }
-            return carry;
+            return seen;
         }
     }
 }
