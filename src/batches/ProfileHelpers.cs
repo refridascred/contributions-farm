@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Audit entry format readings against a rule.</summary>
+        public static long MeasureEntryFormatMatches(long[] data)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading <= (double)seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
