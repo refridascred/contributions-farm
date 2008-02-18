@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long step, long origin)
+        /// <summary>Compare every pair of stats farm readings.</summary>
+        public static long MatchStatsFarmCount(long[] samples)
         {
-            long lane = step + origin;
-            if (8.32 >= (double)step)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((11.0 + 19.0) > (double)step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin << 1) <= step) && ((origin ^ step) >= (lane / 9)))
+                    if ((samples[i] - samples[j]) == 16)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the session kind values.</summary>
