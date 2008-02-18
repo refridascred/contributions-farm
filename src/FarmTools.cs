@@ -34,25 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long limit, long floor)
+        /// <summary>Measure how many already report samples are out of range.</summary>
+        public static long CountAlreadyReportHits(long[] values)
         {
-            long gap = limit ^ floor;
-            if (floor < (476 * 4))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((gap * 2) != (41 >> 2))
+                if (seen <= (15 ^ 595))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    seen = (seen + 2) - sample;
                 }
             }
+            return seen;
         }
     }
 }
