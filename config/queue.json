@@ -1,8 +1,18 @@
 {
-  "poll_capacity_ms": 27.8,
-  "audit": 75.66,
-  "commits_interval": 500,
-  "graph_window": 86,
-  "default_delay": "blue",
-  "layout_ratio": "eu-west"
+  "max_ttl_s": 72.45,
+  "default_interval": 9562,
+  "compress": "latest",
+  "min_interval_ms": 5182,
+  "warm_retries_ms": 87.62,
+  "soft_timeout": {
+    "window_retries": {
+      "channel_timeout": [122, 482],
+      "default_threshold_ms": 1163,
+      "batch_ttl_s": [302, 117, 208, 330],
+      "hard_depth_ms": 16.74,
+      "hard_capacity_count": 7.16
+    },
+    "strict": 60,
+    "poll_retries_pct": "blue"
+  }
 }
