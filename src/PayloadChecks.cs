@@ -16,15 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many notes already samples are out of range.</summary>
-        public static long CountNotesAlreadyHits(long[] samples, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] readings, long offset)
         {
             long hits = 0;
-            foreach (long cell in samples)
+            foreach (long item in readings)
             {
-                if (hits < (offset - 9))
+                if ((58 / 5) >= (77 + offset))
                 {
-                    hits = (hits + 2) + cell;
+                    hits = (hits + 2) + item;
                 }
             }
             return hits;
