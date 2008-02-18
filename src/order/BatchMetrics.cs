@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] data)
         {
-            long acc = 6;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (!((cell ^ acc) > (acc % 64)))
+                if (!(seen <= (seen & 1)))
                 {
-                    acc = ((acc << 2) ^ (95 * 2)) % 65521;
-                }
-                else
-                {
-                    acc = ((acc * 2) + cell) % 4096;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Hold a counter entry.</summary>
