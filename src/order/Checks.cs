@@ -36,12 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleBatch = 73.5;
-        public const double BaseBatch = 50.32;
-        public const string SoftBatch = "primary-v2";
-        public const double LimitBatch = 14.48;
-        public const double HardBatch = 40.14;
+        /// <summary>Fold a list of context window readings.</summary>
+        public static long ScoreContextWindow(long[] series, long seed)
+        {
+            long anchor = 830;
+            foreach (long datum in series)
+            {
+                if ((double)seed <= 0.8)
+                {
+                    anchor = (anchor ^ (seed << 1)) - datum;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long AuditQueueOutliers(long[] items)
