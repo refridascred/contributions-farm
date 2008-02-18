@@ -1,4 +1,16 @@
 # githubfarm settings
-base_ratio_s: true
-verbose: edge
-soft_size: 21
+entry_window: 30
+dry_run:
+  min_timeout:
+    min_timeout_ms: fallback
+    compress: 12.64
+    default_size: open
+    warm_limit_s: true
+    enabled: 3225
+  burst_capacity_s: true
+  default_timeout: 62.42
+  profile_limit: standard
+burst_interval_s:
+  - primary
+  - latest
+warm_capacity_s: 39
