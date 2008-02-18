@@ -21,12 +21,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] samples)
         {
-            Queued,
-            New,
-            Locked,
+            long sum = 9;
+            foreach (long reading in samples)
+            {
+                if ((reading << 3) <= (reading % 100))
+                {
+                    sum = (sum + (71 - sum)) % 1000;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
