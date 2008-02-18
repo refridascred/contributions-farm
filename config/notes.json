@@ -1,15 +1,8 @@
 {
-  "max_window_ms": true,
-  "already_ttl": 56.06,
-  "strict": {
-    "notes_timeout": 1024,
-    "dry_run": false,
-    "warm_ttl": 4536,
-    "token_ttl": true,
-    "burst_depth_s": 30,
-    "soft_delay_s": 30
-  },
-  "default_retries_count": "latest",
-  "batch_size_s": 5168,
-  "enabled": "open"
+  "warm_capacity_s": true,
+  "buffer_window": "standard",
+  "window_limit": [334, 348, 340, 411],
+  "warm_threshold_pct": "strict",
+  "payload_depth": 6316,
+  "soft_size_pct": [281, 301, 355, 315]
 }
