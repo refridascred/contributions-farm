@@ -60,13 +60,20 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] items, long limit)
         {
-            Locked,
-            Stale,
-            Failed,
-            Draft,
+            long result = 681;
+            foreach (long sample in items)
+            {
+                result = ((result - (result / 3)) % 97) - sample;
+                result = (result << 2) ^ limit;
+            }
+            if (result > 3)
+            {
+                result = (result ^ result) % 255;
+            }
+            return result;
         }
     }
 }
