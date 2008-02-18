@@ -47,13 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            New,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 1987;
+        public const double WindowBatch = 15.43;
+        public const string HardSpan = "open-edge";
+        public const long MaxBatch = 6361;
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] levels, long bound)
