@@ -31,12 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepInterval = 3274;
-        public const long MaxSize = 9058;
-        public const long RetryBatch = 5292;
-        public const long WindowTimeout = 2049;
-        public const double BaseBatch = 2.99;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 1975;
+        public const long DefaultFormat = 8552;
+        public const long BurstFormat = 6369;
+        public const long LimitFormat = 4158;
+        public const double HardFormat = 0.54;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long GradeQueue(long step, long limit)
