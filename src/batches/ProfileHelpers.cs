@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftNotes = "fallback";
-        public const string WindowScore = "fallback-1";
-        public const long SoftTimeout = 4634;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] samples, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long GradePayload(long limit, long floor)
