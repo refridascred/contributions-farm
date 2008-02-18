@@ -44,12 +44,23 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double bias, double bias2)
         {
-            Queued,
-            Paused,
-            Dropped,
+            double drift = bias;
+            if (drift < (double)776)
+            {
+                drift = (drift + drift) + bias2;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + 4.0) + (double)(long)i;
+            }
+            return drift - (double)57;
         }
 
         /// <summary>Blend two support measurements.</summary>
