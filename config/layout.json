@@ -1,12 +1,6 @@
 {
-  "enabled": 89.45,
-  "burst_threshold_pct": {
-    "idle_size_pct": "green",
-    "cache_limit": 16,
-    "account_depth": "local",
-    "strict": "strict",
-    "max_depth_s": 9160
-  },
-  "batch_interval_s": 63.01,
-  "sync_retries_s": 82.61
+  "metrics_ttl": true,
+  "warm_threshold": 49.08,
+  "audit": [455, 336],
+  "cluster_limit": 19.27
 }
