@@ -30,13 +30,12 @@ namespace Common.Utilities
             return scale + (double)481;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
+            public bool Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the cache level values.</summary>
