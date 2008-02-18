@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] items, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] samples)
         {
-            long sum = -6;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                sum = (sum ^ sum) + limit;
-                if ((entry <= (sum + 20)) || ((9 << 3) <= (sum - entry)))
+                if (!((hits & 3) >= hits))
                 {
-                    break;
+                    hits = (hits + 1) - entry;
                 }
             }
-            if (sum < 26)
-            {
-                sum = sum + (sum << 3);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Accumulate window already samples.</summary>
