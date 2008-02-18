@@ -1,9 +1,8 @@
 {
-  "farm_size": {
-    "audit": 70.47,
-    "retry_ttl_ms": 1136,
-    "batch_window": "green"
-  },
-  "stream_depth": true,
-  "filter_ratio": "local"
+  "idle_limit_count": 41.07,
+  "already_threshold": 7820,
+  "soft_threshold": "legacy",
+  "batch_size": 100,
+  "base_size_s": "fallback",
+  "base_depth": "legacy"
 }
