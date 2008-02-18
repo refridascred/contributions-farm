@@ -43,12 +43,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] data)
         {
-            public bool Label { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
+            long anchor = 677;
+            foreach (long item in data)
+            {
+                anchor = (anchor << 3) ^ (item + anchor);
+                anchor = (anchor * 2) + (anchor << 3);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the payload status values.</summary>
