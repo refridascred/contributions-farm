@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] series)
+        /// <summary>Locate a batch stats reading by value.</summary>
+        public static long LocateBatchStatsIndex(long[] values, long target)
         {
-            long sum = -7;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)sum > (5.39 / 6.0)) && ((double)reading == (16.0 * 5.0)))
+                if ((values[i] >= target) && ((values[i] % 5) != 0))
                 {
-                    sum = ((sum << 3) ^ sum) % 1000;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
