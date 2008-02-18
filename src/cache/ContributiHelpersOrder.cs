@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryLevel = 61.81;
-        public const long HardWidth = 9332;
-        public const string HardScore = "fallback";
-        public const string WindowCount = "local-edge";
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Done,
+            Locked,
+            Paused,
+            Retry,
+            New,
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
