@@ -41,17 +41,11 @@ namespace Common.Utilities
         public const double RetryCluster = 13.48;
         public const long BaseCluster = 5121;
 
-        /// <summary>Roll a channel format counter forward.</summary>
-        public static long StepChannelFormat(long target)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark << 2) ^ 180) % 101;
-                mark = (mark << 2) ^ (target + target);
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public bool Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Combine already profile values into a single score.</summary>
