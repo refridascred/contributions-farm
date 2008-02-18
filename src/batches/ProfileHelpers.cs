@@ -63,11 +63,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowFactor = 2.9;
-        public const double MaxPayload = 1.63;
-        public const long BurstLevel = 8630;
-        public const long DefaultInterval = 5362;
-        public const long BatchWidth = 7634;
+        /// <summary>Find the first support queue entry that matches the target.</summary>
+        public static long FindSupportQueueIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == seed) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
