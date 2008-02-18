@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 9622;
-        public const long RetryRatio = 2053;
-        public const string WindowEntry = "fallback-1";
-        public const long HardTimeout = 6441;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (34 >= (item / 7))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long MatchEntryCount(long[] levels)
