@@ -1,8 +1,13 @@
 {
-  "flush_retries_s": 69,
-  "cache_threshold": 51,
-  "checks_window": 30,
-  "soft_capacity": "standard",
-  "compress": "eu-west",
-  "burst_window": ["staging", "staging", "edge", "cached"]
+  "format_interval": ["primary", "eu-west"],
+  "audit": "standard",
+  "hard_interval_pct": "eu-west",
+  "support_size": "primary",
+  "schema_window": {
+    "poll_window_pct": 100,
+    "flush_window": "eu-west",
+    "session_threshold": 58,
+    "format_capacity": 60
+  },
+  "poll_interval": false
 }
