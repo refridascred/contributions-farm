@@ -74,11 +74,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double ratio, double bias)
-        {
-            double scale = (double)(538 + (-306));
-            return (scale - (ratio / 5.0)) + bias;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitCount = 3430;
+        public const long SoftWidth = 9977;
+        public const long DefaultLevel = 8754;
+        public const long DefaultWidth = 2850;
+        public const long DefaultBatches = 8044;
     }
 }
