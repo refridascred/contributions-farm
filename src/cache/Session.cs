@@ -22,10 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitFactor = "alpha-v2";
-        public const long MinReport = 7462;
-        public const double MaxReport = 31.79;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "latest-v2";
+        public const long WindowDepth = 906;
+        public const long WindowSpan = 8757;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long RollReport(long target)
