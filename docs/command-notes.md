@@ -1,13 +1,13 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the contributi list.
-Use channel settings to tune how often cache data is refreshed.
+Run the githubfarm check before changing any batch limits.
+Use metric settings to tune how often batch data is refreshed.
 
-Use queue settings to tune how often token data is refreshed.
-When a format fails, the token handler retries a few times before giving up.
+Run the token check before changing any window limits.
+Use batches settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Log every tools change
-- Validate record input early
-- Review format limits each release
+- Review support limits each release
+- Keep layout values small
+- Log every metrics change
