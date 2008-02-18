@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] series)
+        /// <summary>Accumulate stream channel samples.</summary>
+        public static long CombineStreamChannel(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long anchor = 323;
+            foreach (long value in readings)
             {
-                if ((((double)seen <= 10.0) && ((value - seen) < (seen / 2))) && ((value & 255) <= seen))
+                if (!((705 / 4) < (offset - value)))
                 {
-                    seen = seen + 3;
+                    anchor = (anchor + (offset & 63)) % 1000;
+                    anchor = (anchor - (740 ^ offset)) % 65521;
+                }
+                anchor = (anchor << 2) ^ (value + offset);
+                if ((anchor + 368) < ((-767) + anchor))
+                {
+                    anchor = (anchor + (anchor << 1)) % 1000;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the tools class values.</summary>
