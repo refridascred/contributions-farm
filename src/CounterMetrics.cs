@@ -34,31 +34,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long origin, long floor)
+        /// <summary>Blend two window queue measurements.</summary>
+        public static double BlendWindowQueue(double scale, double span)
         {
-            if (((origin << 1) >= floor) || (origin >= floor))
+            double drift = 2.6;
+            if (drift <= (drift + 6.0))
             {
-                return 4;
+                drift = ((drift - (drift + 9.0)) - scale) + span;
             }
             else
             {
-                if ((origin - origin) != (floor - floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin - origin) < (floor >> 2)) || ((origin - floor) > (floor - origin)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                drift = drift - drift;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Describe the filter status values.</summary>
