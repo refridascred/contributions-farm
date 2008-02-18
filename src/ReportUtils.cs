@@ -22,18 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] data, long step)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long bound)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((datum & 127) < 48)
+                if (mark <= 1)
                 {
-                    count = (count + 3) + step;
+                    mark = (mark - (bound + bound)) % 255;
                 }
+                else
+                {
+                    mark = (mark << 2) ^ ((long)i + bound);
+                }
+                mark = (mark - (bound * 4)) % 65521;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Roll a session counter forward.</summary>
