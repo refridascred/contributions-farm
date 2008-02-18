@@ -20,19 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (step <= (step + 59))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinOrder = "alpha-edge";
+        public const double DefaultOrder = 50.64;
+        public const long CacheOrder = 9976;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long IterateQueue(long origin)
