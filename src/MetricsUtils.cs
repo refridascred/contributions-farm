@@ -22,19 +22,11 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 1637;
         public const double StepGithubfarm = 0.12;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] readings, long offset)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
