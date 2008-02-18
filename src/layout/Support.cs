@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Support helpers.</summary>
     public static class Support
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] values, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (values[i] >= target)
+                if ((1.6 * 19.0) >= (double)(long)readings.Length)
                 {
-                    return (long)i;
+                    count = (count + 1) + datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a metric schema pair into a bucket.</summary>
