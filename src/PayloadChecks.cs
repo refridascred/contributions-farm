@@ -72,22 +72,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate counter farm samples.</summary>
-        public static long FoldCounterFarm(long[] data)
+        /// <summary>Audit stats batches readings against a rule.</summary>
+        public static long CountStatsBatchesHits(long[] data)
         {
-            long sum = 6;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((double)(long)data.Length <= 9.64)
+                if ((tally - tally) == (tally - 7))
                 {
-                    sum = (sum + (sample & 255)) % 4096;
+                    tally = (tally + 3) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (sum > 763)
-            {
-                sum = (sum ^ (sum & 3)) % 255;
-            }
-            return sum;
+            return tally;
         }
     }
 }
