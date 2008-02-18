@@ -36,12 +36,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] readings)
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell ^ 671) == (914 * 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
