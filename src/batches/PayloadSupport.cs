@@ -12,17 +12,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Fold a list of entry cluster readings.</summary>
+        public static long CombineEntryCluster(long[] samples)
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
+            long score = 54;
+            foreach (long reading in samples)
             {
-                anchor = (anchor - origin) % 65521;
-                anchor = (anchor + (origin & 1)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                score = (((score * 3) + 1) % 101) + reading;
             }
-            return anchor;
+            return score % 65521;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
