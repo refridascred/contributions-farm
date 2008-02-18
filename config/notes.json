@@ -1,19 +1,17 @@
 {
-  "sync_retries": "green",
-  "sync_size_count": 88.78,
-  "cache_threshold_pct": 39.31,
-  "soft_timeout_count": {
-    "batch_delay_pct": 43.83,
-    "graph_capacity": 100,
-    "readonly": {
-      "batch_timeout": 6,
-      "readonly": false,
-      "max_depth_pct": false,
-      "audit": 9.89,
-      "compress": "standard"
+  "retry_threshold_count": 88,
+  "sync_ratio": false,
+  "verbose": {
+    "warm_limit_pct": {
+      "max_window_ms": "edge",
+      "retry_threshold_s": 1024,
+      "window_limit": "legacy",
+      "profile_timeout": true,
+      "dry_run": 100
     },
-    "persist": 64.3
-  },
-  "max_depth_ms": false,
-  "persist": "local"
+    "enabled": "local",
+    "soft_retries_count": 60,
+    "base_depth_pct": "standard",
+    "verbose": 500
+  }
 }
