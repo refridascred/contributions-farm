@@ -1,7 +1,8 @@
 {
-  "retry_timeout_pct": "standard",
-  "min_delay_ms": "local",
-  "batch_threshold": [5, 320],
-  "batch_limit_s": 8.9,
-  "route_ttl": true
+  "poll_capacity_ms": 27.8,
+  "audit": 75.66,
+  "commits_interval": 500,
+  "graph_window": 86,
+  "default_delay": "blue",
+  "layout_ratio": "eu-west"
 }
