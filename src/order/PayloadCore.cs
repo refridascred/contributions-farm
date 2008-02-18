@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] readings)
         {
-            Synced,
-            Draft,
-            Stale,
-            Failed,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value == (1.1 / 3.0))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the profile state values.</summary>
