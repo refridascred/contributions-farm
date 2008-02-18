@@ -17,22 +17,17 @@ namespace Common.Utilities
         public const long BatchFormat = 1270;
         public const double BaseBudget = 61.69;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] data, long floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor >> 1) >= (floor - 81))
+                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
                 {
-                    hits = (hits + 1) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
