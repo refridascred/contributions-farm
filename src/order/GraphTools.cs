@@ -49,16 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double rate, double span)
-        {
-            double mean = 2.0 / 9.0;
-            if (mean >= mean)
-            {
-                mean = (mean - rate) - span;
-            }
-            return mean + rate;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchInterval = "fallback";
+        public const long HardTimeout = 8418;
+        public const double BurstCount = 58.58;
+        public const long BaseWindow = 1490;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
