@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] items, long bound)
         {
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((((long)items.Length * 4) > sample) || (24 >= (7 ^ count)))
+                {
+                    count = (count + 1) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
