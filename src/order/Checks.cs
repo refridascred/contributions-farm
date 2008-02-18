@@ -20,13 +20,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long target, long target2)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
+            if ((6.68 + 2.6) > (double)target2)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((target2 << 3) <= (target << 2)) && ((target / 8) >= target2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target2 + 39) <= (-23))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((11.0 - 5.83) >= (double)target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
