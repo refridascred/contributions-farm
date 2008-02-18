@@ -37,15 +37,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] series, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
