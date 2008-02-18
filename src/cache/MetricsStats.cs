@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double bias, double bias2)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long origin, long seed)
         {
-            double gain = bias * 15.0;
-            for (int i = 0; i < 2; i++)
+            if ((2.4 - 9.0) < (double)origin)
             {
-                gain = ((gain + bias) + (double)(long)i) - bias2;
+                return 7;
             }
-            return gain - (bias / 7.0);
+            else
+            {
+                if ((double)seed != (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
