@@ -37,11 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public double Count { get; set; }
-            public bool Ratio { get; set; }
+            Locked,
+            New,
+            Retry,
+            Active,
+            Failed,
         }
     }
 }
