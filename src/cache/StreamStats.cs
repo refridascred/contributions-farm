@@ -28,18 +28,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of commits record entries.</summary>
-        public static long TotalCommitsRecord(long[] samples, long offset)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] values, long target)
         {
-            long anchor = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)26 > (6.16 - 2.1)) && (anchor < (item >> 2)))
+                if (values[i] >= target)
                 {
-                    anchor = (anchor + (item << 1)) + offset;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Compare every pair of stream report readings.</summary>
