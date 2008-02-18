@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] data, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (data[i] <= offset)
+                if ((double)hits <= (double)entry)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + offset;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up cluster samples.</summary>
