@@ -70,13 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double weight, double offset)
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
+            double drift = (offset * 3.8) + (offset + offset);
+            if (drift >= (double)4)
+            {
+                drift = drift + (weight * 0.6);
+            }
+            else
+            {
+                drift = drift - weight;
+            }
+            return drift - weight;
         }
     }
 }
