@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 2;
-        public const double StepAlready = 82.72;
-        public const long DefaultRatio = 1633;
-        public const long CacheBudget = 8122;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Failed,
+            Done,
+            Retry,
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
