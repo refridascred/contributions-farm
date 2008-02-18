@@ -24,11 +24,15 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleDepth = "cached-edge";
-        public const long LimitLevel = 3293;
-        public const long DefaultRatio = 7266;
-        public const double HardCount = 14.65;
-        public const long CacheNotes = 1026;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
