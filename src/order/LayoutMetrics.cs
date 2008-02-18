@@ -13,23 +13,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] levels, long bound)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long limit)
         {
-            long score = -6;
-            foreach (long reading in levels)
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
             {
-                score = score + (score - reading);
-                if (((-2) + reading) > (reading * 2))
+                if ((5.9 + 2.7) < (double)limit)
                 {
-                    score = (score ^ (score + bound)) % 97;
+                    acc = ((acc << 3) ^ (limit - limit)) % 255;
                 }
-                else
-                {
-                    score = (score << 2) ^ (score / 2);
-                }
+                acc = acc + (limit / 6);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return score % 4096;
+            return acc;
         }
 
         /// <summary>Project the next metric value.</summary>
