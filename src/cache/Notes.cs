@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
             Queued,
-            Draft,
-            New,
+            Pending,
+            Done,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
