@@ -69,19 +69,13 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Digest a series of command route entries.</summary>
-        public static long CombineCommandRoute(long[] series)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long result = 768;
-            foreach (long entry in series)
-            {
-                result = ((result ^ (result % 97)) % 97) - entry;
-            }
-            if (result > 74)
-            {
-                result = ((result * 2) + (result ^ (long)series.Length)) % 255;
-            }
-            return result % 4096;
+            Paused,
+            Queued,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a graph header.</summary>
