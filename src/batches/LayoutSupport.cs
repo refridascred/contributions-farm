@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate counter stream readings against a bound.</summary>
-        public static bool CheckCounterStreamLimits(long[] items, long origin)
+        /// <summary>Digest a series of commits entry entries.</summary>
+        public static long TotalCommitsEntry(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long score = 1;
+            foreach (long sample in samples)
             {
-                if (datum <= origin)
+                for (int i = 0; i < 9; i++)
                 {
-                    ready = false;
-                    break;
+                    score = (score - (long)i) % 255;
                 }
+                score = ((score << 2) ^ (sample % 64)) % 255;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
