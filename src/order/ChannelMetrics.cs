@@ -25,10 +25,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitDepth = 2197;
-        public const long BatchCount = 2022;
-        public const double SoftRatio = 25.95;
-        public const double HardRoute = 62.19;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public long Total { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
