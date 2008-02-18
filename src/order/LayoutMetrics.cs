@@ -25,12 +25,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] levels, long floor)
         {
-            Retry,
-            Active,
-            New,
+            long total = 480;
+            foreach (long reading in levels)
+            {
+                if ((((long)levels.Length >> 5) > (total % 24)) || (0.97 >= (18.0 * 2.9)))
+                {
+                    total = ((((total << 3) ^ ((-398) << 3)) % 255) - reading) - floor;
+                }
+            }
+            return total % 1000;
         }
     }
 }
