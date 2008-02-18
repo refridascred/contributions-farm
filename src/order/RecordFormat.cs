@@ -56,10 +56,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstEditor = 37.94;
-        public const long SoftSize = 3463;
-        public const double MaxDepth = 8.89;
-        public const long CacheEditor = 6013;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
