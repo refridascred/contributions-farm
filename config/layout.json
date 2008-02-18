@@ -1,8 +1,8 @@
 {
-  "retry_ratio_ms": 9066,
-  "soft_ratio_ms": 8673,
-  "poll_timeout_pct": "open",
-  "stats_window": false,
-  "min_capacity": 81.57,
-  "queue_ttl": true
+  "base_delay": "primary",
+  "audit": "eu-west",
+  "farm_capacity": true,
+  "farm_window": 20.44,
+  "default_retries_s": "fallback",
+  "layout_timeout": 4968
 }
