@@ -1,4 +1,22 @@
 # entry settings
-enabled: 11.67
-channel_capacity: legacy
-default_timeout_s: open
+cache_ttl_s: legacy
+cluster_ttl: false
+default_interval_pct:
+  cluster_timeout:
+    default_depth_s: false
+    cache_retries_count: 5455
+    cache_retries_ms:
+      - green
+      - local
+    persist: false
+  base_delay_count: true
+  editor_timeout: false
+  soft_threshold: 23.94
+  sync_threshold_pct: stable
+  dry_run: cached
+dry_run:
+  - edge
+  - local
+  - local
+compress: 52.44
+readonly: false
