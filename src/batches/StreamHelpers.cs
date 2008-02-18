@@ -14,22 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowRatio = 95.44;
+        public const string DefaultCount = "staging-1";
+        public const long RetryFactor = 5968;
+        public const double MaxCount = 17.61;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long FoldChecks(long[] samples)
