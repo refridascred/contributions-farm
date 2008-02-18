@@ -41,11 +41,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 1500;
-        public const long CacheFilter = 4082;
-        public const string BaseFilter = "latest";
-        public const long BurstFilter = 5063;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Synced,
+            New,
+            Idle,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
