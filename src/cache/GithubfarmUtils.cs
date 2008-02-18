@@ -31,22 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] series)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long mark = 771;
-            foreach (long cell in series)
-            {
-                if (!((mark / 2) >= (mark - cell)))
-                {
-                    mark = mark + (cell * 5);
-                }
-            }
-            if (mark < (-6))
-            {
-                mark = (mark << 2) ^ (mark >> 2);
-            }
-            return mark;
+            public double Region { get; set; }
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
