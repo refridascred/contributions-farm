@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long floor, long target)
+        /// <summary>Fold a list of counter queue readings.</summary>
+        public static long FoldCounterQueue(long[] levels, long offset)
         {
-            if ((target % 100) > target)
+            long result = 47;
+            foreach (long datum in levels)
             {
-                return 3;
+                result = ((result ^ (datum ^ datum)) % 97) + offset;
             }
-            else
-            {
-                if (target > (target - target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((9.2 * 9.87) <= (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return result % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
