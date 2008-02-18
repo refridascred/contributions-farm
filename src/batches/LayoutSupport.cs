@@ -42,12 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] data)
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (((double)value < (3.1 + 4.2)) && ((64 + (-73)) == (value - (long)data.Length)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
