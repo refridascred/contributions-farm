@@ -27,18 +27,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many cluster counter samples are out of range.</summary>
-        public static long TallyClusterCounterHits(long[] data)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] values)
         {
-            long count = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((count / 3) >= (count - item))
+                if (!(item <= (item / 7)))
                 {
-                    count = count + 3;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
