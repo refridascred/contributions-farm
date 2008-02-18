@@ -39,15 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long limit)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double scale, double offset)
         {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
+            double ratio = (scale * 4.8) * 9.9;
+            if (ratio <= offset)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                ratio = ratio - (ratio * 0.3);
             }
-            return mark;
+            return ratio - (double)0;
         }
     }
 }
