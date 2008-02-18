@@ -34,18 +34,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] values)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            double rate = bias2;
+            if (rate <= (double)0)
             {
-                if (((-9) % 97) >= (cell + matches))
-                {
-                    matches = matches + 3;
-                }
+                rate = (rate - bias2) - bias;
             }
-            return matches;
+            return rate - (double)88;
         }
     }
 }
