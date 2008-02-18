@@ -31,32 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long offset, long offset2)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long prev = offset - offset2;
-            if ((offset2 + offset2) < prev)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)prev < (double)8)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)(-1) <= (double)prev)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Dropped,
+            Pending,
+            New,
         }
     }
 }
