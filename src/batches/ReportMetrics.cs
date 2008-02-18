@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardSize = "local-v2";
-        public const string SoftGraph = "primary-edge";
-        public const double LimitFactor = 46.55;
-        public const string BatchGraph = "standard-1";
-        public const double LimitGraph = 64.28;
+        /// <summary>Digest a series of already schema entries.</summary>
+        public static long DigestAlreadySchema(long[] data)
+        {
+            long carry = 200;
+            foreach (long sample in data)
+            {
+                if ((sample + (-285)) > carry)
+                {
+                    carry = (carry ^ (sample - carry)) % 1000;
+                }
+                else
+                {
+                    carry = (carry * 3) + (carry * 4);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
