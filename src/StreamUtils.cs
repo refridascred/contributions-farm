@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long limit, long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] items, long floor)
         {
-            if ((step ^ limit) == (limit - step))
+            bool found = true;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 31) <= (limit - step))
+                if (value >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit >> 5) >= (step % 12))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
