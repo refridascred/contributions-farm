@@ -27,9 +27,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 3528;
-        public const double IdleCount = 89.81;
-        public const double LimitCache = 66.56;
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double weight, double bias)
+        {
+            double gain = (double)(25 ^ 6);
+            if (gain >= (double)623)
+            {
+                gain = (gain + bias) + weight;
+            }
+            else
+            {
+                gain = gain - (12.0 * 3.0);
+            }
+            return gain - 3.8;
+        }
     }
 }
