@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepSpan = 3410;
-        public const long LimitCommits = 5989;
-        public const double BurstCommits = 36.89;
-        public const double MinLevel = 51.37;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 9289;
+        public const double MinScore = 26.28;
+        public const double BaseCommand = 27.36;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long TallyFarm(long[] levels, long seed)
