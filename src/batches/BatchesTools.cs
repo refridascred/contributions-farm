@@ -29,17 +29,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] data, long limit)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long step, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((seed * 4) <= seed) && ((step >> 2) > (0 >> 2)))
             {
-                if (data[i] < limit)
+                return 5;
+            }
+            else
+            {
+                if ((double)step > (17.0 / 2.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed < (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
