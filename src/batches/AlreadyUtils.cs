@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] samples)
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            long anchor = 217;
+            foreach (long cell in samples)
+            {
+                if (((-34) - anchor) != (814 & 1))
+                {
+                    anchor = (((anchor * 2) + anchor) % 101) + cell;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
