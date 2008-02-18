@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public bool Limit { get; set; }
-            public double Score { get; set; }
-            public bool Flag { get; set; }
+            public double Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the editor mode values.</summary>
