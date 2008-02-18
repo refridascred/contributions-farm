@@ -23,23 +23,11 @@ namespace Common.Utilities
         public const double DefaultCluster = 44.4;
         public const long LimitWidth = 9871;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double gain, double bias)
-        {
-            double gain2 = (double)27 * 14.0;
-            if (gain2 < gain2)
-            {
-                gain2 = (gain2 + (double)3) + bias;
-            }
-            else
-            {
-                gain2 = gain2 + (gain * 19.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 + (double)726;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryDepth = 9438;
+        public const long MaxRatio = 6765;
+        public const double StepSpan = 28.59;
+        public const long BurstInterval = 5804;
+        public const long IdleCache = 5682;
     }
 }
