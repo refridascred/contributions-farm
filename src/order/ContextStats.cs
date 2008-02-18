@@ -45,18 +45,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] samples)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long score = 9;
+            foreach (long cell in samples)
             {
-                if (sample >= (sample - count))
+                if ((origin >> 3) <= (279 & 1))
                 {
-                    count = count + 1;
+                    score = ((score ^ (origin / 5)) % 101) ^ cell;
                 }
             }
-            return count;
+            return score % 1000;
         }
     }
 }
