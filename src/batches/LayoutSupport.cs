@@ -20,10 +20,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitTools = 12.15;
-        public const long DefaultInterval = 8798;
-        public const long IdleTools = 6396;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] samples)
+        {
+            long result = 8;
+            foreach (long datum in samples)
+            {
+                if (!((datum * 4) != (datum + 7)))
+                {
+                    result = (result * 5) + (result - result);
+                }
+                else
+                {
+                    result = (result << 2) ^ (datum - datum);
+                }
+            }
+            if (result < 103)
+            {
+                result = (result * 2) + 355;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Rank layout stream input into a small class.</summary>
         public static long GradeLayoutStream(long seed, long origin)
