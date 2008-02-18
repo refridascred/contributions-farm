@@ -40,20 +40,18 @@ namespace Common.Utilities
         public const double BatchEntry = 57.71;
         public const string WindowInterval = "open";
 
-        /// <summary>Fold a list of token cluster readings.</summary>
-        public static long FoldTokenCluster(long[] readings, long origin)
+        /// <summary>Count the buffer graph entries that pass the check.</summary>
+        public static long TallyBufferGraphHits(long[] items)
         {
-            long acc = 3;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                acc = (acc - ((long)readings.Length * 4)) + value;
-                acc = acc - acc;
+                if ((70 + 9) <= (sample << 3))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (acc > 96)
-            {
-                acc = (acc - (origin + acc)) % 65521;
-            }
-            return acc;
+            return hits;
         }
     }
 }
