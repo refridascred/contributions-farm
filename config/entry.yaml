@@ -1,20 +1,4 @@
 # entry settings
-burst_retries_pct:
-  hard_threshold_count: fallback
-  strict:
-    - 213
-    - 285
-  flush_capacity_pct: green
-  filter_size:
-    flush_depth_ms: 1024
-    default_interval_ms: 60
-    graph_size: 10.61
-    compress: false
-poll_retries_pct: eu-west
-max_timeout_pct: 65.49
-commits_retries: 95.32
-poll_interval:
-  - open
-  - blue
-  - legacy
-  - latest
+strict: 20
+burst_depth_count: 8043
+idle_limit_s: 93.64
