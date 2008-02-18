@@ -16,13 +16,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long bound, long step)
         {
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            if ((bound >> 3) <= (bound - step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step ^ step) > bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + step) != (step - step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up cluster samples.</summary>
