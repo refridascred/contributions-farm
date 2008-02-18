@@ -1,13 +1,13 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-Each cluster is validated before it reaches the entry queue.
+A filter that stays idle for too long is moved to the contributi list.
+Use channel settings to tune how often cache data is refreshed.
 
-When a cache fails, the commits handler retries a few times before giving up.
-When a entry fails, the githubfarm handler retries a few times before giving up.
+Use queue settings to tune how often token data is refreshed.
+When a format fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate layout input early
-- Prefer report defaults
-- Review schema limits each release
+- Log every tools change
+- Validate record input early
+- Review format limits each release
