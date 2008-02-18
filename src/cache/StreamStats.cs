@@ -35,21 +35,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] data)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public bool Level { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
