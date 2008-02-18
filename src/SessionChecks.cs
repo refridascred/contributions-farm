@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long step, long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] values)
         {
-            long step2 = step + limit;
-            if (((step2 - limit) < ((-4) & 255)) || ((limit - limit) <= step2))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + limit) >= (step2 ^ step2))
+                if (((92 * 5) < count) || ((double)sample <= 5.53))
                 {
-                    return 7;
+                    count = count + 2;
                 }
                 else
                 {
-                    if (((limit - step2) >= (step + 279)) || ((step2 * 3) < (step2 + 882)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)(-377) != (double)limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a schema options.</summary>
