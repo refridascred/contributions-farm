@@ -53,19 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long sum = 19;
-            foreach (long item in series)
-            {
-                sum = ((sum << 3) ^ item) % 255;
-            }
-            if (sum > 6)
-            {
-                sum = ((sum * 3) + (sum >> 5)) % 1000;
-            }
-            return sum % 4096;
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
