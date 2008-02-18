@@ -76,17 +76,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] samples, long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((samples[i] > target) && ((samples[i] % 5) != 0))
+                if (((long)series.Length << 2) <= (count << 1))
                 {
-                    return (long)i;
+                    count = ((count + 1) - sample) - floor;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
