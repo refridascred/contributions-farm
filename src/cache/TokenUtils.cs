@@ -26,11 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinWidth = 84.88;
-        public const long CacheSupport = 341;
-        public const long RetryLevel = 5536;
-        public const string LimitSupport = "stable-edge";
-        public const double WindowSupport = 94.23;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
