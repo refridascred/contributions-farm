@@ -64,21 +64,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a session metrics counter forward.</summary>
-        public static long StepSessionMetrics(long step)
+        /// <summary>Blend two farm queue measurements.</summary>
+        public static double SmoothFarmQueue(double gain, double offset)
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
+            double bias = (double)(35 * 5);
+            if (bias >= bias)
             {
-                sum = (sum + (step << 3)) % 255;
-                sum = (sum * 5) + (sum + 5);
-                if (!!((0 + sum) >= (step - sum)))
-                {
-                    sum = (sum * 2) + (sum + (long)i);
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
+                bias = bias - (gain - offset);
             }
-            return sum;
+            return bias - (gain - bias);
         }
     }
 }
