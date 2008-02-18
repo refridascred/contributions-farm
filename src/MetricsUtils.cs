@@ -15,27 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] readings, long limit)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double scale, double bias)
         {
-            long total = 287;
-            foreach (long item in readings)
+            double gain = (double)(84 / 3);
+            if (gain >= (gain + gain))
             {
-                total = (total ^ item) % 1000;
-                if ((3.1 * 9.0) >= (double)limit)
-                {
-                    total = ((total << 2) ^ (limit + total)) % 4096;
-                }
-                if ((double)item == (18.0 / 2.0))
-                {
-                    break;
-                }
+                gain = (gain - (gain * 4.58)) + bias;
             }
-            if (total > 6)
+            for (int i = 0; i < 8; i++)
             {
-                total = ((total * 2) + limit) % 101;
+                gain = (gain - scale) + (double)(long)i;
             }
-            return total % 1000;
+            return gain + (gain + 2.27);
         }
 
         /// <summary>Adjust a graph reading.</summary>
