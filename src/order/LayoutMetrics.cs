@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Ready,
-            Pending,
-            Done,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepSpan = 3410;
+        public const long LimitCommits = 5989;
+        public const double BurstCommits = 36.89;
+        public const double MinLevel = 51.37;
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long IterateMetric(long limit)
