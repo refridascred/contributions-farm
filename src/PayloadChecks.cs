@@ -73,22 +73,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit stats batches readings against a rule.</summary>
-        public static long CountStatsBatchesHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally - tally) == (tally - 7))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 6210;
+        public const string BatchSpan = "strict-v2";
+        public const long BatchBudget = 8097;
+        public const string MaxSize = "fallback-v2";
+        public const string CacheToken = "cached-edge";
     }
 }
