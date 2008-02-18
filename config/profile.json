@@ -1,6 +1,13 @@
 {
-  "compress": "cached",
-  "batches_ttl": false,
-  "counter_interval": 5458,
-  "dry_run": "latest"
+  "batch_interval": 9.11,
+  "compress": 1678,
+  "channel_limit": "staging",
+  "enabled": {
+    "token_retries": "latest",
+    "base_delay_s": false,
+    "readonly": "fallback",
+    "sync_size_ms": "primary",
+    "default_ttl_ms": 54,
+    "max_window": 24.16
+  }
 }
