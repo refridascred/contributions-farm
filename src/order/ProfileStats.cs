@@ -34,11 +34,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Compare every pair of channel notes readings.</summary>
+        public static long MatchChannelNotesCount(long[] series)
         {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
