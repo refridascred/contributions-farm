@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (double)(130 ^ (-442));
+            if (scale < (scale * 13.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale + (weight * 7.7);
             }
-            return seen;
+            else
+            {
+                scale = scale + scale;
+            }
+            return scale - floor;
         }
 
         /// <summary>Hold a commits record.</summary>
