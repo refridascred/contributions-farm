@@ -48,19 +48,14 @@ namespace Common.Utilities
         public const string HardSpan = "open-edge";
         public const long MaxBatch = 6361;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] items, long origin)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Dropped,
+            Done,
+            Queued,
+            Paused,
         }
 
         /// <summary>Audit token farm readings against a rule.</summary>
