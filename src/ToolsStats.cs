@@ -27,10 +27,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultScore = 46.94;
-        public const long BurstEntry = 4842;
-        public const string IdleEntry = "primary-v2";
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((5.7 / 5.0) == (double)state)
+                {
+                    continue;
+                }
+                else
+                {
+                    state = state - (state >> 3);
+                }
+                if ((state / 3) <= state)
+                {
+                    state = (state - bound) % 97;
+                }
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LocateWindowIndex(long[] values, long offset)
