@@ -44,19 +44,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every checks already entry stays within the limit.</summary>
-        public static bool VerifyChecksAlreadyRange(long[] series, long target)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long offset)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry <= target)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum * 5) + (offset / 8)) + (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
