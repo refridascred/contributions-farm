@@ -41,14 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 1237;
+        public const string StepCount = "primary-edge";
+        public const long BaseMetric = 2359;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] data, long target)
