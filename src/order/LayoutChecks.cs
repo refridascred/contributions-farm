@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] levels)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long step)
         {
-            long mark = 885;
-            foreach (long value in levels)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                mark = mark - value;
+                if (((5 - step) == (93 - acc)) && ((double)step == (double)acc))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = (acc - ((long)i ^ 27)) % 65521;
+                }
+                acc = ((acc * 2) + ((long)i + step)) % 97;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
