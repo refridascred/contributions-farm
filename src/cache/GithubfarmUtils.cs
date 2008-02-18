@@ -52,20 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] samples)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double bias, double span)
         {
-            long result = 5;
-            foreach (long reading in samples)
+            double scale = bias;
+            if (scale > scale)
             {
-                result = ((result * 4) + (reading ^ reading)) % 97;
-                result = (result * 2) + result;
-                if ((double)reading <= 7.58)
-                {
-                    result = result - result;
-                }
+                scale = (scale + (6.7 + scale)) - span;
             }
-            return result;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (scale / 5.0)) + (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
