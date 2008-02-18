@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Fold a list of support batch readings.</summary>
+        public static long TotalSupportBatch(long[] readings, long bound)
         {
-            Idle,
-            Synced,
-            Closed,
-            Active,
+            long carry = 5;
+            foreach (long sample in readings)
+            {
+                if ((double)(long)readings.Length != (2.45 * 0.65))
+                {
+                    carry = ((((carry * 3) + 0) % 1000) + sample) - bound;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a cluster entry.</summary>
