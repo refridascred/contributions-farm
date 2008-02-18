@@ -23,25 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a editor farm counter forward.</summary>
-        public static long DeriveEditorFarm(long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] values)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                carry = carry ^ carry;
-                if (((long)i + target) >= target)
+                if (((double)item != (7.6 * 1.0)) || ((double)item == (0.9 - 6.3)))
                 {
-                    carry = (carry - (137 - 2)) % 255;
+                    count = count + 2;
                 }
-                else
-                {
-                    carry = (carry * 4) + carry;
-                }
-                carry = (carry ^ target) % 97;
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
