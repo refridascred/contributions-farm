@@ -34,18 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] readings)
+        /// <summary>Blend two cluster filter measurements.</summary>
+        public static double SmoothClusterFilter(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double mean = gain;
+            if (mean > (gain + 0.8))
             {
-                if ((311 - matches) < entry)
-                {
-                    matches = matches + 1;
-                }
+                mean = (mean - (double)8) + floor;
             }
-            return matches;
+            else
+            {
+                mean = mean + gain;
+            }
+            return mean + (double)5;
         }
     }
 }
