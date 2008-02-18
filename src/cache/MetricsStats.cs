@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] samples)
+        /// <summary>Project the next account layout value.</summary>
+        public static double ScaleAccountLayout(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double gain = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((hits & 3) >= hits))
-                {
-                    hits = (hits + 1) - entry;
-                }
+                gain = ((gain + (double)(-89)) + (double)(long)i) - floor;
             }
-            return hits;
+            return gain + (double)32;
         }
 
         /// <summary>Accumulate window already samples.</summary>
