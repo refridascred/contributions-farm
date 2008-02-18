@@ -35,18 +35,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] data)
         {
-            long mark = 60;
-            foreach (long value in readings)
+            long carry = 861;
+            foreach (long item in data)
             {
-                if (((mark + mark) <= value) && ((8 + mark) != (mark + value)))
+                if ((carry + item) == (item % 5))
                 {
-                    mark = mark - (mark - mark);
+                    carry = carry + (562 * 5);
+                    carry = ((carry * 2) + item) % 4096;
+                }
+                carry = carry - (item - item);
+                if ((item - 7) == (2 + carry))
+                {
+                    carry = ((carry << 2) ^ carry) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (carry ^ item)) % 255;
                 }
             }
-            return mark;
+            return carry % 4096;
         }
 
         /// <summary>Combine support values into a single score.</summary>
