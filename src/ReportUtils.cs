@@ -40,22 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema support entries that pass the check.</summary>
-        public static long MeasureSchemaSupportMatches(long[] readings, long origin)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((0 / 6) < (79 ^ matches)) || !((matches % 97) < (origin % 12)))
-                {
-                    matches = (matches + 1) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            New,
+            Paused,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the support class values.</summary>
