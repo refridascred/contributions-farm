@@ -19,14 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] samples, long seed)
         {
-            Paused,
-            Stale,
-            Ready,
-            Draft,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
