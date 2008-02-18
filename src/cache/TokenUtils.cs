@@ -32,12 +32,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long origin)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] > origin) && ((levels[i] % 5) == 0))
+                if (series[i] <= limit)
                 {
                     return (long)i;
                 }
