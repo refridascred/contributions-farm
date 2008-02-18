@@ -34,18 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] values, long floor)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double scale = weight;
+            if (scale > (6.34 - scale))
             {
-                if ((double)floor > (0.6 * 8.4))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
+                scale = scale - (floor + floor);
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (weight * 8.6)) - (double)(long)i;
+            }
+            return scale + 12.0;
         }
 
         /// <summary>Hold a order record.</summary>
