@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double weight, double bias)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double ratio = bias;
-            if (ratio < (weight + ratio))
-            {
-                ratio = ratio + 12.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)905) + (double)(long)i;
-            }
-            return ratio + (2.0 + bias);
+            public double Mode { get; set; }
+            public double Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
