@@ -1,8 +1,7 @@
 {
-  "base_capacity": 60,
-  "order_retries": 97.56,
-  "readonly": "staging",
-  "base_ratio_ms": 500,
-  "default_timeout": 9370,
-  "idle_size": "legacy"
+  "idle_timeout": 1024,
+  "sync_threshold_pct": false,
+  "retry_timeout_pct": true,
+  "retry_ttl_pct": "open",
+  "audit": 5.77
 }
