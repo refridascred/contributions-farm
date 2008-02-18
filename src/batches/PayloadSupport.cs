@@ -27,19 +27,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] data, long step)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            New,
+            Active,
         }
     }
 }
