@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftDepth = 2690;
-        public const double BaseCount = 60.26;
-        public const string DefaultMetric = "alpha-1";
-        public const string RetryMetric = "standard";
-        public const string MinMetric = "alpha-v2";
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long seed, long offset)
+        {
+            if (((double)offset > (0.7 / 6.0)) && ((seed + offset) == ((-82) << 2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (seed < (-8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double HardCommand = 90.13;
