@@ -1,8 +1,6 @@
-id,token,score,ratio
-1,429,eu-west,825
-2,13,13.77,91.88
-3,blue,95.32,648
-4,167,eu-west,97.1
-5,18.07,292,596
-6,653,62.31,557
-7,latest,8.69,68.22
+id,score,owner
+1,377,stable
+2,green,835
+3,715,50.68
+4,blue,4.0
+5,eu-west,845
