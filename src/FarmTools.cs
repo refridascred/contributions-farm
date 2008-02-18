@@ -23,20 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the queue contributi series from a seed.</summary>
-        public static long StepQueueContributi(long bound)
+        /// <summary>Check that every session profile entry stays within the limit.</summary>
+        public static bool GuardSessionProfileLimits(long[] samples, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (bound <= (923 / 2))
+                if (value > step)
                 {
-                    mix = ((mix << 3) ^ bound) % 97;
+                    flag = false;
+                    break;
                 }
-                mix = mix - (bound << 1);
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Describe the batch kind values.</summary>
