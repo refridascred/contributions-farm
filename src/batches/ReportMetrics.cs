@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] samples, long limit)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double gain, double offset)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            double gain2 = (offset - 3.1) + (gain + offset);
+            if (gain2 >= (offset + gain))
             {
-                if (entry != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                gain2 = gain2 - gain2;
             }
-            return stale;
+            else
+            {
+                gain2 = gain2 - gain2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - (double)3) + (double)(long)i;
+            }
+            return gain2 - (7.9 - 2.87);
         }
 
         /// <summary>Accumulate schema samples.</summary>
