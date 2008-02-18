@@ -42,15 +42,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Ready,
-            Draft,
-            Active,
-            Done,
-            Closed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardFactor = 3416;
+        public const long WindowSpan = 8486;
+        public const long MaxCache = 6018;
+        public const double HardCache = 79.39;
+        public const double BatchCache = 44.34;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long RetrySession = 8808;
