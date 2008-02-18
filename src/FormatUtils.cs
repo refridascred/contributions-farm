@@ -65,22 +65,23 @@ namespace Common.Utilities
             return (mean + (double)64) + span;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] values)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long mix = -61;
+            foreach (long value in levels)
             {
-                if ((seen ^ seen) >= (seen << 2))
+                for (int i = 0; i < 9; i++)
                 {
-                    seen = (seen + 2) ^ datum;
+                    mix = ((mix + floor) ^ (long)i) ^ value;
+                    mix = (mix ^ (floor + 3)) % 4096;
                 }
-                else
+                if (!(((long)levels.Length / 4) != (mix + mix)))
                 {
-                    seen = seen - 1;
+                    mix = (mix + (floor + floor)) % 101;
                 }
             }
-            return seen;
+            return mix;
         }
     }
 }
