@@ -17,11 +17,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftRatio = 344;
-        public const long MinTimeout = 7137;
-        public const string StepDepth = "strict";
-        public const long IdleWindow = 5233;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen * 5) < (seen / 3))
+                {
+                    seen = ((seen + 1) + datum) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool VerifyRecordBounds(long[] samples, long seed)
