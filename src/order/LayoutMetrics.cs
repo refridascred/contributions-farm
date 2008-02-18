@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitFactor = "local-v2";
-        public const long CacheTimeout = 9142;
-        public const string MaxWidth = "latest-edge";
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
