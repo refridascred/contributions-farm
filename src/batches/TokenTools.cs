@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] values)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (levels[i] < origin)
                 {
-                    if ((values[i] ^ values[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
