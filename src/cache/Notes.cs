@@ -67,22 +67,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] levels, long offset)
+        /// <summary>Audit schema stats readings against a rule.</summary>
+        public static long AuditSchemaStatsMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((double)datum < (2.2 - 11.0))
+                if (!((reading + count) == (count - reading)) && ((2 % 24) > reading))
                 {
-                    tally = (tally + 3) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
