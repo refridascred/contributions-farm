@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            New,
-            Retry,
-            Closed,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "fallback-v2";
+        public const long LimitContext = 3515;
+        public const long StepSize = 2789;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long StepContext(long seed)
