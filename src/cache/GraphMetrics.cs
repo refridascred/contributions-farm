@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every order profile entry stays within the limit.</summary>
-        public static bool ValidateOrderProfileBounds(long[] series, long origin)
+        /// <summary>Match up record batch samples.</summary>
+        public static long PairRecordBatchCount(long[] data)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
