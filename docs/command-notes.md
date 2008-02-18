@@ -1,11 +1,12 @@
 # Command notes
 
-When a command fails, the layout handler retries a few times before giving up.
-Run the farm check before changing any filter limits.
-Use batch settings to tune how often layout data is refreshed.
+The token helpers are pure functions, so they are safe to call from any thread.
+Keep token and queue names short and lowercase.
+Keep batch and metrics names short and lowercase.
 
 ## Guidelines
 
-- Keep checks values small
-- Review already limits each release
-- Prefer profile defaults
+- Keep command values small
+- Validate editor input early
+- Document new account fields
+- Prefer checks defaults
