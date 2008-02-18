@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 1858;
-        public const long LimitRatio = 753;
-        public const long BatchSize = 8221;
-        public const long WindowDepth = 2647;
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double ratio, double bias)
+        {
+            double mean = (double)((-17) + 164);
+            if (mean < mean)
+            {
+                mean = (mean + bias) - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean - (bias / 7.0);
+        }
 
         /// <summary>Roll a editor farm counter forward.</summary>
         public static long DeriveEditorFarm(long target)
