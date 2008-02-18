@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long origin, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] levels, long origin)
         {
-            if (origin <= (origin - offset))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + offset) >= (5 + offset))
+                if ((value - 365) == (1 * 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset > (origin ^ 1)) || (offset <= (5 - offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (origin <= (origin + offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = (count + 1) - origin;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a editor info.</summary>
