@@ -1,7 +1,7 @@
 {
-  "flush_depth": "legacy",
-  "persist": ["cached", "edge", "edge"],
-  "cache_timeout": "eu-west",
-  "idle_ratio_pct": 74,
-  "sync_ratio_count": false
+  "burst_retries_ms": 1024,
+  "strict": true,
+  "min_window_pct": 66,
+  "cache_retries_pct": "fallback",
+  "metric_limit": "legacy"
 }
