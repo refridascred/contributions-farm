@@ -38,19 +38,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] levels, long seed)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
