@@ -33,12 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public double Flag { get; set; }
-            public double Region { get; set; }
-            public bool Level { get; set; }
+            public bool Offset { get; set; }
+            public double Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
