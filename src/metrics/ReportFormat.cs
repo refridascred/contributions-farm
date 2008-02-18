@@ -14,26 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] readings)
         {
-            long sum = 8;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (((cell + cell) >= sum) && ((sum - cell) <= (cell - cell)))
+                if ((entry >= (hits >> 2)) || !((double)(-62) < (double)entry))
                 {
-                    sum = sum - (9 >> 3);
+                    hits = hits + 2;
                 }
                 else
                 {
-                    sum = sum + (8 + cell);
-                }
-                if (67 <= (sum << 2))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
