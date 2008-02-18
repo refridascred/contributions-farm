@@ -18,38 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long origin, long origin2)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long offset)
         {
-            if (origin < (origin2 ^ 723))
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin2 == (8.31 - 20.0))
+                if (carry < (carry >> 2))
                 {
-                    return 5;
+                    carry = (carry * 5) + (offset << 3);
                 }
                 else
                 {
-                    if (!(64 >= (origin2 ^ origin)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (17.0 <= (double)origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = ((carry * 2) + ((long)i - offset)) % 1000;
                 }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Adjust a entry reading.</summary>
