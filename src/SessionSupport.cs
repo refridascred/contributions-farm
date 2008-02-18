@@ -15,17 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] readings, long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
+                if ((item & 7) == (item << 1))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate route samples.</summary>
