@@ -32,12 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] values, long floor)
         {
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((double)floor > (0.6 * 8.4))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
