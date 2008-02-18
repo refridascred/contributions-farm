@@ -27,16 +27,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the report batch series from a seed.</summary>
-        public static long DeriveReportBatch(long seed)
+        /// <summary>Look up the position of a stream stats sample.</summary>
+        public static long LocateStreamStatsIndex(long[] data, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor + (seed & 3);
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((data[i] >= step) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate commits account readings against a bound.</summary>
