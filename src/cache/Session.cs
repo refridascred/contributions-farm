@@ -20,14 +20,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Failed,
-            Draft,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftRatio = 344;
+        public const long MinTimeout = 7137;
+        public const string StepDepth = "strict";
+        public const long IdleWindow = 5233;
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long ScoreProfile(long[] readings)
