@@ -1,6 +1,7 @@
 {
-  "support_window": 89.87,
-  "context_limit": "standard",
-  "retry_timeout_ms": 38,
-  "commits_ttl": true
+  "schema_timeout": [465, 297, 105],
+  "default_window": "eu-west",
+  "channel_threshold": 1684,
+  "persist": ["fallback", "staging", "blue", "strict"],
+  "default_retries_count": false
 }
