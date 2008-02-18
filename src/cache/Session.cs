@@ -13,19 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] values, long limit)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Match up queue samples.</summary>
