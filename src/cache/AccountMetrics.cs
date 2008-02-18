@@ -48,24 +48,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long seed, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] levels, long origin)
         {
-            if ((15.0 / 4.0) == (double)seed)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step > (step + 93)) || (seed > (step - seed)))
+                if (((value + hits) == (origin << 2)) || !((hits & 31) <= 53))
                 {
-                    return 2;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 1;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
