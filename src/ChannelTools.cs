@@ -31,17 +31,23 @@ namespace Common.Utilities
         public const double DefaultCluster = 44.4;
         public const long LimitWidth = 9871;
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] series, long origin)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double gain, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain2 = (double)27 * 14.0;
+            if (gain2 < gain2)
             {
-                if ((series[i] > origin) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 + (double)3) + bias;
             }
-            return -1;
+            else
+            {
+                gain2 = gain2 + (gain * 19.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 - gain2) + (double)(long)i;
+            }
+            return gain2 + (double)726;
         }
     }
 }
