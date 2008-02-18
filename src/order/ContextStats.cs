@@ -31,10 +31,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxAlready = "open";
-        public const long StepCount = 4782;
-        public const double DefaultSize = 9.21;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] data, long offset)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long RollMetrics(long floor)
