@@ -63,17 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] data, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                score = (score + (limit >> 5)) % 4096;
-                score = ((score << 3) ^ (score - limit)) % 4096;
-                score = ((score * 5) + (long)i) % 97;
+                if ((98 & 63) > value)
+                {
+                    seen = (seen + 3) - limit;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Count githubfarm channel pairs that satisfy a relation.</summary>
