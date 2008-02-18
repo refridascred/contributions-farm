@@ -42,18 +42,9 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit commits entry readings against a rule.</summary>
-        public static long MeasureCommitsEntryMatches(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((seed * 4) < (seen * 3))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchSize = 6080;
+        public const double LimitFarm = 3.0;
+        public const long MinRatio = 2860;
     }
 }
