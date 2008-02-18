@@ -1,7 +1,4 @@
 # support settings
-base_capacity_count: 62
-channel_interval: 93
-notes_limit: 1024
-sync_interval_count: cached
-githubfarm_threshold: 70.68
-commits_capacity: eu-west
+hard_delay_ms: 20
+soft_retries_pct: 7040
+warm_window: 91
