@@ -1,5 +1,11 @@
 {
-  "stats_retries": 1,
-  "readonly": 30,
-  "base_timeout_pct": "blue"
+  "already_size": true,
+  "cache_window": 54,
+  "strict": ["primary", "eu-west", "fallback"],
+  "retry_capacity_s": {
+    "entry_depth": ["primary", "standard", "stable", "staging"],
+    "max_size_s": "fallback",
+    "session_retries": 68,
+    "max_window": 0.77
+  }
 }
