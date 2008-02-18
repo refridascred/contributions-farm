@@ -1,5 +1,5 @@
 {
-  "batches_window": "fallback",
-  "hard_window_pct": "eu-west",
-  "report_limit": "blue"
+  "cache_retries_s": false,
+  "queue_limit": 86.55,
+  "flush_delay_s": false
 }
