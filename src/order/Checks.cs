@@ -59,15 +59,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Match up stats context samples.</summary>
+        public static long PairStatsContextCount(long[] samples)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
