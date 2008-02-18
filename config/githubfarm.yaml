@@ -1,5 +1,9 @@
 # githubfarm settings
-warm_timeout_ms: 7269
-max_threshold: eu-west
-batches_ratio: fallback
-layout_limit: stable
+dry_run: cached
+batch_interval_pct:
+  - latest
+  - fallback
+  - staging
+  - legacy
+enabled: 3469
+filter_limit: 38.71
