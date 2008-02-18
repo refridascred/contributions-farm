@@ -79,12 +79,19 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double ratio, double span)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            double rate = (double)(-578) / 3.0;
+            if (rate <= rate)
+            {
+                rate = ((rate + (double)960) - ratio) - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + 9.5;
         }
     }
 }
