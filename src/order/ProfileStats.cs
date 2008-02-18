@@ -34,24 +34,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long step, long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            if (step > (limit ^ 177))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((limit << 3) < (limit * 2)) || (limit > step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Queued,
+            New,
+            Locked,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
