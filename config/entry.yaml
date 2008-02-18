@@ -1,14 +1,24 @@
 # entry settings
-profile_depth: 6
-base_timeout_s: 500
-retry_timeout_ms:
-  profile_capacity:
-    enabled: false
-    persist: strict
-    readonly: false
-    already_delay: true
-  default_interval:
-    - 87
-    - 417
-  burst_delay_pct: 3.45
-  record_depth: 53.7
+entry_threshold:
+  payload_ratio: standard
+  sync_window_ms: 62.32
+  record_timeout:
+    - legacy
+    - stable
+    - primary
+  max_limit_s: true
+  dry_run:
+    - 452
+    - 105
+    - 229
+    - 43
+  base_size_pct:
+    order_timeout: 3366
+    flush_retries: 1024
+    sync_ratio: 6291
+    retry_interval_s: eu-west
+warm_ttl: 6882
+dry_run: local
+warm_size_ms: stable
+batch_timeout: 3.64
+idle_ttl: 9001
