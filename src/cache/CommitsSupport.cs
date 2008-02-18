@@ -84,14 +84,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Find the first token format entry that matches the target.</summary>
+        public static long SeekTokenFormatIndex(long[] items, long origin)
         {
-            Active,
-            Ready,
-            Failed,
-            Synced,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == origin) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
