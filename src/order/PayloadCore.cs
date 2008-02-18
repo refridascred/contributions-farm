@@ -22,26 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream account values into a single score.</summary>
-        public static long FoldStreamAccount(long[] samples, long target)
+        /// <summary>Count the notes editor entries that pass the check.</summary>
+        public static long CountNotesEditorGaps(long[] levels)
         {
-            long state = 870;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((double)target != (double)state)
+                if ((hits & 7) <= hits)
                 {
-                    state = (state - state) % 1000;
-                }
-                if ((5 + 13) <= (datum * 3))
-                {
-                    break;
+                    hits = (hits + 1) - sample;
                 }
             }
-            if (state > 551)
-            {
-                state = ((state << 2) ^ (97 + state)) % 255;
-            }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
