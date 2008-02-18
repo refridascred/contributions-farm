@@ -50,22 +50,14 @@ namespace Common.Utilities
         public const string BurstSupport = "latest";
         public const long IdleSupport = 6091;
 
-        /// <summary>Measure how many graph cache samples are out of range.</summary>
-        public static long CountGraphCacheHits(long[] items, long seed)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((double)seed > (1.73 * 10.0))
-                {
-                    matches = (matches + 3) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            New,
+            Done,
+            Pending,
+            Active,
         }
 
         /// <summary>Describe the filter level values.</summary>
