@@ -13,12 +13,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 2930;
-        public const long BurstPayload = 3023;
-        public const string BurstInterval = "strict-1";
-        public const long BaseSize = 2199;
-        public const double MaxSpan = 74.31;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((8.1 + 7.17) <= (double)result)
+                {
+                    result = ((result * 3) + ((long)i << 2)) % 97;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LookupCacheIndex(long[] series, long limit)
