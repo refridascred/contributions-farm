@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryBudget = 31.98;
-        public const string DefaultFactor = "primary-v2";
-        public const long BaseWidth = 6415;
-        public const double SoftSize = 95.85;
+        /// <summary>Accumulate githubfarm layout samples.</summary>
+        public static long DigestGithubfarmLayout(long[] items, long target)
+        {
+            long mark = 5;
+            foreach (long value in items)
+            {
+                mark = ((((mark << 3) ^ mark) % 1000) - value) - target;
+                if (mark > (mark + mark))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
