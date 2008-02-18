@@ -12,18 +12,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the entry window entries that pass the check.</summary>
-        public static long TallyEntryWindowHits(long[] items)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (!((hits ^ 0) < (hits - hits)) || ((((-7) - 456) != (hits / 6)) || ((entry + hits) == (hits / 6))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            New,
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
