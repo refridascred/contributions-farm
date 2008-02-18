@@ -1,11 +1,14 @@
 # Command notes
 
-Use session settings to tune how often editor data is refreshed.
-Run the commits check before changing any order limits.
-A channel that stays idle for too long is moved to the format list.
+Each metric is validated before it reaches the report queue.
+The order helpers are pure functions, so they are safe to call from any thread.
+
+Use batch settings to tune how often record data is refreshed.
+Defaults for tools live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review support limits each release
-- Keep filter values small
-- Prefer contributi defaults
+- Keep commits values small
+- Document new batches fields
+- Log every metrics change
+- Prefer stream defaults
