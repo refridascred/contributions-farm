@@ -52,18 +52,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((double)cell >= (9.3 * 2.9))
+                if (5.6 > (double)seen)
                 {
-                    count = count + 2;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
