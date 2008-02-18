@@ -30,15 +30,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate editor format samples.</summary>
-        public static long DigestEditorFormat(long[] data, long bound)
+        /// <summary>Measure how many notes format samples are out of range.</summary>
+        public static long MeasureNotesFormatHits(long[] samples)
         {
-            long carry = -80;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                carry = ((carry + (long)data.Length) - reading) + bound;
+                if (entry <= (seen + entry))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
