@@ -74,19 +74,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every profile contributi entry stays within the limit.</summary>
-        public static bool VerifyProfileContributiLimits(long[] items, long origin)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Region { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
         }
     }
 }
