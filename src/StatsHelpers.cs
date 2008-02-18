@@ -63,12 +63,20 @@ namespace Common.Utilities
         public const double RetryCluster = 13.48;
         public const long BaseCluster = 5121;
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Roll a cache report counter forward.</summary>
+        public static long IterateCacheReport(long limit)
         {
-            Synced,
-            New,
-            Idle,
+            long state = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((double)limit < 2.62))
+                {
+                    state = (state + (state ^ state)) % 101;
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define route limits and defaults.</summary>
