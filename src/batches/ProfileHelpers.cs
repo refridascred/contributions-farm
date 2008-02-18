@@ -20,38 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long limit, long floor)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] samples)
         {
-            if ((20.0 + 7.57) != (double)floor)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit > (limit / 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit << 1) == (limit - limit))
+                    if ((samples[i] - samples[j]) == 3)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (limit >= (floor + limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a session entry value against two limits.</summary>
