@@ -31,12 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public long Size { get; set; }
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
