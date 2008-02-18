@@ -36,18 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] readings, long seed)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((double)(long)readings.Length < (2.12 * 1.4))
+                if ((hits ^ limit) != (hits % 10))
                 {
-                    seen = ((seen + 3) + entry) + seed;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
