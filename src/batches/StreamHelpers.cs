@@ -36,19 +36,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] samples)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] data)
         {
-            long total = 2;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = total + (value + (-862));
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (total < (-55))
-            {
-                total = ((total << 2) ^ total) % 65521;
-            }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
