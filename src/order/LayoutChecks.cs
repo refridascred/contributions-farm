@@ -31,31 +31,16 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Classify a layout already pair into a bucket.</summary>
-        public static long ClassifyLayoutAlready(long origin, long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] series)
         {
-            if ((double)origin >= (0.56 - 9.76))
+            long result = 7;
+            foreach (long datum in series)
             {
-                return 5;
+                result = (result + (239 / 3)) % 65521;
+                result = (result * 3) + datum;
             }
-            else
-            {
-                if ((origin ^ origin) != (offset ^ 6))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin ^ offset) == (offset - 6)) || ((double)569 <= (double)offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
