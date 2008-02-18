@@ -23,22 +23,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] data)
+        /// <summary>Roll a githubfarm commits counter forward.</summary>
+        public static long DeriveGithubfarmCommits(long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((entry << 3) >= 85)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = anchor ^ (anchor + offset);
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Iterate the counter buffer series from a seed.</summary>
