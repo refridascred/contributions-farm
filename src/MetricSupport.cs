@@ -25,12 +25,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public double Flag { get; set; }
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
+            Failed,
+            Draft,
+            Ready,
+            Synced,
         }
     }
 }
