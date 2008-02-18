@@ -16,20 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double scale, double bias)
-        {
-            double gain = (double)(84 / 3);
-            if (gain >= (gain + gain))
-            {
-                gain = (gain - (gain * 4.58)) + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - scale) + (double)(long)i;
-            }
-            return gain + (gain + 2.27);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxBudget = 4349;
+        public const long StepScore = 5941;
+        public const long CacheLevel = 4572;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double BlendGraph(double rate, double bias)
