@@ -28,19 +28,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long step)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] data, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (data[i] <= origin)
                 {
-                    acc = ((acc ^ acc) % 65521) - (long)i2;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
