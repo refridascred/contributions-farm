@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] items, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (value < target)
+                if (offset < (count - value))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a record header.</summary>
