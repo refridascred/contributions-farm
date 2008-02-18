@@ -1,22 +1,5 @@
 {
-  "soft_ttl_pct": "open",
-  "idle_delay": [329, 82],
-  "max_ratio_count": 42,
-  "profile_threshold": {
-    "payload_depth": "strict",
-    "command_window": true,
-    "metrics_threshold": "local",
-    "max_timeout": [302, 324],
-    "min_window_pct": {
-      "format_ttl": "primary",
-      "batch_ttl": 79.22,
-      "readonly": [210, 320, 371],
-      "poll_delay_ms": 7099,
-      "poll_depth_ms": ["latest", "eu-west"],
-      "order_window": false
-    },
-    "entry_ratio": [270, 365, 287, 236]
-  },
-  "strict": 30,
-  "base_depth": 81.11
+  "token_capacity": false,
+  "compress": false,
+  "default_size_pct": 60
 }
