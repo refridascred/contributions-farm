@@ -21,19 +21,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long step)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    sum = (sum * 5) + (step + (long)i2);
+                    mark = ((mark ^ mark) % 255) ^ (long)i2;
                 }
-                sum = ((sum * 4) + (long)i) % 97;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return sum;
+            return mark;
         }
     }
 }
