@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of counter queue readings.</summary>
-        public static long FoldCounterQueue(long[] levels, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] values, long bound)
         {
-            long result = 47;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                result = ((result ^ (datum ^ datum)) % 97) + offset;
+                if ((double)(long)values.Length >= (double)(-45))
+                {
+                    seen = ((seen + 2) + cell) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
