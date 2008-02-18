@@ -30,19 +30,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] levels, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinWidth = 84.88;
+        public const long CacheSupport = 341;
+        public const long RetryLevel = 5536;
+        public const string LimitSupport = "stable-edge";
+        public const double WindowSupport = 94.23;
     }
 }
