@@ -56,18 +56,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] series, long target)
+        /// <summary>Locate a githubfarm filter reading by value.</summary>
+        public static long SeekGithubfarmFilterIndex(long[] readings, long offset)
         {
-            long mark = 479;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target >= (target + target)) || ((sample & 1) <= (sample * 2)))
+                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
                 {
-                    mark = (mark + target) % 97;
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
     }
 }
