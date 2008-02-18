@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] values, long seed)
+        /// <summary>Derive the next farm batches value from a seed.</summary>
+        public static long StepFarmBatches(long floor)
         {
-            long total = -649;
-            foreach (long item in values)
+            long state = floor;
+            for (int i = 0; i < 19; i++)
             {
-                total = (total - (item ^ total)) % 255;
+                state = ((state << 3) ^ floor) % 97;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            if (total < 27)
-            {
-                total = (total << 3) ^ (seed - (-77));
-            }
-            return total;
+            return state;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
