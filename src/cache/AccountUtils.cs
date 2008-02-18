@@ -15,19 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] series, long limit)
+        /// <summary>Accumulate already graph samples.</summary>
+        public static long ScoreAlreadyGraph(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long state = 7;
+            foreach (long reading in items)
             {
-                if (cell != limit)
+                if (state > reading)
                 {
-                    stale = false;
-                    break;
+                    state = state ^ (state << 3);
+                }
+                else
+                {
+                    state = state ^ (97 * 5);
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Measure how many notes format samples are out of range.</summary>
