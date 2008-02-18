@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of editor account readings.</summary>
-        public static long MatchEditorAccountCount(long[] samples)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long step, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long span = step ^ target;
+            if (!((double)target == (4.52 / 2.0)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (step <= (span + span))
                 {
-                    if ((samples[i] + samples[j]) > 10)
+                    return 2;
+                }
+                else
+                {
+                    if ((46 + target) > (span << 3))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((span >> 1) == (target + span))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
