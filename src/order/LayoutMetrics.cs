@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] values)
         {
-            Pending,
-            Draft,
-            Failed,
-            Dropped,
-            Done,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen >> 5) != (datum / 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
