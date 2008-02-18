@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a commits support counter forward.</summary>
-        public static long StepCommitsSupport(long floor)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 3) + (8 * 3)) % 65521;
-                if ((((long)i >> 4) <= (92 & 255)) || ((double)floor < (double)84))
-                {
-                    acc = (acc ^ (42 ^ acc)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            New,
+            Queued,
+            Draft,
+            Done,
+            Pending,
         }
 
         /// <summary>Measure how many schema metric samples are out of range.</summary>
