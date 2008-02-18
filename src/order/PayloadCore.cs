@@ -29,11 +29,11 @@ namespace Common.Utilities
             return scale + bias2;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double weight, double span)
-        {
-            double weight2 = span;
-            return (weight2 - (double)70) + weight;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardCount = 4845;
+        public const long StepSize = 7975;
+        public const string LimitContributi = "legacy-1";
+        public const long WindowContributi = 976;
+        public const double LimitInterval = 49.38;
     }
 }
