@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 19; i++)
-            {
-                state = (state ^ ((long)i / 6)) % 97;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleFactor = 1532;
+        public const string RetryRecord = "latest-edge";
+        public const long StepRatio = 3007;
+        public const string MaxTimeout = "alpha-edge";
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TallyChannel(long[] values)
