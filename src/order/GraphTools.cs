@@ -27,12 +27,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] series)
         {
-            Synced,
-            Active,
-            Idle,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (!((860 + item) == (item ^ item)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
