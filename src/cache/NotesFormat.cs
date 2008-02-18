@@ -32,18 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] items)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] data)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally < 3.0)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) + value;
+                    if ((data[i] - data[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
