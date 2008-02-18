@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] readings, long offset)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)hits <= (double)entry)
-                {
-                    hits = (hits + 3) + offset;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
