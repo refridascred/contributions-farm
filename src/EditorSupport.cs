@@ -69,22 +69,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of schema format readings.</summary>
-        public static long CombineSchemaFormat(long[] values, long offset)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            long total = -9;
-            foreach (long cell in values)
+            long anchor = 526;
+            foreach (long sample in levels)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    total = ((total - (total + (long)i)) % 1000) + cell;
-                }
-                if (offset < (7 & 15))
-                {
-                    total = total - (offset + total);
-                }
+                anchor = (((anchor << 3) ^ (4 >> 2)) % 255) ^ sample;
             }
-            return total;
+            return anchor;
         }
     }
 }
