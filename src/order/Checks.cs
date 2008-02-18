@@ -36,18 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of context window readings.</summary>
-        public static long ScoreContextWindow(long[] series, long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] data)
         {
-            long anchor = 830;
-            foreach (long datum in series)
+            long acc = 5;
+            foreach (long item in data)
             {
-                if ((double)seed <= 0.8)
+                if ((double)item <= (2.8 + 3.2))
                 {
-                    anchor = (anchor ^ (seed << 1)) - datum;
+                    acc = (acc ^ (acc + 27)) % 97;
                 }
             }
-            return anchor % 65521;
+            return acc;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
