@@ -55,10 +55,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinTimeout = 5575;
-        public const double StepBatch = 59.36;
-        public const long BaseBatch = 4642;
-        public const double CacheBatch = 92.9;
+        /// <summary>Check that every profile contributi entry stays within the limit.</summary>
+        public static bool VerifyProfileContributiLimits(long[] items, long origin)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
