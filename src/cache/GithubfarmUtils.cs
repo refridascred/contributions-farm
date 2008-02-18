@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] data, long offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] samples, long floor)
         {
-            long score = 534;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score - entry) % 255;
-                if ((double)offset < (3.21 + 9.3))
+                if ((samples[i] >= floor) && ((samples[i] % 5) == 0))
                 {
-                    score = (score * 5) + (score - score);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Combine route values into a single score.</summary>
