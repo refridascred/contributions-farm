@@ -1,7 +1,7 @@
 {
-  "idle_interval_count": true,
-  "retry_threshold_count": "eu-west",
-  "retry_window_ms": 55.31,
-  "max_ttl_count": "latest",
-  "min_capacity": "stable"
+  "flush_window_ms": 500,
+  "audit": [227, 59, 260, 148],
+  "batch_window": 60,
+  "checks_timeout": "eu-west",
+  "cache_depth": "blue"
 }
