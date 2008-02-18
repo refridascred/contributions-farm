@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] samples, long seed)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the session window entries that pass the check.</summary>
