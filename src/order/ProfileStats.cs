@@ -33,38 +33,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long step, long bound)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            if ((double)step != (double)61)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((964 - bound) > step) || ((step - bound) >= (step + step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step ^ step) != (step + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(414 <= bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
