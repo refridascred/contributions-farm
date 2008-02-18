@@ -37,15 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] data, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] readings, long floor)
         {
-            long total = 3;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                total = (((total * 3) + (offset % 10)) % 255) + value;
+                if ((cell + 7) == (cell - (-507)))
+                {
+                    seen = (seen + 2) - floor;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
