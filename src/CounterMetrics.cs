@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many editor batches samples are out of range.</summary>
-        public static long TallyEditorBatchesOutliers(long[] readings, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long total = 87;
+            foreach (long sample in samples)
             {
-                if (hits >= ((-369) ^ offset))
-                {
-                    hits = (hits + 3) - cell;
-                }
+                total = total + (sample % 5);
+                total = total + (sample ^ total);
             }
-            return hits;
+            if (total > 219)
+            {
+                total = ((total * 5) + (limit + (long)samples.Length)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
