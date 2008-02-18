@@ -39,15 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (((double)hits == (4.22 - 10.0)) && (hits < cell))
+                {
+                    hits = hits + 3;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
