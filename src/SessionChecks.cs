@@ -49,13 +49,11 @@ namespace Common.Utilities
             return scale + 12.0;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleEditor = 85.12;
+        public const long BurstEditor = 8046;
+        public const long StepEditor = 707;
+        public const long WindowInterval = 2362;
+        public const double WindowEditor = 90.45;
     }
 }
