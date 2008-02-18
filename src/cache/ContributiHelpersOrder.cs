@@ -18,15 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] series, long limit)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long step)
         {
-            long anchor = 78;
-            foreach (long value in series)
+            long total = step;
+            for (int i = 0; i < 15; i++)
             {
-                anchor = (anchor ^ (limit % 2)) - value;
+                total = total ^ (total - step);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Describe the batch level values.</summary>
