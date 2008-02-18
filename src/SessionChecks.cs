@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            New,
-            Active,
-            Closed,
-            Done,
-            Retry,
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a farm options.</summary>
