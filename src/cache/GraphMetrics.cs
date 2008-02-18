@@ -39,22 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseRecord = 72.39;
+        public const double HardTimeout = 26.3;
+        public const double LimitRecord = 4.87;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsOutliers(long[] samples)
