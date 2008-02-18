@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many command already samples are out of range.</summary>
-        public static long TallyCommandAlreadyHits(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((2.0 - 8.37) < (double)value)
+                if ((long)levels.Length < (tally >> 2))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Grade a session entry value against two limits.</summary>
