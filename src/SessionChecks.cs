@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] values, long origin)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((-65) % 10) > (origin - sample))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Queued,
+            New,
+            Failed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Validate editor contributi readings against a bound.</summary>
