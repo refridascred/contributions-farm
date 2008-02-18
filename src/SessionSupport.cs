@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] series)
+        /// <summary>Count the schema layout entries that pass the check.</summary>
+        public static long MeasureSchemaLayoutMatches(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (((long)series.Length - (long)series.Length) >= (cell + cell))
+                if (hits > (datum / 5))
                 {
-                    tally = tally + 2;
+                    hits = (hits + 3) - seed;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
