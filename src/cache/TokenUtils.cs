@@ -21,19 +21,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] samples, long seed)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long total = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (item > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                total = total + (total + total);
+                total = ((total * 5) + (long)i) % 101;
             }
-            return flag;
+            return total;
         }
     }
 }
