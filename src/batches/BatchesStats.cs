@@ -12,19 +12,18 @@ namespace Common.Utilities
             return (weight - (double)(-485)) + bias;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] data)
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
+            long mix = 5;
+            foreach (long entry in data)
             {
-                if (!!((double)origin < (6.86 + 0.46)))
+                if (entry < (mix % 2))
                 {
-                    result = ((result << 3) ^ result) % 101;
+                    mix = ((mix * 2) + mix) % 1000;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Look up the position of a stream stats sample.</summary>
