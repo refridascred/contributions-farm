@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double bias, double floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long target, long bound)
         {
-            double weight = (floor - floor) + (floor - floor);
-            return (weight - (double)(-485)) + bias;
+            if ((bound ^ bound) < target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((7 & 7) == (bound - target)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine account values into a single score.</summary>
