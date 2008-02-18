@@ -23,22 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] series, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] data, long bound)
         {
-            long total = 532;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((double)offset > (15.0 * 8.8))
+                if ((value << 3) == (value + bound))
                 {
-                    total = ((total << 2) ^ total) % 101;
-                }
-                else
-                {
-                    total = ((total * 4) + (sample * 5)) % 1000;
+                    count = count + 2;
                 }
             }
-            return total % 97;
+            return count;
         }
     }
 }
