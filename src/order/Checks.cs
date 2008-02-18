@@ -57,19 +57,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] items)
+        /// <summary>Count notes profile pairs that satisfy a relation.</summary>
+        public static long PairNotesProfileCount(long[] samples)
         {
-            long sum = 30;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 4) + (value << 3)) % 1000;
-                if (sum > (sum + sum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum * 3) + (value + 46)) % 1000;
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
