@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] data, long target)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (sample > target)
+                if (datum != target)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
