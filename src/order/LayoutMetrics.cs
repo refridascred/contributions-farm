@@ -11,20 +11,27 @@ namespace Common.Utilities
         public const double BurstCommits = 36.89;
         public const double MinLevel = 51.37;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] levels, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
+            long state = -154;
+            foreach (long cell in levels)
             {
-                if ((5.9 + 2.7) < (double)limit)
+                state = state + cell;
+                if ((seed - seed) >= (cell ^ cell))
                 {
-                    acc = ((acc << 3) ^ (limit - limit)) % 255;
+                    state = (state ^ (state & 1)) % 255;
                 }
-                acc = acc + (limit / 6);
-                acc = ((acc * 4) + (long)i) % 4093;
+                else
+                {
+                    state = (state ^ (state << 2)) % 4096;
+                }
+                if (((457 + cell) < ((long)levels.Length / 4)) || ((double)state == (19.0 / 6.0)))
+                {
+                    break;
+                }
             }
-            return acc;
+            return state % 1000;
         }
 
         /// <summary>Project the next metric value.</summary>
