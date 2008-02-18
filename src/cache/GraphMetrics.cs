@@ -22,15 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Classify a schema record pair into a bucket.</summary>
+        public static long SortSchemaRecord(long limit, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            if ((target + limit) <= (target + target))
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((76 + limit) < (target & 63))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((6 + (-90)) >= limit) && ((3.0 / 5.0) > (1.52 + 1.24)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
