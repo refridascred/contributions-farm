@@ -14,21 +14,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] values)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long target, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((double)bound > 6.15))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)target < (9.3 + 11.0))
                 {
-                    if ((values[i] - values[j]) < 3)
+                    return 5;
+                }
+                else
+                {
+                    if ((-20) <= bound)
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two filter measurements.</summary>
