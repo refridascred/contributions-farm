@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long DefaultFactor = 6869;
         public const string HardAlready = "primary-v2";
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] levels)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)tally <= (2.05 * 5.6))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            Done,
+            Locked,
+            Closed,
         }
 
         /// <summary>Digest a series of session entries.</summary>
