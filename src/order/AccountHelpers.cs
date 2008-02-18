@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] values, long target)
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
+            long carry = 8;
+            foreach (long datum in values)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if (!((3.0 + 8.38) != (double)carry))
+                {
+                    carry = ((carry - (target + carry)) % 65521) + datum;
+                }
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Describe the schema phase values.</summary>
