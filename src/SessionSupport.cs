@@ -20,11 +20,15 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long bound)
         {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate notes samples.</summary>
