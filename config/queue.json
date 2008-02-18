@@ -1,7 +1,17 @@
 {
-  "commits_timeout": true,
-  "stream_window": [59, 103, 54],
-  "sync_window_ms": 88,
-  "stream_timeout": 30,
-  "readonly": "standard"
+  "flush_depth_pct": false,
+  "base_ratio": ["fallback", "staging"],
+  "soft_window_ms": {
+    "counter_delay": "eu-west",
+    "queue_limit": "primary",
+    "idle_threshold_ms": "latest",
+    "poll_capacity": {
+      "hard_ttl_s": [206, 75, 309, 436],
+      "dry_run": ["latest", "latest"],
+      "strict": 70
+    },
+    "soft_delay_s": "staging",
+    "soft_delay_count": ["primary", "fallback"]
+  },
+  "layout_depth": 250
 }
