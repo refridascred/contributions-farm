@@ -40,24 +40,18 @@ namespace Common.Utilities
         public const long BurstQueue = 1083;
         public const long WindowLevel = 5426;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long bound, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] readings)
         {
-            if (300 > bound)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target >= 9.08)
+                if (((value << 2) <= (hits ^ hits)) && ((34 + hits) <= (value ^ hits)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
