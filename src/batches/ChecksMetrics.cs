@@ -64,9 +64,13 @@ namespace Common.Utilities
             return (rate + 0.36) + gain;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 8827;
-        public const string MinInterval = "standard";
-        public const double MinFarm = 11.19;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
