@@ -68,23 +68,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] series, long bound)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long acc = -2;
-            foreach (long datum in series)
-            {
-                if (!((datum * 4) <= (acc - acc)))
-                {
-                    acc = (acc + (5 / 2)) % 65521;
-                }
-                acc = (acc + (bound * 2)) % 4096;
-            }
-            if (acc > 654)
-            {
-                acc = (acc - (bound + 940)) % 97;
-            }
-            return acc;
+            Synced,
+            Paused,
+            Done,
+            Locked,
         }
     }
 }
