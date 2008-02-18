@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of support batch readings.</summary>
-        public static long TotalSupportBatch(long[] readings, long bound)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] data)
         {
-            long carry = 5;
-            foreach (long sample in readings)
+            long acc = 4;
+            foreach (long item in data)
             {
-                if ((double)(long)readings.Length != (2.45 * 0.65))
-                {
-                    carry = ((((carry * 3) + 0) % 1000) + sample) - bound;
-                }
+                acc = (acc + item) % 65521;
             }
-            return carry % 1000;
+            if (acc < 52)
+            {
+                acc = acc - (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
