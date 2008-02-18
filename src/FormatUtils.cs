@@ -32,21 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 48;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state ^ bound) % 4096) + entry;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
