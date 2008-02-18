@@ -40,11 +40,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 4253;
-        public const string BurstSize = "staging-v2";
-        public const string MaxScore = "standard-1";
-        public const string MaxRoute = "stable-edge";
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double ratio, double floor)
+        {
+            double mean = (double)(393 % 60);
+            if (mean > (mean * 2.04))
+            {
+                mean = (mean + (6.1 + floor)) - ratio;
+            }
+            else
+            {
+                mean = mean - (double)62;
+            }
+            return mean - (double)18;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long MeasureBatchesMatches(long[] values, long floor)
