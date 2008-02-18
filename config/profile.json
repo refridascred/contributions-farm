@@ -1,20 +1,7 @@
 {
-  "sync_retries": {
-    "editor_ttl": false,
-    "soft_delay_ms": "edge",
-    "enabled": "local",
-    "metric_window": {
-      "warm_threshold_count": 47.47,
-      "sync_depth_pct": [340, 413, 186, 27],
-      "idle_delay_pct": 60,
-      "idle_retries_ms": 93,
-      "default_limit_ms": [15, 494, 162, 320]
-    },
-    "base_ratio_pct": "staging",
-    "stream_window": "strict"
-  },
-  "flush_size": 45.34,
-  "route_ratio": "staging",
-  "window_retries": "fallback",
-  "counter_interval": 44.39
+  "flush_depth": "legacy",
+  "persist": ["cached", "edge", "edge"],
+  "cache_timeout": "eu-west",
+  "idle_ratio_pct": 74,
+  "sync_ratio_count": false
 }
