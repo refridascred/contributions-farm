@@ -31,10 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 1809;
-        public const long LimitFilter = 9825;
-        public const string StepFilter = "stable-1";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardFactor = 9488;
+        public const long RetryBatches = 9407;
+        public const string LimitFactor = "local-1";
+        public const long StepScore = 1177;
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
