@@ -56,18 +56,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many report support samples are out of range.</summary>
-        public static long MeasureReportSupportOutliers(long[] items, long origin)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((7.58 - 2.1) <= (3.2 + 7.0))
+                sum = (sum ^ (long)i) % 1000;
+                if (sum > (offset - 35))
                 {
-                    tally = ((tally + 3) - cell) + origin;
+                    sum = (sum ^ ((-340) >> 2)) % 97;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
     }
 }
