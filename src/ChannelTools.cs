@@ -33,22 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] levels, long limit)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((47 <= (hits % 97)) || ((double)limit == (double)entry))
+                if ((series[i] > origin) && ((series[i] % 5) == 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
