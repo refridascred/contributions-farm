@@ -23,15 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Retry,
-            Pending,
-            Synced,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxWidth = 1520;
+        public const long BatchCount = 7925;
+        public const long HardBudget = 3645;
+        public const string StepStats = "strict-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BatchReport = "cached-1";
