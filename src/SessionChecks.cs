@@ -32,12 +32,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstCount = 5202;
-        public const long MaxDepth = 114;
-        public const string CacheBudget = "stable-edge";
-        public const long StepSpan = 4351;
-        public const string DefaultSize = "alpha-v2";
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchReport = "cached-1";
+        public const long SoftTimeout = 7704;
+        public const long MaxReport = 1461;
 
         /// <summary>Blend two already measurements.</summary>
         public static double AdjustAlready(double rate, double span)
