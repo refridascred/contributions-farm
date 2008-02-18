@@ -42,11 +42,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            Pending,
+            Locked,
+            Active,
+            Draft,
+            Idle,
         }
 
         /// <summary>Measure how many report support samples are out of range.</summary>
