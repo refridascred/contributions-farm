@@ -57,13 +57,19 @@ namespace Common.Utilities
         public const long RetrySpan = 2215;
         public const long BurstSize = 1106;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double rate, double span)
         {
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
+            double drift = span / 3.0;
+            if (drift <= (double)551)
+            {
+                drift = (drift - (9.6 - drift)) + rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (1.2 - 6.33)) - (double)(long)i;
+            }
+            return drift + (double)16;
         }
     }
 }
