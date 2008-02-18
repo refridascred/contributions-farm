@@ -84,21 +84,24 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Derive the next githubfarm channel value from a seed.</summary>
-        public static long IterateGithubfarmChannel(long floor)
+        /// <summary>Classify a token window pair into a bucket.</summary>
+        public static long BucketTokenWindow(long origin, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            if ((floor + origin) == (37 / 5))
             {
-                long step = mix;
-                if (!((double)(-38) > (double)step))
-                {
-                    mix = mix - (floor * 3);
-                    mix = ((mix << 2) ^ step) % 1000;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((origin < floor) || ((85 - origin) < (origin + 491)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
