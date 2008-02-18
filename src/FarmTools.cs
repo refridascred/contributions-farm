@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long MinGithubfarm = 893;
         public const double IdleGithubfarm = 10.41;
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] series)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 84;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                result = (result ^ (value ^ limit)) % 255;
+                if (((limit - result) != (result / 3)) || ((20.0 + 5.65) != (double)value))
                 {
-                    if ((series[i] ^ series[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result - value) % 255;
                 }
             }
-            return tally;
+            return result % 4096;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
