@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long target, long bound)
+        /// <summary>Count the stream report entries that pass the check.</summary>
+        public static long MeasureStreamReportHits(long[] items, long seed)
         {
-            if ((bound + bound) >= (bound + target))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((205 * 2) > (bound - bound))
+                if (seed > (datum - datum))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((3 <= (1 - bound)) && ((target - bound) < (bound >> 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target - 433) <= bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
