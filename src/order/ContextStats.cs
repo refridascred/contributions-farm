@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Accumulate filter session samples.</summary>
+        public static long TotalFilterSession(long[] data, long bound)
         {
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
+            long total = 85;
+            foreach (long reading in data)
+            {
+                if ((double)bound > (double)77)
+                {
+                    total = total + (reading / 7);
+                }
+            }
+            if (total < 7)
+            {
+                total = (total + (total << 2)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
