@@ -58,32 +58,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long seed, long floor)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long slot = seed - floor;
-            if (((double)slot >= 9.36) && ((-285) > (slot ^ floor)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor - seed) == (slot + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - 326) > (seed >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Stale,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
