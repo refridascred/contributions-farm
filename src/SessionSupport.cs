@@ -31,16 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] values, long bound)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long total = 3;
-            foreach (long value in values)
-            {
-                total = ((total * 3) + bound) - value;
-                total = (total * 5) + bound;
-            }
-            return total % 4096;
+            Idle,
+            Locked,
+            Queued,
         }
     }
 }
