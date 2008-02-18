@@ -61,9 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftEditor = 65.84;
-        public const long DefaultTimeout = 6413;
-        public const long IdleCount = 5390;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Idle,
+            Pending,
+            Dropped,
+            Done,
+        }
     }
 }
