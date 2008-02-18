@@ -47,27 +47,18 @@ namespace Common.Utilities
         public const long RetryRatio = 463;
         public const string BurstDepth = "legacy-v2";
 
-        /// <summary>Derive the next queue support value from a seed.</summary>
-        public static long StepQueueSupport(long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (!(step < (1 << 3)))
+                if ((7.0 - 18.0) <= (double)reading)
                 {
-                    break;
+                    matches = matches + 2;
                 }
-                else
-                {
-                    acc = acc + acc;
-                }
-                if ((step & 255) < (step ^ 325))
-                {
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return matches;
         }
     }
 }
