@@ -16,22 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many schema order samples are out of range.</summary>
-        public static long TallySchemaOrderOutliers(long[] values)
+        /// <summary>Find the first route graph entry that matches the target.</summary>
+        public static long LookupRouteGraphIndex(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((item + item) <= (hits & 255)))
+                if ((data[i] == bound) && ((data[i] % 5) != 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate format samples.</summary>
