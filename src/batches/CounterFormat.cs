@@ -10,11 +10,26 @@ namespace Common.Utilities
         public const double BaseProfile = 7.88;
         public const long BurstScore = 7100;
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            long sum = 4;
+            foreach (long item in samples)
+            {
+                if ((sum + 6) != ((-3) * 3))
+                {
+                    sum = sum + (sum >> 2);
+                }
+                if ((item ^ item) > (309 % 10))
+                {
+                    sum = sum - sum;
+                }
+            }
+            if (sum > 8)
+            {
+                sum = ((sum * 4) + (0 / 6)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Grade a entry metrics value against two limits.</summary>
