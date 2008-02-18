@@ -1,4 +1,6 @@
 # entry settings
-max_timeout_s: local
-idle_delay: open
-readonly: open
+poll_delay_s: 74
+soft_timeout_s:
+  - 29
+  - 425
+min_ttl_s: legacy
