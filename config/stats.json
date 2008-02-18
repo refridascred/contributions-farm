@@ -1,20 +1,6 @@
 {
-  "audit": "blue",
-  "enabled": {
-    "strict": "staging",
-    "hard_capacity_ms": "eu-west",
-    "default_timeout_count": "open",
-    "cache_ratio_pct": 739,
-    "account_window": 14.49,
-    "base_threshold_ms": {
-      "sync_threshold_pct": [402, 296, 154],
-      "metrics_delay": "primary",
-      "flush_depth_ms": 30,
-      "hard_timeout": 73.14
-    }
-  },
-  "flush_interval_s": 4357,
-  "batch_ttl_ms": 500,
-  "format_retries": "standard",
-  "batches_timeout": 500
+  "support_window": 89.87,
+  "context_limit": "standard",
+  "retry_timeout_ms": 38,
+  "commits_ttl": true
 }
