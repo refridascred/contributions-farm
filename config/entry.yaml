@@ -1,6 +1,5 @@
 # entry settings
-poll_delay_s: 74
-soft_timeout_s:
-  - 29
-  - 425
-min_ttl_s: legacy
+flush_ttl_ms: strict
+hard_timeout: 16.65
+soft_retries_count: 5842
+format_limit: 60
