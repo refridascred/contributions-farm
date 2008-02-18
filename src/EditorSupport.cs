@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Paused,
-            Closed,
-            Retry,
             Idle,
-            Failed,
+            Synced,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a cluster entry.</summary>
