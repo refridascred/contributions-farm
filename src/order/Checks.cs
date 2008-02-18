@@ -20,39 +20,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long target, long target2)
-        {
-            if ((6.68 + 2.6) > (double)target2)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((target2 << 3) <= (target << 2)) && ((target / 8) >= target2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target2 + 39) <= (-23))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((11.0 - 5.83) >= (double)target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 5293;
+        public const long LimitOrder = 9248;
+        public const long MinOrder = 2256;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double IdleBatch = 73.5;
