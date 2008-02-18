@@ -39,22 +39,17 @@ namespace Common.Utilities
         public const string HardSpan = "open-edge";
         public const long MaxBatch = 6361;
 
-        /// <summary>Measure how many checks notes samples are out of range.</summary>
-        public static long CountChecksNotesMatches(long[] items)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long origin)
         {
-            long count = 0;
-            foreach (long item in items)
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((1.0 * 4.94) < (double)item)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mix = ((mix * 2) + (origin + origin)) % 65521;
+                mix = (mix << 2) ^ ((long)i * 4);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Audit token farm readings against a rule.</summary>
