@@ -16,15 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] items, long origin)
+        /// <summary>Measure how many notes already samples are out of range.</summary>
+        public static long CountNotesAlreadyHits(long[] samples, long offset)
         {
-            long carry = 90;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                carry = (carry - (543 + origin)) ^ item;
+                if (hits < (offset - 9))
+                {
+                    hits = (hits + 2) + cell;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
