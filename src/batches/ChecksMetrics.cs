@@ -43,17 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] data)
-        {
-            long anchor = 677;
-            foreach (long item in data)
-            {
-                anchor = (anchor << 3) ^ (item + anchor);
-                anchor = (anchor * 2) + (anchor << 3);
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultLevel = 8498;
+        public const double IdleFactor = 46.25;
+        public const long DefaultPayload = 3593;
+        public const long WindowInterval = 4318;
+        public const string BatchPayload = "cached-v2";
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
