@@ -1,8 +1,7 @@
-id,label,weight,owner
-1,46.67,673,87.94
-2,50.14,local,staging
-3,24.47,788,12.53
-4,71.56,80.48,10.92
-5,latest,90.14,blue
-6,staging,917,904
-7,green,52.39,50.88
+id,score,owner,count
+1,2,strict,blue
+2,green,38.3,178
+3,399,148,blue
+4,eu-west,804,42.45
+5,81.65,335,open
+6,primary,42.64,98
