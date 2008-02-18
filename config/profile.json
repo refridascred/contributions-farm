@@ -1,7 +1,18 @@
 {
-  "route_limit": ["edge", "legacy", "staging", "latest"],
-  "dry_run": "staging",
-  "sync_window_ms": "open",
-  "commits_delay": "cached",
-  "format_capacity": false
+  "burst_capacity": false,
+  "cluster_delay": 91.54,
+  "flush_window_s": {
+    "counter_ttl": ["primary", "green", "legacy"],
+    "idle_window_s": 61.08,
+    "profile_retries": true,
+    "default_window": {
+      "verbose": "standard",
+      "retry_interval": 50,
+      "commits_window": "local"
+    },
+    "sync_interval_pct": 60,
+    "max_capacity": 6269
+  },
+  "filter_delay": "eu-west",
+  "editor_timeout": [300, 89, 146, 237]
 }
