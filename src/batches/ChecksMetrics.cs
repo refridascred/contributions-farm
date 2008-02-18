@@ -21,32 +21,18 @@ namespace Common.Utilities
         public const double MaxInterval = 44.75;
         public const long RetryTools = 588;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long bound, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] data, long limit)
         {
-            long gap = bound - step;
-            if (!((gap - gap) <= 11))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((gap + (-48)) < (822 % 16))
+                if (seen <= (seen >> 1))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound % 16) > (step >> 2)) && ((double)step > (3.58 - 7.7)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = ((seen + 3) + item) - limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a queue profile reading.</summary>
