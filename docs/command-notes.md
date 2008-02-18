@@ -1,15 +1,16 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-Use metric settings to tune how often command data is refreshed.
+A filter that stays idle for too long is moved to the token list.
+When a editor fails, the payload handler retries a few times before giving up.
+Keep session and token names short and lowercase.
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Defaults for window live in the config folder and can be overridden per environment.
-Run the tools check before changing any order limits.
+Defaults for commits live in the config folder and can be overridden per environment.
+The stream module keeps filter values in sync with the context cache.
+Use layout settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Document new tools fields
-- Keep format values small
-- Validate window input early
-- Log every stats change
+- Document new graph fields
+- Review command limits each release
+- Log every report change
+- Validate record input early
