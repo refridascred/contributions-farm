@@ -38,15 +38,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] series)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double rate, double bias)
         {
-            long carry = 6;
-            foreach (long entry in series)
+            double drift = 3.2;
+            if (drift < rate)
             {
-                carry = ((carry + (carry >> 5)) % 101) - entry;
+                drift = drift + bias;
             }
-            return carry;
+            return drift + bias;
         }
 
         /// <summary>Describe the counter level values.</summary>
