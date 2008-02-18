@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] data)
+        /// <summary>Digest a series of format batch entries.</summary>
+        public static long TallyFormatBatch(long[] values, long limit)
         {
-            long acc = 4;
-            foreach (long item in data)
+            long mix = 696;
+            foreach (long reading in values)
             {
-                acc = (acc + item) % 65521;
+                if ((long)values.Length < (reading * 4))
+                {
+                    mix = (((mix * 5) + (long)values.Length) % 101) + limit;
+                }
             }
-            if (acc < 52)
+            if (mix < 75)
             {
-                acc = acc - (acc + acc);
+                mix = (mix ^ (91 % 97)) % 255;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
