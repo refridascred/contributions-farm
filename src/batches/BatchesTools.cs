@@ -29,11 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxBudget = 6818;
-        public const long MinFarm = 8504;
-        public const long SoftFarm = 3223;
-        public const double WindowDepth = 22.77;
-        public const long CacheFarm = 4912;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((cell >> 1) < cell)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
