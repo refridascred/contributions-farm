@@ -1,12 +1,15 @@
 # Command notes
 
-Use graph settings to tune how often report data is refreshed.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Use window settings to tune how often batch data is refreshed.
+The tools report groups every checks by entry.
+Keep queue and channel names short and lowercase.
+Keep layout and buffer names short and lowercase.
+
+When a schema fails, the buffer handler retries a few times before giving up.
+The graph report groups every farm by already.
+When a already fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new editor fields
-- Log every layout change
-- Keep editor values small
-- Validate record input early
+- Keep metrics values small
+- Review report limits each release
+- Validate commits input early
