@@ -63,12 +63,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Measure how many editor profile samples are out of range.</summary>
+        public static long CountEditorProfileOutliers(long[] data)
         {
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (((long)data.Length << 2) >= (1 & 15))
+                {
+                    matches = (matches + 3) - value;
+                }
+            }
+            return matches;
         }
     }
 }
