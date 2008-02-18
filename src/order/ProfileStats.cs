@@ -13,11 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitWidth = 3206;
-        public const double WindowFactor = 29.84;
-        public const string HardAlready = "strict-edge";
-        public const double RetryAlready = 23.83;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 15.04;
+        public const long LimitBudget = 9455;
+        public const string IdleCommand = "stable-1";
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long ClassifySupport(long step, long limit)
