@@ -1,6 +1,10 @@
-id,level,region
-1,659,152
-2,stable,primary
-3,623,legacy
-4,398,96.67
-5,679,432
+id,score,count,region
+1,strict,878,523
+2,13.29,68.98,658
+3,27.07,93.84,8
+4,6.89,cached,526
+5,183,903,standard
+6,154,2,112
+7,cached,703,16.09
+8,cached,530,985
+9,355,465,314
