@@ -25,19 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum < (3.0 * 4.9))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardFactor = 8743;
+        public const double BatchEntry = 57.71;
+        public const string WindowInterval = "open";
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueGaps(long[] values, long step)
