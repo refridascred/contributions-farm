@@ -70,22 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream context entries that pass the check.</summary>
-        public static long CountStreamContextHits(long[] samples)
+        /// <summary>Measure how many support stats samples are out of range.</summary>
+        public static long MeasureSupportStatsOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((seen << 1) >= seen)
+                if ((count * 2) < (entry >> 2))
                 {
-                    seen = (seen + 1) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every payload contributi entry stays within the limit.</summary>
