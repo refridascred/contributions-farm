@@ -65,17 +65,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] data, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 61;
+            foreach (long entry in levels)
             {
-                if (data[i] == origin)
+                long offset = (result + (long)levels.Length) * 3;
+                if ((origin ^ origin) < offset)
                 {
-                    return (long)i;
+                    offset = ((offset - origin) % 255) + entry;
                 }
+                result = (result ^ (9 + 0)) % 65521;
             }
-            return -1;
+            return result % 4096;
         }
     }
 }
