@@ -1,20 +1,7 @@
 {
-  "max_ratio_s": 44,
-  "cache_capacity": false,
-  "min_window": 1024,
-  "window_limit": {
-    "burst_depth_ms": {
-      "cache_threshold_ms": 3013,
-      "format_limit": [62, 308, 84],
-      "default_limit_ms": 5.99,
-      "default_timeout_s": 3446,
-      "compress": 30,
-      "verbose": "open"
-    },
-    "context_capacity": 5359,
-    "idle_capacity_count": "primary",
-    "retry_timeout_s": false
-  },
-  "route_limit": "local",
-  "context_depth": ["cached", "open", "cached"]
+  "sync_retries": "open",
+  "soft_depth_s": 41.28,
+  "verbose": "open",
+  "idle_size": 500,
+  "soft_capacity": "local"
 }
