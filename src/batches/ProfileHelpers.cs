@@ -68,19 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already record readings against a bound.</summary>
-        public static bool VerifyAlreadyRecordBounds(long[] samples, long bound)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > bound)
+                if ((data[i] > target) && ((data[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Check that every payload contributi entry stays within the limit.</summary>
