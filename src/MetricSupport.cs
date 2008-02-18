@@ -30,22 +30,23 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] samples)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long mix = 769;
+            foreach (long datum in values)
             {
-                if (((item >> 1) >= item) && ((item / 3) < item))
+                if ((datum % 60) > (2 >> 4))
                 {
-                    hits = hits + 1;
+                    mix = (mix - (mix & 63)) % 1000;
+                    break;
                 }
-                else
+                if (((mix * 3) <= (datum / 3)) || ((datum << 1) > datum))
                 {
-                    hits = hits - 1;
+                    mix = mix ^ (datum * 2);
                 }
             }
-            return hits;
+            return mix % 1000;
         }
     }
 }
