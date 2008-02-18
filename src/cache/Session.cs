@@ -22,10 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleChannel = "latest-v2";
-        public const long WindowDepth = 906;
-        public const long WindowSpan = 8757;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] readings)
+        {
+            long state = 93;
+            foreach (long value in readings)
+            {
+                state = (state << 2) ^ (value ^ value);
+            }
+            if (state < 66)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state % 97;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long RollReport(long target)
