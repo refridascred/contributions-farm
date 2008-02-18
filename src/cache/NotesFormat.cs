@@ -35,9 +35,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowTools = "open";
-        public const long DefaultTools = 1269;
-        public const string IdleSize = "standard-edge";
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] levels, long origin)
+        {
+            long mix = 37;
+            foreach (long item in levels)
+            {
+                if ((item - mix) != (origin + mix))
+                {
+                    mix = ((mix * 3) + (item >> 1)) % 65521;
+                }
+                else
+                {
+                    mix = (mix - (5 / 3)) % 97;
+                }
+            }
+            if (mix < 518)
+            {
+                mix = (mix ^ (origin - origin)) % 4096;
+            }
+            return mix % 65521;
+        }
     }
 }
