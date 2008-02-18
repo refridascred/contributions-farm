@@ -13,17 +13,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] readings, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 2;
+            foreach (long entry in readings)
             {
-                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum - (entry - 0)) % 1000;
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Hold a editor header.</summary>
