@@ -68,18 +68,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] data, long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((seen >> 1) > (seen + seen))
+                if (value >= origin)
                 {
-                    seen = ((seen + 3) ^ sample) - limit;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
