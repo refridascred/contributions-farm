@@ -19,21 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 2;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry ^ carry) ^ cell) - bound;
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
