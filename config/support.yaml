@@ -1,10 +1,8 @@
 # support settings
-record_interval: blue
-metric_ratio: blue
-readonly: true
-channel_ratio:
-  - 246
-  - 456
-  - 291
-  - 480
-idle_interval_count: 77.03
+warm_window:
+  - blue
+  - green
+  - latest
+  - legacy
+commits_size: true
+dry_run: legacy
