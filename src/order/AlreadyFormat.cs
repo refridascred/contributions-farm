@@ -31,21 +31,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of format cluster readings.</summary>
-        public static long PairFormatClusterCount(long[] levels)
+        /// <summary>Iterate the cache metric series from a seed.</summary>
+        public static long SeriesCacheMetric(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mark = ((mark * 5) + ((long)i ^ mark)) % 4096;
+                if ((mark ^ 84) > (floor % 2))
                 {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark - (floor >> 5)) % 101;
+                    break;
                 }
+                else
+                {
+                    mark = mark + (floor << 3);
+                    mark = ((mark << 3) ^ (931 ^ floor)) % 101;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = ((mark * 4) + (mark << 3)) + (long)i2;
+                    mark = ((mark * 5) + (floor << 1)) % 101;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
