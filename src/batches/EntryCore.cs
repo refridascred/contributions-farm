@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] items, long target)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long total = 52;
-            foreach (long sample in items)
-            {
-                total = ((total + (sample << 2)) % 1000) - target;
-            }
-            return total;
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
