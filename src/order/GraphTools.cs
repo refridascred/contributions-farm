@@ -28,17 +28,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long bound)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-                sum = (sum + ((long)i & 255)) % 4096;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            New,
+            Pending,
+            Idle,
+            Failed,
+            Locked,
         }
 
         /// <summary>Project the next route value.</summary>
