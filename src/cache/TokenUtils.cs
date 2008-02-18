@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitLevel = 9083;
-        public const double BaseStats = 64.98;
-        public const long CacheStats = 8464;
-        public const long WindowSize = 1467;
-        public const string WindowSpan = "standard-v2";
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
