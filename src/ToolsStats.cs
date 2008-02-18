@@ -54,17 +54,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] values, long offset)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long floor, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long slot = floor ^ limit;
+            if ((slot >= limit) && (1 > (60 + slot)))
             {
-                if ((values[i] == offset) && ((values[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((floor + limit) > (limit - floor))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((limit ^ floor) >= (limit - limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
