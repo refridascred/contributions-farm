@@ -25,19 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] readings, long seed)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Pending,
+            Failed,
+            Synced,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
