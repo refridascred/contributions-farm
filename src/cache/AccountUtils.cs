@@ -32,11 +32,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultRoute = "primary-v2";
-        public const long SoftRoute = 8231;
-        public const string WindowRoute = "fallback-v2";
-        public const long CacheRoute = 3647;
-        public const long MinInterval = 5533;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowGraph = "cached";
+        public const string BaseFactor = "strict";
+        public const string BatchGraph = "legacy-edge";
     }
 }
