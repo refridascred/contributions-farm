@@ -82,9 +82,10 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinSpan = 7865;
-        public const long CacheEntry = 1742;
-        public const double MaxEntry = 11.18;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultBatch = "stable";
+        public const long LimitWidth = 4829;
+        public const long MaxBatch = 4296;
+        public const double HardBatch = 7.49;
     }
 }
