@@ -1,7 +1,5 @@
 {
-  "cache_limit_count": 9790,
-  "cluster_delay": "strict",
-  "stream_depth": ["green", "local", "cached"],
-  "poll_limit": "fallback",
-  "session_retries": 75.19
+  "min_timeout_ms": "legacy",
+  "retry_delay_s": [84, 379, 198, 197],
+  "audit": 9173
 }
