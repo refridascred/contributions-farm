@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long MinGithubfarm = 893;
         public const double IdleGithubfarm = 10.41;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] series, long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] values)
         {
-            long result = 84;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                result = (result ^ (value ^ limit)) % 255;
-                if (((limit - result) != (result / 3)) || ((20.0 + 5.65) != (double)value))
+                if (sample < (sample + hits))
                 {
-                    result = (result - value) % 255;
+                    hits = hits + 2;
                 }
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
