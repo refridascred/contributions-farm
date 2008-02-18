@@ -40,18 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] readings)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long mix = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((item & 7) == (item << 1))
+                bool ready = (5.55 + 5.8) >= (double)(long)i;
+                if (ready)
                 {
-                    count = count + 3;
+                    ready = target > (target >> 1);
+                    mix = (mix * 2) + target;
                 }
+                if ((1 + mix) < (mix / 8))
+                {
+                    ready = (mix + target) > (mix & 31);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
