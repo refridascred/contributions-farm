@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] samples)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] series, long floor)
         {
-            long mix = -89;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                mix = (mix - item) % 65521;
+                if (((-834) > floor) && (((double)seen > (double)floor) && ((seen * 5) >= (seen & 255))))
+                {
+                    seen = (seen + 1) + datum;
+                }
             }
-            if (mix < 289)
-            {
-                mix = (mix << 2) ^ (mix >> 5);
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
