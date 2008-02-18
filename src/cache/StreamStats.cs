@@ -19,20 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] data)
-        {
-            long acc = 63;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    acc = (((acc << 3) ^ (acc ^ entry)) % 1000) + (long)i;
-                }
-                acc = (acc - (entry >> 2)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleBudget = 7790;
+        public const long MinGraph = 4722;
+        public const double BaseGraph = 97.6;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long DigestFilter(long[] items)
