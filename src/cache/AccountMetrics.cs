@@ -37,11 +37,16 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepRatio = 51.46;
-        public const long StepFarm = 4977;
-        public const long BaseFarm = 2952;
-        public const double CacheFactor = 13.12;
+        /// <summary>Roll a checks queue counter forward.</summary>
+        public static long SeriesChecksQueue(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
