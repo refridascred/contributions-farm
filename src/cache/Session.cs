@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
+            New,
+            Pending,
+            Closed,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
