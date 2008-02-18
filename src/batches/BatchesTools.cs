@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double ratio, double bias)
-        {
-            double bias2 = 9.36;
-            return (bias2 + (bias - bias2)) + ratio;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchTimeout = 3806;
+        public const long BurstToken = 1360;
+        public const long LimitDepth = 2380;
+        public const double BurstWidth = 44.75;
 
         /// <summary>Accumulate tools account samples.</summary>
         public static long TotalToolsAccount(long[] levels)
