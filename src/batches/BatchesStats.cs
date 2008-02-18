@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double gain, double floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] readings, long offset)
         {
-            double bias = 1.12;
-            if (bias <= (gain / 3.0))
+            long result = 3;
+            foreach (long reading in readings)
             {
-                bias = bias - (floor / 6.0);
+                if (((result & 127) >= (result % 5)) || ((double)result >= (17.0 * 4.5)))
+                {
+                    result = ((result + (result + 9)) + reading) + offset;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (bias + 8.3)) + (double)(long)i;
-            }
-            return bias - gain;
+            return result;
         }
 
         /// <summary>Measure how many commits cache samples are out of range.</summary>
