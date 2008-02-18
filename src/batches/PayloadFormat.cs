@@ -30,14 +30,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Scale a window context figure with a bias.</summary>
+        public static double SmoothWindowContext(double weight, double span)
         {
-            Done,
-            Failed,
-            Draft,
-            Queued,
-            New,
+            double load = weight;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (span * 6.0)) + (double)(long)i;
+            }
+            return load - (weight - weight);
         }
     }
 }
