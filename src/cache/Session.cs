@@ -35,22 +35,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] values)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((83 / 7) < (tally / 9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 1) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] ^ values[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
