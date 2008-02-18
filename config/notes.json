@@ -1,6 +1,8 @@
 {
-  "already_threshold": 5228,
-  "window_timeout": [275, 265],
-  "batch_delay_count": 176,
-  "retry_ttl_ms": false
+  "cache_ratio": [183, 442],
+  "flush_retries": [21, 476, 184],
+  "queue_threshold": "cached",
+  "metrics_ttl": 2.74,
+  "max_depth_pct": 13,
+  "persist": "eu-west"
 }
