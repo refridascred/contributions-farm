@@ -1,6 +1,7 @@
-id,rank,owner,level,active
-1,primary,cached,4,43.47
-2,483,80.46,984,92
-3,158,7.64,73.91,staging
-4,402,legacy,standard,primary
-5,local,14.55,714,54.71
+id,label,rank,level,owner
+1,783,951,616,latest
+2,622,staging,80.36,stable
+3,blue,72.15,265,550
+4,83.99,stable,5.73,236
+5,921,66.2,57.36,33.84
+6,67.04,40.35,82.07,358
