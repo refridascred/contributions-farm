@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            New,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleTimeout = 64.61;
+        public const long IdleInterval = 6300;
+        public const long BurstCount = 2195;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
