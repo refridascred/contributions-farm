@@ -1,11 +1,15 @@
 {
-  "warm_timeout": 4661,
-  "batches_capacity": 250,
-  "sync_limit_ms": {
-    "poll_window_ms": "fallback",
-    "max_window": ["staging", "standard", "cached"],
-    "persist": 43,
-    "max_delay_s": ["staging", "edge"],
-    "format_size": "green"
-  }
+  "max_window_ms": true,
+  "already_ttl": 56.06,
+  "strict": {
+    "notes_timeout": 1024,
+    "dry_run": false,
+    "warm_ttl": 4536,
+    "token_ttl": true,
+    "burst_depth_s": 30,
+    "soft_delay_s": 30
+  },
+  "default_retries_count": "latest",
+  "batch_size_s": 5168,
+  "enabled": "open"
 }
