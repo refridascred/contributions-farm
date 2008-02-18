@@ -31,15 +31,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double scale, double floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            double scale2 = scale;
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = ((scale2 - 5.74) + (double)(long)i) - floor;
-            }
-            return scale2 - scale;
+            public bool Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a payload header.</summary>
