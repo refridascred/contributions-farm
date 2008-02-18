@@ -58,23 +58,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] levels, long floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long mix = -61;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    mix = ((mix + floor) ^ (long)i) ^ value;
-                    mix = (mix ^ (floor + 3)) % 4096;
-                }
-                if (!(((long)levels.Length / 4) != (mix + mix)))
-                {
-                    mix = (mix + (floor + floor)) % 101;
-                }
-            }
-            return mix;
+            Retry,
+            Pending,
+            Paused,
+            Ready,
         }
     }
 }
