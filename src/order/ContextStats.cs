@@ -37,15 +37,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardDepth = 42.51;
+        public const double WindowQueue = 58.65;
+        public const long SoftQueue = 1366;
+        public const string IdleScore = "staging-1";
     }
 }
