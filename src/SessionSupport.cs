@@ -15,12 +15,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 90.13;
-        public const string StepCount = "alpha";
-        public const long SoftCommand = 9932;
-        public const long RetrySize = 4613;
-        public const long DefaultRatio = 4220;
+        /// <summary>Digest a series of already route entries.</summary>
+        public static long WeighAlreadyRoute(long[] items, long seed)
+        {
+            long sum = 686;
+            foreach (long entry in items)
+            {
+                sum = ((sum << 3) ^ (sum - entry)) % 255;
+                sum = sum - entry;
+            }
+            if (sum > 237)
+            {
+                sum = ((sum * 4) + (seed + 354)) % 4096;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
