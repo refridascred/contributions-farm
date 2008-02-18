@@ -50,15 +50,12 @@ namespace Common.Utilities
         public const string BurstSupport = "latest";
         public const long IdleSupport = 6091;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Failed,
-            New,
-            Done,
-            Pending,
-            Active,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryScore = "staging";
+        public const double IdleDepth = 9.98;
+        public const long BurstProfile = 5351;
+        public const long MinProfile = 1481;
+        public const long SoftProfile = 3879;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long WeighMetric(long[] values)
