@@ -68,17 +68,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < target) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 2583;
+        public const double BatchLevel = 46.12;
+        public const long DefaultAccount = 4091;
+        public const long RetryAccount = 5652;
+        public const long StepRatio = 7394;
     }
 }
