@@ -10,15 +10,17 @@ namespace Common.Utilities
         public const long MaxRatio = 651;
         public const string LimitFactor = "legacy";
 
-        /// <summary>Combine record command values into a single score.</summary>
-        public static long ScoreRecordCommand(long[] levels)
+        /// <summary>Locate a stats metrics reading by value.</summary>
+        public static long LocateStatsMetricsIndex(long[] readings, long floor)
         {
-            long score = 520;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score << 2) ^ item) % 97;
+                if ((readings[i] < floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
