@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample > 8.7)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleSupport = "strict";
+        public const long HardSupport = 8399;
+        public const string IdleInterval = "latest";
+        public const double RetrySupport = 68.25;
+        public const long RetryDepth = 2398;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string RetryAlready = "alpha";
