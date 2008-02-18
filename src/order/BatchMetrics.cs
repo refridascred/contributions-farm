@@ -16,10 +16,39 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 7412;
-        public const double IdleBudget = 89.83;
-        public const long SoftSpan = 5935;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long step, long floor)
+        {
+            if ((step >> 1) != (floor + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor << 1) > (floor + floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor >= (step << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor + step) != (step + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
