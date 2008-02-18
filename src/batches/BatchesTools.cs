@@ -24,10 +24,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitInterval = 69.26;
-        public const long StepWidth = 1645;
-        public const long BatchFactor = 8329;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            New,
+            Locked,
+            Done,
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
