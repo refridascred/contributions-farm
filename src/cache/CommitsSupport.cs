@@ -13,22 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine entry editor values into a single score.</summary>
-        public static long WeighEntryEditor(long[] samples, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] values, long floor)
         {
-            long state = 216;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((step / 6) < entry)
+                if ((double)floor >= (13.0 / 4.0))
                 {
-                    state = state + entry;
-                }
-                else
-                {
-                    state = (state - state) % 97;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
