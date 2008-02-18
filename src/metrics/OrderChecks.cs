@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double ratio, double offset)
         {
-            Done,
-            New,
-            Active,
-            Retry,
+            double scale = ratio;
+            if (scale >= 15.0)
+            {
+                scale = (scale - (scale * 2.0)) - offset;
+            }
+            else
+            {
+                scale = scale - (scale + scale);
+            }
+            return scale - 10.0;
         }
 
         /// <summary>Hold a metric record.</summary>
