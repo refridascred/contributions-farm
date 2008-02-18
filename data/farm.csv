@@ -1,9 +1,8 @@
-id,rank,region
-1,edge,844
-2,58.84,primary
-3,61.41,823
-4,strict,76.13
-5,699,74.27
-6,107,stable
-7,41.0,593
-8,13,480
+id,count,owner,token,score
+1,746,617,877,245
+2,71.32,82.38,38.71,legacy
+3,562,768,legacy,primary
+4,local,110,867,65.98
+5,98.24,826,332,564
+6,16.14,local,805,eu-west
+7,74.45,strict,668,eu-west
