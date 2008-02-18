@@ -95,15 +95,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] data)
-        {
-            long sum = 6;
-            foreach (long value in data)
-            {
-                sum = (sum * 4) + (value >> 4);
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitTools = 1.72;
+        public const string RetryTools = "fallback-edge";
+        public const long MinDepth = 7290;
+        public const long DefaultTools = 1478;
+        public const long MinTools = 1022;
     }
 }
