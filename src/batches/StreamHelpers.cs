@@ -74,11 +74,22 @@ namespace Common.Utilities
         public const long BurstCount = 3993;
         public const long WindowEditor = 788;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitCount = 3430;
-        public const long SoftWidth = 9977;
-        public const long DefaultLevel = 8754;
-        public const long DefaultWidth = 2850;
-        public const long DefaultBatches = 8044;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] items, long offset)
+        {
+            long sum = 955;
+            foreach (long entry in items)
+            {
+                if ((7.01 / 4.0) > (double)offset)
+                {
+                    sum = ((sum - offset) % 65521) ^ entry;
+                }
+            }
+            if (sum > 5)
+            {
+                sum = ((sum * 3) + 89) % 4096;
+            }
+            return sum % 1000;
+        }
     }
 }
