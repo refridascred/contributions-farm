@@ -1,7 +1,16 @@
 {
-  "account_size": false,
-  "token_retries": 81.98,
-  "min_retries_s": 71,
-  "enabled": true,
-  "warm_capacity_ms": 3722
+  "min_size_count": {
+    "commits_size": 79.58,
+    "command_retries": 32,
+    "profile_ttl": 85.4
+  },
+  "audit": {
+    "hard_capacity_ms": [356, 113],
+    "compress": "eu-west",
+    "sync_threshold": 86.52,
+    "batch_threshold_ms": "latest",
+    "batch_ttl": 5238
+  },
+  "persist": true,
+  "sync_capacity_ms": ["green", "local", "strict", "latest"]
 }
