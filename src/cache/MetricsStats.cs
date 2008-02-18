@@ -35,38 +35,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a farm queue pair into a bucket.</summary>
-        public static long GradeFarmQueue(long origin, long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] levels, long step)
         {
-            if ((limit * 4) > (origin + limit))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((limit / 6) < origin))
+                if ((value - step) > (count << 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin < (double)95)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit - limit) <= (limit ^ limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
