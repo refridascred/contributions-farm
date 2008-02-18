@@ -33,24 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two counter batches measurements.</summary>
-        public static double AdjustCounterBatches(double weight, double offset)
-        {
-            double drift = 2.1 + (weight / 8.0);
-            if (drift > (double)57)
-            {
-                drift = drift + (weight * 1.0);
-            }
-            else
-            {
-                drift = drift + (double)659;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (offset - offset)) - (double)(long)i;
-            }
-            return drift + 18.0;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchTimeout = 2073;
+        public const long LimitQueue = 7295;
+        public const long MaxQueue = 142;
+        public const long BurstQueue = 1083;
+        public const long WindowLevel = 5426;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long SeriesWindow(long bound)
