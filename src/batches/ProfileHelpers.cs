@@ -34,40 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a session entry value against two limits.</summary>
-        public static long BucketSessionEntry(long seed, long floor)
-        {
-            long cur = seed ^ floor;
-            if ((double)seed < 11.0)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed * 2) == (5 & 31))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((0.2 * 5.0) <= (14.0 / 7.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((cur & 63) > (cur * 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryBudget = 3111;
+        public const long StepRoute = 8854;
+        public const double StepRatio = 94.9;
+        public const long BatchRatio = 767;
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LocateRouteIndex(long[] data, long target)
