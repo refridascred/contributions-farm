@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 8798;
-        public const double IdleTimeout = 96.44;
-        public const string MinSupport = "primary-v2";
-        public const long HardSupport = 1648;
-        public const long LimitSupport = 6982;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Queued,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long FoldCommits(long[] data, long step)
