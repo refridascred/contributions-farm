@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            Paused,
+            Draft,
+            Ready,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
