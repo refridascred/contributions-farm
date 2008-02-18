@@ -20,11 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultWidth = 4377;
-        public const string BurstBuffer = "legacy";
-        public const string HardBuffer = "fallback-1";
-        public const long HardLevel = 3153;
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] readings, long step)
