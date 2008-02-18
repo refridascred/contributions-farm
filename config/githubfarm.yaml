@@ -1,6 +1,11 @@
 # githubfarm settings
-idle_size: true
-min_size_count: false
-base_window: 9440
-flush_window: edge
-max_interval_s: true
+payload_ratio: false
+hard_depth_pct: primary
+min_timeout: 38.45
+enabled:
+  - legacy
+  - legacy
+  - green
+  - edge
+order_ttl: 30
+warm_interval_pct: staging
