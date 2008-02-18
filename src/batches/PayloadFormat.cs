@@ -43,21 +43,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Match up command stream samples.</summary>
+        public static long OverlapCommandStreamCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) > 10)
+                    if ((samples[i] - samples[j]) > 8)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the cache level values.</summary>
