@@ -1,5 +1,5 @@
 {
-  "burst_delay_pct": 1024,
-  "sync_retries_ms": 30,
-  "schema_limit": 50.15
+  "support_depth": 100,
+  "min_depth": "primary",
+  "min_threshold_ms": 1024
 }
