@@ -32,12 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] items, long target)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] >= target) && ((items[i] % 2) != 0))
+                if (series[i] == bound)
                 {
                     return (long)i;
                 }
