@@ -27,22 +27,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] levels, long bound)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long acc = 7;
-            foreach (long value in levels)
-            {
-                if (!(882 >= (bound & 255)))
-                {
-                    acc = ((acc * 3) + (bound - value)) % 255;
-                }
-                if (3.6 < (double)acc)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
