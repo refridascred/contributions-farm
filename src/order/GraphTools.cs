@@ -13,19 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] readings, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (entry >= bound)
+                if ((6.52 - 1.0) != (double)sample)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) - floor;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the notes kind values.</summary>
