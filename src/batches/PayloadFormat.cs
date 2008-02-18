@@ -41,22 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value > (8.4 * 9.0))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitNotes = 83.97;
+        public const long StepRatio = 839;
+        public const long MaxBudget = 6949;
+        public const double IdleNotes = 28.9;
+        public const double LimitScore = 79.05;
     }
 }
