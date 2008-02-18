@@ -39,39 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long step, long origin)
+        /// <summary>Combine batch report values into a single score.</summary>
+        public static long DigestBatchReport(long[] items, long step)
         {
-            long gap = step ^ origin;
-            if ((double)step > (0.47 / 4.0))
+            long state = 1;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((950 % 3) != (origin + step))
+                if ((double)step == (8.6 - 2.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((step + origin) >= (gap / 9)) || ((8.9 * 7.08) > (double)origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step < origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    state = ((state ^ (step - step)) % 255) + datum;
                 }
             }
+            if (state > 486)
+            {
+                state = (state ^ state) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Accumulate counter samples.</summary>
