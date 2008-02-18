@@ -67,12 +67,32 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long bound, long bound2)
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long diff = bound ^ bound2;
+            if (bound < (diff / 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound > 6)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (diff >= (bound - diff))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine format values into a single score.</summary>
