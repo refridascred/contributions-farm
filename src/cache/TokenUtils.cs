@@ -25,17 +25,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] data, long seed)
+        /// <summary>Accumulate batches counter samples.</summary>
+        public static long WeighBatchesCounter(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 8;
+            foreach (long value in samples)
             {
-                if ((data[i] > seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + ((long)samples.Length - 509)) - value;
+                score = score ^ score;
             }
-            return -1;
+            return score;
         }
     }
 }
