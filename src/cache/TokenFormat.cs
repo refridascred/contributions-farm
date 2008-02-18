@@ -21,18 +21,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] data, long bound)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] samples)
         {
-            long count = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value << 3) == (value + bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
+                    if ((samples[i] - samples[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
