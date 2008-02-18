@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] data, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                state = state ^ (origin % 8);
-                state = (state ^ (914 & 7)) % 101;
-                state = ((state * 3) + (long)i) % 1000;
+                if ((datum & 127) < 48)
+                {
+                    count = (count + 3) + step;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Roll a session counter forward.</summary>
