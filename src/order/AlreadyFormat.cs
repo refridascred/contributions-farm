@@ -48,32 +48,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long bound, long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            long gap = bound + origin;
-            if (((gap * 4) <= bound) || ((gap / 6) > (gap << 2)))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound < origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin << 3) != (bound + bound))
+                    if ((samples[i] ^ samples[j]) < 11)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
