@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
