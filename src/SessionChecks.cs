@@ -17,25 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank account token input into a small class.</summary>
-        public static long GradeAccountToken(long floor, long limit)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long diff = floor + limit;
-            if (((floor + floor) < 83) || ((floor - diff) > (8 * 5)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit * 2) <= (7 >> 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Adjust a command reading.</summary>
