@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] levels)
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
+            long mark = 885;
+            foreach (long value in levels)
             {
-                score = ((score * 4) + (long)i) % 101;
+                mark = mark - value;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Measure how many schema order samples are out of range.</summary>
