@@ -1,7 +1,10 @@
 # githubfarm settings
-base_ratio_pct: true
-stream_timeout: false
-batch_capacity_s:
-  - local
-  - staging
-  - local
+commits_capacity: 30.47
+graph_window:
+  - cached
+  - green
+  - stable
+  - legacy
+min_window:
+  - latest
+  - standard
