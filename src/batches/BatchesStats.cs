@@ -42,13 +42,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Audit commits entry readings against a rule.</summary>
+        public static long MeasureCommitsEntryMatches(long[] readings, long seed)
         {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seed * 4) < (seen * 3))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
