@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 4261;
-        public const string BatchFormat = "fallback-edge";
-        public const long DefaultFactor = 1344;
-        public const long StepBudget = 9349;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long FindMetricIndex(long[] levels, long limit)
