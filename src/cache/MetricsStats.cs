@@ -44,11 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] items)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((((sample + seen) >= sample) || (((long)items.Length % 64) == (sample & 15))) && ((sample - seen) >= (seen + seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first notes report entry that matches the target.</summary>
