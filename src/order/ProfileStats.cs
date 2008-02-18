@@ -5,35 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] data, long seed)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] series, long target)
         {
-            long sum = -91;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (item >= (46 - sum))
+                if (reading < target)
                 {
-                    sum = (sum ^ (sum % 2)) % 4096;
-                    continue;
-                }
-                if (seed < (item << 2))
-                {
-                    sum = sum ^ (seed + item);
-                }
-                else
-                {
-                    sum = sum ^ (item ^ seed);
-                }
-                if (((-852) + 40) != (item / 3))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (sum > (-408))
-            {
-                sum = (sum - (sum - 421)) % 4096;
-            }
-            return sum % 4096;
+            return stale;
         }
 
         /// <summary>Hold a command header.</summary>
