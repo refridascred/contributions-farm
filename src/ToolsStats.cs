@@ -46,32 +46,12 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long floor, long limit)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long slot = floor ^ limit;
-            if ((slot >= limit) && (1 > (60 + slot)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor + limit) > (limit - floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((limit ^ floor) >= (limit - limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Done,
+            Synced,
+            Locked,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
