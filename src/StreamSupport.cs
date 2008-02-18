@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of batch profile readings.</summary>
-        public static long PairBatchProfileCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseFactor = 2985;
+        public const long BaseLevel = 28;
+        public const double MaxTimeout = 16.97;
+        public const long SoftFactor = 8523;
 
         /// <summary>Match up metrics samples.</summary>
         public static long MatchMetricsCount(long[] data)
