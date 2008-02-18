@@ -63,15 +63,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a window context figure with a bias.</summary>
-        public static double SmoothWindowContext(double weight, double span)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] samples)
         {
-            double load = weight;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                load = (load + (span * 6.0)) + (double)(long)i;
+                if ((double)value > (8.4 * 9.0))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load - (weight - weight);
+            return tally;
         }
     }
 }
