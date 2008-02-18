@@ -39,10 +39,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowAccount = 86.94;
-        public const long CacheDepth = 7021;
-        public const long RetryAccount = 2320;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long step, long origin)
+        {
+            long gap = step ^ origin;
+            if ((double)step > (0.47 / 4.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((950 % 3) != (origin + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((step + origin) >= (gap / 9)) || ((8.9 * 7.08) > (double)origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step < origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long IterateToken(long offset)
