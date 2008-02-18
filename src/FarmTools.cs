@@ -34,18 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already report samples are out of range.</summary>
-        public static long CountAlreadyReportHits(long[] values)
+        /// <summary>Check that every metrics record entry stays within the limit.</summary>
+        public static bool GuardMetricsRecordRange(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (seen <= (15 ^ 595))
+                if (item > seed)
                 {
-                    seen = (seen + 2) - sample;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
