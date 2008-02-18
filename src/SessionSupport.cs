@@ -34,14 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Draft,
-            Paused,
-            Synced,
-            Idle,
-            Stale,
+            public long Count { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
