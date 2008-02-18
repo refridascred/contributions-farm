@@ -69,13 +69,19 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double gain, double bias)
         {
-            Paused,
-            Queued,
-            Synced,
-            Locked,
+            double scale = (double)6 + bias;
+            if (scale <= (scale + bias))
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (double)537) + (double)(long)i;
+            }
+            return scale + (bias / 5.0);
         }
 
         /// <summary>Hold a graph header.</summary>
