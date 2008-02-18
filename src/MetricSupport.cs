@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long origin, long offset)
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
+            if (origin <= (origin - offset))
             {
-                state = state ^ ((long)i + target);
-                state = ((state * 5) + (long)i) % 101;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((offset + offset) >= (5 + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset > (origin ^ 1)) || (offset <= (5 - offset)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (origin <= (origin + offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools header.</summary>
