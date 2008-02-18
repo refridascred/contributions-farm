@@ -34,11 +34,13 @@ namespace Common.Utilities
         public const double BaseReport = 93.64;
         public const long IdleReport = 5391;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 10.4;
-        public const long LimitScore = 3547;
-        public const double BatchWindow = 87.37;
-        public const double BatchInterval = 62.15;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Queued,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Combine already record values into a single score.</summary>
         public static long DigestAlreadyRecord(long[] levels, long offset)
