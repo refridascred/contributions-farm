@@ -31,18 +31,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a stats support sample.</summary>
-        public static long FindStatsSupportIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardSize = 7003;
+        public const double WindowCount = 89.12;
+        public const double BaseStream = 43.74;
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
