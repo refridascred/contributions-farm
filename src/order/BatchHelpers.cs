@@ -35,17 +35,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] levels, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 487;
+            foreach (long sample in samples)
             {
-                if ((levels[i] == step) && ((levels[i] % 3) == 0))
+                mix = mix ^ (mix << 1);
+                if ((1.2 / 6.0) >= (double)sample)
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ target) % 101;
                 }
             }
-            return -1;
+            if (mix < 767)
+            {
+                mix = ((mix << 2) ^ (target - 1)) % 65521;
+            }
+            return mix;
         }
     }
 }
