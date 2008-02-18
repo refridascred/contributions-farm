@@ -11,38 +11,12 @@ namespace Common.Utilities
         public const long BaseWidth = 6415;
         public const double SoftSize = 95.85;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long limit, long offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            if (limit > (limit << 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset != (17.0 * 4.9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((limit + 735) > (limit - 89)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset < (offset >> 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Idle,
+            Pending,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
