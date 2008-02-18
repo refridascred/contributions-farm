@@ -53,16 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] samples, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                state = state + (0 + 435);
-                state = ((state * 4) + (long)i) % 97;
+                if (entry < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
