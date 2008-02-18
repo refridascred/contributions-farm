@@ -49,11 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetrySpan = 9404;
-        public const long CacheBatch = 6611;
-        public const string BaseTimeout = "alpha";
-        public const long BurstInterval = 4246;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepRatio = 51.46;
+        public const long StepFarm = 4977;
+        public const long BaseFarm = 2952;
+        public const double CacheFactor = 13.12;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long SortRecord(long target, long step)
