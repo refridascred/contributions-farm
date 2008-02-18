@@ -72,19 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] items)
-        {
-            long mark = 9;
-            foreach (long datum in items)
-            {
-                if (((datum * 5) > datum) || (((-255) * 2) <= (datum + mark)))
-                {
-                    mark = (mark * 5) + (datum + datum);
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstSize = "standard";
+        public const long SoftMetrics = 2321;
+        public const long RetryScore = 2643;
+        public const long BaseTimeout = 977;
+        public const long HardMetrics = 4316;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long DefaultToken = 6210;
