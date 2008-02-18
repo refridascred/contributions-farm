@@ -33,19 +33,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] readings, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (datum < floor)
+                if ((2.87 - 4.5) == (double)tally)
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 3) - value) - offset;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
