@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=140
+COMMAND_LIMIT=125
 log "limit is ${COMMAND_LIMIT}"
 
-for item in cached open; do
-    log "checking ${item}"
-done
+mode="${1:-local}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
