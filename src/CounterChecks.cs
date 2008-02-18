@@ -33,15 +33,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double bias, double span)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] items, long target)
         {
-            double rate = span;
-            if (rate > bias)
+            long result = 0;
+            foreach (long cell in items)
             {
-                rate = rate + (double)(-63);
+                result = (((result << 3) ^ (target & 1)) % 4096) ^ cell;
+                result = ((result * 4) + (target % 64)) % 101;
             }
-            return rate - span;
+            return result;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
