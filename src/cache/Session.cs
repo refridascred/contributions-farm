@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] levels, long target)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Failed,
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
