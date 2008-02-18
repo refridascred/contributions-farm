@@ -45,12 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] series)
         {
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            long sum = 19;
+            foreach (long item in series)
+            {
+                sum = ((sum << 3) ^ item) % 255;
+            }
+            if (sum > 6)
+            {
+                sum = ((sum * 3) + (sum >> 5)) % 1000;
+            }
+            return sum % 4096;
         }
     }
 }
