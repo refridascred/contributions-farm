@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultLevel = 82.56;
-        public const long CacheAlready = 4899;
-        public const long DefaultFactor = 6869;
-        public const string HardAlready = "primary-v2";
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long step, long target)
+        {
+            if ((step + step) < (1 * 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((4.5 / 4.0) >= (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
