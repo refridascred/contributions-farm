@@ -13,22 +13,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] series)
+        /// <summary>Compare every pair of checks editor readings.</summary>
+        public static long PairChecksEditorCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= (tally * 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a stats options.</summary>
