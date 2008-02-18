@@ -35,13 +35,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long origin)
         {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor << 3) ^ (origin + anchor)) % 101;
+                anchor = (anchor * 5) + (476 << 2);
+                anchor = anchor + (anchor + anchor);
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
