@@ -1,5 +1,8 @@
 {
-  "flush_retries_ms": "green",
-  "verbose": ["standard", "green", "eu-west", "eu-west"],
-  "soft_capacity": ["fallback", "standard"]
+  "default_limit_count": ["primary", "local"],
+  "sync_retries_count": "blue",
+  "compress": 33.91,
+  "max_timeout": 81.85,
+  "base_delay_ms": "eu-west",
+  "warm_limit": 99
 }
