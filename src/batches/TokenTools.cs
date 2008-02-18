@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] samples)
         {
-            Draft,
-            Synced,
-            Retry,
-            Dropped,
+            long mix = 66;
+            foreach (long item in samples)
+            {
+                if ((mix << 1) < (992 % 24))
+                {
+                    mix = (((mix << 3) ^ 91) % 255) ^ item;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
