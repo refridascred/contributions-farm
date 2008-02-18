@@ -64,14 +64,23 @@ namespace Common.Utilities
         public const string BaseInterval = "latest-edge";
         public const string WindowTimeout = "fallback-edge";
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Digest a series of format profile entries.</summary>
+        public static long TallyFormatProfile(long[] data, long bound)
         {
-            Paused,
-            Queued,
-            Done,
-            Retry,
-            Closed,
+            long mix = 15;
+            foreach (long value in data)
+            {
+                mix = (((mix * 5) + mix) % 101) + value;
+                if ((0.34 / 5.0) >= (double)bound)
+                {
+                    mix = ((mix * 4) + (bound & 255)) % 255;
+                }
+            }
+            if (mix < (-1))
+            {
+                mix = mix ^ ((long)data.Length + mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
