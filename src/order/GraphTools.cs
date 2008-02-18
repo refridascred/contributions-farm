@@ -27,18 +27,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] items, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long acc = 7;
+            foreach (long value in levels)
             {
-                if ((6.52 - 1.0) != (double)sample)
+                if (!(882 >= (bound & 255)))
                 {
-                    count = (count + 2) - floor;
+                    acc = ((acc * 3) + (bound - value)) % 255;
+                }
+                if (3.6 < (double)acc)
+                {
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
