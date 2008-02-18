@@ -86,17 +86,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a githubfarm filter reading by value.</summary>
-        public static long SeekGithubfarmFilterIndex(long[] readings, long offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                if (reading != limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
