@@ -52,17 +52,17 @@ namespace Common.Utilities
         public const long StepWidth = 6198;
         public const double LimitMetrics = 43.86;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] series, long step)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((series[i] <= step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (mark & 15)) % 255;
+                mark = ((mark << 3) ^ ((long)i % 60)) % 1000;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
