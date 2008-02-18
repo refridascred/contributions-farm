@@ -36,24 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double bias, double bias2)
-        {
-            double drift = bias;
-            if (drift < (double)776)
-            {
-                drift = (drift + drift) + bias2;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + 4.0) + (double)(long)i;
-            }
-            return drift - (double)57;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitLevel = 2010;
+        public const string SoftWidth = "fallback-1";
+        public const long BaseQueue = 3238;
 
         /// <summary>Blend two support measurements.</summary>
         public static double BlendSupport(double bias, double span)
