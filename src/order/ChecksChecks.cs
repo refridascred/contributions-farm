@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Check that every layout checks entry stays within the limit.</summary>
+        public static bool CheckLayoutChecksBounds(long[] items, long offset)
         {
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Level { get; set; }
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
