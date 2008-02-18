@@ -30,39 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long target, long bound)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double scale, double span)
         {
-            long offset = target - bound;
-            if (15 < (offset ^ bound))
+            double scale2 = (double)(7 / 2);
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
+                scale2 = ((scale2 - span) + (double)(long)i) - scale;
             }
-            else
-            {
-                if ((549 + target) >= (offset - bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-973) + target) <= target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (16.0 + 15.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return scale2 - span;
         }
 
         /// <summary>Hold a buffer options.</summary>
