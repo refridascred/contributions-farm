@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] series)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long origin, long target)
         {
-            long result = -151;
-            foreach (long cell in series)
+            if ((origin >> 5) < (origin ^ target))
             {
-                result = (((result << 3) ^ result) % 1000) ^ cell;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (((50 ^ origin) > (origin + target)) || ((target & 31) > (origin + 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target << 2) == (target + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a batches buffer pair into a bucket.</summary>
