@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] series, long origin)
         {
-            long state = 85;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                state = state + datum;
+                if ((origin + 177) < (origin % 3))
+                {
+                    seen = (seen + 3) + datum;
+                }
             }
-            if (state > 564)
-            {
-                state = (state + (865 ^ (long)readings.Length)) % 255;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
