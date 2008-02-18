@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 3093;
-        public const string MinTimeout = "staging-1";
-        public const long HardScore = 5560;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] data, long seed)
+        {
+            long sum = 249;
+            foreach (long cell in data)
+            {
+                sum = (sum + (cell / 8)) - seed;
+            }
+            if (sum > 31)
+            {
+                sum = ((sum << 3) ^ sum) % 1000;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
