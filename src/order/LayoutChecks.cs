@@ -85,13 +85,33 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long step)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
+            long mark = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((5 >> 1) == (23 + (long)i)) || ((long)i >= (mark << 1)))
+                {
+                    mark = (mark ^ (step + step)) % 4096;
+                    mark = mark + (mark % 64);
+                }
+                else
+                {
+                    mark = (mark ^ mark) % 1000;
+                    mark = (mark + (mark + mark)) % 1000;
+                }
+                if (mark < (step + step))
+                {
+                    mark = mark ^ step;
+                }
+                else
+                {
+                    mark = (mark ^ (step - 0)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
