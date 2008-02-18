@@ -1,12 +1,11 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Keep token and queue names short and lowercase.
-Keep batch and metrics names short and lowercase.
+Use session settings to tune how often editor data is refreshed.
+Run the commits check before changing any order limits.
+A channel that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
-- Keep command values small
-- Validate editor input early
-- Document new account fields
-- Prefer checks defaults
+- Review support limits each release
+- Keep filter values small
+- Prefer contributi defaults
