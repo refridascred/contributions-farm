@@ -17,18 +17,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] samples)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long sum = 9;
-            foreach (long reading in samples)
-            {
-                if ((reading << 3) <= (reading % 100))
-                {
-                    sum = (sum + (71 - sum)) % 1000;
-                }
-            }
-            return sum % 4096;
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
