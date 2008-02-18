@@ -56,12 +56,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] values, long target)
         {
-            Failed,
-            New,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
