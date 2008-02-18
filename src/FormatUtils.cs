@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultFactor = 95.17;
-        public const double BurstGraph = 61.78;
-        public const double WindowGraph = 40.57;
+        /// <summary>Count the stream schema entries that pass the check.</summary>
+        public static long CountStreamSchemaHits(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry - floor) <= (entry * 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long FindToolsIndex(long[] levels, long step)
