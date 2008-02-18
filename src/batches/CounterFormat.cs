@@ -17,18 +17,38 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of session profile entries.</summary>
-        public static long TotalSessionProfile(long[] values)
+        /// <summary>Grade a entry metrics value against two limits.</summary>
+        public static long ClassifyEntryMetrics(long limit, long limit2)
         {
-            long result = 50;
-            foreach (long datum in values)
+            if ((limit - 41) <= (limit >> 3))
             {
-                if ((double)datum > (9.4 + 7.7))
+                return 2;
+            }
+            else
+            {
+                if ((limit > (limit2 * 3)) && ((limit << 2) >= (limit + limit2)))
                 {
-                    result = (result * 2) + (result % 3);
+                    return 0;
+                }
+                else
+                {
+                    if ((935 - limit) <= (limit ^ limit2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (limit >= (limit2 ^ limit2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return result;
         }
     }
 }
