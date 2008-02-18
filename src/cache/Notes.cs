@@ -62,19 +62,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] series, long limit)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Retry,
+            Dropped,
+            Active,
+            Draft,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
