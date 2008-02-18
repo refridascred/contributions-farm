@@ -1,8 +1,13 @@
 # support settings
-base_timeout: 1024
-poll_ratio_count: green
-schema_threshold: 77.9
-dry_run:
-  - 222
-  - 231
-  - 329
+idle_ratio_s: 81
+soft_size: 100
+burst_capacity_count: 1653
+readonly:
+  - local
+  - latest
+batch_ratio:
+  - 201
+  - 13
+max_delay_ms:
+  - fallback
+  - staging
