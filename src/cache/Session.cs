@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleTimeout = 64.61;
-        public const long IdleInterval = 6300;
-        public const long BurstCount = 2195;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] levels, long target)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long seed)
