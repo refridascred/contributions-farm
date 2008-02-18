@@ -28,20 +28,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] values)
-        {
-            long mark = 6;
-            foreach (long reading in values)
-            {
-                mark = (mark ^ reading) % 101;
-            }
-            if (mark < 5)
-            {
-                mark = mark ^ (mark + 35);
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 10.14;
+        public const double HardReport = 42.48;
+        public const double BaseReport = 93.64;
+        public const long IdleReport = 5391;
 
         /// <summary>Validate context session readings against a bound.</summary>
         public static bool ValidateContextSessionBounds(long[] levels, long offset)
