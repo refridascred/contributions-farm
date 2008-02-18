@@ -1,7 +1,4 @@
 # entry settings
-dry_run: cached
-base_size_pct:
-  - 313
-  - 30
-  - 217
-farm_threshold: latest
+max_timeout_s: local
+idle_delay: open
+readonly: open
