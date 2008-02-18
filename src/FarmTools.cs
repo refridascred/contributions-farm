@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long origin, long limit)
-        {
-            if ((limit >> 3) >= (origin % 64))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((95 - origin) == (origin >> 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit <= (4.0 - 15.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 6529;
+        public const long StepGithubfarm = 3947;
+        public const long BatchGithubfarm = 1960;
+        public const long MinGithubfarm = 893;
+        public const double IdleGithubfarm = 10.41;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long PairQueueCount(long[] series)
