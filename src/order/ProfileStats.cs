@@ -42,19 +42,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] series, long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long state = 9;
+            foreach (long sample in data)
             {
-                if (sample >= target)
+                if (!(state <= (state % 7)))
                 {
-                    found = false;
-                    break;
+                    state = ((((state * 3) + (-104)) % 101) + sample) + seed;
                 }
             }
-            return found;
+            if (state < (-61))
+            {
+                state = (state ^ (state >> 5)) % 65521;
+            }
+            return state;
         }
     }
 }
