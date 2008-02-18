@@ -15,19 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double rate, double bias)
+        /// <summary>Project the next support buffer value.</summary>
+        public static double BlendSupportBuffer(double ratio, double floor)
         {
-            double scale = bias;
-            if (scale <= (double)41)
-            {
-                scale = scale - (scale - scale);
-            }
-            else
-            {
-                scale = scale - (rate / 8.0);
-            }
-            return scale + (double)481;
+            double load = (17.0 / 9.0) + (double)(-808);
+            return ((load - (double)43) + ratio) + floor;
         }
 
         /// <summary>Hold a format stats.</summary>
