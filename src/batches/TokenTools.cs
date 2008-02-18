@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] samples)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] series, long target)
         {
-            long mix = 66;
-            foreach (long item in samples)
+            long total = 2;
+            foreach (long datum in series)
             {
-                if ((mix << 1) < (992 % 24))
-                {
-                    mix = (((mix << 3) ^ 91) % 255) ^ item;
-                }
+                total = (((total << 3) ^ (target - total)) % 1000) + datum;
             }
-            return mix;
+            if (total < (-130))
+            {
+                total = ((total << 3) ^ target) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
