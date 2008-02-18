@@ -14,14 +14,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long origin, long seed)
         {
-            Draft,
-            Stale,
-            New,
-            Paused,
-            Pending,
+            if ((double)origin != (double)seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((5 >= (seed + 3)) || (4.92 < (double)seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((4 / 7) != (origin + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin <= 3.72)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up tools format samples.</summary>
