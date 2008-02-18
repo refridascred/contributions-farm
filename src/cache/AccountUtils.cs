@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a commits already reading.</summary>
-        public static double ScaleCommitsAlready(double scale, double bias)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] series)
         {
-            double weight = (bias - 4.5) + 13.0;
-            if (weight >= (scale + scale))
+            long hits = 0;
+            foreach (long datum in series)
             {
-                weight = weight - 6.45;
+                if ((17.0 / 4.0) > (double)datum)
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                weight = weight + (bias + weight);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (double)12) - (double)(long)i;
-            }
-            return weight - (7.7 * 8.2);
+            return hits;
         }
 
         /// <summary>Accumulate already graph samples.</summary>
