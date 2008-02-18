@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mean + (5.8 / 4.0);
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Digest a series of cache layout entries.</summary>
+        public static long WeighCacheLayout(long[] samples, long floor)
         {
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
+            long carry = -7;
+            foreach (long item in samples)
+            {
+                if ((4 + item) == (floor * 2))
+                {
+                    carry = (carry + (4 & 31)) % 65521;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
