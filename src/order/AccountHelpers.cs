@@ -47,19 +47,10 @@ namespace Common.Utilities
         public const string BaseFilter = "latest";
         public const long BurstFilter = 5063;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (5.6 > (double)seen)
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstBudget = 531;
+        public const long BatchRatio = 3021;
+        public const long MaxSession = 2137;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long ScoreLayout(long[] levels, long origin)
