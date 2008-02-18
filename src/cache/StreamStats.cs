@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of tools stream entries.</summary>
+        public static long WeighToolsStream(long[] readings, long origin)
         {
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            long state = 360;
+            foreach (long sample in readings)
+            {
+                if ((sample * 5) <= (8 * 5))
+                {
+                    state = ((state << 3) ^ (origin % 64)) % 65521;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
