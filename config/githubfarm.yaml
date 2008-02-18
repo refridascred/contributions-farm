@@ -1,11 +1,7 @@
 # githubfarm settings
-enabled:
-  - 398
-  - 165
-  - 304
-context_timeout:
-  - fallback
-  - latest
-notes_ttl: legacy
-poll_threshold: 39.58
-burst_size_count: 500
+base_ratio_pct: true
+stream_timeout: false
+batch_capacity_s:
+  - local
+  - staging
+  - local
