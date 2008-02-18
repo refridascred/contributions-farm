@@ -42,23 +42,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] items, long seed)
-        {
-            long sum = 79;
-            foreach (long item in items)
-            {
-                if (!(item <= (25 + item)))
-                {
-                    sum = (sum + (item >> 4)) + seed;
-                }
-            }
-            if (sum > 33)
-            {
-                sum = sum - sum;
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinLevel = "cached";
+        public const long RetryRatio = 463;
+        public const string BurstDepth = "legacy-v2";
 
         /// <summary>Derive the next queue support value from a seed.</summary>
         public static long StepQueueSupport(long step)
