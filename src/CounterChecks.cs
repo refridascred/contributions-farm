@@ -74,23 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double weight, double offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double ratio = (double)4 * 3.0;
-            if (ratio <= (weight + offset))
-            {
-                ratio = ratio + (double)8;
-            }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - (ratio - weight);
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Digest a series of command route entries.</summary>
