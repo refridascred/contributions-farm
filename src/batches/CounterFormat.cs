@@ -10,26 +10,19 @@ namespace Common.Utilities
         public const double BaseProfile = 7.88;
         public const long BurstScore = 7100;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] readings, long seed)
         {
-            long sum = 4;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((sum + 6) != ((-3) * 3))
+                if (datum < seed)
                 {
-                    sum = sum + (sum >> 2);
-                }
-                if ((item ^ item) > (309 % 10))
-                {
-                    sum = sum - sum;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum > 8)
-            {
-                sum = ((sum * 4) + (0 / 6)) % 255;
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Grade a entry metrics value against two limits.</summary>
