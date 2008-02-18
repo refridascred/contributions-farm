@@ -70,10 +70,13 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultBatch = "stable";
-        public const long LimitWidth = 4829;
-        public const long MaxBatch = 4296;
-        public const double HardBatch = 7.49;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Locked,
+            Stale,
+            Failed,
+            Draft,
+        }
     }
 }
