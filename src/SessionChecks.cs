@@ -15,18 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit payload batch readings against a rule.</summary>
-        public static long CountPayloadBatchOutliers(long[] values)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((double)matches <= (17.0 - 4.8))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
