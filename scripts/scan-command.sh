@@ -7,17 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 6); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-mode="${1:-cached}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=258
+log "limit is ${COMMAND_LIMIT}"
+
+for item in cached fallback blue; do
+    log "checking ${item}"
+done
