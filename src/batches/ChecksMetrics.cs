@@ -13,14 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 9821;
+        public const string IdleFilter = "fallback-v2";
+        public const long CacheInterval = 544;
+        public const string WindowScore = "cached-1";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string DefaultMetric = "local";
