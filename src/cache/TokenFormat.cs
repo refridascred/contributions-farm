@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 98.56;
-        public const double CacheCluster = 57.32;
-        public const long RetryCluster = 8994;
-        public const double BaseWidth = 50.55;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long bound, long floor)
+        {
+            long prev = bound - floor;
+            if ((floor - floor) >= (prev + floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((floor >> 5) <= bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Blend two batches measurements.</summary>
         public static double BlendBatches(double gain, double floor)
