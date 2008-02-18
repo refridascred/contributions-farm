@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] samples, long seed)
         {
-            Ready,
-            Retry,
-            Queued,
-            Idle,
-            Done,
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
