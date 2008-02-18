@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] readings, long target)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Compare every pair of route contributi readings.</summary>
