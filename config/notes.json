@@ -1,20 +1,6 @@
 {
-  "verbose": {
-    "persist": 6851,
-    "buffer_retries": "fallback",
-    "graph_threshold": [427, 500],
-    "dry_run": 9,
-    "warm_timeout_s": {
-      "account_interval": 13,
-      "audit": "legacy",
-      "metric_timeout": 7910,
-      "githubfarm_depth": ["stable", "open", "cached"],
-      "tools_capacity": ["legacy", "legacy", "local"],
-      "enabled": true
-    },
-    "base_threshold_ms": 500
-  },
-  "warm_retries_pct": "standard",
-  "sync_limit_ms": "stable",
-  "sync_delay_pct": 7347
+  "compress": "primary",
+  "audit": 10.04,
+  "graph_limit": "latest",
+  "enabled": "eu-west"
 }
