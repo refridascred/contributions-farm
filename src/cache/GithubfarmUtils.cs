@@ -52,11 +52,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] samples)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            long result = 5;
+            foreach (long reading in samples)
+            {
+                result = ((result * 4) + (reading ^ reading)) % 97;
+                result = (result * 2) + result;
+                if ((double)reading <= 7.58)
+                {
+                    result = result - result;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
