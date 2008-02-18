@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            Paused,
-            Draft,
-            Ready,
+            long state = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state << 2) ^ (seed / 8);
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
