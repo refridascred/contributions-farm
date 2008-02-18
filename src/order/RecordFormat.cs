@@ -30,12 +30,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public double Rank { get; set; }
-            public double Size { get; set; }
-            public bool Flag { get; set; }
+            Stale,
+            New,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the checks status values.</summary>
