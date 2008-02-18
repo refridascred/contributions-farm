@@ -1,8 +1,6 @@
 {
-  "warm_limit_pct": 21.2,
-  "idle_delay_s": 98.8,
-  "metric_threshold": "open",
-  "idle_delay_pct": "blue",
-  "compress": "standard",
-  "soft_threshold_ms": 3762
+  "sync_size_pct": ["local", "stable", "staging"],
+  "layout_threshold": "edge",
+  "base_retries_s": true,
+  "enabled": 65
 }
