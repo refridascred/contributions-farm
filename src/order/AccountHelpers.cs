@@ -61,13 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Dropped,
-            Stale,
-            Active,
-            Ready,
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
