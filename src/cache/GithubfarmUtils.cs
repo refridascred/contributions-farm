@@ -52,17 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] samples, long target)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double gain, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = offset;
+            if (drift > drift)
             {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
+                drift = drift + (offset - gain);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (offset + gain)) - (double)(long)i;
+            }
+            return drift + (offset + offset);
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
