@@ -20,18 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepInterval = 6978;
+        public const long HardInterval = 4019;
+        public const double DefaultCluster = 44.4;
+        public const long LimitWidth = 9871;
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long FindProfileIndex(long[] series, long origin)
