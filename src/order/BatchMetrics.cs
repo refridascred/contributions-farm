@@ -49,23 +49,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of format profile entries.</summary>
-        public static long TallyFormatProfile(long[] data, long bound)
+        /// <summary>Combine already record values into a single score.</summary>
+        public static long DigestAlreadyRecord(long[] levels, long offset)
         {
-            long mix = 15;
-            foreach (long value in data)
+            long mix = 9;
+            foreach (long sample in levels)
             {
-                mix = (((mix * 5) + mix) % 101) + value;
-                if ((0.34 / 5.0) >= (double)bound)
+                if ((offset + mix) <= (sample / 8))
                 {
-                    mix = ((mix * 4) + (bound & 255)) % 255;
+                    mix = (mix ^ (9 & 15)) % 4096;
+                }
+                else
+                {
+                    mix = (mix - offset) % 1000;
                 }
             }
-            if (mix < (-1))
+            if (mix > 405)
             {
-                mix = mix ^ ((long)data.Length + mix);
+                mix = mix - (offset ^ mix);
             }
-            return mix % 4096;
+            return mix % 65521;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
