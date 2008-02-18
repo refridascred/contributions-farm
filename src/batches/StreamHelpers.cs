@@ -42,11 +42,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinDepth = 3638;
-        public const long CacheInterval = 5344;
-        public const long RetryNotes = 7995;
-        public const long HardSpan = 1700;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double ScaleSupport(double ratio, double bias)
