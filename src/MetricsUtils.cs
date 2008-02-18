@@ -49,18 +49,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] data)
+        /// <summary>Compare every pair of farm channel readings.</summary>
+        public static long OverlapFarmChannelCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((long)data.Length ^ matches) >= 3) || !((matches * 3) < matches))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) ^ sample;
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
