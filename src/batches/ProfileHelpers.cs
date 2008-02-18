@@ -53,11 +53,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepRatio = 6544;
-        public const double SoftStream = 48.18;
-        public const double BurstStream = 45.85;
-        public const long HardTimeout = 7504;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] values, long floor)
+        {
+            long mark = -341;
+            foreach (long cell in values)
+            {
+                mark = (((mark * 4) + (cell * 5)) % 97) + floor;
+            }
+            return mark;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] readings, long target)
