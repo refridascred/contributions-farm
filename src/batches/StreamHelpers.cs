@@ -62,18 +62,11 @@ namespace Common.Utilities
         public const long RetryNotes = 7995;
         public const long HardSpan = 1700;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] items, long seed)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (((-5) > ((long)items.Length + seed)) || ((double)cell < (double)seed))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double scale = (double)(538 + (-306));
+            return (scale - (ratio / 5.0)) + bias;
         }
     }
 }
