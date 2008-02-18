@@ -1,15 +1,10 @@
 # githubfarm settings
-soft_depth: 27.81
-min_capacity_s:
-  persist: fallback
-  hard_window_s:
-    - 107
-    - 304
-    - 475
-    - 337
-  soft_window_ms: 25.52
-  burst_capacity_pct: open
-sync_size_s: 58.48
-sync_timeout_pct: 62.55
-buffer_size: 250
-idle_limit_s: strict
+batch_limit_s:
+  - 240
+  - 86
+channel_size:
+  - 413
+  - 368
+  - 253
+  - 291
+persist: 30
