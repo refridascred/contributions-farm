@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long carry = 771;
-            foreach (long cell in data)
-            {
-                if (!((cell << 3) < (cell >> 1)))
-                {
-                    carry = (carry + (carry + cell)) % 4096;
-                }
-                carry = carry - (cell * 2);
-            }
-            return carry % 1000;
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a command info.</summary>
