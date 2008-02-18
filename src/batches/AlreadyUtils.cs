@@ -14,18 +14,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                score = (score ^ floor) % 65521;
-                score = score + (long)i;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftRatio = 23.99;
+        public const long WindowDepth = 1226;
+        public const long CacheSize = 1549;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long RankSchema(long offset, long limit)
