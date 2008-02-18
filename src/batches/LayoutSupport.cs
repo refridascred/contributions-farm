@@ -50,22 +50,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine metrics order values into a single score.</summary>
-        public static long ScoreMetricsOrder(long[] series, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] data, long limit)
         {
-            long result = -935;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((step + (long)series.Length) >= (value / 2))
+                if ((seen >> 1) > (seen + seen))
                 {
-                    result = (result ^ ((long)series.Length + result)) % 101;
+                    seen = ((seen + 3) ^ sample) - limit;
                 }
             }
-            if (result > 611)
-            {
-                result = (result * 5) + (result * 4);
-            }
-            return result;
+            return seen;
         }
     }
 }
