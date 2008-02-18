@@ -38,18 +38,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] levels)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((((double)sample < 3.1) && ((sample ^ sample) > (937 - 581))) || ((913 - count) == (sample + count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Ready,
+            Draft,
+            Active,
+            Done,
+            Closed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
