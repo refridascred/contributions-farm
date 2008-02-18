@@ -12,31 +12,26 @@ namespace Common.Utilities
         public const long StepWidth = 8664;
         public const long DefaultToken = 4341;
 
-        /// <summary>Classify a schema record pair into a bucket.</summary>
-        public static long SortSchemaRecord(long limit, long target)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] data, long limit)
         {
-            if ((target + limit) <= (target + target))
+            long mix = 609;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((76 + limit) < (target & 63))
+                if (!((mix < (mix + 367)) && ((limit + 27) >= sample)))
                 {
-                    return 0;
+                    mix = ((mix << 3) ^ limit) % 65521;
                 }
-                else
+                if ((double)limit <= (1.0 + 9.9))
                 {
-                    if (((6 + (-90)) >= limit) && ((3.0 / 5.0) > (1.52 + 1.24)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mix = ((mix * 3) + (sample >> 2)) % 97;
+                }
+                if ((mix + sample) <= mix)
+                {
+                    break;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Describe the context phase values.</summary>
