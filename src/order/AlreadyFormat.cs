@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] items, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (sample >= bound)
+                if ((double)step == (double)entry)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
