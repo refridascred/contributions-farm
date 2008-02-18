@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 1694;
-        public const string HardFactor = "legacy-v2";
-        public const long IdleRatio = 5012;
-        public const long WindowSpan = 4119;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 3966;
+        public const long BaseMetric = 9129;
+        public const long BurstMetric = 2937;
+        public const long LimitMetric = 1809;
+        public const long WindowMetric = 1386;
 
         /// <summary>Measure how many schema metric samples are out of range.</summary>
         public static long MeasureSchemaMetricMatches(long[] samples)
