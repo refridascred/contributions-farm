@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen >> 5) != (datum / 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitFactor = "local-v2";
+        public const long CacheTimeout = 9142;
+        public const string MaxWidth = "latest-edge";
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
