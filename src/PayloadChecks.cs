@@ -17,20 +17,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double weight, double offset)
-        {
-            double weight2 = weight;
-            if (weight2 <= 1.85)
-            {
-                weight2 = (weight2 + (weight2 + weight2)) - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + weight2) + (double)(long)i;
-            }
-            return weight2 + 12.0;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheFactor = 69.04;
+        public const long HardCount = 2842;
+        public const long LimitGithubfarm = 3033;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long origin)
