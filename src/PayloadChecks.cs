@@ -52,19 +52,12 @@ namespace Common.Utilities
         public const long HardBudget = 1067;
         public const long WindowFilter = 1560;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] values)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long score = -4;
-            foreach (long cell in values)
-            {
-                score = (score + score) + cell;
-                if (score <= (627 - score))
-                {
-                    score = (score + 82) % 101;
-                }
-            }
-            return score % 65521;
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
