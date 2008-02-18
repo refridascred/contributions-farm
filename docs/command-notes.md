@@ -1,10 +1,13 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-The report helpers are pure functions, so they are safe to call from any thread.
+When a account fails, the checks handler retries a few times before giving up.
+A token that stays idle for too long is moved to the order list.
+
+Each stats is validated before it reaches the record queue.
+Each report is validated before it reaches the record queue.
 
 ## Guidelines
 
-- Keep window values small
-- Prefer order defaults
-- Log every metric change
+- Log every githubfarm change
+- Validate contributi input early
+- Review counter limits each release
