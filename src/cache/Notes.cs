@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank batches graph input into a small class.</summary>
-        public static long SortBatchesGraph(long floor, long seed)
+        /// <summary>Validate batches notes readings against a bound.</summary>
+        public static bool VerifyBatchesNotesRange(long[] values, long seed)
         {
-            if ((floor + floor) < seed)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-74) % 100) != (seed - seed))
+                if (entry <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(floor < (73 + seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed + seed) <= floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
