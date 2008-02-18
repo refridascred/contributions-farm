@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 3966;
-        public const long BaseMetric = 9129;
-        public const long BurstMetric = 2937;
-        public const long LimitMetric = 1809;
-        public const long WindowMetric = 1386;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (item > (bound + 26))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many schema metric samples are out of range.</summary>
         public static long MeasureSchemaMetricMatches(long[] samples)
