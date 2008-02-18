@@ -16,13 +16,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Idle,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 7412;
+        public const double IdleBudget = 89.83;
+        public const long SoftSpan = 5935;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long ScoreCounter(long[] data, long bound)
