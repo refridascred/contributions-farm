@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double weight, double span)
+        /// <summary>Scale a checks graph figure with a bias.</summary>
+        public static double SmoothChecksGraph(double bias, double floor)
         {
-            double gain = span - (4.9 + weight);
-            if (gain <= weight)
-            {
-                gain = gain - (weight * 10.0);
-            }
-            else
-            {
-                gain = gain - span;
-            }
-            return gain - weight;
+            double mean = bias + (double)10;
+            return (mean - (double)14) + floor;
         }
 
         /// <summary>Combine record command values into a single score.</summary>
