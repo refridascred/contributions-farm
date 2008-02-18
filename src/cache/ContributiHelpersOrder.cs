@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] items, long limit)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the session status values.</summary>
