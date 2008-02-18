@@ -35,19 +35,12 @@ namespace Common.Utilities
             return ratio + (2.0 + bias);
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] series)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long carry = 647;
-            foreach (long entry in series)
-            {
-                carry = ((carry * 5) + ((-460) + entry)) % 65521;
-            }
-            if (carry > 889)
-            {
-                carry = carry - (carry + carry);
-            }
-            return carry % 1000;
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
     }
 }
