@@ -23,13 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            New,
-            Locked,
-            Done,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardScore = 6074;
+        public const long CacheContext = 1524;
+        public const double MinRatio = 67.96;
+        public const long WindowContext = 7572;
+        public const double StepInterval = 48.4;
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double SmoothBuffer(double weight, double offset)
