@@ -16,13 +16,13 @@ namespace Common.Utilities
         public const double BaseCounter = 87.95;
         public const long SoftFactor = 6442;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Draft,
-            Ready,
-            Idle,
-            New,
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine format account values into a single score.</summary>
