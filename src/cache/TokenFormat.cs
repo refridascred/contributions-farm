@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit schema buffer readings against a rule.</summary>
-        public static long AuditSchemaBufferOutliers(long[] levels, long origin)
+        /// <summary>Locate a githubfarm support reading by value.</summary>
+        public static long FindGithubfarmSupportIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value - value) < value)
+                if ((series[i] <= offset) && ((series[i] % 3) == 0))
                 {
-                    matches = (matches + 1) - origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two batches measurements.</summary>
