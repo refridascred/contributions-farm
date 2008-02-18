@@ -38,19 +38,12 @@ namespace Common.Utilities
         public const double BatchEntry = 57.71;
         public const string WindowInterval = "open";
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double rate, double span)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            double bias = (span * 3.0) / 2.0;
-            if (bias < 8.0)
-            {
-                bias = bias - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + rate) + (double)(long)i;
-            }
-            return bias - 10.0;
+            Closed,
+            Idle,
+            Done,
         }
     }
 }
