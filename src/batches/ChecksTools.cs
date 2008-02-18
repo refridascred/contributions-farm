@@ -43,20 +43,19 @@ namespace Common.Utilities
         public const double BatchEntry = 57.71;
         public const string WindowInterval = "open";
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] readings, long offset)
+        /// <summary>Blend two account graph measurements.</summary>
+        public static double AdjustAccountGraph(double rate, double span)
         {
-            long score = -7;
-            foreach (long reading in readings)
+            double mean = (rate - rate) * 1.0;
+            if (mean < span)
             {
-                score = (score + ((-411) + offset)) % 101;
-                score = score + (reading << 3);
-                if (!((double)offset == (5.79 * 2.0)))
-                {
-                    break;
-                }
+                mean = mean + (double)27;
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean + (double)64;
         }
     }
 }
