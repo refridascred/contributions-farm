@@ -33,22 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many notes format samples are out of range.</summary>
-        public static long MeasureNotesFormatHits(long[] samples)
+        /// <summary>Measure how many layout batch samples are out of range.</summary>
+        public static long MeasureLayoutBatchMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (entry <= (seen + entry))
+                if ((value << 2) != (6 & 15))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
