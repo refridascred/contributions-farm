@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double weight, double offset)
+        /// <summary>Count the session window entries that pass the check.</summary>
+        public static long MeasureSessionWindowHits(long[] data)
         {
-            double gain = offset;
-            return gain + (offset - weight);
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((double)datum < (double)tally) && (8.92 <= (double)tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
