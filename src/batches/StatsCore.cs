@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] samples)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum <= (2.9 + 7.15))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
