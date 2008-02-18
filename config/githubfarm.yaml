@@ -1,9 +1,9 @@
 # githubfarm settings
-dry_run: cached
-batch_interval_pct:
-  - latest
-  - fallback
-  - staging
-  - legacy
-enabled: 3469
-filter_limit: 38.71
+cluster_retries:
+  - standard
+  - eu-west
+  - eu-west
+  - stable
+base_threshold_count: edge
+warm_interval_ms: 9520
+already_ttl: open
