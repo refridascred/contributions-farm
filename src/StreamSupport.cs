@@ -33,9 +33,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultFactor = 7430;
-        public const string MinSupport = "cached-edge";
-        public const string IdleBudget = "standard-edge";
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double rate, double span)
+        {
+            double drift = span;
+            if (drift >= rate)
+            {
+                drift = drift + rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + (span * 5.75);
+        }
     }
 }
