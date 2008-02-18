@@ -31,13 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Match up tools counter samples.</summary>
+        public static long OverlapToolsCounterCount(long[] values)
         {
-            Locked,
-            Retry,
-            New,
-            Dropped,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
