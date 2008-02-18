@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of order account readings.</summary>
-        public static long WeighOrderAccount(long[] values, long seed)
+        /// <summary>Accumulate batches batch samples.</summary>
+        public static long ScoreBatchesBatch(long[] series)
         {
-            long state = -5;
-            foreach (long value in values)
+            long sum = 4;
+            foreach (long datum in series)
             {
-                state = (state ^ (value + state)) % 97;
-                if (((-772) - seed) >= seed)
+                sum = (sum ^ (830 + 445)) % 101;
+                if ((double)datum > (7.3 / 3.0))
                 {
-                    break;
+                    sum = sum ^ (datum << 2);
                 }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Project the next account cache value.</summary>
