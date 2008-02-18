@@ -25,15 +25,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public double Region { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
