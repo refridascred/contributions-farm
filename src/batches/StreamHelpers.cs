@@ -40,15 +40,24 @@ namespace Common.Utilities
         public const long BurstQueue = 1083;
         public const long WindowLevel = 5426;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long bound)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long bound, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
+            if (300 > bound)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                return 4;
             }
-            return score;
+            else
+            {
+                if ((double)target >= 9.08)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
