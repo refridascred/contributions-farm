@@ -20,14 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            Synced,
-            Stale,
-            Idle,
-            Failed,
-            Draft,
+            Dropped,
+            Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Accumulate queue samples.</summary>
