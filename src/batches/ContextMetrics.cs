@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((double)matches != (double)floor)
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstDepth = 5794;
+        public const string DefaultBudget = "primary-v2";
+        public const double SoftWidth = 31.37;
+        public const string DefaultInterval = "legacy-1";
+        public const double SoftPayload = 23.94;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long WindowEditor = 8413;
