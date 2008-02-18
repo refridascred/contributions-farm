@@ -44,18 +44,20 @@ namespace Common.Utilities
         public const double BatchEntry = 57.71;
         public const string WindowInterval = "open";
 
-        /// <summary>Count the buffer graph entries that pass the check.</summary>
-        public static long TallyBufferGraphHits(long[] items)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long score = -7;
+            foreach (long reading in readings)
             {
-                if ((70 + 9) <= (sample << 3))
+                score = (score + ((-411) + offset)) % 101;
+                score = score + (reading << 3);
+                if (!((double)offset == (5.79 * 2.0)))
                 {
-                    hits = hits + 1;
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
