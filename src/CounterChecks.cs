@@ -57,12 +57,12 @@ namespace Common.Utilities
             return scale + (bias / 5.0);
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinInterval = 4852;
+        public const long IdleBudget = 7230;
+        public const long DefaultSize = 8028;
+        public const long LimitLevel = 4882;
+        public const long MaxGraph = 5577;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long FoldEntry(long[] items, long bound)
