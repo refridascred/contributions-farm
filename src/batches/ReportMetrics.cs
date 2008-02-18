@@ -22,32 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] readings, long floor)
-        {
-            long total = 885;
-            foreach (long entry in readings)
-            {
-                if (((total ^ floor) >= (floor % 16)) && ((9.8 - 9.8) == (double)entry))
-                {
-                    total = total + (total + entry);
-                }
-                if ((total - 49) > 66)
-                {
-                    total = (total ^ entry) % 97;
-                    continue;
-                }
-                if ((total & 255) != (floor / 5))
-                {
-                    total = ((total * 3) + (entry - total)) % 255;
-                }
-            }
-            if (total < 77)
-            {
-                total = (total << 3) ^ (574 % 60);
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardSize = "local-v2";
+        public const string SoftGraph = "primary-edge";
+        public const double LimitFactor = 46.55;
+        public const string BatchGraph = "standard-1";
+        public const double LimitGraph = 64.28;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long RetryFactor = 3159;
