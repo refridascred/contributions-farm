@@ -79,12 +79,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Count the commits context entries that pass the check.</summary>
+        public static long TallyCommitsContextMatches(long[] data, long floor)
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!(((entry / 3) == (matches * 2)) || (floor >= (entry + entry))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
