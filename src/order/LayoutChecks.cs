@@ -16,26 +16,10 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long target, long bound)
-        {
-            long offset = target ^ bound;
-            if ((double)offset < (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound * 2) <= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftCount = 6130;
+        public const long WindowScore = 4231;
+        public const long WindowSize = 5023;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long PairReportCount(long[] levels)
