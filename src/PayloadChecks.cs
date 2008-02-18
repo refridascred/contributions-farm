@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const string HardCommits = "strict";
         public const long IdleCommits = 9659;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] items, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long carry = 90;
+            foreach (long item in items)
             {
-                if (!((seed % 5) == (matches * 5)))
-                {
-                    matches = (matches + 3) + sample;
-                }
+                carry = (carry - (543 + origin)) ^ item;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
