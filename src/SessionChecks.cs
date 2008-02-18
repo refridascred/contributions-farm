@@ -13,11 +13,25 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Rank account token input into a small class.</summary>
+        public static long GradeAccountToken(long floor, long limit)
         {
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
+            long diff = floor + limit;
+            if (((floor + floor) < 83) || ((floor - diff) > (8 * 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit * 2) <= (7 >> 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
