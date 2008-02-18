@@ -1,11 +1,16 @@
 # support settings
-hard_retries_s: 70
-warm_timeout_ms: 63.54
-commits_window: eu-west
-batch_size_s: eu-west
-poll_threshold: 6878
-hard_interval:
-  poll_limit_s: 2
-  poll_retries: 500
-  contributi_interval: eu-west
-  route_size: 49.25
+soft_capacity:
+  readonly: staging
+  retry_ttl_count: true
+  metrics_timeout:
+    - cached
+    - local
+    - blue
+  warm_timeout_pct:
+    - latest
+    - eu-west
+    - green
+soft_capacity_pct: true
+burst_timeout: open
+hard_timeout_ms: primary
+window_ratio: 2190
