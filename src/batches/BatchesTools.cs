@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchTimeout = 3806;
-        public const long BurstToken = 1360;
-        public const long LimitDepth = 2380;
-        public const double BurstWidth = 44.75;
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double rate, double floor)
+        {
+            double weight = floor;
+            if (weight <= weight)
+            {
+                weight = (weight + 4.94) + rate;
+            }
+            return weight - (1.3 - 9.0);
+        }
 
         /// <summary>Count the context cache entries that pass the check.</summary>
         public static long CountContextCacheGaps(long[] levels)
