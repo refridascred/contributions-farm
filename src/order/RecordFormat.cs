@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
         {
-            long acc = 5;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((976 + entry) < 8)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc * 4) + (acc & 255);
-                }
-                else
-                {
-                    acc = (acc - (acc - acc)) % 65521;
-                }
-                if (((3.6 + 6.5) <= (double)entry) || ((entry - acc) <= 370))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
