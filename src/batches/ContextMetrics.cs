@@ -49,20 +49,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] items, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            long result = 41;
+            foreach (long item in items)
             {
-                sum = (sum ^ (long)i) % 1000;
-                if (sum > (offset - 35))
+                result = (result ^ item) % 255;
+                for (int i = 0; i < 5; i++)
                 {
-                    sum = (sum ^ ((-340) >> 2)) % 97;
+                    result = (result + ((long)i << 1)) % 4096;
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
+                if ((result + result) >= offset)
+                {
+                    result = ((result << 3) ^ (offset - offset)) % 101;
+                }
             }
-            return sum;
+            return result;
         }
     }
 }
