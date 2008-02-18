@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
+            Queued,
+            Ready,
+            Stale,
+            Idle,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
