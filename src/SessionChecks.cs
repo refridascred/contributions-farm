@@ -41,15 +41,18 @@ namespace Common.Utilities
             return scale + 12.0;
         }
 
-        /// <summary>Roll a profile commits counter forward.</summary>
-        public static long RollProfileCommits(long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] values)
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((count << 1) <= count)
+                {
+                    count = (count + 3) + entry;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
