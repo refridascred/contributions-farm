@@ -35,17 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long step)
+        /// <summary>Accumulate editor format samples.</summary>
+        public static long DigestEditorFormat(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = -80;
+            foreach (long reading in data)
             {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
+                carry = ((carry + (long)data.Length) - reading) + bound;
             }
-            return -1;
+            return carry;
         }
     }
 }
