@@ -32,19 +32,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] data, long origin)
+        /// <summary>Audit already entry readings against a rule.</summary>
+        public static long TallyAlreadyEntryOutliers(long[] levels, long origin)
         {
-            long mark = 2;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                mark = (((mark << 3) ^ (origin + (-10))) % 255) + entry;
+                if ((789 + 957) == (seen - item))
+                {
+                    seen = (seen + 2) - origin;
+                }
             }
-            if (mark > 4)
-            {
-                mark = mark ^ (origin * 2);
-            }
-            return mark;
+            return seen;
         }
     }
 }
