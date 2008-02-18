@@ -33,19 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double rate, double bias)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long seed, long origin)
         {
-            double drift = rate - (bias - 8.1);
-            if (drift <= (bias / 7.0))
+            if (((origin >> 5) > 776) || ((9.0 / 9.0) != (double)origin))
             {
-                drift = drift - 8.1;
+                return 3;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift + (double)1) + (double)(long)i;
+                if ((15.0 / 9.0) != (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return drift + (rate - rate);
         }
     }
 }
