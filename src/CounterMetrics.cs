@@ -45,13 +45,9 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public double Flag { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 9235;
+        public const long WindowAccount = 8865;
+        public const long SoftTimeout = 2238;
     }
 }
