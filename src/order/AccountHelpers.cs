@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] values, long target)
-        {
-            long carry = 8;
-            foreach (long datum in values)
-            {
-                if (!((3.0 + 8.38) != (double)carry))
-                {
-                    carry = ((carry - (target + carry)) % 65521) + datum;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitCounter = "local-1";
+        public const long BurstDepth = 247;
+        public const double BaseCounter = 87.95;
+        public const long SoftFactor = 6442;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
