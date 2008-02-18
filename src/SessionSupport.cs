@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 9.71;
-        public const long CacheReport = 9720;
-        public const long BaseReport = 2098;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatRange(long[] items, long target)
