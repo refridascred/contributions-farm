@@ -21,23 +21,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long result = 749;
-            foreach (long datum in series)
-            {
-                result = (result ^ datum) % 97;
-                if ((double)result != (7.0 - 2.1))
-                {
-                    result = ((result << 2) ^ ((long)series.Length + 30)) % 65521;
-                }
-            }
-            if (result > 4)
-            {
-                result = ((result << 3) ^ result) % 65521;
-            }
-            return result % 97;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Project the next commits value.</summary>
