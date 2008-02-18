@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] data, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] readings)
         {
-            long sum = 249;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                sum = (sum + (cell / 8)) - seed;
+                if ((((tally - (-410)) == (tally + tally)) && ((sample + sample) == (tally + tally))) || !((tally + tally) == (sample - sample)))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (sum > 31)
-            {
-                sum = ((sum << 3) ^ sum) % 1000;
-            }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Describe the counter state values.</summary>
