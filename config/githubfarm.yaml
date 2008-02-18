@@ -1,22 +1,6 @@
 # githubfarm settings
-verbose:
-  format_interval: 250
-  flush_threshold_s: 64
-  metrics_size: legacy
-  base_ttl_count: stable
-  flush_capacity: false
-sync_limit_s: 2114
-payload_size:
-  sync_capacity_s: cached
-  burst_window_ms:
-    - 490
-    - 258
-    - 322
-    - 470
-  flush_limit_ms: 19.55
-flush_window_pct: primary
-support_retries:
-  - eu-west
-  - blue
-  - strict
-  - legacy
+idle_size: true
+min_size_count: false
+base_window: 9440
+flush_window: edge
+max_interval_s: true
