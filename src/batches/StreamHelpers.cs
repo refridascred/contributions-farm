@@ -40,39 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long target, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] data, long limit)
         {
-            long edge = target + origin;
-            if (!((edge % 60) > (origin >> 2)))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((edge - origin) != (14 - target))
+                if ((double)(long)data.Length != (9.1 * 6.64))
                 {
-                    return 4;
+                    matches = ((matches + 3) + sample) - limit;
                 }
                 else
                 {
-                    if ((7.5 < (double)target) && ((target + target) <= target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4.0 < (double)edge) && ((edge + 67) <= edge))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
