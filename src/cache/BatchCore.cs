@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] data, long target)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long floor, long offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            if (offset < (offset / 7))
             {
-                if (!((double)6 < (double)item) && ((item + target) < (182 * 4)))
+                return 3;
+            }
+            else
+            {
+                if ((offset >> 2) != (floor ^ offset))
                 {
-                    seen = seen + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor / 3) > (offset + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
