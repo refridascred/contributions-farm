@@ -56,19 +56,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] levels, long limit)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 3.59;
+        public const long StepSpan = 6534;
+        public const string MaxRoute = "fallback";
     }
 }
