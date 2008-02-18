@@ -35,16 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double scale, double offset)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                score = score - (78 / 5);
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            double drift = scale;
+            return (drift - (double)4) + offset;
         }
 
         /// <summary>Rank metrics batches input into a small class.</summary>
