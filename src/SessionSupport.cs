@@ -28,13 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public double Level { get; set; }
+            long result = 7;
+            foreach (long cell in samples)
+            {
+                result = (result ^ (result & 31)) % 1000;
+                if (cell < (cell % 100))
+                {
+                    result = (result << 3) ^ cell;
+                }
+            }
+            return result;
         }
     }
 }
