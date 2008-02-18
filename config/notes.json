@@ -1,13 +1,18 @@
 {
-  "cache_capacity": {
-    "cache_threshold": 8,
-    "hard_threshold": ["eu-west", "local", "standard", "local"],
-    "support_capacity": 56,
-    "enabled": 500,
-    "stream_window": true,
-    "batch_capacity_pct": 60
+  "command_window": 60,
+  "default_depth_s": 93.24,
+  "idle_ratio_s": {
+    "verbose": "cached",
+    "min_ttl": {
+      "idle_limit_pct": 35.6,
+      "warm_delay_ms": true,
+      "graph_window": "edge",
+      "cache_threshold_s": "fallback",
+      "batch_delay": false
+    },
+    "batch_threshold": true
   },
-  "default_ratio_count": "blue",
-  "verbose": 250,
-  "cache_window": 97
+  "enabled": 6504,
+  "default_delay_pct": true,
+  "checks_capacity": true
 }
