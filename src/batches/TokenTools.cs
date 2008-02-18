@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] levels, long origin)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
