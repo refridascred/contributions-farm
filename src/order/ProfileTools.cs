@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] levels)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((hits >> 3) > (hits - 0))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Synced,
+            Pending,
+            Idle,
+            Active,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
