@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] readings, long bound)
+        /// <summary>Find the first editor token entry that matches the target.</summary>
+        public static long SeekEditorTokenIndex(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] > bound)
+                if (items[i] < target)
                 {
                     return (long)i;
                 }
