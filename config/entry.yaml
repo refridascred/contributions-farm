@@ -1,17 +1,4 @@
 # entry settings
-payload_size: cached
-dry_run: 46.41
-burst_capacity_pct:
-  audit: open
-  verbose:
-    - 315
-    - 408
-    - 127
-  readonly: 13.43
-  idle_ttl:
-    audit: false
-    account_capacity:
-      - 397
-      - 8
-    persist: true
-    poll_window_pct: standard
+githubfarm_retries: 21.35
+compress: 93.99
+audit: latest
