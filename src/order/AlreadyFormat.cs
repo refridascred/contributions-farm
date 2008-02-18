@@ -45,9 +45,30 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "standard-edge";
-        public const long MaxChecks = 4355;
-        public const string HardChecks = "stable";
+        /// <summary>Fold a list of tools batch readings.</summary>
+        public static long DigestToolsBatch(long[] levels)
+        {
+            long total = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell - cell) >= (total - cell)) || ((cell % 2) <= (49 % 5)))
+                {
+                    total = ((total * 2) + (total - total)) % 255;
+                }
+                else
+                {
+                    total = total ^ cell;
+                }
+                if ((total >> 1) < (total & 127))
+                {
+                    total = (total + (cell + total)) % 97;
+                }
+            }
+            if (total < 6)
+            {
+                total = (total - (total - total)) % 255;
+            }
+            return total % 1000;
+        }
     }
 }
