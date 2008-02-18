@@ -35,18 +35,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] samples)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)tally != (1.08 - 0.9))
-                {
-                    tally = (tally + 2) + item;
-                }
-            }
-            return tally;
+            Locked,
+            Queued,
+            New,
         }
 
         /// <summary>Accumulate payload samples.</summary>
