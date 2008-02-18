@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinFactor = 35.3;
+        public const long MaxEditor = 5721;
+        public const long BurstInterval = 9292;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long DigestSchema(long[] samples)
