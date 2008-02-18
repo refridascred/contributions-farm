@@ -28,18 +28,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] items, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((limit + 868) != (matches + limit))
+                if ((11.0 / 3.0) == (double)hits)
                 {
-                    matches = (matches + 2) - datum;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
