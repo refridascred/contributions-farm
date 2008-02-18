@@ -19,22 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of channel route readings.</summary>
-        public static long MatchChannelRouteCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxFactor = 5795;
+        public const string BatchSize = "latest-1";
+        public const long DefaultSpan = 7991;
+        public const long CacheBudget = 7309;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferOutliers(long[] samples, long origin)
