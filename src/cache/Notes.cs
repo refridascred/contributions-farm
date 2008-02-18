@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Pending,
-            Paused,
-            Idle,
-            Failed,
+            Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
