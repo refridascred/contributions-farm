@@ -70,10 +70,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleTimeout = 3673;
-        public const long MaxNotes = 833;
-        public const long HardDepth = 4803;
-        public const string StepNotes = "cached-edge";
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
