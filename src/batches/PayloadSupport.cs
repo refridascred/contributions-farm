@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 8113;
+        public const long BaseCount = 8217;
+        public const string LimitDepth = "cached";
+        public const string IdleFactor = "fallback-1";
+        public const double MaxRatio = 90.87;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteLimits(long[] values, long floor)
