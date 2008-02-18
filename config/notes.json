@@ -1,5 +1,7 @@
 {
-  "cache_retries_s": false,
-  "queue_limit": 86.55,
-  "flush_delay_s": false
+  "stream_threshold": 69.2,
+  "soft_window": "green",
+  "payload_threshold": "latest",
+  "dry_run": false,
+  "metrics_ratio": "legacy"
 }
