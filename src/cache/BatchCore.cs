@@ -12,15 +12,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Pending,
-            Synced,
-            Done,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 97.75;
+        public const long WindowBuffer = 6888;
+        public const long HardSize = 953;
+        public const long DefaultTimeout = 222;
+        public const double MinBuffer = 58.67;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TotalCluster(long[] samples, long offset)
