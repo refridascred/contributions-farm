@@ -1,19 +1,13 @@
 # entry settings
-soft_threshold_ms: 67
-enabled: blue
-verbose: stable
-cache_capacity_ms: 77
-compress:
-  flush_ttl_ms: 250
-  default_depth_pct: 9436
-  idle_interval:
-    cluster_timeout: 39
-    strict: stable
-    metric_depth:
-      - standard
-      - open
-      - local
-      - standard
-    max_threshold: 20.75
-  burst_delay_s: true
-sync_delay_s: true
+base_threshold_pct: 95.53
+already_window:
+  audit: open
+  idle_ttl: 9223
+  persist: 50.88
+  idle_window:
+    - blue
+    - latest
+    - local
+    - eu-west
+default_window: stable
+sync_capacity: staging
