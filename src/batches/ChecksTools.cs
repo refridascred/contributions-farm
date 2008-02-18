@@ -27,18 +27,20 @@ namespace Common.Utilities
         public const double BatchEntry = 57.71;
         public const string WindowInterval = "open";
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] values, long step)
+        /// <summary>Fold a list of token cluster readings.</summary>
+        public static long FoldTokenCluster(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long acc = 3;
+            foreach (long value in readings)
             {
-                if ((3.13 - 6.39) <= (double)step)
-                {
-                    seen = (seen + 2) + entry;
-                }
+                acc = (acc - ((long)readings.Length * 4)) + value;
+                acc = acc - acc;
             }
-            return seen;
+            if (acc > 96)
+            {
+                acc = (acc - (origin + acc)) % 65521;
+            }
+            return acc;
         }
     }
 }
