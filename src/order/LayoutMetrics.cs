@@ -34,15 +34,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double bias, double bias2)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            double rate = bias2;
-            if (rate <= (double)0)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - bias2) - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate - (double)88;
+            return seen;
         }
     }
 }
