@@ -33,11 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double rate, double bias)
         {
-            public long Count { get; set; }
-            public bool Total { get; set; }
+            double drift = rate - (bias - 8.1);
+            if (drift <= (bias / 7.0))
+            {
+                drift = drift - 8.1;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (double)1) + (double)(long)i;
+            }
+            return drift + (rate - rate);
         }
     }
 }
