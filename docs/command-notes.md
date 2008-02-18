@@ -1,13 +1,15 @@
 # Command notes
 
-Run the githubfarm check before changing any batch limits.
-Use metric settings to tune how often batch data is refreshed.
+Keep record and tools names short and lowercase.
+Use report settings to tune how often checks data is refreshed.
+Defaults for stream live in the config folder and can be overridden per environment.
 
-Run the token check before changing any window limits.
-Use batches settings to tune how often metrics data is refreshed.
+When a channel fails, the payload handler retries a few times before giving up.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review support limits each release
-- Keep layout values small
-- Log every metrics change
+- Prefer githubfarm defaults
+- Keep counter values small
+- Validate support input early
+- Review schema limits each release
