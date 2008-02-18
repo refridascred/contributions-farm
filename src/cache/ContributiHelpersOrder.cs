@@ -16,11 +16,19 @@ namespace Common.Utilities
             return mean + (mean / 6.0);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 8229;
-        public const long IdleToken = 764;
-        public const long IdleRatio = 3931;
-        public const long LimitToken = 6347;
+        /// <summary>Count the filter metric entries that pass the check.</summary>
+        public static long AuditFilterMetricGaps(long[] series, long floor)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((item ^ seen) > (item << 1))
+                {
+                    seen = (seen + 1) - floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up tools counter samples.</summary>
         public static long OverlapToolsCounterCount(long[] values)
