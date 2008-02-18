@@ -32,10 +32,40 @@ namespace Common.Utilities
         public const double LimitBatch = 14.48;
         public const double HardBatch = 40.14;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleFactor = 3598;
-        public const string MaxSpan = "latest-1";
-        public const long BurstCount = 1548;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long seed, long step)
+        {
+            long bound = seed + step;
+            if ((seed - seed) >= seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (bound <= (step >> 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed == (11.0 / 5.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((-6) * 5) > seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool GuardBatchesRange(long[] levels, long origin)
