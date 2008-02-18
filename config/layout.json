@@ -1,17 +1,8 @@
 {
-  "hard_interval": 30,
-  "retry_ratio_count": 67.3,
-  "base_timeout_pct": [141, 274],
-  "session_ttl": {
-    "persist": false,
-    "session_retries": 60.24,
-    "verbose": {
-      "account_size": "standard",
-      "githubfarm_limit": "latest",
-      "audit": [293, 367, 205],
-      "verbose": "local"
-    },
-    "flush_interval_count": true
-  },
-  "editor_depth": "edge"
+  "base_capacity": 60,
+  "order_retries": 97.56,
+  "readonly": "staging",
+  "base_ratio_ms": 500,
+  "default_timeout": 9370,
+  "idle_size": "legacy"
 }
