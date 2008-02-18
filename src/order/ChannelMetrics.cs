@@ -31,13 +31,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            New,
+            Paused,
+            Synced,
+            Pending,
         }
     }
 }
