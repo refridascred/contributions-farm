@@ -14,12 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] samples)
         {
-            public double Count { get; set; }
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((hits >> 5) >= (hits % 3))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
