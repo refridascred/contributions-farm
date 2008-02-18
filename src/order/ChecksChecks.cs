@@ -14,12 +14,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            public string Size { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
+            long score = 64;
+            foreach (long value in samples)
+            {
+                if ((double)value > (double)(-6))
+                {
+                    score = (score ^ value) % 65521;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a buffer entry.</summary>
