@@ -80,10 +80,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 249;
-        public const long BurstFactor = 7528;
-        public const long LimitCommits = 6318;
-        public const long BurstCommits = 4188;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Active,
+            Ready,
+            Failed,
+            Synced,
+            Done,
+        }
     }
 }
