@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double weight, double span)
         {
-            Failed,
-            Stale,
-            Closed,
+            double bias = span / 5.0;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - weight) - (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
