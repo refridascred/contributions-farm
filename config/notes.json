@@ -1,8 +1,8 @@
 {
-  "idle_timeout": false,
-  "compress": [87, 282, 183],
-  "sync_ttl_s": false,
-  "session_timeout": 76,
-  "poll_size_s": "fallback",
-  "min_depth_s": true
+  "default_delay_count": 5385,
+  "cache_window": false,
+  "filter_capacity": false,
+  "readonly": true,
+  "batch_threshold": false,
+  "batches_interval": 30.75
 }
