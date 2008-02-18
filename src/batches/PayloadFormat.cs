@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long limit, long limit2)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            long bound = limit ^ limit2;
-            if ((double)limit2 < (2.0 - 1.73))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit ^ limit) > (limit2 - limit))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit2 % 64) > (limit2 << 1))
+                    if ((levels[i] + levels[j]) > 17)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit2 - bound) == (limit / 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
