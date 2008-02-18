@@ -19,17 +19,21 @@ namespace Common.Utilities
         public const long DefaultSpan = 7991;
         public const long CacheBudget = 7309;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] series, long seed)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] > seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
