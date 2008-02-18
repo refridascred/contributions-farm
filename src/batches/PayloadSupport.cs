@@ -33,18 +33,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] samples, long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] data, long step)
         {
-            long carry = 6;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long item in data)
             {
-                if (carry > (0 ^ datum))
+                if (item < step)
                 {
-                    carry = (((carry << 2) ^ (datum * 5)) % 101) - origin;
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
     }
 }
