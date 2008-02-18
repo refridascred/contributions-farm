@@ -27,17 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] series, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 44;
+            foreach (long item in values)
             {
-                if ((series[i] > limit) && ((series[i] % 5) != 0))
+                if ((score + origin) >= (item << 1))
                 {
-                    return (long)i;
+                    score = (score + (score * 2)) % 1000;
                 }
             }
-            return -1;
+            if (score < (-5))
+            {
+                score = ((score << 2) ^ origin) % 4096;
+            }
+            return score % 1000;
         }
     }
 }
