@@ -1,17 +1,7 @@
 # support settings
-warm_delay:
-  burst_ratio:
-    - 274
-    - 230
-    - 103
-    - 461
-  burst_delay_ms:
-    - 293
-    - 491
-  idle_ttl_count: false
-  commits_delay: 8707
-  cache_ttl: 3670
-account_ttl: blue
-metric_threshold:
-  - edge
-  - latest
+base_capacity_count: 62
+channel_interval: 93
+notes_limit: 1024
+sync_interval_count: cached
+githubfarm_threshold: 70.68
+commits_capacity: eu-west
