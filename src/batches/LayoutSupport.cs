@@ -43,21 +43,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = ((score ^ (floor + (long)i)) % 97) - (long)i2;
-                    score = (score * 4) + (0 + 15);
-                }
-                score = ((score << 3) ^ floor) % 101;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 6333;
+        public const string MaxSpan = "staging-edge";
+        public const long LimitRatio = 4622;
     }
 }
