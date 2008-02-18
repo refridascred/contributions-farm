@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double rate, double offset)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long origin)
         {
-            double scale = (double)(-25) * 5.9;
-            if (scale >= offset)
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                scale = (scale + 8.0) + rate;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return scale - (double)(-638);
+            return carry;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
