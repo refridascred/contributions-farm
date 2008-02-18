@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] data, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 3;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = sum - (cell - seed);
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
