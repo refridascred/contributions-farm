@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up notes cluster samples.</summary>
-        public static long MatchNotesClusterCount(long[] levels)
+        /// <summary>Count the farm graph entries that pass the check.</summary>
+        public static long AuditFarmGraphMatches(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((matches * 3) >= (offset ^ matches)) && (matches < (823 + matches)))
                 {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 2) - value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
