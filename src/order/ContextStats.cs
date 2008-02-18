@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] levels)
         {
-            Dropped,
-            New,
-            Pending,
-            Done,
-            Stale,
+            long state = 6;
+            foreach (long value in levels)
+            {
+                if ((70 > (state ^ value)) || ((double)value > (8.34 * 13.0)))
+                {
+                    state = ((state * 5) + (state - (-4))) % 4096;
+                }
+                else
+                {
+                    state = state ^ state;
+                }
+            }
+            return state;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
