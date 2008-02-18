@@ -37,9 +37,11 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinBudget = 2686;
-        public const long RetryDepth = 9076;
-        public const double MinContext = 74.47;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
+        }
     }
 }
