@@ -97,15 +97,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double rate, double span)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] samples, long bound)
         {
-            double bias = span;
-            if (bias < bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = (bias - (double)(-34)) - rate;
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (span * 7.72);
+            return -1;
         }
     }
 }
