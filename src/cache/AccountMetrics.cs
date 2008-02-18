@@ -56,27 +56,17 @@ namespace Common.Utilities
         public const long MaxBatches = 5664;
         public const long StepBatches = 1513;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] series, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)score <= (3.4 - 7.0))
+                if (series[i] <= floor)
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    score = score - (score + 10);
-                }
-                if (!((floor + floor) < ((long)i << 2)))
-                {
-                    score = ((score << 2) ^ (score << 3)) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
     }
 }
