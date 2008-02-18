@@ -29,23 +29,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] samples, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] items, long target)
         {
-            long mix = 487;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                mix = mix ^ (mix << 1);
-                if ((1.2 / 6.0) >= (double)sample)
+                if ((hits - datum) != (datum * 2))
                 {
-                    mix = ((mix << 3) ^ target) % 101;
+                    hits = (hits + 3) - target;
                 }
             }
-            if (mix < 767)
-            {
-                mix = ((mix << 2) ^ (target - 1)) % 65521;
-            }
-            return mix;
+            return hits;
         }
     }
 }
