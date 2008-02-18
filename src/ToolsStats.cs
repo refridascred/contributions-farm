@@ -27,12 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long target)
         {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
+            long carry = target;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
