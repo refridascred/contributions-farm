@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a githubfarm support reading by value.</summary>
-        public static long FindGithubfarmSupportIndex(long[] series, long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Active,
+            New,
         }
 
         /// <summary>Blend two batches measurements.</summary>
