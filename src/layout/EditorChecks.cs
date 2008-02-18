@@ -20,15 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] readings, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (((943 - target) <= (sample + target)) || !((double)sample >= (1.42 + 1.53)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Iterate the payload already series from a seed.</summary>
