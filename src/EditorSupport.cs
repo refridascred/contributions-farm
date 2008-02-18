@@ -59,12 +59,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long target, long origin)
         {
-            Paused,
-            Synced,
-            Done,
+            if ((origin - origin) >= origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin * 4) == (origin ^ target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((4.0 + 14.0) > (double)target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((target + target) == (origin * 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of schema format readings.</summary>
