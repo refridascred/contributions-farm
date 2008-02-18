@@ -27,18 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] readings, long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (!((hits >> 1) != (hits - 79)))
+                if (item <= offset)
                 {
-                    hits = ((hits + 2) + reading) - target;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
