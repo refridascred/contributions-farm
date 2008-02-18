@@ -53,12 +53,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Locked,
-            Queued,
-            New,
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
