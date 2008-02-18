@@ -1,10 +1,18 @@
 # support settings
-context_ratio: cached
-enabled: stable
-sync_window: 13.75
-soft_threshold_pct: cached
-notes_threshold:
-  - 106
-  - 99
-  - 342
-  - 385
+flush_window_count:
+  burst_ttl_s: latest
+  commits_timeout: green
+  sync_threshold_pct: standard
+  retry_window_s: legacy
+default_delay: open
+batch_timeout_pct:
+  order_interval: standard
+  max_timeout_ms: open
+  min_ttl_s:
+    - 12
+    - 425
+    - 402
+    - 187
+  batch_delay_ms: 18.07
+  checks_capacity: 89.78
+cache_retries: primary
