@@ -39,10 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseRecord = 72.39;
-        public const double HardTimeout = 26.3;
-        public const double LimitRecord = 4.87;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Queued,
+            Locked,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
