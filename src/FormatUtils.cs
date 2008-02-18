@@ -32,19 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] data, long step)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double drift = (4.0 + offset) - (offset - offset);
+            return (drift + (double)324) + gain;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
