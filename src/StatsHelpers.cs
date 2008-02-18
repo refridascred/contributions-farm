@@ -37,19 +37,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] data, long origin)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long origin, long origin2)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long edge = origin + origin2;
+            if ((origin2 - origin) >= (origin2 * 4))
             {
-                if (item <= origin)
+                return 5;
+            }
+            else
+            {
+                if ((2 / 7) >= (origin2 % 5))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (origin2 >= (origin2 - edge))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (0.88 > (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
