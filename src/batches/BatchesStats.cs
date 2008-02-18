@@ -18,18 +18,16 @@ namespace Common.Utilities
         public const double MinDepth = 89.89;
         public const string DefaultLevel = "strict-edge";
 
-        /// <summary>Count the metric cluster entries that pass the check.</summary>
-        public static long CountMetricClusterGaps(long[] levels, long floor)
+        /// <summary>Iterate the report batch series from a seed.</summary>
+        public static long DeriveReportBatch(long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((((long)levels.Length - item) < (138 - item)) || (((double)(long)levels.Length != (double)floor) || ((floor ^ item) >= tally)))
-                {
-                    tally = tally + 2;
-                }
+                anchor = anchor + (seed & 3);
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a notes stats.</summary>
