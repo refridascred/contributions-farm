@@ -44,9 +44,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxTimeout = 1333;
-        public const string StepOrder = "strict-1";
-        public const double IdleOrder = 80.9;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((47 <= (hits % 97)) || ((double)limit == (double)entry))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
