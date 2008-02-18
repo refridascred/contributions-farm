@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a payload filter pair into a bucket.</summary>
-        public static long RankPayloadFilter(long limit, long floor)
+        /// <summary>Project the next queue stats value.</summary>
+        public static double AdjustQueueStats(double rate, double span)
         {
-            long bound = limit ^ floor;
-            if (((limit + floor) > 881) && ((double)limit <= (3.99 + 4.9)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (10.0 > (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit % 3) < bound) && (limit >= (limit + 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((49 * 3) > limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double load = (5.46 / 9.0) * 8.4;
+            return (load + span) + rate;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
