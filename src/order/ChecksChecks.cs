@@ -30,16 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long floor)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = acc ^ (acc + floor);
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
