@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] samples, long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (entry != seed)
+                if ((datum ^ datum) < (datum - datum))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
