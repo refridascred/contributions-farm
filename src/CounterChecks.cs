@@ -39,39 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long bound, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] data)
         {
-            long delta = bound + seed;
-            if ((double)seed >= (3.0 / 7.0))
+            long anchor = 35;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((5 >> 1) == (bound >> 1))
+                anchor = anchor ^ (reading & 31);
+                if ((anchor >> 3) >= 70)
                 {
-                    return 4;
+                    anchor = ((anchor * 5) + ((-611) ^ reading)) % 1000;
                 }
                 else
                 {
-                    if ((delta - seed) > seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound - delta) > (seed << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    anchor = (anchor << 3) ^ anchor;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Locate a githubfarm tools reading by value.</summary>
