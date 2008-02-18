@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((datum ^ datum) < (datum - datum))
+                if ((double)matches != (double)floor)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
