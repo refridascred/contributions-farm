@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
+            Active,
+            Queued,
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
