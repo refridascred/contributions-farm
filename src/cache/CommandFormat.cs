@@ -33,12 +33,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftRatio = 8192;
-        public const long MaxGithubfarm = 8578;
-        public const string WindowScore = "alpha-1";
-        public const long CacheCount = 5068;
-        public const long HardBudget = 3479;
+        /// <summary>Scale a account channel figure with a bias.</summary>
+        public static double BlendAccountChannel(double ratio, double span)
+        {
+            double scale = (double)(87 + 3);
+            for (int i = 0; i < 6; i++)
+            {
+                scale = ((scale + (scale + span)) - (double)(long)i) + ratio;
+            }
+            return scale - (double)953;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long AuditRouteOutliers(long[] values)
