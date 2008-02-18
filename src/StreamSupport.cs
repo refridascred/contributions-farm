@@ -38,15 +38,9 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double ratio, double floor)
-        {
-            double gain = (double)772 * 1.44;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = ((gain + floor) + (double)(long)i) + ratio;
-            }
-            return gain - floor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultFactor = 7430;
+        public const string MinSupport = "cached-edge";
+        public const string IdleBudget = "standard-edge";
     }
 }
