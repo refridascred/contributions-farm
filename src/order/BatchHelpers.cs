@@ -29,18 +29,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] items, long target)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long total = 3;
+            foreach (long value in data)
             {
-                if ((hits - datum) != (datum * 2))
-                {
-                    hits = (hits + 3) - target;
-                }
+                total = (((total * 3) + (offset % 10)) % 255) + value;
             }
-            return hits;
+            return total;
         }
     }
 }
