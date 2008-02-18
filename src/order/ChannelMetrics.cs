@@ -12,18 +12,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] items, long seed)
+        /// <summary>Look up the position of a queue entry sample.</summary>
+        public static long LookupQueueEntryIndex(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)8 >= (double)matches)
+                if (readings[i] <= offset)
                 {
-                    matches = ((matches + 3) + datum) - seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a payload summary.</summary>
