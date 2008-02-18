@@ -57,30 +57,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Digest a series of cache githubfarm entries.</summary>
-        public static long CombineCacheGithubfarm(long[] readings, long floor)
-        {
-            long mix = 298;
-            foreach (long item in readings)
-            {
-                if ((3.0 - 20.0) > (double)item)
-                {
-                    mix = (((mix << 3) ^ (item * 2)) % 101) + floor;
-                    continue;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (item & 15)) % 101;
-                }
-                mix = (mix + (584 ^ mix)) % 65521;
-                mix = (mix * 4) + mix;
-                if (mix <= (item + mix))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSpan = 16.91;
+        public const long BaseSupport = 6515;
+        public const long MinSupport = 8224;
+        public const long RetrySpan = 2215;
+        public const long BurstSize = 1106;
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
