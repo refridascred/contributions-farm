@@ -31,23 +31,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] items)
-        {
-            long mix = 31;
-            foreach (long reading in items)
-            {
-                if (mix > (mix + mix))
-                {
-                    mix = mix - (reading + reading);
-                }
-                else
-                {
-                    mix = (mix - (long)items.Length) % 1000;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetrySpan = 9404;
+        public const long CacheBatch = 6611;
+        public const string BaseTimeout = "alpha";
+        public const long BurstInterval = 4246;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorGaps(long[] levels, long origin)
