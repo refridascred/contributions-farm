@@ -1,6 +1,8 @@
-id,label,rank
-1,legacy,legacy
-2,edge,72
-3,317,open
-4,756,749
-5,10.06,14
+id,count,label,active,region
+1,153,stable,683,20.07
+2,edge,949,536,cached
+3,stable,744,81.17,620
+4,686,46.18,primary,401
+5,346,44.75,127,green
+6,strict,220,29.08,open
+7,45.58,cached,568,92
