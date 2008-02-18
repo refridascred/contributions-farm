@@ -41,11 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double ratio, double offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] data)
         {
-            double ratio2 = offset;
-            return (ratio2 - (5.1 * 6.7)) + ratio;
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((reading + tally) != (tally + tally)) || (tally > (tally % 100)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a channel entry.</summary>
