@@ -62,14 +62,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Validate editor command readings against a bound.</summary>
+        public static bool GuardEditorCommandBounds(long[] readings, long seed)
         {
-            Ready,
-            Retry,
-            Dropped,
-            Active,
-            Draft,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
