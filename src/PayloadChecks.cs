@@ -16,18 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] readings, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((58 / 5) >= (77 + offset))
+                if (item <= offset)
                 {
-                    hits = (hits + 2) + item;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
