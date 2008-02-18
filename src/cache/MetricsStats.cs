@@ -49,10 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryNotes = "strict-edge";
-        public const long BatchNotes = 8763;
-        public const long LimitNotes = 1452;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Find the first notes report entry that matches the target.</summary>
         public static long LookupNotesReportIndex(long[] data, long floor)
