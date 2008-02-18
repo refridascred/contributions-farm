@@ -31,32 +31,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cache metric series from a seed.</summary>
-        public static long SeriesCacheMetric(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 5) + ((long)i ^ mark)) % 4096;
-                if ((mark ^ 84) > (floor % 2))
-                {
-                    mark = (mark - (floor >> 5)) % 101;
-                    break;
-                }
-                else
-                {
-                    mark = mark + (floor << 3);
-                    mark = ((mark << 3) ^ (931 ^ floor)) % 101;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = ((mark * 4) + (mark << 3)) + (long)i2;
-                    mark = ((mark * 5) + (floor << 1)) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 1809;
+        public const long LimitFilter = 9825;
+        public const string StepFilter = "stable-1";
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
