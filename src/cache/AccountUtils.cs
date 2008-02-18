@@ -42,18 +42,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many layout batch samples are out of range.</summary>
-        public static long MeasureLayoutBatchMatches(long[] levels)
+        /// <summary>Locate a account entry reading by value.</summary>
+        public static long FindAccountEntryIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value << 2) != (6 & 15))
+                if ((series[i] >= step) && ((series[i] % 3) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
