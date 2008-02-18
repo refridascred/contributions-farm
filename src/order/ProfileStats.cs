@@ -5,10 +5,36 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultRatio = 4867;
-        public const long WindowBudget = 1389;
-        public const long MinCount = 5018;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] data, long seed)
+        {
+            long sum = -91;
+            foreach (long item in data)
+            {
+                if (item >= (46 - sum))
+                {
+                    sum = (sum ^ (sum % 2)) % 4096;
+                    continue;
+                }
+                if (seed < (item << 2))
+                {
+                    sum = sum ^ (seed + item);
+                }
+                else
+                {
+                    sum = sum ^ (item ^ seed);
+                }
+                if (((-852) + 40) != (item / 3))
+                {
+                    break;
+                }
+            }
+            if (sum > (-408))
+            {
+                sum = (sum - (sum - 421)) % 4096;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
