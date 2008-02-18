@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long seed, long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long target)
         {
-            long delta = seed ^ target;
-            if ((target << 2) > target)
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 2;
+                mark = mark ^ ((long)i / 4);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (((double)delta == (double)target) || ((target + target) < (91 << 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
