@@ -14,10 +14,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftRatio = 23.99;
-        public const long WindowDepth = 1226;
-        public const long CacheSize = 1549;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] items, long step)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] levels)
