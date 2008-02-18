@@ -79,21 +79,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((3.98 / 7.0) >= (double)hits)
                 {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) + sample;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
