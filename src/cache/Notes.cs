@@ -29,11 +29,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetrySize = 41.97;
-        public const double BatchChecks = 91.64;
-        public const string WindowBudget = "standard-edge";
-        public const long StepChecks = 6551;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] levels, long offset)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit schema stats readings against a rule.</summary>
         public static long AuditSchemaStatsMatches(long[] levels)
