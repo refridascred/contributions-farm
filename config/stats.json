@@ -1,13 +1,7 @@
 {
-  "format_interval": ["primary", "eu-west"],
-  "audit": "standard",
-  "hard_interval_pct": "eu-west",
-  "support_size": "primary",
-  "schema_window": {
-    "poll_window_pct": 100,
-    "flush_window": "eu-west",
-    "session_threshold": 58,
-    "format_capacity": 60
-  },
-  "poll_interval": false
+  "account_size": false,
+  "token_retries": 81.98,
+  "min_retries_s": 71,
+  "enabled": true,
+  "warm_capacity_ms": 3722
 }
