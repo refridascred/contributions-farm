@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] samples, long floor)
+        /// <summary>Combine profile graph values into a single score.</summary>
+        public static long ScoreProfileGraph(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 93;
+            foreach (long sample in series)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 5) == 0))
+                if ((sample + anchor) <= (sample << 3))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ sample) % 4096;
                 }
             }
-            return -1;
+            if (anchor > 456)
+            {
+                anchor = ((anchor * 2) + anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
