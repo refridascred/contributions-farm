@@ -16,20 +16,10 @@ namespace Common.Utilities
             return mean + (5.8 / 4.0);
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] data, long bound)
-        {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxInterval = "strict-1";
+        public const string WindowSpan = "legacy-v2";
+        public const double WindowInterval = 56.13;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetrySpan = 9404;
