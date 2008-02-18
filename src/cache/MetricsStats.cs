@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] readings)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (tally <= ((-36) - tally))
-                {
-                    tally = (tally + 3) - item;
-                }
-            }
-            return tally;
+            Closed,
+            New,
+            Dropped,
         }
 
         /// <summary>Hold a stats stats.</summary>
