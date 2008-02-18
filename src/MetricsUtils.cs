@@ -22,25 +22,19 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 1637;
         public const double StepGithubfarm = 0.12;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long target, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] readings, long offset)
         {
-            long diff = target + origin;
-            if ((target * 4) <= (target & 127))
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target << 1) != (diff + origin))
+                if (reading <= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
