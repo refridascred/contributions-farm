@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 9289;
-        public const double MinScore = 26.28;
-        public const double BaseCommand = 27.36;
+        /// <summary>Iterate the queue format series from a seed.</summary>
+        public static long StepQueueFormat(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long TallyFarm(long[] levels, long seed)
