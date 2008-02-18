@@ -47,9 +47,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxSpan = "staging-edge";
-        public const long BatchMetric = 1922;
-        public const long CacheInterval = 9560;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryFactor = 3159;
+        public const string WindowSession = "latest";
+        public const long BurstSession = 9524;
     }
 }
