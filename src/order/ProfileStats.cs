@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitWidth = 3206;
+        public const double WindowFactor = 29.84;
+        public const string HardAlready = "strict-edge";
+        public const double RetryAlready = 23.83;
 
         /// <summary>Compare every pair of channel notes readings.</summary>
         public static long MatchChannelNotesCount(long[] series)
