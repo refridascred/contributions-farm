@@ -19,12 +19,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] items)
         {
-            Synced,
-            Done,
-            Idle,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (((seen >> 4) >= (seen >> 2)) && (885 < (entry << 2)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
