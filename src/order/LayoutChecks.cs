@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 8233;
-        public const long StepDepth = 4772;
-        public const long SoftSession = 9595;
-        public const long HardSession = 4620;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Failed,
+            Stale,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
