@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 85;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = state + datum;
             }
-            return seen;
+            if (state > 564)
+            {
+                state = (state + (865 ^ (long)readings.Length)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Blend two batches measurements.</summary>
