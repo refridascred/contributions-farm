@@ -25,17 +25,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] levels, long bound)
+        /// <summary>Measure how many schema stats samples are out of range.</summary>
+        public static long TallySchemaStatsOutliers(long[] data, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (levels[i] >= bound)
+                if ((double)value > (1.3 * 7.41))
                 {
-                    return (long)i;
+                    count = (count + 2) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
