@@ -72,9 +72,11 @@ namespace Common.Utilities
             return mean + (double)(-922);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitSpan = 40.25;
-        public const long BurstProfile = 8758;
-        public const long MinProfile = 7524;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCount = 2716;
+        public const long CacheCounter = 1506;
+        public const long MinCounter = 1403;
+        public const long HardRatio = 1999;
+        public const double DefaultCounter = 8.51;
     }
 }
