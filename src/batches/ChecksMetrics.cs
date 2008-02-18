@@ -19,12 +19,33 @@ namespace Common.Utilities
         public const long CacheInterval = 544;
         public const string WindowScore = "cached-1";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "local";
-        public const double LimitTimeout = 31.51;
-        public const double DefaultRatio = 13.17;
-        public const long LimitMetric = 3281;
-        public const double SoftLevel = 11.55;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long bound, long step)
+        {
+            long gap = bound - step;
+            if (!((gap - gap) <= 11))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((gap + (-48)) < (822 % 16))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((bound % 16) > (step >> 2)) && ((double)step > (3.58 - 7.7)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a queue profile reading.</summary>
         public static double ScaleQueueProfile(double scale, double bias)
