@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a batches report reading by value.</summary>
-        public static long SeekBatchesReportIndex(long[] items, long target)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)((-5) / 6);
+            if (drift < (weight + drift))
             {
-                if ((items[i] >= target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - (weight * 9.22)) - span;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Check that every session profile entry stays within the limit.</summary>
