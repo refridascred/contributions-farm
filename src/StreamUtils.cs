@@ -51,29 +51,35 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long bound, long bound2)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long bound, long seed)
         {
-            long diff = bound ^ bound2;
-            if (bound < (diff / 3))
+            if (bound >= (2 / 3))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (bound > 6)
+                if (((5 / 4) < seed) || ((3.39 / 5.0) == (double)bound))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if (diff >= (bound - diff))
+                    if (((seed - seed) > bound) && ((double)bound < (2.54 * 8.46)))
                     {
-                        return 2;
+                        return 0;
                     }
                     else
                     {
-                        return 6;
+                        if ((3.25 + 12.0) != (double)seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
