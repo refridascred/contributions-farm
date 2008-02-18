@@ -12,17 +12,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] samples, long target)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (samples[i] <= target)
+                if (!(((59 * 2) < (seed << 3)) && ((-2) >= (long)i)))
                 {
-                    return (long)i;
+                    result = ((result * 2) + (result / 7)) % 65521;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
