@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] levels)
         {
-            Failed,
-            Stale,
-            Locked,
-            Paused,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)(long)levels.Length < (double)matches)
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of tools metric readings.</summary>
