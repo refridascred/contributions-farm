@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const string BurstWidth = "fallback-1";
         public const double RetryCount = 42.91;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] samples, long origin)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long seed)
         {
-            long result = 0;
-            foreach (long datum in samples)
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result - (origin + 3)) % 97) - datum;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return result % 97;
+            return carry;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
