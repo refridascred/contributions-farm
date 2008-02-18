@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] samples)
+        /// <summary>Check that every counter tools entry stays within the limit.</summary>
+        public static bool ValidateCounterToolsRange(long[] values, long step)
         {
-            long acc = 94;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (((item + item) <= (-25)) || (item > (item << 1)))
+                if (reading <= step)
                 {
-                    acc = (acc * 5) + (acc + item);
+                    flag = false;
+                    break;
                 }
-                acc = acc ^ (acc ^ acc);
             }
-            if (acc < 657)
-            {
-                acc = (acc - acc) % 97;
-            }
-            return acc % 65521;
+            return flag;
         }
 
         /// <summary>Describe the layout kind values.</summary>
