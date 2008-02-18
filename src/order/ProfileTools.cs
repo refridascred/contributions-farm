@@ -61,11 +61,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double bias, double bias2)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long floor)
         {
-            double drift = (double)(0 << 1);
-            return (drift + bias2) + bias;
+            long score = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                score = score ^ floor;
+                score = (score * 5) + (floor & 1);
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
