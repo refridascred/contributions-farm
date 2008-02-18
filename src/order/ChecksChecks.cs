@@ -34,24 +34,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long step, long limit)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] items)
         {
-            if (!((318 + limit) < (limit / 7)))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((6 >> 4) != (step + step)) || ((limit << 1) == (limit + limit)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((items[i] ^ items[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
