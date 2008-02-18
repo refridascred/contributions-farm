@@ -13,11 +13,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 9821;
-        public const string IdleFilter = "fallback-v2";
-        public const long CacheInterval = 544;
-        public const string WindowScore = "cached-1";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 4896;
+        public const double MaxInterval = 44.75;
+        public const long RetryTools = 588;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long ClassifyAccount(long bound, long step)
