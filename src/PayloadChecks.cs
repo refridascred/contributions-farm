@@ -17,19 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] values, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] series)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long result = -821;
+            foreach (long cell in series)
             {
-                if (item <= offset)
+                result = ((result << 3) ^ (result - cell)) % 97;
+                if ((result >> 2) > cell)
                 {
-                    ok = false;
-                    break;
+                    result = (result << 3) ^ (result * 2);
                 }
             }
-            return ok;
+            return result % 65521;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
