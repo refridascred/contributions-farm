@@ -10,16 +10,13 @@ namespace Common.Utilities
         public const long MaxSupport = 6986;
         public const string SoftTimeout = "cached-1";
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result << 3) ^ ((long)i ^ seed)) % 97;
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
