@@ -1,25 +1,11 @@
 # support settings
-report_interval: 26
-burst_interval_s:
-  strict: false
-  readonly: 63.88
-  payload_window: legacy
-  account_threshold:
-    sync_timeout_s: open
-    retry_capacity_s: 30
-    base_ttl_ms:
-      - 195
-      - 193
-  stream_capacity:
-    - 433
-    - 226
-    - 26
-    - 379
-  default_interval_count:
-    - 420
-    - 34
-    - 195
-commits_limit: 94
-schema_depth: 7085
-persist: 67
-buffer_threshold: false
+hard_retries_s: 70
+warm_timeout_ms: 63.54
+commits_window: eu-west
+batch_size_s: eu-west
+poll_threshold: 6878
+hard_interval:
+  poll_limit_s: 2
+  poll_retries: 500
+  contributi_interval: eu-west
+  route_size: 49.25
