@@ -31,22 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] items)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((long)items.Length ^ item) < (item % 2))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Blend two support measurements.</summary>
