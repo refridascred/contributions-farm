@@ -1,7 +1,6 @@
 {
-  "stream_threshold": 69.2,
-  "soft_window": "green",
-  "payload_threshold": "latest",
-  "dry_run": false,
-  "metrics_ratio": "legacy"
+  "persist": true,
+  "cluster_retries": 5663,
+  "strict": "standard",
+  "batch_limit": [319, 43, 222]
 }
