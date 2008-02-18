@@ -65,39 +65,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a farm payload value against two limits.</summary>
-        public static long RankFarmPayload(long origin, long origin2)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] levels)
         {
-            long bound = origin ^ origin2;
-            if ((origin + bound) >= origin2)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin + bound) < (origin - bound)) && ((7 - bound) == (origin2 * 3)))
+                if (((reading >> 1) == (matches % 64)) && ((reading & 15) < (matches & 31)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (487 > (origin2 * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound << 1) < (origin2 * 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
