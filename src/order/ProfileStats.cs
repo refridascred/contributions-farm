@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] items, long target)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long sum = 13;
-            foreach (long cell in items)
-            {
-                if ((sum + 34) >= (cell + cell))
-                {
-                    sum = (sum - (target % 2)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum ^ 4)) % 4096;
-                }
-            }
-            if (sum > (-8))
-            {
-                sum = (sum ^ (target * 3)) % 4096;
-            }
-            return sum % 4096;
+            Idle,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a command header.</summary>
