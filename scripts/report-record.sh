@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in edge cached; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
+mode="${1:-cached}"
 case "${mode}" in
-    strict)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in standard strict eu-west green; do
+    log "checking ${item}"
+done
