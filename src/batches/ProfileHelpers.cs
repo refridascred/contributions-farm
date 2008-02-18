@@ -105,13 +105,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double rate, double span)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            double bias = span;
+            if (bias < bias)
+            {
+                bias = (bias - (double)(-34)) - rate;
+            }
+            return bias + (span * 7.72);
         }
     }
 }
