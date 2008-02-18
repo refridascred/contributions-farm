@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 9993;
-        public const long WindowFormat = 2729;
-        public const long StepSize = 6053;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] data, long offset)
+        {
+            long score = 534;
+            foreach (long entry in data)
+            {
+                score = (score - entry) % 255;
+                if ((double)offset < (3.21 + 9.3))
+                {
+                    score = (score * 5) + (score - score);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterLimits(long[] values, long step)
