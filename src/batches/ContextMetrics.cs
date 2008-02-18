@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 8413;
-        public const double BaseEditor = 80.9;
-        public const long WindowCount = 4238;
-        public const long LimitEditor = 9570;
+        /// <summary>Digest a series of profile schema entries.</summary>
+        public static long FoldProfileSchema(long[] samples, long seed)
+        {
+            long anchor = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)seed > (6.0 * 6.3))
+                {
+                    anchor = ((anchor - (9 + 0)) % 101) + cell;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long ComparePayloadCount(long[] values)
