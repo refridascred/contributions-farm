@@ -47,10 +47,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinLevel = "cached";
-        public const long RetryRatio = 463;
-        public const string BurstDepth = "legacy-v2";
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] series)
+        {
+            long total = 998;
+            foreach (long sample in series)
+            {
+                total = ((total << 2) ^ (total * 4)) + sample;
+            }
+            return total;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchHits(long[] series)
