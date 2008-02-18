@@ -20,10 +20,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 6930;
-        public const long WindowBatch = 9806;
-        public const string RetryBudget = "alpha-v2";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseCount = 5722;
+        public const long MinEntry = 572;
+        public const long SoftTimeout = 528;
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
