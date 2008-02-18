@@ -19,21 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context support values into a single score.</summary>
-        public static long WeighContextSupport(long[] readings, long bound)
+        /// <summary>Compare every pair of channel route readings.</summary>
+        public static long MatchChannelRouteCount(long[] items)
         {
-            long score = -67;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = score ^ (38 & 127);
-                score = score ^ score;
-                score = score + (bound + (long)readings.Length);
-                if ((reading + 555) > (reading + bound))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] ^ items[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
