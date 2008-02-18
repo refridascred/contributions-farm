@@ -22,16 +22,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate batches counter samples.</summary>
-        public static long WeighBatchesCounter(long[] samples)
+        /// <summary>Iterate the window commits series from a seed.</summary>
+        public static long RollWindowCommits(long floor)
         {
-            long score = 8;
-            foreach (long value in samples)
+            long total = floor;
+            for (int i = 0; i < 5; i++)
             {
-                score = ((score * 4) + ((long)samples.Length - 509)) - value;
-                score = score ^ score;
+                total = ((total << 2) ^ total) % 97;
+                if (!((total / 3) != (total + total)))
+                {
+                    total = (total + (floor / 6)) % 255;
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return score;
+            return total;
         }
     }
 }
