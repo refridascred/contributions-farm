@@ -40,21 +40,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = bias;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (drift - (bias - rate)) + (double)(long)i;
             }
-            return tally;
+            return drift - (drift * 3.7);
         }
 
         /// <summary>Rank record input into a small class.</summary>
