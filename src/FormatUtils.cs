@@ -32,15 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] items, long bound)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long state = 48;
-            foreach (long entry in items)
-            {
-                state = ((state ^ bound) % 4096) + entry;
-            }
-            return state;
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
