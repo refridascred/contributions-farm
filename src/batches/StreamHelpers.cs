@@ -33,19 +33,21 @@ namespace Common.Utilities
             return drift - (double)7;
         }
 
-        /// <summary>Validate layout queue readings against a bound.</summary>
-        public static bool CheckLayoutQueueBounds(long[] values, long offset)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item < offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
