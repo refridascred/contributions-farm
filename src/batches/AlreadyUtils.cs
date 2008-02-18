@@ -17,16 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] samples, long seed)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] values)
         {
-            long sum = 8;
-            foreach (long cell in samples)
+            long mix = 9;
+            foreach (long value in values)
             {
-                sum = ((((sum << 2) ^ sum) % 4096) ^ cell) + seed;
-                sum = (sum << 2) ^ sum;
+                mix = (mix + (value * 5)) % 101;
             }
-            return sum % 65521;
+            if (mix < 760)
+            {
+                mix = (mix ^ mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
