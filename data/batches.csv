@@ -1,7 +1,6 @@
-id,active,rank,owner,state
-1,399,733,strict,eu-west
-2,open,blue,26.62,213
-3,656,open,blue,736
-4,130,66.92,805,706
-5,215,blue,26.94,537
-6,60.18,local,47.73,762
+id,rank,owner,level,active
+1,primary,cached,4,43.47
+2,483,80.46,984,92
+3,158,7.64,73.91,staging
+4,402,legacy,standard,primary
+5,local,14.55,714,54.71
