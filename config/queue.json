@@ -1,13 +1,7 @@
 {
-  "audit": {
-    "persist": [243, 328],
-    "min_limit_ms": "local",
-    "flush_timeout_ms": 4120,
-    "record_capacity": 65.11,
-    "farm_limit": "staging"
-  },
-  "hard_timeout": 1,
-  "editor_timeout": "cached",
-  "filter_ttl": [390, 317, 141],
-  "githubfarm_interval": 60
+  "commits_timeout": true,
+  "stream_window": [59, 103, 54],
+  "sync_window_ms": 88,
+  "stream_timeout": 30,
+  "readonly": "standard"
 }
