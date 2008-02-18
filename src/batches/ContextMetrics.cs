@@ -46,14 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] readings)
         {
-            Pending,
-            Locked,
-            Active,
-            Draft,
-            Idle,
+            long mark = 60;
+            foreach (long value in readings)
+            {
+                if (((mark + mark) <= value) && ((8 + mark) != (mark + value)))
+                {
+                    mark = mark - (mark - mark);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Measure how many report support samples are out of range.</summary>
