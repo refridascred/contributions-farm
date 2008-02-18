@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate stream channel samples.</summary>
-        public static long CombineStreamChannel(long[] readings, long offset)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double gain, double bias)
         {
-            long anchor = 323;
-            foreach (long value in readings)
+            double load = (bias + bias) / 8.0;
+            if (load > gain)
             {
-                if (!((705 / 4) < (offset - value)))
-                {
-                    anchor = (anchor + (offset & 63)) % 1000;
-                    anchor = (anchor - (740 ^ offset)) % 65521;
-                }
-                anchor = (anchor << 2) ^ (value + offset);
-                if ((anchor + 368) < ((-767) + anchor))
-                {
-                    anchor = (anchor + (anchor << 1)) % 1000;
-                }
+                load = load - (double)6;
             }
-            return anchor;
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + (load - gain);
         }
 
         /// <summary>Audit already readings against a rule.</summary>
