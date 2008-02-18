@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxDepth = 48.25;
+        public const double SoftFactor = 85.42;
+        public const long StepInterval = 1670;
+        public const string WindowWidth = "open-edge";
+        public const long SoftLevel = 5592;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long StepContext(long seed)
