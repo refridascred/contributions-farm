@@ -1,9 +1,4 @@
 # entry settings
-idle_ratio_s: open
-base_depth_count: 9
-soft_ratio: 100
-idle_limit_pct: 25.65
-enabled:
-  - strict
-  - staging
-poll_ttl: 75.35
+enabled: 11.67
+channel_capacity: legacy
+default_timeout_s: open
