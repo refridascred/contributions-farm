@@ -29,31 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long step, long seed)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long offset)
         {
-            if (((seed * 4) <= seed) && ((step >> 2) > (0 >> 2)))
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)step > (17.0 / 2.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed < (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
