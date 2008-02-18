@@ -33,14 +33,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] data, long seed)
         {
-            Synced,
-            New,
-            Idle,
-            Pending,
-            Stale,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((sample > hits) || !((sample & 31) != (hits ^ 11)))
+                {
+                    hits = (hits + 1) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the window class values.</summary>
