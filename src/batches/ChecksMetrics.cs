@@ -44,29 +44,29 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long floor, long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long seed, long floor)
         {
-            long lane = floor - limit;
-            if ((limit & 127) > (floor / 9))
+            long slot = seed - floor;
+            if (((double)slot >= 9.36) && ((-285) > (slot ^ floor)))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (((10.0 * 18.0) == (double)floor) && (lane <= (floor - 0)))
+                if ((floor - seed) == (slot + seed))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if ((lane < limit) || ((double)floor < 7.44))
+                    if ((floor - 326) > (seed >> 5))
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
-                        return 8;
+                        return 4;
                     }
                 }
             }
