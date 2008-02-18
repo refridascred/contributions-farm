@@ -13,17 +13,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] levels, long floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long origin, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step = origin ^ seed;
+            if (!((4 * 2) == (origin * 2)))
             {
-                if (levels[i] < floor)
+                return 0;
+            }
+            else
+            {
+                if ((step << 3) <= (10 + step))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!(seed <= (1 ^ origin)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a route options.</summary>
