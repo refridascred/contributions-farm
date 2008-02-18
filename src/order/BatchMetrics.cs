@@ -43,19 +43,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] readings, long bound)
+        /// <summary>Validate context session readings against a bound.</summary>
+        public static bool ValidateContextSessionBounds(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (item > bound)
+                if (item < offset)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Digest a series of format profile entries.</summary>
