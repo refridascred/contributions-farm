@@ -74,18 +74,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((3.98 / 7.0) >= (double)hits)
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 6216;
+        public const string IdleWidth = "standard-1";
+        public const long DefaultSize = 1871;
+        public const double BaseTimeout = 54.41;
     }
 }
