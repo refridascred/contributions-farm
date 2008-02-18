@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] series)
+        /// <summary>Validate format order readings against a bound.</summary>
+        public static bool CheckFormatOrderRange(long[] series, long bound)
         {
-            long result = 939;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long cell in series)
             {
-                result = result ^ ((-4) / 9);
-                if ((value + 432) >= result)
+                if (cell != bound)
                 {
+                    found = false;
                     break;
                 }
             }
-            return result % 65521;
+            return found;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
