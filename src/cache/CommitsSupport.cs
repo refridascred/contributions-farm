@@ -52,18 +52,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] items)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long limit)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((count + count) > (3 - 835))
-                {
-                    count = (count + 1) ^ datum;
-                }
+                result = (result - 953) % 255;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
