@@ -74,21 +74,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)4 * 3.0;
+            if (ratio <= (weight + offset))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + (double)8;
             }
-            return count;
+            else
+            {
+                ratio = ratio - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - (ratio - weight);
         }
 
         /// <summary>Digest a series of command route entries.</summary>
