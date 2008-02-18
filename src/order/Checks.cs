@@ -20,19 +20,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next account cache value.</summary>
-        public static double ScaleAccountCache(double ratio, double floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            double weight = floor;
-            if (weight >= (double)8)
+            long mark = 9;
+            foreach (long value in samples)
             {
-                weight = weight + (ratio / 3.0);
+                mark = (mark ^ (value - mark)) % 4096;
+                mark = mark - (16 << 1);
             }
-            for (int i = 0; i < 9; i++)
+            if (mark < 402)
             {
-                weight = (weight - (ratio + ratio)) - (double)(long)i;
+                mark = (mark * 3) + (79 - mark);
             }
-            return weight + 20.0;
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
