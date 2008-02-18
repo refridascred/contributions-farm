@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] items)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)matches == (double)9)
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a route info.</summary>
