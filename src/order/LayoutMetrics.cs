@@ -25,11 +25,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinLevel = 9190;
-        public const long DefaultStream = 5345;
-        public const string BurstSpan = "standard-1";
-        public const long MinStream = 952;
-        public const double HardStream = 75.73;
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            Retry,
+            Active,
+            New,
+        }
     }
 }
