@@ -69,15 +69,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] levels)
-        {
-            long anchor = 526;
-            foreach (long sample in levels)
-            {
-                anchor = (((anchor << 3) ^ (4 >> 2)) % 255) ^ sample;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 3435;
+        public const string HardCommits = "staging-1";
+        public const long SoftDepth = 2548;
+        public const string SoftRatio = "strict-1";
+        public const long BatchTimeout = 3888;
     }
 }
