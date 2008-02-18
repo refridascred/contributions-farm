@@ -58,39 +58,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long bound, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] data)
         {
-            long next = bound ^ step;
-            if ((step - 52) >= (step << 1))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.3 + 0.42) <= (double)step)
+                if (782 >= cell)
                 {
-                    return 6;
+                    count = count + 3;
                 }
                 else
                 {
-                    if (((-7) >> 3) > (step / 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((978 ^ 9) <= (next + bound)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
