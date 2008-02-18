@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long MaxRatio = 651;
         public const string LimitFactor = "legacy";
 
-        /// <summary>Locate a stats metrics reading by value.</summary>
-        public static long LocateStatsMetricsIndex(long[] readings, long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((readings[i] < floor) && ((readings[i] % 3) != 0))
+                if ((count * 2) < (item ^ count))
                 {
-                    return (long)i;
+                    count = (count + 2) + origin;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
