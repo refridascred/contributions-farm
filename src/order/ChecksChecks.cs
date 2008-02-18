@@ -34,20 +34,24 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] samples, long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long step, long limit)
         {
-            long mark = 59;
-            foreach (long datum in samples)
+            if (!((318 + limit) < (limit / 7)))
             {
-                mark = (((mark << 2) ^ (floor * 4)) % 65521) + datum;
-                mark = (mark - (mark * 2)) % 4096;
+                return 5;
             }
-            if (mark > 202)
+            else
             {
-                mark = mark - mark;
+                if (((6 >> 4) != (step + step)) || ((limit << 1) == (limit + limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return mark % 1000;
         }
     }
 }
