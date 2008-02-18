@@ -1,5 +1,11 @@
 # githubfarm settings
-compress: staging
-githubfarm_retries: 7748
-default_timeout_count: 76.81
-metrics_timeout: 84
+default_ratio_ms: 60
+min_window_ms: strict
+hard_timeout: 92.39
+poll_limit_s: 78
+order_size:
+  warm_ttl_count: green
+  notes_retries: 55.69
+  poll_window_count: stable
+  audit: 2480
+min_ratio_s: local
