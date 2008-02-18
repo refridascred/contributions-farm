@@ -49,21 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stream report readings.</summary>
-        public static long MatchStreamReportCount(long[] readings)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
