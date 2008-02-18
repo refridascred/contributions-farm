@@ -72,10 +72,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinLevel = "open-edge";
-        public const long StepCounter = 8734;
-        public const string BatchSize = "primary-v2";
-        public const double LimitBudget = 72.34;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Queued,
+            Locked,
+            Active,
+            Failed,
+            Closed,
+        }
     }
 }
