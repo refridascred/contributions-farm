@@ -56,19 +56,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] data, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] values)
         {
-            long mark = 5;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                mark = ((mark + (target + mark)) % 4096) - entry;
+                if (tally > (tally * 4))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mark > 40)
-            {
-                mark = ((mark << 2) ^ (target % 97)) % 101;
-            }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Compare every pair of tools profile readings.</summary>
