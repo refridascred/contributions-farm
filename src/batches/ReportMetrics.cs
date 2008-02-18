@@ -36,12 +36,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxFactor = 1769;
+        public const long MaxBatches = 4513;
+        public const long DefaultInterval = 9171;
     }
 }
