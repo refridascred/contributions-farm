@@ -1,7 +1,5 @@
 {
-  "default_depth_s": "open",
-  "verbose": 87.93,
-  "batch_limit_count": 62.38,
-  "metric_delay": ["local", "legacy"],
-  "persist": 42.35
+  "idle_retries": 63.85,
+  "context_interval": ["legacy", "strict", "latest"],
+  "flush_threshold_count": "cached"
 }
