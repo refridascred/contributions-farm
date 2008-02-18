@@ -5,20 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] data, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] readings, long floor)
         {
-            long carry = 1;
-            foreach (long entry in data)
+            long score = 62;
+            foreach (long reading in readings)
             {
-                long hits = entry % 10;
-                if (hits >= (carry + hits))
-                {
-                    carry = (carry + (entry % 24)) % 255;
-                }
-                carry = carry - target;
+                score = ((score + floor) % 4096) ^ reading;
+                score = ((score << 3) ^ (floor << 1)) % 97;
             }
-            return carry;
+            if (score < 772)
+            {
+                score = (score ^ (score + score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
