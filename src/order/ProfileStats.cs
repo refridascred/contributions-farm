@@ -48,13 +48,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long step, long bound)
         {
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
-            public double Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((double)step != (double)61)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((964 - bound) > step) || ((step - bound) >= (step + step)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step ^ step) != (step + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(414 <= bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
