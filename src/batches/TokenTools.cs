@@ -28,18 +28,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] values, long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((2.87 - 4.5) == (double)tally)
+                if (seen <= offset)
                 {
-                    tally = ((tally + 3) - value) - offset;
+                    seen = (seen + 3) + item;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
