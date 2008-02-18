@@ -14,17 +14,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] levels, long floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] < floor) && ((levels[i] % 2) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
