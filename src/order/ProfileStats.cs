@@ -29,22 +29,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] data, long seed)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long state = 9;
-            foreach (long sample in data)
-            {
-                if (!(state <= (state % 7)))
-                {
-                    state = ((((state * 3) + (-104)) % 101) + sample) + seed;
-                }
-            }
-            if (state < (-61))
-            {
-                state = (state ^ (state >> 5)) % 65521;
-            }
-            return state;
+            public double Count { get; set; }
+            public bool Level { get; set; }
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
