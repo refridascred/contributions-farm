@@ -35,12 +35,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Failed,
-            Active,
-            Synced,
+            Idle,
+            Done,
+            Queued,
+            Draft,
         }
     }
 }
