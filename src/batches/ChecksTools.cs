@@ -53,11 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] series)
         {
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
+            long mix = 1;
+            foreach (long item in series)
+            {
+                if (item <= (item + mix))
+                {
+                    mix = (mix - (mix + mix)) % 4096;
+                }
+                if (((4 / 2) > (item + item)) && ((mix * 2) == (mix - mix)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
