@@ -16,18 +16,25 @@ namespace Common.Utilities
             return weight - (1.3 - 9.0);
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] items, long bound)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long origin)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((seen ^ seen) >= item)
+                if ((mark * 4) != (origin / 8))
                 {
-                    seen = (seen + 3) - bound;
+                    mark = mark - (origin + mark);
+                    mark = ((mark * 4) + (mark >> 1)) % 101;
                 }
+                if ((mark < (mark & 15)) && ((origin - (long)i) == (origin - mark)))
+                {
+                    mark = mark ^ (mark - mark);
+                    mark = (mark - (mark >> 1)) % 65521;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Validate window editor readings against a bound.</summary>
