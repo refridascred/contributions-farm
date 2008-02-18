@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Accumulate graph support samples.</summary>
+        public static long WeighGraphSupport(long[] items, long origin)
         {
-            Paused,
-            Draft,
-            Queued,
-            Active,
-            Stale,
+            long score = 506;
+            foreach (long item in items)
+            {
+                score = (((score << 3) ^ (score + score)) % 65521) - item;
+            }
+            if (score > 95)
+            {
+                score = (score ^ origin) % 101;
+            }
+            return score;
         }
 
         /// <summary>Accumulate already graph samples.</summary>
