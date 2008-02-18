@@ -1,43 +1,12 @@
 # githubfarm settings
-metric_ratio:
-  window_delay:
-    - 56
-    - 483
-    - 190
-  max_retries_ms:
-    hard_interval: local
-    verbose:
-      - 343
-      - 132
-      - 23
-    window_ratio: strict
-    default_retries:
-      - green
-      - open
-    checks_ratio: legacy
-    githubfarm_size: open
-  cache_interval_ms:
-    - 418
-    - 424
-    - 460
-    - 207
-  strict: true
-  token_size: false
-compress: true
-base_ratio_count: local
-audit:
-  verbose: stable
-  base_retries_pct: true
-  retry_window:
-    default_delay:
-      - staging
-      - standard
-      - legacy
-      - stable
-    filter_depth: 250
-    base_threshold: 500
-sync_timeout_ms:
-  - 204
-  - 433
-  - 143
-  - 82
+soft_ttl:
+  - 119
+  - 80
+  - 483
+sync_window_pct: 30
+readonly:
+  - 145
+  - 170
+  - 323
+  - 75
+cache_size_s: 8143
