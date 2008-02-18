@@ -27,11 +27,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
+            Draft,
+            Locked,
+            Failed,
         }
     }
 }
