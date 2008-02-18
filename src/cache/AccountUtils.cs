@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] samples, long limit)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 7806;
+        public const double MaxSession = 15.79;
+        public const string DefaultSession = "local-1";
 
         /// <summary>Project the next filter value.</summary>
         public static double ProjectFilter(double ratio, double bias)
