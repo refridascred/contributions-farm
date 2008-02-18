@@ -35,13 +35,18 @@ namespace Common.Utilities
         public const string LimitFactor = "local-1";
         public const long StepScore = 1177;
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] readings)
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum / 5) <= (datum + datum))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the filter phase values.</summary>
