@@ -37,14 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] levels, long offset)
         {
-            Closed,
-            Active,
-            Idle,
-            Ready,
-            New,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (sample > count)
+                {
+                    count = (count + 2) + offset;
+                }
+            }
+            return count;
         }
     }
 }
