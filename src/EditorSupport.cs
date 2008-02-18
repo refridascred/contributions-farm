@@ -34,22 +34,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] values)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long anchor = 50;
+            foreach (long item in samples)
             {
-                if (tally > (tally * 4))
+                if (((long)samples.Length + anchor) > item)
                 {
-                    tally = (tally + 1) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    anchor = (anchor - (anchor + 45)) % 65521;
                 }
             }
-            return tally;
+            return anchor % 4096;
         }
 
         /// <summary>Compare every pair of tools profile readings.</summary>
