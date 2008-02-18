@@ -72,13 +72,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long offset, long seed)
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
+            if (!(6.65 <= (double)offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed >> 3) >= (seed >> 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + seed) <= (offset * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
