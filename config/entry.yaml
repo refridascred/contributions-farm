@@ -1,21 +1,22 @@
 # entry settings
-strict: true
-cache_size:
-  base_size: 60
-  hard_interval_ms:
-    layout_retries: 250
-    min_interval_count: strict
-    verbose: 28.06
-    editor_delay: 63.01
-  verbose:
-    audit: false
-    persist: 2801
-    retry_limit_pct: 6795
-    flush_capacity_s: strict
-    readonly: 60
-  compress:
-    - 82
-    - 264
-  sync_ratio_pct: edge
-default_depth_pct: 30
-tools_ttl: 60
+batch_timeout: 72
+audit:
+  - cached
+  - standard
+  - cached
+  - latest
+soft_depth_s: 6300
+persist:
+  batch_interval: legacy
+  soft_depth: fallback
+  retry_depth:
+    poll_timeout: green
+    window_depth: 63
+    strict: 56.32
+    poll_limit_s:
+      - 197
+      - 51
+      - 194
+      - 341
+    hard_window_ms: 1226
+  batch_retries_count: 250
