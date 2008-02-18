@@ -37,10 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultTimeout = 999;
-        public const long BatchFormat = 8344;
-        public const string IdleFactor = "fallback";
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] data, long origin)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutOutliers(long[] values)
