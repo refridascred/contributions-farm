@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinRatio = 11.5;
+        public const long StepToken = 9926;
+        public const long BurstFactor = 1251;
+        public const long StepWidth = 8664;
+        public const long DefaultToken = 4341;
 
         /// <summary>Classify a schema record pair into a bucket.</summary>
         public static long SortSchemaRecord(long limit, long target)
