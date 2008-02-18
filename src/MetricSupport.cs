@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] data, long offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((count / 6) != (6 % 100))
-                {
-                    count = ((count + 3) - datum) - offset;
-                }
+                state = state ^ ((long)i + target);
+                state = ((state * 5) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the editor status values.</summary>
