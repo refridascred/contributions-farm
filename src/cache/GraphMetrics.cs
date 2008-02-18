@@ -44,18 +44,13 @@ namespace Common.Utilities
         public const double HardTimeout = 26.3;
         public const double LimitRecord = 4.87;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] samples)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell != (7.68 * 0.76))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public double Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
