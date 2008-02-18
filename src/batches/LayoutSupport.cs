@@ -39,12 +39,21 @@ namespace Common.Utilities
         public const long RetryTimeout = 2579;
         public const long DefaultFactor = 6394;
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long floor)
         {
-            New,
-            Synced,
-            Queued,
+            long score = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = ((score ^ (floor + (long)i)) % 97) - (long)i2;
+                    score = (score * 4) + (0 + 15);
+                }
+                score = ((score << 3) ^ floor) % 101;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
