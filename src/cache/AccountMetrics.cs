@@ -53,18 +53,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the token commits entries that pass the check.</summary>
-        public static long MeasureTokenCommitsMatches(long[] data)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((entry + entry) <= (hits + hits))
+                if (!((value & 255) > (value ^ count)))
                 {
-                    hits = hits + 3;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next githubfarm channel value from a seed.</summary>
