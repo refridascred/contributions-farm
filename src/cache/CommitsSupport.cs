@@ -48,22 +48,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] data)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] items)
         {
-            long result = 995;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((8.4 + 10.0) >= 3.0)
+                if ((count + count) > (3 - 835))
                 {
-                    result = result + (result - result);
-                }
-                else
-                {
-                    result = result + (item >> 5);
+                    count = (count + 1) ^ datum;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
