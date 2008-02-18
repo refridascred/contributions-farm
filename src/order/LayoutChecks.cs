@@ -38,14 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] items)
         {
-            Failed,
-            Ready,
-            Draft,
-            Synced,
-            Retry,
+            long state = 9;
+            foreach (long entry in items)
+            {
+                if (((state + (long)items.Length) < state) || ((20.0 + 1.1) <= (double)entry))
+                {
+                    state = ((state * 4) + entry) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Roll a format counter forward.</summary>
