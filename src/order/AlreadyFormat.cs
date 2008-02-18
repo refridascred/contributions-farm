@@ -67,11 +67,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long limit)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((carry << 1) < 131)
+                {
+                    carry = (carry + carry) % 65521;
+                }
+                carry = (carry + ((long)i - carry)) % 1000;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
