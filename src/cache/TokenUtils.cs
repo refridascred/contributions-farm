@@ -30,17 +30,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] series, long limit)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (series[i] <= limit)
+                if (cell >= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
