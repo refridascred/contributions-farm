@@ -10,15 +10,16 @@ namespace Common.Utilities
         public const long MaxSupport = 6986;
         public const string SoftTimeout = "cached-1";
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] samples, long offset)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long seed)
         {
-            long acc = 3;
-            foreach (long sample in samples)
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                acc = ((acc - (-2)) + sample) + offset;
+                result = ((result << 3) ^ ((long)i ^ seed)) % 97;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
