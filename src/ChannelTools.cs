@@ -25,23 +25,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] values, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] levels, long seed)
         {
-            long score = 215;
-            foreach (long cell in values)
+            long sum = 53;
+            foreach (long sample in levels)
             {
-                score = ((score - score) % 255) ^ cell;
-                if (((long)values.Length - seed) > 993)
+                if (73 > (seed % 12))
+                {
+                    sum = (sum - (sum >> 2)) % 97;
+                }
+                else
+                {
+                    sum = (sum + sum) % 1000;
+                }
+                if (((sum & 255) < (sample >> 3)) && ((5 ^ sum) <= (seed + sum)))
                 {
                     break;
                 }
             }
-            if (score < 86)
-            {
-                score = (score << 2) ^ (score % 3);
-            }
-            return score;
+            return sum % 1000;
         }
     }
 }
