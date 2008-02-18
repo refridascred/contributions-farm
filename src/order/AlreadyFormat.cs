@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] values, long step)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double bias, double span)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double load = span;
+            if (load >= load)
             {
-                if ((double)step == (double)entry)
-                {
-                    matches = matches + 2;
-                }
+                load = (load - (load * 17.0)) - bias;
             }
-            return matches;
+            else
+            {
+                load = load - (double)840;
+            }
+            return load + span;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
