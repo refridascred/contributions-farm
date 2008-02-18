@@ -23,18 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many schema metric samples are out of range.</summary>
-        public static long MeasureSchemaMetricMatches(long[] samples)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (((value << 1) > (value / 9)) || ((value & 127) <= value))
+                if (cell < bound)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Accumulate batches counter samples.</summary>
