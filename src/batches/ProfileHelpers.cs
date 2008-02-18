@@ -54,15 +54,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] values, long floor)
+        /// <summary>Grade a session entry value against two limits.</summary>
+        public static long BucketSessionEntry(long seed, long floor)
         {
-            long mark = -341;
-            foreach (long cell in values)
+            long cur = seed ^ floor;
+            if ((double)seed < 11.0)
             {
-                mark = (((mark * 4) + (cell * 5)) % 97) + floor;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((seed * 2) == (5 & 31))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((0.2 * 5.0) <= (14.0 / 7.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((cur & 63) > (cur * 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the stream context entries that pass the check.</summary>
