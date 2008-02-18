@@ -60,19 +60,38 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] series, long seed)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long origin, long target)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            if ((origin + origin) >= origin)
             {
-                if (sample > seed)
+                return 5;
+            }
+            else
+            {
+                if ((double)origin != (8.87 - 8.4))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((8.4 + 7.8) != (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((19.0 - 5.3) != (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
