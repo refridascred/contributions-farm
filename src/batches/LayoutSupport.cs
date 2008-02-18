@@ -21,28 +21,25 @@ namespace Common.Utilities
         public const long DefaultInterval = 8798;
         public const long IdleTools = 6396;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] samples, long target)
+        /// <summary>Rank layout stream input into a small class.</summary>
+        public static long GradeLayoutStream(long seed, long origin)
         {
-            long result = 834;
-            foreach (long item in samples)
+            long diff = seed + origin;
+            if (diff >= (diff - origin))
             {
-                if ((target + target) > target)
+                return 6;
+            }
+            else
+            {
+                if (!((282 >> 5) >= (diff / 6)))
                 {
-                    result = result + (target - 79);
-                    break;
+                    return 1;
                 }
-                result = result ^ (128 - result);
-                if (result >= (result ^ item))
+                else
                 {
-                    result = result + item;
+                    return 0;
                 }
             }
-            if (result < (-98))
-            {
-                result = ((result << 3) ^ (result + result)) % 4096;
-            }
-            return result % 65521;
         }
 
         /// <summary>Hold a profile options.</summary>
