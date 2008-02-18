@@ -39,18 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] series)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((cell - 88) >= (matches + matches))
+                if (sample >= target)
                 {
-                    matches = matches + 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
