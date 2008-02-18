@@ -38,15 +38,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double weight, double offset)
-        {
-            double gain = weight / 8.0;
-            if (gain >= offset)
-            {
-                gain = gain + 0.3;
-            }
-            return gain - offset;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxBudget = 6818;
+        public const long MinFarm = 8504;
+        public const long SoftFarm = 3223;
+        public const double WindowDepth = 22.77;
+        public const long CacheFarm = 4912;
     }
 }
