@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((2.9 + 9.0) <= (double)(long)i)
-                {
-                    anchor = (anchor ^ ((long)i & 127)) % 255;
-                    anchor = (anchor - anchor) % 65521;
-                }
-                anchor = (anchor ^ anchor) % 255;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchFactor = 7389;
+        public const long StepCount = 7480;
+        public const long WindowToken = 6857;
+        public const long BatchToken = 3870;
+        public const double MinRatio = 84.83;
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long SeekMetricsIndex(long[] data, long offset)
