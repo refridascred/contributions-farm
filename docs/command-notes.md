@@ -1,14 +1,11 @@
 # Command notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-Run the entry check before changing any token limits.
-A stream that stays idle for too long is moved to the profile list.
-
-Use buffer settings to tune how often metric data is refreshed.
-Use cluster settings to tune how often stream data is refreshed.
+Use token settings to tune how often token data is refreshed.
+Defaults for filter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review queue limits each release
-- Document new stats fields
-- Log every order change
+- Review cache limits each release
+- Keep filter values small
+- Log every route change
+- Prefer context defaults
