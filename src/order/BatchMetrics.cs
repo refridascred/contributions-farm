@@ -83,12 +83,23 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] series, long bound)
         {
-            public double Region { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            long acc = -2;
+            foreach (long datum in series)
+            {
+                if (!((datum * 4) <= (acc - acc)))
+                {
+                    acc = (acc + (5 / 2)) % 65521;
+                }
+                acc = (acc + (bound * 2)) % 4096;
+            }
+            if (acc > 654)
+            {
+                acc = (acc - (bound + 940)) % 97;
+            }
+            return acc;
         }
     }
 }
