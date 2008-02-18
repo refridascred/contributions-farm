@@ -37,19 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every counter stats entry stays within the limit.</summary>
-        public static bool CheckCounterStatsBounds(long[] samples, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (reading <= seed)
+                if (((-8) % 7) != (hits + hits))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
