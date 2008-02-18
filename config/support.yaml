@@ -1,12 +1,32 @@
 # support settings
-cache_delay_s:
-  soft_retries_count: 30
-  verbose: cached
-  warm_capacity_s: standard
-  retry_size_ms:
-    context_threshold: blue
-    account_window: 21.33
-    session_depth: true
-  base_limit: standard
-poll_size_pct: eu-west
-base_limit_pct: 40.03
+report_retries:
+  default_capacity: edge
+  max_window_pct: 6866
+  retry_threshold_ms: primary
+  dry_run: false
+  githubfarm_depth: 1302
+  min_window:
+    base_window: 61
+    stats_limit: 9774
+    max_limit_pct: 44
+profile_capacity:
+  - 434
+  - 451
+  - 418
+  - 334
+cache_ratio:
+  burst_window_s:
+    soft_interval_pct: 7
+    stats_capacity: strict
+    burst_delay: local
+    base_window_s: 1024
+    already_size:
+      - 349
+      - 277
+  poll_interval_ms: false
+  batches_timeout: 35.74
+  retry_capacity_ms: 6522
+  verbose: 4286
+  burst_window: green
+metric_delay: 500
+notes_ratio: true
