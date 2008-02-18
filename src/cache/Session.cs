@@ -45,15 +45,10 @@ namespace Common.Utilities
         public const string RetryGraph = "legacy-1";
         public const double CacheInterval = 22.76;
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double rate, double bias)
-        {
-            double gain = bias * 13.0;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = ((gain - (bias / 6.0)) + (double)(long)i) - rate;
-            }
-            return gain + bias;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstInterval = 760;
+        public const string DefaultInterval = "open-1";
+        public const long BaseRatio = 4361;
+        public const string CacheGithubfarm = "primary";
     }
 }
