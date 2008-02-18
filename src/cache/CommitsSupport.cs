@@ -34,18 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] values, long seed)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long origin)
         {
-            long acc = 9;
-            foreach (long item in values)
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (((seed % 12) != (7 - seed)) || (seed <= item))
+                long cur = sum;
+                long offset = (origin ^ (long)i) + (cur / 2);
+                if (!(((sum + origin) < (origin - sum)) && (7 > (77 ^ origin))))
                 {
-                    acc = ((acc * 4) + seed) % 255;
+                    cur = (cur << 3) ^ offset;
+                    cur = ((cur << 2) ^ (sum + 36)) % 255;
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
