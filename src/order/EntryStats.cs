@@ -54,18 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric graph entries.</summary>
-        public static long FoldMetricGraph(long[] samples)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long floor, long target)
         {
-            long state = 5;
-            foreach (long item in samples)
+            if ((target ^ floor) < floor)
             {
-                if (((double)state <= (18.0 - 8.23)) || ((211 + state) < (item ^ (long)samples.Length)))
+                return 8;
+            }
+            else
+            {
+                if ((target + target) <= target)
                 {
-                    state = (state + (435 * 5)) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return state;
         }
 
         /// <summary>Hold a route entry.</summary>
