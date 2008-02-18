@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] samples, long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] values, long seed)
         {
-            long score = 75;
-            foreach (long value in samples)
+            long total = -73;
+            foreach (long value in values)
             {
-                if ((seed << 1) == (score * 5))
+                if ((long)values.Length < (total + 34))
                 {
-                    score = score ^ (seed << 1);
+                    total = (((total * 2) + total) % 255) + value;
                 }
-                if (!((1 >> 5) >= (value % 7)))
-                {
-                    score = (score ^ (seed + value)) % 65521;
-                    score = (score ^ (value - seed)) % 1000;
-                }
-                score = score ^ (seed % 97);
             }
-            return score;
+            if (total > 85)
+            {
+                total = ((total << 2) ^ seed) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Measure how many schema stats samples are out of range.</summary>
