@@ -29,17 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] series)
-        {
-            long result = 7;
-            foreach (long datum in series)
-            {
-                result = (result + (239 / 3)) % 65521;
-                result = (result * 3) + datum;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 4848;
+        public const long SoftBudget = 5556;
+        public const double MaxMetric = 68.87;
+        public const long IdleMetric = 9708;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
