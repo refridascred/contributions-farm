@@ -35,17 +35,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] levels, long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 5;
+            foreach (long entry in data)
             {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
+                mark = ((mark + (target + mark)) % 4096) - entry;
             }
-            return -1;
+            if (mark > 40)
+            {
+                mark = ((mark << 2) ^ (target % 97)) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Compare every pair of tools profile readings.</summary>
