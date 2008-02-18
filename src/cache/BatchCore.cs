@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long floor, long offset)
-        {
-            if (offset < (offset / 7))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset >> 2) != (floor ^ offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor / 3) > (offset + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultLevel = 82.56;
+        public const long CacheAlready = 4899;
+        public const long DefaultFactor = 6869;
+        public const string HardAlready = "primary-v2";
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterHits(long[] levels)
