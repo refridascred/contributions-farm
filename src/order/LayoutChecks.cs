@@ -58,33 +58,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long step)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long seed, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
+            long lane = seed ^ step;
+            if ((seed + step) < seed)
             {
-                if (((5 >> 1) == (23 + (long)i)) || ((long)i >= (mark << 1)))
-                {
-                    mark = (mark ^ (step + step)) % 4096;
-                    mark = mark + (mark % 64);
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 1000;
-                    mark = (mark + (mark + mark)) % 1000;
-                }
-                if (mark < (step + step))
-                {
-                    mark = mark ^ step;
-                }
-                else
-                {
-                    mark = (mark ^ (step - 0)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((17.0 / 3.0) >= (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)lane > (double)4) || ((step + lane) >= (seed + seed)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step > (lane * 5)) && ((step ^ seed) < (seed >> 2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
