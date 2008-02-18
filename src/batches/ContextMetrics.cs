@@ -46,22 +46,19 @@ namespace Common.Utilities
         public const long WindowCount = 4238;
         public const long LimitEditor = 9570;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] samples)
+        /// <summary>Check that every order contributi entry stays within the limit.</summary>
+        public static bool ValidateOrderContributiBounds(long[] data, long step)
         {
-            long state = 2;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((31 % 16) <= (reading % 7))
+                if (sample > step)
                 {
-                    state = (state + (reading & 7)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            if (state < (-95))
-            {
-                state = (state - (state + 384)) % 97;
-            }
-            return state % 4096;
+            return stale;
         }
 
         /// <summary>Hold a payload options.</summary>
