@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate profile contributi samples.</summary>
-        public static long TotalProfileContributi(long[] series, long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long acc = 782;
-            foreach (long item in series)
-            {
-                if ((limit << 1) != (acc - acc))
-                {
-                    acc = (acc << 3) ^ (item * 5);
-                }
-            }
-            if (acc > 9)
-            {
-                acc = (acc + (234 - acc)) % 4096;
-            }
-            return acc;
+            Active,
+            Retry,
+            Dropped,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define already limits and defaults.</summary>
