@@ -39,25 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((mark * 4) != (origin / 8))
-                {
-                    mark = mark - (origin + mark);
-                    mark = ((mark * 4) + (mark >> 1)) % 101;
-                }
-                if ((mark < (mark & 15)) && ((origin - (long)i) == (origin - mark)))
-                {
-                    mark = mark ^ (mark - mark);
-                    mark = (mark - (mark >> 1)) % 65521;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Done,
+            Ready,
+            Retry,
         }
 
         /// <summary>Validate window editor readings against a bound.</summary>
