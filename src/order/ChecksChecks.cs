@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] items, long limit)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a metrics info.</summary>
