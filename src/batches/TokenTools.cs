@@ -25,10 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardBudget = 2451;
-        public const long MinInterval = 9075;
-        public const double RetrySize = 50.57;
-        public const long IdleSchema = 16;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] readings, long floor)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
