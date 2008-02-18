@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] series)
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((((double)seen <= 10.0) && ((value - seen) < (seen / 2))) && ((value & 255) <= seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the tools class values.</summary>
