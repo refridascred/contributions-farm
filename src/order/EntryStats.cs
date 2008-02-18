@@ -68,13 +68,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a already info.</summary>
