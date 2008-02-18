@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchFactor = 7389;
-        public const long StepCount = 7480;
-        public const long WindowToken = 6857;
-        public const long BatchToken = 3870;
-        public const double MinRatio = 84.83;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long SeekMetricsIndex(long[] data, long offset)
