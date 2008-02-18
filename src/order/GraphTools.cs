@@ -60,38 +60,11 @@ namespace Common.Utilities
             return mean + rate;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long origin, long target)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            if ((origin + origin) >= origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin != (8.87 - 8.4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.4 + 7.8) != (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((19.0 - 5.3) != (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
