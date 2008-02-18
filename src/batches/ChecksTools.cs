@@ -24,12 +24,13 @@ namespace Common.Utilities
             return load + (load - gain);
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Pending,
-            Dropped,
-            Failed,
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Adjust a cache reading.</summary>
