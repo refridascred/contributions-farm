@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Compare every pair of session account readings.</summary>
+        public static long OverlapSessionAccountCount(long[] readings)
         {
-            New,
-            Queued,
-            Draft,
-            Done,
-            Pending,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many schema metric samples are out of range.</summary>
