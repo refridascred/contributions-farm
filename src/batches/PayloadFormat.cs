@@ -5,29 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((7 % 24) >= mix)
-                {
-                    mix = (mix - (5 ^ 6)) % 1000;
-                }
-                if (target > (target * 4))
-                {
-                    long gap = mix + (mix + (long)i);
-                    mix = (mix ^ (target - gap)) % 65521;
-                }
-                else
-                {
-                    mix = (mix + (mix ^ (long)i)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchRatio = 5332;
+        public const double IdleRatio = 26.23;
+        public const string BatchSession = "strict-1";
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BurstBudget = 4047;
