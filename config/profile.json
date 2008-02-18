@@ -1,8 +1,6 @@
 {
-  "batches_retries": false,
-  "format_window": "staging",
-  "audit": "blue",
-  "enabled": 30,
-  "base_timeout": [286, 52, 197],
-  "command_timeout": ["local", "fallback"]
+  "min_ttl_s": 70.94,
+  "base_delay": [348, 168, 176, 103],
+  "session_capacity": ["strict", "blue", "open"],
+  "soft_depth": 8.24
 }
