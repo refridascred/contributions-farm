@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate batches notes readings against a bound.</summary>
-        public static bool VerifyBatchesNotesRange(long[] values, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (entry <= seed)
+                if ((4.2 * 2.67) >= (double)seed)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the tools status values.</summary>
