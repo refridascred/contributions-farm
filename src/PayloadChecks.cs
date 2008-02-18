@@ -64,12 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] items)
         {
-            public bool Score { get; set; }
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            long mark = 9;
+            foreach (long datum in items)
+            {
+                if (((datum * 5) > datum) || (((-255) * 2) <= (datum + mark)))
+                {
+                    mark = (mark * 5) + (datum + datum);
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Audit stats batches readings against a rule.</summary>
