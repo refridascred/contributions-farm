@@ -25,11 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 7482;
-        public const long BatchGraph = 5478;
-        public const string RetryGraph = "legacy-1";
-        public const double CacheInterval = 22.76;
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public double Level { get; set; }
+            public double Token { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BurstInterval = 760;
