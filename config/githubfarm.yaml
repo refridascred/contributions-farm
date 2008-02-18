@@ -1,4 +1,4 @@
 # githubfarm settings
-batch_window_pct: 63.06
-dry_run: 98
-cache_timeout: 9131
+checks_delay: true
+entry_capacity: 9
+default_retries_ms: 100
