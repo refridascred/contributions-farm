@@ -44,13 +44,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Idle,
-            Queued,
             Retry,
-            Stale,
+            Draft,
+            Locked,
+            Idle,
         }
     }
 }
