@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long offset)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = (mark * 2) + (offset & 1);
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Roll a batch cluster counter forward.</summary>
