@@ -15,10 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheCount = 14.21;
-        public const long StepSupport = 5648;
-        public const string BaseSupport = "primary-edge";
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] data, long bound)
+        {
+            long carry = 132;
+            foreach (long sample in data)
+            {
+                if ((1.01 / 4.0) > (double)sample)
+                {
+                    carry = carry + (sample - bound);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
