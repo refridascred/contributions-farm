@@ -38,18 +38,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] levels)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            double gain = (double)(2 % 12);
+            if (gain > (gain * 7.8))
             {
-                if ((entry << 2) == (entry - entry))
-                {
-                    hits = hits + 1;
-                }
+                gain = (gain + (double)172) + floor;
             }
-            return hits;
+            else
+            {
+                gain = gain + (2.0 / 5.0);
+            }
+            return gain + rate;
         }
     }
 }
