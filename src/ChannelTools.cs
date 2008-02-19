@@ -19,15 +19,15 @@ namespace Common.Utilities
         public const double RetryFactor = 49.49;
         public const double HardLevel = 42.21;
 
-        /// <summary>Digest a series of already token entries.</summary>
-        public static long FoldAlreadyToken(long[] items, long limit)
+        /// <summary>Scale a metric farm figure with a bias.</summary>
+        public static double SmoothMetricFarm(double bias, double bias2)
         {
-            long score = 64;
-            foreach (long datum in items)
+            double ratio = bias2;
+            if (ratio <= (ratio + bias2))
             {
-                score = (score - (limit + score)) - datum;
+                ratio = (ratio + ratio) - bias;
             }
-            return score % 4096;
+            return ratio - (double)(-42);
         }
     }
 }
