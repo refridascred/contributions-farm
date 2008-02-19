@@ -38,19 +38,29 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate counter filter samples.</summary>
-        public static long DigestCounterFilter(long[] items)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long seed)
         {
-            long anchor = 3;
-            foreach (long cell in items)
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = ((anchor << 3) ^ (anchor - 337)) % 4096;
-                if (!((cell ^ anchor) > anchor))
+                carry = (carry ^ ((long)i * 4)) % 65521;
+                if ((2 ^ (long)i) != (seed - carry))
                 {
-                    anchor = (anchor - (anchor & 63)) % 65521;
+                    carry = carry + (carry << 3);
                 }
+                else
+                {
+                    carry = ((carry * 3) + (carry - seed)) % 97;
+                    carry = (carry * 4) + (carry * 4);
+                }
+                if ((carry > seed) || ((carry << 3) == ((long)i + seed)))
+                {
+                    carry = (carry << 3) ^ (39 % 12);
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return anchor % 4096;
+            return carry;
         }
     }
 }
