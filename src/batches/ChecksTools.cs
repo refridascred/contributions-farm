@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Synced,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftDepth = 9480;
+        public const long WindowRecord = 4502;
+        public const long BurstRecord = 2930;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamOutliers(long[] readings, long target)
