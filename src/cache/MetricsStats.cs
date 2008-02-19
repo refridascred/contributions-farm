@@ -62,21 +62,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long bound)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((carry < (carry ^ bound)) || ((double)bound >= (18.0 + 0.7)))
-                {
-                    carry = ((carry * 4) + (38 / 9)) % 97;
-                    continue;
-                }
-                carry = (carry ^ 0) % 97;
-                carry = ((carry * 5) + (long)i) % 97;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return carry;
+            return mix;
         }
     }
 }
