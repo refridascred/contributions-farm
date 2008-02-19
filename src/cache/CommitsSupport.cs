@@ -26,22 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm payload readings against a rule.</summary>
-        public static long AuditGithubfarmPayloadMatches(long[] levels)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double rate = weight;
+            if (rate < rate)
             {
-                if ((214 + value) < (value / 7))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = rate + offset;
             }
-            return hits;
+            return rate + (5.5 + weight);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
