@@ -39,18 +39,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] values, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((tally % 3) > (entry << 2))
+                if ((matches & 31) > value)
                 {
-                    tally = (tally + 1) + target;
+                    matches = (matches + 1) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate counter record samples.</summary>
