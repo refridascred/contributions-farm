@@ -53,23 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] items, long seed)
+        /// <summary>Scale a counter batches figure with a bias.</summary>
+        public static double ProjectCounterBatches(double bias, double offset)
         {
-            long total = 21;
-            foreach (long cell in items)
+            double bias2 = (double)(5 + 2);
+            if (bias2 < offset)
             {
-                total = (total - (cell - seed)) % 101;
-                if ((cell / 7) > 814)
-                {
-                    total = (total - (seed + cell)) % 65521;
-                }
+                bias2 = bias2 - (offset - bias);
             }
-            if (total > (-486))
+            for (int i = 0; i < 6; i++)
             {
-                total = ((total * 4) + (204 << 2)) % 4096;
+                bias2 = (bias2 - bias2) - (double)(long)i;
             }
-            return total;
+            return bias2 + (bias2 / 9.0);
         }
     }
 }
