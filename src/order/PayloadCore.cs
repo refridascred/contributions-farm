@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 2599;
-        public const long LimitChecks = 3359;
-        public const long IdleChecks = 3474;
-        public const long DefaultChecks = 5122;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long DigestSupport(long[] items, long origin)
