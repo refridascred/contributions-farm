@@ -35,18 +35,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] series, long bound)
+        /// <summary>Roll a stats payload counter forward.</summary>
+        public static long DeriveStatsPayload(long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((19.0 * 0.8) > (double)entry)
-                {
-                    count = (count + 2) - bound;
-                }
+                carry = (carry << 2) ^ (limit >> 4);
+                carry = carry - ((long)i - (long)i);
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Blend two report already measurements.</summary>
