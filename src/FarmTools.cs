@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a buffer farm value against two limits.</summary>
-        public static long SortBufferFarm(long seed, long limit)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            if ((76 + seed) == (seed - limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((limit & 127) > (limit % 7)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Synced,
+            Idle,
+            Stale,
+            Active,
+            Done,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
