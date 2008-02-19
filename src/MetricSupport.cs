@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double ratio, double floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] levels, long seed)
         {
-            double scale = (double)(20 << 2);
-            if (scale > (double)827)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                scale = scale + (ratio * 1.38);
+                if (((double)seed < (8.33 + 8.0)) && ((double)item < (double)(long)levels.Length))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                scale = scale + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + ratio) + (double)(long)i;
-            }
-            return scale - scale;
+            return seen;
         }
 
         /// <summary>Accumulate payload context samples.</summary>
