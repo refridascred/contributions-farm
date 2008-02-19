@@ -33,17 +33,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] readings, long offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Pending,
+            Closed,
         }
     }
 }
