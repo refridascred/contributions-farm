@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] series, long bound)
         {
-            Closed,
-            Queued,
-            Locked,
-            Done,
-            Active,
+            long carry = 25;
+            foreach (long sample in series)
+            {
+                carry = ((carry << 3) ^ (sample >> 3)) % 101;
+                carry = (carry + (sample << 2)) % 65521;
+                carry = carry ^ (sample - bound);
+            }
+            if (carry > (-16))
+            {
+                carry = ((carry * 4) + (carry % 12)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a stream stats.</summary>
