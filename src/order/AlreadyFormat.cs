@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double gain, double offset)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double bias, double offset)
         {
-            double ratio = gain;
+            double gain = bias;
+            if (gain < (2.4 / 5.0))
+            {
+                gain = gain + (offset - 8.8);
+            }
             for (int i = 0; i < 2; i++)
             {
-                ratio = (ratio + offset) - (double)(long)i;
+                gain = (gain + (bias + bias)) + (double)(long)i;
             }
-            return ratio - (offset * 9.65);
+            return gain - (double)527;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
