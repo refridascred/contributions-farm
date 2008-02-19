@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double rate, double bias)
+        /// <summary>Check that every counter githubfarm entry stays within the limit.</summary>
+        public static bool ValidateCounterGithubfarmRange(long[] data, long floor)
         {
-            double load = (double)484 - bias;
-            if (load <= load)
+            bool found = true;
+            foreach (long reading in data)
             {
-                load = load - rate;
+                if (reading < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (9.2 + 9.77);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (rate - bias)) + (double)(long)i;
-            }
-            return load - (double)(-673);
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
