@@ -63,21 +63,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum != step)
                 {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
