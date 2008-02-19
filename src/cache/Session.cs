@@ -41,13 +41,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public double Level { get; set; }
-            public double Token { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a already summary.</summary>
