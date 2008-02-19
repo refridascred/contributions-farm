@@ -39,14 +39,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double gain, double offset)
         {
-            Ready,
-            Retry,
-            Idle,
-            Failed,
-            Active,
+            double load = (double)(-44) * 7.01;
+            if (load > gain)
+            {
+                load = (load - (5.07 * 1.79)) - offset;
+            }
+            return load + 0.28;
         }
     }
 }
