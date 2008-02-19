@@ -1,13 +1,6 @@
 {
-  "min_capacity_s": 250,
-  "max_ratio": "stable",
-  "readonly": 46.2,
-  "burst_size": true,
-  "route_threshold": [46, 312],
-  "farm_interval": {
-    "warm_capacity": ["open", "fallback"],
-    "dry_run": 64,
-    "default_delay_count": "edge",
-    "sync_interval_pct": 98
-  }
+  "readonly": "stable",
+  "strict": 1312,
+  "metrics_timeout": "stable",
+  "batch_timeout_s": "open"
 }
