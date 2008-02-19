@@ -30,15 +30,19 @@ namespace Common.Utilities
         public const long BurstLayout = 6548;
         public const double MinLayout = 41.31;
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double rate, double offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] data, long floor)
         {
-            double mean = rate;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                mean = (mean - (offset + offset)) + (double)(long)i;
+                if (reading != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean - mean;
+            return stale;
         }
     }
 }
