@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Audit format layout readings against a rule.</summary>
+        public static long MeasureFormatLayoutGaps(long[] items, long origin)
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (hits > (origin + hits))
+                {
+                    hits = (hits + 2) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
