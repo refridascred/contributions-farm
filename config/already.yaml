@@ -1,24 +1,12 @@
 # already settings
-counter_depth: 2.46
-min_size_pct: false
-readonly:
-  poll_ttl:
-    - cached
-    - legacy
-    - fallback
-    - standard
-  queue_depth: 5654
-  contributi_ttl: latest
-  dry_run: 5543
-batch_timeout_ms:
-  min_delay:
-    min_depth: 30
-    readonly: true
-    window_timeout: 5954
-  retry_timeout: true
-  default_capacity: false
-  idle_depth_s:
-    - 118
-    - 162
-    - 290
-  warm_capacity_pct: strict
+burst_interval: 60
+burst_capacity:
+  verbose: local
+  channel_ratio: true
+  min_retries:
+    - 215
+    - 232
+    - 417
+  max_ttl_pct: latest
+  flush_capacity_count: edge
+order_retries: standard
