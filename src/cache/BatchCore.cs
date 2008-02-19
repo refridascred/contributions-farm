@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate queue token readings against a bound.</summary>
-        public static bool CheckQueueTokenLimits(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftFactor = 2785;
+        public const long StepCommand = 2947;
+        public const long MaxFactor = 6739;
+        public const long BatchWidth = 2682;
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
