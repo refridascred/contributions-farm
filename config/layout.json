@@ -1,8 +1,5 @@
 {
-  "default_depth_ms": true,
-  "warm_limit_count": 69,
-  "notes_depth": "cached",
-  "channel_delay": 13.35,
-  "idle_timeout_count": 54,
-  "schema_ttl": ["open", "strict", "blue", "stable"]
+  "warm_ttl_ms": ["standard", "open", "green"],
+  "schema_ratio": "stable",
+  "default_window": "cached"
 }
