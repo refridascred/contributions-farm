@@ -45,12 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] readings, long seed)
         {
-            Ready,
-            Closed,
-            Paused,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
