@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 9365;
+        public const long MinLevel = 4454;
+        public const long LimitPayload = 8679;
+        public const long StepSize = 2949;
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] levels)
