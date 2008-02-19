@@ -31,12 +31,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a counter options.</summary>
