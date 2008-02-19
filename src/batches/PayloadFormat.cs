@@ -24,17 +24,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a already farm sample.</summary>
-        public static long LocateAlreadyFarmIndex(long[] samples, long limit)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long limit, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((2.01 + 9.11) <= (double)limit) || ((limit + 4) <= (limit + limit)))
             {
-                if (samples[i] == limit)
+                return 7;
+            }
+            else
+            {
+                if (limit <= (origin ^ origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin % 24) >= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
