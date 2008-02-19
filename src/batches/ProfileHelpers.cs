@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate cache batches samples.</summary>
-        public static long TallyCacheBatches(long[] levels)
+        /// <summary>Fold a list of stream editor readings.</summary>
+        public static long FoldStreamEditor(long[] items)
         {
-            long carry = -75;
-            foreach (long value in levels)
+            long score = -7;
+            foreach (long item in items)
             {
-                carry = ((carry << 2) ^ value) % 101;
+                if (!((5.09 / 6.0) != (double)(long)items.Length))
+                {
+                    score = (((score * 5) + (score & 15)) % 255) + item;
+                }
             }
-            return carry % 97;
+            return score;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
