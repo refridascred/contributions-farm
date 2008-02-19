@@ -1,4 +1,11 @@
 # entry settings
-dry_run: true
-hard_ratio: green
-githubfarm_timeout: 24.31
+batch_retries_s: 94.01
+retry_interval_ms:
+  - 161
+  - 173
+  - 128
+  - 134
+already_retries: edge
+cache_ttl: primary
+warm_capacity_s: 79.7
+editor_threshold: true
