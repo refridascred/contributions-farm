@@ -1,5 +1,6 @@
 {
-  "warm_timeout": false,
-  "notes_limit": "local",
-  "persist": 4.31
+  "format_interval": "fallback",
+  "window_depth": 9401,
+  "retry_capacity_s": 58,
+  "verbose": [443, 1]
 }
