@@ -1,8 +1,5 @@
 {
-  "soft_capacity": "staging",
-  "hard_ratio": ["eu-west", "legacy", "green"],
-  "audit": "stable",
-  "strict": 39.89,
-  "burst_limit_pct": 72,
-  "cache_threshold": 1
+  "min_delay": 60,
+  "cache_ttl_count": "eu-west",
+  "poll_capacity_ms": 18.1
 }
