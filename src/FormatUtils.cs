@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] samples)
+        /// <summary>Count the batches batch entries that pass the check.</summary>
+        public static long AuditBatchesBatchHits(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (!((value << 3) <= (matches ^ matches)))
+                if ((tally - tally) >= (cell + (-7)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 3) - floor;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
