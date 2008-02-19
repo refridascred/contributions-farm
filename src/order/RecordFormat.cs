@@ -34,15 +34,22 @@ namespace Common.Utilities
         public const double WindowRatio = 4.99;
         public const long BatchDepth = 4429;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Audit githubfarm stats readings against a rule.</summary>
+        public static long TallyGithubfarmStatsHits(long[] values)
         {
-            long result = 17;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                result = result - (sample & 7);
+                if (tally > (767 + tally))
+                {
+                    tally = (tally + 1) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a schema record.</summary>
