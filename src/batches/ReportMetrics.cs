@@ -19,23 +19,39 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] values, long target)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long bound, long bound2)
         {
-            long result = -53;
-            foreach (long cell in values)
+            long next = bound ^ bound2;
+            if ((bound - bound2) >= (bound * 5))
             {
-                if ((double)target != (16.0 - 4.0))
+                return 8;
+            }
+            else
+            {
+                if (((next + 56) < (next * 2)) || ((next << 1) != (next & 3)))
                 {
-                    result = ((result * 3) + (target + result)) % 1000;
-                    continue;
+                    return 7;
                 }
-                if ((86 - cell) > ((long)values.Length - 548))
+                else
                 {
-                    result = ((result << 2) ^ (result ^ result)) % 1000;
+                    if ((2.0 / 9.0) == (double)next)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((1.0 * 14.0) != (double)bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
