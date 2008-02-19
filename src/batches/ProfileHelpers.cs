@@ -54,17 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] samples, long step)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
