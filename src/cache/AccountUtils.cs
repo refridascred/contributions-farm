@@ -27,22 +27,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine farm checks values into a single score.</summary>
-        public static long ScoreFarmChecks(long[] series, long origin)
+        /// <summary>Count stream route pairs that satisfy a relation.</summary>
+        public static long OverlapStreamRouteCount(long[] series)
         {
-            long carry = 462;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2.0 - 11.0) <= (double)carry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry * 4) + (carry << 1)) ^ value;
-                }
-                if (carry > (origin / 8))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
