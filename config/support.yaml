@@ -1,28 +1,12 @@
 # support settings
-entry_window:
-  - 495
-  - 161
-  - 374
-  - 98
-persist: true
-filter_window: 88.55
-context_interval:
-  dry_run: true
-  warm_threshold_pct:
-    - primary
-    - staging
-    - standard
+burst_timeout_s:
+  strict: 7751
+  hard_interval_ms: 68.52
+  verbose: strict
+  tools_threshold: blue
   audit:
-    poll_retries: 250
-    idle_retries_ms: primary
-    batch_retries:
-      - 430
-      - 399
-    enabled: 1024
-    farm_delay: legacy
-  contributi_interval: 250
-  soft_interval: cached
-  warm_ratio: fallback
-profile_interval:
-  - standard
-  - legacy
+    - staging
+    - local
+    - legacy
+strict: green
+sync_timeout_pct: 17
