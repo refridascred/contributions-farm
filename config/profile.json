@@ -1,7 +1,19 @@
 {
-  "hard_capacity": "local",
-  "hard_window": 8673,
-  "batch_threshold_count": 250,
-  "flush_size": 3306,
-  "sync_ratio_s": "strict"
+  "batch_interval": [71, 483, 486],
+  "hard_ratio_s": ["standard", "legacy"],
+  "retry_threshold_count": {
+    "metric_delay": {
+      "retry_size_pct": ["staging", "cached", "green", "primary"],
+      "retry_limit": "primary",
+      "audit": [97, 310],
+      "context_window": false,
+      "retry_delay": 7782,
+      "warm_ratio": ["staging", "cached", "eu-west", "staging"]
+    },
+    "audit": 100,
+    "max_capacity": 7825,
+    "flush_interval_count": true,
+    "batch_size_pct": false,
+    "warm_ttl_count": 57.96
+  }
 }
