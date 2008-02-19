@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] values, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((limit * 3) < score)
+                if ((double)entry < (1.77 - 6.93))
                 {
-                    score = (score * 3) + limit;
+                    hits = (hits + 3) + offset;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the support class values.</summary>
