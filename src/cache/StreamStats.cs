@@ -22,12 +22,38 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Classify a context schema pair into a bucket.</summary>
+        public static long RankContextSchema(long step, long origin)
         {
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            if ((step < (step * 2)) && (step <= 62))
+            {
+                return 8;
+            }
+            else
+            {
+                if (step <= (origin % 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((-21) >= (step + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((66 & 15) != (step * 4)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the farm state values.</summary>
