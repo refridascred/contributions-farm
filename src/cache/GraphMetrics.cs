@@ -25,11 +25,14 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
+            Locked,
+            Retry,
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
