@@ -59,21 +59,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count notes profile pairs that satisfy a relation.</summary>
-        public static long PairNotesProfileCount(long[] samples)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double rate = (bias * 4.43) * 12.0;
+            return (rate + bias) + gain;
         }
     }
 }
