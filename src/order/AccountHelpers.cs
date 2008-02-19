@@ -19,14 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            Draft,
-            New,
-            Done,
-            Closed,
-            Dropped,
+            Stale,
+            Retry,
+            Pending,
+            Ready,
         }
 
         /// <summary>Hold a order snapshot.</summary>
