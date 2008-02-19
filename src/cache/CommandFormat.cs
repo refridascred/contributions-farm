@@ -25,18 +25,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit already entry readings against a rule.</summary>
-        public static long TallyAlreadyEntryOutliers(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((789 + 957) == (seen - item))
-                {
-                    seen = (seen + 2) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 6043;
+        public const long WindowFormat = 6522;
+        public const long IdleFormat = 9753;
+        public const string SoftWidth = "local-v2";
     }
 }
