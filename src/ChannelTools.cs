@@ -39,10 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftGithubfarm = 44.79;
-        public const long MaxBudget = 1199;
-        public const double MinRatio = 64.87;
-        public const double MinSpan = 38.99;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] levels, long seed)
+        {
+            long score = 26;
+            foreach (long sample in levels)
+            {
+                score = ((((score * 2) + score) % 1000) ^ sample) + seed;
+                score = score ^ score;
+                score = ((score * 4) + score) % 97;
+            }
+            return score;
+        }
     }
 }
