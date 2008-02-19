@@ -29,12 +29,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] levels, long limit)
         {
-            public double Count { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)limit < (5.4 - 7.7))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
     }
 }
