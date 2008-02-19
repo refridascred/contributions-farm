@@ -76,11 +76,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 4295;
-        public const string MaxSupport = "stable-edge";
-        public const long SoftSupport = 723;
-        public const long BurstFactor = 7093;
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double weight, double offset)
+        {
+            double mean = offset * 1.36;
+            if (mean < mean)
+            {
+                mean = (mean - (7.6 * 8.03)) - weight;
+            }
+            return mean + offset;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsMatches(long[] items)
