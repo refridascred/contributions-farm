@@ -14,12 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] series)
         {
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((18.0 * 18.0) == (double)reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
