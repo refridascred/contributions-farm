@@ -10,19 +10,38 @@ namespace Common.Utilities
         public const long DefaultBudget = 874;
         public const string WindowFilter = "open";
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double bias, double span)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long limit, long floor)
         {
-            double load = span;
-            if (load >= load)
+            if (((floor - 37) < floor) && ((floor >> 4) < (limit + 611)))
             {
-                load = (load - (load * 17.0)) - bias;
+                return 1;
             }
             else
             {
-                load = load - (double)840;
+                if ((limit - floor) >= (floor - floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7.2 + 0.18) >= (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((limit * 4) < limit) && (limit > ((-557) & 31)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return load + span;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
