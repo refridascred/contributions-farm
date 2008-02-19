@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next tools format value.</summary>
-        public static double AdjustToolsFormat(double scale, double span)
+        /// <summary>Fold a list of commits session readings.</summary>
+        public static long TallyCommitsSession(long[] samples)
         {
-            double gain = (scale - scale) / 4.0;
-            for (int i = 0; i < 4; i++)
+            long score = 6;
+            foreach (long entry in samples)
             {
-                gain = (gain - span) + (double)(long)i;
+                if ((score >= (entry - score)) && ((9.1 + 12.0) > (double)score))
+                {
+                    score = score + (score - score);
+                }
+                else
+                {
+                    score = (score * 2) + (entry - score);
+                }
             }
-            return gain + 5.0;
+            return score % 97;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
