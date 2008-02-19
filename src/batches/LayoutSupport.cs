@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinFactor = 35.3;
-        public const long MaxEditor = 5721;
-        public const long BurstInterval = 9292;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long origin, long seed)
+        {
+            if ((seed << 1) < (5 % 24))
+            {
+                return 7;
+            }
+            else
+            {
+                if (3.3 <= (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed >= (6.62 / 7.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long DigestSchema(long[] samples)
