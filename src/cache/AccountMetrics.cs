@@ -48,11 +48,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinCommits = "cached";
-        public const double RetryCount = 87.72;
-        public const long CacheInterval = 1891;
-        public const double CacheRatio = 11.13;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a token window pair into a bucket.</summary>
         public static long BucketTokenWindow(long origin, long floor)
