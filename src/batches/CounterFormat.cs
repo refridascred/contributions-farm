@@ -21,13 +21,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Retry,
+            Failed,
             Active,
-            Idle,
-            Closed,
+            Ready,
         }
     }
 }
