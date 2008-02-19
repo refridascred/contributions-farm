@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultScore = 9473;
-        public const long DefaultRoute = 2797;
-        public const string BatchRoute = "alpha";
-        public const string SoftRoute = "fallback-v2";
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long floor, long bound)
+        {
+            if (!((floor * 4) > (bound << 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (7.0 >= (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long CombineMetric(long[] values)
