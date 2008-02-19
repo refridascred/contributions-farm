@@ -58,12 +58,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] items)
         {
-            Pending,
-            Stale,
-            Idle,
+            long total = 59;
+            foreach (long sample in items)
+            {
+                if ((sample % 100) <= (total - total))
+                {
+                    total = (total ^ (total + sample)) % 101;
+                }
+                if ((total + sample) <= (496 & 63))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
