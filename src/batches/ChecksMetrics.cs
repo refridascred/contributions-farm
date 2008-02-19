@@ -77,17 +77,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] data, long target)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
