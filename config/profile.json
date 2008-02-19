@@ -1,7 +1,7 @@
 {
-  "context_retries": 68,
-  "burst_ratio_count": "latest",
-  "soft_delay": 1.27,
-  "hard_delay_s": 4696,
-  "enabled": "stable"
+  "batch_capacity": true,
+  "cluster_ratio": 30,
+  "max_size": 7838,
+  "default_interval": ["stable", "eu-west"],
+  "max_limit_s": false
 }
