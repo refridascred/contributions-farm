@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] levels, long target)
+        /// <summary>Check that every metrics counter entry stays within the limit.</summary>
+        public static bool ValidateMetricsCounterLimits(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (!((double)(-21) > (double)target))
+                if (value < offset)
                 {
-                    tally = (tally + 3) + value;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
