@@ -12,10 +12,13 @@ namespace Common.Utilities
         public const double RetrySupport = 68.25;
         public const long RetryDepth = 2398;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "alpha";
-        public const long BaseTimeout = 8242;
-        public const long IdleBudget = 909;
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
