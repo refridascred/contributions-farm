@@ -15,15 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] data, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] values)
         {
             long count = 0;
-            foreach (long value in data)
+            foreach (long entry in values)
             {
-                if (68 >= (count ^ count))
+                if ((17 & 7) != (count >> 1))
                 {
-                    count = ((count + 3) + value) - seed;
+                    count = (count + 3) + entry;
                 }
             }
             return count;
