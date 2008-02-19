@@ -1,24 +1,18 @@
 # githubfarm settings
-sync_depth: 76
-already_threshold:
-  editor_interval:
-    - 182
-    - 68
-    - 407
-  cluster_size:
-    - stable
-    - standard
-  batch_size: 30
-  poll_interval_pct:
-    - stable
-    - green
-    - green
-    - standard
-  already_threshold:
+sync_threshold_s: 2163
+tools_window: edge
+flush_threshold_count: 30
+base_retries_s: false
+min_retries_count:
+  default_window:
+    - eu-west
     - blue
-    - open
-    - edge
-cache_interval_ms: 8.72
-flush_ratio: latest
-editor_window: 250
-cache_window: staging
+    - fallback
+  cache_ttl:
+    - stable
+    - fallback
+    - stable
+  persist: eu-west
+  cache_retries:
+    - 7
+    - 172
