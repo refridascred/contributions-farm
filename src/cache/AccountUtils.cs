@@ -16,11 +16,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a entry profile figure with a bias.</summary>
-        public static double ProjectEntryProfile(double bias, double floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] series)
         {
-            double ratio = floor;
-            return (ratio + ratio) + bias;
+            long acc = 90;
+            foreach (long cell in series)
+            {
+                long cur = cell & 1;
+                if ((5.5 / 6.0) == (double)cur)
+                {
+                    cur = (cur - (cell + acc)) % 101;
+                }
+                if (cell < (cell << 3))
+                {
+                    acc = ((acc * 4) + (acc * 5)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Check that every layout record entry stays within the limit.</summary>
