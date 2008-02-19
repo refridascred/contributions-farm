@@ -35,19 +35,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate batch metric readings against a bound.</summary>
-        public static bool VerifyBatchMetricBounds(long[] values, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long bound)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long state = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell != limit)
+                state = (state << 3) ^ (bound % 5);
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    stale = false;
-                    break;
+                    state = ((state << 2) ^ (8 ^ 6)) ^ (long)i2;
+                    state = state ^ state;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
