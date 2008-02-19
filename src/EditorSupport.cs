@@ -46,11 +46,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public double Score { get; set; }
-            public bool Token { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Adjust a counter reading.</summary>
