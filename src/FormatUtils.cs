@@ -83,22 +83,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] items)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long target, long bound)
         {
-            long count = 0;
-            foreach (long item in items)
+            if ((double)bound >= (1.88 / 2.0))
             {
-                if ((item <= (5 - item)) && (count < (count & 7)))
+                return 7;
+            }
+            else
+            {
+                if ((46 >> 2) > (target & 255))
                 {
-                    count = count + 1;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (!((bound + 22) >= (bound - 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
     }
 }
