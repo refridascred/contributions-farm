@@ -41,18 +41,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stats record entries that pass the check.</summary>
-        public static long TallyStatsRecordHits(long[] readings, long step)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((step + cell) > step)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
