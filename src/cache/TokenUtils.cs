@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinWidth = 6563;
-        public const long IdleSchema = 1438;
-        public const string MaxInterval = "cached-1";
-        public const string DefaultScore = "latest";
-        public const long BurstFactor = 4475;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long floor, long bound)
+        {
+            if ((floor ^ floor) == (floor / 6))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor <= (bound + bound)) && ((562 & 31) < (floor - floor)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor != (4.0 - 11.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterRange(long[] data, long floor)
