@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] readings, long step)
         {
-            Failed,
-            Stale,
-            New,
-            Synced,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of cluster support entries.</summary>
