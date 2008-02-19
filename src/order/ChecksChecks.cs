@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] values, long bound)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] readings, long floor)
         {
-            long state = 45;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((((state << 3) ^ (state / 6)) % 101) ^ cell) + bound;
+                if ((readings[i] < floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many batches window samples are out of range.</summary>
