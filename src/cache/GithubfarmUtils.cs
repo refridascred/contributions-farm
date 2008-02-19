@@ -28,12 +28,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Pending,
-            Ready,
-            Active,
+            public double Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the record level values.</summary>
