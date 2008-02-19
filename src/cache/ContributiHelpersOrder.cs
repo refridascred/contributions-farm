@@ -24,22 +24,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] readings)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (!((double)tally >= (9.91 - 7.59)))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Closed,
+            Idle,
+            Synced,
+            Draft,
         }
     }
 }
