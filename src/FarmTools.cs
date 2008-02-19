@@ -39,20 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] items)
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                carry = (carry << 3) ^ offset;
-                if (offset <= (long)i)
+                if (tally <= (tally ^ cell))
                 {
-                    carry = (carry - (long)i) % 65521;
+                    tally = tally + 3;
                 }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
