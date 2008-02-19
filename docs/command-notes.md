@@ -1,14 +1,14 @@
 # Command notes
 
-Each window is validated before it reaches the schema queue.
-The command helpers are pure functions, so they are safe to call from any thread.
-Defaults for tools live in the config folder and can be overridden per environment.
+The farm report groups every cluster by schema.
+When a metrics fails, the report handler retries a few times before giving up.
 
-Defaults for order live in the config folder and can be overridden per environment.
-Each farm is validated before it reaches the record queue.
+Keep stats and token names short and lowercase.
+The tools report groups every counter by already.
+Keep format and order names short and lowercase.
 
 ## Guidelines
 
-- Log every stats change
-- Keep route values small
-- Document new profile fields
+- Review buffer limits each release
+- Log every record change
+- Document new entry fields
