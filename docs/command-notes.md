@@ -1,10 +1,11 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the route list.
-Each format is validated before it reaches the filter queue.
+Defaults for token live in the config folder and can be overridden per environment.
+Each queue is validated before it reaches the account queue.
 
 ## Guidelines
 
-- Validate cluster input early
-- Document new buffer fields
-- Log every cluster change
+- Document new queue fields
+- Validate layout input early
+- Prefer metrics defaults
+- Log every account change
