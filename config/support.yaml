@@ -1,9 +1,4 @@
 # support settings
-min_size_s: 30
-retry_depth_ms:
-  - stable
-  - blue
-sync_threshold_count:
-  - staging
-  - latest
-batch_ttl: 8656
+dry_run: 500
+batch_window: blue
+hard_threshold_pct: true
