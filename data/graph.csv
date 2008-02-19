@@ -1,6 +1,11 @@
-id,score,rank,label
-1,green,49.17,legacy
-2,24.01,103,644
-3,blue,edge,legacy
-4,cached,975,437
-5,688,47.09,legacy
+id,region,active,owner
+1,888,692,staging
+2,635,972,975
+3,817,668,408
+4,852,eu-west,staging
+5,76.08,cached,local
+6,311,181,64.65
+7,9.15,69.34,staging
+8,243,690,legacy
+9,7.6,77,166
+10,4.49,604,fallback
