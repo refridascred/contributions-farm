@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] data, long seed)
         {
-            Stale,
-            New,
-            Closed,
-            Retry,
-            Idle,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches + matches) > (matches % 100))
+                {
+                    matches = ((matches + 3) + reading) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
