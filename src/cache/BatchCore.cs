@@ -41,31 +41,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long floor, long seed)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            if (!((floor - floor) == (seed & 15)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((floor + floor) != (seed + floor)) || ((double)floor != (8.26 - 3.6)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((35 >> 2) > (floor % 60))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
