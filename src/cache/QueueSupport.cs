@@ -31,13 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Locate a metrics payload reading by value.</summary>
+        public static long FindMetricsPayloadIndex(long[] levels, long floor)
         {
-            Idle,
-            Done,
-            Queued,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
