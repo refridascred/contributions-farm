@@ -51,11 +51,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits * 2) != (hits + hits))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many token notes samples are out of range.</summary>
