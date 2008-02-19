@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
