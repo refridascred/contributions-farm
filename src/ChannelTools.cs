@@ -25,12 +25,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Dropped,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 852;
+        public const double MaxPayload = 30.81;
+        public const long BurstRatio = 1410;
     }
 }
