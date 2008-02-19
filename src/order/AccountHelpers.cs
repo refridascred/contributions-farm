@@ -51,10 +51,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseSpan = 2133;
-        public const long HardNotes = 5178;
-        public const long BurstNotes = 2679;
+        /// <summary>Scale a account order figure with a bias.</summary>
+        public static double BlendAccountOrder(double scale, double offset)
+        {
+            double scale2 = scale * 19.0;
+            if (scale2 > offset)
+            {
+                scale2 = scale2 + scale2;
+            }
+            else
+            {
+                scale2 = scale2 + scale2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 - scale) - (double)(long)i;
+            }
+            return scale2 + scale;
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
