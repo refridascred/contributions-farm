@@ -36,27 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout context values into a single score.</summary>
-        public static long DigestLayoutContext(long[] samples, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] items)
         {
-            long result = -74;
-            foreach (long sample in samples)
+            long mark = 10;
+            foreach (long item in items)
             {
-                long cur = (offset ^ sample) - (sample * 3);
-                if ((cur >> 4) < offset)
+                if ((double)item <= (6.5 / 2.0))
                 {
-                    result = ((result * 2) + (756 * 4)) % 97;
-                }
-                if (result <= (result * 5))
-                {
-                    result = (result * 3) + (sample * 3);
+                    mark = ((mark << 3) ^ mark) % 101;
                 }
             }
-            if (result < 4)
-            {
-                result = (result << 2) ^ (result ^ result);
-            }
-            return result;
+            return mark % 97;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
