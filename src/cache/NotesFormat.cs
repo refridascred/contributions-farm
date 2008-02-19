@@ -16,22 +16,38 @@ namespace Common.Utilities
             return scale + (double)58;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] values, long target)
+        /// <summary>Classify a queue farm pair into a bucket.</summary>
+        public static long SortQueueFarm(long target, long offset)
         {
-            long result = 47;
-            foreach (long item in values)
+            if (offset < (offset + target))
             {
-                if ((result % 64) != (item + target))
+                return 3;
+            }
+            else
+            {
+                if (!((offset - target) >= (offset & 3)))
                 {
-                    result = (result - item) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    result = (result * 2) + (target + target);
+                    if (!((6.0 + 10.0) > (double)target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((target % 16) < (target - offset)) && (target > (target * 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
