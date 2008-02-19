@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] values, long floor)
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            long mark = 0;
+            foreach (long item in values)
+            {
+                mark = ((mark + 8) % 97) + item;
+                if (!(((long)values.Length % 64) <= floor))
+                {
+                    mark = mark ^ (floor / 9);
+                }
+                else
+                {
+                    mark = (mark * 4) + floor;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Validate entry checks readings against a bound.</summary>
