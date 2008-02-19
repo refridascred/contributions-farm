@@ -20,27 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] levels)
-        {
-            long carry = -305;
-            foreach (long entry in levels)
-            {
-                if ((double)entry > (double)carry)
-                {
-                    carry = (carry ^ (carry ^ 323)) % 97;
-                }
-                else
-                {
-                    carry = carry + (carry >> 5);
-                }
-                if ((entry < carry) || ((entry ^ carry) <= entry))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 7944;
+        public const double BurstCount = 73.57;
+        public const long StepCount = 3893;
+        public const long BaseRatio = 5091;
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
