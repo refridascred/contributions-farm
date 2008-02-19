@@ -13,12 +13,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            Failed,
-            New,
-            Active,
+            Dropped,
+            Retry,
+            Idle,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
