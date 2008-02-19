@@ -1,18 +1,15 @@
 # githubfarm settings
-account_capacity:
-  audit:
-    - 463
-    - 479
-    - 132
-    - 132
-  readonly: edge
-  token_depth: local
-  cache_ttl: latest
-idle_delay:
-  burst_threshold_count: open
-  burst_capacity: primary
-  enabled:
-    cache_size: fallback
-    support_retries: primary
-    githubfarm_delay: 1024
-default_retries: cached
+command_interval:
+  - green
+  - staging
+  - cached
+  - fallback
+sync_delay_ms: 1024
+hard_threshold:
+  - 381
+  - 82
+audit:
+  - legacy
+  - strict
+  - blue
+  - local
