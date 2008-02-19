@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] levels)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long bound)
         {
-            long total = 6;
-            foreach (long value in levels)
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
             {
-                total = ((total - (total << 2)) % 65521) - value;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = (mark ^ (mark & 1)) - (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Hold a tools summary.</summary>
