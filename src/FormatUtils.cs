@@ -63,18 +63,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token notes samples are out of range.</summary>
-        public static long CountTokenNotesOutliers(long[] readings, long step)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((tally / 7) == (item % 12))
-                {
-                    tally = (tally + 2) + step;
-                }
-            }
-            return tally;
+            Active,
+            Done,
+            Ready,
         }
 
         /// <summary>Validate graph context readings against a bound.</summary>
