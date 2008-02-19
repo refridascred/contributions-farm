@@ -58,12 +58,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxLevel = 6462;
-        public const long DefaultBatch = 9522;
-        public const string LimitFactor = "open-1";
-        public const long MinBatch = 6926;
-        public const long IdleLevel = 5425;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxChannel = 58.95;
+        public const string WindowChannel = "legacy-v2";
+        public const double DefaultDepth = 46.22;
+        public const long RetrySize = 7106;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double MaxCache = 54.03;
