@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] levels, long limit)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((8.53 + 5.73) >= (double)reading)
-                {
-                    hits = (hits + 2) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
