@@ -1,5 +1,7 @@
 {
-  "hard_capacity_pct": 85.68,
-  "audit": "primary",
-  "idle_ratio": "latest"
+  "batch_limit": 500,
+  "burst_window_ms": 14,
+  "queue_capacity": "fallback",
+  "strict": 250,
+  "warm_ratio_count": ["open", "latest"]
 }
