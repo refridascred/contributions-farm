@@ -30,33 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long limit, long origin)
-        {
-            long slot = limit + origin;
-            if ((origin * 3) <= (slot >> 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((1.4 * 2.43) < (double)origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((-499) & 31) >= (origin >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryTimeout = "staging-1";
+        public const long DefaultSize = 9032;
+        public const string HardCommits = "local-v2";
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long PairEntryCount(long[] levels)
