@@ -14,18 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] values, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((double)(long)values.Length != (2.3 - 5.45))
+                if (cell >= floor)
                 {
-                    count = ((count + 2) + entry) - seed;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
