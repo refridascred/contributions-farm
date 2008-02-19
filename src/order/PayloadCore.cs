@@ -22,19 +22,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] samples, long target)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long mix = 3;
+            foreach (long entry in samples)
             {
-                if (item <= target)
+                if ((double)(long)samples.Length <= (4.13 * 1.5))
                 {
-                    ok = false;
-                    break;
+                    mix = (mix ^ 322) % 255;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (entry << 2);
                 }
             }
-            return ok;
+            if (mix > (-82))
+            {
+                mix = ((mix * 4) + (mix / 9)) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
