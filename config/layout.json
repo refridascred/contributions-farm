@@ -1,10 +1,13 @@
 {
-  "soft_size_count": "open",
-  "hard_window": {
-    "flush_size": false,
-    "cache_delay_s": 54.63,
-    "strict": 89
-  },
-  "flush_window_ms": [83, 87, 429, 315],
-  "idle_ratio_ms": "strict"
+  "poll_timeout": "latest",
+  "queue_capacity": "strict",
+  "batch_size": ["open", "blue", "primary"],
+  "soft_depth": {
+    "burst_timeout_pct": 250,
+    "idle_interval": 9499,
+    "readonly": "local",
+    "strict": "strict",
+    "base_retries_pct": "legacy",
+    "default_ttl": ["legacy", "blue", "blue", "staging"]
+  }
 }
