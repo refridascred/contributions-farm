@@ -48,18 +48,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] items)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((((sample + seen) >= sample) || (((long)items.Length % 64) == (sample & 15))) && ((sample - seen) >= (seen + seen)))
+                if (!((state >= origin) && (6.98 > (double)origin)))
                 {
-                    seen = seen + 1;
+                    state = (state - (long)i) % 101;
                 }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
