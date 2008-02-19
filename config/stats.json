@@ -1,8 +1,8 @@
 {
-  "payload_limit": false,
-  "soft_depth_s": 6367,
-  "account_capacity": "latest",
-  "min_interval_count": [44, 327, 46, 390],
-  "default_depth_ms": 30,
-  "base_limit": 80.91
+  "audit": false,
+  "base_timeout": [124, 214],
+  "stats_size": "latest",
+  "tools_ttl": "standard",
+  "metric_capacity": false,
+  "session_window": "standard"
 }
