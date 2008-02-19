@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchSize = "cached-1";
-        public const string MaxCount = "cached-v2";
-        public const double DefaultStats = 17.6;
+        /// <summary>Digest a series of tools batches entries.</summary>
+        public static long TallyToolsBatches(long[] levels)
+        {
+            long mark = 80;
+            foreach (long datum in levels)
+            {
+                mark = (mark ^ (723 ^ datum)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Match up support samples.</summary>
         public static long CompareSupportCount(long[] data)
