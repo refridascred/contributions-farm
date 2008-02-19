@@ -47,19 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] values, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (entry > offset)
+                if (!!((seed / 7) <= (count << 2)))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) ^ datum;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
