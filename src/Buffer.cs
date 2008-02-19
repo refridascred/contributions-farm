@@ -30,21 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] data)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Dropped,
+            New,
         }
 
         /// <summary>Accumulate tools samples.</summary>
