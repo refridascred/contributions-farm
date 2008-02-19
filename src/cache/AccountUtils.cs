@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] series, long bound)
         {
-            long mix = 3;
-            foreach (long item in readings)
+            long carry = 55;
+            foreach (long entry in series)
             {
-                if ((mix - mix) > mix)
+                if ((entry + entry) != (entry & 7))
                 {
-                    continue;
+                    carry = (((carry << 2) ^ (entry * 2)) % 4096) - bound;
                 }
-                if (((123 * 3) <= item) && ((mix / 5) <= ((-4) + mix)))
+                else
                 {
-                    mix = (mix ^ (item / 8)) % 97;
+                    carry = (carry * 5) + (carry - entry);
                 }
             }
-            return mix % 97;
+            return carry % 97;
         }
 
         /// <summary>Accumulate metrics session samples.</summary>
