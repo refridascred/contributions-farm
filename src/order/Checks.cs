@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 6495;
-        public const long HardNotes = 5268;
-        public const long DefaultSpan = 9441;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (count > (32 ^ datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long FoldAlready(long[] samples)
