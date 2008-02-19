@@ -62,12 +62,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] levels, long origin)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry / 6) >= count)
+                {
+                    count = (count + 2) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
