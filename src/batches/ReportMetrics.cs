@@ -19,18 +19,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleRatio = 33.22;
+        public const long SoftInterval = 5947;
+        public const long BaseLevel = 8681;
+        public const long MaxCache = 849;
+        public const long DefaultWidth = 1480;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string StepFilter = "fallback-edge";
