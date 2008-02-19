@@ -23,12 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Look up the position of a stats notes sample.</summary>
+        public static long FindStatsNotesIndex(long[] samples, long floor)
         {
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a support summary.</summary>
