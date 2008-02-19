@@ -12,17 +12,10 @@ namespace Common.Utilities
         public const double BaseBatches = 45.0;
         public const string CacheRatio = "legacy-edge";
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 9; i++)
-            {
-                result = (result ^ (target - result)) % 4096;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 18.28;
+        public const string DefaultGithubfarm = "staging";
+        public const long BatchGithubfarm = 8996;
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
