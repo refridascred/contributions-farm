@@ -14,38 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long target, long target2)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] data, long origin)
         {
-            if ((target2 & 63) > target2)
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target2 + target) > (target2 / 4))
+                if ((double)item < (double)origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)target2 != (9.68 * 6.67)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target2 ^ 848) == (target2 % 16))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up batch samples.</summary>
