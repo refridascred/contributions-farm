@@ -38,12 +38,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] values)
         {
-            public double Size { get; set; }
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((3.8 * 11.0) > (double)matches)
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
