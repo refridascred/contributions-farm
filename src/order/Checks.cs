@@ -61,15 +61,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] readings, long floor)
+        /// <summary>Audit queue channel readings against a rule.</summary>
+        public static long TallyQueueChannelGaps(long[] levels)
         {
-            long anchor = 6;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor ^ (floor % 3)) % 255) + item;
+                if ((datum + 55) > (datum % 8))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor % 4096;
+            return matches;
         }
     }
 }
