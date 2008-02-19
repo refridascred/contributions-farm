@@ -1,5 +1,5 @@
 {
-  "default_delay": ["open", "local", "standard"],
-  "report_limit": "latest",
-  "batch_limit_count": 4175
+  "burst_depth": "edge",
+  "warm_ttl_s": "cached",
+  "editor_ttl": [83, 200]
 }
