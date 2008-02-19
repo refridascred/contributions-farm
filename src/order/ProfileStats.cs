@@ -32,18 +32,18 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] data)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] items)
         {
-            long result = 94;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((736 ^ result) <= (sample + result))
+                if ((item + (-50)) <= (item - item))
                 {
-                    result = (result + (result & 255)) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
