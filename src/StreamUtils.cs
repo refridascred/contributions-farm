@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] samples, long target)
         {
-            long sum = 778;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                sum = (sum + reading) % 65521;
+                if ((sample + sample) >= 2)
+                {
+                    tally = (tally + 2) + target;
+                }
             }
-            return sum % 97;
+            return tally;
         }
 
         /// <summary>Describe the support class values.</summary>
