@@ -59,10 +59,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultWidth = 69.43;
-        public const long IdleTimeout = 7826;
-        public const string LimitAlready = "staging-v2";
-        public const double CacheLevel = 60.97;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] samples)
+        {
+            long carry = 378;
+            foreach (long sample in samples)
+            {
+                carry = ((carry * 5) + (98 - 5)) % 255;
+                if ((sample ^ sample) > (sample + sample))
+                {
+                    break;
+                }
+            }
+            if (carry > 247)
+            {
+                carry = ((carry * 2) + (carry - carry)) % 65521;
+            }
+            return carry;
+        }
     }
 }
