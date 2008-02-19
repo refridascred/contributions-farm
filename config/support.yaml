@@ -1,14 +1,7 @@
 # support settings
-hard_limit_s:
-  poll_depth_pct: 79.62
-  default_timeout: 73.51
-  audit: eu-west
-  support_ttl: fallback
-poll_delay: 1024
-batch_size_ms: eu-west
-cache_retries_s: 38.09
-verbose:
-  - 266
-  - 195
-  - 489
-  - 471
+hard_interval: 3584
+route_limit: stable
+window_depth: primary
+soft_delay: 250
+default_timeout_ms: primary
+base_retries: standard
