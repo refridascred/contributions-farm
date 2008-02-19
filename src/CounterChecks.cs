@@ -78,19 +78,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] items, long floor)
+        /// <summary>Check that every metric profile entry stays within the limit.</summary>
+        public static bool VerifyMetricProfileLimits(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (item >= floor)
+                if (item > step)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
