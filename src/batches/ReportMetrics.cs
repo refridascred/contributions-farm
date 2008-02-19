@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] readings, long bound)
+        /// <summary>Fold a list of support token readings.</summary>
+        public static long WeighSupportToken(long[] values)
         {
-            long anchor = 16;
-            foreach (long reading in readings)
+            long carry = 200;
+            foreach (long cell in values)
             {
-                anchor = ((anchor * 2) + bound) + reading;
-                if (bound < (50 / 7))
+                if (((double)cell <= (double)carry) || (cell >= (cell - cell)))
                 {
-                    break;
+                    carry = carry - (cell & 63);
                 }
             }
-            return anchor % 1000;
+            return carry % 1000;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
