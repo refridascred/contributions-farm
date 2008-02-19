@@ -20,22 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] samples)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (!((280 * 3) == (seen + seen)))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine farm checks values into a single score.</summary>
