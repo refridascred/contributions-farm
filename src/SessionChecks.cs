@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long CacheChecks = 1900;
         public const long WindowChecks = 1219;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] series)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((7.5 + 1.5) >= (double)tally)
+                if (reading <= floor)
                 {
-                    tally = (tally + 3) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Audit commits metrics readings against a rule.</summary>
