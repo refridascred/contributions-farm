@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every metrics counter entry stays within the limit.</summary>
-        public static bool ValidateMetricsCounterLimits(long[] values, long offset)
+        /// <summary>Combine schema batch values into a single score.</summary>
+        public static long CombineSchemaBatch(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long value in values)
+            long mark = 1;
+            foreach (long reading in series)
             {
-                if (value < offset)
+                if ((mark >> 3) < mark)
                 {
-                    found = false;
-                    break;
+                    mark = (((mark ^ (513 * 4)) % 255) + reading) - bound;
                 }
             }
-            return found;
+            if (mark > (-480))
+            {
+                mark = ((mark * 4) + (-139)) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
