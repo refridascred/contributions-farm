@@ -25,21 +25,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] >= offset)
                 {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine githubfarm batch values into a single score.</summary>
