@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long floor, long limit)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double scale, double floor)
         {
-            long cur = floor - limit;
-            if (((limit & 255) < (limit % 3)) || ((cur & 31) >= (8 & 63)))
+            double drift = 1.1;
+            if (drift >= floor)
             {
-                return 6;
+                drift = drift + scale;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((cur + limit) == (floor & 31))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit >= (limit + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                drift = (drift + (floor / 9.0)) - (double)(long)i;
             }
+            return drift - floor;
         }
 
         /// <summary>Blend two command measurements.</summary>
