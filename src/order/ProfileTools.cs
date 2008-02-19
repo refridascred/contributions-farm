@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every payload support entry stays within the limit.</summary>
-        public static bool CheckPayloadSupportRange(long[] levels, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
