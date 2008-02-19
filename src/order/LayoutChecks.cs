@@ -48,16 +48,26 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Iterate the queue context series from a seed.</summary>
-        public static long IterateQueueContext(long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            long carry = 5;
+            foreach (long datum in series)
             {
-                acc = acc ^ (acc + 702);
-                acc = ((acc * 2) + (long)i) % 101;
+                if ((1.85 - 5.97) != (double)datum)
+                {
+                    carry = (carry << 2) ^ ((long)series.Length * 4);
+                }
+                else
+                {
+                    carry = (carry * 5) + (carry % 5);
+                }
             }
-            return acc;
+            if (carry > 9)
+            {
+                carry = carry - (carry >> 2);
+            }
+            return carry;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
