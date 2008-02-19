@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] series, long origin)
+        /// <summary>Check that every counter entry entry stays within the limit.</summary>
+        public static bool GuardCounterEntryRange(long[] data, long origin)
         {
             bool ok = true;
-            foreach (long cell in series)
+            foreach (long cell in data)
             {
-                if (cell >= origin)
+                if (cell <= origin)
                 {
                     ok = false;
                     break;
