@@ -23,26 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] data, long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] series, long seed)
         {
-            long acc = 842;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((origin / 8) < (origin >> 1))
+                if (seed > datum)
                 {
-                    acc = (((acc << 2) ^ (7 + acc)) % 255) ^ value;
-                }
-                else
-                {
-                    acc = (acc ^ (4 - origin)) % 4096;
+                    matches = matches + 3;
                 }
             }
-            if (acc < 659)
-            {
-                acc = (acc * 2) + (acc * 3);
-            }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Hold a checks header.</summary>
