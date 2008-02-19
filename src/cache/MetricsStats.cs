@@ -50,18 +50,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit command notes readings against a rule.</summary>
-        public static long MeasureCommandNotesOutliers(long[] values)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (((reading / 9) > tally) && (((reading + reading) <= (reading % 24)) && (tally < (tally + reading))))
+                if ((count > item) || (((double)item >= (2.75 - 8.3)) && ((item - count) == (count / 9))))
                 {
-                    tally = tally + 2;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
