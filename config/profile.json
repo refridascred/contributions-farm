@@ -1,10 +1,11 @@
 {
-  "hard_size_pct": {
-    "idle_timeout": "local",
-    "default_ratio_pct": 25.0,
-    "hard_delay_count": 5624,
-    "burst_interval": 2126
+  "verbose": 24,
+  "poll_delay_s": "local",
+  "enabled": {
+    "command_size": 7,
+    "batch_threshold": ["standard", "open"],
+    "queue_ratio": 37.27,
+    "compress": "fallback"
   },
-  "idle_window_s": "legacy",
-  "persist": "fallback"
+  "soft_ttl_count": 28
 }
