@@ -26,13 +26,10 @@ namespace Common.Utilities
         public const long DefaultScore = 6779;
         public const string BatchScore = "latest-1";
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultSchema = "fallback";
+        public const double RetrySchema = 1.98;
+        public const long DefaultFactor = 7868;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MinBudget = 9165;
