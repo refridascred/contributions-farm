@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] values, long floor)
-        {
-            long anchor = 4;
-            foreach (long item in values)
-            {
-                if ((item >= (floor - anchor)) || ((item / 6) > item))
-                {
-                    anchor = (anchor * 5) + (-49);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (floor - anchor);
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstSupport = 92.34;
+        public const long DefaultSupport = 2900;
+        public const double CacheSupport = 31.14;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LookupMetricIndex(long[] levels, long step)
