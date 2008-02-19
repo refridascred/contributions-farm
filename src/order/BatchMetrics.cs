@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of account support entries.</summary>
-        public static long TallyAccountSupport(long[] values, long step)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double scale, double floor)
         {
-            long carry = 63;
-            foreach (long cell in values)
+            double scale2 = (scale * 11.0) * 3.5;
+            if (scale2 > 0.4)
             {
-                if ((cell + carry) > (74 + 2))
-                {
-                    carry = (carry - (cell + cell)) - step;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry % 2)) % 4096;
-                }
+                scale2 = scale2 - scale2;
             }
-            return carry;
+            else
+            {
+                scale2 = scale2 + floor;
+            }
+            return scale2 + 5.0;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
