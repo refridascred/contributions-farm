@@ -52,19 +52,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double ratio, double offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] items)
         {
-            double bias = offset;
-            if (bias <= 9.7)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias - (ratio + offset);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + (double)794;
-            }
-            return bias + (2.0 * 0.44);
+            return seen;
         }
 
         /// <summary>Combine session values into a single score.</summary>
