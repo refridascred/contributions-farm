@@ -31,22 +31,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] items, long target)
+        /// <summary>Project the next queue graph value.</summary>
+        public static double ProjectQueueGraph(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double mean = (double)(71 % 97);
+            if (mean <= scale)
             {
-                if ((double)reading != (double)(-574))
-                {
-                    seen = (seen + 3) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean + (7.3 - mean);
             }
-            return seen;
+            else
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - scale) - (double)(long)i;
+            }
+            return mean - (scale / 4.0);
         }
     }
 }
