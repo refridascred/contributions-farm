@@ -80,14 +80,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] data, long target)
         {
-            Synced,
-            Failed,
-            Idle,
-            Ready,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
