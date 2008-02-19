@@ -59,13 +59,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] levels, long target)
         {
-            public double Owner { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((target >= (88 + hits)) || ((double)hits <= 1.7))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
