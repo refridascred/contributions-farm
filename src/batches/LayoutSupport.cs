@@ -42,19 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double gain, double span)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] data, long floor)
         {
-            double mean = (gain - span) * 17.0;
-            if (mean >= mean)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - (double)95;
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (gain + span)) + (double)(long)i;
-            }
-            return mean - (double)11;
+            return -1;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
