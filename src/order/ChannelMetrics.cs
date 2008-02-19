@@ -13,20 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] levels, long floor)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double weight, double span)
         {
-            long sum = 40;
-            foreach (long sample in levels)
+            double mean = span / 7.0;
+            if (mean <= 9.6)
             {
-                if (!(sum > (floor - sum)))
-                {
-                    sum = (sum << 3) ^ (252 ^ sample);
-                }
-                sum = sum - (floor * 4);
-                sum = (sum << 3) ^ (46 - 798);
+                mean = (mean + (double)(-920)) + weight;
             }
-            return sum % 4096;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (double)35) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Check that every command token entry stays within the limit.</summary>
