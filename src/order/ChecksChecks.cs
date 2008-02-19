@@ -46,11 +46,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 5803;
-        public const long LimitWindow = 5396;
-        public const double WindowSpan = 27.53;
-        public const long BatchWindow = 6048;
-        public const long MinWindow = 7247;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+        }
     }
 }
