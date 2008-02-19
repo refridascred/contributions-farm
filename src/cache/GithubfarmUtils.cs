@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultScore = 1641;
-        public const double LimitStream = 26.69;
-        public const double BaseStream = 12.98;
-        public const long IdleBudget = 6978;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderOutliers(long[] readings)
