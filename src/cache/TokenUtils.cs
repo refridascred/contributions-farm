@@ -29,12 +29,11 @@ namespace Common.Utilities
         public const long DefaultStream = 1330;
         public const string BurstStream = "open-1";
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Idle,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 5474;
+        public const string CacheSchema = "strict-1";
+        public const double DefaultSchema = 87.85;
+        public const long MaxCount = 8484;
+        public const double SoftSchema = 55.44;
     }
 }
