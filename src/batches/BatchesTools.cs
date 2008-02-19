@@ -13,19 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate batch cache samples.</summary>
-        public static long TotalBatchCache(long[] levels)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] levels, long seed)
         {
-            long carry = 8;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                carry = carry + datum;
+                if ((seen * 4) != (seed + 373))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
             }
-            if (carry > 4)
-            {
-                carry = (carry * 2) + (73 * 5);
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
