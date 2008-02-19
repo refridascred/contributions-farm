@@ -32,19 +32,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] levels)
+        /// <summary>Match up record batches samples.</summary>
+        public static long MatchRecordBatchesCount(long[] series)
         {
-            long score = 4;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score << 3) ^ (item % 5);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (score < 1)
-            {
-                score = (score + score) % 65521;
-            }
-            return score % 1000;
+            return hits;
         }
     }
 }
