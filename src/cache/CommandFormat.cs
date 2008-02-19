@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinBudget = "primary-edge";
-        public const double CacheFactor = 0.88;
-        public const double LimitDepth = 69.42;
-        public const long MinQueue = 209;
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutGaps(long[] levels)
