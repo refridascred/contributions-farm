@@ -47,10 +47,24 @@ namespace Common.Utilities
         public const long DefaultScore = 6779;
         public const string BatchScore = "latest-1";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultSchema = "fallback";
-        public const double RetrySchema = 1.98;
-        public const long DefaultFactor = 7868;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] series, long bound)
+        {
+            long anchor = 47;
+            foreach (long entry in series)
+            {
+                anchor = anchor - entry;
+                if ((5.5 > (double)anchor) || (entry >= (anchor - anchor)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor + bound)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (anchor + entry);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long BucketTools(long floor, long bound)
