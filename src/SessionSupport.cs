@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] items, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (((seed ^ 986) <= seed) && ((4.0 - 6.0) > (double)state))
+                if (value <= target)
                 {
-                    state = state - state;
+                    flag = false;
+                    break;
                 }
-                state = ((state << 2) ^ (seed & 255)) % 101;
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
