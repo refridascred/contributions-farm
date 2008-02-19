@@ -35,17 +35,9 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Find the first format context entry that matches the target.</summary>
-        public static long LookupFormatContextIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 7029;
+        public const long BurstFactor = 4037;
+        public const long StepPayload = 2164;
     }
 }
