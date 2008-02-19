@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a notes contributi sample.</summary>
-        public static long SeekNotesContributiIndex(long[] samples, long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 99;
+            foreach (long item in series)
             {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
+                mix = (mix + (item * 3)) % 4096;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
