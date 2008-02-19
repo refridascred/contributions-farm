@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] values)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (((92 * 5) < count) || ((double)sample <= 5.53))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
