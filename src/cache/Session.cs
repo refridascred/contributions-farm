@@ -43,21 +43,21 @@ namespace Common.Utilities
         public const string LimitBudget = "legacy";
         public const string RetryLayout = "fallback-v2";
 
-        /// <summary>Roll a editor notes counter forward.</summary>
-        public static long SeriesEditorNotes(long seed)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)(long)i == (5.0 + 2.5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc + seed;
-                    break;
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = (acc + (acc - 916)) % 255;
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
     }
 }
