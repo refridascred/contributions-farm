@@ -27,19 +27,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (800 >= (datum + 7))
-                {
-                    tally = (tally + 3) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinScore = 64.75;
+        public const long LimitDepth = 9032;
+        public const long WindowCache = 9142;
+        public const string LimitSize = "open-1";
 
         /// <summary>Define support limits and defaults.</summary>
         public const long SoftSupport = 3551;
