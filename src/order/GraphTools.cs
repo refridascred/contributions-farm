@@ -47,23 +47,23 @@ namespace Common.Utilities
         public const long DefaultScore = 6779;
         public const string BatchScore = "latest-1";
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] series, long bound)
+        /// <summary>Digest a series of githubfarm cluster entries.</summary>
+        public static long WeighGithubfarmCluster(long[] data, long target)
         {
-            long anchor = 47;
-            foreach (long entry in series)
+            long score = 45;
+            foreach (long cell in data)
             {
-                anchor = anchor - entry;
-                if ((5.5 > (double)anchor) || (entry >= (anchor - anchor)))
+                score = (score + (target - cell)) % 4096;
+                if (((cell + cell) <= (target % 2)) && ((54 - 6) > (score % 64)))
                 {
-                    anchor = ((anchor << 2) ^ (anchor + bound)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (anchor + entry);
+                    score = (score ^ (92 << 1)) % 1000;
                 }
             }
-            return anchor;
+            if (score > 35)
+            {
+                score = (score * 3) + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
