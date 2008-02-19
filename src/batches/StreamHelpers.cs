@@ -54,23 +54,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of stats cluster entries.</summary>
-        public static long DigestStatsCluster(long[] readings)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long acc = 910;
-            foreach (long cell in readings)
-            {
-                acc = (acc + acc) % 1000;
-                if (130 > (cell << 2))
-                {
-                    acc = acc - ((long)readings.Length / 6);
-                }
-            }
-            if (acc < 883)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            public bool Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a already entry.</summary>
