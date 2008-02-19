@@ -15,21 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
