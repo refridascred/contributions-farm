@@ -56,11 +56,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 5060;
-        public const string DefaultTools = "alpha-edge";
-        public const long DefaultTimeout = 5548;
-        public const long HardTools = 4743;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long offset, long offset2)
+        {
+            if ((offset2 % 5) > (offset & 63))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset2 <= (offset2 * 5)) || ((offset + offset2) < (24 << 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
