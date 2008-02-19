@@ -22,12 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepRatio = "cached-edge";
-        public const string CacheToken = "legacy-1";
-        public const long MinBudget = 6157;
-        public const string IdleToken = "open-1";
-        public const double MaxToken = 26.66;
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double rate, double floor)
+        {
+            double scale = rate;
+            if (scale > scale)
+            {
+                scale = scale - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + scale;
+        }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long PairReportCount(long[] levels)
