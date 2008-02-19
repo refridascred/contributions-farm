@@ -24,19 +24,13 @@ namespace Common.Utilities
         public const string HardTimeout = "alpha-v2";
         public const long MinScore = 3420;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] items, long step)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            New,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
