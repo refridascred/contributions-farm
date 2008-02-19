@@ -68,12 +68,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Count batch graph pairs that satisfy a relation.</summary>
+        public static long PairBatchGraphCount(long[] readings)
         {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
