@@ -56,22 +56,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] values, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] data, long seed)
         {
-            long mix = 832;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((mix - value) < (bound >> 5))
+                if (!(seed > (value + value)))
                 {
-                    mix = mix ^ (mix & 31);
+                    hits = hits + 3;
                 }
             }
-            if (mix < 4)
-            {
-                mix = ((mix << 3) ^ (mix - mix)) % 65521;
-            }
-            return mix;
+            return hits;
         }
     }
 }
