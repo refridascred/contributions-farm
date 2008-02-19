@@ -33,14 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Draft,
+            Retry,
+            Ready,
+            Active,
+            Pending,
             Done,
-            Synced,
-            Failed,
-            New,
         }
 
         /// <summary>Hold a farm snapshot.</summary>
