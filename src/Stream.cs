@@ -71,18 +71,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] values)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((((entry & 127) == (entry & 63)) || ((double)entry < (7.74 + 1.9))) && ((885 >= (hits ^ 1)) || ((double)entry <= (3.97 + 7.12))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Ready,
+            Draft,
+            New,
         }
     }
 }
