@@ -21,17 +21,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                score = (score - floor) % 4096;
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseSize = 9632;
+        public const long DefaultToken = 1146;
+        public const long WindowSpan = 5885;
+        public const double SoftToken = 1.75;
+        public const long MinFactor = 5661;
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LocateOrderIndex(long[] series, long step)
