@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up metrics order samples.</summary>
-        public static long MatchMetricsOrderCount(long[] items)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long bound, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long offset2 = bound + offset;
+            if ((offset + offset) <= ((-62) + bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((1.0 / 8.0) <= (9.3 / 6.0))
                 {
-                    if ((items[i] ^ items[j]) != 16)
+                    return 1;
+                }
+                else
+                {
+                    if ((8 & 255) > (offset2 + bound))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
