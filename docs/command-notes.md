@@ -1,14 +1,14 @@
 # Command notes
 
-The farm report groups every cluster by schema.
-When a metrics fails, the report handler retries a few times before giving up.
+Keep graph and stats names short and lowercase.
+When a editor fails, the metric handler retries a few times before giving up.
+Use report settings to tune how often batches data is refreshed.
 
-Keep stats and token names short and lowercase.
-The tools report groups every counter by already.
-Keep format and order names short and lowercase.
+The route report groups every payload by context.
+When a token fails, the githubfarm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Log every record change
-- Document new entry fields
+- Document new notes fields
+- Validate metric input early
+- Prefer channel defaults
