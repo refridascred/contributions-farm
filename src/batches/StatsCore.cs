@@ -42,18 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stream order samples.</summary>
-        public static long OverlapStreamOrderCount(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] values, long target)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally % 3) > (entry << 2))
                 {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) + target;
                 }
             }
             return tally;
