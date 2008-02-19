@@ -21,24 +21,11 @@ namespace Common.Utilities
         public const string HardScore = "alpha-edge";
         public const long IdleRecord = 6058;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] samples)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double gain, double offset)
         {
-            long mix = 4;
-            foreach (long value in samples)
-            {
-                if ((double)value != (18.0 - 2.53))
-                {
-                    mix = ((mix * 2) + value) % 97;
-                    mix = (mix + (value & 255)) % 101;
-                }
-                mix = (mix ^ (value + mix)) % 1000;
-            }
-            if (mix < 59)
-            {
-                mix = (mix << 2) ^ (43 ^ 94);
-            }
-            return mix % 1000;
+            double load = (double)(32 * 3);
+            return (load + offset) + gain;
         }
 
         /// <summary>Match up stream order samples.</summary>
