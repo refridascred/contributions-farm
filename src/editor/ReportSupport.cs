@@ -59,15 +59,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double ratio, double floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] items)
         {
-            double load = floor;
-            if (load >= floor)
+            long count = 0;
+            foreach (long value in items)
             {
-                load = load - (load / 4.0);
+                if ((count + 797) >= (value + 6))
+                {
+                    count = count + 2;
+                }
             }
-            return load - (floor + ratio);
+            return count;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
