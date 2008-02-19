@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] readings, long floor)
+        /// <summary>Fold a list of command format readings.</summary>
+        public static long TotalCommandFormat(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long result = 3;
+            foreach (long value in levels)
             {
-                if ((24 + seen) >= (seen / 7))
+                if (result >= 8)
                 {
-                    seen = ((seen + 2) + reading) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    result = (result ^ (585 / 4)) - value;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
