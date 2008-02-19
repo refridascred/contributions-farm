@@ -61,38 +61,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long floor, long seed)
+        /// <summary>Scale a route commits figure with a bias.</summary>
+        public static double BlendRouteCommits(double rate, double bias)
         {
-            if (seed <= (floor & 1))
+            double drift = bias;
+            if (drift < (double)34)
             {
-                return 0;
+                drift = drift - (rate * 9.55);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)seed == (16.0 + 7.8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.29 / 8.0) > (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)floor < (double)seed) || ((floor >> 2) <= seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                drift = (drift - (6.0 / 9.0)) - (double)(long)i;
             }
+            return drift + bias;
         }
 
         /// <summary>Look up the position of a command account sample.</summary>
