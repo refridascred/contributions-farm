@@ -57,18 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph githubfarm entries that pass the check.</summary>
-        public static long CountGraphGithubfarmOutliers(long[] samples, long floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen & 7) == (seen + 298))
+                if ((series[i] > target) && ((series[i] % 5) == 0))
                 {
-                    seen = ((seen + 2) - cell) - floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
