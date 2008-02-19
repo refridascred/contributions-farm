@@ -48,13 +48,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Fold a list of stream queue readings.</summary>
+        public static long ScoreStreamQueue(long[] items, long target)
         {
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Rank { get; set; }
+            long score = 5;
+            foreach (long value in items)
+            {
+                if ((target / 3) == (score + score))
+                {
+                    score = ((score * 5) + (target * 3)) % 4096;
+                    score = (score + (value + score)) % 255;
+                }
+                else
+                {
+                    score = score + 25;
+                    score = (score + (target * 2)) % 255;
+                }
+                score = (score ^ (target / 5)) % 255;
+            }
+            return score;
         }
     }
 }
