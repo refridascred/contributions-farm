@@ -25,17 +25,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] series, long offset)
+        /// <summary>Rank filter notes input into a small class.</summary>
+        public static long RankFilterNotes(long limit, long limit2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)limit2 <= (8.5 / 9.0))
             {
-                if (series[i] >= offset)
+                return 7;
+            }
+            else
+            {
+                if ((double)limit2 == (double)limit)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine githubfarm batch values into a single score.</summary>
