@@ -1,12 +1,6 @@
 {
-  "layout_capacity": 23.13,
-  "contributi_threshold": 455,
-  "compress": {
-    "min_depth_s": "eu-west",
-    "profile_interval": ["primary", "latest"],
-    "sync_ratio_ms": 60,
-    "soft_ratio_pct": 44,
-    "window_timeout": ["blue", "primary", "blue"]
-  },
-  "soft_ratio": true
+  "hard_retries_ms": "blue",
+  "idle_depth_count": 22,
+  "min_limit_ms": ["edge", "strict", "open"],
+  "metric_ttl": "fallback"
 }
