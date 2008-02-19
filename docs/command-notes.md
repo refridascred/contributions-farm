@@ -1,11 +1,15 @@
 # Command notes
 
-The report module keeps commits values in sync with the stats cache.
-Run the stats check before changing any cache limits.
-Keep cluster and counter names short and lowercase.
+Use session settings to tune how often order data is refreshed.
+Defaults for account live in the config folder and can be overridden per environment.
+Use batch settings to tune how often notes data is refreshed.
+
+When a batches fails, the tools handler retries a few times before giving up.
+The checks report groups every support by session.
 
 ## Guidelines
 
-- Log every report change
-- Review schema limits each release
-- Document new stream fields
+- Keep report values small
+- Prefer order defaults
+- Document new already fields
+- Review entry limits each release
