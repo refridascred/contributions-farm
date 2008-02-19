@@ -1,12 +1,13 @@
 {
-  "counter_threshold": ["legacy", "cached", "cached", "stable"],
-  "max_interval_pct": true,
-  "verbose": true,
-  "cache_capacity": {
-    "sync_window": false,
-    "retry_capacity_pct": false,
-    "cache_retries_pct": 1024,
-    "buffer_ttl": "stable",
-    "soft_limit_s": ["edge", "open"]
+  "strict": 250,
+  "idle_ratio": [127, 353],
+  "burst_depth_count": true,
+  "audit": "stable",
+  "idle_threshold_ms": "stable",
+  "batch_retries_ms": {
+    "poll_size": "standard",
+    "base_timeout": 93,
+    "metrics_limit": "blue",
+    "min_ttl_ms": "fallback"
   }
 }
