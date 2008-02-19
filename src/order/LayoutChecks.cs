@@ -61,18 +61,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] readings, long target)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((hits - cell) <= target)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Blend two graph measurements.</summary>
