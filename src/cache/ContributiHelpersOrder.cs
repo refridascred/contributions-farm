@@ -24,23 +24,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Project the next queue graph value.</summary>
-        public static double ProjectQueueGraph(double scale, double bias)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double mean = (double)(71 % 97);
-            if (mean <= scale)
-            {
-                mean = mean + (7.3 - mean);
-            }
-            else
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - scale) - (double)(long)i;
-            }
-            return mean - (scale / 4.0);
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
