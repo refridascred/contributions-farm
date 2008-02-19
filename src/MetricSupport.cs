@@ -14,21 +14,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] data)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 182;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                state = (state ^ 773) - datum;
+                if (limit < (limit >> 4))
                 {
-                    if ((data[i] - data[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state * 5) + (state * 2)) % 4096;
+                }
+                else
+                {
+                    state = ((state * 5) + (state >> 2)) % 101;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Adjust a editor command reading.</summary>
