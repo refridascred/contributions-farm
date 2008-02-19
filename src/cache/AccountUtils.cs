@@ -16,16 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate metrics session samples.</summary>
-        public static long ScoreMetricsSession(long[] levels, long offset)
+        /// <summary>Scale a entry profile figure with a bias.</summary>
+        public static double ProjectEntryProfile(double bias, double floor)
         {
-            long state = 9;
-            foreach (long reading in levels)
-            {
-                state = (state + reading) + offset;
-                state = state ^ state;
-            }
-            return state % 4096;
+            double ratio = floor;
+            return (ratio + ratio) + bias;
         }
 
         /// <summary>Check that every layout record entry stays within the limit.</summary>
