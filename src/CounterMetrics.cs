@@ -19,22 +19,38 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit profile metrics readings against a rule.</summary>
-        public static long AuditProfileMetricsOutliers(long[] items)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long floor, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            if ((floor / 4) < (731 ^ floor))
             {
-                if ((double)entry != (20.0 * 15.0))
+                return 1;
+            }
+            else
+            {
+                if ((floor >> 1) >= bound)
                 {
-                    tally = tally + 2;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((18 ^ floor) >= (-195))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (bound <= (bound + bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
