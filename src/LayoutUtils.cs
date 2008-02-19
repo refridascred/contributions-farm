@@ -19,10 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxSpan = 4829;
-        public const long LimitLevel = 3376;
-        public const double RetryEditor = 73.05;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftTimeout = 4869;
+        public const long BurstInterval = 819;
+        public const double DefaultFactor = 0.27;
+        public const long CacheBudget = 5041;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
