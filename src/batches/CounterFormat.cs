@@ -22,22 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] samples, long origin)
+        /// <summary>Fold a list of batch report readings.</summary>
+        public static long DigestBatchReport(long[] levels, long origin)
         {
-            long result = 63;
-            foreach (long datum in samples)
+            long anchor = -1;
+            foreach (long entry in levels)
             {
-                if ((origin - 81) != (result & 15))
+                if ((3.6 * 8.54) != (double)entry)
                 {
-                    result = ((result * 5) + 72) + datum;
+                    anchor = (anchor + 58) % 101;
                 }
                 else
                 {
-                    result = result ^ (result % 97);
+                    anchor = (anchor + (origin % 12)) % 101;
                 }
             }
-            return result;
+            return anchor % 65521;
         }
 
         /// <summary>Project the next entry value.</summary>
