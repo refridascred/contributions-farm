@@ -38,16 +38,18 @@ namespace Common.Utilities
         public const long LimitCluster = 9342;
         public const long DefaultRatio = 7336;
 
-        /// <summary>Iterate the layout profile series from a seed.</summary>
-        public static long DeriveLayoutProfile(long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] levels)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                mark = ((mark << 2) ^ 874) % 4096;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (((value % 97) <= (hits / 3)) || ((value + 59) != (hits << 3)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
