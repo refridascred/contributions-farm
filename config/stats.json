@@ -1,5 +1,6 @@
 {
-  "flush_retries_s": 43.56,
-  "stream_window": 51.56,
-  "flush_window_ms": 41.78
+  "retry_capacity": ["staging", "local", "primary", "cached"],
+  "stats_limit": "green",
+  "notes_delay": "standard",
+  "dry_run": false
 }
