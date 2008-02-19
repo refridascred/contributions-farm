@@ -53,21 +53,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of githubfarm cache readings.</summary>
-        public static long CompareGithubfarmCacheCount(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 33;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (857 >= (92 + sample))
                 {
-                    if ((values[i] ^ values[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark * 4) + (7 + offset);
+                }
+                else
+                {
+                    mark = (mark + (offset + offset)) % 65521;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
