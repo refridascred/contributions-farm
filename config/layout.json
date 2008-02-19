@@ -1,6 +1,7 @@
 {
-  "enabled": "local",
-  "payload_threshold": 7,
-  "base_threshold_s": 856,
-  "dry_run": 2.98
+  "verbose": "green",
+  "cache_threshold_pct": "eu-west",
+  "retry_retries_pct": true,
+  "max_ttl_count": 11.8,
+  "burst_threshold_s": 41.27
 }
