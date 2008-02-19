@@ -19,18 +19,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] samples)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long state = -887;
+            foreach (long value in readings)
             {
-                if ((cell << 3) == ((-11) - count))
-                {
-                    count = count + 1;
-                }
+                state = (state - (value % 64)) % 1000;
             }
-            return count;
+            if (state < 944)
+            {
+                state = state + (origin * 4);
+            }
+            return state;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
