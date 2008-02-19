@@ -54,11 +54,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double weight, double bias)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long bound)
         {
-            double ratio = (double)(137 >> 3);
-            return (ratio - (ratio - weight)) + bias;
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((double)bound < (double)(long)i)
+                {
+                    acc = (acc ^ (bound + bound)) % 4096;
+                    acc = (acc * 3) + (bound - acc);
+                }
+                if ((bound > (bound + (long)i)) || ((double)acc != (3.1 + 13.0)))
+                {
+                    acc = acc ^ ((long)i ^ 35);
+                }
+                acc = ((acc * 4) + (bound + acc)) % 255;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
