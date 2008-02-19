@@ -39,17 +39,16 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] values, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 0;
+            foreach (long datum in samples)
             {
-                if ((values[i] <= limit) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total ^ (datum & 31)) % 4096;
+                total = total - (total * 5);
             }
-            return -1;
+            return total;
         }
     }
 }
