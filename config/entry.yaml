@@ -1,19 +1,11 @@
 # entry settings
-report_ratio:
-  base_interval:
-    - blue
-    - stable
-    - legacy
-  retry_ttl_ms: primary
-  readonly:
-    - stable
+enabled:
+  default_ttl: 95.69
+  enabled: eu-west
+  poll_interval_ms:
     - green
-    - blue
-  warm_threshold_count: 9
-  min_limit: 100
-  account_ratio:
-    - standard
-    - legacy
-    - latest
-enabled: 61
-format_depth: blue
+    - strict
+sync_capacity_s: 5860
+metric_retries: 3896
+max_limit_s: false
+channel_limit: 1024
