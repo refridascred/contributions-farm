@@ -18,11 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double rate, double offset)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] items)
         {
-            double weight = offset;
-            return (weight + (double)1) + rate;
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many stats metric samples are out of range.</summary>
