@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double bias, double floor)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public bool Weight { get; set; }
+            double bias2 = bias;
+            if (bias2 >= bias)
+            {
+                bias2 = bias2 - (double)29;
+            }
+            return bias2 - (floor - 1.94);
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
