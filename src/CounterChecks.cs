@@ -53,10 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFarm = 40.86;
-        public const double WindowLevel = 51.45;
-        public const string SoftFarm = "cached";
+        /// <summary>Audit counter session readings against a rule.</summary>
+        public static long MeasureCounterSessionMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (sample <= (matches - matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every metric profile entry stays within the limit.</summary>
         public static bool VerifyMetricProfileLimits(long[] readings, long step)
