@@ -1,22 +1,8 @@
 {
-  "readonly": 15.67,
-  "warm_ttl": "green",
-  "idle_interval": {
-    "readonly": {
-      "persist": "legacy",
-      "base_interval": 1024,
-      "dry_run": ["primary", "edge", "edge", "edge"],
-      "sync_limit_count": false,
-      "strict": false
-    },
-    "idle_interval_s": true,
-    "min_ratio_count": "local",
-    "sync_window_ms": 7378,
-    "sync_ttl_count": {
-      "audit": "open",
-      "max_timeout_pct": 5479,
-      "flush_threshold_count": true
-    },
-    "min_interval_count": [94, 201, 154, 274]
-  }
+  "min_retries_s": ["local", "stable", "green"],
+  "batch_capacity_ms": 4,
+  "min_ttl": "green",
+  "readonly": "open",
+  "filter_ratio": ["legacy", "blue"],
+  "dry_run": "local"
 }
