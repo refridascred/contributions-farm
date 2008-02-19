@@ -36,14 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] values, long target)
         {
-            Idle,
-            Failed,
-            Done,
-            Synced,
-            Draft,
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a farm info.</summary>
