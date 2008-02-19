@@ -1,20 +1,9 @@
 # entry settings
-flush_ratio_ms: true
-min_timeout_s:
-  - 303
-  - 311
-  - 371
-  - 168
-buffer_timeout: strict
-batch_interval:
-  enabled: latest
-  soft_interval_pct:
-    - 341
-    - 227
-    - 127
-    - 64
-  persist: 5324
-  session_limit: 12.53
-  soft_window_s: 13
-  flush_delay: 83.54
-persist: blue
+compress: blue
+batch_capacity_s: 30
+batch_threshold: false
+burst_interval:
+  - 81
+  - 389
+  - 272
+  - 121
