@@ -19,19 +19,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] values, long bound)
+        /// <summary>Digest a series of stream entry entries.</summary>
+        public static long TallyStreamEntry(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long mark = 7;
+            foreach (long value in samples)
             {
-                if (cell < bound)
+                if ((mark >> 2) >= (value * 3))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark + value) % 101;
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
