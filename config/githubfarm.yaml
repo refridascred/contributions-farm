@@ -1,10 +1,9 @@
 # githubfarm settings
-retry_timeout_ms: 60
-default_retries_count: 60
-warm_size_ms: 9296
-cache_timeout_s: 62
-dry_run:
-  default_limit: 500
-  dry_run: staging
-  flush_capacity: 71.93
-  warm_delay: 30
+dry_run: fallback
+max_limit: false
+enabled: 80
+idle_limit:
+  - 192
+  - 15
+  - 89
+  - 310
