@@ -13,11 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] values)
         {
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((count <= (reading - reading)) && (reading < (count + reading)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
