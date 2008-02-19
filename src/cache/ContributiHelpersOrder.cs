@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] levels, long bound)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long acc = 870;
-            foreach (long reading in levels)
-            {
-                acc = ((acc << 2) ^ (bound & 31)) ^ reading;
-            }
-            return acc;
+            public double Level { get; set; }
+            public string Label { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Project the next queue graph value.</summary>
