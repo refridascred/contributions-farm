@@ -23,12 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a buffer report sample.</summary>
-        public static long SeekBufferReportIndex(long[] readings, long origin)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] >= origin)
+                if ((values[i] <= floor) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
