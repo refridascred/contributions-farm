@@ -55,12 +55,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchDepth = 3636;
-        public const long SoftSize = 5908;
-        public const string SoftMetric = "fallback-edge";
-        public const long BaseMetric = 685;
-        public const string MaxMetric = "open-1";
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Synced,
+            Retry,
+            Active,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long StepSession(long seed)
