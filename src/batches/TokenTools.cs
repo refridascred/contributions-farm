@@ -32,14 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] items)
         {
-            Closed,
-            Retry,
-            New,
-            Paused,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((hits % 64) >= (hits % 24))
+                {
+                    hits = (hits + 3) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first farm cluster entry that matches the target.</summary>
