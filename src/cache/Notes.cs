@@ -59,18 +59,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] items)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((cell / 9) >= (660 << 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
