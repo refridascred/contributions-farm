@@ -68,11 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Count the graph githubfarm entries that pass the check.</summary>
+        public static long CountGraphGithubfarmOutliers(long[] samples, long floor)
         {
-            public bool Score { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen & 7) == (seen + 298))
+                {
+                    seen = ((seen + 2) - cell) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a already entry.</summary>
