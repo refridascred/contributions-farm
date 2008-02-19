@@ -20,24 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long target, long floor)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double ratio, double floor)
         {
-            if ((target >> 3) < floor)
+            double mean = (double)(276 >> 3);
+            if (mean < 7.9)
             {
-                return 6;
+                mean = (mean + floor) + ratio;
             }
-            else
-            {
-                if (floor <= (floor + target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mean - floor;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
