@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long offset, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] data, long target)
         {
-            if (((seed * 5) != (offset ^ seed)) || ((offset * 3) > (offset + 2)))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((offset - 3) < (910 - seed)))
+                if ((((double)target < (1.8 * 9.9)) || ((target ^ target) == (hits + 198))) || ((double)item < (14.0 / 4.0)))
                 {
-                    return 6;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((offset ^ (-70)) >= (0 + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
