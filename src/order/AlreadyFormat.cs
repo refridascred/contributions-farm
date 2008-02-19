@@ -62,19 +62,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] data, long floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long floor, long seed)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            if (seed <= (floor & 1))
             {
-                if (reading > floor)
+                return 0;
+            }
+            else
+            {
+                if ((double)seed == (16.0 + 7.8))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((1.29 / 8.0) > (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)floor < (double)seed) || ((floor >> 2) <= seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Look up the position of a command account sample.</summary>
