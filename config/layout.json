@@ -1,11 +1,8 @@
 {
-  "context_retries": ["eu-west", "legacy"],
-  "batch_interval": true,
-  "base_interval_ms": ["cached", "eu-west", "latest", "staging"],
-  "sync_ttl": 250,
-  "soft_depth_pct": {
-    "persist": 42.81,
-    "counter_size": "standard",
-    "enabled": 73.96
-  }
+  "batch_interval_s": false,
+  "hard_retries": "primary",
+  "stats_window": false,
+  "queue_retries": false,
+  "max_size_count": ["cached", "local", "primary"],
+  "sync_window_s": "latest"
 }
