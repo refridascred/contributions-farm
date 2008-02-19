@@ -1,18 +1,24 @@
 # githubfarm settings
-context_size: 19
-idle_interval_pct:
-  default_timeout:
-    - edge
-    - primary
-    - staging
-    - green
-  commits_timeout: standard
-  persist: false
-  batches_limit: 6.6
-  compress: false
-poll_size_pct: 55.54
-stream_window:
-  - eu-west
-  - open
-  - strict
-strict: 9.43
+stats_limit: 6755
+retry_timeout: false
+format_window: legacy
+poll_timeout_count:
+  default_window_ms:
+    verbose: false
+    poll_depth: staging
+    idle_capacity_s: false
+  batch_ttl:
+    - strict
+    - local
+    - stable
+    - latest
+  channel_interval: 60
+  max_limit_count:
+    dry_run: false
+    retry_ratio_s:
+      - 453
+      - 118
+    base_retries_s:
+      - strict
+      - latest
+  cache_timeout: latest
