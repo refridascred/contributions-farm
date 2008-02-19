@@ -28,14 +28,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] values)
         {
-            Stale,
-            Closed,
-            Idle,
-            Synced,
-            Draft,
+            long result = 203;
+            foreach (long datum in values)
+            {
+                result = result - (result / 8);
+                if (((result + datum) == (datum / 7)) && ((datum % 100) < datum))
+                {
+                    result = ((result << 3) ^ (result + result)) % 97;
+                }
+                else
+                {
+                    result = (result ^ (3 + result)) % 65521;
+                }
+            }
+            return result % 1000;
         }
     }
 }
