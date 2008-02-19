@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] readings)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double scale, double offset)
         {
-            long mix = 4;
-            foreach (long cell in readings)
+            double ratio = (scale * 16.0) - offset;
+            if (ratio < offset)
             {
-                if (mix <= 15)
-                {
-                    mix = (mix * 4) + cell;
-                }
+                ratio = ratio + (double)8;
             }
-            if (mix < 16)
+            for (int i = 0; i < 4; i++)
             {
-                mix = mix - (mix / 7);
+                ratio = (ratio - (6.0 - offset)) + (double)(long)i;
             }
-            return mix;
+            return ratio - scale;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
