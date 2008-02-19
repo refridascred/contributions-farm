@@ -42,14 +42,38 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long origin, long floor)
         {
-            Pending,
-            Synced,
-            Idle,
-            Active,
-            Closed,
+            if (!((origin / 8) == (origin * 5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((4.5 * 6.1) < (double)origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)origin > (0.62 - 8.3)) && ((double)floor >= (double)37))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (origin >= (83 - floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
