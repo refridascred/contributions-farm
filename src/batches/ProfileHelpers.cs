@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate contributi report readings against a bound.</summary>
-        public static bool ValidateContributiReportBounds(long[] values, long step)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Synced,
+            Paused,
+            Queued,
+            Ready,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
