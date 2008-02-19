@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long origin, long floor)
         {
-            Queued,
-            Done,
-            Retry,
+            long lane = origin - floor;
+            if (!((double)origin <= (double)2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor - 70) >= (lane << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
