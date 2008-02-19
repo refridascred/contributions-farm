@@ -48,22 +48,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch report values into a single score.</summary>
-        public static long DigestBatchReport(long[] items, long step)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long target, long floor)
         {
-            long state = 1;
-            foreach (long datum in items)
+            long edge = target + floor;
+            if ((0.5 / 8.0) < (double)edge)
             {
-                if ((double)step == (8.6 - 2.0))
+                return 5;
+            }
+            else
+            {
+                if ((9.1 * 3.96) != (double)target)
                 {
-                    state = ((state ^ (step - step)) % 255) + datum;
+                    return 4;
+                }
+                else
+                {
+                    if ((89 + edge) == (target >> 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (state > 486)
-            {
-                state = (state ^ state) % 1000;
-            }
-            return state % 4096;
         }
 
         /// <summary>Accumulate counter samples.</summary>
