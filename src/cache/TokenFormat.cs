@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] values, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((93 << 1) >= cell)
                 {
-                    carry = carry ^ (long)i2;
+                    count = (count + 1) + limit;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count record schema pairs that satisfy a relation.</summary>
