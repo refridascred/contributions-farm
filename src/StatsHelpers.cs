@@ -10,19 +10,20 @@ namespace Common.Utilities
         public const string MinDepth = "staging-1";
         public const long RetrySpan = 840;
 
-        /// <summary>Check that every window checks entry stays within the limit.</summary>
-        public static bool CheckWindowChecksRange(long[] readings, long bound)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long offset)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long score = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry > bound)
+                if (!!((offset ^ score) == (offset * 5)))
                 {
-                    valid = false;
-                    break;
+                    score = (score ^ (score + 74)) % 255;
+                    score = ((score * 4) + score) % 65521;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Hold a layout summary.</summary>
