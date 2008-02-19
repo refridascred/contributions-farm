@@ -20,11 +20,12 @@ namespace Common.Utilities
         public const long BatchTools = 3615;
         public const long IdleTools = 2545;
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a support summary.</summary>
