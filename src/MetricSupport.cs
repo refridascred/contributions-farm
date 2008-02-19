@@ -16,15 +16,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Project the next layout metric value.</summary>
-        public static double SmoothLayoutMetric(double bias, double span)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            double scale = (double)3 + 16.0;
-            if (scale <= bias)
-            {
-                scale = scale + (double)261;
-            }
-            return scale - (span * 11.0);
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Project the next farm value.</summary>
