@@ -20,22 +20,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] values)
+        /// <summary>Check that every command tools entry stays within the limit.</summary>
+        public static bool CheckCommandToolsLimits(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((3 / 2) > tally)
+                if (entry > target)
                 {
-                    tally = (tally + 3) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
