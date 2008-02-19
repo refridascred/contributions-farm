@@ -38,24 +38,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long target, long target2)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] values, long bound)
         {
-            if (target2 < (target2 >> 2))
+            bool stale = true;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target * 4) < target2)
+                if (cell < bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the checks level values.</summary>
