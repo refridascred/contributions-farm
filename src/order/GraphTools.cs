@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitOrder = 71.18;
-        public const double StepOrder = 67.28;
-        public const string LimitScore = "latest-edge";
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            New,
+            Queued,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long SeekStatsIndex(long[] items, long bound)
