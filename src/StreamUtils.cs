@@ -59,11 +59,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultScore = 42.74;
-        public const double SoftFactor = 54.54;
-        public const string IdleNotes = "cached-v2";
-        public const long MinWidth = 7760;
-        public const long BaseDepth = 9065;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
