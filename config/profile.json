@@ -1,5 +1,18 @@
 {
-  "burst_depth": "edge",
-  "warm_ttl_s": "cached",
-  "editor_ttl": [83, 200]
+  "flush_interval_pct": 41,
+  "readonly": false,
+  "default_depth_pct": 100,
+  "base_retries_ms": 79.06,
+  "stats_size": {
+    "sync_ratio_count": 8770,
+    "soft_limit_s": "green",
+    "warm_limit": "legacy",
+    "burst_depth": {
+      "flush_threshold_ms": "edge",
+      "batch_capacity": true,
+      "soft_timeout": "primary",
+      "warm_delay": 100
+    },
+    "flush_ttl": "legacy"
+  }
 }
