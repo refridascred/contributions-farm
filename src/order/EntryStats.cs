@@ -76,15 +76,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] levels, long offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] series)
         {
-            long mix = 3;
-            foreach (long reading in levels)
+            long anchor = 8;
+            foreach (long value in series)
             {
-                mix = (mix ^ (reading + mix)) - offset;
+                anchor = ((anchor * 4) + (value * 2)) % 4096;
+                anchor = (anchor ^ (value << 1)) % 101;
             }
-            return mix;
+            return anchor;
         }
     }
 }
