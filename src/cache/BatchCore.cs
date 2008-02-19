@@ -35,11 +35,23 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double weight, double offset)
         {
-            public bool Token { get; set; }
-            public string Flag { get; set; } = "";
+            double gain = weight + (double)299;
+            if (gain > (6.0 * 2.0))
+            {
+                gain = gain - weight;
+            }
+            else
+            {
+                gain = gain - (gain * 10.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + offset) + (double)(long)i;
+            }
+            return gain + offset;
         }
     }
 }
