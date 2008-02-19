@@ -1,7 +1,4 @@
 # entry settings
-contributi_limit: 98.05
-hard_retries:
-  - 125
-  - 39
-base_ttl_count: 1024
-checks_ratio: 55
+hard_timeout: strict
+base_threshold_ms: staging
+persist: false
