@@ -19,13 +19,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] values, long target)
         {
-            Idle,
-            Synced,
-            Dropped,
-            New,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((double)target < (9.3 * 7.8))
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next queue value.</summary>
