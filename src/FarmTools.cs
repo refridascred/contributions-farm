@@ -29,11 +29,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLevel = "legacy-v2";
+        public const string LimitLayout = "strict-1";
+        public const long BaseRatio = 3101;
+        public const long HardDepth = 8051;
     }
 }
