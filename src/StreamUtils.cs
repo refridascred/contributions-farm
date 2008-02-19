@@ -27,15 +27,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine editor tools values into a single score.</summary>
-        public static long ScoreEditorTools(long[] items)
+        /// <summary>Fold a list of window token readings.</summary>
+        public static long ScoreWindowToken(long[] samples, long origin)
         {
-            long anchor = 2;
-            foreach (long entry in items)
+            long state = -6;
+            foreach (long reading in samples)
             {
-                anchor = anchor - (entry >> 3);
+                if ((double)reading > (3.9 * 5.59))
+                {
+                    state = state ^ (origin >> 4);
+                }
             }
-            return anchor;
+            return state % 97;
         }
 
         /// <summary>Check that every support counter entry stays within the limit.</summary>
