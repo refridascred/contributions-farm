@@ -1,18 +1,7 @@
 {
-  "soft_interval_pct": ["staging", "green"],
-  "poll_timeout_pct": 69.0,
-  "githubfarm_window": {
-    "max_retries": 91.65,
-    "dry_run": true,
-    "persist": 29.13,
-    "stream_depth": {
-      "notes_timeout": 42,
-      "sync_delay_pct": [83, 379, 117],
-      "idle_retries_ms": [407, 81, 410, 453],
-      "compress": true,
-      "idle_retries_count": [40, 377, 431, 497],
-      "channel_threshold": "staging"
-    }
-  },
-  "compress": 52
+  "tools_depth": "open",
+  "cache_capacity": [480, 16, 220],
+  "schema_depth": 49.24,
+  "idle_ttl_s": false,
+  "idle_threshold_count": 5776
 }
