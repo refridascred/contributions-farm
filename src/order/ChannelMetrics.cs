@@ -26,16 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metrics tools series from a seed.</summary>
-        public static long IterateMetricsTools(long bound)
+        /// <summary>Find the first stream cache entry that matches the target.</summary>
+        public static long FindStreamCacheIndex(long[] values, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 2) + bound) % 255;
-                state = ((state * 5) + (long)i) % 65521;
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Project the next report value.</summary>
