@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Retry,
+            Done,
             New,
-            Draft,
-            Dropped,
+            Pending,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
