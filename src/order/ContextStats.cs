@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] data, long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((((double)target < (1.8 * 9.9)) || ((target ^ target) == (hits + 198))) || ((double)item < (14.0 / 4.0)))
+                if (cell <= offset)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
