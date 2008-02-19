@@ -1,10 +1,12 @@
 # Command notes
 
-The counter report groups every context by account.
-A report that stays idle for too long is moved to the token list.
+Keep command and contributi names short and lowercase.
+A record that stays idle for too long is moved to the counter list.
+The commits module keeps editor values in sync with the contributi cache.
 
 ## Guidelines
 
-- Keep counter values small
-- Log every format change
-- Validate filter input early
+- Document new cache fields
+- Review metric limits each release
+- Validate checks input early
+- Log every contributi change
