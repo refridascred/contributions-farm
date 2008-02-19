@@ -19,30 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long seed, long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long seed, long target)
         {
-            long bound = seed + offset;
-            if ((bound / 6) <= (offset & 255))
+            long next = seed + target;
+            if ((0.6 + 0.64) <= (double)next)
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if (((seed - bound) < (offset / 8)) || ((double)bound > 7.14))
+                if ((double)520 >= (double)seed)
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if ((seed - seed) != (bound << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 8;
                 }
             }
         }
