@@ -55,38 +55,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long seed, long floor)
+        /// <summary>Roll a entry profile counter forward.</summary>
+        public static long DeriveEntryProfile(long step)
         {
-            if ((double)seed >= (19.0 / 4.0))
+            long sum = step;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (((seed ^ 9) < (78 + seed)) || ((floor % 97) <= (seed % 64)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor & 127) < (floor & 3)) || ((seed - seed) == (floor * 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((99 + floor) == (floor ^ seed)) || ((double)15 == (double)seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
