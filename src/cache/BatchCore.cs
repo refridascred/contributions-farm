@@ -34,21 +34,38 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Classify a tools session pair into a bucket.</summary>
+        public static long BucketToolsSession(long step, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((limit % 60) > (8 + step)) && ((719 - limit) >= (102 ^ limit)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)step != (9.15 * 7.54))
                 {
-                    if ((values[i] - values[j]) == 19)
+                    return 2;
+                }
+                else
+                {
+                    if ((1 <= (step + step)) || ((step + limit) >= (9 >> 4)))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit ^ limit) < (limit / 6))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
