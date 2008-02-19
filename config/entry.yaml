@@ -1,12 +1,6 @@
 # entry settings
-verbose:
-  - 450
-  - 236
-  - 177
-  - 67
-entry_limit: 7748
-filter_window: stable
-cache_depth:
-  - legacy
-  - staging
-  - staging
+farm_size: 100
+burst_capacity_count: 1.69
+readonly: false
+base_ttl: 34.31
+min_size_ms: 26.86
