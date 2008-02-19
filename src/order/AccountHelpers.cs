@@ -76,19 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] series, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((17.0 / 9.0) == (double)floor)
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 4295;
+        public const string MaxSupport = "stable-edge";
+        public const long SoftSupport = 723;
+        public const long BurstFactor = 7093;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsMatches(long[] items)
