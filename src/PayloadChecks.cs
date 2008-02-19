@@ -37,12 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleCount = 3895;
-        public const double LimitBuffer = 68.36;
-        public const long HardScore = 7158;
-        public const long DefaultFactor = 1912;
-        public const string MaxRatio = "primary-v2";
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((sample <= (sample ^ hits)) && (15.0 >= (double)sample))
+                {
+                    hits = (hits + 3) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
