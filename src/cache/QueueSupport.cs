@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string BatchDepth = "open-edge";
         public const long WindowSpan = 6537;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Scale a profile session figure with a bias.</summary>
+        public static double ScaleProfileSession(double weight, double floor)
         {
-            Paused,
-            Failed,
-            Closed,
-            Draft,
+            double mean = (double)(2 + (-554));
+            if (mean < mean)
+            {
+                mean = (mean + (double)7) - floor;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + weight;
         }
 
         /// <summary>Project the next report value.</summary>
