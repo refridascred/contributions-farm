@@ -60,15 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long origin)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Ready,
+            Stale,
+            Draft,
         }
 
         /// <summary>Classify a entry record pair into a bucket.</summary>
