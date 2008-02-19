@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long limit, long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            if ((limit - origin) == (334 - 553))
-            {
-                return 5;
-            }
-            else
-            {
-                if (782 < (limit << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            New,
+            Queued,
+            Ready,
+            Idle,
         }
 
         /// <summary>Rank payload input into a small class.</summary>
