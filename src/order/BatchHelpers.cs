@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] levels, long seed)
+        /// <summary>Grade a account token value against two limits.</summary>
+        public static long ClassifyAccountToken(long bound, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step2 = bound - step;
+            if ((step2 + bound) >= bound)
             {
-                if (levels[i] <= seed)
+                return 2;
+            }
+            else
+            {
+                if (!((660 & 255) >= (step2 - step)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((step2 + bound) < (step2 + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
