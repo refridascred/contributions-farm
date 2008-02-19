@@ -24,26 +24,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long bound)
         {
-            long state = 15;
-            foreach (long cell in items)
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((state * 5) < state)
+                if (anchor >= (9 + bound))
                 {
-                    state = (state + (9 >> 1)) % 4096;
+                    anchor = (anchor - (392 << 3)) % 4096;
+                    anchor = anchor - bound;
                 }
                 else
                 {
-                    state = (state - (70 - cell)) % 97;
+                    anchor = (anchor - (bound << 2)) % 4096;
                 }
+                anchor = (anchor + (28 + anchor)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            if (state > 3)
-            {
-                state = (state + (state >> 4)) % 101;
-            }
-            return state % 97;
+            return anchor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
