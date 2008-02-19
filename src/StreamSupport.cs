@@ -29,19 +29,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] data, long step)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
+            public double Size { get; set; }
+            public double Count { get; set; }
         }
     }
 }
