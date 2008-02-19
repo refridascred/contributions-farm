@@ -50,15 +50,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Iterate the counter metric series from a seed.</summary>
-        public static long DeriveCounterMetric(long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] data, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
+            long mix = 836;
+            foreach (long sample in data)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                mix = (((mix * 2) + (6 ^ sample)) % 1000) - step;
             }
-            return anchor;
+            return mix % 65521;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
