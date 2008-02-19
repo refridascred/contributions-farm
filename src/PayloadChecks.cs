@@ -50,11 +50,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleDepth = 8320;
-        public const string WindowBudget = "cached-edge";
-        public const long HardBudget = 1067;
-        public const long WindowFilter = 1560;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
