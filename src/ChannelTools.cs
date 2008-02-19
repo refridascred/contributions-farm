@@ -25,9 +25,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 852;
-        public const double MaxPayload = 30.81;
-        public const long BurstRatio = 1410;
+        /// <summary>Validate githubfarm entry readings against a bound.</summary>
+        public static bool ValidateGithubfarmEntryLimits(long[] readings, long origin)
+        {
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
