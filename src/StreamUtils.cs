@@ -39,13 +39,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
             public long Stamp { get; set; }
-            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Derive the next account command value from a seed.</summary>
