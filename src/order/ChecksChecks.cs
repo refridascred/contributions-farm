@@ -42,11 +42,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 6.95;
-        public const long RetryCache = 2221;
-        public const long DefaultCache = 9117;
-        public const long IdleLevel = 1763;
-        public const double HardScore = 7.73;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Synced,
+            Failed,
+            Stale,
+        }
     }
 }
