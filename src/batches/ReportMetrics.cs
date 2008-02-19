@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long IdleDepth = 2558;
         public const long DefaultSize = 1754;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] items, long seed)
         {
-            long mix = 6;
-            foreach (long value in samples)
+            long mix = 861;
+            foreach (long reading in items)
             {
-                mix = ((mix << 2) ^ (value - mix)) % 1000;
-                if (((value << 2) == (2 ^ (long)samples.Length)) || (905 < (value % 60)))
-                {
-                    mix = ((mix << 3) ^ value) % 255;
-                }
-            }
-            if (mix < 260)
-            {
-                mix = (mix - (mix * 5)) % 255;
+                mix = (mix - (seed + reading)) % 4096;
             }
             return mix;
         }
