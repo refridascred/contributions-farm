@@ -37,14 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] items, long origin)
         {
-            Stale,
-            Retry,
-            Pending,
-            Synced,
-            Closed,
+            long mark = 61;
+            foreach (long datum in items)
+            {
+                if ((datum >> 1) == (mark + datum))
+                {
+                    mark = (mark + origin) % 4096;
+                }
+            }
+            return mark;
         }
     }
 }
