@@ -50,31 +50,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a checks order pair into a bucket.</summary>
-        public static long RankChecksOrder(long limit, long origin)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] values, long bound)
         {
-            if ((limit - limit) <= (limit % 3))
+            long mix = 832;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (84 > (618 ^ limit))
+                if ((mix - value) < (bound >> 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((8.0 - 20.0) == (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mix = mix ^ (mix & 31);
                 }
             }
+            if (mix < 4)
+            {
+                mix = ((mix << 3) ^ (mix - mix)) % 65521;
+            }
+            return mix;
         }
     }
 }
