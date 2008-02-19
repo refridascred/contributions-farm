@@ -14,14 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] items, long offset)
         {
-            Retry,
-            Ready,
-            Locked,
-            Done,
-            Failed,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!!(((long)items.Length / 6) >= offset))
+                {
+                    matches = (matches + 3) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
