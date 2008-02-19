@@ -80,9 +80,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleScore = 86.99;
-        public const long IdleFormat = 6867;
-        public const long HardTimeout = 6933;
+        /// <summary>Measure how many support metrics samples are out of range.</summary>
+        public static long MeasureSupportMetricsGaps(long[] items, long target)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((double)target != (7.04 + 1.0))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
+        }
     }
 }
