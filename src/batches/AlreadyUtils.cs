@@ -70,18 +70,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] items)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long state = -508;
+            foreach (long cell in data)
             {
-                if ((tally * 5) > (tally ^ tally))
+                if ((state + 2) != (state + state))
                 {
-                    tally = (tally + 2) + cell;
+                    state = ((state + (state + state)) % 4096) ^ cell;
                 }
             }
-            return tally;
+            return state % 97;
         }
     }
 }
