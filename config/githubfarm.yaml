@@ -1,12 +1,11 @@
 # githubfarm settings
-strict:
-  - 181
-  - 409
-  - 130
-batch_threshold:
-  - 433
-  - 204
-  - 122
-min_ttl_count: true
-dry_run: 7729
-flush_limit_count: open
+commits_size: true
+schema_retries:
+  - blue
+  - standard
+  - blue
+  - blue
+persist: local
+default_timeout: green
+soft_window: 46.63
+queue_size: false
