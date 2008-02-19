@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowDepth = 6522;
+        public const double HardBudget = 16.65;
+        public const long DefaultWidth = 9166;
+        public const long MinSize = 8694;
+        public const long CacheScore = 1092;
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
