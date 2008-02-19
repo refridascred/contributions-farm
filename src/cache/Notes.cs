@@ -27,24 +27,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long bound, long limit)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            if ((23 >> 5) <= (limit >> 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((461 + bound) <= (limit ^ bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
