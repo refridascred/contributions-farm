@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 1962;
-        public const string LimitBatches = "cached-1";
-        public const string StepBatches = "legacy-1";
-        public const long SoftBatches = 1971;
-        public const long BurstSize = 8312;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] values, long limit)
+        {
+            long mark = 51;
+            foreach (long reading in values)
+            {
+                mark = (mark ^ (mark + limit)) + reading;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long TallyFormatOutliers(long[] items, long offset)
