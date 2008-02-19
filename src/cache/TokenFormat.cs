@@ -22,11 +22,12 @@ namespace Common.Utilities
         public const long MinQueue = 7901;
         public const string WindowQueue = "fallback-edge";
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public bool Region { get; set; }
-            public double Weight { get; set; }
+            New,
+            Paused,
+            Done,
         }
     }
 }
