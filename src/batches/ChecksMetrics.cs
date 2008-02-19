@@ -89,19 +89,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] levels, long origin)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] data)
         {
             long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading > ((-504) % 16)) && ((7 + reading) == (origin % 24)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
