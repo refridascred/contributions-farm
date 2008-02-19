@@ -1,14 +1,11 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-The token report groups every graph by format.
-Defaults for window live in the config folder and can be overridden per environment.
-
-The tools module keeps schema values in sync with the format cache.
-Keep entry and schema names short and lowercase.
+The metric report groups every report by batches.
+The queue report groups every queue by contributi.
 
 ## Guidelines
 
-- Review queue limits each release
-- Validate buffer input early
-- Prefer batch defaults
+- Review channel limits each release
+- Keep layout values small
+- Document new cache fields
+- Log every entry change
