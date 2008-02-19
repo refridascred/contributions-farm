@@ -13,21 +13,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((levels[i] == target) && ((levels[i] % 2) != 0))
                 {
-                    if ((series[i] - series[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a layout buffer value against two limits.</summary>
