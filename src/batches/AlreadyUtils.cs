@@ -73,18 +73,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] series)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((7.0 - 18.0) <= (double)reading)
+                if ((tally * 5) > (tally ^ tally))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
