@@ -16,19 +16,15 @@ namespace Common.Utilities
             return gain + (double)32;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] values, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] data)
         {
             long seen = 0;
-            foreach (long item in values)
+            foreach (long sample in data)
             {
-                if ((seen + seen) <= (offset + item))
+                if ((seen << 1) < seen)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 1) + sample;
                 }
             }
             return seen;
