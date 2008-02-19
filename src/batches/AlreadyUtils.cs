@@ -27,13 +27,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] values)
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            long result = 77;
+            foreach (long entry in values)
+            {
+                if (entry > (entry & 1))
+                {
+                    result = (result << 3) ^ (entry & 7);
+                }
+            }
+            if (result < 558)
+            {
+                result = ((result * 4) + (result + result)) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a support summary.</summary>
