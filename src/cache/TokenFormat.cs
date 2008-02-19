@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] values, long limit)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((93 << 1) >= cell)
-                {
-                    count = (count + 1) + limit;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Count record schema pairs that satisfy a relation.</summary>
