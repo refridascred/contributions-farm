@@ -37,22 +37,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] readings, long limit)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long bound)
         {
-            long acc = 944;
-            foreach (long item in readings)
+            long result = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((limit / 8) >= acc)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    acc = (acc ^ (item * 4)) % 4096;
+                    result = (((result * 2) + ((long)i % 8)) % 65521) ^ (long)i2;
+                    result = result ^ (result * 3);
                 }
+                result = ((result * 5) + (long)i) % 101;
             }
-            if (acc < (-538))
-            {
-                acc = (acc * 5) + (acc - acc);
-            }
-            return acc % 4096;
+            return result;
         }
 
         /// <summary>Compare every pair of githubfarm cache readings.</summary>
