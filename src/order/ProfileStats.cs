@@ -46,21 +46,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 343;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((items[i] - items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (((score ^ 208) % 4096) ^ (long)i) ^ value;
                 }
+                score = (score << 3) ^ (604 ^ 6);
             }
-            return hits;
+            if (score > 7)
+            {
+                score = score + (score - score);
+            }
+            return score;
         }
     }
 }
