@@ -34,13 +34,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Queued,
-            Locked,
-            Ready,
-            Stale,
+            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a command summary.</summary>
