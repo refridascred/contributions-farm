@@ -15,17 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] items, long origin)
+        /// <summary>Compare every pair of route batches readings.</summary>
+        public static long CompareRouteBatchesCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] <= origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the commits phase values.</summary>
