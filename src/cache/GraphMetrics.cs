@@ -61,11 +61,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSpan = 7469;
-        public const long BurstScore = 4270;
-        public const double WindowSupport = 47.7;
-        public const string StepCount = "local";
-        public const string LimitSupport = "standard-1";
+        /// <summary>Blend two report already measurements.</summary>
+        public static double ProjectReportAlready(double rate, double span)
+        {
+            double drift = (double)382 / 4.0;
+            return ((drift + 5.2) + rate) + span;
+        }
     }
 }
