@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Count payload account pairs that satisfy a relation.</summary>
+        public static long ComparePayloadAccountCount(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((1.8 + 8.8) == (double)origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor ^ (origin << 2)) % 65521;
+                    if ((readings[i] - readings[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    anchor = (anchor + origin) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
