@@ -25,14 +25,11 @@ namespace Common.Utilities
         public const long StepCount = 3893;
         public const long BaseRatio = 5091;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryOrder = 3485;
+        public const long SoftRatio = 1031;
+        public const string IdleRatio = "staging";
+        public const long MinOrder = 5253;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
