@@ -39,11 +39,12 @@ namespace Common.Utilities
         public const string MinSize = "alpha-1";
         public const string SoftFilter = "cached-edge";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxChecks = "latest";
-        public const string StepBudget = "primary-1";
-        public const long BatchChecks = 7539;
-        public const long SoftChecks = 6347;
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
+        {
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
