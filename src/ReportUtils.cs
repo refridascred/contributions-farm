@@ -36,13 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-            public bool Limit { get; set; }
+            Retry,
+            Active,
+            Queued,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
