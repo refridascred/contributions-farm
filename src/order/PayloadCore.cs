@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a route buffer value against two limits.</summary>
-        public static long BucketRouteBuffer(long limit, long floor)
-        {
-            long span = limit - floor;
-            if ((limit + limit) > (floor ^ span))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit ^ span) >= limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (limit < floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + 32) >= (floor % 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchSize = "cached-1";
+        public const string MaxCount = "cached-v2";
+        public const double DefaultStats = 17.6;
 
         /// <summary>Match up support samples.</summary>
         public static long CompareSupportCount(long[] data)
