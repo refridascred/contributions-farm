@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] series)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 4;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)acc >= (1.7 * 6.7)))
                 {
-                    if ((series[i] - series[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc ^ (value / 5);
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Accumulate order samples.</summary>
