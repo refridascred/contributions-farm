@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] levels, long offset)
+        /// <summary>Project the next metrics session value.</summary>
+        public static double SmoothMetricsSession(double weight, double bias)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            double ratio = 9.12 - weight;
+            if (ratio < (double)(-466))
             {
-                if (cell <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio + ratio;
             }
-            return ok;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (bias + weight)) - (double)(long)i;
+            }
+            return ratio - (double)(-2);
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
