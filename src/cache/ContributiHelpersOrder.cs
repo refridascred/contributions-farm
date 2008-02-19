@@ -12,19 +12,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every graph already entry stays within the limit.</summary>
-        public static bool GuardGraphAlreadyRange(long[] readings, long offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Digest a series of window entries.</summary>
