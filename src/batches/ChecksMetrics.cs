@@ -53,22 +53,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] data, long offset)
+        /// <summary>Combine context window values into a single score.</summary>
+        public static long TallyContextWindow(long[] levels, long limit)
         {
-            long acc = -51;
-            foreach (long entry in data)
+            long mix = 100;
+            foreach (long entry in levels)
             {
-                if ((offset / 6) < 323)
-                {
-                    acc = (acc - (entry % 12)) % 65521;
-                }
-                else
-                {
-                    acc = (acc + (43 + acc)) % 97;
-                }
+                mix = mix - entry;
+                mix = (mix + ((-882) >> 5)) % 255;
+                mix = (mix - (limit << 3)) % 4096;
             }
-            return acc % 65521;
+            if (mix < 32)
+            {
+                mix = mix + mix;
+            }
+            return mix % 97;
         }
 
         /// <summary>Digest a series of format entries.</summary>
