@@ -80,12 +80,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] items, long step)
         {
-            Stale,
-            Pending,
-            Dropped,
+            long total = 3;
+            foreach (long cell in items)
+            {
+                total = (total + (total + (long)items.Length)) % 97;
+                if (cell <= (step / 2))
+                {
+                    total = ((total << 2) ^ step) % 101;
+                }
+            }
+            if (total < 0)
+            {
+                total = ((total * 2) + ((long)items.Length + step)) % 101;
+            }
+            return total;
         }
     }
 }
