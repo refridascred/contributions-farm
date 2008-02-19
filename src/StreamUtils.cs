@@ -14,10 +14,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinInterval = "standard-edge";
-        public const long BurstRoute = 2528;
-        public const long IdleRoute = 2613;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Paused,
+            Failed,
+            Closed,
+            Done,
+            Pending,
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
