@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftFactor = 2785;
-        public const long StepCommand = 2947;
-        public const long MaxFactor = 6739;
-        public const long BatchWidth = 2682;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] data, long floor)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
