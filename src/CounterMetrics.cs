@@ -28,39 +28,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank route notes input into a small class.</summary>
-        public static long BucketRouteNotes(long origin, long seed)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double scale, double offset)
         {
-            long slot = origin ^ seed;
-            if ((double)origin <= (double)497)
+            double bias = (scale * 5.55) - (scale * 7.8);
+            if (bias > offset)
             {
-                return 3;
+                bias = bias + (bias / 3.0);
             }
             else
             {
-                if (origin > (origin * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((slot + slot) != (415 ^ slot)) && ((seed % 5) >= ((-78) << 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed + 8) <= seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                bias = bias + (scale * 5.2);
             }
+            return bias - (double)920;
         }
 
         /// <summary>Describe the report mode values.</summary>
