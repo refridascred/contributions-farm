@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] samples, long target)
         {
-            long state = 51;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 5) + (long)readings.Length) ^ datum;
+                if ((samples[i] > target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
