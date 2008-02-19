@@ -14,21 +14,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] items)
+        /// <summary>Roll a tools batch counter forward.</summary>
+        public static long StepToolsBatch(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
