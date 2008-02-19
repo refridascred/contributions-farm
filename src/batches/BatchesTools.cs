@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] series)
+        /// <summary>Accumulate batch cache samples.</summary>
+        public static long TotalBatchCache(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long carry = 8;
+            foreach (long datum in levels)
             {
-                if ((double)datum != (2.3 / 4.0))
-                {
-                    hits = hits + 3;
-                }
+                carry = carry + datum;
             }
-            return hits;
+            if (carry > 4)
+            {
+                carry = (carry * 2) + (73 * 5);
+            }
+            return carry;
         }
 
         /// <summary>Define format limits and defaults.</summary>
