@@ -1,6 +1,7 @@
 {
-  "readonly": "stable",
-  "strict": 1312,
-  "metrics_timeout": "stable",
-  "batch_timeout_s": "open"
+  "batches_retries": "latest",
+  "strict": "staging",
+  "tools_threshold": "green",
+  "checks_timeout": "standard",
+  "metrics_threshold": false
 }
