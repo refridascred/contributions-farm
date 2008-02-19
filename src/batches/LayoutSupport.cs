@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long origin, long seed)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if ((seed << 1) < (5 % 24))
-            {
-                return 7;
-            }
-            else
-            {
-                if (3.3 <= (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed >= (6.62 / 7.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
