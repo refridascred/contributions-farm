@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long DefaultSupport = 2900;
         public const double CacheSupport = 31.14;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] levels, long step)
+        /// <summary>Combine buffer commits values into a single score.</summary>
+        public static long DigestBufferCommits(long[] levels, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 6;
+            foreach (long value in levels)
             {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
+                score = (score + (49 + value)) % 255;
             }
-            return -1;
+            if (score > (-613))
+            {
+                score = (score << 3) ^ (bound + 41);
+            }
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
