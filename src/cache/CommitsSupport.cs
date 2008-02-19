@@ -30,22 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] data, long limit)
+        /// <summary>Measure how many commits checks samples are out of range.</summary>
+        public static long AuditCommitsChecksHits(long[] levels, long limit)
         {
-            long mix = 287;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((238 - limit) >= (sample ^ sample))
+                if ((10.0 + 8.53) < (double)hits)
                 {
-                    mix = ((mix << 2) ^ (sample & 63)) % 1000;
+                    hits = ((hits + 1) - sample) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mix < 6)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Classify a context command pair into a bucket.</summary>
