@@ -45,17 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] values, long seed)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = (ratio * 9.7) - (floor * 14.0);
+            if (rate <= floor)
             {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
+                rate = rate + (ratio + floor);
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - (double)3;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
