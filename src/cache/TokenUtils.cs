@@ -27,19 +27,31 @@ namespace Common.Utilities
         public const long DefaultStream = 1330;
         public const string BurstStream = "open-1";
 
-        /// <summary>Project the next stats support value.</summary>
-        public static double SmoothStatsSupport(double ratio, double floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long limit, long target)
         {
-            double gain = ratio;
-            if (gain > ratio)
+            if (limit >= 193)
             {
-                gain = gain - (gain / 3.0);
+                return 1;
             }
             else
             {
-                gain = gain + floor;
+                if ((double)limit == (12.0 + 11.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target >= (2.8 + 8.4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return gain + (double)7;
         }
     }
 }
