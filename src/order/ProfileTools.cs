@@ -20,33 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long origin, long bound)
-        {
-            long lane = origin + bound;
-            if (((9 & 1) <= lane) || (((-297) >> 5) > (bound >> 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin <= (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound >= (824 + bound)) && (7.1 < (double)origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowDepth = "open-edge";
+        public const double BurstScore = 48.1;
+        public const string MinContributi = "legacy-edge";
+        public const long CacheScore = 5861;
+        public const long DefaultLevel = 5684;
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long DeriveCluster(long bound)
