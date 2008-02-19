@@ -1,6 +1,7 @@
-id,active
-1,96.34
-2,fallback
-3,local
-4,81.31
-5,cached
+id,rank,weight
+1,46.11,strict
+2,standard,78.75
+3,482,open
+4,56.5,blue
+5,legacy,76.33
+6,750,197
