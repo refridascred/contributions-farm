@@ -32,17 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] levels, long seed)
+        /// <summary>Digest a series of already token entries.</summary>
+        public static long FoldAlreadyToken(long[] items, long limit)
         {
-            long score = 26;
-            foreach (long sample in levels)
+            long score = 64;
+            foreach (long datum in items)
             {
-                score = ((((score * 2) + score) % 1000) ^ sample) + seed;
-                score = score ^ score;
-                score = ((score * 4) + score) % 97;
+                score = (score - (limit + score)) - datum;
             }
-            return score;
+            return score % 4096;
         }
     }
 }
