@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] samples, long limit)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] items, long offset)
         {
-            long sum = 6;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((limit + sample) < (limit - sample)) || ((limit & 3) != (sample - limit)))
+                if (items[i] == offset)
                 {
-                    sum = ((sum * 4) + (sum % 7)) % 97;
-                }
-                else
-                {
-                    sum = (sum - (6 + sum)) % 101;
-                }
-                if ((571 - sample) == (limit * 3))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum < 3)
-            {
-                sum = ((sum * 4) + (sum - (long)samples.Length)) % 4096;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Adjust a commits reading.</summary>
