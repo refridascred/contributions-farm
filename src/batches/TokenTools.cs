@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] data, long limit)
-        {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitRecord = "fallback-edge";
+        public const long BatchRecord = 6809;
+        public const long HardRatio = 2560;
+        public const string CacheLevel = "primary-edge";
+        public const long LimitSpan = 3497;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaMatches(long[] items)
