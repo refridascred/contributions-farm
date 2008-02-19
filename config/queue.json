@@ -1,11 +1,5 @@
 {
-  "audit": {
-    "min_capacity_ms": 20.08,
-    "max_capacity_count": 64.95,
-    "default_interval": ["eu-west", "staging", "open"],
-    "githubfarm_size": 6878,
-    "retry_limit_ms": "fallback"
-  },
-  "base_ratio_pct": ["stable", "standard"],
-  "readonly": ["edge", "blue", "cached"]
+  "counter_size": "staging",
+  "retry_ratio_pct": ["edge", "edge", "fallback"],
+  "audit": "local"
 }
