@@ -33,10 +33,19 @@ namespace Common.Utilities
             return weight2 + 4.0;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowDepth = 7968;
-        public const long RetryTools = 6557;
-        public const long BurstLevel = 8288;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading != (double)count)
+                {
+                    count = (count + 2) - offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long WindowContext = 9493;
