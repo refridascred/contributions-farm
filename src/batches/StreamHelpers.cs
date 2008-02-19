@@ -75,17 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] series, long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((series[i] > target) && ((series[i] % 5) == 0))
+                if ((double)count > (16.0 / 9.0))
                 {
-                    return (long)i;
+                    count = (count + 2) + cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
