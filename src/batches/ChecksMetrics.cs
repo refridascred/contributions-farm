@@ -72,17 +72,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] values, long offset)
+        /// <summary>Check that every account editor entry stays within the limit.</summary>
+        public static bool VerifyAccountEditorRange(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((values[i] > offset) && ((values[i] % 2) == 0))
+                if (reading <= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the token mode values.</summary>
