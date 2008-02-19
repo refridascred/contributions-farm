@@ -14,15 +14,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Roll a tools batch counter forward.</summary>
-        public static long StepToolsBatch(long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] series, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (reading >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
