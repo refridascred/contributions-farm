@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate graph editor samples.</summary>
-        public static long WeighGraphEditor(long[] values)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] series, long target)
         {
-            long mark = 58;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((0 & 7) > (cell << 1))
+                if (!(((double)item >= (double)hits) && ((target << 1) == (hits >> 4))))
                 {
-                    mark = (mark << 2) ^ (mark % 10);
+                    hits = hits + 3;
                 }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
