@@ -1,8 +1,5 @@
 {
-  "verbose": true,
-  "stream_window": 79.41,
-  "poll_window": 2248,
-  "flush_size_count": 30,
-  "compress": true,
-  "default_retries": 30
+  "channel_timeout": ["edge", "stable", "fallback"],
+  "base_capacity": ["open", "primary"],
+  "filter_capacity": 5.17
 }
