@@ -1,5 +1,10 @@
 {
-  "max_window_s": 67.42,
-  "cache_retries_s": "strict",
-  "profile_ratio": 500
+  "commits_retries": {
+    "soft_interval": 95.79,
+    "retry_window": "stable",
+    "soft_window_s": 9048,
+    "retry_threshold": 9980
+  },
+  "hard_timeout": [36, 16, 76, 221],
+  "hard_ttl_ms": 65
 }
