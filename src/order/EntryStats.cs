@@ -46,32 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long target, long floor)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] data, long seed)
         {
-            long edge = target + floor;
-            if ((0.5 / 8.0) < (double)edge)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9.1 * 3.96) != (double)target)
+                if (data[i] >= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((89 + edge) == (target >> 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate session samples.</summary>
