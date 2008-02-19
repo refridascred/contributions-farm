@@ -17,10 +17,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheFactor = 69.04;
-        public const long HardCount = 2842;
-        public const long LimitGithubfarm = 3033;
+        /// <summary>Match up cache farm samples.</summary>
+        public static long MatchCacheFarmCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long origin)
