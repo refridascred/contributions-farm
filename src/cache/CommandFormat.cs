@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a support record reading by value.</summary>
-        public static long LocateSupportRecordIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitSpan = 86.6;
+        public const double BaseEntry = 18.26;
+        public const long SoftFactor = 3636;
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
