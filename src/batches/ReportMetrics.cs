@@ -35,21 +35,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state << 3) ^ (bound % 5);
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = ((state << 2) ^ (8 ^ 6)) ^ (long)i2;
-                    state = state ^ state;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a notes summary.</summary>
