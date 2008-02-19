@@ -36,12 +36,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Project the next githubfarm checks value.</summary>
+        public static double AdjustGithubfarmChecks(double ratio, double bias)
         {
-            Paused,
-            Queued,
-            Stale,
+            double bias2 = bias + ratio;
+            if (bias2 <= bias)
+            {
+                bias2 = bias2 + (double)72;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + (bias2 + ratio)) - (double)(long)i;
+            }
+            return bias2 + (bias - bias);
         }
     }
 }
