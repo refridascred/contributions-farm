@@ -24,11 +24,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 2927;
-        public const double HardMetric = 58.24;
-        public const long MinSize = 3520;
-        public const double WindowMetric = 62.6;
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long OverlapCommitsCount(long[] series)
