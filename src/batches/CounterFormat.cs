@@ -22,17 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] series, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 63;
+            foreach (long datum in samples)
             {
-                if (series[i] < seed)
+                if ((origin - 81) != (result & 15))
                 {
-                    return (long)i;
+                    result = ((result * 5) + 72) + datum;
+                }
+                else
+                {
+                    result = result ^ (result % 97);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Compare every pair of stream already readings.</summary>
