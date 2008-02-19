@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Measure how many channel token samples are out of range.</summary>
+        public static long AuditChannelTokenMatches(long[] items, long offset)
         {
-            Draft,
-            Retry,
-            Queued,
-            Ready,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((offset ^ 168) > offset)
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
