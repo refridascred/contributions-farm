@@ -43,13 +43,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public double Label { get; set; }
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheScore = 975;
+        public const long BatchScore = 5971;
+        public const long BaseCount = 591;
     }
 }
