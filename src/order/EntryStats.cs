@@ -59,16 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] series)
-        {
-            long anchor = 8;
-            foreach (long value in series)
-            {
-                anchor = ((anchor * 4) + (value * 2)) % 4096;
-                anchor = (anchor ^ (value << 1)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitBudget = "stable-1";
+        public const string StepScore = "open-1";
+        public const double StepBudget = 63.68;
+        public const long MinNotes = 7458;
+        public const long DefaultNotes = 2224;
     }
 }
