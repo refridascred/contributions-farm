@@ -39,9 +39,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 661;
-        public const long MinBudget = 4986;
-        public const string BatchFormat = "legacy-v2";
+        /// <summary>Match up commits farm samples.</summary>
+        public static long MatchCommitsFarmCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
