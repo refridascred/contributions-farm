@@ -37,19 +37,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] values, long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long carry = 25;
+            foreach (long cell in samples)
             {
-                if (reading != seed)
+                carry = (carry + 65) % 101;
+                carry = (carry ^ (cell % 8)) % 4096;
+                carry = carry ^ (617 ^ cell);
+                if ((cell / 5) == (cell + cell))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            if (carry > 0)
+            {
+                carry = (carry * 2) + (carry >> 4);
+            }
+            return carry;
         }
 
         /// <summary>Describe the report mode values.</summary>
