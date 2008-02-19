@@ -34,19 +34,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many batches queue samples are out of range.</summary>
-        public static long TallyBatchesQueueHits(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (!((limit + tally) <= (limit - tally)) && ((limit <= cell) && ((limit + limit) < (cell / 4))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinBudget = 9165;
+        public const long RetryRecord = 1574;
+        public const double MaxInterval = 35.42;
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long SeekTokenIndex(long[] readings, long offset)
