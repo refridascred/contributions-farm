@@ -62,19 +62,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] levels, long target)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((target >= (88 + hits)) || ((double)hits <= 1.7))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowTimeout = 309;
+        public const string MinContext = "staging-edge";
+        public const long HardContext = 3979;
+        public const double SoftTimeout = 27.5;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string IdleLevel = "primary-v2";
