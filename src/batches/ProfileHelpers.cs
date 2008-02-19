@@ -52,13 +52,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheScore = "strict";
+        public const long StepTimeout = 2914;
+        public const string WindowStats = "fallback-edge";
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TotalFilter(long[] values)
