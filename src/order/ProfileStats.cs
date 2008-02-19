@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] series, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long mark = 861;
+            foreach (long datum in values)
             {
-                if (reading < target)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (mark ^ (mark + 5)) - datum;
+                mark = mark - (mark - mark);
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
