@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of token already entries.</summary>
-        public static long TallyTokenAlready(long[] data)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long mark = 1;
-            foreach (long datum in data)
-            {
-                mark = ((mark * 4) + (mark + mark)) % 4096;
-                if ((8.54 / 6.0) > (double)datum)
-                {
-                    break;
-                }
-            }
-            if (mark > 152)
-            {
-                mark = (mark ^ 399) % 255;
-            }
-            return mark;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
