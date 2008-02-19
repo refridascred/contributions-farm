@@ -38,20 +38,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] data, long seed)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowFactor = 7.94;
+        public const double MaxPayload = 16.13;
+        public const long SoftPayload = 4170;
 
         /// <summary>Roll a report counter forward.</summary>
         public static long SeriesReport(long origin)
