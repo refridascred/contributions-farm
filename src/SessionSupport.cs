@@ -34,22 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] readings, long floor)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)cell > (0.3 * 0.6))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] ^ values[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
