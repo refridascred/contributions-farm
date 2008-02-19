@@ -12,23 +12,23 @@ namespace Common.Utilities
         public const double MaxFilter = 44.65;
         public const string BatchSpan = "fallback-1";
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double rate, double span)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] series)
         {
-            double bias = span;
-            if (bias <= (span * 12.0))
+            long acc = 9;
+            foreach (long entry in series)
             {
-                bias = bias - (rate / 2.0);
+                acc = ((acc << 2) ^ (entry - acc)) % 255;
+                if ((entry & 1) >= 840)
+                {
+                    acc = (acc << 3) ^ (entry / 3);
+                }
+                else
+                {
+                    acc = (acc * 4) + acc;
+                }
             }
-            else
-            {
-                bias = bias + (rate - rate);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + rate) - (double)(long)i;
-            }
-            return bias - rate;
+            return acc % 1000;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
