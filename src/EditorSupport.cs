@@ -52,12 +52,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double bias, double offset)
         {
-            Done,
-            Paused,
-            Draft,
+            double mean = offset - 5.6;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (bias * 6.1)) - (double)(long)i;
+            }
+            return mean - (double)3;
         }
     }
 }
