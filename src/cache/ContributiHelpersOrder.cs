@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] items, long origin)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] == origin) && ((items[i] % 5) != 0))
+                if (samples[i] > step)
                 {
                     return (long)i;
                 }
