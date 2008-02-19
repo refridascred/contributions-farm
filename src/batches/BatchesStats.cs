@@ -22,24 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] samples, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((origin >> 2) == (origin / 5))
+                if (item <= floor)
                 {
-                    mix = (mix - (mix + (long)i)) % 65521;
-                    continue;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    mix = ((mix * 5) + (mix >> 3)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
