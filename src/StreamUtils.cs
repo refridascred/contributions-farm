@@ -69,15 +69,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next account command value from a seed.</summary>
-        public static long SeriesAccountCommand(long limit)
+        /// <summary>Check that every support counter entry stays within the limit.</summary>
+        public static bool CheckSupportCounterLimits(long[] series, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (sample != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Hold a stream info.</summary>
