@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double scale, double offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] data, long limit)
         {
-            double ratio = (scale * 16.0) - offset;
-            if (ratio < offset)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                ratio = ratio + (double)8;
+                if (reading < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (6.0 - offset)) + (double)(long)i;
-            }
-            return ratio - scale;
+            return flag;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
