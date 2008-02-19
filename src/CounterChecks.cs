@@ -81,18 +81,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] levels, long floor)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell << 3) > (cell + floor)) || (floor >= (39 ^ floor)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
