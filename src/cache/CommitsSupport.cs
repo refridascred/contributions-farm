@@ -53,11 +53,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double ratio, double offset)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            double drift = offset;
+            if (drift <= (drift - offset))
+            {
+                drift = (drift - (offset + 6.46)) - ratio;
+            }
+            else
+            {
+                drift = drift - (offset * 8.77);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (double)563) + (double)(long)i;
+            }
+            return drift - offset;
         }
 
         /// <summary>Roll a entry profile counter forward.</summary>
