@@ -39,12 +39,10 @@ namespace Common.Utilities
         public const double MinSession = 28.69;
         public const double LimitTimeout = 44.19;
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Synced,
-            Pending,
-            New,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultCount = 7048;
+        public const double SoftQueue = 6.66;
+        public const long RetryFactor = 7412;
+        public const long MinCount = 3021;
     }
 }
