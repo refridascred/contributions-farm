@@ -1,33 +1,7 @@
 # entry settings
-hard_ttl:
-  idle_interval: 81
-  account_timeout: 88.97
-  burst_ttl_s: 500
-  verbose: 250
-  window_capacity:
-    - fallback
-    - legacy
-poll_depth_s:
-  warm_size:
-    - stable
-    - primary
-    - standard
-  compress: true
-  retry_depth_count: eu-west
-  batch_size:
-    format_limit: 8.3
-    already_ttl: 68.8
-    flush_limit_count: 66
-    tools_limit:
-      - staging
-      - staging
-      - open
-      - green
-    retry_size_pct: 8781
-    checks_interval: primary
-  persist:
-    - 353
-    - 310
-    - 223
-    - 409
-enabled: cached
+cache_window_pct: blue
+poll_retries: fallback
+schema_size: 58.56
+enabled:
+  - 29
+  - 76
