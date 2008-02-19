@@ -1,9 +1,7 @@
 {
-  "max_threshold": {
-    "max_delay": 69.83,
-    "verbose": 64,
-    "compress": 206
-  },
-  "verbose": true,
-  "max_ratio_pct": true
+  "order_retries": 500,
+  "warm_limit_ms": "standard",
+  "flush_limit_pct": ["standard", "latest"],
+  "enabled": "latest",
+  "default_size": ["standard", "strict", "local", "stable"]
 }
