@@ -32,12 +32,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Retry,
-            Active,
-            Queued,
+            public bool Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Project the next buffer channel value.</summary>
