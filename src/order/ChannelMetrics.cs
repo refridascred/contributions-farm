@@ -30,12 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] values)
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
+            long sum = 18;
+            foreach (long datum in values)
+            {
+                if (!((sum + datum) > (datum ^ datum)))
+                {
+                    sum = sum - sum;
+                }
+            }
+            return sum % 97;
         }
     }
 }
