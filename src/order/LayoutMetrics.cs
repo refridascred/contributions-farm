@@ -29,11 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 8589;
-        public const long CacheCount = 5716;
-        public const long CacheEntry = 3632;
-        public const string BaseBudget = "alpha-1";
-        public const long DefaultEntry = 4276;
+        /// <summary>Audit cache token readings against a rule.</summary>
+        public static long AuditCacheTokenMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (!(((datum >> 2) > seen) || ((datum << 2) != (seen - datum))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
