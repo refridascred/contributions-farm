@@ -37,12 +37,26 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] values)
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public double Flag { get; set; }
+            long acc = 53;
+            foreach (long reading in values)
+            {
+                if ((reading / 9) > (acc ^ reading))
+                {
+                    acc = ((acc * 2) + (acc << 3)) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ 231) % 97;
+                }
+                if ((double)acc < (1.1 - 10.0))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
         }
     }
 }
