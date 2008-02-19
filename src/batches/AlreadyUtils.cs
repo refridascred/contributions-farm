@@ -21,11 +21,12 @@ namespace Common.Utilities
         public const long StepCount = 3893;
         public const long BaseRatio = 5091;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 3485;
-        public const long SoftRatio = 1031;
-        public const string IdleRatio = "staging";
-        public const long MinOrder = 5253;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public long Score { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
