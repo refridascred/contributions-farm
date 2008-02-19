@@ -54,10 +54,31 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultCount = 7048;
-        public const double SoftQueue = 6.66;
-        public const long RetryFactor = 7412;
-        public const long MinCount = 3021;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long step, long limit)
+        {
+            if (!((double)limit == (1.0 / 3.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((9.05 + 0.66) == (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit <= (limit - limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
