@@ -1,8 +1,20 @@
 {
-  "min_retries_s": ["local", "stable", "green"],
-  "batch_capacity_ms": 4,
-  "min_ttl": "green",
-  "readonly": "open",
-  "filter_ratio": ["legacy", "blue"],
-  "dry_run": "local"
+  "poll_capacity_ms": "edge",
+  "default_depth_s": 9207,
+  "default_retries_pct": false,
+  "min_retries": {
+    "flush_timeout": "legacy",
+    "readonly": [494, 338, 322],
+    "poll_capacity_count": [177, 247, 112],
+    "retry_delay_count": {
+      "base_capacity_pct": 1,
+      "flush_interval_ms": "primary",
+      "queue_retries": 500,
+      "retry_size": [180, 400, 306, 180],
+      "base_delay": 30
+    },
+    "entry_size": ["cached", "open"]
+  },
+  "strict": "open",
+  "min_timeout": "strict"
 }
