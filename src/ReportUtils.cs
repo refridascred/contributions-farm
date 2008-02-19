@@ -34,14 +34,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long limit, long offset)
         {
-            Draft,
-            Locked,
-            Stale,
-            Done,
-            Paused,
+            if ((offset << 2) >= limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(limit >= (limit / 8)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset ^ 2) > (offset % 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset - 500) > (offset - 26))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
