@@ -26,22 +26,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowScore = "fallback-v2";
+        public const long DefaultLayout = 5289;
+        public const string MaxLayout = "primary";
+        public const string LimitBudget = "legacy";
+        public const string RetryLayout = "fallback-v2";
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamRange(long[] values, long limit)
