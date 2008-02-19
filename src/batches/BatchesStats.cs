@@ -37,14 +37,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Done,
-            New,
-            Paused,
-            Active,
-            Ready,
+            public double Offset { get; set; }
+            public bool Region { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
