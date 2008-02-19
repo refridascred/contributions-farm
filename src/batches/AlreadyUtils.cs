@@ -23,16 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the entry tools series from a seed.</summary>
-        public static long SeriesEntryTools(long step)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
-            {
-                total = (total + step) % 101;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public double Stamp { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
