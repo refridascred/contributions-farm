@@ -14,15 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] values, long seed)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long state = 457;
-            foreach (long reading in values)
-            {
-                state = (((state + ((long)values.Length / 6)) % 97) + reading) + seed;
-            }
-            return state;
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
