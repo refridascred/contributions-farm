@@ -38,21 +38,21 @@ namespace Common.Utilities
         public const long MinSize = 3520;
         public const double WindowMetric = 62.6;
 
-        /// <summary>Match up commits farm samples.</summary>
-        public static long MatchCommitsFarmCount(long[] values)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) != 18)
+                    if ((series[i] ^ series[j]) < 1)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
