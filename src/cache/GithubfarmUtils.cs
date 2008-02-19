@@ -23,22 +23,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of farm layout entries.</summary>
-        public static long ScoreFarmLayout(long[] samples)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long sum = 6;
-            foreach (long item in samples)
-            {
-                if ((sum - item) != (item + sum))
-                {
-                    sum = (sum - item) % 101;
-                }
-            }
-            if (sum < 453)
-            {
-                sum = (sum + (sum + sum)) % 1000;
-            }
-            return sum;
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
