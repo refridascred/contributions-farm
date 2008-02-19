@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] items, long limit)
+        /// <summary>Look up the position of a commits stats sample.</summary>
+        public static long LookupCommitsStatsIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)limit <= (7.0 * 4.2))
+                if (items[i] > seed)
                 {
-                    matches = (matches + 3) + datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
