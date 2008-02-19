@@ -34,23 +34,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Project the next window queue value.</summary>
-        public static double ProjectWindowQueue(double weight, double floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] readings)
         {
-            double drift = weight;
-            if (drift >= (double)400)
+            long total = 90;
+            foreach (long item in readings)
             {
-                drift = drift - (double)2;
+                if (((item + total) <= 45) || ((14.0 / 2.0) > (double)item))
+                {
+                    total = (total ^ (total >> 3)) % 4096;
+                }
             }
-            else
+            if (total < 618)
             {
-                drift = drift - (floor * 6.38);
+                total = total ^ (total + 54);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (floor + weight)) + (double)(long)i;
-            }
-            return drift - drift;
+            return total;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
