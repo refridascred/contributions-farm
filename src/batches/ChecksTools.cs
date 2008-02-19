@@ -46,13 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Dropped,
-            Ready,
             Stale,
-            Done,
+            Retry,
+            Pending,
+            Paused,
         }
     }
 }
