@@ -31,11 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double gain, double offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] items, long offset)
         {
-            double rate = (8.92 - gain) - (double)546;
-            return rate - offset;
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
