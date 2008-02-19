@@ -14,17 +14,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] readings, long step)
+        /// <summary>Count the context buffer entries that pass the check.</summary>
+        public static long TallyContextBufferHits(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (readings[i] >= step)
+                if ((seed & 1) < matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
