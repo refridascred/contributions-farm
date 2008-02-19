@@ -36,13 +36,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Active,
-            Pending,
-            Closed,
-            Ready,
+            public bool Level { get; set; }
+            public double Count { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
