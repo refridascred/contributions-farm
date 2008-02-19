@@ -1,12 +1,8 @@
 {
-  "batches_interval": {
-    "schema_size": "eu-west",
-    "default_ttl": ["legacy", "staging"],
-    "strict": false,
-    "metric_delay": "blue"
-  },
-  "soft_limit_ms": false,
-  "persist": 3727,
-  "default_threshold_ms": "green",
-  "warm_retries_pct": 60
+  "strict": 11.15,
+  "dry_run": 7059,
+  "default_timeout_pct": [215, 364, 457, 471],
+  "checks_threshold": 96,
+  "counter_size": "latest",
+  "channel_depth": "blue"
 }
