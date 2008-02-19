@@ -1,9 +1,21 @@
 # githubfarm settings
-metrics_limit: blue
-report_ratio: true
-poll_retries:
-  - 344
-  - 400
-  - 241
-  - 175
-cache_ttl: false
+cache_ratio: 24
+flush_window_count: 51.33
+min_timeout_ms:
+  idle_ttl_ms:
+    - 93
+    - 43
+    - 257
+  default_size_s: blue
+  audit: 500
+  default_delay: staging
+burst_timeout: false
+window_interval:
+  base_threshold: 5411
+  window_delay:
+    batch_size: cached
+    flush_timeout: staging
+    enabled: 88.17
+    order_delay: 88.11
+  soft_threshold: green
+  strict: green
