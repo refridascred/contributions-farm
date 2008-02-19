@@ -44,19 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] readings, long seed)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Ready,
+            Idle,
         }
     }
 }
