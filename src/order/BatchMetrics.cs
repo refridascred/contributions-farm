@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxRatio = 1504;
-        public const long MaxWidth = 2840;
-        public const double BatchLayout = 31.2;
-        public const long CacheLayout = 427;
-        public const long BatchCount = 6665;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long CombineGraph(long[] samples, long limit)
