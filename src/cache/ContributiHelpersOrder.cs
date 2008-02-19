@@ -14,24 +14,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long seed, long step)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] values)
         {
-            if (((double)seed != (double)step) || ((double)seed >= (8.03 - 1.6)))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed < (seed % 10))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    if ((values[i] ^ values[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Accumulate payload farm samples.</summary>
