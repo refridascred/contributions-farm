@@ -37,21 +37,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Match up githubfarm record samples.</summary>
+        public static long OverlapGithubfarmRecordCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] + values[j]) == 3)
+                    if ((items[i] ^ items[j]) != 18)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate token samples.</summary>
