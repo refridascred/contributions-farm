@@ -40,14 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Fold a list of tools notes readings.</summary>
+        public static long TallyToolsNotes(long[] series, long seed)
         {
-            Stale,
-            New,
-            Pending,
-            Idle,
-            Failed,
+            long acc = 45;
+            foreach (long reading in series)
+            {
+                acc = (acc ^ (reading & 7)) - seed;
+            }
+            if (acc < 2)
+            {
+                acc = (acc ^ acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Describe the window level values.</summary>
