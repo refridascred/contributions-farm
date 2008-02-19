@@ -1,7 +1,16 @@
 {
-  "counter_limit": 250,
-  "max_retries_ms": "local",
-  "strict": "primary",
-  "min_timeout": 1819,
-  "batch_threshold_count": [372, 314]
+  "poll_delay_count": ["eu-west", "eu-west", "open"],
+  "readonly": {
+    "persist": {
+      "default_delay": 54.15,
+      "cache_capacity_count": false,
+      "verbose": "legacy",
+      "tools_size": 30,
+      "idle_window_s": true,
+      "idle_ratio_pct": "blue"
+    },
+    "queue_limit": false,
+    "idle_depth_pct": false
+  },
+  "enabled": false
 }
