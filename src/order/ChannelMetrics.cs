@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultWidth = 9688;
+        public const string BatchBudget = "cached-edge";
+        public const long BurstFilter = 8896;
+        public const double MinLevel = 47.95;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long DigestQueue(long[] levels, long floor)
