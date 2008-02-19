@@ -71,13 +71,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long seed, long bound)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
+            long prev = seed + bound;
+            if ((902 >= (seed >> 1)) || ((bound - seed) == (prev - prev)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((26 + seed) >= seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed != (16.0 * 11.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
