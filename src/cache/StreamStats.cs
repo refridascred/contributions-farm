@@ -21,12 +21,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long floor)
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
+            long score = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                score = (score - floor) % 4096;
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
