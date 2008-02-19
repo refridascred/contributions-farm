@@ -1,7 +1,8 @@
 # support settings
-context_ttl: true
-min_capacity:
-  - legacy
+batches_delay:
   - open
   - primary
-channel_window: 3
+  - edge
+  - green
+max_depth: 500
+max_delay_ms: eu-west
