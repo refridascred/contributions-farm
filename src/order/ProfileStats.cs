@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowProfile = 98.83;
-        public const long IdleWidth = 1256;
-        public const long CacheProfile = 3203;
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public string Region { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsMatches(long[] samples)
