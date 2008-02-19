@@ -53,17 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] data, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (data[i] >= seed)
+                if (((double)entry >= (15.0 / 3.0)) || ((limit + entry) == (entry * 5)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
