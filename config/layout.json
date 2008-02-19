@@ -1,9 +1,5 @@
 {
-  "soft_delay_ms": {
-    "min_timeout_count": "edge",
-    "support_window": 79,
-    "flush_limit_pct": ["stable", "local"]
-  },
-  "soft_size_s": "stable",
-  "compress": 68.91
+  "base_delay_pct": 46,
+  "flush_threshold": true,
+  "compress": false
 }
