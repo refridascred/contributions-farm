@@ -15,18 +15,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many channel stats samples are out of range.</summary>
-        public static long AuditChannelStatsOutliers(long[] levels)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((item ^ 52) > (matches & 31))
+                if ((3.4 / 2.0) == (double)carry)
                 {
-                    matches = matches + 3;
+                    carry = ((carry * 3) + (long)i) % 101;
                 }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    carry = (((carry * 2) + (carry << 1)) % 97) ^ (long)i2;
+                    carry = ((carry << 2) ^ (carry + (-21))) % 1000;
+                }
+                carry = carry - 632;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
