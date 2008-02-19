@@ -70,19 +70,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] data, long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            New,
+            Active,
+            Retry,
+            Paused,
         }
     }
 }
