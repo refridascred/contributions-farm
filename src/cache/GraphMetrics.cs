@@ -44,13 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((96 < hits) && (((16 * 4) > hits) && ((hits / 3) > (hits % 8))))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a command summary.</summary>
