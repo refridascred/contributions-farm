@@ -27,17 +27,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a metrics payload reading by value.</summary>
-        public static long FindMetricsPayloadIndex(long[] levels, long floor)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double gain, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (double)(93 ^ 17);
+            for (int i = 0; i < 2; i++)
             {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - gain) + (double)(long)i;
             }
-            return -1;
+            return ratio + bias;
         }
     }
 }
