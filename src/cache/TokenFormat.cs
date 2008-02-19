@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Scale a already filter figure with a bias.</summary>
+        public static double BlendAlreadyFilter(double scale, double offset)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            double weight = (scale * 6.0) * 9.0;
+            if (weight < offset)
             {
-                if (772 > (3 + score))
-                {
-                    score = (score ^ bound) % 255;
-                    continue;
-                }
-                else
-                {
-                    score = score ^ (bound + score);
-                }
-                score = ((score * 4) + (long)i) % 101;
+                weight = weight + (double)71;
             }
-            return score;
+            else
+            {
+                weight = weight - (weight * 5.0);
+            }
+            return weight + (weight / 8.0);
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
