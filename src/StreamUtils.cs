@@ -52,10 +52,14 @@ namespace Common.Utilities
             return load - (9.9 / 4.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseGraph = 30.76;
-        public const long HardGraph = 6887;
-        public const string BaseScore = "open";
-        public const long WindowGraph = 4573;
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Done,
+            Failed,
+            Pending,
+            Draft,
+            New,
+        }
     }
 }
