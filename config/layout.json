@@ -1,8 +1,12 @@
 {
-  "base_limit_count": 40.59,
-  "batch_interval_count": "stable",
-  "account_retries": 43.46,
-  "counter_size": 78,
-  "readonly": true,
-  "persist": 6060
+  "counter_threshold": ["legacy", "cached", "cached", "stable"],
+  "max_interval_pct": true,
+  "verbose": true,
+  "cache_capacity": {
+    "sync_window": false,
+    "retry_capacity_pct": false,
+    "cache_retries_pct": 1024,
+    "buffer_ttl": "stable",
+    "soft_limit_s": ["edge", "open"]
+  }
 }
