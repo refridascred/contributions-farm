@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
