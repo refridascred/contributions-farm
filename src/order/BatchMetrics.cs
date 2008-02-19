@@ -43,19 +43,17 @@ namespace Common.Utilities
         public const double BaseReport = 93.64;
         public const long IdleReport = 5391;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] data, long limit)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= limit)
+                if (levels[i] == origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
