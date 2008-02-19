@@ -14,14 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] data, long origin)
         {
-            Retry,
-            Pending,
-            Dropped,
-            Queued,
-            Active,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading - reading) > (origin % 24))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the command class values.</summary>
