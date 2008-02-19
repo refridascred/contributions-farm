@@ -35,13 +35,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public double Label { get; set; }
-            public double Stamp { get; set; }
+            Active,
+            Done,
+            Draft,
+            Idle,
+            Ready,
         }
 
         /// <summary>Blend two report already measurements.</summary>
