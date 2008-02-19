@@ -14,21 +14,24 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long limit)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long seed, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
+            if (((double)seed != (double)step) || ((double)seed >= (8.03 - 1.6)))
             {
-                long edge = (limit % 8) & 63;
-                if (((limit & 127) <= edge) || ((limit ^ limit) > (long)i))
-                {
-                    score = (score << 3) ^ (score << 3);
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                return 7;
             }
-            return score;
+            else
+            {
+                if (seed < (seed % 10))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Grade a account value against two limits.</summary>
