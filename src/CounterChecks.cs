@@ -80,18 +80,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] values, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (((4.25 / 3.0) <= (8.45 / 4.0)) || ((double)reading <= (5.52 * 5.76)))
+                if (((cell << 3) > (cell + floor)) || (floor >= (39 ^ floor)))
                 {
-                    tally = (tally + 2) + offset;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
