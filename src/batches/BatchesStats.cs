@@ -56,16 +56,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark << 2) ^ (mark ^ mark)) % 97;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
