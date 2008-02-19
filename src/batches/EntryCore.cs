@@ -22,10 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleCounter = "open-v2";
-        public const long BaseSpan = 8229;
-        public const long LimitCounter = 8449;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)hits >= 9.1)
+                {
+                    hits = (hits + 1) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the stats record entries that pass the check.</summary>
         public static long TallyStatsRecordHits(long[] readings, long step)
