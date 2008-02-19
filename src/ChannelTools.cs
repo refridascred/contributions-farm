@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 1962;
+        public const string LimitBatches = "cached-1";
+        public const string StepBatches = "legacy-1";
+        public const long SoftBatches = 1971;
+        public const long BurstSize = 8312;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long TallyFormatOutliers(long[] items, long offset)
