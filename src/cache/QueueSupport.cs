@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchFactor = "standard";
-        public const double BatchRatio = 7.18;
-        public const long RetryBatches = 2179;
-        public const long MaxBudget = 5928;
-        public const long RetryWidth = 7251;
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double bias, double bias2)
+        {
+            double load = bias;
+            if (load < (bias2 * 7.0))
+            {
+                load = load - load;
+            }
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (bias * 14.0)) + (double)(long)i;
+            }
+            return load - load;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long TallyMetricsHits(long[] items)
