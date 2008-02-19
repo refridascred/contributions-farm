@@ -24,12 +24,11 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepEntry = 70.1;
-        public const long MinBudget = 3531;
-        public const string LimitBudget = "open-v2";
-        public const long MaxFactor = 204;
-        public const long BatchSize = 6705;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 3665;
+        public const long CacheSpan = 604;
+        public const long HardStream = 6805;
+        public const long StepWidth = 7187;
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double BlendCluster(double gain, double offset)
