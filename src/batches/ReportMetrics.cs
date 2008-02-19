@@ -19,19 +19,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double ratio, double bias)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] values, long target)
         {
-            double scale = (double)(572 + 51);
-            if (scale < 20.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = (scale + bias) - ratio;
+                if ((values[i] >= target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (double)439;
-            }
-            return scale - bias;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
