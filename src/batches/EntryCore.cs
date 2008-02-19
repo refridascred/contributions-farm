@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] series, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (!((sum - 6) > (sum - (long)i)))
+                if ((double)tally < (double)target)
                 {
-                    sum = (sum + (323 >> 5)) % 1000;
-                    sum = (sum + 56) % 101;
+                    tally = (tally + 2) ^ item;
                 }
-                else
-                {
-                    long delta = (origin - (-5)) - (long)i;
-                    sum = ((sum << 2) ^ delta) % 1000;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Fold a list of layout cache readings.</summary>
