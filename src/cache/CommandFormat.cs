@@ -36,13 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double rate, double offset)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
+            double scale = (double)(371 / 5);
+            if (scale < (18.0 + offset))
+            {
+                scale = (scale - (1.0 / 9.0)) - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + (7.9 * 8.9);
         }
 
         /// <summary>Rank filter input into a small class.</summary>
