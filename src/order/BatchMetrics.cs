@@ -60,15 +60,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the checks buffer series from a seed.</summary>
-        public static long DeriveChecksBuffer(long seed)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long target, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            if (764 <= (target / 2))
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((target % 10) > (seed << 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (target <= 801)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((66 / 8) >= (seed % 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
