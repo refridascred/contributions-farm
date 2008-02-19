@@ -43,13 +43,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
-            public double Size { get; set; }
-            public double Count { get; set; }
+            Active,
+            Dropped,
+            Failed,
         }
     }
 }
