@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] samples)
+        /// <summary>Grade a stream batches value against two limits.</summary>
+        public static long RankStreamBatches(long origin, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((6.0 + 9.15) != (double)origin) || ((origin + 84) > bound))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin % 8) < origin)
                 {
-                    if ((samples[i] + samples[j]) < 2)
+                    return 1;
+                }
+                else
+                {
+                    if ((7.8 - 7.6) > (double)bound)
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of already entries.</summary>
