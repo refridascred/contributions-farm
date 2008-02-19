@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stats notes sample.</summary>
-        public static long FindStatsNotesIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 5405;
+        public const string SoftSize = "legacy-1";
+        public const string LimitRatio = "standard-1";
+        public const long BaseWindow = 6143;
+        public const long RetryLevel = 6099;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
