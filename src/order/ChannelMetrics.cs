@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double weight, double span)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] series, long offset)
         {
-            double mean = span / 7.0;
-            if (mean <= 9.6)
+            bool stale = true;
+            foreach (long item in series)
             {
-                mean = (mean + (double)(-920)) + weight;
+                if (item != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (double)35) + (double)(long)i;
-            }
-            return mean - mean;
+            return stale;
         }
 
         /// <summary>Check that every command token entry stays within the limit.</summary>
