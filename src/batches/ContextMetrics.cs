@@ -56,28 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] data)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] levels, long bound)
         {
-            long carry = 861;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry + item) == (item % 5))
+                if (levels[i] >= bound)
                 {
-                    carry = carry + (562 * 5);
-                    carry = ((carry * 2) + item) % 4096;
-                }
-                carry = carry - (item - item);
-                if ((item - 7) == (2 + carry))
-                {
-                    carry = ((carry << 2) ^ carry) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ (carry ^ item)) % 255;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
