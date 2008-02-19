@@ -1,7 +1,37 @@
 # support settings
-batch_size: blue
-verbose: 1024
-dry_run: 500
-sync_window_count:
-  - local
+record_threshold:
+  sync_threshold_pct:
+    - 500
+    - 320
+    - 271
+    - 160
+  base_timeout: eu-west
+  hard_retries: 1024
+  poll_window: 17
+  base_retries_ms: 3788
+counter_limit:
   - staging
+  - staging
+  - legacy
+  - standard
+sync_retries_count:
+  flush_retries_s:
+    - 386
+    - 443
+  batch_interval_pct: latest
+  batch_limit:
+    - local
+    - primary
+    - latest
+  compress:
+    - standard
+    - staging
+  flush_ttl_s:
+    audit: open
+    report_depth: 5947
+    warm_ttl_pct: false
+    max_depth: 47
+    max_ratio: 88
+  stream_limit: eu-west
+verbose: 9700
+compress: 100
