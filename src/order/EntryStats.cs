@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] series)
-        {
-            long mix = 99;
-            foreach (long item in series)
-            {
-                mix = (mix + (item * 3)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowWidth = 3728;
+        public const string IdleFactor = "alpha-edge";
+        public const double CacheBudget = 19.74;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long WeighMetrics(long[] samples, long bound)
