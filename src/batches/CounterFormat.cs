@@ -40,21 +40,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of stream already readings.</summary>
-        public static long MatchStreamAlreadyCount(long[] items)
+        /// <summary>Accumulate stream account samples.</summary>
+        public static long CombineStreamAccount(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 770;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((6.8 + 2.54) <= (double)item)
                 {
-                    if ((items[i] - items[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result * 3) + (657 + item)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (item - item)) % 255;
+                }
+                if (((double)item >= (5.0 * 7.3)) && ((item + item) >= item))
+                {
+                    result = (result << 3) ^ (item & 255);
+                }
+                else
+                {
+                    result = result ^ (item ^ item);
+                }
+                if ((result <= (16 ^ item)) && ((1.0 + 3.0) > (double)item))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result > 30)
+            {
+                result = (result - (result - result)) % 101;
+            }
+            return result;
         }
     }
 }
