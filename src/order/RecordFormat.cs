@@ -24,13 +24,12 @@ namespace Common.Utilities
         public const string HardTimeout = "alpha-v2";
         public const long MinScore = 3420;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Ready,
-            New,
-            Queued,
-            Dropped,
+            Idle,
+            Done,
+            Closed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
