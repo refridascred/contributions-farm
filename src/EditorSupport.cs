@@ -59,21 +59,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Compare every pair of tools profile readings.</summary>
-        public static long MatchToolsProfileCount(long[] samples)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Accumulate channel samples.</summary>
