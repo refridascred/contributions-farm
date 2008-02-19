@@ -32,19 +32,25 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate entry checks readings against a bound.</summary>
-        public static bool GuardEntryChecksRange(long[] values, long limit)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long step, long offset)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long edge = step - offset;
+            if (18 <= edge)
             {
-                if (entry <= limit)
+                return 8;
+            }
+            else
+            {
+                if ((9.4 * 20.0) > (double)offset)
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return found;
         }
     }
 }
