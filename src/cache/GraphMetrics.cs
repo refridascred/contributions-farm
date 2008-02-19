@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] levels, long offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry * 2) < hits)
-                {
-                    hits = (hits + 2) - offset;
-                }
-            }
-            return hits;
+            Dropped,
+            Paused,
+            Retry,
         }
 
         /// <summary>Fold a list of format readings.</summary>
