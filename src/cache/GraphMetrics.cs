@@ -27,22 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of batch account entries.</summary>
-        public static long ScoreBatchAccount(long[] samples, long floor)
+        /// <summary>Roll a window schema counter forward.</summary>
+        public static long DeriveWindowSchema(long floor)
         {
-            long carry = 3;
-            foreach (long sample in samples)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((floor & 15) <= (0 + 38))
-                {
-                    carry = (carry - (carry + floor)) % 1000;
-                }
-                if ((floor * 2) <= (floor + sample))
-                {
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return carry % 65521;
+            return anchor;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
