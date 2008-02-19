@@ -37,18 +37,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading & 31) == (matches - reading))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 2881;
+        public const long WindowEditor = 4231;
+        public const string MinFactor = "cached-edge";
     }
 }
