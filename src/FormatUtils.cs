@@ -49,17 +49,24 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a profile commits sample.</summary>
-        public static long LocateProfileCommitsIndex(long[] items, long floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long bound, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((target << 1) <= bound)
             {
-                if (items[i] < floor)
+                return 2;
+            }
+            else
+            {
+                if ((target - target) == (bound + target))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
