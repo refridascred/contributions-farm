@@ -26,12 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Project the next layout metric value.</summary>
+        public static double SmoothLayoutMetric(double bias, double span)
         {
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            double scale = (double)3 + 16.0;
+            if (scale <= bias)
+            {
+                scale = scale + (double)261;
+            }
+            return scale - (span * 11.0);
         }
 
         /// <summary>Project the next farm value.</summary>
