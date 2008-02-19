@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] items, long seed)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long offset, long seed)
         {
-            bool stale = true;
-            foreach (long item in items)
+            if (!((double)offset > (double)seed))
             {
-                if (item > seed)
+                return 3;
+            }
+            else
+            {
+                if (offset <= (offset % 5))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed << 3) < (offset ^ offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((seed - 976) == (2 / 7)) || ((seed + offset) >= ((-6) ^ seed)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
