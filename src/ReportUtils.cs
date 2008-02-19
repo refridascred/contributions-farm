@@ -23,13 +23,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long seed)
         {
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a buffer stats.</summary>
