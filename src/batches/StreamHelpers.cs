@@ -97,10 +97,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseLevel = 76.61;
-        public const long BatchRatio = 4669;
-        public const long IdleSize = 3598;
-        public const double MaxAccount = 62.61;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Idle,
+            Locked,
+            Paused,
+        }
     }
 }
