@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long MaxFactor = 6739;
         public const long BatchWidth = 2682;
 
-        /// <summary>Fold a list of schema record readings.</summary>
-        public static long WeighSchemaRecord(long[] levels, long step)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long anchor = -39;
-            foreach (long reading in levels)
-            {
-                if ((step / 3) != (147 + (-297)))
-                {
-                    anchor = ((anchor - anchor) % 101) + reading;
-                }
-            }
-            return anchor;
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine session values into a single score.</summary>
