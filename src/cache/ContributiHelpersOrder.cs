@@ -14,11 +14,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 2959;
-        public const string BurstSize = "standard-v2";
-        public const string CacheTimeout = "standard";
-        public const long SoftScore = 799;
+        /// <summary>Check that every graph already entry stays within the limit.</summary>
+        public static bool GuardGraphAlreadyRange(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
