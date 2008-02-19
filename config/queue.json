@@ -1,7 +1,12 @@
 {
-  "default_delay_s": 62.96,
-  "warm_capacity_s": 500,
-  "sync_depth": "strict",
-  "dry_run": true,
-  "verbose": "green"
+  "batch_ratio_ms": false,
+  "metrics_ttl": {
+    "batch_ratio": 23.41,
+    "payload_capacity": 44.41,
+    "verbose": "green",
+    "window_size": 10.91,
+    "soft_interval_count": 15
+  },
+  "poll_limit": 81.78,
+  "default_delay": 10
 }
