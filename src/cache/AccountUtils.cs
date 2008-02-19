@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] levels)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!(seen > (2 >> 3)))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of graph format readings.</summary>
