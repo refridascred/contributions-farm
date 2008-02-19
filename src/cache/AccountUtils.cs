@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] levels)
         {
-            public double Level { get; set; }
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!(seen > (2 >> 3)))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count stream route pairs that satisfy a relation.</summary>
