@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Check that every token queue entry stays within the limit.</summary>
+        public static bool CheckTokenQueueLimits(long[] series, long limit)
         {
-            Queued,
-            Active,
-            Stale,
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
