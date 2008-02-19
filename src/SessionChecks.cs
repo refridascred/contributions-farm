@@ -32,13 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] series, long bound)
         {
-            Closed,
-            Idle,
-            Synced,
-            New,
+            long total = 808;
+            foreach (long entry in series)
+            {
+                total = (((total * 3) + (total + total)) + entry) + bound;
+            }
+            return total;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
