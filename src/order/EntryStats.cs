@@ -38,21 +38,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Closed,
+            New,
+            Pending,
+            Queued,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
