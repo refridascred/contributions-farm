@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinFactor = 43.62;
-        public const long StepBudget = 7495;
-        public const string StepChannel = "standard";
-        public const long BurstChannel = 6498;
-        public const long LimitChannel = 6326;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
