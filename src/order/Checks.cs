@@ -54,18 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] data, long step)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (cell > (step & 1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Paused,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
