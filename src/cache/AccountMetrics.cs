@@ -19,19 +19,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate schema metrics readings against a bound.</summary>
-        public static bool GuardSchemaMetricsLimits(long[] series, long offset)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long step)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry > offset)
+                if (((long)i == (step / 7)) && (step > 74))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry - (carry / 3)) % 97;
                 }
+                else
+                {
+                    carry = (carry + (carry >> 3)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
