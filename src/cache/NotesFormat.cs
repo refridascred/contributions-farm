@@ -25,31 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream buffer input into a small class.</summary>
-        public static long SortStreamBuffer(long bound, long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long target)
         {
-            if ((bound > (offset ^ bound)) || ((double)bound >= (0.3 / 2.0)))
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                return 7;
+                score = score - target;
+                score = score ^ (score ^ target);
+                score = ((score * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((5.0 - 0.12) > (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((0.8 + 2.0) == (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Accumulate counter filter samples.</summary>
