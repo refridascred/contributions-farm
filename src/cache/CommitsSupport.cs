@@ -50,18 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] samples, long limit)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((limit >> 2) < 7)
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a entry profile counter forward.</summary>
