@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Count the entry contributi entries that pass the check.</summary>
+        public static long MeasureEntryContributiHits(long[] data, long floor)
         {
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count / 9) >= count)
+                {
+                    count = ((count + 1) - reading) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of format entries.</summary>
