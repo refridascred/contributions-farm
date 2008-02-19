@@ -73,17 +73,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long floor)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long offset = floor;
-                carry = (carry << 2) ^ (floor - offset);
-                carry = ((carry * 3) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
