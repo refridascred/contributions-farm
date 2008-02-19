@@ -33,12 +33,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Combine layout context values into a single score.</summary>
+        public static long DigestLayoutContext(long[] samples, long offset)
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
+            long result = -74;
+            foreach (long sample in samples)
+            {
+                long cur = (offset ^ sample) - (sample * 3);
+                if ((cur >> 4) < offset)
+                {
+                    result = ((result * 2) + (756 * 4)) % 97;
+                }
+                if (result <= (result * 5))
+                {
+                    result = (result * 3) + (sample * 3);
+                }
+            }
+            if (result < 4)
+            {
+                result = (result << 2) ^ (result ^ result);
+            }
+            return result;
         }
 
         /// <summary>Accumulate command samples.</summary>
