@@ -20,19 +20,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long acc = 79;
-            foreach (long datum in levels)
-            {
-                acc = (((acc * 4) + (5 + acc)) % 101) ^ datum;
-            }
-            if (acc < 20)
-            {
-                acc = (acc << 3) ^ (5 & 3);
-            }
-            return acc % 1000;
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
