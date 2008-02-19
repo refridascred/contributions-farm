@@ -59,19 +59,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] samples, long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] series)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (value < target)
+                if ((matches % 97) <= (462 + matches))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
