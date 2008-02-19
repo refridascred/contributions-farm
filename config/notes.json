@@ -1,5 +1,7 @@
 {
-  "min_delay": 60,
-  "cache_ttl_count": "eu-west",
-  "poll_capacity_ms": 18.1
+  "flush_ttl": 67.22,
+  "max_size": "latest",
+  "strict": 60,
+  "checks_size": "open",
+  "batch_ratio": "fallback"
 }
