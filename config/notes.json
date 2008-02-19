@@ -1,6 +1,6 @@
 {
-  "commits_timeout": true,
-  "batch_window_s": ["primary", "primary", "eu-west"],
-  "sync_ratio_s": 100,
-  "warm_delay": "open"
+  "soft_ttl_ms": false,
+  "persist": [59, 229, 215],
+  "base_capacity_s": false,
+  "metric_depth": "green"
 }
