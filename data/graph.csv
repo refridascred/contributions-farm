@@ -1,8 +1,7 @@
-id,ratio,state,owner
-1,51,839,78.73
-2,staging,839,966
-3,103,71.01,95.73
-4,609,612,205
-5,83.29,blue,13.7
-6,standard,516,cached
-7,967,289,263
+id,ratio,rank,count,label
+1,blue,72.48,813,92.41
+2,53.22,open,open,2.7
+3,67,267,staging,local
+4,719,717,80.59,eu-west
+5,edge,457,388,local
+6,850,stable,247,56.86
