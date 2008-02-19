@@ -53,18 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] data, long offset)
         {
-            long sum = 58;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (((3 >> 5) == (66 + cell)) && (sum < 0))
+                if ((offset - datum) > (datum << 2))
                 {
-                    sum = ((sum << 3) ^ (sum ^ cell)) % 97;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return sum % 65521;
+            return tally;
         }
     }
 }
