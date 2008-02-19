@@ -23,23 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batch report readings.</summary>
-        public static long DigestBatchReport(long[] levels, long origin)
-        {
-            long anchor = -1;
-            foreach (long entry in levels)
-            {
-                if ((3.6 * 8.54) != (double)entry)
-                {
-                    anchor = (anchor + 58) % 101;
-                }
-                else
-                {
-                    anchor = (anchor + (origin % 12)) % 101;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 20.82;
+        public const long RetryWidth = 6941;
+        public const string HardLayout = "staging-v2";
+        public const long BurstLayout = 6548;
+        public const double MinLayout = 41.31;
 
         /// <summary>Project the next entry value.</summary>
         public static double ProjectEntry(double rate, double offset)
