@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const long BatchRecord = 2012;
         public const long HardWidth = 2812;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftScore = 8.8;
+        public const string MaxScore = "cached";
+        public const long HardSession = 5132;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long step)
