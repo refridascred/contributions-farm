@@ -1,7 +1,6 @@
 {
-  "batch_capacity": true,
-  "cluster_ratio": 30,
-  "max_size": 7838,
-  "default_interval": ["stable", "eu-west"],
-  "max_limit_s": false
+  "default_size_ms": "legacy",
+  "soft_ratio": true,
+  "warm_delay": "green",
+  "cache_interval_s": 38
 }
