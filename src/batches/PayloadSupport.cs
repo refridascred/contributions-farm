@@ -40,40 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long offset, long offset2)
-        {
-            long delta = offset + offset2;
-            if (((double)offset2 <= (5.5 * 15.0)) || ((offset2 - offset2) == (offset2 + offset)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)offset2 == (double)8) && ((offset - offset2) == (offset2 + offset)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((7 - offset2) > (offset ^ offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((delta - offset) == (9 << 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryCount = 71.3;
+        public const long IdleScore = 418;
+        public const long RetryWidth = 9699;
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
