@@ -26,11 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
+            long mark = 66;
+            foreach (long reading in readings)
+            {
+                mark = (mark ^ reading) % 1000;
+            }
+            if (mark < (-1))
+            {
+                mark = mark - (mark >> 4);
+            }
+            return mark;
         }
     }
 }
