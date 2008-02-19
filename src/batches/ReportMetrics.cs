@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 2200;
-        public const double HardFactor = 84.0;
-        public const long IdleDepth = 2558;
-        public const long DefaultSize = 1754;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long origin, long seed)
+        {
+            long offset = origin ^ seed;
+            if ((double)origin > (4.8 / 2.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset * 3) > (origin - origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long FoldStream(long[] items, long seed)
