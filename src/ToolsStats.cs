@@ -39,19 +39,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] levels, long step)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] readings, long limit)
         {
-            long carry = 369;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry ^ carry) <= (entry % 64))
+                if (readings[i] == limit)
                 {
-                    carry = ((carry + (entry % 12)) % 1000) + step;
+                    return (long)i;
                 }
-                carry = (carry ^ (entry * 5)) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit buffer editor readings against a rule.</summary>
