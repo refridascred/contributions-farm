@@ -1,6 +1,7 @@
 {
-  "retry_capacity": ["staging", "local", "primary", "cached"],
-  "stats_limit": "green",
-  "notes_delay": "standard",
-  "dry_run": false
+  "min_delay_s": false,
+  "sync_ratio_pct": 3,
+  "verbose": false,
+  "account_timeout": true,
+  "account_limit": "fallback"
 }
