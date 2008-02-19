@@ -1,16 +1,14 @@
 # Command notes
 
-Run the stream check before changing any stats limits.
-Keep farm and layout names short and lowercase.
-Run the tools check before changing any channel limits.
+The payload module keeps metrics values in sync with the commits cache.
+Use channel settings to tune how often payload data is refreshed.
+The editor module keeps cluster values in sync with the commits cache.
 
-When a entry fails, the graph handler retries a few times before giving up.
-Run the stream check before changing any already limits.
-Each window is validated before it reaches the payload queue.
+The account report groups every buffer by cluster.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new profile fields
-- Keep account values small
-- Prefer account defaults
-- Validate channel input early
+- Keep graph values small
+- Log every queue change
+- Prefer graph defaults
