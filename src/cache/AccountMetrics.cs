@@ -72,14 +72,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Dropped,
-            Locked,
-            Synced,
-            Ready,
-            Queued,
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
