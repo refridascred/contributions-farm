@@ -1,7 +1,5 @@
 {
-  "cache_size_ms": 100,
-  "hard_depth": 30,
-  "cache_retries": false,
-  "readonly": "latest",
-  "profile_window": 57.7
+  "default_ratio_count": "legacy",
+  "dry_run": "standard",
+  "cache_delay": true
 }
