@@ -39,21 +39,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (count > sample)
                 {
-                    if ((series[i] ^ series[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) - bound;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
