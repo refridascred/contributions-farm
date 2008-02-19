@@ -31,18 +31,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] values, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] values)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long result = 43;
+            foreach (long value in values)
             {
-                if (count < floor)
+                if ((13.0 * 8.07) >= (3.2 - 15.0))
                 {
-                    count = (count + 1) + datum;
+                    result = (result + (225 ^ 49)) - value;
+                }
+                else
+                {
+                    result = (result * 4) + result;
                 }
             }
-            return count;
+            return result % 1000;
         }
     }
 }
