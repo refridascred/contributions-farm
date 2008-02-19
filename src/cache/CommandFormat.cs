@@ -18,13 +18,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public double Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 9942;
+        public const long MaxTimeout = 9439;
+        public const double MinSession = 28.69;
+        public const double LimitTimeout = 44.19;
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
