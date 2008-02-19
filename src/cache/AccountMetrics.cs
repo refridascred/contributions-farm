@@ -59,18 +59,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] items, long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (!((count + sample) > (sample + origin)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Retry,
+            Ready,
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a entry options.</summary>
