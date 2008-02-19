@@ -16,38 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long target, long offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            if (offset >= (target & 1))
+            long total = floor;
+            for (int i = 0; i < 15; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset >= 9.17)
+                if ((floor / 3) >= (92 << 3))
                 {
-                    return 5;
+                    break;
                 }
-                else
-                {
-                    if (((target + target) >= (offset - offset)) && ((7.6 - 3.5) == (double)target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset < (4.0 * 3.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Blend two record measurements.</summary>
