@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-primary}"
 case "${mode}" in
-    cached)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=251
+log "limit is ${RECORD_LIMIT}"
