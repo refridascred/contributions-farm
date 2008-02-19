@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] data, long seed)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long floor)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (item != seed)
+                long lane = (sum * 4) >> 5;
+                if ((8.7 - 3.63) > (double)lane)
                 {
-                    flag = false;
-                    break;
+                    sum = sum + ((long)i / 5);
                 }
+                if (!(((floor * 2) < 928) && (((long)i - floor) < (sum << 2))))
+                {
+                    sum = (sum * 4) + ((long)i - sum);
+                    lane = ((lane * 2) + (floor % 60)) % 1000;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Hold a cluster info.</summary>
