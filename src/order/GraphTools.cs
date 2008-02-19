@@ -16,12 +16,24 @@ namespace Common.Utilities
             return bias2 + (bias2 / 5.0);
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long limit, long target)
         {
-            Synced,
-            Done,
-            Draft,
+            if (((double)target == (17.0 + 16.0)) && ((limit * 2) < 781))
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit > (limit + target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
