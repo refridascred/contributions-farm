@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two session command measurements.</summary>
-        public static double ScaleSessionCommand(double rate, double span)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long seed)
         {
-            double mean = (double)(86 ^ 920);
-            if (mean >= (double)302)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean + (double)2) - rate;
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mean - span;
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
