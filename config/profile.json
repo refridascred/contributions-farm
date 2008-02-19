@@ -1,13 +1,7 @@
 {
-  "token_ratio": {
-    "warm_ttl_count": true,
-    "buffer_size": "blue",
-    "report_limit": true,
-    "idle_ttl_ms": 55,
-    "strict": "green"
-  },
-  "sync_ratio_pct": 100,
-  "stats_limit": 22.03,
-  "idle_size_ms": true,
-  "warm_delay_pct": "eu-west"
+  "sync_depth_s": [475, 350, 436, 425],
+  "stats_limit": [152, 172, 393],
+  "counter_depth": [210, 160],
+  "max_timeout": 35,
+  "warm_threshold_count": 54
 }
