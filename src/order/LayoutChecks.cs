@@ -37,21 +37,19 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Accumulate filter buffer samples.</summary>
+        public static long WeighFilterBuffer(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 8;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = result ^ (step + item);
             }
-            return count;
+            if (result > (-28))
+            {
+                result = result + ((long)samples.Length & 255);
+            }
+            return result;
         }
 
         /// <summary>Iterate the queue context series from a seed.</summary>
