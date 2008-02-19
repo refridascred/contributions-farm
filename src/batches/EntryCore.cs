@@ -54,39 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long floor, long origin)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long prev = floor - origin;
-            if (prev < (prev + floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((16.0 / 4.0) < (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)floor == (9.5 - 7.4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((prev + prev) < origin) || (((-757) ^ floor) > prev))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
