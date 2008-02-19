@@ -45,22 +45,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] readings)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((92 + item) > (item * 2))
+                if ((mark / 7) >= (long)i)
                 {
-                    tally = tally + 2;
+                    mark = ((mark * 2) + (71 % 12)) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    long delta = seed / 5;
+                    mark = (mark * 2) + delta;
                 }
+                mark = mark ^ (seed ^ mark);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Scale a batches stream figure with a bias.</summary>
