@@ -34,10 +34,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstInterval = 760;
-        public const string DefaultInterval = "open-1";
-        public const long BaseRatio = 4361;
-        public const string CacheGithubfarm = "primary";
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((seen % 7) >= (datum ^ seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
