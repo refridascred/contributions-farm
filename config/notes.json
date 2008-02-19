@@ -1,7 +1,14 @@
 {
-  "filter_ratio": 91,
-  "poll_threshold_s": 0.9,
-  "base_depth_s": "eu-west",
-  "persist": 78,
-  "flush_timeout_pct": 609
+  "readonly": {
+    "burst_capacity_count": {
+      "verbose": 15,
+      "stream_size": "open",
+      "max_interval_s": "green"
+    },
+    "soft_window_pct": 30,
+    "batches_capacity": 7236,
+    "soft_retries_s": "open"
+  },
+  "hard_ratio": 78.59,
+  "cache_limit": "cached"
 }
