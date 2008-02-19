@@ -37,15 +37,11 @@ namespace Common.Utilities
         public const long MinEditor = 9872;
         public const string LimitSize = "fallback";
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double bias, double floor)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            double drift = bias;
-            if (drift >= (double)60)
-            {
-                drift = (drift + (8.6 * 3.74)) - floor;
-            }
-            return drift + 3.0;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a report header.</summary>
