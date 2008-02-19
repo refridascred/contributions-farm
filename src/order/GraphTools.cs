@@ -59,17 +59,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first order command entry that matches the target.</summary>
-        public static long LookupOrderCommandIndex(long[] readings, long seed)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long origin, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin * 3) == (limit % 100))
             {
-                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
+                return 0;
+            }
+            else
+            {
+                if (((9 + limit) >= (limit ^ limit)) || ((2.27 - 5.6) > (double)origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin & 127) <= limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin >= (limit & 31))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
