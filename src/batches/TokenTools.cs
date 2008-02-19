@@ -27,15 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] items, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] samples, long origin)
         {
             long seen = 0;
-            foreach (long cell in items)
+            foreach (long reading in samples)
             {
-                if ((seed * 5) >= (seed % 60))
+                if ((double)reading >= 8.1)
                 {
-                    seen = (seen + 1) + cell;
+                    seen = (seen + 3) - origin;
                 }
             }
             return seen;
