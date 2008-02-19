@@ -38,12 +38,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            public double Count { get; set; }
+            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
