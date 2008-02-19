@@ -55,22 +55,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Combine editor tools values into a single score.</summary>
+        public static long ScoreEditorTools(long[] items)
         {
-            long state = 39;
-            foreach (long reading in series)
+            long anchor = 2;
+            foreach (long entry in items)
             {
-                if (((reading % 64) < (state + (long)series.Length)) || ((double)state == (7.16 / 9.0)))
-                {
-                    state = (state + state) % 65521;
-                }
-                if ((23 - reading) > reading)
-                {
-                    break;
-                }
+                anchor = anchor - (entry >> 3);
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Check that every support counter entry stays within the limit.</summary>
