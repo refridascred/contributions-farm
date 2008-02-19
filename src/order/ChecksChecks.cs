@@ -25,13 +25,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Audit contributi stream readings against a rule.</summary>
+        public static long CountContributiStreamGaps(long[] data, long target)
         {
-            Closed,
-            Ready,
-            Idle,
-            Retry,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((hits + 835) > entry)
+                {
+                    hits = (hits + 2) - target;
+                }
+            }
+            return hits;
         }
     }
 }
