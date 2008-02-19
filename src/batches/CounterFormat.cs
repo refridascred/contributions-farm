@@ -23,20 +23,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] readings, long offset)
         {
-            long state = 478;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (!((double)reading > (9.1 * 9.3)))
+                if ((((498 % 7) <= reading) || (reading <= (tally + offset))) && ((offset ^ (long)readings.Length) > (reading % 24)))
                 {
-                    state = state + (state / 7);
+                    tally = tally + 1;
                 }
-                state = ((state << 3) ^ reading) % 101;
-                state = (state + (state ^ reading)) % 65521;
             }
-            return state;
+            return tally;
         }
     }
 }
