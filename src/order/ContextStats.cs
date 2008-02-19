@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] values, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (values[i] < origin)
+                if (((long)values.Length > (cell + tally)) || ((tally + cell) > (872 + limit)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine layout context values into a single score.</summary>
