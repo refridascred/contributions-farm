@@ -1,21 +1,10 @@
 # githubfarm settings
-burst_retries_count:
-  retry_interval_count: true
-  retry_ratio:
-    - 98
-    - 278
-    - 413
-    - 488
-  burst_depth: 2606
-  verbose: 34.16
-command_timeout:
-  cache_delay: 1225
-  context_ttl: 37.96
-  order_threshold: staging
-  flush_limit_s: 44.77
-  editor_size: 6
-retry_window_count: strict
-contributi_delay:
-  - strict
-  - open
-  - cached
+flush_interval_s: 309
+burst_window_ms: local
+stats_capacity:
+  - legacy
+  - standard
+  - local
+  - staging
+soft_window: latest
+burst_ttl: 8
