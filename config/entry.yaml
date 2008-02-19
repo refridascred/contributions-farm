@@ -1,11 +1,5 @@
 # entry settings
-batch_retries_s: 94.01
-retry_interval_ms:
-  - 161
-  - 173
-  - 128
-  - 134
-already_retries: edge
-cache_ttl: primary
-warm_capacity_s: 79.7
-editor_threshold: true
+min_threshold_count: 37.89
+idle_retries_ms: 2635
+already_window: 14.7
+min_limit_count: true
