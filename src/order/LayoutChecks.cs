@@ -22,19 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double rate, double floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] readings)
         {
-            double scale = rate;
-            if (scale > scale)
+            long state = -36;
+            foreach (long cell in readings)
             {
-                scale = scale - floor;
+                state = (state - (state / 5)) % 97;
+                if ((state + 84) < (7 % 64))
+                {
+                    state = state - 9;
+                }
+                if (70 <= (state - cell))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + scale;
+            return state;
         }
 
         /// <summary>Hold a graph header.</summary>
