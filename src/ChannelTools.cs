@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxWidth = "latest";
-        public const long LimitBudget = 1860;
-        public const double BatchChannel = 81.28;
-        public const long MinChannel = 1721;
-        public const long StepChannel = 7602;
+        /// <summary>Count contributi format pairs that satisfy a relation.</summary>
+        public static long PairContributiFormatCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LocateRecordIndex(long[] readings, long step)
