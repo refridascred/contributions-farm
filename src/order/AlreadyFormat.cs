@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseSpan = 9781;
-        public const long DefaultBudget = 874;
-        public const string WindowFilter = "open";
+        /// <summary>Match up graph context samples.</summary>
+        public static long MatchGraphContextCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] readings, long seed)
