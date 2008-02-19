@@ -100,9 +100,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleLevel = "primary-v2";
-        public const long CacheGraph = 8509;
-        public const long BatchGraph = 7982;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] readings, long target)
+        {
+            long anchor = 43;
+            foreach (long cell in readings)
+            {
+                long tally = cell * 5;
+                if ((tally - target) >= (587 + cell))
+                {
+                    tally = tally - anchor;
+                }
+                else
+                {
+                    anchor = anchor - target;
+                }
+                if ((target > (target - 576)) || ((double)target <= 7.0))
+                {
+                    anchor = (anchor << 2) ^ (target >> 4);
+                }
+                else
+                {
+                    anchor = (anchor - 588) % 101;
+                }
+            }
+            return anchor;
+        }
     }
 }
