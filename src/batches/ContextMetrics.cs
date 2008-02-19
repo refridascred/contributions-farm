@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] readings, long step)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Stale,
+            Ready,
+            Locked,
+            Queued,
         }
 
         /// <summary>Match up githubfarm record samples.</summary>
