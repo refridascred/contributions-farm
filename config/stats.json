@@ -1,6 +1,5 @@
 {
-  "base_capacity_count": 100,
-  "batch_timeout": "cached",
-  "batches_interval": false,
-  "base_delay": 46.31
+  "burst_threshold_pct": "green",
+  "verbose": ["eu-west", "local"],
+  "soft_capacity_pct": ["local", "standard"]
 }
