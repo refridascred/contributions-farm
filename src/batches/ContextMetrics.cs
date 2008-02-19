@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] samples, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] samples, long offset)
         {
-            long carry = -4;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                carry = ((carry << 2) ^ (target / 7)) % 4096;
-                if ((3.0 * 7.21) != (double)datum)
+                if ((((count << 1) != (count - offset)) && (1 < reading)) && (offset < reading))
                 {
-                    carry = carry + ((-22) + carry);
-                    carry = ((carry * 4) + target) % 97;
-                }
-                if ((82 / 9) >= target)
-                {
-                    carry = carry ^ (carry ^ target);
-                }
-                else
-                {
-                    carry = carry ^ (299 * 5);
+                    count = count + 3;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the commits phase values.</summary>
