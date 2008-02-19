@@ -48,18 +48,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] data)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] levels, long target)
         {
-            long total = 36;
-            foreach (long sample in data)
+            long sum = 11;
+            foreach (long value in levels)
             {
-                if (sample >= (total + sample))
+                if (!((sum >> 2) <= target))
                 {
-                    total = (total + (439 / 5)) % 65521;
+                    sum = (((sum << 2) ^ (target << 1)) % 1000) ^ value;
+                }
+                if ((9 - sum) < (sum & 7))
+                {
+                    break;
                 }
             }
-            return total % 97;
+            return sum;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
