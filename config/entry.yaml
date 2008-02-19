@@ -1,15 +1,8 @@
 # entry settings
-dry_run: strict
-retry_timeout_pct: 30
-flush_delay_s:
-  editor_timeout: 87
-  checks_retries:
-    min_threshold: true
-    persist: 71
-    batch_limit_ms: true
-    stream_limit: 58.99
-  flush_size_s: 59.35
-  sync_interval: 81.94
-  warm_interval_pct: green
-  base_window_s: 5.16
-readonly: local
+min_depth_count: 0.44
+enabled: latest
+channel_capacity: green
+dry_run: 60
+soft_window:
+  - eu-west
+  - primary
