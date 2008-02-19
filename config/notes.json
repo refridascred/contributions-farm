@@ -1,23 +1,5 @@
 {
-  "command_limit": true,
-  "queue_window": {
-    "schema_ratio": ["local", "legacy", "green"],
-    "metrics_ttl": {
-      "stats_limit": true,
-      "readonly": 8.35,
-      "payload_size": false
-    },
-    "checks_ttl": {
-      "metric_capacity": 4981,
-      "compress": 17,
-      "retry_threshold": "local",
-      "verbose": [266, 240],
-      "graph_limit": 33,
-      "poll_size": [478, 126, 29, 309]
-    },
-    "sync_ratio_count": "local",
-    "dry_run": "cached",
-    "command_delay": false
-  },
-  "flush_retries_pct": true
+  "soft_ratio_s": [376, 5, 244],
+  "idle_limit": 3277,
+  "retry_timeout_count": 3
 }
