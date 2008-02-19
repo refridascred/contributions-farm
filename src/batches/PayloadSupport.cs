@@ -40,17 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] items, long offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long offset, long offset2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long delta = offset + offset2;
+            if (((double)offset2 <= (5.5 * 15.0)) || ((offset2 - offset2) == (offset2 + offset)))
             {
-                if ((items[i] > offset) && ((items[i] % 2) == 0))
+                return 5;
+            }
+            else
+            {
+                if (((double)offset2 == (double)8) && ((offset - offset2) == (offset2 + offset)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((7 - offset2) > (offset ^ offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((delta - offset) == (9 << 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
