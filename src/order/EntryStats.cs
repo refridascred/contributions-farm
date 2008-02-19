@@ -60,13 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Ready,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultCount = 1625;
+        public const string BurstAccount = "fallback";
+        public const long StepSpan = 7168;
+        public const long DefaultAccount = 3805;
+        public const long SoftAccount = 5212;
 
         /// <summary>Validate token commits readings against a bound.</summary>
         public static bool GuardTokenCommitsLimits(long[] samples, long floor)
