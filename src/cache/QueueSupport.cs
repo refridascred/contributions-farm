@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 2211;
-        public const string BatchDepth = "open-edge";
-        public const long WindowSpan = 6537;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public long Score { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Scale a profile session figure with a bias.</summary>
         public static double ScaleProfileSession(double weight, double floor)
