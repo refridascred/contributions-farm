@@ -25,17 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long target)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
-            {
-                score = score - target;
-                score = score ^ (score ^ target);
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Project the next stream value.</summary>
