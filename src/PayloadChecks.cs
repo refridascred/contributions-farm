@@ -70,14 +70,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long limit, long offset)
         {
-            Ready,
-            New,
-            Active,
-            Retry,
-            Paused,
+            if (((offset & 3) > offset) && ((0.35 * 9.0) == (double)limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset != (3.4 - 8.3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
