@@ -25,13 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long offset, long seed)
         {
-            Active,
-            Pending,
-            Failed,
-            Synced,
+            long gap = offset - seed;
+            if (offset <= (gap - seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.3 * 5.1) == (double)gap)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)gap == (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
