@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleLevel = 948;
-        public const double CacheCommits = 58.76;
-        public const long BatchBudget = 8952;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] values, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool VerifyFarmRange(long[] levels, long origin)
