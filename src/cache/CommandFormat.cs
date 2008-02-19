@@ -55,15 +55,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes record readings.</summary>
-        public static long TallyNotesRecord(long[] readings)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long step)
         {
-            long anchor = 62;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor - (reading + anchor)) % 65521;
+                if ((items[i] >= step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 65521;
+            return -1;
         }
     }
 }
