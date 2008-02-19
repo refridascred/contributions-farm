@@ -44,15 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] samples, long origin)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long mark = 7;
-            foreach (long cell in samples)
-            {
-                mark = (((mark * 5) + (origin * 4)) % 65521) ^ cell;
-            }
-            return mark;
+            Locked,
+            Active,
+            Closed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
