@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public double Token { get; set; }
-            public bool Region { get; set; }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a report record.</summary>
