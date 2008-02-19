@@ -38,18 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] readings)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (item < (matches + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
