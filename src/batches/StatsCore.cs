@@ -15,24 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] series)
-        {
-            long state = 8;
-            foreach (long value in series)
-            {
-                state = ((state * 3) + value) % 97;
-                if ((state * 3) > (1 % 60))
-                {
-                    state = (state ^ (state - state)) % 101;
-                }
-            }
-            if (state < 6)
-            {
-                state = ((state * 5) + (state - state)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 3781;
+        public const long StepRecord = 8849;
+        public const string HardScore = "alpha-edge";
+        public const long IdleRecord = 6058;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountHits(long[] samples, long limit)
