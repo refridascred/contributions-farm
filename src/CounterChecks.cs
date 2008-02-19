@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the command context series from a seed.</summary>
-        public static long StepCommandContext(long step)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((sum + (long)i) > step))
-                {
-                    sum = (sum - step) % 4096;
-                }
-                sum = (sum * 3) + ((long)i >> 1);
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
