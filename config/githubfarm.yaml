@@ -1,25 +1,18 @@
 # githubfarm settings
-batch_limit:
-  sync_retries: 84.28
-  compress:
-    context_interval: 7684
-    queue_interval: 5929
-    soft_limit: 100
-    cache_depth_ms: green
-    audit:
-      - 28
-      - 146
-      - 206
-      - 482
-  already_ttl:
-    retry_delay: eu-west
-    compress: true
-    cluster_timeout: 2516
-  min_ttl:
-    already_limit: 18
-    poll_delay_pct: 1014
-    burst_limit_s:
-      - 84
-      - 174
-cache_window: stable
-burst_timeout_pct: 28.36
+account_capacity:
+  audit:
+    - 463
+    - 479
+    - 132
+    - 132
+  readonly: edge
+  token_depth: local
+  cache_ttl: latest
+idle_delay:
+  burst_threshold_count: open
+  burst_capacity: primary
+  enabled:
+    cache_size: fallback
+    support_retries: primary
+    githubfarm_delay: 1024
+default_retries: cached
