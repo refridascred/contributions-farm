@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] values)
-        {
-            long mark = 861;
-            foreach (long datum in values)
-            {
-                mark = (mark ^ (mark + 5)) - datum;
-                mark = mark - (mark - mark);
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowProfile = 98.83;
+        public const long IdleWidth = 1256;
+        public const long CacheProfile = 3203;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsMatches(long[] samples)
