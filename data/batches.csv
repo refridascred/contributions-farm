@@ -1,7 +1,10 @@
-id,rank,weight
-1,46.11,strict
-2,standard,78.75
-3,482,open
-4,56.5,blue
-5,legacy,76.33
-6,750,197
+id,count,level
+1,staging,86.86
+2,fallback,98.91
+3,53.23,555
+4,primary,5.56
+5,85.41,50.44
+6,69.1,1.24
+7,6.87,535
+8,fallback,207
+9,600,95.52
