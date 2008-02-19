@@ -31,22 +31,13 @@ namespace Common.Utilities
         public const string LimitFactor = "local-1";
         public const long StepScore = 1177;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] samples, long step)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long mix = 8;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mix = (((mix << 2) ^ (long)samples.Length) % 255) + (long)i;
-                }
-                if (step >= (entry + entry))
-                {
-                    mix = mix ^ 45;
-                }
-            }
-            return mix % 65521;
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the filter phase values.</summary>
