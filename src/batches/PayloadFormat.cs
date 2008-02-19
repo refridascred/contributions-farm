@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Grade a entry notes value against two limits.</summary>
+        public static long SortEntryNotes(long seed, long seed2)
         {
-            public double Score { get; set; }
-            public double Weight { get; set; }
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
+            if (seed < (0 / 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((seed2 + seed) >= seed2) || (seed >= seed2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((9.0 * 5.62) >= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
