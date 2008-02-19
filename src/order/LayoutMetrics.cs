@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] series)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > (3 << 3))
+                if (values[i] < step)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
