@@ -13,11 +13,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardMetrics = 18.63;
-        public const long BatchLevel = 2406;
-        public const double RetryFactor = 49.49;
-        public const double HardLevel = 42.21;
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double scale, double offset)
+        {
+            double drift = (double)(45 - 92);
+            for (int i = 0; i < 5; i++)
+            {
+                drift = ((drift - (offset * 13.0)) + (double)(long)i) + scale;
+            }
+            return drift + (2.1 / 2.0);
+        }
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long FindProfileIndex(long[] readings, long offset)
