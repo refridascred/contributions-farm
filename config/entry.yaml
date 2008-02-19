@@ -1,30 +1,7 @@
 # entry settings
-soft_size:
-  enabled:
-    - legacy
-    - edge
-    - fallback
-    - primary
-  poll_threshold_count: 1945
-  buffer_timeout:
-    default_ttl_count: 91.26
-    warm_depth_count:
-      - 53
-      - 288
-      - 15
-      - 346
-    hard_limit_s: 100
-    retry_ttl: open
-    max_capacity_s: 88.35
-    max_threshold: fallback
-  verbose:
-    sync_window: 92.56
-    soft_retries: 14.76
-    verbose: 88.63
-sync_delay_count: false
-token_delay: stable
-soft_limit_s:
-  - standard
-  - stable
-base_interval: staging
-min_ttl: false
+max_capacity: true
+compress: 100
+warm_ratio:
+  sync_ttl_s: 2489
+  notes_window: 65.18
+  default_threshold_count: 6708
