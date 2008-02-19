@@ -29,18 +29,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 6768;
+        public const double CacheDepth = 1.19;
+        public const double LimitTools = 18.85;
+        public const double BatchSpan = 41.49;
+        public const long DefaultSpan = 6688;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
