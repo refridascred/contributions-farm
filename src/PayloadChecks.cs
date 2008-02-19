@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] items, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                state = (state << 2) ^ (seed / 8);
-                state = ((state * 5) + (long)i) % 4093;
+                if (!(count < (target % 3)))
+                {
+                    count = (count + 1) + reading;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Match up cache farm samples.</summary>
