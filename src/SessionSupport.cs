@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double gain, double floor)
+        /// <summary>Compare every pair of layout window readings.</summary>
+        public static long PairLayoutWindowCount(long[] series)
         {
-            double drift = gain;
-            if (drift <= 19.0)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + (drift * 8.3);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + floor;
-            }
-            return drift - (floor - floor);
+            return seen;
         }
 
         /// <summary>Hold a buffer entry.</summary>
