@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] series, long bound)
         {
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((double)count < 5.11)
+                {
+                    count = ((count + 3) ^ cell) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
