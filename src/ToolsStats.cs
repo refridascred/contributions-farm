@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            Synced,
-            Dropped,
-            Queued,
+            New,
+            Ready,
+            Paused,
             Failed,
         }
 
