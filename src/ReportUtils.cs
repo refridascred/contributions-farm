@@ -55,24 +55,15 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long offset, long offset2)
+        /// <summary>Project the next githubfarm tools value.</summary>
+        public static double SmoothGithubfarmTools(double gain, double span)
         {
-            if (offset <= (28 + offset))
+            double load = (double)78 / 6.0;
+            for (int i = 0; i < 2; i++)
             {
-                return 3;
+                load = ((load + gain) + (double)(long)i) + span;
             }
-            else
-            {
-                if ((0 - offset) != (offset2 ^ offset2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return load + (double)70;
         }
     }
 }
