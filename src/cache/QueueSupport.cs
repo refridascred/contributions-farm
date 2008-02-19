@@ -46,15 +46,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double gain, double bias)
-        {
-            double ratio = (double)(93 ^ 17);
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - gain) + (double)(long)i;
-            }
-            return ratio + bias;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 3981;
+        public const long MaxDepth = 3494;
+        public const long BatchInterval = 3524;
     }
 }
