@@ -33,14 +33,10 @@ namespace Common.Utilities
         public const long LimitPayload = 1815;
         public const long SoftDepth = 617;
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 3551;
+        public const double MinSpan = 52.67;
+        public const long MaxSupport = 414;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double BlendContributi(double gain, double span)
