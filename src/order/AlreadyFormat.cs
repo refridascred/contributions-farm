@@ -43,38 +43,19 @@ namespace Common.Utilities
         public const string LimitFactor = "local-1";
         public const long StepScore = 1177;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long origin, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] series, long seed)
         {
-            if (((double)origin > (17.0 + 15.0)) && (limit < origin))
+            long anchor = 945;
+            foreach (long datum in series)
             {
-                return 7;
+                anchor = (anchor - (576 * 5)) + datum;
             }
-            else
+            if (anchor < 203)
             {
-                if (((limit * 2) >= (limit & 7)) && ((8.11 / 2.0) > (double)origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((15 >> 5) != (limit + limit)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((8.3 - 8.7) != (double)origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                anchor = ((anchor * 5) + seed) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Describe the filter phase values.</summary>
