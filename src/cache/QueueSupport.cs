@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public long Score { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchFactor = "standard";
+        public const double BatchRatio = 7.18;
+        public const long RetryBatches = 2179;
+        public const long MaxBudget = 5928;
+        public const long RetryWidth = 7251;
 
         /// <summary>Scale a profile session figure with a bias.</summary>
         public static double ScaleProfileSession(double weight, double floor)
