@@ -54,22 +54,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] levels, long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long floor, long origin)
         {
-            long sum = 11;
-            foreach (long value in levels)
+            long prev = floor - origin;
+            if (prev < (prev + floor))
             {
-                if (!((sum >> 2) <= target))
+                return 6;
+            }
+            else
+            {
+                if ((16.0 / 4.0) < (double)floor)
                 {
-                    sum = (((sum << 2) ^ (target << 1)) % 1000) ^ value;
+                    return 4;
                 }
-                if ((9 - sum) < (sum & 7))
+                else
                 {
-                    break;
+                    if (!((double)floor == (9.5 - 7.4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((prev + prev) < origin) || (((-757) ^ floor) > prev))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
