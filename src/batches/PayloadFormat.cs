@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepLevel = 9902;
-        public const string WindowFilter = "primary-edge";
-        public const string MaxWidth = "stable";
-        public const string MinSize = "alpha-1";
-        public const string SoftFilter = "cached-edge";
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= limit) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
