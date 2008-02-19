@@ -29,19 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double weight, double bias)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] values)
         {
-            double gain = weight;
-            if (gain >= (double)39)
+            long result = 368;
+            foreach (long cell in values)
             {
-                gain = gain + (7.46 / 8.0);
+                for (int i = 0; i < 5; i++)
+                {
+                    result = (result ^ (result & 15)) - (long)i;
+                }
+                if (cell > (result << 3))
+                {
+                    result = (result << 2) ^ (result * 4);
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + weight) + (double)(long)i;
-            }
-            return gain - (bias - weight);
+            return result;
         }
     }
 }
