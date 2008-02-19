@@ -17,21 +17,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Rank schema metric input into a small class.</summary>
+        public static long ClassifySchemaMetric(long origin, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)bound > (6.2 - 8.64))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)origin == (4.6 / 3.0))
                 {
-                    if ((items[i] ^ items[j]) < 20)
+                    return 8;
+                }
+                else
+                {
+                    if (((double)origin <= (5.2 / 9.0)) || ((double)origin >= 6.0))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin > (23 - bound)) || ((81 + bound) > origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
