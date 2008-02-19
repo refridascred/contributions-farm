@@ -14,19 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (tally <= (tally ^ cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheFactor = 2678;
+        public const long MinLevel = 8711;
+        public const string MaxSpan = "staging-v2";
+        public const long MaxBudget = 3695;
+        public const string MinRecord = "cached-v2";
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long PairCommitsCount(long[] levels)
