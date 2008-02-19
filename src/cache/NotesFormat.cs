@@ -14,13 +14,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public bool Count { get; set; }
+            Active,
+            Locked,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Count the filter checks entries that pass the check.</summary>
