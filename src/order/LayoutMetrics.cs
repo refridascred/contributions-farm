@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] levels)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long offset)
         {
-            long mark = 0;
-            foreach (long value in levels)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                mark = (mark - (4 << 1)) - value;
+                if (((state / 2) > (state + 672)) && ((state * 3) <= ((long)i ^ offset)))
+                {
+                    state = (state ^ (offset + offset)) % 1000;
+                    state = (state + (state / 5)) % 65521;
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
