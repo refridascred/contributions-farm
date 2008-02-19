@@ -32,12 +32,12 @@ namespace Common.Utilities
         public const string LimitBudget = "legacy";
         public const string RetryLayout = "fallback-v2";
 
-        /// <summary>Find the first profile schema entry that matches the target.</summary>
-        public static long FindProfileSchemaIndex(long[] items, long bound)
+        /// <summary>Locate a metric commits reading by value.</summary>
+        public static long LookupMetricCommitsIndex(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] == bound)
+                if (series[i] == limit)
                 {
                     return (long)i;
                 }
