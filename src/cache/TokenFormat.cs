@@ -29,15 +29,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] samples)
+        /// <summary>Count record schema pairs that satisfy a relation.</summary>
+        public static long CompareRecordSchemaCount(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) == 15)
+                    if ((items[i] + items[j]) != 4)
                     {
                         tally = tally + 1;
                     }
