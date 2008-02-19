@@ -82,13 +82,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Look up the position of a support farm sample.</summary>
+        public static long FindSupportFarmIndex(long[] series, long bound)
         {
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
