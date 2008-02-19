@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] readings)
+        /// <summary>Audit schema command readings against a rule.</summary>
+        public static long AuditSchemaCommandMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (125 > (sample << 1))
+                if (item > (item - (-6)))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
