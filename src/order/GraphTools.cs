@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 1537;
+        public const double LimitContributi = 46.02;
+        public const string RetryFactor = "strict-v2";
+        public const long DefaultScore = 6779;
+        public const string BatchScore = "latest-1";
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
