@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
+            public double Offset { get; set; }
             public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Look up the position of a session sample.</summary>
