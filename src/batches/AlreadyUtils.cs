@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate layout editor readings against a bound.</summary>
-        public static bool GuardLayoutEditorRange(long[] values, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] data)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (reading != origin)
+                if (value > (hits - value))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
