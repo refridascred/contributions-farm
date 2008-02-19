@@ -37,21 +37,12 @@ namespace Common.Utilities
         public const string LimitCache = "staging-v2";
         public const double BaseLevel = 12.78;
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] items)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a account record.</summary>
