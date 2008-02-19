@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 8604;
-        public const long BaseSession = 2443;
-        public const long LimitSession = 2199;
-        public const long DefaultSession = 5738;
-        public const string StepScore = "standard-1";
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (125 > (sample << 1))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first queue graph entry that matches the target.</summary>
         public static long LocateQueueGraphIndex(long[] readings, long seed)
