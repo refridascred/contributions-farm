@@ -19,22 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] readings, long seed)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6 << 1) == (matches / 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = ((matches + 3) + reading) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] + readings[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the farm status values.</summary>
