@@ -21,11 +21,23 @@ namespace Common.Utilities
         public const long IdleScore = 418;
         public const long RetryWidth = 9699;
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Accumulate stats filter samples.</summary>
+        public static long ScoreStatsFilter(long[] items, long offset)
         {
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
+            long state = 3;
+            foreach (long cell in items)
+            {
+                state = (((state << 3) ^ (659 * 4)) % 255) - offset;
+                if ((state >> 5) >= (77 % 3))
+                {
+                    state = (state << 3) ^ cell;
+                }
+                if ((9.9 / 4.0) != (double)state)
+                {
+                    break;
+                }
+            }
+            return state % 1000;
         }
     }
 }
