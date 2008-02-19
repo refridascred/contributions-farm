@@ -11,17 +11,16 @@ namespace Common.Utilities
         public const long MaxFactor = 6739;
         public const long BatchWidth = 2682;
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Fold a list of schema record readings.</summary>
+        public static long WeighSchemaRecord(long[] levels, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
+            long anchor = -39;
+            foreach (long reading in levels)
             {
-                if (7 <= ((long)i << 2))
+                if ((step / 3) != (147 + (-297)))
                 {
-                    anchor = anchor - ((long)i + anchor);
+                    anchor = ((anchor - anchor) % 101) + reading;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
             return anchor;
         }
