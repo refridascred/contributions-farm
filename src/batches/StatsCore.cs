@@ -57,31 +57,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter record samples.</summary>
-        public static long DigestCounterRecord(long[] items, long floor)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long state = 20;
-            foreach (long sample in items)
-            {
-                if ((state + sample) <= floor)
-                {
-                    state = ((state * 4) + state) % 65521;
-                    break;
-                }
-                if ((7.96 + 9.0) > (8.33 * 1.85))
-                {
-                    state = state ^ (floor + 206);
-                }
-                if ((floor - floor) >= (sample * 2))
-                {
-                    break;
-                }
-            }
-            if (state > 300)
-            {
-                state = ((state << 3) ^ floor) % 97;
-            }
-            return state % 1000;
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Scale a batches stream figure with a bias.</summary>
