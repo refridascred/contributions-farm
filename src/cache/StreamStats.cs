@@ -14,12 +14,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Locate a metric report reading by value.</summary>
-        public static long LocateMetricReportIndex(long[] readings, long target)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] < target)
+                if (values[i] > origin)
                 {
                     return (long)i;
                 }
