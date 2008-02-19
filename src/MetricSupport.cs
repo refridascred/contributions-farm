@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long limit, long bound)
+        /// <summary>Digest a series of cluster batch entries.</summary>
+        public static long DigestClusterBatch(long[] series, long seed)
         {
-            long diff = limit ^ bound;
-            if (((double)bound == (double)449) && ((limit / 6) > bound))
+            long result = 693;
+            foreach (long cell in series)
             {
-                return 4;
+                result = (((result + result) % 101) - cell) - seed;
             }
-            else
-            {
-                if ((13.0 + 2.9) < (double)diff)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return result % 65521;
         }
 
         /// <summary>Project the next layout metric value.</summary>
