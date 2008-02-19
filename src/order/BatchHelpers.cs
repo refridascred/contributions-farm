@@ -15,11 +15,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "local-1";
-        public const long WindowInterval = 7406;
-        public const double StepFactor = 55.65;
-        public const long MaxDepth = 9651;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((matches % 2) != (reading - (-301))) || !((matches / 4) > ((-662) << 1)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
