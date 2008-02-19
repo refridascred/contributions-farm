@@ -34,15 +34,22 @@ namespace Common.Utilities
         public const long SoftTimeout = 7704;
         public const long MaxReport = 1461;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double rate, double span)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] levels)
         {
-            double drift = rate;
-            if (drift >= (double)810)
+            long result = 99;
+            foreach (long entry in levels)
             {
-                drift = drift - drift;
+                if (((entry / 6) <= (35 + entry)) && ((7.9 * 4.4) != (double)result))
+                {
+                    result = result + result;
+                }
+                else
+                {
+                    result = ((result * 5) + (result + entry)) % 97;
+                }
             }
-            return drift - (rate + span);
+            return result;
         }
     }
 }
