@@ -48,19 +48,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] data, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long state = 15;
+            foreach (long cell in items)
             {
-                if (datum < origin)
+                if ((state * 5) < state)
                 {
-                    stale = false;
-                    break;
+                    state = (state + (9 >> 1)) % 4096;
+                }
+                else
+                {
+                    state = (state - (70 - cell)) % 97;
                 }
             }
-            return stale;
+            if (state > 3)
+            {
+                state = (state + (state >> 4)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Match up metrics payload samples.</summary>
