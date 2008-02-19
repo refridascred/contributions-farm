@@ -29,18 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache token readings against a rule.</summary>
-        public static long AuditCacheTokenMatches(long[] values)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            double weight = (floor / 7.0) / 6.0;
+            if (weight < floor)
             {
-                if (!(((datum >> 2) > seen) || ((datum << 2) != (seen - datum))))
-                {
-                    seen = seen + 1;
-                }
+                weight = weight + (double)662;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - 8.8) + (double)(long)i;
+            }
+            return weight + scale;
         }
     }
 }
