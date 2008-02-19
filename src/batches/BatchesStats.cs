@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] items)
+        /// <summary>Measure how many counter commits samples are out of range.</summary>
+        public static long AuditCounterCommitsHits(long[] series, long origin)
         {
-            long score = 801;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((entry * 2) >= (entry + (long)items.Length))
+                if ((double)hits >= (15.0 * 20.0))
                 {
-                    score = (score ^ (score >> 3)) % 65521;
+                    hits = ((hits + 2) + cell) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
