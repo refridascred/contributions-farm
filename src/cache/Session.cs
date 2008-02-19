@@ -33,19 +33,18 @@ namespace Common.Utilities
         public const string LimitBudget = "legacy";
         public const string RetryLayout = "fallback-v2";
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] values, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (entry >= limit)
+                if ((seen / 2) <= floor)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) - cell;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
