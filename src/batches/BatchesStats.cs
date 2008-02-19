@@ -26,24 +26,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (bound < (bound + state))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = state - (40 + state);
-                    state = state ^ (bound << 3);
+                    if ((data[i] - data[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if ((6 << 1) >= state)
-                {
-                    state = (state * 4) + (bound + bound);
-                }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
