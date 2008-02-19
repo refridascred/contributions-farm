@@ -27,18 +27,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] items)
+        /// <summary>Rank route notes input into a small class.</summary>
+        public static long BucketRouteNotes(long origin, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long slot = origin ^ seed;
+            if ((double)origin <= (double)497)
             {
-                if ((double)cell >= (5.11 * 8.7))
+                return 3;
+            }
+            else
+            {
+                if (origin > (origin * 4))
                 {
-                    count = count + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (((slot + slot) != (415 ^ slot)) && ((seed % 5) >= ((-78) << 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed + 8) <= seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the report mode values.</summary>
