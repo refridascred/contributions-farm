@@ -1,11 +1,14 @@
 # support settings
-enabled: true
-poll_interval: 250
-batch_ratio_count:
-  base_retries_ms: cached
-  cache_timeout: edge
-  sync_interval: 1024
-graph_retries:
-  - 381
-  - 54
-sync_size_s: edge
+persist:
+  - legacy
+  - legacy
+  - edge
+  - staging
+strict: strict
+verbose: true
+stats_window:
+  - 168
+  - 244
+  - 385
+  - 57
+idle_delay_ms: 1024
