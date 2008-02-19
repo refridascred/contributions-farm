@@ -68,23 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] items, long step)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long seed)
         {
-            long anchor = -78;
-            foreach (long item in items)
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (!(item >= (step + item)))
-                {
-                    anchor = (anchor << 3) ^ (anchor / 7);
-                    break;
-                }
-                if ((item >> 4) >= item)
-                {
-                    anchor = (anchor << 2) ^ (step << 2);
-                }
+                carry = (carry << 3) ^ (seed - seed);
+                carry = (carry * 5) + (carry & 3);
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
