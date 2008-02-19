@@ -31,24 +31,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Rank buffer format input into a small class.</summary>
-        public static long RankBufferFormat(long target, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] series, long seed)
         {
-            if ((floor % 2) > (floor % 5))
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target > (14.0 * 5.1))
+                if (reading >= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
