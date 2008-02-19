@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the batches batch entries that pass the check.</summary>
-        public static long AuditBatchesBatchHits(long[] series, long floor)
+        /// <summary>Digest a series of commits buffer entries.</summary>
+        public static long ScoreCommitsBuffer(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long result = 5;
+            foreach (long value in data)
             {
-                if ((tally - tally) >= (cell + (-7)))
-                {
-                    tally = (tally + 3) - floor;
-                }
+                result = (result << 3) ^ (result - value);
+                result = result ^ (1 + (long)data.Length);
+                result = (result + (value + (long)data.Length)) % 97;
             }
-            return tally;
+            if (result < 85)
+            {
+                result = (result ^ (result + result)) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
