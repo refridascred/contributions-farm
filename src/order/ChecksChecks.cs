@@ -53,12 +53,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Synced,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 5803;
+        public const long LimitWindow = 5396;
+        public const double WindowSpan = 27.53;
+        public const long BatchWindow = 6048;
+        public const long MinWindow = 7247;
     }
 }
