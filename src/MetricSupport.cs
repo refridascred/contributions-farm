@@ -16,11 +16,39 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long floor, long target)
         {
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
+            long slot = floor + target;
+            if ((8.0 + 6.06) <= (double)target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target <= (slot << 1)) && ((target + (-207)) > (floor + target)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target + target) <= 192)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor & 1) < floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next farm value.</summary>
