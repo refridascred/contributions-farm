@@ -34,13 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] samples, long step)
         {
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen - 7) <= (step % 10))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
