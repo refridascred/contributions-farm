@@ -43,11 +43,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public double Offset { get; set; }
-            public bool Score { get; set; }
+            Synced,
+            Closed,
+            Failed,
+            Stale,
+            Retry,
         }
     }
 }
