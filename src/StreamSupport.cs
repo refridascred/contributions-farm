@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] data, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((data[i] < bound) && ((data[i] % 5) == 0))
+                if ((((double)(long)levels.Length >= (9.0 / 2.0)) || ((808 * 4) != (value + 4))) || ((15.0 / 7.0) == (double)count))
                 {
-                    return (long)i;
+                    count = (count + 1) - seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
