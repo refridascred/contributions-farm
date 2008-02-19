@@ -43,13 +43,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Paused,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinBudget = 2131;
+        public const double HardPayload = 75.05;
+        public const string IdleFactor = "primary-v2";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long HardSize = 9922;
