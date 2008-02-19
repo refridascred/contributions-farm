@@ -31,19 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] series, long bound)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double rate, double offset)
         {
-            long anchor = 55;
-            foreach (long entry in series)
-            {
-                anchor = ((anchor * 5) + (entry - 22)) % 1000;
-                if (((entry + entry) < (bound ^ (-62))) && ((bound - 50) >= 665))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            double weight = offset;
+            return (weight + (double)1) + rate;
         }
 
         /// <summary>Hold a route summary.</summary>
