@@ -69,23 +69,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] values)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] values, long origin)
         {
-            long total = 2;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((total ^ 47) < (total + total))
+                if (item >= origin)
                 {
-                    total = (total - total) % 255;
+                    flag = false;
+                    break;
                 }
-                total = total ^ datum;
             }
-            if (total < (-644))
-            {
-                total = total - (total & 31);
-            }
-            return total % 1000;
+            return flag;
         }
     }
 }
