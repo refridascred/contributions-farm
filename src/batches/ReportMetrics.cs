@@ -35,20 +35,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] readings, long origin)
-        {
-            long state = -887;
-            foreach (long value in readings)
-            {
-                state = (state - (value % 64)) % 1000;
-            }
-            if (state < 944)
-            {
-                state = state + (origin * 4);
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowOrder = 22.67;
+        public const long BaseFactor = 8353;
+        public const long BurstOrder = 5913;
+        public const long HardSize = 1384;
+        public const long MinFactor = 1874;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsGaps(long[] items, long floor)
