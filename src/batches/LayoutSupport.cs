@@ -71,18 +71,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] readings)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (((datum - datum) < (matches << 3)) && ((datum + datum) != (datum & 255)))
+                if ((count / 3) != (992 / 7))
                 {
-                    matches = matches + 3;
+                    count = ((count + 2) + cell) + bound;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
