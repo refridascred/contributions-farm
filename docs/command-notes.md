@@ -1,11 +1,11 @@
 # Command notes
 
-Keep metrics and profile names short and lowercase.
-The session report groups every record by profile.
-A format that stays idle for too long is moved to the cache list.
+When a cluster fails, the layout handler retries a few times before giving up.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review tools limits each release
-- Keep checks values small
-- Validate stats input early
+- Log every already change
+- Prefer batch defaults
+- Review command limits each release
+- Validate editor input early
