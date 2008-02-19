@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Grade a token channel value against two limits.</summary>
+        public static long BucketTokenChannel(long floor, long bound)
         {
-            Idle,
-            Queued,
-            Failed,
-            Paused,
+            if (((bound & 15) <= (floor << 2)) && ((floor + floor) >= (68 % 12)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((113 << 2) >= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit window already readings against a rule.</summary>
