@@ -26,19 +26,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate window editor readings against a bound.</summary>
-        public static bool CheckWindowEditorBounds(long[] series, long limit)
-        {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 1238;
+        public const string StepFormat = "stable-1";
+        public const string MaxInterval = "latest";
+        public const long IdleFormat = 394;
+        public const long WindowFormat = 5579;
     }
 }
