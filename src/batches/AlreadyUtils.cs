@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long target)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
-            {
-                result = (result + (517 << 2)) % 255;
-                if (((result - result) <= result) && ((double)target <= 2.91))
-                {
-                    break;
-                }
-                result = (result + target) % 97;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public long Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
