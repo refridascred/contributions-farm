@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftCount = "local-edge";
-        public const string IdleTimeout = "primary";
-        public const long CacheBatches = 233;
-        public const double IdleLevel = 65.61;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double ScaleCluster(double gain, double offset)
