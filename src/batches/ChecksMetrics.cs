@@ -20,15 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double ratio, double floor)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double mean = (double)(276 >> 3);
-            if (mean < 7.9)
-            {
-                mean = (mean + floor) + ratio;
-            }
-            return mean - floor;
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit session batches readings against a rule.</summary>
