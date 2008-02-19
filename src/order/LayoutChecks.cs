@@ -16,12 +16,12 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Adjust a entry batches reading.</summary>
-        public static double AdjustEntryBatches(double ratio, double floor)
-        {
-            double scale = (double)(927 + 24);
-            return ((scale - (scale / 2.0)) + ratio) + floor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepRatio = "cached-edge";
+        public const string CacheToken = "legacy-1";
+        public const long MinBudget = 6157;
+        public const string IdleToken = "open-1";
+        public const double MaxToken = 26.66;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long PairReportCount(long[] levels)
