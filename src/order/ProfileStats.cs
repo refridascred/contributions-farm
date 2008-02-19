@@ -17,38 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank schema metric input into a small class.</summary>
-        public static long ClassifySchemaMetric(long origin, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] samples)
         {
-            if ((double)bound > (6.2 - 8.64))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin == (4.6 / 3.0))
+                if ((sample << 2) == (6 * 4))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)origin <= (5.2 / 9.0)) || ((double)origin >= 6.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin > (23 - bound)) || ((81 + bound) > origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
