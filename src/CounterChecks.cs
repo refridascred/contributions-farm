@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] data, long bound)
         {
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count * 4) < ((long)data.Length % 100))
+                {
+                    count = ((count + 1) + item) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
