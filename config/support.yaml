@@ -1,4 +1,10 @@
 # support settings
-dry_run: 500
-batch_window: blue
-hard_threshold_pct: true
+cache_capacity_s: 4683
+max_size: 92
+enabled: 23
+sync_size_ms: eu-west
+base_window_s:
+  - 381
+  - 72
+  - 435
+  - 425
