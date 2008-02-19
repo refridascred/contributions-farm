@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const string HardFactor = "local-edge";
         public const long CacheBudget = 3550;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] data, long bound)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches < (4.86 + 6.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = ((matches + 2) + datum) - bound;
+                    if ((series[i] - series[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Match up record samples.</summary>
