@@ -1,19 +1,5 @@
 {
-  "sync_retries": {
-    "batch_limit_pct": {
-      "cache_threshold_s": true,
-      "audit": "cached",
-      "soft_limit": 96.75,
-      "min_limit": 100,
-      "buffer_size": 0.89,
-      "batch_threshold_count": 38
-    },
-    "soft_ratio": 2654,
-    "max_ratio_s": "eu-west",
-    "cache_interval": true,
-    "report_capacity": "strict",
-    "burst_ttl_ms": true
-  },
-  "cache_size_pct": 3311,
-  "stats_threshold": ["fallback", "open", "open"]
+  "command_depth": 42.14,
+  "strict": "local",
+  "min_window": [365, 358, 307, 216]
 }
