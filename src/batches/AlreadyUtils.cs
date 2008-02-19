@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] data, long seed)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((matches + matches) > (matches % 100))
-                {
-                    matches = ((matches + 3) + reading) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinWidth = 440;
+        public const string CacheInterval = "open-edge";
+        public const double StepRatio = 5.64;
+        public const long MaxChecks = 9472;
+        public const long BatchLevel = 9616;
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
