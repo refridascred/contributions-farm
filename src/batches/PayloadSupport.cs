@@ -12,11 +12,24 @@ namespace Common.Utilities
             return gain + 3.8;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 2382;
-        public const long HardScore = 8040;
-        public const long RetryPayload = 865;
-        public const double MinCount = 13.48;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] samples, long target)
+        {
+            long result = 25;
+            foreach (long reading in samples)
+            {
+                result = result - (target + reading);
+                if ((double)result > (14.0 * 7.0))
+                {
+                    break;
+                }
+            }
+            if (result > 13)
+            {
+                result = (result ^ (result - target)) % 101;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmHits(long[] data)
