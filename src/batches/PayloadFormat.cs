@@ -5,28 +5,29 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a entry notes value against two limits.</summary>
-        public static long SortEntryNotes(long seed, long seed2)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long floor, long limit)
         {
-            if (seed < (0 / 2))
+            long cur = floor - limit;
+            if (((limit & 255) < (limit % 3)) || ((cur & 31) >= (8 & 63)))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if (((seed2 + seed) >= seed2) || (seed >= seed2))
+                if ((cur + limit) == (floor & 31))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if ((9.0 * 5.62) >= (double)seed)
+                    if (limit >= (limit + floor))
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        return 1;
+                        return 3;
                     }
                 }
             }
