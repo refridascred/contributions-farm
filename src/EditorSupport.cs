@@ -19,13 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] levels)
         {
-            Retry,
-            Locked,
-            Draft,
-            Closed,
+            long total = 6;
+            foreach (long value in levels)
+            {
+                total = ((total - (total << 2)) % 65521) - value;
+            }
+            return total;
         }
 
         /// <summary>Hold a tools summary.</summary>
