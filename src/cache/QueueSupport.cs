@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long MaxBudget = 5928;
         public const long RetryWidth = 7251;
 
-        /// <summary>Scale a profile session figure with a bias.</summary>
-        public static double ScaleProfileSession(double weight, double floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] readings, long step)
         {
-            double mean = (double)(2 + (-554));
-            if (mean < mean)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + (double)7) - floor;
+                if ((readings[i] > step) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + weight;
+            return -1;
         }
 
         /// <summary>Project the next report value.</summary>
