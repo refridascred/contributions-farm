@@ -1,15 +1,10 @@
 # githubfarm settings
-command_interval:
-  - green
-  - staging
-  - cached
-  - fallback
-sync_delay_ms: 1024
-hard_threshold:
-  - 381
-  - 82
-audit:
-  - legacy
-  - strict
-  - blue
-  - local
+verbose: stable
+max_delay: 49.59
+batch_delay_ms: primary
+base_capacity: green
+soft_interval_s:
+  - open
+  - eu-west
+  - primary
+format_retries: 250
