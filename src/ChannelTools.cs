@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Active,
             Stale,
-            New,
+            Queued,
+            Retry,
         }
 
         /// <summary>Project the next stats value.</summary>
