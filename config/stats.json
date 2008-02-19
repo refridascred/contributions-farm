@@ -1,12 +1,8 @@
 {
-  "idle_ttl_ms": 37.12,
-  "soft_interval_count": 76.28,
-  "commits_ratio": 1024,
-  "default_threshold": {
-    "cache_ratio_ms": 9076,
-    "default_retries_ms": 7517,
-    "already_threshold": 6199
-  },
-  "checks_limit": 79.25,
-  "schema_limit": "standard"
+  "poll_size_ms": 3073,
+  "retry_depth_ms": 1024,
+  "hard_interval": 5363,
+  "batch_threshold": 20.15,
+  "dry_run": 1304,
+  "verbose": false
 }
