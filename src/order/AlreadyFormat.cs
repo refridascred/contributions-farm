@@ -16,15 +16,15 @@ namespace Common.Utilities
             return ratio - (offset * 9.65);
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] readings, long seed)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long seed)
         {
-            long carry = 124;
-            foreach (long sample in readings)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                carry = (((carry * 5) + (sample % 64)) % 101) - seed;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Hold a profile summary.</summary>
