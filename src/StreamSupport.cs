@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public long Region { get; set; }
+            public string Total { get; set; } = "";
             public long Flag { get; set; }
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
         }
 
         /// <summary>Match up metrics samples.</summary>
