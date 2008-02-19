@@ -83,31 +83,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long target, long bound)
+        /// <summary>Validate graph context readings against a bound.</summary>
+        public static bool GuardGraphContextBounds(long[] data, long bound)
         {
-            if ((double)bound >= (1.88 / 2.0))
+            bool flag = true;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((46 >> 2) > (target & 255))
+                if (entry > bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((bound + 22) >= (bound - 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
