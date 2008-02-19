@@ -39,23 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] levels)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] levels, long step)
         {
-            long carry = 0;
-            foreach (long item in levels)
+            long carry = 369;
+            foreach (long entry in levels)
             {
-                carry = (carry ^ (carry - carry)) % 4096;
-                if (!((669 / 7) == (88 ^ item)))
+                if ((carry ^ carry) <= (entry % 64))
                 {
-                    carry = (carry << 3) ^ (carry * 4);
+                    carry = ((carry + (entry % 12)) % 1000) + step;
                 }
-                else
-                {
-                    carry = ((carry << 3) ^ (item / 6)) % 1000;
-                }
+                carry = (carry ^ (entry * 5)) % 101;
             }
-            return carry % 1000;
+            return carry;
         }
 
         /// <summary>Audit buffer editor readings against a rule.</summary>
