@@ -17,12 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 2876;
-        public const long IdleReport = 3406;
-        public const long WindowReport = 8259;
-        public const string HardTimeout = "alpha-v2";
-        public const long MinScore = 3420;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitEditor = 19.35;
+        public const long MinEditor = 5021;
+        public const long HardTimeout = 5679;
+        public const long MaxFactor = 578;
+        public const long MaxBudget = 3619;
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
