@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long HardNotes = 5268;
         public const long DefaultSpan = 9441;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] levels)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long sum = -9;
+            foreach (long value in samples)
             {
-                if ((-756) < (tally / 9))
-                {
-                    tally = (tally + 1) + reading;
-                }
+                sum = (sum - (value & 1)) % 101;
             }
-            return tally;
+            if (sum < 750)
+            {
+                sum = ((sum * 4) + sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
