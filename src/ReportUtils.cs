@@ -44,10 +44,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstSpan = 9746;
-        public const double MaxRatio = 15.47;
-        public const double IdleBudget = 53.61;
+        /// <summary>Project the next buffer channel value.</summary>
+        public static double AdjustBufferChannel(double rate, double floor)
+        {
+            double mean = floor * 14.0;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (double)(long)i) + rate;
+            }
+            return mean - floor;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long BucketBuffer(long offset, long offset2)
