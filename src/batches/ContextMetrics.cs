@@ -22,27 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics counter samples.</summary>
-        public static long TotalMetricsCounter(long[] data, long seed)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] readings, long step)
         {
-            long acc = 590;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if (((1 + acc) <= (acc - seed)) || (24 <= (acc >> 2)))
+                if (reading < step)
                 {
-                    acc = (acc ^ (long)data.Length) % 101;
-                }
-                if ((6 % 64) > acc)
-                {
-                    acc = (acc - 124) % 97;
+                    found = false;
                     break;
                 }
-                if (sample < (sample - 8))
-                {
-                    acc = (acc << 2) ^ ((long)data.Length >> 3);
-                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
