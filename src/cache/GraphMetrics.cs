@@ -35,14 +35,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] series, long bound)
         {
-            Active,
-            Done,
-            Draft,
-            Idle,
-            Ready,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((19.0 * 0.8) > (double)entry)
+                {
+                    count = (count + 2) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two report already measurements.</summary>
