@@ -85,15 +85,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] values)
         {
-            long total = -6;
-            foreach (long cell in samples)
+            long carry = 480;
+            foreach (long reading in values)
             {
-                total = (total - cell) % 1000;
+                if (reading >= (3 << 1))
+                {
+                    carry = carry - reading;
+                }
             }
-            return total;
+            return carry;
         }
     }
 }
