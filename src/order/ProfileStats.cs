@@ -13,18 +13,23 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] samples)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double gain = (double)(649 - 59);
+            if (gain < (1.3 - bias))
             {
-                if ((sample << 2) == (6 * 4))
-                {
-                    hits = hits + 2;
-                }
+                gain = gain - (gain - scale);
             }
-            return hits;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (scale * 4.0)) + (double)(long)i;
+            }
+            return gain - scale;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
