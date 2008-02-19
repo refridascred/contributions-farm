@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit editor farm readings against a rule.</summary>
-        public static long CountEditorFarmGaps(long[] items, long seed)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value + hits) < (value / 8))
-                {
-                    hits = (hits + 1) - seed;
-                }
-            }
-            return hits;
+            Queued,
+            Done,
+            Retry,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
