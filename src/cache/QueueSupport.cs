@@ -27,18 +27,24 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] samples)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long offset, long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if ((seed * 2) != (seed - offset))
             {
-                if (!((item & 255) == (item - item)) || ((870 % 16) <= (count - item)))
+                return 7;
+            }
+            else
+            {
+                if (((offset + seed) >= seed) || (offset > seed))
                 {
-                    count = count + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
