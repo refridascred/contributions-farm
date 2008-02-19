@@ -39,19 +39,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] samples)
-        {
-            long anchor = 50;
-            foreach (long item in samples)
-            {
-                if (((long)samples.Length + anchor) > item)
-                {
-                    anchor = (anchor - (anchor + 45)) % 65521;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 9397;
+        public const long BurstScore = 3946;
+        public const string BurstCount = "strict-1";
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
