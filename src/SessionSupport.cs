@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const string HardFactor = "local-edge";
         public const long CacheBudget = 3550;
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (items[i] >= step)
                 {
-                    if ((series[i] - series[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Match up record samples.</summary>
