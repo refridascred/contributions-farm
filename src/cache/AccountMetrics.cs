@@ -65,10 +65,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinFactor = 40.87;
-        public const long IdleEditor = 4807;
-        public const double MinBudget = 16.27;
-        public const long StepEditor = 6567;
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
