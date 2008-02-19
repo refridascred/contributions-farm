@@ -38,22 +38,17 @@ namespace Common.Utilities
         public const long SoftMetric = 958;
         public const long BaseMetric = 1808;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] series)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] readings, long bound)
         {
-            long mix = 1;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((datum ^ datum) == (mix - 1)) && ((-55) > (mix - mix)))
+                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
                 {
-                    mix = ((mix * 2) + (29 - datum)) % 4096;
+                    return (long)i;
                 }
             }
-            if (mix > 406)
-            {
-                mix = mix + (mix * 4);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
