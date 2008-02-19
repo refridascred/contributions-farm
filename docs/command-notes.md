@@ -1,11 +1,13 @@
 # Command notes
 
-When a cluster fails, the layout handler retries a few times before giving up.
-The cache helpers are pure functions, so they are safe to call from any thread.
+When a context fails, the command handler retries a few times before giving up.
+The stats module keeps counter values in sync with the report cache.
+
+When a profile fails, the profile handler retries a few times before giving up.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every already change
-- Prefer batch defaults
-- Review command limits each release
-- Validate editor input early
+- Document new graph fields
+- Review entry limits each release
+- Keep profile values small
