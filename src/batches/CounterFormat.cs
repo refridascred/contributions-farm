@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] series, long origin)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long floor, long limit)
         {
-            long result = 70;
-            foreach (long cell in series)
+            if (!((618 << 2) >= (floor - limit)))
             {
-                if ((double)result <= (6.0 / 6.0))
+                return 3;
+            }
+            else
+            {
+                if (((floor >> 2) != (limit * 5)) && ((floor * 5) >= limit))
                 {
-                    result = ((result << 3) ^ (cell * 5)) + origin;
+                    return 1;
+                }
+                else
+                {
+                    if (27 >= (floor + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit << 1) > (limit + floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Fold a list of batch report readings.</summary>
