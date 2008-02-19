@@ -37,19 +37,11 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Accumulate filter buffer samples.</summary>
-        public static long WeighFilterBuffer(long[] samples, long step)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long result = 8;
-            foreach (long item in samples)
-            {
-                result = result ^ (step + item);
-            }
-            if (result > (-28))
-            {
-                result = result + ((long)samples.Length & 255);
-            }
-            return result;
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Iterate the queue context series from a seed.</summary>
