@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a commits stats sample.</summary>
-        public static long LookupCommitsStatsIndex(long[] items, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 801;
+            foreach (long entry in items)
             {
-                if (items[i] > seed)
+                if ((entry * 2) >= (entry + (long)items.Length))
                 {
-                    return (long)i;
+                    score = (score ^ (score >> 3)) % 65521;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
