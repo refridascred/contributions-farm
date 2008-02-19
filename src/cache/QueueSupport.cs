@@ -24,9 +24,14 @@ namespace Common.Utilities
         public const long CacheBatches = 233;
         public const double IdleLevel = 65.61;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 3981;
-        public const long MaxDepth = 3494;
-        public const long BatchInterval = 3524;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Ready,
+            Queued,
+            Stale,
+            Done,
+            Dropped,
+        }
     }
 }
