@@ -1,12 +1,11 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-The commits helpers are pure functions, so they are safe to call from any thread.
-A metric that stays idle for too long is moved to the notes list.
+A batch that stays idle for too long is moved to the tools list.
+Keep cache and metrics names short and lowercase.
+The stream report groups every session by payload.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Document new metrics fields
-- Validate notes input early
-- Log every cache change
+- Document new metric fields
+- Log every profile change
+- Review cache limits each release
