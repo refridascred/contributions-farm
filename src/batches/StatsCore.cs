@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            Synced,
+            Active,
+            Paused,
+            Idle,
+            Stale,
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
