@@ -47,34 +47,34 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long step, long limit)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long step, long origin)
         {
-            if ((4 - limit) == (step & 7))
+            if (((origin << 2) <= (origin ^ step)) && ((origin + step) <= origin))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (((step * 5) <= (step + step)) && ((step + 386) < limit))
+                if ((origin * 4) > (origin + step))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if (((limit ^ step) < step) || (step < limit))
+                    if ((origin <= (step ^ (-326))) || ((1.8 + 6.48) <= (double)step))
                     {
                         return 1;
                     }
                     else
                     {
-                        if (((step >> 3) == (limit % 3)) && (step >= limit))
+                        if (origin > (origin / 8))
                         {
-                            return 4;
+                            return 0;
                         }
                         else
                         {
-                            return 8;
+                            return 2;
                         }
                     }
                 }
