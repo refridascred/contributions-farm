@@ -52,23 +52,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] levels, long offset)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long state = -1;
-            foreach (long sample in levels)
-            {
-                state = ((state << 2) ^ (sample + offset)) % 255;
-                if ((offset + sample) != (offset % 3))
-                {
-                    state = (state + sample) % 1000;
-                }
-            }
-            if (state < 27)
-            {
-                state = (state + (long)levels.Length) % 97;
-            }
-            return state;
+            Dropped,
+            Active,
+            Idle,
         }
 
         /// <summary>Validate counter filter readings against a bound.</summary>
