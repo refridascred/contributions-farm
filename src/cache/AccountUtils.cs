@@ -23,17 +23,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] series, long step)
+        /// <summary>Accumulate metrics session samples.</summary>
+        public static long ScoreMetricsSession(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 9;
+            foreach (long reading in levels)
             {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
+                state = (state + reading) + offset;
+                state = state ^ state;
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Count the cluster payload entries that pass the check.</summary>
