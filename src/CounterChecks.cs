@@ -37,13 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public long Score { get; set; }
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
