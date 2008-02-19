@@ -1,26 +1,4 @@
 # githubfarm settings
-default_depth_ms: latest
-cache_retries_count: 500
-enabled: 94
-route_interval: 500
-verbose:
-  max_ttl: 3557
-  sync_capacity_pct:
-    min_size: strict
-    metrics_limit: 2620
-    retry_limit: green
-    base_retries: 98
-    idle_interval_s: 1360
-    idle_interval: local
-  commits_retries:
-    stats_capacity: legacy
-    support_retries:
-      - 365
-      - 458
-    session_limit: 48
-    default_ttl: 1024
-    hard_interval: latest
-    cache_size: 60
-  soft_timeout_s: blue
-  dry_run: 30
-  audit: open
+enabled: staging
+warm_ratio_count: true
+cache_window_ms: 47.32
