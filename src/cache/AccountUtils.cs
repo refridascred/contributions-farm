@@ -19,17 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stats schema sample.</summary>
-        public static long LocateStatsSchemaIndex(long[] values, long origin)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long offset, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long next = offset - target;
+            if (((target + offset) == (target ^ next)) && (offset > (target + next)))
             {
-                if ((values[i] > origin) && ((values[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if (offset <= (target + 11))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
