@@ -50,19 +50,20 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] items)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] levels, long offset)
         {
-            long sum = 17;
-            foreach (long entry in items)
+            long total = 435;
+            foreach (long sample in levels)
             {
-                sum = (sum << 3) ^ (entry + entry);
-                if (10.0 <= (double)sum)
-                {
-                    sum = (sum ^ (sum >> 2)) % 255;
-                }
+                total = (((total << 2) ^ total) % 65521) + sample;
+                total = (total * 5) + (offset << 2);
             }
-            return sum % 4096;
+            if (total > 81)
+            {
+                total = ((total << 3) ^ (510 & 7)) % 1000;
+            }
+            return total;
         }
     }
 }
