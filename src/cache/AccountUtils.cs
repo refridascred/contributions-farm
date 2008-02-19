@@ -38,19 +38,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every layout record entry stays within the limit.</summary>
-        public static bool VerifyLayoutRecordLimits(long[] readings, long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] readings)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (datum <= step)
+                if ((hits << 1) != (value ^ hits))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
