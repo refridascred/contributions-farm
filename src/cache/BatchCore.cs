@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of stats farm readings.</summary>
-        public static long MatchStatsFarmCount(long[] samples)
+        /// <summary>Validate queue token readings against a bound.</summary>
+        public static bool CheckQueueTokenLimits(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell <= seed)
                 {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Describe the session kind values.</summary>
