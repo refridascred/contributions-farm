@@ -30,11 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] levels, long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
+            long anchor = 684;
+            foreach (long sample in levels)
+            {
+                anchor = ((anchor + (sample + 343)) % 4096) - step;
+            }
+            if (anchor < 1)
+            {
+                anchor = (anchor * 5) + (anchor ^ 65);
+            }
+            return anchor;
         }
     }
 }
