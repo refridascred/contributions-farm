@@ -53,21 +53,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context window values into a single score.</summary>
-        public static long TallyContextWindow(long[] levels, long limit)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long offset, long offset2)
         {
-            long mix = 100;
-            foreach (long entry in levels)
+            long diff = offset ^ offset2;
+            if (12.0 <= (double)diff)
             {
-                mix = mix - entry;
-                mix = (mix + ((-882) >> 5)) % 255;
-                mix = (mix - (limit << 3)) % 4096;
+                return 1;
             }
-            if (mix < 32)
+            else
             {
-                mix = mix + mix;
+                if (offset2 <= (216 / 6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset >= (1 / 6))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return mix % 97;
         }
 
         /// <summary>Digest a series of format entries.</summary>
