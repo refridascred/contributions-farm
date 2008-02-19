@@ -52,11 +52,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double gain, double bias)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] readings, long floor)
         {
-            double rate = (bias * 4.43) * 12.0;
-            return (rate + bias) + gain;
+            long anchor = 6;
+            foreach (long item in readings)
+            {
+                anchor = ((anchor ^ (floor % 3)) % 255) + item;
+            }
+            return anchor % 4096;
         }
     }
 }
