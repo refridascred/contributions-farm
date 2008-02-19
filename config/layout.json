@@ -1,7 +1,7 @@
 {
-  "notes_threshold": true,
-  "context_limit": 2998,
-  "max_delay_s": ["staging", "cached", "edge", "staging"],
-  "hard_retries_count": 52.97,
-  "hard_delay_ms": 1024
+  "strict": 30.45,
+  "retry_retries": 51.97,
+  "warm_delay_ms": "blue",
+  "sync_interval_ms": 54.17,
+  "batches_timeout": [407, 495]
 }
