@@ -43,14 +43,12 @@ namespace Common.Utilities
         public const long DefaultFactor = 1912;
         public const string MaxRatio = "primary-v2";
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Failed,
-            New,
-            Locked,
-            Closed,
-            Active,
+            Stale,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
