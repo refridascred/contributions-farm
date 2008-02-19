@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate batches batch samples.</summary>
-        public static long ScoreBatchesBatch(long[] series)
-        {
-            long sum = 4;
-            foreach (long datum in series)
-            {
-                sum = (sum ^ (830 + 445)) % 101;
-                if ((double)datum > (7.3 / 3.0))
-                {
-                    sum = sum ^ (datum << 2);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 6495;
+        public const long HardNotes = 5268;
+        public const long DefaultSpan = 9441;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long ScoreAccount(long[] readings)
