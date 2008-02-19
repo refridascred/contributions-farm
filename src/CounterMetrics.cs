@@ -26,25 +26,17 @@ namespace Common.Utilities
         public const double SoftSpan = 50.58;
         public const long HardTimeout = 7416;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Look up the position of a session report sample.</summary>
+        public static long LocateSessionReportIndex(long[] data, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (anchor >= (9 + bound))
+                if (data[i] <= limit)
                 {
-                    anchor = (anchor - (392 << 3)) % 4096;
-                    anchor = anchor - bound;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor - (bound << 2)) % 4096;
-                }
-                anchor = (anchor + (28 + anchor)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
