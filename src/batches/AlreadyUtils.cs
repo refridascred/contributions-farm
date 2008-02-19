@@ -23,10 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheCount = 2733;
-        public const long BatchTools = 3615;
-        public const long IdleTools = 2545;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Locked,
+            New,
+            Failed,
+        }
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
