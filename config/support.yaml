@@ -1,10 +1,9 @@
 # support settings
-cache_capacity_s: 4683
-max_size: 92
-enabled: 23
-sync_size_ms: eu-west
-base_window_s:
-  - 381
-  - 72
-  - 435
-  - 425
+record_size: 500
+batch_ratio: true
+retry_depth_pct:
+  - 295
+  - 30
+min_retries: local
+tools_ttl: false
+idle_interval_ms: false
