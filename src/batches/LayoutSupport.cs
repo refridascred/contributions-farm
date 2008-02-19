@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] values, long step)
         {
-            public long Level { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((-43) + hits) <= (step * 4))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
