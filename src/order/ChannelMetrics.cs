@@ -17,17 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first stream cache entry that matches the target.</summary>
-        public static long FindStreamCacheIndex(long[] values, long step)
+        /// <summary>Scale a account layout figure with a bias.</summary>
+        public static double SmoothAccountLayout(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = 7.0;
+            if (mean >= floor)
             {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
+                mean = mean - weight;
             }
-            return -1;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + weight;
         }
 
         /// <summary>Define report limits and defaults.</summary>
