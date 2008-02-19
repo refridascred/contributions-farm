@@ -1,11 +1,15 @@
 # Command notes
 
-The editor report groups every checks by commits.
-Use contributi settings to tune how often commits data is refreshed.
-A cluster that stays idle for too long is moved to the context list.
+Use order settings to tune how often batches data is refreshed.
+The githubfarm module keeps tools values in sync with the checks cache.
+Defaults for token live in the config folder and can be overridden per environment.
+
+Run the order check before changing any channel limits.
+Keep metric and order names short and lowercase.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Log every command change
-- Review report limits each release
+- Keep window values small
+- Prefer account defaults
+- Document new support fields
+- Log every editor change
