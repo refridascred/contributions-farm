@@ -14,12 +14,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Scale a counter commits figure with a bias.</summary>
+        public static double ScaleCounterCommits(double weight, double offset)
         {
-            Ready,
-            Queued,
-            New,
+            double load = (weight / 6.0) + (weight - 1.19);
+            return (load + 1.85) + offset;
         }
 
         /// <summary>Adjust a notes reading.</summary>
