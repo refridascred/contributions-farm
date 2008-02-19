@@ -1,7 +1,6 @@
 # support settings
-hard_interval: 3584
-route_limit: stable
-window_depth: primary
-soft_delay: 250
-default_timeout_ms: primary
-base_retries: standard
+warm_delay:
+  - 259
+  - 105
+compress: 2034
+default_timeout_s: 17
