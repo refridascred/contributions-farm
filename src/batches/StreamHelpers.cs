@@ -39,19 +39,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every graph profile entry stays within the limit.</summary>
-        public static bool ValidateGraphProfileBounds(long[] items, long origin)
+        /// <summary>Iterate the window entry series from a seed.</summary>
+        public static long SeriesWindowEntry(long target)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor << 3) ^ (anchor % 12)) % 101;
+                anchor = anchor + (anchor << 1);
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
