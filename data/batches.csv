@@ -1,9 +1,8 @@
-id,ratio,score,active
-1,latest,863,11.66
-2,24.7,48.55,edge
-3,89.9,92.72,667
-4,green,20.22,22.58
-5,477,95.06,84.96
-6,7.88,10,23.29
-7,strict,344,28.72
-8,legacy,legacy,open
+id,active,ratio,label
+1,edge,89.76,4.87
+2,strict,24.28,86.14
+3,68.97,8.99,214
+4,3.13,84.2,444
+5,473,746,latest
+6,71.04,778,staging
+7,261,700,local
