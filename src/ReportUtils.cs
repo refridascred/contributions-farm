@@ -45,12 +45,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepLevel = "staging-1";
-        public const long IdleSize = 6591;
-        public const long SoftSize = 9645;
-        public const long LimitBudget = 6663;
-        public const string BaseFactor = "stable";
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
+        {
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Project the next counter value.</summary>
         public static double BlendCounter(double ratio, double span)
