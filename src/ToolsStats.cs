@@ -52,20 +52,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next commits tools value from a seed.</summary>
-        public static long DeriveCommitsTools(long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] samples, long target)
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (value < target)
                 {
-                    mix = (((mix * 5) + step) % 65521) + (long)i2;
+                    ok = false;
+                    break;
                 }
-                mix = (mix + (long)i) % 1000;
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Validate counter filter readings against a bound.</summary>
