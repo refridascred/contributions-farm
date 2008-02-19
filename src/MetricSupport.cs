@@ -24,23 +24,21 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] values, long floor)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            long mark = 0;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark + 8) % 97) + item;
-                if (!(((long)values.Length % 64) <= floor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = mark ^ (floor / 9);
-                }
-                else
-                {
-                    mark = (mark * 4) + floor;
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return tally;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
