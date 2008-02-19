@@ -10,38 +10,15 @@ namespace Common.Utilities
         public const long DefaultBudget = 874;
         public const string WindowFilter = "open";
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long limit, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] readings, long seed)
         {
-            if (((floor - 37) < floor) && ((floor >> 4) < (limit + 611)))
+            long carry = 124;
+            foreach (long sample in readings)
             {
-                return 1;
+                carry = (((carry * 5) + (sample % 64)) % 101) - seed;
             }
-            else
-            {
-                if ((limit - floor) >= (floor - floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.2 + 0.18) >= (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((limit * 4) < limit) && (limit > ((-557) & 31)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a profile summary.</summary>
