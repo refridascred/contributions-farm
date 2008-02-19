@@ -1,5 +1,9 @@
 {
-  "warm_ttl_ms": ["standard", "open", "green"],
-  "schema_ratio": "stable",
-  "default_window": "cached"
+  "max_threshold": {
+    "max_delay": 69.83,
+    "verbose": 64,
+    "compress": 206
+  },
+  "verbose": true,
+  "max_ratio_pct": true
 }
