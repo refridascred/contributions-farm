@@ -39,18 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the window entry series from a seed.</summary>
-        public static long SeriesWindowEntry(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor << 3) ^ (anchor % 12)) % 101;
-                anchor = anchor + (anchor << 1);
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstSize = 1611;
+        public const long SoftRatio = 1818;
+        public const long LimitSpan = 5330;
+        public const long IdleScore = 9866;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long bound, long seed)
