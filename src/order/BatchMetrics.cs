@@ -55,25 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] items)
-        {
-            long sum = 431;
-            foreach (long reading in items)
-            {
-                sum = ((sum * 4) + (reading >> 4)) % 4096;
-                sum = (sum + 960) % 4096;
-                if ((5.6 / 4.0) > (double)reading)
-                {
-                    sum = ((sum << 3) ^ (12 + sum)) % 255;
-                }
-                else
-                {
-                    sum = sum + reading;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "fallback-1";
+        public const string BatchBudget = "open-1";
+        public const long StepRatio = 8196;
+        public const double MinCount = 81.91;
+        public const long CacheStream = 6149;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long RankQueue(long target, long seed)
