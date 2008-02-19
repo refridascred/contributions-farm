@@ -36,21 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state << 3) ^ (origin % 12)) % 101;
-                if (!((double)state > (double)73))
-                {
-                    state = (state ^ (state * 3)) % 97;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleCount = 3895;
+        public const double LimitBuffer = 68.36;
+        public const long HardScore = 7158;
+        public const long DefaultFactor = 1912;
+        public const string MaxRatio = "primary-v2";
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
