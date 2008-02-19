@@ -56,23 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((87 & 1) < (seen ^ seen))
-                {
-                    seen = ((seen + 1) + datum) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 5060;
+        public const string DefaultTools = "alpha-edge";
+        public const long DefaultTimeout = 5548;
+        public const long HardTools = 4743;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
