@@ -49,38 +49,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long origin, long limit)
-        {
-            if ((origin * 3) == (limit % 100))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((9 + limit) >= (limit ^ limit)) || ((2.27 - 5.6) > (double)origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin & 127) <= limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin >= (limit & 31))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinSize = 8660;
+        public const long StepBuffer = 4478;
+        public const double DefaultBuffer = 74.02;
+        public const long CacheBuffer = 9418;
     }
 }
