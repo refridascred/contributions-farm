@@ -37,12 +37,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] levels, long target)
         {
-            New,
-            Failed,
-            Stale,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((target + entry) <= 74) && ((matches + 65) <= matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
