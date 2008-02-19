@@ -14,19 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] series, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long state = 457;
+            foreach (long reading in values)
             {
-                if (cell >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (((state + ((long)values.Length / 6)) % 97) + reading) + seed;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
