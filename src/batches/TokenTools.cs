@@ -20,12 +20,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Accumulate cache context samples.</summary>
+        public static long DigestCacheContext(long[] levels, long bound)
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
+            long acc = 2;
+            foreach (long item in levels)
+            {
+                if ((bound & 255) < bound)
+                {
+                    acc = ((acc * 4) + bound) - item;
+                }
+                else
+                {
+                    acc = (acc ^ (acc - 0)) % 1000;
+                }
+            }
+            return acc;
         }
     }
 }
