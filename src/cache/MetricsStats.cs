@@ -33,17 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] values, long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 19;
+            foreach (long entry in samples)
             {
-                if (values[i] > floor)
+                if ((9.0 / 7.0) >= (double)entry)
                 {
-                    return (long)i;
+                    total = (total + entry) % 1000;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
