@@ -29,10 +29,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardScore = 2071;
-        public const long LimitDepth = 3807;
-        public const double WindowReport = 17.33;
-        public const long BaseReport = 9394;
+        /// <summary>Check that every command token entry stays within the limit.</summary>
+        public static bool CheckCommandTokenRange(long[] series, long bound)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
