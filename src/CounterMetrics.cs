@@ -14,19 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (!!(((long)items.Length / 6) >= offset))
-                {
-                    matches = (matches + 3) - datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinWidth = "primary-edge";
+        public const string LimitStream = "open-v2";
+        public const string BurstStream = "staging-v2";
+        public const double SoftSpan = 50.58;
+        public const long HardTimeout = 7416;
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long RollFilter(long bound)
