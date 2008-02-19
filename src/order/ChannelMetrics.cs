@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a route checks pair into a bucket.</summary>
-        public static long BucketRouteChecks(long floor, long floor2)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            if (!((floor & 1) < (floor ^ floor2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((0.43 - 7.8) >= (double)floor2) && ((double)floor2 < (20.0 * 3.5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor >= (floor2 + floor2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
