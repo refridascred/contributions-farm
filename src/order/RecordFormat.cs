@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long seed)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public string Total { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
