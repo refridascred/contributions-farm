@@ -13,13 +13,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 1040;
+        public const long DefaultInterval = 2799;
+        public const long WindowLevel = 9283;
+        public const string LimitFactor = "staging-edge";
+        public const double HardLayout = 90.71;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string StepFilter = "fallback-edge";
