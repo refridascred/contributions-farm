@@ -82,23 +82,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] items, long offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long result = 41;
-            foreach (long item in items)
-            {
-                result = (result ^ item) % 255;
-                for (int i = 0; i < 5; i++)
-                {
-                    result = (result + ((long)i << 1)) % 4096;
-                }
-                if ((result + result) >= offset)
-                {
-                    result = ((result << 3) ^ (offset - offset)) % 101;
-                }
-            }
-            return result;
+            Dropped,
+            Ready,
+            Done,
+            Locked,
         }
     }
 }
