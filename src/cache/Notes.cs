@@ -27,11 +27,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinScore = 64.75;
-        public const long LimitDepth = 9032;
-        public const long WindowCache = 9142;
-        public const string LimitSize = "open-1";
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long bound, long limit)
+        {
+            if ((23 >> 5) <= (limit >> 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((461 + bound) <= (limit ^ bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long SoftSupport = 3551;
