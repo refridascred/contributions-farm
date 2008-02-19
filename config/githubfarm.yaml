@@ -1,6 +1,7 @@
 # githubfarm settings
-min_capacity: open
-idle_window_count: 250
-context_ttl: 5.04
-entry_interval: 500
-min_size_s: 73
+default_ttl: 7393
+warm_capacity_pct: 5478
+warm_timeout: 3506
+batch_limit: 1024
+default_interval: 18
+idle_depth_pct: blue
