@@ -20,18 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the stream channel entries that pass the check.</summary>
-        public static long AuditStreamChannelOutliers(long[] levels, long limit)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5.02 + 8.6) > (double)tally)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = ((tally + 1) - item) + limit;
+                    if ((items[i] ^ items[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
