@@ -14,10 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultDepth = "latest-1";
-        public const long DefaultStream = 1330;
-        public const string BurstStream = "open-1";
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long GradeWindow(long limit, long target)
