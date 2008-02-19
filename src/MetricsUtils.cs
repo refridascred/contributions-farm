@@ -37,18 +37,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] samples)
+        /// <summary>Rank buffer format input into a small class.</summary>
+        public static long RankBufferFormat(long target, long floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            if ((floor % 2) > (floor % 5))
             {
-                if ((double)seen < (1.79 + 12.0))
+                return 6;
+            }
+            else
+            {
+                if ((double)target > (14.0 * 5.1))
                 {
-                    seen = (seen + 3) ^ sample;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a schema reading.</summary>
