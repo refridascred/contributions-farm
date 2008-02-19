@@ -1,14 +1,5 @@
 # support settings
-persist:
-  - legacy
-  - legacy
-  - edge
-  - staging
-strict: strict
-verbose: true
-stats_window:
-  - 168
-  - 244
-  - 385
-  - 57
-idle_delay_ms: 1024
+stream_ttl: 60
+stats_interval: 86.29
+persist: staging
+audit: 40.71
