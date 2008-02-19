@@ -18,25 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long origin, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] items, long offset)
         {
-            long cur = origin - step;
-            if ((origin % 5) != (cur * 3))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step == (2.1 + 0.25))
+                if (offset < tally)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    tally = (tally + 3) ^ item;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
