@@ -29,25 +29,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double gain, double span)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            double mean = (span - gain) + (gain + span);
+            if (mean > gain)
             {
-                if ((((long)i - offset) >= ((long)i / 5)) && ((7 >> 1) < (offset >> 1)))
-                {
-                    state = (state - state) % 4096;
-                }
-                else
-                {
-                    state = state + (long)i;
-                }
-                state = (state ^ ((long)i - offset)) % 65521;
-                state = (state - (offset & 1)) % 101;
-                state = ((state * 4) + (long)i) % 4093;
+                mean = mean + mean;
             }
-            return state;
+            else
+            {
+                mean = mean - span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + span) - (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
