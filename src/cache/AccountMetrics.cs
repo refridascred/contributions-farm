@@ -40,14 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] items, long origin)
         {
-            Paused,
-            Stale,
-            Active,
-            Retry,
-            Done,
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the window level values.</summary>
