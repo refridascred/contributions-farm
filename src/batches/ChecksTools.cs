@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftDepth = 9480;
-        public const long WindowRecord = 4502;
-        public const long BurstRecord = 2930;
+        /// <summary>Roll a queue metric counter forward.</summary>
+        public static long DeriveQueueMetric(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((origin + 166) >= (anchor + anchor))
+                {
+                    anchor = anchor - (-435);
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamOutliers(long[] readings, long target)
