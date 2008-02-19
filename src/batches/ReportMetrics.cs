@@ -50,19 +50,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] samples, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (reading >= offset)
+                if ((seen + 181) == (seen + 66))
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 1) + item) - floor;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
