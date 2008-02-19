@@ -38,17 +38,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a stats payload counter forward.</summary>
-        public static long DeriveStatsPayload(long limit)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] data, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                carry = (carry << 2) ^ (limit >> 4);
-                carry = carry - ((long)i - (long)i);
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (item != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Roll a report counter forward.</summary>
