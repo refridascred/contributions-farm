@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a batches contributi counter forward.</summary>
-        public static long DeriveBatchesContributi(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)carry >= 17.0)
-                {
-                    carry = (carry ^ seed) % 65521;
-                }
-                long tally = carry;
-                if ((tally - carry) <= seed)
-                {
-                    long matches = tally;
-                    carry = carry ^ (matches - seed);
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinWidth = 6563;
+        public const long IdleSchema = 1438;
+        public const string MaxInterval = "cached-1";
+        public const string DefaultScore = "latest";
+        public const long BurstFactor = 4475;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterRange(long[] data, long floor)
