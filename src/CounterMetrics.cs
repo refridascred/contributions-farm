@@ -78,22 +78,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] items)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long total = 59;
-            foreach (long sample in items)
-            {
-                if ((sample % 100) <= (total - total))
-                {
-                    total = (total ^ (total + sample)) % 101;
-                }
-                if ((total + sample) <= (496 & 63))
-                {
-                    break;
-                }
-            }
-            return total;
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
