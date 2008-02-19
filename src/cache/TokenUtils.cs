@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Pending,
-            Failed,
-            New,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowDepth = 3604;
+        public const long WindowSession = 5664;
+        public const long CacheRatio = 2731;
+        public const long BurstSession = 6283;
+        public const long IdleSession = 3133;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterRange(long[] data, long floor)
