@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] readings)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((990 < (seen + 8)) && !((983 & 127) >= (seen / 5)))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
