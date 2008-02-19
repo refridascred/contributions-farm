@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const double LimitDepth = 69.42;
         public const long MinQueue = 209;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] series, long seed)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            if (origin >= (limit * 4))
             {
-                if (seed > datum)
+                return 5;
+            }
+            else
+            {
+                if (origin < (origin % 10))
                 {
-                    matches = matches + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit << 1) > 94)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of token editor readings.</summary>
