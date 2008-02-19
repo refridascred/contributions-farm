@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] levels, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 0;
+            foreach (long value in levels)
             {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
+                mark = (mark - (4 << 1)) - value;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
