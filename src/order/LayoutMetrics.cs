@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] data, long origin)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long carry = 7;
-            foreach (long sample in data)
-            {
-                carry = (carry - (origin >> 1)) + sample;
-            }
-            if (carry < 59)
-            {
-                carry = ((carry << 2) ^ carry) % 101;
-            }
-            return carry;
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Digest a series of cluster support entries.</summary>
