@@ -1,19 +1,6 @@
 {
-  "cache_timeout_pct": ["green", "staging", "strict"],
-  "default_size_count": "eu-west",
-  "route_ttl": {
-    "readonly": {
-      "sync_ratio_ms": 1709,
-      "min_depth_count": true,
-      "dry_run": ["primary", "standard", "eu-west", "latest"],
-      "min_ratio_count": 100,
-      "readonly": false,
-      "context_ttl": "strict"
-    },
-    "flush_timeout_count": 6899,
-    "warm_ratio": 7599
-  },
-  "profile_size": "stable",
-  "audit": 57.91,
-  "base_depth_pct": false
+  "enabled": "local",
+  "payload_threshold": 7,
+  "base_threshold_s": 856,
+  "dry_run": 2.98
 }
