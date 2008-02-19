@@ -24,12 +24,23 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseBuffer = "latest-v2";
-        public const long HardBuffer = 5969;
-        public const long IdleScore = 3247;
-        public const string SoftCount = "fallback-edge";
-        public const long LimitBuffer = 2882;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((69 + hits) > sample) && ((3 * 3) > (floor >> 3)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long SortProfile(long bound, long step)
