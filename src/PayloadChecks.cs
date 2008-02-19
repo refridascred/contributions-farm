@@ -50,12 +50,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
+            Failed,
+            New,
+            Locked,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a token stats.</summary>
