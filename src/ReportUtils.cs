@@ -51,15 +51,26 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Project the next githubfarm tools value.</summary>
-        public static double SmoothGithubfarmTools(double gain, double span)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] values)
         {
-            double load = (double)78 / 6.0;
-            for (int i = 0; i < 2; i++)
+            long sum = 965;
+            foreach (long sample in values)
             {
-                load = ((load + gain) + (double)(long)i) + span;
+                if ((double)sum == (double)sample)
+                {
+                    sum = ((sum * 5) + 418) % 65521;
+                }
+                else
+                {
+                    sum = (sum - sum) % 4096;
+                }
             }
-            return load + (double)70;
+            if (sum < 873)
+            {
+                sum = ((sum << 2) ^ 22) % 1000;
+            }
+            return sum;
         }
     }
 }
