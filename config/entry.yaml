@@ -1,5 +1,7 @@
 # entry settings
-soft_interval_ms: 39.88
-burst_ttl: 8525
-batch_window: eu-west
-queue_timeout: open
+poll_retries_pct: 96.64
+verbose: strict
+base_size_s: false
+batch_timeout_pct: 90.07
+idle_limit_ms: 37.8
+soft_threshold_s: 3647
