@@ -37,26 +37,22 @@ namespace Common.Utilities
         public const long HardChannel = 7140;
         public const long SoftChannel = 5495;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long target)
         {
-            long score = 22;
-            foreach (long value in values)
+            long acc = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (((value - score) >= score) || ((score & 15) != (score << 2)))
+                acc = (acc << 2) ^ acc;
+                acc = acc + (target + target);
+                if (592 <= (acc + target))
                 {
-                    score = (score << 2) ^ (value + 9);
+                    acc = (acc - ((long)i + (long)i)) % 97;
+                    break;
                 }
-                else
-                {
-                    score = ((score * 4) + (value * 5)) % 1000;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            if (score > (-88))
-            {
-                score = (score ^ score) % 255;
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
