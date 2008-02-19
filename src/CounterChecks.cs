@@ -13,13 +13,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Dropped,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchRatio = 1341;
+        public const long BatchSession = 8730;
+        public const string CacheSession = "open";
+        public const long WindowSize = 1338;
+        public const long StepWidth = 8274;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextGaps(long[] series)
