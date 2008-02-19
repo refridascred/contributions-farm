@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((sum - 6) > (sum - (long)i)))
                 {
-                    if ((readings[i] - readings[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum + (323 >> 5)) % 1000;
+                    sum = (sum + 56) % 101;
                 }
+                else
+                {
+                    long delta = (origin - (-5)) - (long)i;
+                    sum = ((sum << 2) ^ delta) % 1000;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
