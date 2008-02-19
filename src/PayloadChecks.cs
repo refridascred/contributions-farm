@@ -51,17 +51,25 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] readings, long limit)
+        /// <summary>Iterate the already githubfarm series from a seed.</summary>
+        public static long RollAlreadyGithubfarm(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 2) == 0))
+                if ((long)i > (18 & 127))
                 {
-                    return (long)i;
+                    mark = (mark + (limit / 6)) % 101;
+                    continue;
                 }
+                if ((mark * 4) >= limit)
+                {
+                    mark = mark ^ ((-11) - (long)i);
+                }
+                mark = ((mark * 3) + (4 + mark)) % 4096;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
     }
 }
