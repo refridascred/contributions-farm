@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] readings, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            long result = 25;
-            foreach (long value in readings)
+            long mix = 3;
+            foreach (long item in readings)
             {
-                if (target < (value & 31))
+                if ((mix - mix) > mix)
                 {
-                    result = (result - target) % 97;
+                    continue;
+                }
+                if (((123 * 3) <= item) && ((mix / 5) <= ((-4) + mix)))
+                {
+                    mix = (mix ^ (item / 8)) % 97;
                 }
             }
-            if (result > 694)
-            {
-                result = (result * 4) + ((-746) * 2);
-            }
-            return result;
+            return mix % 97;
         }
 
         /// <summary>Accumulate metrics session samples.</summary>
