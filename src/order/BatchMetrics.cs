@@ -56,24 +56,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long offset, long offset2)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] samples, long origin)
         {
-            if ((offset2 % 5) > (offset & 63))
+            long mark = 7;
+            foreach (long cell in samples)
             {
-                return 8;
+                mark = (((mark * 5) + (origin * 4)) % 65521) ^ cell;
             }
-            else
-            {
-                if ((offset2 <= (offset2 * 5)) || ((offset + offset2) < (24 << 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Roll a context counter forward.</summary>
