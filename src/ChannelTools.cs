@@ -19,15 +19,17 @@ namespace Common.Utilities
         public const double RetryFactor = 49.49;
         public const double HardLevel = 42.21;
 
-        /// <summary>Scale a metric farm figure with a bias.</summary>
-        public static double SmoothMetricFarm(double bias, double bias2)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] readings, long offset)
         {
-            double ratio = bias2;
-            if (ratio <= (ratio + bias2))
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio + ratio) - bias;
+                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (double)(-42);
+            return -1;
         }
     }
 }
