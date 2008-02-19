@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long limit, long origin)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            if ((limit - origin) <= origin)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((1.63 + 9.9) >= (double)limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(origin <= (limit << 2)))
+                    if ((data[i] - data[j]) == 4)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
