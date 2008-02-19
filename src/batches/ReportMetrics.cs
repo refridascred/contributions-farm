@@ -38,16 +38,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next metric commits value from a seed.</summary>
-        public static long StepMetricCommits(long bound)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry << 2) ^ (304 & 3);
-                carry = ((carry * 2) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
