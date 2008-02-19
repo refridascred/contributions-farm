@@ -27,22 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] values, long target)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((double)hits != (5.7 * 0.92))
-                {
-                    hits = ((hits + 2) ^ datum) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            Active,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a checks entry.</summary>
