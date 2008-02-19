@@ -25,18 +25,15 @@ namespace Common.Utilities
         public const long MinChannel = 1643;
         public const long BatchChannel = 4256;
 
-        /// <summary>Measure how many window token samples are out of range.</summary>
-        public static long CountWindowTokenGaps(long[] values)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long step)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long sum = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (((double)seen != (4.8 * 18.0)) || !((seen + 19) == (seen + datum)))
-                {
-                    seen = seen + 3;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Blend two route measurements.</summary>
