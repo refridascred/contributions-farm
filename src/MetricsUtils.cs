@@ -32,13 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] samples)
         {
-            New,
-            Stale,
-            Queued,
-            Paused,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)seen < (1.79 + 12.0))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
