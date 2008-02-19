@@ -23,18 +23,14 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] values)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((17 & 7) != (count >> 1))
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
+            Queued,
+            Closed,
+            Pending,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
