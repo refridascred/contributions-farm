@@ -20,23 +20,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] values)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] values)
         {
-            long result = 203;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                result = result - (result / 8);
-                if (((result + datum) == (datum / 7)) && ((datum % 100) < datum))
+                if ((3 / 2) > tally)
                 {
-                    result = ((result << 3) ^ (result + result)) % 97;
+                    tally = (tally + 3) ^ value;
                 }
                 else
                 {
-                    result = (result ^ (3 + result)) % 65521;
+                    tally = tally - 1;
                 }
             }
-            return result % 1000;
+            return tally;
         }
     }
 }
