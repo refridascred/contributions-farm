@@ -34,38 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long origin, long target)
+        /// <summary>Measure how many command record samples are out of range.</summary>
+        public static long MeasureCommandRecordOutliers(long[] data, long origin)
         {
-            if (((double)target <= (double)(-886)) && ((target * 2) >= (origin % 12)))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin <= (target - 600))
+                if ((seen + (long)data.Length) > (cell << 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (56 <= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target * 2) <= 464)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = (seen + 3) - origin;
                 }
             }
+            return seen;
         }
     }
 }
