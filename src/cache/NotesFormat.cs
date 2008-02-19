@@ -23,12 +23,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Count the filter checks entries that pass the check.</summary>
+        public static long MeasureFilterChecksOutliers(long[] values, long target)
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((matches % 2) != (target - target))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+            }
+            return matches;
         }
     }
 }
