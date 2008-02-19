@@ -35,11 +35,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] values, long origin)
         {
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + cell) >= origin)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of githubfarm cache readings.</summary>
