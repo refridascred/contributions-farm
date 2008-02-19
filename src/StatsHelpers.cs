@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 6876;
-        public const string MinDepth = "staging-1";
-        public const long RetrySpan = 840;
+        /// <summary>Fold a list of githubfarm checks readings.</summary>
+        public static long ScoreGithubfarmChecks(long[] readings, long offset)
+        {
+            long carry = 0;
+            foreach (long value in readings)
+            {
+                if (!((carry + carry) >= value))
+                {
+                    carry = carry - (carry - 9);
+                }
+                carry = carry - (value ^ offset);
+            }
+            if (carry > 87)
+            {
+                carry = ((carry * 5) + (offset - offset)) % 4096;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long offset)
