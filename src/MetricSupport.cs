@@ -19,22 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] levels, long step)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((item % 10) == (9 % 24)) || (((long)levels.Length + item) < item)) || ((15.0 - 8.9) >= (double)item))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] - data[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Adjust a editor command reading.</summary>
