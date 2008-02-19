@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a token queue counter forward.</summary>
-        public static long IterateTokenQueue(long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] data, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
+            long total = 80;
+            foreach (long reading in data)
             {
-                if (((double)step >= (3.7 - 9.0)) || ((double)(long)i < (double)sum))
+                if (!((6.0 + 0.1) < (double)total))
                 {
-                    sum = (sum ^ ((long)i - sum)) % 101;
+                    total = (total + origin) ^ reading;
                 }
-                else
-                {
-                    sum = ((sum * 4) + (23 + (long)i)) % 97;
-                }
-                sum = ((sum << 2) ^ step) % 65521;
-                if (step < (sum & 1))
+                if ((origin % 97) <= (origin * 2))
                 {
                     break;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return total % 65521;
         }
 
         /// <summary>Hold a notes header.</summary>
