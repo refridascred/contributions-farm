@@ -90,10 +90,9 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 3343;
-        public const long BurstInterval = 3334;
-        public const double MaxWindow = 22.11;
-        public const long WindowBudget = 7197;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultContributi = 88.99;
+        public const long DefaultSize = 2855;
+        public const string BaseContributi = "standard-v2";
     }
 }
