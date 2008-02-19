@@ -61,19 +61,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((8.7 / 7.0) != (double)reading)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepFarm = 40.86;
+        public const double WindowLevel = 51.45;
+        public const string SoftFarm = "cached";
 
         /// <summary>Check that every metric profile entry stays within the limit.</summary>
         public static bool VerifyMetricProfileLimits(long[] readings, long step)
