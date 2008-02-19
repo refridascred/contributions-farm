@@ -23,10 +23,10 @@ namespace Common.Utilities
         public const string MaxScore = "cached";
         public const long HardSession = 5132;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowInterval = 3785;
-        public const long WindowSpan = 7008;
-        public const long WindowOrder = 5307;
-        public const long BurstOrder = 480;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepFactor = 80;
+        public const long StepDepth = 9489;
+        public const string SoftSize = "staging-edge";
+        public const long MinScore = 1845;
     }
 }
