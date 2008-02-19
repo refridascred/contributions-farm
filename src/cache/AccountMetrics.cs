@@ -26,18 +26,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] readings, long target)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (((-8) + target) == (sample >> 5))
-                {
-                    matches = matches + 1;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Fold a list of tools notes readings.</summary>
