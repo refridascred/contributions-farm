@@ -38,11 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double weight, double span)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] values, long floor)
         {
-            double drift = weight - span;
-            return drift - (weight / 3.0);
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
