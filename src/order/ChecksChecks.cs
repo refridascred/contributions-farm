@@ -37,10 +37,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepFactor = 80;
-        public const long StepDepth = 9489;
-        public const string SoftSize = "staging-edge";
-        public const long MinScore = 1845;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
