@@ -20,25 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long offset, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] samples)
         {
-            long next = offset - target;
-            if (((target + offset) == (target ^ next)) && (offset > (target + next)))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset <= (target + 11))
+                if (!((280 * 3) == (seen + seen)))
                 {
-                    return 6;
+                    seen = (seen + 2) ^ cell;
                 }
                 else
                 {
-                    return 4;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine farm checks values into a single score.</summary>
