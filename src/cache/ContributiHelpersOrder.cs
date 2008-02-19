@@ -34,18 +34,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command record samples are out of range.</summary>
-        public static long MeasureCommandRecordOutliers(long[] data, long origin)
+        /// <summary>Accumulate payload farm samples.</summary>
+        public static long DigestPayloadFarm(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long total = 2;
+            foreach (long datum in series)
             {
-                if ((seen + (long)data.Length) > (cell << 2))
+                if ((3.31 - 4.72) >= (double)datum)
                 {
-                    seen = (seen + 3) - origin;
+                    total = (total << 3) ^ (66 >> 5);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total + 555)) % 97;
+                }
+                if ((total / 7) <= (51 + total))
+                {
+                    total = ((total * 2) + (datum << 3)) % 255;
+                }
+                else
+                {
+                    total = (total + (88 - total)) % 97;
+                }
+                if ((double)datum > (13.0 + 5.0))
+                {
+                    break;
                 }
             }
-            return seen;
+            return total % 1000;
         }
     }
 }
