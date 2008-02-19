@@ -36,21 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up context order samples.</summary>
-        public static long CompareContextOrderCount(long[] levels)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)score != (6.96 / 4.0)) || (score >= (score >> 5)))
                 {
-                    if ((levels[i] ^ levels[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score + (score - (long)i)) % 4096;
                 }
+                score = ((score * 5) + ((long)i / 6)) % 255;
+                score = (score ^ score) % 4096;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a filter info.</summary>
