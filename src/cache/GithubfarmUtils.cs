@@ -28,13 +28,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] samples, long origin)
         {
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (!(((4.0 - 0.1) >= (double)item) && ((matches >> 4) <= (matches / 8))))
+                {
+                    matches = (matches + 3) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
