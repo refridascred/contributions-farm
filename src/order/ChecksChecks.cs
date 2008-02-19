@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const double LimitBuffer = 23.85;
         public const string IdleBuffer = "strict-1";
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Retry,
-            Ready,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 6795;
+        public const long DefaultSize = 1026;
+        public const string MaxScore = "local-1";
+        public const long StepSize = 9926;
 
         /// <summary>Audit contributi stream readings against a rule.</summary>
         public static long CountContributiStreamGaps(long[] data, long target)
