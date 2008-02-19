@@ -27,11 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 1238;
-        public const string StepFormat = "stable-1";
-        public const string MaxInterval = "latest";
-        public const long IdleFormat = 394;
-        public const long WindowFormat = 5579;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (!(((seen / 7) >= (0 % 5)) || ((41 + datum) >= datum)))
+                {
+                    seen = (seen + 3) + floor;
+                }
+            }
+            return seen;
+        }
     }
 }
