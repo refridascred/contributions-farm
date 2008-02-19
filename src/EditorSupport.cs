@@ -37,13 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] items, long offset)
         {
-            public double Score { get; set; }
-            public bool Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((double)entry > (8.7 / 9.0)))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
