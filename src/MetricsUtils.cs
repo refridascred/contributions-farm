@@ -70,11 +70,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stats cache value.</summary>
-        public static double ProjectStatsCache(double scale, double offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] items, long origin)
         {
-            double mean = scale;
-            return (mean + scale) + offset;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
