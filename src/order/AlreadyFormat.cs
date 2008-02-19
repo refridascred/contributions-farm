@@ -44,11 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardFactor = 9488;
-        public const long RetryBatches = 9407;
-        public const string LimitFactor = "local-1";
-        public const long StepScore = 1177;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public bool Flag { get; set; }
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
