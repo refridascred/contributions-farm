@@ -1,7 +1,31 @@
 # githubfarm settings
-default_ttl: 7393
-warm_capacity_pct: 5478
-warm_timeout: 3506
-batch_limit: 1024
-default_interval: 18
-idle_depth_pct: blue
+base_timeout:
+  verbose:
+    - standard
+    - stable
+  notes_size:
+    - 103
+    - 463
+  cache_depth:
+    - 65
+    - 398
+    - 152
+  hard_window: 1024
+  default_threshold:
+    cache_delay: primary
+    profile_timeout: true
+    idle_threshold_count: 628
+    min_ttl: true
+    burst_limit_pct:
+      - 302
+      - 196
+      - 298
+      - 67
+editor_window:
+  command_timeout: 616
+  strict: 6979
+  retry_delay: 86.39
+poll_size_pct: 30
+record_capacity:
+  - 7
+  - 285
