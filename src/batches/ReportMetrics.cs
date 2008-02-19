@@ -52,18 +52,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] items, long floor)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen + 181) == (seen + 66))
-                {
-                    seen = ((seen + 1) + item) - floor;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
