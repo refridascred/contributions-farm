@@ -57,15 +57,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches token series from a seed.</summary>
-        public static long RollBatchesToken(long origin)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] series)
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
+            long result = 24;
+            foreach (long cell in series)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if ((36 ^ 51) < cell)
+                {
+                    result = ((result * 2) + 82) % 101;
+                }
+                if ((cell + (long)series.Length) > (cell + result))
+                {
+                    break;
+                }
             }
-            return score;
+            if (result > 3)
+            {
+                result = (result - (38 * 5)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
