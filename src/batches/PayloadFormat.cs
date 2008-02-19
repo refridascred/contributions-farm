@@ -33,18 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double gain, double floor)
         {
-            long sum = 67;
-            foreach (long value in data)
+            double load = (double)(0 ^ 3);
+            for (int i = 0; i < 4; i++)
             {
-                if (((long)data.Length > ((long)data.Length % 2)) && ((5.4 / 7.0) > (double)sum))
-                {
-                    sum = sum + (sum + value);
-                }
+                load = ((load + (load + floor)) + (double)(long)i) - gain;
             }
-            return sum;
+            return load + (9.3 / 6.0);
         }
 
         /// <summary>Match up checks metric samples.</summary>
