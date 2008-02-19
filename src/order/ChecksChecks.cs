@@ -38,13 +38,22 @@ namespace Common.Utilities
             return (weight + (double)1) + rate;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Measure how many stats metric samples are out of range.</summary>
+        public static long CountStatsMetricMatches(long[] series, long origin)
         {
-            Paused,
-            Closed,
-            Retry,
-            Ready,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((68 + entry) <= entry)
+                {
+                    count = (count + 2) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
