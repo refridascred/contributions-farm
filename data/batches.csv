@@ -1,6 +1,7 @@
-id,region,owner
-1,open,922
-2,83.36,207
-3,cached,54
-4,eu-west,758
-5,116,80.16
+id,state
+1,34.63
+2,fallback
+3,989
+4,fallback
+5,425
+6,open
