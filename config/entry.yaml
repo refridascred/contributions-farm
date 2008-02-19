@@ -1,12 +1,8 @@
 # entry settings
-retry_ratio: false
-persist: 500
-soft_retries_count:
-  hard_window: open
-  batch_size_pct:
-    - fallback
-    - staging
-    - cached
-  cache_threshold_count: stable
-  already_delay: stable
-  sync_limit: 51.98
+stats_window: 30.83
+notes_limit: 64
+idle_size: blue
+verbose:
+  strict: true
+  commits_delay: 8527
+  min_ttl_ms: 6825
