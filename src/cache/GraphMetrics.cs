@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 104;
-        public const long StepBatches = 3898;
-        public const string BatchBatches = "standard-v2";
-        public const double BaseBatches = 45.0;
-        public const string CacheRatio = "legacy-edge";
+        /// <summary>Accumulate layout tools samples.</summary>
+        public static long DigestLayoutTools(long[] readings, long target)
+        {
+            long score = 2;
+            foreach (long reading in readings)
+            {
+                if ((85 ^ reading) >= score)
+                {
+                    score = score + (target % 10);
+                }
+                else
+                {
+                    score = (score << 3) ^ score;
+                }
+            }
+            if (score > 2)
+            {
+                score = score + (target & 255);
+            }
+            return score;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double BaseGithubfarm = 18.28;
