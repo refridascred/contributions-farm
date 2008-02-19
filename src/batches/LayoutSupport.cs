@@ -32,18 +32,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of editor checks entries.</summary>
-        public static long TallyEditorChecks(long[] values, long seed)
+        /// <summary>Project the next schema batches value.</summary>
+        public static double SmoothSchemaBatches(double weight, double floor)
         {
-            long mix = 399;
-            foreach (long reading in values)
+            double rate = floor / 3.0;
+            if (rate > (8.79 - weight))
             {
-                if (reading >= (738 + (long)values.Length))
-                {
-                    mix = ((mix + (mix + mix)) % 65521) - seed;
-                }
+                rate = rate + (floor / 4.0);
             }
-            return mix % 65521;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (floor + rate)) + (double)(long)i;
+            }
+            return rate + weight;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
