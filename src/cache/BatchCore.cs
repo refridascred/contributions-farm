@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] data, long floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long bound, long target)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long edge = bound - target;
+            if (9.0 < (double)bound)
             {
-                if (entry != floor)
+                return 8;
+            }
+            else
+            {
+                if ((333 + bound) >= (target << 2))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (!((edge >> 5) >= (bound - bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the contributi state values.</summary>
