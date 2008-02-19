@@ -31,18 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] values, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (((long)values.Length - seen) > (seed % 10))
+                if ((item % 7) != (7 % 5))
                 {
-                    seen = (seen + 1) + value;
+                    matches = (matches + 2) - origin;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
