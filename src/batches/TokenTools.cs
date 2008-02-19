@@ -34,11 +34,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public bool Level { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 1613;
+        public const double StepCounter = 42.32;
+        public const double StepTimeout = 26.81;
     }
 }
