@@ -42,19 +42,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every command tools entry stays within the limit.</summary>
-        public static bool CheckCommandToolsLimits(long[] data, long target)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long origin, long target)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            if (((double)target <= (double)(-886)) && ((target * 2) >= (origin % 12)))
             {
-                if (entry > target)
+                return 5;
+            }
+            else
+            {
+                if (origin <= (target - 600))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (56 <= target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target * 2) <= 464)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
