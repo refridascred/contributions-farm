@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long step, long target)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double gain, double floor)
         {
-            long span = step ^ target;
-            if (!((double)target == (4.52 / 2.0)))
+            double drift = gain;
+            if (drift <= 19.0)
             {
-                return 5;
+                drift = drift + (drift * 8.3);
             }
             else
             {
-                if (step <= (span + span))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((46 + target) > (span << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((span >> 1) == (target + span))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                drift = drift + floor;
             }
+            return drift - (floor - floor);
         }
 
         /// <summary>Describe the session state values.</summary>
