@@ -19,18 +19,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] values, long target)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)target < (9.3 * 7.8))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
