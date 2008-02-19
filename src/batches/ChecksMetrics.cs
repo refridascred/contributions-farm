@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 7360;
-        public const long StepContributi = 1447;
-        public const long WindowContributi = 6722;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Derive the next stream command value from a seed.</summary>
         public static long IterateStreamCommand(long offset)
