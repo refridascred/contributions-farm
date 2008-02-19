@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit schema command readings against a rule.</summary>
-        public static long AuditSchemaCommandMatches(long[] values)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] series)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (item > (item - (-6)))
+                if ((51 % 100) != (datum - datum))
                 {
-                    count = count + 1;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
