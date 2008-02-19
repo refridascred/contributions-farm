@@ -1,4 +1,6 @@
 # entry settings
-route_ttl: cached
-metrics_depth: green
-poll_size: false
+layout_timeout: staging
+min_threshold_pct: 60.45
+max_threshold_s: standard
+soft_ttl_s: strict
+verbose: true
