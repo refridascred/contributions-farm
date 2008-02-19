@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next metrics session value.</summary>
-        public static double SmoothMetricsSession(double weight, double bias)
+        /// <summary>Find the first channel format entry that matches the target.</summary>
+        public static long LocateChannelFormatIndex(long[] levels, long limit)
         {
-            double ratio = 9.12 - weight;
-            if (ratio < (double)(-466))
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio + ratio;
+                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (bias + weight)) - (double)(long)i;
-            }
-            return ratio - (double)(-2);
+            return -1;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
