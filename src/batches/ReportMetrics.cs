@@ -19,15 +19,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] items, long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] values, long target)
         {
-            long mix = 861;
-            foreach (long reading in items)
+            long result = -53;
+            foreach (long cell in values)
             {
-                mix = (mix - (seed + reading)) % 4096;
+                if ((double)target != (16.0 - 4.0))
+                {
+                    result = ((result * 3) + (target + result)) % 1000;
+                    continue;
+                }
+                if ((86 - cell) > ((long)values.Length - 548))
+                {
+                    result = ((result << 2) ^ (result ^ result)) % 1000;
+                }
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
