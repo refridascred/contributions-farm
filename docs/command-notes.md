@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-Each queue is validated before it reaches the account queue.
+The order report groups every metric by metric.
+Use payload settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Document new queue fields
-- Validate layout input early
-- Prefer metrics defaults
-- Log every account change
+- Keep buffer values small
+- Log every command change
+- Review queue limits each release
