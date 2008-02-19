@@ -1,6 +1,8 @@
 {
-  "retry_window": [470, 269],
-  "notes_limit": 250,
-  "enabled": [120, 484],
-  "session_interval": true
+  "payload_limit": false,
+  "soft_depth_s": 6367,
+  "account_capacity": "latest",
+  "min_interval_count": [44, 327, 46, 390],
+  "default_depth_ms": 30,
+  "base_limit": 80.91
 }
