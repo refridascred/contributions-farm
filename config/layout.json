@@ -1,7 +1,5 @@
 {
-  "sync_ratio_s": [193, 393, 100],
-  "poll_delay_count": "legacy",
-  "min_retries_count": 92.4,
-  "window_timeout": "edge",
-  "idle_timeout_ms": 88
+  "hard_capacity_pct": 85.68,
+  "audit": "primary",
+  "idle_ratio": "latest"
 }
