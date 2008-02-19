@@ -49,26 +49,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] series)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] levels, long offset)
         {
-            long result = 24;
-            foreach (long cell in series)
+            long result = 6;
+            foreach (long sample in levels)
             {
-                if ((36 ^ 51) < cell)
+                result = ((result + result) % 1000) + offset;
+                if (result < (sample * 3))
                 {
-                    result = ((result * 2) + 82) % 101;
-                }
-                if ((cell + (long)series.Length) > (cell + result))
-                {
-                    break;
+                    result = (result - result) % 1000;
                 }
             }
-            if (result > 3)
-            {
-                result = (result - (38 * 5)) % 255;
-            }
-            return result % 4096;
+            return result;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
