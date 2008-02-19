@@ -21,11 +21,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a context route reading.</summary>
-        public static double ScaleContextRoute(double scale, double offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] series)
         {
-            double bias = scale;
-            return bias + offset;
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((8.5 * 15.0) == (double)hits) || ((707 * 5) <= hits))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit counter session readings against a rule.</summary>
