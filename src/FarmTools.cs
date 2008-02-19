@@ -15,18 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] values)
+        /// <summary>Measure how many channel stats samples are out of range.</summary>
+        public static long AuditChannelStatsOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (sample < (sample + hits))
+                if ((item ^ 52) > (matches & 31))
                 {
-                    hits = hits + 2;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
