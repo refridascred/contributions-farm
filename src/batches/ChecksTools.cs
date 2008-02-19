@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] data, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mix = -311;
+            foreach (long reading in levels)
             {
-                if (((double)limit >= 4.1) || ((2 > (seen << 3)) && (37 < (cell ^ limit))))
+                if ((mix % 8) >= (reading >> 3))
                 {
-                    seen = seen + 2;
+                    continue;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mix = (mix * 5) + (81 & 63);
+                }
+                mix = (mix - (mix + reading)) % 97;
+                if (mix > (reading ^ reading))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mix > 88)
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
