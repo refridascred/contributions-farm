@@ -53,25 +53,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Accumulate counter record samples.</summary>
+        public static long DigestCounterRecord(long[] items, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
+            long state = 20;
+            foreach (long sample in items)
             {
-                if ((mark / 7) >= (long)i)
+                if ((state + sample) <= floor)
                 {
-                    mark = ((mark * 2) + (71 % 12)) % 65521;
+                    state = ((state * 4) + state) % 65521;
+                    break;
                 }
-                else
+                if ((7.96 + 9.0) > (8.33 * 1.85))
                 {
-                    long delta = seed / 5;
-                    mark = (mark * 2) + delta;
+                    state = state ^ (floor + 206);
                 }
-                mark = mark ^ (seed ^ mark);
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((floor - floor) >= (sample * 2))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (state > 300)
+            {
+                state = ((state << 3) ^ floor) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Scale a batches stream figure with a bias.</summary>
