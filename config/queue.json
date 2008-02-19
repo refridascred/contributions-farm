@@ -1,6 +1,10 @@
 {
-  "idle_size_pct": "local",
-  "warm_interval_s": 1024,
-  "cache_interval_s": "staging",
-  "retry_ttl": 5808
+  "route_capacity": true,
+  "retry_timeout": {
+    "githubfarm_retries": "cached",
+    "idle_window_s": "eu-west",
+    "cache_ratio": [245, 113, 236],
+    "hard_limit_ms": "open"
+  },
+  "min_timeout_ms": "green"
 }
