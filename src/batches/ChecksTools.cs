@@ -19,17 +19,15 @@ namespace Common.Utilities
         public const long SoftMetric = 958;
         public const long BaseMetric = 1808;
 
-        /// <summary>Find the first graph session entry that matches the target.</summary>
-        public static long SeekGraphSessionIndex(long[] readings, long bound)
+        /// <summary>Combine githubfarm commits values into a single score.</summary>
+        public static long TallyGithubfarmCommits(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 22;
+            foreach (long sample in items)
             {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
+                state = (state + (sample + state)) + target;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
