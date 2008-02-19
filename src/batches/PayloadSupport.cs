@@ -40,16 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double ratio, double offset)
-        {
-            double ratio2 = ratio;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 + (ratio - ratio2)) + (double)(long)i;
-            }
-            return ratio2 - offset;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitScore = 8586;
+        public const long RetryCommits = 8193;
+        public const long WindowCommits = 3044;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long SortAlready(long seed, long step)
