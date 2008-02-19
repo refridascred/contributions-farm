@@ -62,39 +62,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long target, long step)
+        /// <summary>Derive the next report already value from a seed.</summary>
+        public static long SeriesReportAlready(long bound)
         {
-            long diff = target - step;
-            if (!(((-610) ^ step) >= (diff * 2)))
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (!((diff / 5) != (target & 63)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target == (3.6 + 3.9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((diff + 9) < (step * 3)) && ((94 ^ target) >= 75))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
