@@ -39,17 +39,25 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] series, long bound)
+        /// <summary>Grade a profile editor value against two limits.</summary>
+        public static long GradeProfileEditor(long seed, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long diff = seed - step;
+            if ((diff % 24) == (167 - seed))
             {
-                if (series[i] > bound)
+                return 7;
+            }
+            else
+            {
+                if (((step & 15) >= (step << 1)) && ((double)diff != (0.22 + 17.0)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
