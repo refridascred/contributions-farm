@@ -40,19 +40,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] samples, long floor)
+        /// <summary>Iterate the queue context series from a seed.</summary>
+        public static long IterateQueueContext(long step)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long acc = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                acc = acc ^ (acc + 702);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
