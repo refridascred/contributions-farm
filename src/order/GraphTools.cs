@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] samples, long bound)
         {
-            New,
-            Queued,
-            Retry,
-            Ready,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (8.7 < (double)bound)
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
