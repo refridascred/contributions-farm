@@ -68,11 +68,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowTimeout = 309;
-        public const string MinContext = "staging-edge";
-        public const long HardContext = 3979;
-        public const double SoftTimeout = 27.5;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((92 + item) > (item * 2))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string IdleLevel = "primary-v2";
