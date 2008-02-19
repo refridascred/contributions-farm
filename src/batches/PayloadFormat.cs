@@ -27,11 +27,13 @@ namespace Common.Utilities
         public const long BatchChecks = 7539;
         public const long SoftChecks = 6347;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 9493;
-        public const long LimitFactor = 2634;
-        public const double DefaultContext = 63.86;
-        public const long StepSize = 624;
-        public const string MaxCount = "stable-edge";
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
