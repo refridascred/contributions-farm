@@ -38,19 +38,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] series, long limit)
+        /// <summary>Derive the next metric commits value from a seed.</summary>
+        public static long StepMetricCommits(long bound)
         {
-            bool found = true;
-            foreach (long item in series)
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (item < limit)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry << 2) ^ (304 & 3);
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return found;
+            return carry;
         }
     }
 }
