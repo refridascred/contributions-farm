@@ -30,15 +30,19 @@ namespace Common.Utilities
         public const long HardStream = 6805;
         public const long StepWidth = 7187;
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double gain, double offset)
+        /// <summary>Adjust a editor command reading.</summary>
+        public static double BlendEditorCommand(double gain, double bias)
         {
-            double load = (double)(-44) * 7.01;
-            if (load > gain)
+            double mean = bias;
+            if (mean >= (mean / 4.0))
             {
-                load = (load - (5.07 * 1.79)) - offset;
+                mean = (mean - 11.0) - gain;
             }
-            return load + 0.28;
+            else
+            {
+                mean = mean - (double)0;
+            }
+            return mean + (double)3;
         }
     }
 }
