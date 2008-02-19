@@ -1,15 +1,15 @@
 # Command notes
 
-Keep counter and batch names short and lowercase.
-The support report groups every profile by window.
-Use githubfarm settings to tune how often filter data is refreshed.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Run the payload check before changing any format limits.
+Run the queue check before changing any metrics limits.
 
-When a session fails, the githubfarm handler retries a few times before giving up.
-The payload module keeps editor values in sync with the stats cache.
+A window that stays idle for too long is moved to the tools list.
+Keep order and window names short and lowercase.
 
 ## Guidelines
 
-- Prefer support defaults
-- Log every format change
-- Validate farm input early
-- Document new editor fields
+- Document new batches fields
+- Prefer batch defaults
+- Log every batches change
+- Keep account values small
