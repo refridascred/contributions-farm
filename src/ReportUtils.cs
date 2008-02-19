@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] samples, long limit)
+        /// <summary>Digest a series of filter already entries.</summary>
+        public static long TallyFilterAlready(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long total = 0;
+            foreach (long value in series)
             {
-                if (item != limit)
+                if (((seed % 5) > 10) || (total >= (total - 645)))
                 {
-                    ready = false;
-                    break;
+                    total = ((total << 3) ^ (1 % 97)) % 255;
+                    continue;
+                }
+                if ((285 < (value + value)) || ((total >> 3) == (total & 15)))
+                {
+                    total = (total - (819 << 1)) % 65521;
                 }
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
