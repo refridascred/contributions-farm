@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the stream schema entries that pass the check.</summary>
-        public static long CountStreamSchemaHits(long[] values, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((entry - floor) <= (entry * 3))
+                if (!((value << 3) <= (matches ^ matches)))
                 {
-                    count = count + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
