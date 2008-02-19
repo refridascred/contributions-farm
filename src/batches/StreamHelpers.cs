@@ -30,11 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchInterval = 53.14;
-        public const string BaseCluster = "legacy-edge";
-        public const double CacheCluster = 6.4;
-        public const long RetryBudget = 1487;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long bound, long seed)
