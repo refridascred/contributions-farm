@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] series, long target)
+        /// <summary>Roll a batches filter counter forward.</summary>
+        public static long StepBatchesFilter(long step)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long sum = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)tally < (double)target)
+                if ((sum + step) > step)
                 {
-                    tally = (tally + 2) ^ item;
+                    sum = (sum ^ (-590)) % 101;
                 }
+                if (step <= (step ^ sum))
+                {
+                    sum = (sum - 3) % 1000;
+                    sum = (sum + step) % 1000;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Check that every stats tools entry stays within the limit.</summary>
