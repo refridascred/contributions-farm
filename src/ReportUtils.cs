@@ -23,16 +23,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 8438;
+        public const long BatchSpan = 6132;
+        public const long WindowDepth = 265;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueMatches(long[] readings)
