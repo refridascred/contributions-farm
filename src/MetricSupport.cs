@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double ratio, double floor)
         {
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public bool Mode { get; set; }
+            double scale = (double)(20 << 2);
+            if (scale > (double)827)
+            {
+                scale = scale + (ratio * 1.38);
+            }
+            else
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + ratio) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Accumulate checks samples.</summary>
