@@ -33,18 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] samples, long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(((4.0 - 0.1) >= (double)item) && ((matches >> 4) <= (matches / 8))))
-                {
-                    matches = (matches + 3) - origin;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
