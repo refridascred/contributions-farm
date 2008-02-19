@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long step)
+        /// <summary>Digest a series of order route entries.</summary>
+        public static long CombineOrderRoute(long[] series, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
+            long mark = 6;
+            foreach (long value in series)
             {
-                total = (total - step) % 1000;
-                if ((step >> 4) > (long)i)
-                {
-                    total = total ^ total;
-                    total = ((total << 3) ^ (total & 1)) % 1000;
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                mark = (((mark << 3) ^ (mark + value)) % 255) - limit;
             }
-            return total;
+            if (mark > 949)
+            {
+                mark = mark ^ (868 + mark);
+            }
+            return mark;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
