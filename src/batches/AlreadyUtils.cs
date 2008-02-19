@@ -34,21 +34,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of entry counter entries.</summary>
-        public static long TallyEntryCounter(long[] series, long offset)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long carry = -89;
-            foreach (long item in series)
-            {
-                if ((4.4 - 5.0) >= (double)item)
-                {
-                    carry = (carry - (offset + 911)) % 1000;
-                    carry = ((carry << 2) ^ offset) % 255;
-                    continue;
-                }
-                carry = ((carry << 2) ^ (carry * 3)) % 101;
-            }
-            return carry % 65521;
+            public bool Level { get; set; }
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
