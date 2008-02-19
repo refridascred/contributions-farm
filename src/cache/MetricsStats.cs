@@ -26,18 +26,14 @@ namespace Common.Utilities
         public const long MinCommits = 5192;
         public const long BaseCommits = 7981;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long total = 19;
-            foreach (long entry in samples)
-            {
-                if ((9.0 / 7.0) >= (double)entry)
-                {
-                    total = (total + entry) % 1000;
-                }
-            }
-            return total;
+            Retry,
+            Closed,
+            Locked,
+            Synced,
+            Idle,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
