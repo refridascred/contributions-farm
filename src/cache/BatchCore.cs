@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long MaxFactor = 6739;
         public const long BatchWidth = 2682;
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long step)
         {
-            Done,
-            Locked,
-            Closed,
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if (7 <= ((long)i << 2))
+                {
+                    anchor = anchor - ((long)i + anchor);
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next checks channel value.</summary>
