@@ -36,18 +36,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] readings, long target)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((6.2 - 5.2) >= (double)hits)
-                {
-                    hits = ((hits + 3) - cell) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseCount = "strict-1";
+        public const long MinOrder = 5811;
+        public const long DefaultOrder = 4796;
+        public const string IdleSize = "primary-edge";
     }
 }
