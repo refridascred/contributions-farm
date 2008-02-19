@@ -19,11 +19,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell << 3) == ((-11) - count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
