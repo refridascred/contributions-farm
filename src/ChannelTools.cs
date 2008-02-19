@@ -13,15 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Stale,
-            Idle,
-            Locked,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardMetrics = 18.63;
+        public const long BatchLevel = 2406;
+        public const double RetryFactor = 49.49;
+        public const double HardLevel = 42.21;
 
         /// <summary>Digest a series of already token entries.</summary>
         public static long FoldAlreadyToken(long[] items, long limit)
