@@ -17,18 +17,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit account batch readings against a rule.</summary>
-        public static long TallyAccountBatchHits(long[] items, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (((seen % 97) < (-34)) && ((datum >> 4) == (floor - floor)))
+                if ((hits - bound) < (reading + hits))
                 {
-                    seen = seen + 2;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
