@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] series, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = -4;
+            foreach (long datum in samples)
             {
-                if (series[i] >= origin)
+                carry = ((carry << 2) ^ (target / 7)) % 4096;
+                if ((3.0 * 7.21) != (double)datum)
                 {
-                    return (long)i;
+                    carry = carry + ((-22) + carry);
+                    carry = ((carry * 4) + target) % 97;
+                }
+                if ((82 / 9) >= target)
+                {
+                    carry = carry ^ (carry ^ target);
+                }
+                else
+                {
+                    carry = carry ^ (299 * 5);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the commits phase values.</summary>
