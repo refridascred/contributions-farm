@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] readings, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (!(score >= floor))
+                if ((double)matches > (double)63)
                 {
-                    score = (score << 3) ^ ((long)i % 3);
+                    matches = ((matches + 1) + entry) + bound;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Classify a contributi profile pair into a bucket.</summary>
