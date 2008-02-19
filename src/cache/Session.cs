@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the record githubfarm entries that pass the check.</summary>
-        public static long CountRecordGithubfarmOutliers(long[] series)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long anchor = 4;
+            foreach (long item in values)
             {
-                if ((double)cell <= (double)hits)
+                if ((item >= (floor - anchor)) || ((item / 6) > item))
                 {
-                    hits = hits + 2;
+                    anchor = (anchor * 5) + (-49);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (floor - anchor);
                 }
             }
-            return hits;
+            return anchor % 65521;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
