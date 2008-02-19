@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] data)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((cell >> 5) >= (cell * 5))
+                if (item < limit)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
