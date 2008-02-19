@@ -13,18 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate batches notes samples.</summary>
-        public static long ScoreBatchesNotes(long[] items, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] items, long bound)
         {
-            long state = 835;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((double)value > (2.0 / 7.0))
+                if (entry > bound)
                 {
-                    state = (((state << 2) ^ (value - value)) % 1000) + step;
+                    valid = false;
+                    break;
                 }
             }
-            return state % 97;
+            return valid;
         }
 
         /// <summary>Describe the filter mode values.</summary>
