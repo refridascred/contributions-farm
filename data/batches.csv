@@ -1,8 +1,6 @@
-id,owner,weight,score
-1,540,147,627
-2,995,738,811
-3,edge,strict,stable
-4,161,376,531
-5,90.92,70.38,715
-6,209,local,698
-7,620,53.33,516
+id,region,owner
+1,open,922
+2,83.36,207
+3,cached,54
+4,eu-west,758
+5,116,80.16
