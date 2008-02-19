@@ -33,19 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] samples, long seed)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            double scale = (bias2 - bias) + (5.9 + bias2);
+            if (scale <= 7.4)
             {
-                if (reading > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale + (bias + scale);
             }
-            return ready;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + 13.0) - (double)(long)i;
+            }
+            return scale - (double)5;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
