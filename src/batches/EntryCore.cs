@@ -66,15 +66,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double rate, double floor)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            double rate2 = (double)(41 + 5);
-            if (rate2 <= (floor - rate))
-            {
-                rate2 = rate2 - floor;
-            }
-            return rate2 + rate2;
+            public double Rank { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
