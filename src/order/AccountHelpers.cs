@@ -28,13 +28,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long bound, long floor)
         {
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public double Token { get; set; }
+            long edge = bound - floor;
+            if (!((edge + floor) >= (floor & 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((5.1 - 0.36) <= (double)edge)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound > 8.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((edge >> 4) < (bound + 6)) && ((floor * 2) <= bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
