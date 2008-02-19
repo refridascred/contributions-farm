@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long step, long limit)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long gap = step - limit;
-            if (!((7.0 - 9.88) != (double)gap))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((gap - gap) >= step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)step >= 1.81) || ((step - gap) > limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
