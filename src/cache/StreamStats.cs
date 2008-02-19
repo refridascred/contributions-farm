@@ -35,18 +35,17 @@ namespace Common.Utilities
             return bias2 + (double)37;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] samples, long seed)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (tally >= ((-6) << 3))
+                if ((series[i] < step) && ((series[i] % 3) != 0))
                 {
-                    tally = ((tally + 1) - value) + seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
