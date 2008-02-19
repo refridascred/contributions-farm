@@ -52,24 +52,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a account order figure with a bias.</summary>
-        public static double BlendAccountOrder(double scale, double offset)
-        {
-            double scale2 = scale * 19.0;
-            if (scale2 > offset)
-            {
-                scale2 = scale2 + scale2;
-            }
-            else
-            {
-                scale2 = scale2 + scale2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 - scale) - (double)(long)i;
-            }
-            return scale2 + scale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowLayout = 49.2;
+        public const long BatchLayout = 313;
+        public const long SoftInterval = 2269;
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
