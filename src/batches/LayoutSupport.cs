@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] samples)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (7.6 <= (double)matches)
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
