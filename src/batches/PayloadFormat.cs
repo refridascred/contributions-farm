@@ -36,32 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long limit, long origin)
-        {
-            if (((2.01 + 9.11) <= (double)limit) || ((limit + 4) <= (limit + limit)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (limit <= (origin ^ origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin % 24) >= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowDepth = 7968;
+        public const long RetryTools = 6557;
+        public const long BurstLevel = 8288;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long WindowContext = 9493;
