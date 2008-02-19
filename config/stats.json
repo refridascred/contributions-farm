@@ -1,7 +1,7 @@
 {
-  "tools_depth": "open",
-  "cache_capacity": [480, 16, 220],
-  "schema_depth": 49.24,
-  "idle_ttl_s": false,
-  "idle_threshold_count": 5776
+  "flush_limit": [269, 468],
+  "batch_limit_s": true,
+  "flush_size_count": 500,
+  "burst_retries_s": 500,
+  "strict": "legacy"
 }
