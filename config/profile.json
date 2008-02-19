@@ -1,11 +1,8 @@
 {
-  "verbose": 24,
-  "poll_delay_s": "local",
-  "enabled": {
-    "command_size": 7,
-    "batch_threshold": ["standard", "open"],
-    "queue_ratio": 37.27,
-    "compress": "fallback"
-  },
-  "soft_ttl_count": 28
+  "warm_delay_s": "cached",
+  "sync_limit_ms": false,
+  "poll_limit_s": ["green", "eu-west"],
+  "soft_size_s": [398, 317, 199, 443],
+  "sync_threshold_pct": false,
+  "default_retries_ms": 60
 }
