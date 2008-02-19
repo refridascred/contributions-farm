@@ -57,19 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double scale, double offset)
+        /// <summary>Iterate the batches token series from a seed.</summary>
+        public static long RollBatchesToken(long origin)
         {
-            double scale2 = offset / 8.0;
-            if (scale2 >= offset)
+            long score = origin;
+            for (int i = 0; i < 23; i++)
             {
-                scale2 = scale2 - scale2;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 - scale) + (double)(long)i;
-            }
-            return scale2 - scale;
+            return score;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
