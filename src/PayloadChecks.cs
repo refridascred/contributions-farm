@@ -66,24 +66,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long limit, long offset)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] readings, long limit)
         {
-            if (((offset & 3) > offset) && ((0.35 * 9.0) == (double)limit))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset != (3.4 - 8.3))
+                if ((readings[i] >= limit) && ((readings[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
