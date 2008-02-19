@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ratio - (double)(-2);
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] values, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
