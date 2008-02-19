@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 9535;
-        public const long CacheSpan = 3333;
-        public const long DefaultBudget = 944;
-        public const long RetryBudget = 5011;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of channel route readings.</summary>
         public static long OverlapChannelRouteCount(long[] levels)
