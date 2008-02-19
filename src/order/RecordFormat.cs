@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const long MinSize = 8694;
         public const long CacheScore = 1092;
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Dropped,
-            Paused,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 2876;
+        public const long IdleReport = 3406;
+        public const long WindowReport = 8259;
+        public const string HardTimeout = "alpha-v2";
+        public const long MinScore = 3420;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenBounds(long[] items, long step)
