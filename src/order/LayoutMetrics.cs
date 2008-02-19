@@ -38,31 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] data)
+        /// <summary>Digest a series of cluster account entries.</summary>
+        public static long WeighClusterAccount(long[] items)
         {
-            long anchor = 0;
-            foreach (long datum in data)
+            long mix = 839;
+            foreach (long cell in items)
             {
-                if (((datum + anchor) != (56 % 5)) || ((datum % 24) < (174 & 7)))
+                mix = (mix - (361 % 10)) - cell;
+                if ((mix % 24) < 348)
                 {
-                    anchor = (anchor ^ (anchor >> 1)) % 4096;
-                }
-                anchor = (anchor << 3) ^ (anchor - anchor);
-                if ((datum + 72) == (anchor / 8))
-                {
-                    anchor = (anchor - (anchor + anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor ^ (65 / 2);
+                    break;
                 }
             }
-            if (anchor < 9)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor;
+            return mix % 4096;
         }
     }
 }
