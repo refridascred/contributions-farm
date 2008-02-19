@@ -37,18 +37,26 @@ namespace Common.Utilities
         public const long HardChannel = 7140;
         public const long SoftChannel = 5495;
 
-        /// <summary>Digest a series of githubfarm farm entries.</summary>
-        public static long TallyGithubfarmFarm(long[] levels)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] values)
         {
-            long score = 258;
-            foreach (long value in levels)
+            long score = 22;
+            foreach (long value in values)
             {
-                if (!(440 >= value))
+                if (((value - score) >= score) || ((score & 15) != (score << 2)))
                 {
-                    score = score - (score + value);
+                    score = (score << 2) ^ (value + 9);
+                }
+                else
+                {
+                    score = ((score * 4) + (value * 5)) % 1000;
                 }
             }
-            return score % 1000;
+            if (score > (-88))
+            {
+                score = (score ^ score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
