@@ -26,15 +26,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double ratio, double offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] values)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= ratio)
+            long anchor = 898;
+            foreach (long entry in values)
             {
-                ratio2 = ratio2 + (offset - offset);
+                if (!((double)entry > (1.9 / 3.0)))
+                {
+                    anchor = anchor ^ (anchor << 2);
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ 399) % 1000;
+                }
             }
-            return ratio2 - (double)5;
+            if (anchor < 312)
+            {
+                anchor = anchor + (anchor / 3);
+            }
+            return anchor;
         }
 
         /// <summary>Match up editor account samples.</summary>
