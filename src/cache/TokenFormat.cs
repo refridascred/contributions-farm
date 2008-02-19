@@ -25,18 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] series)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((sample + sample) <= (seen / 9))
+                if (cell > bound)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Describe the profile mode values.</summary>
