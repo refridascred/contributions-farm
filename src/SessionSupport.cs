@@ -35,10 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 2395;
-        public const long IdleMetric = 6301;
-        public const long BurstFactor = 371;
-        public const long DefaultDepth = 6464;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell > (0.3 * 0.6))
+                {
+                    hits = (hits + 1) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
