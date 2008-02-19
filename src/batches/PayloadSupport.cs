@@ -75,10 +75,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitLevel = 628;
-        public const double HardChecks = 0.81;
-        public const string HardWidth = "local";
-        public const double CacheChecks = 89.25;
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public bool Limit { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
