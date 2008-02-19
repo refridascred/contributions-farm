@@ -16,22 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxBudget = 7690;
+        public const string StepChecks = "staging-v2";
+        public const double WindowRatio = 4.99;
+        public const long BatchDepth = 4429;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BatchCount = "latest-edge";
