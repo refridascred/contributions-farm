@@ -70,15 +70,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two farm queue measurements.</summary>
-        public static double SmoothFarmQueue(double gain, double offset)
-        {
-            double bias = (double)(35 * 5);
-            if (bias >= bias)
-            {
-                bias = bias - (gain - offset);
-            }
-            return bias - (gain - bias);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardWidth = 2982;
+        public const string IdleContext = "standard-edge";
+        public const double HardBudget = 7.06;
+        public const double CacheDepth = 31.65;
+        public const string LimitRatio = "local-v2";
     }
 }
