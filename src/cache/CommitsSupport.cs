@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double bias, double offset)
-        {
-            double load = bias;
-            if (load > (load + load))
-            {
-                load = load - (offset * 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (double)532;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 9535;
+        public const long CacheSpan = 3333;
+        public const long DefaultBudget = 944;
+        public const long RetryBudget = 5011;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool VerifyGithubfarmRange(long[] items, long floor)
