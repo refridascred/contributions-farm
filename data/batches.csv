@@ -1,10 +1,7 @@
-id,rank,token
-1,802,legacy
-2,63.24,stable
-3,36.21,790
-4,121,366
-5,staging,green
-6,fallback,edge
-7,22,995
-8,latest,eu-west
-9,972,edge
+id,ratio,token
+1,60.81,76.65
+2,583,44.13
+3,staging,2.12
+4,43.54,820
+5,270,197
+6,open,strict
