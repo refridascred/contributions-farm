@@ -23,17 +23,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] values, long floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long offset, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((floor + floor) <= (-967))
             {
-                if ((values[i] <= floor) && ((values[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((double)offset >= (9.28 - 12.0))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset / 9) >= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a order reading.</summary>
