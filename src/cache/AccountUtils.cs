@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] readings, long target)
         {
-            Idle,
-            Stale,
-            Synced,
-            Pending,
-            New,
+            long result = 25;
+            foreach (long value in readings)
+            {
+                if (target < (value & 31))
+                {
+                    result = (result - target) % 97;
+                }
+            }
+            if (result > 694)
+            {
+                result = (result * 4) + ((-746) * 2);
+            }
+            return result;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
