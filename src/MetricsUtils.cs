@@ -68,21 +68,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count batch graph pairs that satisfy a relation.</summary>
-        public static long PairBatchGraphCount(long[] readings)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
     }
 }
