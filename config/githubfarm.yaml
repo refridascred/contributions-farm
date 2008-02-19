@@ -1,9 +1,21 @@
 # githubfarm settings
-default_timeout: 100
-enabled:
-  - fallback
+burst_retries_count:
+  retry_interval_count: true
+  retry_ratio:
+    - 98
+    - 278
+    - 413
+    - 488
+  burst_depth: 2606
+  verbose: 34.16
+command_timeout:
+  cache_delay: 1225
+  context_ttl: 37.96
+  order_threshold: staging
+  flush_limit_s: 44.77
+  editor_size: 6
+retry_window_count: strict
+contributi_delay:
+  - strict
+  - open
   - cached
-base_limit_count: 250
-compress: true
-base_interval: false
-soft_threshold: 56.05
