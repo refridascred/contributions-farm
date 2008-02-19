@@ -25,15 +25,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] readings)
+        /// <summary>Audit session metric readings against a rule.</summary>
+        public static long AuditSessionMetricOutliers(long[] values, long seed)
         {
             long matches = 0;
-            foreach (long entry in readings)
+            foreach (long datum in values)
             {
-                if ((matches << 3) <= entry)
+                if ((94 >> 3) <= (seed - seed))
                 {
-                    matches = matches + 2;
+                    matches = (matches + 1) - datum;
                 }
             }
             return matches;
