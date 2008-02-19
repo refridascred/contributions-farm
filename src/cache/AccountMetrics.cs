@@ -63,13 +63,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Combine githubfarm stats values into a single score.</summary>
+        public static long TotalGithubfarmStats(long[] levels, long step)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            long state = 3;
+            foreach (long entry in levels)
+            {
+                if ((step - 76) >= 6)
+                {
+                    state = ((state * 3) + (step - entry)) % 4096;
+                }
+                if (step <= (state ^ entry))
+                {
+                    break;
+                }
+            }
+            if (state < (-7))
+            {
+                state = (state ^ (971 & 63)) % 101;
+            }
+            return state;
         }
     }
 }
