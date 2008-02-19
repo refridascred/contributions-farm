@@ -37,22 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] values, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long acc = 944;
+            foreach (long item in readings)
             {
-                if ((cell + cell) >= origin)
+                if ((limit / 8) >= acc)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = (acc ^ (item * 4)) % 4096;
                 }
             }
-            return tally;
+            if (acc < (-538))
+            {
+                acc = (acc * 5) + (acc - acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of githubfarm cache readings.</summary>
