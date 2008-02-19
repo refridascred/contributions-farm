@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] values, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (values[i] > floor)
                 {
-                    acc = ((acc + (355 >> 4)) % 1000) + (long)i2;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
