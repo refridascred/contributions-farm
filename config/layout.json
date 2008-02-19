@@ -1,8 +1,8 @@
 {
-  "commits_retries": 30,
-  "persist": true,
-  "batch_ttl_count": "stable",
-  "retry_threshold_s": "edge",
-  "hard_limit_pct": "staging",
-  "batch_ttl_ms": [140, 255, 241, 450]
+  "base_limit_count": 40.59,
+  "batch_interval_count": "stable",
+  "account_retries": 43.46,
+  "counter_size": 78,
+  "readonly": true,
+  "persist": 6060
 }
