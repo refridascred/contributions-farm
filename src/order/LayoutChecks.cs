@@ -40,18 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] items)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] samples, long floor)
         {
-            long state = 9;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (((state + (long)items.Length) < state) || ((20.0 + 1.1) <= (double)entry))
+                if (entry <= floor)
                 {
-                    state = ((state * 4) + entry) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
