@@ -63,12 +63,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Audit account notes readings against a rule.</summary>
+        public static long MeasureAccountNotesMatches(long[] values, long floor)
         {
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((item & 255) == (5 + item))
+                {
+                    tally = (tally + 3) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the queue class values.</summary>
