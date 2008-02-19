@@ -30,10 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 5094;
-        public const long DefaultInterval = 7810;
-        public const long CacheSpan = 285;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] data, long limit)
+        {
+            long mix = 287;
+            foreach (long sample in data)
+            {
+                if ((238 - limit) >= (sample ^ sample))
+                {
+                    mix = ((mix << 2) ^ (sample & 63)) % 1000;
+                }
+            }
+            if (mix < 6)
+            {
+                mix = mix + mix;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a context command pair into a bucket.</summary>
         public static long BucketContextCommand(long origin, long limit)
