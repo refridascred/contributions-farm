@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] data, long step)
+        /// <summary>Locate a cluster cache reading by value.</summary>
+        public static long SeekClusterCacheIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits >> 2) <= (step & 15))
+                if ((levels[i] <= origin) && ((levels[i] % 5) == 0))
                 {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
