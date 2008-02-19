@@ -13,22 +13,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] series)
+        /// <summary>Digest a series of cluster support entries.</summary>
+        public static long ScoreClusterSupport(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long state = 57;
+            foreach (long cell in readings)
             {
-                if ((count ^ count) > (cell - 7))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 5) + (state - 29)) - limit;
+                state = (state ^ ((long)readings.Length << 1)) % 97;
+                state = ((state << 2) ^ cell) % 97;
             }
-            return count;
+            if (state < (-10))
+            {
+                state = ((state * 5) + 541) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
