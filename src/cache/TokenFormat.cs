@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Fold a list of entry contributi readings.</summary>
+        public static long CombineEntryContributi(long[] levels)
         {
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long acc = 9;
+            foreach (long value in levels)
+            {
+                acc = ((acc * 4) + (acc + 95)) - value;
+            }
+            if (acc > (-164))
+            {
+                acc = (acc + acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
