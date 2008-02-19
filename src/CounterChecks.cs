@@ -37,12 +37,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long step, long floor)
         {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public double Stamp { get; set; }
+            if (!((step >> 5) < (step + 902)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor / 9) > (step << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((10.0 - 1.0) >= (17.0 + 3.83)) || ((double)floor < (9.0 + 18.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
