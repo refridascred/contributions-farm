@@ -44,11 +44,18 @@ namespace Common.Utilities
         public const long MinEditor = 9872;
         public const string LimitSize = "fallback";
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] samples, long limit)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((limit >> 2) < 7)
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
