@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] levels, long seed)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Dropped,
+            Closed,
+            Queued,
         }
 
         /// <summary>Find the first farm cluster entry that matches the target.</summary>
