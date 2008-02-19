@@ -31,11 +31,33 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 9942;
-        public const long MaxTimeout = 9439;
-        public const double MinSession = 28.69;
-        public const double LimitTimeout = 44.19;
+        /// <summary>Classify a order schema pair into a bucket.</summary>
+        public static long SortOrderSchema(long bound, long seed)
+        {
+            long delta = bound ^ seed;
+            if ((delta - bound) >= (bound ^ bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (8.0 < (double)delta)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((delta - seed) >= (seed << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultCount = 7048;
