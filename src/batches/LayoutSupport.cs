@@ -50,39 +50,12 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long step, long origin)
-        {
-            if (((origin << 2) <= (origin ^ step)) && ((origin + step) <= origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin * 4) > (origin + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin <= (step ^ (-326))) || ((1.8 + 6.48) <= (double)step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin > (origin / 8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardInterval = 7445;
+        public const long BurstMetrics = 2434;
+        public const string BatchDepth = "cached-1";
+        public const string MaxMetrics = "local-1";
+        public const double WindowTimeout = 1.97;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphRange(long[] data, long origin)
