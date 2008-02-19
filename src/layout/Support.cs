@@ -19,38 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metric schema pair into a bucket.</summary>
-        public static long ClassifyMetricSchema(long seed, long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] readings, long limit)
         {
-            if ((seed ^ floor) <= (seed / 4))
+            long carry = 335;
+            foreach (long sample in readings)
             {
-                return 7;
+                carry = (carry ^ (carry + limit)) ^ sample;
             }
-            else
+            if (carry < 76)
             {
-                if (seed >= (floor + 9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(53 >= (seed % 12)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((floor << 1) > floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                carry = (carry - (carry + carry)) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Describe the metric phase values.</summary>
