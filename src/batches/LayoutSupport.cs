@@ -68,13 +68,18 @@ namespace Common.Utilities
         public const string IdleWidth = "staging-v2";
         public const long RetrySize = 8057;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] readings)
         {
-            Closed,
-            Ready,
-            Active,
-            New,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((datum - datum) < (matches << 3)) && ((datum + datum) != (datum & 255)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
