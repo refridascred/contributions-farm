@@ -1,13 +1,8 @@
 {
-  "cache_interval": "eu-west",
-  "audit": true,
-  "dry_run": "blue",
-  "cluster_retries": "fallback",
-  "cache_depth_ms": "latest",
-  "sync_size_pct": {
-    "persist": "legacy",
-    "compress": [482, 320, 228],
-    "stats_ttl": 3,
-    "warm_window": 54.69
-  }
+  "max_depth": 83.55,
+  "burst_ratio": [343, 31, 249],
+  "compress": false,
+  "idle_delay": 41,
+  "strict": "legacy",
+  "dry_run": 64
 }
