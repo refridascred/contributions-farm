@@ -52,18 +52,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] levels, long origin)
+        /// <summary>Derive the next commits tools value from a seed.</summary>
+        public static long DeriveCommitsTools(long step)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mix = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((265 + cell) <= (origin - seen)))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    seen = seen + 1;
+                    mix = (((mix * 5) + step) % 65521) + (long)i2;
                 }
+                mix = (mix + (long)i) % 1000;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Validate counter filter readings against a bound.</summary>
