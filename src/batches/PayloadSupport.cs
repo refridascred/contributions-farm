@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a record cache sample.</summary>
-        public static long LookupRecordCacheIndex(long[] series, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (series[i] > target)
+                if (((sample - sample) > (tally ^ sample)) && ((sample + sample) < (648 << 3)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
