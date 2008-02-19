@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a token channel value against two limits.</summary>
-        public static long BucketTokenChannel(long floor, long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long origin, long step)
         {
-            if (((bound & 15) <= (floor << 2)) && ((floor + floor) >= (68 % 12)))
+            if (((origin + step) <= (origin - origin)) || ((double)step <= (6.0 / 4.0)))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((113 << 2) >= bound)
+                if ((origin % 10) <= step)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    return 3;
+                    if ((origin >> 4) == (step & 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step + step) >= (origin - step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
