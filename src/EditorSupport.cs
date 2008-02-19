@@ -51,13 +51,26 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long score = -7;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    score = (score ^ (7 - (long)i)) % 97;
+                }
+                if ((double)entry == (0.4 / 3.0))
+                {
+                    score = (score * 2) + (23 / 4);
+                }
+            }
+            if (score < 8)
+            {
+                score = (score + (36 - score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Blend two cache githubfarm measurements.</summary>
