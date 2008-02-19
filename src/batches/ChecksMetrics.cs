@@ -32,22 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] data, long floor)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] series, long seed)
         {
-            long carry = 9;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)data.Length > (106 + floor)) && ((floor << 3) != (carry ^ carry)))
+                if ((series[i] >= seed) && ((series[i] % 5) == 0))
                 {
-                    carry = (carry - (carry % 3)) % 255;
-                }
-                else
-                {
-                    carry = carry - (value - floor);
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
