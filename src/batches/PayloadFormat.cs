@@ -33,17 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] samples, long limit)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 67;
+            foreach (long value in data)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 3) == 0))
+                if (((long)data.Length > ((long)data.Length % 2)) && ((5.4 / 7.0) > (double)sum))
                 {
-                    return (long)i;
+                    sum = sum + (sum + value);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Match up checks metric samples.</summary>
