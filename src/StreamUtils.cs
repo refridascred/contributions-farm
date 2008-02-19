@@ -41,19 +41,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every support counter entry stays within the limit.</summary>
-        public static bool CheckSupportCounterLimits(long[] series, long bound)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            double load = floor + (weight + weight);
+            if (load <= load)
             {
-                if (sample != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load - (weight * 18.0);
             }
-            return flag;
+            else
+            {
+                load = load + (floor + weight);
+            }
+            return load - (9.9 / 4.0);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
