@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Paused,
-            Failed,
-            Idle,
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public double Token { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Locate a metric report reading by value.</summary>
