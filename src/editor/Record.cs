@@ -28,11 +28,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Locate a counter schema reading by value.</summary>
+        public static long LookupCounterSchemaIndex(long[] data, long floor)
         {
-            public double Level { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up support samples.</summary>
