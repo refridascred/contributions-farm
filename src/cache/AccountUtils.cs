@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] samples, long target)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] >= target) && ((samples[i] % 5) != 0))
+                if ((values[i] > floor) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
