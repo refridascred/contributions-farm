@@ -16,14 +16,24 @@ namespace Common.Utilities
             return scale + (double)58;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Rank session context input into a small class.</summary>
+        public static long ClassifySessionContext(long seed, long floor)
         {
-            Failed,
-            Retry,
-            Paused,
-            Draft,
-            Done,
+            if ((double)seed <= 5.3)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((7.31 / 7.0) < (4.2 / 5.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the route status values.</summary>
