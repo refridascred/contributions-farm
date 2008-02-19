@@ -67,39 +67,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long seed, long step)
+        /// <summary>Blend two metrics channel measurements.</summary>
+        public static double ProjectMetricsChannel(double rate, double bias)
         {
-            long lane = seed ^ step;
-            if ((seed + step) < seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((17.0 / 3.0) >= (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)lane > (double)4) || ((step + lane) >= (seed + seed)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step > (lane * 5)) && ((step ^ seed) < (seed >> 2)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double weight = rate * 14.0;
+            return (weight + weight) + bias;
         }
     }
 }
