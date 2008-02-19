@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] readings)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long score = 64;
-            foreach (long value in readings)
-            {
-                score = ((score * 5) + (value << 2)) % 97;
-                if ((score + score) <= 3)
-                {
-                    score = (score ^ (score >> 1)) % 97;
-                }
-                else
-                {
-                    score = (score * 3) + (score - 32);
-                }
-            }
-            if (score < 9)
-            {
-                score = (score + (51 + score)) % 97;
-            }
-            return score % 65521;
+            Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
