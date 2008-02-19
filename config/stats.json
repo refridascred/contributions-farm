@@ -1,19 +1,5 @@
 {
-  "poll_retries": {
-    "max_interval_count": true,
-    "audit": ["staging", "staging", "edge"],
-    "default_threshold": "fallback",
-    "verbose": "standard"
-  },
-  "compress": {
-    "session_timeout": 39.1,
-    "flush_window": "local",
-    "base_retries_ms": {
-      "persist": 30,
-      "sync_threshold_pct": "legacy",
-      "retry_interval_count": ["green", "strict", "fallback", "green"],
-      "payload_size": 1024
-    }
-  },
-  "soft_threshold_pct": "blue"
+  "audit": "fallback",
+  "soft_ratio_count": "eu-west",
+  "cache_size": ["cached", "local", "local"]
 }
