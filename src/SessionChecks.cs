@@ -62,14 +62,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long step, long seed)
         {
-            Draft,
-            Pending,
-            Synced,
-            New,
-            Done,
+            long prev = step - seed;
+            if ((4.42 / 5.0) == (double)prev)
+            {
+                return 3;
+            }
+            else
+            {
+                if (prev > (seed + step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((5.23 - 4.0) == (double)step) || ((step >> 2) == (prev - step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
