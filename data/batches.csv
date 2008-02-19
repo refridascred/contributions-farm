@@ -1,9 +1,8 @@
-id,count,ratio,state,label
-1,73.96,latest,15.46,staging
-2,547,166,standard,81.4
-3,712,361,231,local
-4,legacy,25.36,48.46,349
-5,344,primary,2.01,32.97
-6,green,805,69,13.82
-7,58,52.83,813,96
-8,65.63,39.84,822,498
+id,active,label
+1,634,staging
+2,222,34.31
+3,staging,69.34
+4,936,171
+5,922,blue
+6,legacy,151
+7,stable,17.6
