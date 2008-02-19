@@ -16,15 +16,31 @@ namespace Common.Utilities
             return ratio - (offset * 9.65);
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long target, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
+            if (!(target >= (limit + limit)))
             {
-                result = ((result * 4) + (long)i) % 97;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((295 + limit) == (limit << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((0.6 / 4.0) >= (double)limit) && ((double)target != (15.0 * 3.8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a profile summary.</summary>
