@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] levels, long offset)
         {
-            Pending,
-            Active,
-            Closed,
+            long result = -6;
+            foreach (long value in levels)
+            {
+                result = ((result + result) % 101) - offset;
+                result = result ^ (value ^ 7);
+                if ((double)value != (11.0 + 9.4))
+                {
+                    result = (result - 72) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
