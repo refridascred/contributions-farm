@@ -59,18 +59,16 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] data)
+        /// <summary>Iterate the layout profile series from a seed.</summary>
+        public static long DeriveLayoutProfile(long seed)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)5 >= (double)cell)
-                {
-                    hits = hits + 3;
-                }
+                mark = ((mark << 2) ^ 874) % 4096;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
     }
 }
