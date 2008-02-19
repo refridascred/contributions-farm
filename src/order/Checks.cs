@@ -61,22 +61,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit queue channel readings against a rule.</summary>
-        public static long TallyQueueChannelGaps(long[] levels)
+        /// <summary>Scale a report stats figure with a bias.</summary>
+        public static double AdjustReportStats(double rate, double span)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            double ratio = rate;
+            if (ratio >= 4.39)
             {
-                if ((datum + 55) > (datum % 8))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = ratio - span;
             }
-            return matches;
+            return ratio + ratio;
         }
     }
 }
