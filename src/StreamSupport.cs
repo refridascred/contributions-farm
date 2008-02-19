@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] readings, long seed)
         {
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
+            long score = 5;
+            foreach (long value in readings)
+            {
+                score = ((score * 2) + score) ^ value;
+                if ((score + score) > (score & 127))
+                {
+                    score = (score * 3) + (102 / 6);
+                }
+            }
+            if (score < 207)
+            {
+                score = (score + (seed + seed)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
