@@ -22,23 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window already readings against a rule.</summary>
-        public static long CountWindowAlreadyGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (hits >= (hits & 63))
-                {
-                    hits = (hits + 1) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheMetric = "standard-edge";
+        public const double MaxMetric = 66.49;
+        public const long SoftMetric = 958;
+        public const long BaseMetric = 1808;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutHits(long[] data)
