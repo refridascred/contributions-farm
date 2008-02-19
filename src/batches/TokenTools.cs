@@ -46,17 +46,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first farm cluster entry that matches the target.</summary>
-        public static long SeekFarmClusterIndex(long[] series, long step)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Idle,
+            Dropped,
+            Retry,
+            Pending,
         }
     }
 }
