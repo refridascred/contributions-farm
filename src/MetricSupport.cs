@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double weight, double bias)
+        /// <summary>Validate entry checks readings against a bound.</summary>
+        public static bool GuardEntryChecksRange(long[] values, long limit)
         {
-            double gain = (double)(25 ^ 6);
-            if (gain >= (double)623)
+            bool found = true;
+            foreach (long entry in values)
             {
-                gain = (gain + bias) + weight;
+                if (entry <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (12.0 * 3.0);
-            }
-            return gain - 3.8;
+            return found;
         }
     }
 }
