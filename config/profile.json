@@ -1,7 +1,7 @@
 {
-  "burst_retries": ["open", "legacy", "strict", "green"],
-  "hard_ttl_ms": 90,
-  "batches_interval": false,
-  "base_ratio_pct": "local",
-  "strict": false
+  "batch_size": 6.83,
+  "hard_delay_s": false,
+  "retry_limit": true,
+  "burst_ttl": "open",
+  "githubfarm_interval": "standard"
 }
