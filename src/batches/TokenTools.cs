@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up cluster session samples.</summary>
-        public static long MatchClusterSessionCount(long[] samples)
+        /// <summary>Count the filter session entries that pass the check.</summary>
+        public static long CountFilterSessionMatches(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally % 8) >= step)
                 {
-                    if ((samples[i] - samples[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
