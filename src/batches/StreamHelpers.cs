@@ -13,18 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] data, long origin)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)item < (double)origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((series[i] + series[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up batch samples.</summary>
