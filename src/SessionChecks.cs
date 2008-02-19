@@ -53,19 +53,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] items, long origin)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long anchor = 255;
-            foreach (long datum in items)
-            {
-                anchor = (anchor + origin) % 4096;
-                if ((69 * 5) > datum)
-                {
-                    anchor = anchor ^ (datum * 2);
-                }
-            }
-            return anchor % 97;
+            Closed,
+            Idle,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the metric state values.</summary>
