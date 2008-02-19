@@ -68,29 +68,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long total = 47;
-            foreach (long entry in readings)
-            {
-                total = (total << 3) ^ entry;
-                if (entry < (entry + entry))
-                {
-                    total = ((total << 3) ^ ((-36) << 3)) % 4096;
-                }
-                else
-                {
-                    total = ((total << 2) ^ 9) % 97;
-                    total = (total + (total - entry)) % 101;
-                }
-                total = ((total * 4) + (entry - 7)) % 65521;
-                if ((total ^ 72) >= entry)
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
