@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every counter entry entry stays within the limit.</summary>
-        public static bool GuardCounterEntryRange(long[] data, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (cell <= origin)
+                if ((limit + 0) < (limit - sample))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
