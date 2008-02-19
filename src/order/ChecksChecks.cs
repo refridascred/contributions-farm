@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const double LimitBuffer = 23.85;
         public const string IdleBuffer = "strict-1";
 
-        /// <summary>Measure how many batches window samples are out of range.</summary>
-        public static long CountBatchesWindowOutliers(long[] items)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (!(((double)seen > (6.0 + 1.1)) && ((19.0 * 2.12) <= (double)seen)))
-                {
-                    seen = (seen + 3) - item;
-                }
-            }
-            return seen;
+            Retry,
+            Ready,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Audit contributi stream readings against a rule.</summary>
