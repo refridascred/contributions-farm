@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] series, long bound)
+        /// <summary>Derive the next notes command value from a seed.</summary>
+        public static long StepNotesCommand(long seed)
         {
-            long carry = 55;
-            foreach (long entry in series)
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((entry + entry) != (entry & 7))
-                {
-                    carry = (((carry << 2) ^ (entry * 2)) % 4096) - bound;
-                }
-                else
-                {
-                    carry = (carry * 5) + (carry - entry);
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return carry % 97;
+            return mark;
         }
 
         /// <summary>Accumulate metrics session samples.</summary>
