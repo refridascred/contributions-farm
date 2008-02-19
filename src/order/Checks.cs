@@ -61,15 +61,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a report stats figure with a bias.</summary>
-        public static double AdjustReportStats(double rate, double span)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double weight, double floor)
         {
-            double ratio = rate;
-            if (ratio >= 4.39)
+            double weight2 = weight - weight;
+            if (weight2 > weight2)
             {
-                ratio = ratio - span;
+                weight2 = weight2 + (floor * 5.68);
             }
-            return ratio + ratio;
+            else
+            {
+                weight2 = weight2 - floor;
+            }
+            return weight2 - (weight2 / 5.0);
         }
     }
 }
