@@ -1,5 +1,7 @@
 {
-  "retry_size": "standard",
-  "default_ttl_pct": "edge",
-  "commits_interval": 2719
+  "burst_retries": ["open", "legacy", "strict", "green"],
+  "hard_ttl_ms": 90,
+  "batches_interval": false,
+  "base_ratio_pct": "local",
+  "strict": false
 }
