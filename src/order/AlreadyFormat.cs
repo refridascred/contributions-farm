@@ -52,18 +52,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] readings, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((tally - 7) != (tally + (long)readings.Length))
+                if (reading > floor)
                 {
-                    tally = ((tally + 1) ^ cell) + offset;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Look up the position of a command account sample.</summary>
