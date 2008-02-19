@@ -39,14 +39,39 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Grade a account route value against two limits.</summary>
+        public static long ClassifyAccountRoute(long step, long target)
         {
-            Locked,
-            Retry,
-            Active,
-            New,
-            Stale,
+            long next = step + target;
+            if ((step + next) != (next * 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target / 4) >= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step <= (next << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)next <= (double)step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
