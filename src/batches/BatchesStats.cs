@@ -53,10 +53,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 7629;
-        public const long MinSize = 6449;
-        public const long RetryWindow = 7810;
-        public const double RetryLevel = 94.61;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark << 2) ^ (mark ^ mark)) % 97;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
