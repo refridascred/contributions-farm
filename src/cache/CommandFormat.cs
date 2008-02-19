@@ -11,31 +11,22 @@ namespace Common.Utilities
         public const double LimitDepth = 69.42;
         public const long MinQueue = 209;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long limit, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] levels)
         {
-            if (origin >= (limit * 4))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin < (origin % 10))
+                if ((3.0 + 13.0) <= (double)tally)
                 {
-                    return 4;
+                    tally = (tally + 2) ^ entry;
                 }
                 else
                 {
-                    if ((limit << 1) > 94)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of token editor readings.</summary>
