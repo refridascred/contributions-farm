@@ -1,10 +1,5 @@
 {
-  "base_retries_ms": 51.39,
-  "cache_size_ms": 30,
-  "batch_ttl_pct": "local",
-  "checks_timeout": {
-    "commits_depth": 51.29,
-    "soft_depth_ms": "open",
-    "burst_window_ms": true
-  }
+  "max_ratio_pct": 13,
+  "entry_ratio": 250,
+  "batch_depth_count": [196, 417, 341, 213]
 }
