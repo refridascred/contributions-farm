@@ -54,22 +54,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] levels, long limit)
+        /// <summary>Digest a series of stats cluster entries.</summary>
+        public static long DigestStatsCluster(long[] readings)
         {
-            long anchor = 513;
-            foreach (long value in levels)
+            long acc = 910;
+            foreach (long cell in readings)
             {
-                if ((anchor + limit) < (limit * 2))
+                acc = (acc + acc) % 1000;
+                if (130 > (cell << 2))
                 {
-                    anchor = ((anchor ^ (limit + limit)) % 101) - value;
+                    acc = acc - ((long)readings.Length / 6);
                 }
             }
-            if (anchor > 87)
+            if (acc < 883)
             {
-                anchor = (anchor << 2) ^ (2 * 5);
+                acc = acc ^ acc;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Hold a already entry.</summary>
