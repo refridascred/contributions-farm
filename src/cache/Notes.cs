@@ -27,39 +27,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long step, long offset)
-        {
-            if ((offset >= (offset >> 4)) && ((step << 2) == (559 ^ 8)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((-79) % 60) < (step + 31))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset & 15) < (offset + offset)) || ((offset >> 1) > (48 << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (4.0 <= (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 5891;
+        public const long StepSize = 6835;
+        public const long LimitPayload = 1815;
+        public const long SoftDepth = 617;
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
