@@ -1,11 +1,5 @@
 # githubfarm settings
-commits_size: true
-schema_retries:
-  - blue
-  - standard
-  - blue
-  - blue
-persist: local
-default_timeout: green
-soft_window: 46.63
-queue_size: false
+retry_depth: true
+support_interval: 250
+audit: edge
+default_window: open
