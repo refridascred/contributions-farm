@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long mix = -311;
-            foreach (long reading in levels)
-            {
-                if ((mix % 8) >= (reading >> 3))
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix * 5) + (81 & 63);
-                }
-                mix = (mix - (mix + reading)) % 97;
-                if (mix > (reading ^ reading))
-                {
-                    break;
-                }
-            }
-            if (mix > 88)
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix;
+            Synced,
+            Retry,
+            Closed,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
