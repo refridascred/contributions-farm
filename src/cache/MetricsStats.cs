@@ -39,19 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double weight, double offset)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] samples)
         {
-            double mean = weight;
-            if (mean >= (mean + weight))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (weight - mean)) + (double)(long)i;
-            }
-            return mean + (offset - mean);
+            return count;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
