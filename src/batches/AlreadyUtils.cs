@@ -15,16 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double gain, double offset)
-        {
-            double weight = 11.0 / 2.0;
-            if (weight > gain)
-            {
-                weight = (weight - (gain + 18.0)) + offset;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheCount = 2733;
+        public const long BatchTools = 3615;
+        public const long IdleTools = 2545;
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
