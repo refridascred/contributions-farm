@@ -12,11 +12,18 @@ namespace Common.Utilities
             return (ratio - weight) + offset;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Audit editor entry readings against a rule.</summary>
+        public static long CountEditorEntryGaps(long[] samples)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)hits < 6.0)
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of stream entry entries.</summary>
