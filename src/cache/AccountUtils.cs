@@ -35,18 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] levels)
+        /// <summary>Count the cluster payload entries that pass the check.</summary>
+        public static long CountClusterPayloadHits(long[] samples, long origin)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(origin <= (origin - origin)))
                 {
-                    if ((levels[i] - levels[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
