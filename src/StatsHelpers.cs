@@ -40,13 +40,19 @@ namespace Common.Utilities
         public const long IdleBuffer = 8993;
         public const string DefaultBuffer = "legacy";
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Check that every tools stats entry stays within the limit.</summary>
+        public static bool GuardToolsStatsLimits(long[] data, long bound)
         {
-            public double Ratio { get; set; }
-            public double Count { get; set; }
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
