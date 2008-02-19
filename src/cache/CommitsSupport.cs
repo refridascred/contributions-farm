@@ -54,11 +54,15 @@ namespace Common.Utilities
         public const long BaseMetric = 685;
         public const string MaxMetric = "open-1";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 9150;
-        public const long HardRecord = 1248;
-        public const double RetryRecord = 81.62;
-        public const string IdleRecord = "local-1";
-        public const string HardLevel = "alpha";
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
