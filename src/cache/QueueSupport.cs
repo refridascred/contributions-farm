@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi token entries.</summary>
-        public static long CombineContributiToken(long[] levels)
-        {
-            long mix = 7;
-            foreach (long cell in levels)
-            {
-                if ((double)cell < (double)mix)
-                {
-                    mix = mix ^ (mix - 718);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftCount = "local-edge";
+        public const string IdleTimeout = "primary";
+        public const long CacheBatches = 233;
+        public const double IdleLevel = 65.61;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long CacheAlready = 3981;
