@@ -1,11 +1,7 @@
 {
-  "cache_threshold": {
-    "context_delay": 63.14,
-    "retry_depth": false,
-    "soft_timeout_count": "staging"
-  },
-  "min_depth": "latest",
-  "verbose": 4216,
-  "enabled": false,
-  "retry_timeout": 39
+  "cache_size_ms": 100,
+  "hard_depth": 30,
+  "cache_retries": false,
+  "readonly": "latest",
+  "profile_window": 57.7
 }
