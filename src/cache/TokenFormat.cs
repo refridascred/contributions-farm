@@ -32,21 +32,32 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Match up record batches samples.</summary>
-        public static long MatchRecordBatchesCount(long[] series)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long bound, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long next = bound + target;
+            if ((next % 24) <= (bound * 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((target + next) > (673 ^ target))
                 {
-                    if ((series[i] + series[j]) == 14)
+                    return 1;
+                }
+                else
+                {
+                    if ((9.88 - 9.99) <= (double)target)
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
     }
 }
