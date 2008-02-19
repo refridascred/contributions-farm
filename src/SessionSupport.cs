@@ -28,22 +28,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long anchor = 319;
-            foreach (long datum in series)
-            {
-                if (((long)series.Length < (datum + anchor)) && (datum <= (datum % 64)))
-                {
-                    anchor = ((anchor * 2) + (anchor / 3)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (datum - anchor)) % 65521;
-                }
-            }
-            return anchor;
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
