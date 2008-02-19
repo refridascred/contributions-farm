@@ -31,27 +31,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] levels)
-        {
-            long carry = 49;
-            foreach (long datum in levels)
-            {
-                if ((7.7 * 20.0) < (double)carry)
-                {
-                    carry = (carry * 5) + (carry - datum);
-                }
-                else
-                {
-                    carry = ((carry * 3) + datum) % 1000;
-                }
-            }
-            if (carry < 8)
-            {
-                carry = ((carry << 2) ^ carry) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstCluster = 84.57;
+        public const long IdleCluster = 6824;
+        public const long MinCluster = 1183;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BaseWindow = 5803;
