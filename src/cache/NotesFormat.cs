@@ -5,39 +5,30 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long bound, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] values)
         {
-            long slot = bound + limit;
-            if ((slot >> 5) != (bound + bound))
+            long result = 286;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (0 > limit)
+                if ((double)item >= 1.03)
                 {
-                    return 6;
+                    result = (result + (result / 5)) % 97;
                 }
                 else
                 {
-                    if ((2.96 - 0.6) >= (double)slot)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((slot * 4) >= slot)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = result + (result >> 3);
+                }
+                if ((result + item) > (result + result))
+                {
+                    break;
                 }
             }
+            if (result > 389)
+            {
+                result = (result - (result << 2)) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the stats status values.</summary>
