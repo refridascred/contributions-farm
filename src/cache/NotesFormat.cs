@@ -16,35 +16,28 @@ namespace Common.Utilities
             return scale + (double)58;
         }
 
-        /// <summary>Classify a queue farm pair into a bucket.</summary>
-        public static long SortQueueFarm(long target, long offset)
+        /// <summary>Rank stream buffer input into a small class.</summary>
+        public static long SortStreamBuffer(long bound, long offset)
         {
-            if (offset < (offset + target))
+            if ((bound > (offset ^ bound)) || ((double)bound >= (0.3 / 2.0)))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if (!((offset - target) >= (offset & 3)))
+                if ((5.0 - 0.12) > (double)bound)
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if (!((6.0 + 10.0) > (double)target))
+                    if ((0.8 + 2.0) == (double)bound)
                     {
                         return 1;
                     }
                     else
                     {
-                        if (((target % 16) < (target - offset)) && (target > (target * 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 3;
                     }
                 }
             }
