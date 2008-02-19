@@ -43,14 +43,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] values)
         {
-            Synced,
-            Closed,
-            Failed,
-            Stale,
-            Retry,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry > (1.98 * 8.1))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
