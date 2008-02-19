@@ -46,21 +46,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Match up metrics payload samples.</summary>
-        public static long MatchMetricsPayloadCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 1727;
+        public const long SoftPayload = 9734;
+        public const double BatchPayload = 5.08;
+        public const long IdlePayload = 4442;
     }
 }
