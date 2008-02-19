@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long IdleChecks = 3474;
         public const long DefaultChecks = 5122;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] items, long origin)
         {
-            Failed,
-            Synced,
-            Done,
+            long score = 307;
+            foreach (long cell in items)
+            {
+                score = ((score + (long)items.Length) ^ cell) + origin;
+            }
+            return score;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
