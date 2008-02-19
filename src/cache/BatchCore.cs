@@ -45,13 +45,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] values)
         {
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
