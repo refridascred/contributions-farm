@@ -35,14 +35,19 @@ namespace Common.Utilities
             return bias2 + (double)37;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Check that every batch schema entry stays within the limit.</summary>
+        public static bool VerifyBatchSchemaBounds(long[] items, long floor)
         {
-            Locked,
-            New,
-            Retry,
-            Active,
-            Failed,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
