@@ -1,5 +1,5 @@
 {
-  "session_window": 15.51,
-  "notes_depth": "latest",
-  "batch_ratio_ms": 100
+  "warm_timeout": false,
+  "notes_limit": "local",
+  "persist": 4.31
 }
