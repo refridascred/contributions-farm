@@ -1,16 +1,8 @@
 {
-  "compress": 52.58,
-  "flush_depth": {
-    "entry_ratio": {
-      "report_ratio": true,
-      "batch_delay_ms": 0.02,
-      "batch_ratio_pct": true
-    },
-    "cache_window": 35.4,
-    "default_capacity": 20.84,
-    "soft_ratio": 8314,
-    "context_interval": 7346
-  },
-  "format_interval": false,
-  "default_size_count": [37, 244, 38, 95]
+  "graph_timeout": "eu-west",
+  "poll_ttl_count": "fallback",
+  "format_ttl": 9467,
+  "hard_delay": 58,
+  "notes_ttl": "eu-west",
+  "min_depth_count": 62.17
 }
