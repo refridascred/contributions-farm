@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public bool Ratio { get; set; }
+            long score = 64;
+            foreach (long value in readings)
+            {
+                score = ((score * 5) + (value << 2)) % 97;
+                if ((score + score) <= 3)
+                {
+                    score = (score ^ (score >> 1)) % 97;
+                }
+                else
+                {
+                    score = (score * 3) + (score - 32);
+                }
+            }
+            if (score < 9)
+            {
+                score = (score + (51 + score)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
