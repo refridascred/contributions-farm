@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long floor, long bound)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            if (!((floor - 532) == (floor / 5)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (floor > bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + bound) <= (-93))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (3 > (bound ^ 15))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
