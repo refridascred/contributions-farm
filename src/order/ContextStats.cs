@@ -24,18 +24,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] series)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long mark = 45;
+            foreach (long reading in readings)
             {
-                if (((matches - matches) > (matches * 4)) && ((datum + datum) <= (matches + matches)))
+                mark = mark ^ reading;
+                if ((10.0 * 0.08) >= (double)origin)
                 {
-                    matches = matches + 3;
+                    mark = (mark ^ (reading * 3)) % 255;
                 }
+                mark = ((mark * 5) + 65) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Rank githubfarm report input into a small class.</summary>
