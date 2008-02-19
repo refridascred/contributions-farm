@@ -37,18 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] samples, long origin)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading >= 8.1)
-                {
-                    seen = (seen + 3) - origin;
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
