@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] readings)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 70;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)result <= (6.0 / 6.0))
                 {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result << 3) ^ (cell * 5)) + origin;
                 }
             }
-            return tally;
+            return result % 1000;
         }
 
         /// <summary>Fold a list of batch report readings.</summary>
