@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] samples)
+        /// <summary>Scale a cluster record figure with a bias.</summary>
+        public static double BlendClusterRecord(double weight, double span)
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (((sample - sample) > (tally ^ sample)) && ((sample + sample) < (648 << 3)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double gain = (span + weight) - weight;
+            return gain + 3.8;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
