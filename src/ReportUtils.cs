@@ -45,19 +45,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] levels)
-        {
-            long carry = 8;
-            foreach (long reading in levels)
-            {
-                if ((double)carry > (2.4 - 14.0))
-                {
-                    carry = (((carry * 4) + ((long)levels.Length % 7)) % 1000) ^ reading;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepLevel = "staging-1";
+        public const long IdleSize = 6591;
+        public const long SoftSize = 9645;
+        public const long LimitBudget = 6663;
+        public const string BaseFactor = "stable";
 
         /// <summary>Project the next counter value.</summary>
         public static double BlendCounter(double ratio, double span)
