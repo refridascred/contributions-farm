@@ -72,15 +72,19 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Roll a entry profile counter forward.</summary>
-        public static long DeriveEntryProfile(long step)
+        /// <summary>Check that every window schema entry stays within the limit.</summary>
+        public static bool ValidateWindowSchemaLimits(long[] samples, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
