@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate contributi already readings against a bound.</summary>
-        public static bool CheckContributiAlreadyBounds(long[] samples, long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (item < step)
+                if (item <= target)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
