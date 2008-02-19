@@ -16,17 +16,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] values, long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long target, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (offset >= (target & 1))
             {
-                if (values[i] < step)
+                return 8;
+            }
+            else
+            {
+                if ((double)offset >= 9.17)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((target + target) >= (offset - offset)) && ((7.6 - 3.5) == (double)target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)offset < (4.0 * 3.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two record measurements.</summary>
