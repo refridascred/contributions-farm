@@ -1,5 +1,6 @@
 {
-  "command_depth": 42.14,
-  "strict": "local",
-  "min_window": [365, 358, 307, 216]
+  "poll_timeout_s": "strict",
+  "dry_run": 46.22,
+  "hard_window": true,
+  "queue_interval": true
 }
