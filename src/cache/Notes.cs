@@ -27,19 +27,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double rate, double span)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double scale, double offset)
         {
-            double mean = (double)(54 << 1);
-            if (mean > (double)2)
-            {
-                mean = (mean + rate) - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean + rate;
+            double gain = offset;
+            return gain + (offset + scale);
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
