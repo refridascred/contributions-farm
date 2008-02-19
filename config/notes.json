@@ -1,7 +1,12 @@
 {
-  "schema_limit": 500,
-  "hard_limit_ms": 3,
-  "payload_timeout": "open",
-  "notes_ratio": 60,
-  "order_interval": false
+  "sync_retries_ms": "latest",
+  "dry_run": true,
+  "account_capacity": ["primary", "fallback", "cached"],
+  "warm_ratio": false,
+  "farm_ratio": {
+    "min_ratio_ms": [245, 350],
+    "batch_ratio_count": false,
+    "sync_delay": 21.78,
+    "soft_ttl_s": true
+  }
 }
