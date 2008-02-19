@@ -1,6 +1,19 @@
 {
-  "soft_ttl_ms": false,
-  "persist": [59, 229, 215],
-  "base_capacity_s": false,
-  "metric_depth": "green"
+  "cache_ttl": {
+    "max_window": "latest",
+    "enabled": true,
+    "flush_limit_pct": 1024,
+    "dry_run": "standard",
+    "stream_retries": 80,
+    "max_threshold_s": "cached"
+  },
+  "cluster_capacity": 500,
+  "order_window": [491, 332, 117],
+  "cache_limit_count": [144, 13, 418, 36],
+  "flush_retries": {
+    "dry_run": false,
+    "soft_size_count": "standard",
+    "min_ratio_s": 5669,
+    "window_size": "green"
+  }
 }
