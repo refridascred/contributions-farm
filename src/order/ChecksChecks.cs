@@ -38,12 +38,13 @@ namespace Common.Utilities
             return (weight + (double)1) + rate;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
+            Paused,
+            Closed,
+            Retry,
+            Ready,
         }
     }
 }
