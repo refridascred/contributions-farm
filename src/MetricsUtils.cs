@@ -43,32 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long limit, long step)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double scale, double offset)
         {
-            long slot = limit ^ step;
-            if ((6 << 2) != (step % 60))
+            double scale2 = offset / 8.0;
+            if (scale2 >= offset)
             {
-                return 2;
+                scale2 = scale2 - scale2;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((slot <= (limit - limit)) || ((4 & 3) <= (slot - slot)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((18 % 97) >= (limit + 5)) && (slot <= (limit % 24)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                scale2 = (scale2 - scale) + (double)(long)i;
             }
+            return scale2 - scale;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
