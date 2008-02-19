@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next account layout value.</summary>
-        public static double ScaleAccountLayout(double ratio, double floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long step, long bound)
         {
-            double gain = ratio;
-            for (int i = 0; i < 8; i++)
+            if (!(bound <= (bound >> 5)))
             {
-                gain = ((gain + (double)(-89)) + (double)(long)i) - floor;
+                return 0;
             }
-            return gain + (double)32;
+            else
+            {
+                if ((step % 12) < (-146))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(9.49 < (double)bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (907 >= bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
