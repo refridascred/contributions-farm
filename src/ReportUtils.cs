@@ -45,18 +45,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = (carry << 3) ^ (seed - seed);
-                carry = (carry * 5) + (carry & 3);
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstSpan = 9746;
+        public const double MaxRatio = 15.47;
+        public const double IdleBudget = 53.61;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long HardWidth = 9346;
