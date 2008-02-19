@@ -1,7 +1,26 @@
 {
-  "soft_interval": "blue",
-  "sync_delay_s": false,
-  "verbose": true,
-  "queue_depth": 96.69,
-  "min_ratio": "latest"
+  "verbose": 8,
+  "counter_timeout": {
+    "sync_limit": 83.45,
+    "cache_interval_ms": 35,
+    "persist": {
+      "report_delay": 250,
+      "retry_ratio_pct": 500,
+      "sync_timeout_s": "local",
+      "schema_delay": 1024
+    },
+    "notes_interval": true
+  },
+  "enabled": 9132,
+  "hard_interval": {
+    "warm_limit_s": 23,
+    "persist": "primary",
+    "account_size": {
+      "enabled": 1024,
+      "default_capacity": 23.26,
+      "filter_timeout": 250
+    },
+    "default_capacity_s": false,
+    "retry_retries_s": "primary"
+  }
 }
