@@ -40,19 +40,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((seen - 7) <= (step % 10))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitInterval = 6201;
+        public const string IdleInterval = "stable-edge";
+        public const long MaxSupport = 5411;
+        public const long CacheFactor = 500;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
