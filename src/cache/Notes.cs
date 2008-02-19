@@ -31,11 +31,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 398;
-        public const long DefaultChannel = 9367;
-        public const long HardChannel = 7140;
-        public const long SoftChannel = 5495;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double rate, double span)
+        {
+            double mean = (double)(54 << 1);
+            if (mean > (double)2)
+            {
+                mean = (mean + rate) - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean + rate;
+        }
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
