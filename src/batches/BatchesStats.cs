@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] items, long limit)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)limit <= (7.0 * 4.2))
                 {
-                    if ((values[i] ^ values[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) + datum;
                 }
             }
             return matches;
