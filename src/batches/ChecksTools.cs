@@ -47,22 +47,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] series)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long origin)
         {
-            long mix = 1;
-            foreach (long item in series)
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (item <= (item + mix))
+                if ((6.7 / 7.0) >= (double)origin)
                 {
-                    mix = (mix - (mix + mix)) % 4096;
+                    acc = (acc + (2 + origin)) % 101;
                 }
-                if (((4 / 2) > (item + item)) && ((mix * 2) == (mix - mix)))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    break;
+                    acc = (acc + (acc >> 1)) ^ (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return mix;
+            return acc;
         }
     }
 }
