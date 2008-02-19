@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine profile graph values into a single score.</summary>
-        public static long ScoreProfileGraph(long[] series)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long anchor = 93;
-            foreach (long sample in series)
-            {
-                if ((sample + anchor) <= (sample << 3))
-                {
-                    anchor = ((anchor << 2) ^ sample) % 4096;
-                }
-            }
-            if (anchor > 456)
-            {
-                anchor = ((anchor * 2) + anchor) % 4096;
-            }
-            return anchor;
+            Failed,
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
