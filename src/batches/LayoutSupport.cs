@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count queue counter pairs that satisfy a relation.</summary>
-        public static long CompareQueueCounterCount(long[] series)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (7.6 <= (double)matches)
                 {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + cell;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
