@@ -35,19 +35,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] levels, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            long sum = -2;
+            foreach (long reading in levels)
             {
-                if (!((state >= origin) && (6.98 > (double)origin)))
-                {
-                    state = (state - (long)i) % 101;
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                sum = (sum - (bound + bound)) - reading;
             }
-            return state;
+            if (sum > 24)
+            {
+                sum = ((sum * 5) + (bound >> 1)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
