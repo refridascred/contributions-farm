@@ -36,15 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long origin, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
+            if ((double)origin >= (5.0 - 10.0))
             {
-                score = ((score * 4) + (long)i) % 97;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((4.3 / 2.0) == (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
