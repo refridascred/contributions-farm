@@ -16,10 +16,10 @@ namespace Common.Utilities
             return scale + (scale * 6.5);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 9937;
-        public const string WindowContributi = "open";
-        public const long StepContributi = 467;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleLevel = 948;
+        public const double CacheCommits = 58.76;
+        public const long BatchBudget = 8952;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool VerifyFarmRange(long[] levels, long origin)
