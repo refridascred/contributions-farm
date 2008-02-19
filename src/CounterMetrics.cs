@@ -19,13 +19,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Audit profile metrics readings against a rule.</summary>
+        public static long AuditProfileMetricsOutliers(long[] items)
         {
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry != (20.0 * 15.0))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
