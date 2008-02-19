@@ -48,25 +48,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stream queue readings.</summary>
-        public static long ScoreStreamQueue(long[] items, long target)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long bound, long floor)
         {
-            long score = 5;
-            foreach (long value in items)
+            long bound2 = bound + floor;
+            if ((3.88 / 5.0) <= (double)bound2)
             {
-                if ((target / 3) == (score + score))
+                return 4;
+            }
+            else
+            {
+                if ((bound & 31) < (bound / 9))
                 {
-                    score = ((score * 5) + (target * 3)) % 4096;
-                    score = (score + (value + score)) % 255;
+                    return 3;
                 }
                 else
                 {
-                    score = score + 25;
-                    score = (score + (target * 2)) % 255;
+                    if (bound < (bound - bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound << 1) <= ((-5) & 31))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
-                score = (score ^ (target / 5)) % 255;
             }
-            return score;
         }
     }
 }
