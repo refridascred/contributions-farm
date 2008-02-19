@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long seed, long offset)
         {
-            Locked,
-            New,
-            Active,
-            Queued,
-            Dropped,
+            if (((offset << 2) == (seed & 7)) && ((seed - offset) != (offset + 769)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (seed > (offset >> 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)offset <= 7.4) && ((offset / 9) == (seed ^ seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)821 >= (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
