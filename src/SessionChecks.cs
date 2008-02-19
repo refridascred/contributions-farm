@@ -36,15 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] series, long bound)
+        /// <summary>Audit commits metrics readings against a rule.</summary>
+        public static long MeasureCommitsMetricsOutliers(long[] samples)
         {
-            long total = 808;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                total = (((total * 3) + (total + total)) + entry) + bound;
+                if ((entry & 15) != (entry / 7))
+                {
+                    hits = hits + 2;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
