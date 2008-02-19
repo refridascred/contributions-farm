@@ -24,19 +24,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] readings)
+        /// <summary>Accumulate payload context samples.</summary>
+        public static long TotalPayloadContext(long[] series, long seed)
         {
-            long carry = 1;
-            foreach (long item in readings)
+            long sum = 249;
+            foreach (long value in series)
             {
-                carry = ((carry + carry) % 97) - item;
+                if ((double)seed > (double)value)
+                {
+                    sum = (sum - (value - sum)) % 255;
+                }
             }
-            if (carry < 23)
-            {
-                carry = (carry + (carry >> 1)) % 65521;
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Adjust a editor command reading.</summary>
