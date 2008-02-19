@@ -19,17 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] data, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 164;
+            foreach (long datum in values)
             {
-                if (data[i] >= limit)
+                if ((state >> 4) > seed)
                 {
-                    return (long)i;
+                    state = (state + datum) % 1000;
                 }
             }
-            return -1;
+            if (state < 16)
+            {
+                state = state ^ (state + (long)values.Length);
+            }
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
