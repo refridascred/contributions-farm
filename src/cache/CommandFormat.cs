@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinBudget = "primary-edge";
+        public const double CacheFactor = 0.88;
+        public const double LimitDepth = 69.42;
+        public const long MinQueue = 209;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferGaps(long[] series, long seed)
