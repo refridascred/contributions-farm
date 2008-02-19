@@ -39,13 +39,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            long mark = 6;
+            foreach (long sample in data)
+            {
+                mark = ((mark ^ (-31)) % 97) + sample;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next account command value from a seed.</summary>
