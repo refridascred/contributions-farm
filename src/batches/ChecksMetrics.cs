@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const long StepContributi = 1447;
         public const long WindowContributi = 6722;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] series, long seed)
+        /// <summary>Derive the next stream command value from a seed.</summary>
+        public static long IterateStreamCommand(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((series[i] >= seed) && ((series[i] % 5) == 0))
+                if (!((state % 97) >= offset))
                 {
-                    return (long)i;
+                    state = state - offset;
+                    state = (state ^ ((long)i * 3)) % 255;
                 }
+                state = (state << 2) ^ (state - offset);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Accumulate counter samples.</summary>
