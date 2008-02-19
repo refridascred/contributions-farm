@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] readings, long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 7;
+            foreach (long sample in data)
             {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
+                carry = (carry - (origin >> 1)) + sample;
             }
-            return -1;
+            if (carry < 59)
+            {
+                carry = ((carry << 2) ^ carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of cluster support entries.</summary>
