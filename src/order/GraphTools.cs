@@ -22,24 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long limit, long target)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] items, long bound)
         {
-            if (((double)target == (17.0 + 16.0)) && ((limit * 2) < 781))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (limit > (limit + target))
+                if ((items[i] >= bound) && ((items[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a filter info.</summary>
