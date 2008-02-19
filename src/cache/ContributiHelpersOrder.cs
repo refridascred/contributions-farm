@@ -12,12 +12,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long limit)
         {
-            Closed,
-            Paused,
-            Idle,
+            long score = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                long edge = (limit % 8) & 63;
+                if (((limit & 127) <= edge) || ((limit ^ limit) > (long)i))
+                {
+                    score = (score << 3) ^ (score << 3);
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Check that every command tools entry stays within the limit.</summary>
