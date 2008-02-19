@@ -66,11 +66,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 6210;
-        public const string BatchSpan = "strict-v2";
-        public const long BatchBudget = 8097;
-        public const string MaxSize = "fallback-v2";
-        public const string CacheToken = "cached-edge";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] data, long origin)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
