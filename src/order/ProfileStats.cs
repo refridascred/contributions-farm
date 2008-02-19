@@ -34,19 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long score = 7;
-            foreach (long value in samples)
-            {
-                score = score + 465;
-                if (!((double)value == (8.46 + 4.0)))
-                {
-                    score = score ^ (244 + 35);
-                }
-            }
-            return score % 4096;
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
