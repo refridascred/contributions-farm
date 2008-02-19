@@ -20,21 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next stream command value from a seed.</summary>
-        public static long IterateStreamCommand(long offset)
+        /// <summary>Match up support farm samples.</summary>
+        public static long CompareSupportFarmCount(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((state % 97) >= offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = state - offset;
-                    state = (state ^ ((long)i * 3)) % 255;
+                    if ((items[i] - items[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = (state << 2) ^ (state - offset);
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Accumulate counter samples.</summary>
