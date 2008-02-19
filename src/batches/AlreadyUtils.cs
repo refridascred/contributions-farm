@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 9365;
-        public const long MinLevel = 4454;
-        public const long LimitPayload = 8679;
-        public const long StepSize = 2949;
+        /// <summary>Validate layout editor readings against a bound.</summary>
+        public static bool GuardLayoutEditorRange(long[] values, long origin)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] levels)
