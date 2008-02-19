@@ -69,12 +69,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
