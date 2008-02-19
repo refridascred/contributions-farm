@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of cluster batch entries.</summary>
-        public static long DigestClusterBatch(long[] series, long seed)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] series, long step)
         {
-            long result = 693;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (((result + result) % 101) - cell) - seed;
+                if ((series[i] >= step) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Hold a buffer options.</summary>
