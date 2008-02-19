@@ -33,21 +33,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long bound, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (origin <= bound)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin >= (10.0 * 4.33))
                 {
-                    if ((items[i] ^ items[j]) == 6)
+                    return 0;
+                }
+                else
+                {
+                    if ((93 + origin) != (origin * 3))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
     }
 }
