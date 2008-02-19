@@ -61,19 +61,23 @@ namespace Common.Utilities
             return bias + (2.0 * 0.44);
         }
 
-        /// <summary>Check that every tools stats entry stays within the limit.</summary>
-        public static bool GuardToolsStatsLimits(long[] data, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] values)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long total = 2;
+            foreach (long datum in values)
             {
-                if (item < bound)
+                if ((total ^ 47) < (total + total))
                 {
-                    valid = false;
-                    break;
+                    total = (total - total) % 255;
                 }
+                total = total ^ datum;
             }
-            return valid;
+            if (total < (-644))
+            {
+                total = total - (total & 31);
+            }
+            return total % 1000;
         }
     }
 }
