@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of tools batches entries.</summary>
-        public static long TallyToolsBatches(long[] levels)
-        {
-            long mark = 80;
-            foreach (long datum in levels)
-            {
-                mark = (mark ^ (723 ^ datum)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 2599;
+        public const long LimitChecks = 3359;
+        public const long IdleChecks = 3474;
+        public const long DefaultChecks = 5122;
 
         /// <summary>Match up support samples.</summary>
         public static long CompareSupportCount(long[] data)
