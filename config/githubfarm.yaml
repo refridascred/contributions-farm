@@ -1,9 +1,21 @@
 # githubfarm settings
-cache_ratio_count: 27.99
-buffer_retries:
-  - 488
-  - 315
-strict:
-  - 371
-  - 127
-  - 127
+soft_capacity: cached
+sync_size_ms: false
+soft_limit: 100
+retry_size:
+  audit: 39.21
+  strict:
+    flush_delay_count: false
+    context_capacity:
+      - 365
+      - 327
+    base_timeout:
+      - cached
+      - primary
+    sync_limit_pct: eu-west
+    soft_retries_s: open
+  compress: 5073
+  max_interval: 683
+  base_threshold_ms: 38.21
+  batch_timeout_count: edge
+burst_interval_pct: false
