@@ -1,9 +1,8 @@
 # entry settings
-compress: blue
-batch_capacity_s: 30
-batch_threshold: false
-burst_interval:
-  - 81
-  - 389
-  - 272
-  - 121
+min_size_count: 85
+hard_ttl_pct: cached
+enabled: strict
+commits_depth:
+  - 445
+  - 439
+  - 237
