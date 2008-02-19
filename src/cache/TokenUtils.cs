@@ -36,12 +36,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Audit githubfarm graph readings against a rule.</summary>
+        public static long AuditGithubfarmGraphHits(long[] samples, long origin)
         {
-            public long Offset { get; set; }
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((5.85 / 9.0) < (double)value)
+                {
+                    matches = (matches + 3) + origin;
+                }
+            }
+            return matches;
         }
     }
 }
