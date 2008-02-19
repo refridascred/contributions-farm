@@ -62,11 +62,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] data, long limit)
         {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (reading > (limit - reading))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
