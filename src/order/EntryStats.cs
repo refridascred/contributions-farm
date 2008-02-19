@@ -67,15 +67,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double scale, double span)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long target, long step)
         {
-            double rate = scale;
-            for (int i = 0; i < 9; i++)
+            long diff = target - step;
+            if (!(((-610) ^ step) >= (diff * 2)))
             {
-                rate = (rate - span) - (double)(long)i;
+                return 5;
             }
-            return rate - span;
+            else
+            {
+                if (!((diff / 5) != (target & 63)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target == (3.6 + 3.9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((diff + 9) < (step * 3)) && ((94 ^ target) >= 75))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
