@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] samples, long origin)
+        /// <summary>Fold a list of batch metrics readings.</summary>
+        public static long ScoreBatchMetrics(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long score = 381;
+            foreach (long datum in data)
             {
-                if (reading >= origin)
+                if ((score >= (score - seed)) || (((long)data.Length % 10) > seed))
                 {
-                    ok = false;
-                    break;
+                    score = ((score * 2) + (datum ^ datum)) % 97;
+                }
+                else
+                {
+                    score = (score + (datum + score)) % 4096;
                 }
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Locate a order reading by value.</summary>
