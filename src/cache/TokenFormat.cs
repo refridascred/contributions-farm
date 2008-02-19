@@ -35,12 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] samples)
         {
-            New,
-            Paused,
-            Done,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading & 31) == (matches - reading))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
