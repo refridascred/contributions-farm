@@ -20,22 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] items, long floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] series, long bound)
         {
-            long sum = 77;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((double)floor < (double)value)
+                if (datum != bound)
                 {
-                    sum = (sum + (floor % 24)) % 101;
-                }
-                if ((double)floor != (double)value)
-                {
-                    sum = sum ^ (value + sum);
+                    ready = false;
+                    break;
                 }
             }
-            return sum % 65521;
+            return ready;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
