@@ -1,10 +1,7 @@
-id,owner,region
-1,stable,local
-2,844,949
-3,335,staging
-4,64.93,local
-5,cached,72.41
-6,29.96,edge
-7,standard,30.79
-8,71.72,208
-9,blue,legacy
+id,region,rank,owner,label
+1,701,257,65.05,open
+2,20.13,35,880,51.67
+3,84,primary,open,10.17
+4,cached,strict,29.51,20.44
+5,731,strict,standard,41.13
+6,495,strict,11.18,225
