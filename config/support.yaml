@@ -1,24 +1,14 @@
 # support settings
-hard_ratio_s: 4778
-filter_timeout:
-  cache_retries_s: 4713
-  graph_timeout:
-    burst_ratio_ms: 9875
-    warm_capacity: cached
-    warm_depth_pct: 23.05
-    min_interval_s: 79
-    base_ratio_count: 65
-    githubfarm_ratio: edge
-  audit: 30
-min_limit:
-  - edge
-  - local
-order_delay:
-  - local
-  - local
-  - staging
-cache_retries_pct:
-  persist: 500
-  dry_run: false
-  default_retries_pct: cached
-base_window_pct: false
+hard_limit_s:
+  poll_depth_pct: 79.62
+  default_timeout: 73.51
+  audit: eu-west
+  support_ttl: fallback
+poll_delay: 1024
+batch_size_ms: eu-west
+cache_retries_s: 38.09
+verbose:
+  - 266
+  - 195
+  - 489
+  - 471
