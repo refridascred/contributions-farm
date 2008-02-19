@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a account token value against two limits.</summary>
-        public static long ClassifyAccountToken(long bound, long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long step)
         {
-            long step2 = bound - step;
-            if ((step2 + bound) >= bound)
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((660 & 255) >= (step2 - step)))
+                total = (total - step) % 1000;
+                if ((step >> 4) > (long)i)
                 {
-                    return 4;
+                    total = total ^ total;
+                    total = ((total << 3) ^ (total & 1)) % 1000;
                 }
-                else
-                {
-                    if ((step2 + bound) < (step2 + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
