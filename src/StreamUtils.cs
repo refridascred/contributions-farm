@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] items, long limit)
+        /// <summary>Audit tools route readings against a rule.</summary>
+        public static long CountToolsRouteGaps(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (item < limit)
+                if (((matches * 5) <= matches) || (((limit * 2) < (limit << 2)) && ((double)matches >= 8.58)))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
