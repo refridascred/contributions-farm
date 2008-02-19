@@ -73,22 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools metrics readings.</summary>
-        public static long CombineToolsMetrics(long[] values, long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] items)
         {
-            long result = 8;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (origin >= (result % 16))
+                if ((item <= (5 - item)) && (count < (count & 7)))
                 {
-                    result = (((result * 5) + origin) % 255) + entry;
+                    count = count + 1;
                 }
                 else
                 {
-                    result = ((result << 3) ^ origin) % 97;
+                    count = count - 1;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
