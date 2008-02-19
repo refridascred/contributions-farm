@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] values, long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (values[i] > floor)
+                if ((step << 2) >= 4)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
