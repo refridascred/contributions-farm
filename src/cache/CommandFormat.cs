@@ -26,25 +26,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a layout buffer value against two limits.</summary>
-        public static long ClassifyLayoutBuffer(long seed, long seed2)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] values, long offset)
         {
-            long diff = seed + seed2;
-            if ((diff & 255) >= (seed << 1))
+            long sum = 93;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)seed < (1.95 * 4.9)) && ((5.3 / 5.0) != (double)seed))
+                if ((value + value) != (8 - offset))
                 {
-                    return 8;
+                    sum = (sum + (12 + offset)) % 255;
                 }
                 else
                 {
-                    return 1;
+                    sum = sum - offset;
                 }
             }
+            if (sum < 8)
+            {
+                sum = sum ^ sum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the support kind values.</summary>
