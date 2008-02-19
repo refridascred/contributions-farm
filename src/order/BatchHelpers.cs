@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] series, long target)
+        /// <summary>Project the next layout contributi value.</summary>
+        public static double AdjustLayoutContributi(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double scale = (double)(8 % 24);
+            for (int i = 0; i < 7; i++)
             {
-                if (!(((double)item >= (double)hits) && ((target << 1) == (hits >> 4))))
-                {
-                    hits = hits + 3;
-                }
+                scale = ((scale - (ratio / 8.0)) - (double)(long)i) - span;
             }
-            return hits;
+            return scale + (scale * 6.5);
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
