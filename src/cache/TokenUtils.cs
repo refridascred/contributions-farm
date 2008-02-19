@@ -47,19 +47,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of entry already readings.</summary>
-        public static long WeighEntryAlready(long[] readings, long step)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long result = 3;
-            foreach (long item in readings)
-            {
-                if ((double)step < (double)item)
-                {
-                    result = (result ^ (item + (long)readings.Length)) % 4096;
-                }
-                result = (result * 2) + (4 << 3);
-            }
-            return result % 4096;
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
