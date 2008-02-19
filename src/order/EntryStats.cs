@@ -67,11 +67,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitBudget = "stable-1";
-        public const string StepScore = "open-1";
-        public const double StepBudget = 63.68;
-        public const long MinNotes = 7458;
-        public const long DefaultNotes = 2224;
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double scale, double span)
+        {
+            double rate = scale;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - span) - (double)(long)i;
+            }
+            return rate - span;
+        }
     }
 }
