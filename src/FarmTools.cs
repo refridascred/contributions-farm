@@ -29,21 +29,13 @@ namespace Common.Utilities
         public const long MaxBudget = 3695;
         public const string MinRecord = "cached-v2";
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public long Size { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
