@@ -22,22 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] samples)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((double)hits >= 9.1)
+                if (!((2.9 <= (double)seen) && (seen < (78 + reading))))
                 {
-                    hits = (hits + 1) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the stats record entries that pass the check.</summary>
