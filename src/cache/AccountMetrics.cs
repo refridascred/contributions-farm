@@ -26,15 +26,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of tools notes readings.</summary>
