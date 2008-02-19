@@ -51,21 +51,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] - data[j]) < 1)
+                    if ((readings[i] ^ readings[j]) < 5)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
