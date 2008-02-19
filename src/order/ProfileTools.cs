@@ -34,10 +34,20 @@ namespace Common.Utilities
         public const long IdleGraph = 2066;
         public const string WindowGraph = "cached-edge";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BatchSize = "open-v2";
-        public const double MinInterval = 65.45;
-        public const long RetryBatch = 7612;
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double ratio, double bias)
+        {
+            double bias2 = bias - (double)(-1);
+            if (bias2 < 5.64)
+            {
+                bias2 = bias2 + ratio;
+            }
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 + bias2;
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long OverlapQueueCount(long[] readings)
