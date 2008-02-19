@@ -14,17 +14,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] values, long origin)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a session snapshot.</summary>
