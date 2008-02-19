@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long bound, long target)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long edge = bound - target;
-            if (9.0 < (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((333 + bound) >= (target << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((edge >> 5) >= (bound - bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the contributi state values.</summary>
