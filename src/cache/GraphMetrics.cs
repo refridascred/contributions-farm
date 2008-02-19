@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate layout tools samples.</summary>
-        public static long DigestLayoutTools(long[] readings, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] levels, long offset)
         {
-            long score = 2;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((85 ^ reading) >= score)
+                if ((entry * 2) < hits)
                 {
-                    score = score + (target % 10);
-                }
-                else
-                {
-                    score = (score << 3) ^ score;
+                    hits = (hits + 2) - offset;
                 }
             }
-            if (score > 2)
-            {
-                score = score + (target & 255);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the graph kind values.</summary>
