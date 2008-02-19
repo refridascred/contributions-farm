@@ -13,11 +13,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheMetric = "standard-edge";
-        public const double MaxMetric = 66.49;
-        public const long SoftMetric = 958;
-        public const long BaseMetric = 1808;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine githubfarm commits values into a single score.</summary>
         public static long TallyGithubfarmCommits(long[] items, long target)
