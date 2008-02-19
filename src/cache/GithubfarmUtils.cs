@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] samples, long step)
         {
-            Failed,
-            New,
-            Stale,
-            Synced,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (!((double)(long)samples.Length > (2.6 + 2.7)))
+                {
+                    seen = ((seen + 3) ^ reading) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a report stats.</summary>
