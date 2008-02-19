@@ -40,27 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] readings)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long mix = 115;
-            foreach (long entry in readings)
-            {
-                if ((entry << 3) > entry)
-                {
-                    mix = (mix << 2) ^ (mix % 100);
-                    continue;
-                }
-                if (!((14.0 * 5.0) > (double)(long)readings.Length))
-                {
-                    mix = ((mix * 5) + mix) % 97;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (29 * 4);
-                }
-            }
-            return mix;
+            Failed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
