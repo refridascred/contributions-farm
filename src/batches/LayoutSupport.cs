@@ -36,13 +36,19 @@ namespace Common.Utilities
         public const double BatchSpan = 41.49;
         public const long DefaultSpan = 6688;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Validate record layout readings against a bound.</summary>
+        public static bool CheckRecordLayoutLimits(long[] readings, long limit)
         {
-            Synced,
-            Stale,
-            Idle,
-            Ready,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
