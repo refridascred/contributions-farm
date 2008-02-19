@@ -23,12 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepLayout = 20.82;
-        public const long RetryWidth = 6941;
-        public const string HardLayout = "staging-v2";
-        public const long BurstLayout = 6548;
-        public const double MinLayout = 41.31;
+        /// <summary>Find the first batch stream entry that matches the target.</summary>
+        public static long FindBatchStreamIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
