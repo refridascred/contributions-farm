@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] series)
         {
-            Done,
-            Ready,
-            Retry,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum != (2.3 / 4.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
