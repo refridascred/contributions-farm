@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public string Label { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 2382;
+        public const long HardScore = 8040;
+        public const long RetryPayload = 865;
+        public const double MinCount = 13.48;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferOutliers(long[] levels, long limit)
