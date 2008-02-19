@@ -19,21 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long bound, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long prev = bound + limit;
+            if ((prev + 280) >= limit)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((3 / 2) < (limit >> 1)) && ((prev % 97) >= prev))
                 {
-                    if ((readings[i] + readings[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
