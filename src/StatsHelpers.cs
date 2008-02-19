@@ -28,21 +28,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long floor)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((double)score != (6.96 / 4.0)) || (score >= (score >> 5)))
-                {
-                    score = (score + (score - (long)i)) % 4096;
-                }
-                score = ((score * 5) + ((long)i / 6)) % 255;
-                score = (score ^ score) % 4096;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public double Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a filter info.</summary>
