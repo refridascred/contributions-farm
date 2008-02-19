@@ -50,17 +50,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Find the first support farm entry that matches the target.</summary>
-        public static long LookupSupportFarmIndex(long[] readings, long bound)
+        /// <summary>Iterate the counter metric series from a seed.</summary>
+        public static long DeriveCounterMetric(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
