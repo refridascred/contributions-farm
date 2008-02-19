@@ -22,19 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long bound)
+        /// <summary>Classify a cache context pair into a bucket.</summary>
+        public static long ClassifyCacheContext(long target, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            long gap = target + offset;
+            if ((offset * 3) != (offset + target))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = (mark ^ (mark & 1)) - (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if (offset < (774 - 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset > (gap + 18))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (4 <= (offset - gap))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
