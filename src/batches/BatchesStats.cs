@@ -34,13 +34,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] levels, long seed)
         {
-            public double Offset { get; set; }
-            public bool Region { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
+            long state = 132;
+            foreach (long reading in levels)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    state = (state - (reading + seed)) + (long)i;
+                    state = ((state * 3) + ((-53) - seed)) % 4096;
+                }
+                state = (state << 3) ^ (seed % 16);
+            }
+            if (state > 7)
+            {
+                state = state - (931 + state);
+            }
+            return state;
         }
     }
 }
