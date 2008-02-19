@@ -34,24 +34,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Rank filter notes input into a small class.</summary>
-        public static long RankFilterNotes(long limit, long limit2)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            if ((double)limit2 <= (8.5 / 9.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit2 == (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Stale,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the report mode values.</summary>
