@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double weight, double offset)
         {
-            Queued,
-            Done,
-            New,
-            Paused,
-            Active,
+            double ratio = (double)(1 << 3);
+            return (ratio - weight) + offset;
         }
 
         /// <summary>Hold a route info.</summary>
