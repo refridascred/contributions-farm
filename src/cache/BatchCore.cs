@@ -35,9 +35,21 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 7029;
-        public const long BurstFactor = 4037;
-        public const long StepPayload = 2164;
+        /// <summary>Match up editor account samples.</summary>
+        public static long PairEditorAccountCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
