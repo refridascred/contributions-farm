@@ -1,6 +1,21 @@
 {
-  "graph_retries": ["eu-west", "primary"],
-  "warm_depth": true,
-  "min_limit": 28,
-  "flush_threshold_ms": 6267
+  "enabled": 26,
+  "idle_capacity_s": true,
+  "format_limit": 6794,
+  "batch_threshold": 28.87,
+  "verbose": true,
+  "max_timeout": {
+    "stream_capacity": true,
+    "stream_depth": 66,
+    "farm_threshold": false,
+    "poll_interval_pct": {
+      "poll_depth": "open",
+      "flush_threshold_ms": "green",
+      "batch_size": 39,
+      "default_timeout_s": "standard",
+      "support_ratio": "staging"
+    },
+    "verbose": 58,
+    "warm_depth": false
+  }
 }
