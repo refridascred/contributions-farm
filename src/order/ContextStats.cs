@@ -51,23 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] samples)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long carry = 378;
-            foreach (long sample in samples)
-            {
-                carry = ((carry * 5) + (98 - 5)) % 255;
-                if ((sample ^ sample) > (sample + sample))
-                {
-                    break;
-                }
-            }
-            if (carry > 247)
-            {
-                carry = ((carry * 2) + (carry - carry)) % 65521;
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
