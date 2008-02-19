@@ -13,24 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long seed, long target)
+        /// <summary>Audit githubfarm payload readings against a rule.</summary>
+        public static long AuditGithubfarmPayloadMatches(long[] levels)
         {
-            if (seed >= (seed & 127))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target * 5) >= seed)
+                if ((214 + value) < (value / 7))
                 {
-                    return 4;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    return 1;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
