@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] levels)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            if (bound <= (bound % 5))
             {
-                if (count > (32 ^ datum))
+                return 2;
+            }
+            else
+            {
+                if ((double)bound != (12.0 - 0.38))
                 {
-                    count = count + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound == (4.2 / 8.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
