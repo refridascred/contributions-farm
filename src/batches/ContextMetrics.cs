@@ -39,21 +39,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up githubfarm record samples.</summary>
-        public static long OverlapGithubfarmRecordCount(long[] items)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long bound, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((0.5 * 9.78) <= (double)floor)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((floor % 24) >= bound)
                 {
-                    if ((items[i] ^ items[j]) != 18)
+                    return 8;
+                }
+                else
+                {
+                    if (floor < (bound << 2))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate token samples.</summary>
