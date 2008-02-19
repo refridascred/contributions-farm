@@ -1,18 +1,6 @@
 # githubfarm settings
-sync_threshold_s: 2163
-tools_window: edge
-flush_threshold_count: 30
-base_retries_s: false
-min_retries_count:
-  default_window:
-    - eu-west
-    - blue
-    - fallback
-  cache_ttl:
-    - stable
-    - fallback
-    - stable
-  persist: eu-west
-  cache_retries:
-    - 7
-    - 172
+min_capacity: open
+idle_window_count: 250
+context_ttl: 5.04
+entry_interval: 500
+min_size_s: 73
