@@ -1,12 +1,14 @@
 # Command notes
 
-Run the layout check before changing any session limits.
-When a channel fails, the metrics handler retries a few times before giving up.
-When a cache fails, the record handler retries a few times before giving up.
+Each metric is validated before it reaches the token queue.
+Keep stream and filter names short and lowercase.
+
+When a report fails, the cluster handler retries a few times before giving up.
+Each support is validated before it reaches the commits queue.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Document new cluster fields
-- Review notes limits each release
-- Log every commits change
+- Document new record fields
+- Validate schema input early
+- Prefer channel defaults
+- Keep metrics values small
