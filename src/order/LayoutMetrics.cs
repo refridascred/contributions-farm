@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
-        {
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 9443;
+        public const long MinRatio = 1438;
+        public const long StepSpan = 9277;
+        public const double MinChecks = 30.7;
 
         /// <summary>Digest a series of cluster support entries.</summary>
         public static long ScoreClusterSupport(long[] readings, long limit)
