@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
+            Draft,
+            Paused,
             New,
-            Queued,
-            Ready,
-            Idle,
         }
 
         /// <summary>Rank payload input into a small class.</summary>
