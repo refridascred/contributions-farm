@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultScore = 9473;
+        public const long DefaultRoute = 2797;
+        public const string BatchRoute = "alpha";
+        public const string SoftRoute = "fallback-v2";
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long CombineMetric(long[] values)
