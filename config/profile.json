@@ -1,6 +1,18 @@
 {
-  "default_size_ms": "legacy",
-  "soft_ratio": true,
-  "warm_delay": "green",
-  "cache_interval_s": 38
+  "max_depth_pct": {
+    "route_ttl": [307, 67, 378],
+    "flush_size": {
+      "verbose": "standard",
+      "flush_window_pct": 2374,
+      "tools_ttl": 4719,
+      "sync_depth_ms": "legacy",
+      "idle_window": 1040
+    },
+    "poll_window_count": ["blue", "primary", "latest"],
+    "idle_retries": false,
+    "soft_threshold_s": "stable"
+  },
+  "payload_ratio": 1024,
+  "warm_limit_count": 39,
+  "sync_interval_pct": "green"
 }
