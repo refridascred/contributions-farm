@@ -15,23 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double rate, double bias)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            double gain = rate;
-            if (gain > 2.3)
-            {
-                gain = gain + bias;
-            }
-            else
-            {
-                gain = gain - (rate * 1.12);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + gain;
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
