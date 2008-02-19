@@ -32,11 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double gain, double floor)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] series, long origin)
         {
-            double gain2 = (double)4 / 2.0;
-            return (gain2 + gain) + floor;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
