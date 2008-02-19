@@ -32,25 +32,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Rank layout stream input into a small class.</summary>
-        public static long GradeLayoutStream(long seed, long origin)
+        /// <summary>Digest a series of editor checks entries.</summary>
+        public static long TallyEditorChecks(long[] values, long seed)
         {
-            long diff = seed + origin;
-            if (diff >= (diff - origin))
+            long mix = 399;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((282 >> 5) >= (diff / 6)))
+                if (reading >= (738 + (long)values.Length))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    mix = ((mix + (mix + mix)) % 65521) - seed;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
