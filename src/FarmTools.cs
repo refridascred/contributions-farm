@@ -36,18 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] values, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((item % 7) != (7 % 5))
+                if ((6.2 - 5.2) >= (double)hits)
                 {
-                    matches = (matches + 2) - origin;
+                    hits = ((hits + 3) - cell) - target;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
