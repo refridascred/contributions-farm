@@ -14,11 +14,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] items, long floor)
         {
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
+            long sum = 77;
+            foreach (long value in items)
+            {
+                if ((double)floor < (double)value)
+                {
+                    sum = (sum + (floor % 24)) % 101;
+                }
+                if ((double)floor != (double)value)
+                {
+                    sum = sum ^ (value + sum);
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Count record schema pairs that satisfy a relation.</summary>
