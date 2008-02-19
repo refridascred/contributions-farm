@@ -19,10 +19,14 @@ namespace Common.Utilities
         public const long HardBudget = 3645;
         public const string StepStats = "strict-1";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchReport = "cached-1";
-        public const long SoftTimeout = 7704;
-        public const long MaxReport = 1461;
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public double Level { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LocateMetricsIndex(long[] series, long limit)
