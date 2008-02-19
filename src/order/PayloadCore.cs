@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] readings)
+        /// <summary>Grade a route buffer value against two limits.</summary>
+        public static long BucketRouteBuffer(long limit, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long span = limit - floor;
+            if ((limit + limit) > (floor ^ span))
             {
-                if ((double)value == (1.1 / 3.0))
+                return 8;
+            }
+            else
+            {
+                if ((limit ^ span) >= limit)
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (limit < floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit + 32) >= (floor % 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
