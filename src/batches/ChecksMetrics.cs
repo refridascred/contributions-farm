@@ -50,15 +50,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] data, long step)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] data)
         {
-            long mix = 836;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (((mix * 2) + (6 ^ sample)) % 1000) - step;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
