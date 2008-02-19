@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowWidth = 3728;
-        public const string IdleFactor = "alpha-edge";
-        public const double CacheBudget = 19.74;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Synced,
+            Ready,
+            Dropped,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long WeighMetrics(long[] samples, long bound)
