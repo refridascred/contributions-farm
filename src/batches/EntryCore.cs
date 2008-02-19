@@ -50,21 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 36;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample >= (total + sample))
                 {
-                    if ((values[i] ^ values[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total + (439 / 5)) % 65521;
                 }
             }
-            return count;
+            return total % 97;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
