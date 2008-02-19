@@ -90,12 +90,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] items)
         {
-            Idle,
-            Locked,
-            Paused,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!!((-88) < seen))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
