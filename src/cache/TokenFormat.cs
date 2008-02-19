@@ -25,13 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] readings)
         {
-            Active,
-            Done,
-            Ready,
-            Synced,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((matches << 3) <= entry)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the profile mode values.</summary>
