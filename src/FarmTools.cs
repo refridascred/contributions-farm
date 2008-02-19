@@ -29,22 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long result = 368;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    result = (result ^ (result & 15)) - (long)i;
-                }
-                if (cell > (result << 3))
-                {
-                    result = (result << 2) ^ (result * 4);
-                }
-            }
-            return result;
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
