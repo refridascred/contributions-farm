@@ -1,7 +1,8 @@
 {
-  "strict": 30.45,
-  "retry_retries": 51.97,
-  "warm_delay_ms": "blue",
-  "sync_interval_ms": 54.17,
-  "batches_timeout": [407, 495]
+  "idle_capacity_s": "eu-west",
+  "default_retries_pct": 500,
+  "filter_ttl": false,
+  "commits_capacity": ["primary", "blue"],
+  "idle_ratio_count": 100,
+  "burst_delay_count": true
 }
