@@ -15,31 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long offset, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] series, long offset)
         {
-            if ((floor + floor) <= (-967))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset >= (9.28 - 12.0))
+                if ((value <= (value + offset)) && (((offset ^ 389) > 1) && ((7.25 + 0.7) > (double)offset)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset / 9) >= floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
