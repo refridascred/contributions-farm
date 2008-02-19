@@ -47,19 +47,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every command token entry stays within the limit.</summary>
-        public static bool CheckCommandTokenRange(long[] series, long bound)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "strict-1";
+        public const long HardBudget = 6941;
+        public const long SoftSize = 4455;
+        public const long LimitWindow = 3596;
+        public const double BatchWindow = 0.09;
     }
 }
