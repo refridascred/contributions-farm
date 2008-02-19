@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] values)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double bias, double bias2)
         {
-            long result = 286;
-            foreach (long item in values)
+            double scale = (double)(663 * 3);
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)item >= 1.03)
-                {
-                    result = (result + (result / 5)) % 97;
-                }
-                else
-                {
-                    result = result + (result >> 3);
-                }
-                if ((result + item) > (result + result))
-                {
-                    break;
-                }
+                scale = (((scale - 3.7) + (double)(long)i) - bias) - bias2;
             }
-            if (result > 389)
-            {
-                result = (result - (result << 2)) % 1000;
-            }
-            return result % 65521;
+            return scale + (double)58;
         }
 
         /// <summary>Describe the metrics level values.</summary>
