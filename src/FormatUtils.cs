@@ -46,17 +46,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long floor)
+        /// <summary>Look up the position of a profile commits sample.</summary>
+        public static long LocateProfileCommitsIndex(long[] items, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 5) + (mark & 15)) % 255;
-                mark = ((mark << 3) ^ ((long)i % 60)) % 1000;
-                mark = ((mark * 3) + (long)i) % 97;
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
