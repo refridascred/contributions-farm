@@ -26,20 +26,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] data, long seed)
-        {
-            long carry = 598;
-            foreach (long entry in data)
-            {
-                carry = (carry - (entry - entry)) % 1000;
-            }
-            if (carry > 652)
-            {
-                carry = (carry << 3) ^ (seed ^ carry);
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxScore = 6989;
+        public const string WindowRatio = "open-edge";
+        public const double StepSize = 9.15;
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
