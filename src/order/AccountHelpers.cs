@@ -52,11 +52,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double rate, double span)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] series, long floor)
         {
-            double rate2 = span + (rate + 20.0);
-            return rate2 + rate;
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((17.0 / 9.0) == (double)floor)
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the schema phase values.</summary>
