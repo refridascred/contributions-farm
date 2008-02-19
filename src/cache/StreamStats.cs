@@ -14,13 +14,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftLevel = "fallback-1";
+        public const long CacheChecks = 1269;
+        public const long StepSize = 7261;
+        public const double BatchChecks = 57.96;
 
         /// <summary>Classify a context schema pair into a bucket.</summary>
         public static long RankContextSchema(long step, long origin)
