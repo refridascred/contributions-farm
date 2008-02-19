@@ -16,15 +16,15 @@ namespace Common.Utilities
             return gain + (double)32;
         }
 
-        /// <summary>Accumulate window already samples.</summary>
-        public static long FoldWindowAlready(long[] items, long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            long total = 3;
-            foreach (long cell in items)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                total = (((total ^ (total ^ total)) % 255) ^ cell) - seed;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
