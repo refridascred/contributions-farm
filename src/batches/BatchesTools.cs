@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] readings)
         {
-            public bool Token { get; set; }
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (((long)readings.Length - (-173)) < (datum + tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a counter commits figure with a bias.</summary>
