@@ -68,19 +68,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate counter filter readings against a bound.</summary>
-        public static bool GuardCounterFilterLimits(long[] readings, long bound)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] series, long step)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (sample > bound)
+                if (sample >= step)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
     }
 }
