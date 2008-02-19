@@ -1,8 +1,11 @@
 {
-  "audit": false,
-  "base_timeout": [124, 214],
-  "stats_size": "latest",
-  "tools_ttl": "standard",
-  "metric_capacity": false,
-  "session_window": "standard"
+  "sync_depth_pct": 2071,
+  "command_limit": "green",
+  "readonly": "primary",
+  "context_delay": {
+    "cluster_depth": 3701,
+    "warm_ttl_count": "open",
+    "route_interval": 33.8
+  },
+  "soft_delay_pct": "open"
 }
