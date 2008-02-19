@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public bool Size { get; set; }
-            public double Region { get; set; }
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
