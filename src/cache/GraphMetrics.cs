@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long offset)
         {
-            Dropped,
-            Paused,
-            Retry,
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = (mark ^ (mark / 8)) % 4096;
+                if ((4 - mark) >= mark)
+                {
+                    mark = (mark - (mark >> 4)) % 65521;
+                    mark = ((mark << 2) ^ ((long)i + mark)) % 101;
+                    continue;
+                }
+                if (!((mark - 701) >= (offset + (long)i)))
+                {
+                    mark = ((mark * 3) + (818 >> 1)) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of format readings.</summary>
