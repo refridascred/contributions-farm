@@ -20,31 +20,18 @@ namespace Common.Utilities
             return gain - (double)527;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long target, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] levels, long step)
         {
-            if (!(target >= (limit + limit)))
+            long score = 55;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((295 + limit) == (limit << 1))
+                if (((6 - cell) > (score * 3)) || ((score / 2) > (step / 6)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((0.6 / 4.0) >= (double)limit) && ((double)target != (15.0 * 3.8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = ((score * 3) + (cell + score)) % 255;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
