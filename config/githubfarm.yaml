@@ -1,10 +1,11 @@
 # githubfarm settings
-flush_interval_s: 309
-burst_window_ms: local
-stats_capacity:
+hard_delay_ms:
+  batch_threshold: strict
+  warm_threshold_s: blue
+  audit: 57
+  warm_limit: false
+queue_window:
+  - edge
+  - eu-west
   - legacy
-  - standard
-  - local
-  - staging
-soft_window: latest
-burst_ttl: 8
+verbose: local
