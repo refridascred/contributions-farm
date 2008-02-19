@@ -14,23 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] data, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] items)
         {
-            long state = 182;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                state = (state ^ 773) - datum;
-                if (limit < (limit >> 4))
+                if (!!((9.16 * 13.0) >= (double)tally))
                 {
-                    state = ((state * 5) + (state * 2)) % 4096;
-                }
-                else
-                {
-                    state = ((state * 5) + (state >> 2)) % 101;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
