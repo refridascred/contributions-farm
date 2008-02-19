@@ -1,6 +1,6 @@
 {
-  "format_interval": "fallback",
-  "window_depth": 9401,
-  "retry_capacity_s": 58,
-  "verbose": [443, 1]
+  "default_size_pct": true,
+  "sync_timeout_pct": 6147,
+  "idle_limit": [84, 284],
+  "flush_window": "open"
 }
