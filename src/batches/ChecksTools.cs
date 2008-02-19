@@ -22,21 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Audit window already readings against a rule.</summary>
+        public static long CountWindowAlreadyGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (hits >= (hits & 63))
                 {
-                    if ((values[i] ^ values[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
