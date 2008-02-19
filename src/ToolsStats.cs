@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            New,
-            Ready,
-            Paused,
             Failed,
+            Closed,
+            Ready,
         }
 
         /// <summary>Adjust a queue reading.</summary>
