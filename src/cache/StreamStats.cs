@@ -36,17 +36,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 9667;
+        public const double RetryMetrics = 14.42;
+        public const long CacheScore = 5718;
+        public const long IdleMetrics = 7314;
+        public const long RetrySize = 6166;
     }
 }
