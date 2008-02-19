@@ -45,24 +45,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long seed, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] data)
         {
-            if (!((-91) > (target + target)))
+            long sum = 7;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed * 5) == (9 ^ target))
+                for (int i = 0; i < 12; i++)
                 {
-                    return 6;
+                    sum = ((sum + (sum - sum)) % 65521) - (long)i;
+                    sum = (sum - (sum >> 3)) % 65521;
                 }
-                else
-                {
-                    return 3;
-                }
+                sum = (sum << 2) ^ (cell % 64);
             }
+            return sum;
         }
     }
 }
