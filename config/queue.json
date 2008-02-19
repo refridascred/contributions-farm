@@ -1,6 +1,7 @@
 {
-  "dry_run": [381, 246, 381],
-  "soft_ttl_s": 70.14,
-  "tools_window": [186, 20, 395],
-  "commits_depth": "staging"
+  "dry_run": 84.97,
+  "sync_size_ms": "primary",
+  "base_limit_pct": "cached",
+  "stream_interval": 11,
+  "idle_window_pct": 53.37
 }
