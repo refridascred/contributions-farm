@@ -54,17 +54,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] samples, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                mark = ((mark << 3) ^ (65 * 5)) % 1000;
-                mark = ((mark << 2) ^ ((long)i * 5)) % 101;
-                mark = ((mark * 5) + (long)i) % 97;
+                if (datum >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Blend two graph measurements.</summary>
