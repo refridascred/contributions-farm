@@ -19,23 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (((long)i == (step / 7)) && (step > 74))
+                if ((seen << 2) != (reading - seen))
                 {
-                    carry = (carry - (carry / 3)) % 97;
+                    seen = seen + 1;
                 }
-                else
-                {
-                    carry = (carry + (carry >> 3)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
