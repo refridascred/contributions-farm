@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] readings, long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((bound % 24) != (value << 3))
+                if (reading < origin)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Hold a payload stats.</summary>
