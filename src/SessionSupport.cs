@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const string HardFactor = "local-edge";
         public const long CacheBudget = 3550;
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] data, long bound)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((double)matches < (4.86 + 6.0))
+                {
+                    matches = ((matches + 2) + datum) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate command samples.</summary>
