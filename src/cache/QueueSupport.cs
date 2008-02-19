@@ -24,14 +24,15 @@ namespace Common.Utilities
         public const long CacheBatches = 233;
         public const double IdleLevel = 65.61;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double gain, double offset)
         {
-            Ready,
-            Queued,
-            Stale,
-            Done,
-            Dropped,
+            double bias = gain * 3.7;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (offset + offset)) + (double)(long)i;
+            }
+            return bias + (double)9;
         }
     }
 }
