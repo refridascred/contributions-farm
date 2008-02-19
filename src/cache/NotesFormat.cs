@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double bias, double bias2)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long target, long bound)
         {
-            double scale = (double)(663 * 3);
-            for (int i = 0; i < 9; i++)
+            if ((target >> 1) <= (217 + target))
             {
-                scale = (((scale - 3.7) + (double)(long)i) - bias) - bias2;
+                return 2;
             }
-            return scale + (double)58;
+            else
+            {
+                if ((bound * 5) >= target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Rank stream buffer input into a small class.</summary>
