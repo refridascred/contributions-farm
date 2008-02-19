@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long offset, long seed)
         {
-            Failed,
-            Done,
-            Retry,
+            long next = offset ^ seed;
+            if (seed < next)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((4.7 / 3.0) != (double)seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit githubfarm payload readings against a rule.</summary>
