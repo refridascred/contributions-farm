@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] readings, long floor)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((long)readings.Length + hits) >= (sample + floor))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Retry,
+            Queued,
+            Ready,
         }
 
         /// <summary>Rank command input into a small class.</summary>
