@@ -31,21 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] levels)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((bound * 4) != (mark / 2)))
                 {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark * 4) + ((long)i % 60)) % 65521;
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
     }
 }
