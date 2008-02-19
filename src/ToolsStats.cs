@@ -47,22 +47,18 @@ namespace Common.Utilities
             return weight - 1.06;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] series)
+        /// <summary>Audit buffer editor readings against a rule.</summary>
+        public static long CountBufferEditorHits(long[] items)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (((5.4 + 0.1) == (double)item) || ((double)tally >= 5.0))
+                if ((double)value == (3.0 / 5.0))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate counter filter readings against a bound.</summary>
