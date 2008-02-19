@@ -1,4 +1,4 @@
 # entry settings
-flush_capacity_pct: 21.71
-readonly: stable
-filter_capacity: 12.11
+route_ttl: cached
+metrics_depth: green
+poll_size: false
