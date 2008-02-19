@@ -50,36 +50,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long bound, long floor)
+        /// <summary>Classify a checks order pair into a bucket.</summary>
+        public static long RankChecksOrder(long limit, long origin)
         {
-            long bound2 = bound + floor;
-            if ((3.88 / 5.0) <= (double)bound2)
+            if ((limit - limit) <= (limit % 3))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((bound & 31) < (bound / 9))
+                if (84 > (618 ^ limit))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if (bound < (bound - bound))
+                    if ((8.0 - 20.0) == (double)origin)
                     {
                         return 0;
                     }
                     else
                     {
-                        if ((bound << 1) <= ((-5) & 31))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 3;
                     }
                 }
             }
