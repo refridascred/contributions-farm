@@ -43,14 +43,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            New,
-            Pending,
-            Done,
-            Paused,
-            Active,
+            public string Ratio { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of profile readings.</summary>
