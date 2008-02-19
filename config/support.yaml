@@ -1,25 +1,21 @@
 # support settings
-verbose: open
-notes_ttl: 15.39
-stream_timeout:
-  dry_run: 28.51
-  burst_ttl_ms: 7166
-  cache_limit: open
-  min_window_count: true
-cache_ttl_s:
-  account_ratio:
-    - primary
-    - blue
-    - cached
-    - green
-  min_size: 250
-  cache_timeout_s: 9025
-  githubfarm_size:
-    - 356
-    - 461
-    - 356
-    - 375
-  default_timeout_ms:
-    - 395
-    - 56
-warm_capacity_pct: 37.14
+min_window_pct: false
+soft_ttl_count:
+  default_limit_pct: eu-west
+  base_delay_pct: 500
+  retry_threshold: false
+  sync_ratio_pct: 58.35
+  warm_capacity_count:
+    window_limit: 9932
+    enabled:
+      - 236
+      - 321
+      - 26
+      - 6
+    retry_window_pct: 14.95
+    order_window: local
+    default_retries_pct: 500
+    account_interval: 91.12
+  compress: false
+batch_window: 58
+base_capacity: blue
