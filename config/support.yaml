@@ -1,8 +1,28 @@
 # support settings
-batches_delay:
-  - open
-  - primary
-  - edge
-  - green
-max_depth: 500
-max_delay_ms: eu-west
+entry_window:
+  - 495
+  - 161
+  - 374
+  - 98
+persist: true
+filter_window: 88.55
+context_interval:
+  dry_run: true
+  warm_threshold_pct:
+    - primary
+    - staging
+    - standard
+  audit:
+    poll_retries: 250
+    idle_retries_ms: primary
+    batch_retries:
+      - 430
+      - 399
+    enabled: 1024
+    farm_delay: legacy
+  contributi_interval: 250
+  soft_interval: cached
+  warm_ratio: fallback
+profile_interval:
+  - standard
+  - legacy
