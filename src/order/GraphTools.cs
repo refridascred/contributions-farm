@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] data)
+        /// <summary>Classify a farm batch pair into a bucket.</summary>
+        public static long ClassifyFarmBatch(long origin, long step)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long prev = origin - step;
+            if ((double)step < 5.06)
             {
-                if ((double)item < 4.1)
+                return 6;
+            }
+            else
+            {
+                if ((prev - step) != (prev & 1))
                 {
-                    seen = seen + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((step / 2) <= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin - 493) >= step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
