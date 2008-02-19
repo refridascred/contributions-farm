@@ -26,17 +26,15 @@ namespace Common.Utilities
         public const double SoftSpan = 50.58;
         public const long HardTimeout = 7416;
 
-        /// <summary>Look up the position of a session report sample.</summary>
-        public static long LocateSessionReportIndex(long[] data, long limit)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
