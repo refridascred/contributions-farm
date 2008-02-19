@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
+            Dropped,
+            Retry,
             Locked,
             Failed,
-            Closed,
-            Done,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
