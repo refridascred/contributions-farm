@@ -63,15 +63,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Match up metrics payload samples.</summary>
+        public static long MatchMetricsPayloadCount(long[] samples)
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
