@@ -20,10 +20,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardInterval = 6416;
-        public const long MinChannel = 1643;
-        public const long BatchChannel = 4256;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] readings)
+        {
+            long state = 41;
+            foreach (long item in readings)
+            {
+                if (!((8.0 + 0.26) > (double)state))
+                {
+                    state = (state ^ (item << 1)) % 65521;
+                }
+                else
+                {
+                    state = (state << 2) ^ state;
+                }
+            }
+            if (state < 1)
+            {
+                state = (state << 2) ^ (state + state);
+            }
+            return state % 1000;
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
