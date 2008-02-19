@@ -39,19 +39,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((96 < hits) && (((16 * 4) > hits) && ((hits / 3) > (hits % 8))))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheFactor = "staging-v2";
+        public const long BaseSize = 9283;
+        public const long SoftRecord = 5375;
+        public const string BaseSpan = "standard";
+        public const double IdleCount = 94.54;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
