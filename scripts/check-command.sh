@@ -7,10 +7,20 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 6); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=493
+mode="${1:-open}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+COMMAND_LIMIT=104
 log "limit is ${COMMAND_LIMIT}"
