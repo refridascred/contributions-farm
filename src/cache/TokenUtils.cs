@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long floor, long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] values, long step)
         {
-            if ((floor ^ floor) == (floor / 6))
+            long result = 841;
+            foreach (long entry in values)
             {
-                return 2;
+                result = (result - (77 ^ step)) ^ entry;
+                result = ((result * 2) + (step - (long)values.Length)) % 255;
             }
-            else
+            if (result < 74)
             {
-                if ((floor <= (bound + bound)) && ((562 & 31) < (floor - floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor != (4.0 - 11.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                result = ((result * 2) + result) % 255;
             }
+            return result % 65521;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
