@@ -16,18 +16,19 @@ namespace Common.Utilities
             return gain + (double)32;
         }
 
-        /// <summary>Match up report farm samples.</summary>
-        public static long OverlapReportFarmCount(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] values, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen + seen) <= (offset + item))
                 {
-                    if ((samples[i] ^ samples[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
