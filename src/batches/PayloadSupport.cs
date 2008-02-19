@@ -40,10 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitScore = 8586;
-        public const long RetryCommits = 8193;
-        public const long WindowCommits = 3044;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank already input into a small class.</summary>
         public static long SortAlready(long seed, long step)
