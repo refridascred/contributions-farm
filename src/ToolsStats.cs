@@ -42,12 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double ratio, double floor)
         {
-            Done,
-            Synced,
-            Locked,
+            double weight = (double)(2 - (-162));
+            for (int i = 0; i < 6; i++)
+            {
+                weight = ((weight + floor) + (double)(long)i) - ratio;
+            }
+            return weight - 1.06;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
