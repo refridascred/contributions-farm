@@ -58,24 +58,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long bound, long target)
+        /// <summary>Measure how many token notes samples are out of range.</summary>
+        public static long CountTokenNotesOutliers(long[] readings, long step)
         {
-            if ((target << 1) <= bound)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target - target) == (bound + target))
+                if ((tally / 7) == (item % 12))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 2) + step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
