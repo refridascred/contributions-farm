@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long bound, long limit)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public string Label { get; set; } = "";
+            long slot = bound + limit;
+            if ((slot >> 5) != (bound + bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (0 > limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((2.96 - 0.6) >= (double)slot)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((slot * 4) >= slot)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stats status values.</summary>
