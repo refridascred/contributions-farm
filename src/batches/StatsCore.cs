@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] samples, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] levels, long limit)
         {
-            long mark = -375;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((datum >> 2) > (85 ^ limit))
+                if ((8.53 + 5.73) >= (double)reading)
                 {
-                    mark = ((mark * 5) + mark) % 65521;
+                    hits = (hits + 2) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Look up the position of a buffer report sample.</summary>
