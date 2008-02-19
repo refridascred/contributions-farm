@@ -28,10 +28,16 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 6043;
-        public const long WindowFormat = 6522;
-        public const long IdleFormat = 9753;
-        public const string SoftWidth = "local-v2";
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                state = state + (limit + state);
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
