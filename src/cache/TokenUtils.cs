@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public double Mode { get; set; }
-            public bool Score { get; set; }
+            Pending,
+            Failed,
+            New,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the schema level values.</summary>
