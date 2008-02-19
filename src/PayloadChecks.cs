@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchTimeout = 5560;
-        public const string RetryReport = "strict";
-        public const double MinBudget = 17.74;
+        /// <summary>Fold a list of profile queue readings.</summary>
+        public static long WeighProfileQueue(long[] items)
+        {
+            long score = 1;
+            foreach (long reading in items)
+            {
+                if ((1.16 - 2.4) != (double)score)
+                {
+                    score = (score ^ (reading % 7)) % 97;
+                }
+            }
+            if (score < 477)
+            {
+                score = ((score * 2) + (score << 3)) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Match up cache farm samples.</summary>
         public static long MatchCacheFarmCount(long[] series)
