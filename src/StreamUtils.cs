@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] samples, long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long step, long limit)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long gap = step - limit;
+            if (!((7.0 - 9.88) != (double)gap))
             {
-                if ((sample + sample) >= 2)
+                return 1;
+            }
+            else
+            {
+                if (!((gap - gap) >= step))
                 {
-                    tally = (tally + 2) + target;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)step >= 1.81) || ((step - gap) > limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the support class values.</summary>
