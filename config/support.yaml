@@ -1,25 +1,11 @@
 # support settings
-cluster_delay: 96.06
-retry_capacity: 60
-soft_depth_ms: 84
-schema_size:
-  tools_interval:
-    - latest
-    - stable
-    - staging
-  verbose: strict
-  retry_depth_pct:
-    idle_threshold_pct: 250
-    persist: 1024
-    queue_timeout: 73.21
-    burst_capacity_pct: edge
-    command_limit:
-      - primary
-      - local
-  hard_depth_count: 28.25
-  cache_window: stable
-  idle_ratio_ms:
-    - 257
-    - 142
-    - 124
-    - 9
+enabled: true
+poll_interval: 250
+batch_ratio_count:
+  base_retries_ms: cached
+  cache_timeout: edge
+  sync_interval: 1024
+graph_retries:
+  - 381
+  - 54
+sync_size_s: edge
