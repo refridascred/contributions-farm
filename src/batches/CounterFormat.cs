@@ -22,17 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batch stream entry that matches the target.</summary>
-        public static long FindBatchStreamIndex(long[] items, long seed)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long seed, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = seed + offset;
+            if ((bound / 6) <= (offset & 255))
             {
-                if ((items[i] > seed) && ((items[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if (((seed - bound) < (offset / 8)) || ((double)bound > 7.14))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - seed) != (bound << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the entry phase values.</summary>
