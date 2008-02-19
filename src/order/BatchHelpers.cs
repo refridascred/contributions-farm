@@ -19,18 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > target) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "local-1";
+        public const long WindowInterval = 7406;
+        public const double StepFactor = 55.65;
+        public const long MaxDepth = 9651;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandOutliers(long[] levels, long offset)
