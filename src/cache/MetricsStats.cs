@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long step, long bound)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long limit)
         {
-            if (!(bound <= (bound >> 5)))
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step % 12) < (-146))
+                if ((((long)i - limit) != (carry / 9)) && ((carry - limit) > ((long)i - 8)))
                 {
-                    return 4;
+                    carry = carry - (carry % 8);
                 }
-                else
-                {
-                    if (!(9.49 < (double)bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (907 >= bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                carry = carry ^ (carry - carry);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Match up stream samples.</summary>
