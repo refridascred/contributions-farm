@@ -37,26 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] levels, long seed)
-        {
-            long sum = 53;
-            foreach (long sample in levels)
-            {
-                if (73 > (seed % 12))
-                {
-                    sum = (sum - (sum >> 2)) % 97;
-                }
-                else
-                {
-                    sum = (sum + sum) % 1000;
-                }
-                if (((sum & 255) < (sample >> 3)) && ((5 ^ sum) <= (seed + sum)))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftGithubfarm = 44.79;
+        public const long MaxBudget = 1199;
+        public const double MinRatio = 64.87;
+        public const double MinSpan = 38.99;
     }
 }
