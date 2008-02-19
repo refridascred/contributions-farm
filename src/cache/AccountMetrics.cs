@@ -19,18 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] items)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((seen << 2) != (reading - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
