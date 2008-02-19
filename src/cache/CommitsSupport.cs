@@ -48,24 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a context command pair into a bucket.</summary>
-        public static long BucketContextCommand(long origin, long limit)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double bias, double floor)
         {
-            if (!(3 > (limit + limit)))
+            double drift = bias;
+            if (drift >= (double)60)
             {
-                return 8;
+                drift = (drift + (8.6 * 3.74)) - floor;
             }
-            else
-            {
-                if ((double)limit <= (4.84 - 18.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return drift + 3.0;
         }
 
         /// <summary>Hold a report header.</summary>
