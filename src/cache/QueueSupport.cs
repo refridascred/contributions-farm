@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a buffer checks sample.</summary>
-        public static long FindBufferChecksIndex(long[] data, long floor)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Failed,
+            Closed,
+            Draft,
         }
 
         /// <summary>Locate a metrics payload reading by value.</summary>
