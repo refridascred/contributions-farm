@@ -34,31 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a batches cache pair into a bucket.</summary>
-        public static long SortBatchesCache(long offset, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] readings, long target)
         {
-            if (bound >= 8)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset / 7) > bound) && (((-2) % 100) < bound))
+                if (((-8) + target) == (sample >> 5))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (374 >= (bound - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
