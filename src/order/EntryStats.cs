@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate githubfarm layout samples.</summary>
-        public static long DigestGithubfarmLayout(long[] items, long target)
+        /// <summary>Look up the position of a notes contributi sample.</summary>
+        public static long SeekNotesContributiIndex(long[] samples, long target)
         {
-            long mark = 5;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((((mark << 3) ^ mark) % 1000) - value) - target;
-                if (mark > (mark + mark))
+                if (samples[i] < target)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Hold a metric record.</summary>
