@@ -14,10 +14,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 677;
-        public const string RetryDepth = "fallback-edge";
-        public const long IdleBatches = 9642;
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
+        {
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Digest a series of farm layout entries.</summary>
         public static long ScoreFarmLayout(long[] samples)
