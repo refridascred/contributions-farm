@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] levels, long offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample >> 5) <= (seen % 8))
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
