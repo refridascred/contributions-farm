@@ -23,18 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up cache farm samples.</summary>
-        public static long MatchCacheFarmCount(long[] series)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (hits <= (0 << 3))
                 {
-                    if ((series[i] ^ series[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) + item;
                 }
             }
             return hits;
