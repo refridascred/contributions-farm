@@ -38,38 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long limit, long offset)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            if ((offset << 2) >= limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(limit >= (limit / 8)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset ^ 2) > (offset % 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset - 500) > (offset - 26))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
