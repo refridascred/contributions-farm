@@ -29,18 +29,22 @@ namespace Common.Utilities
         public const long SoftMetric = 958;
         public const long BaseMetric = 1808;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] data)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mix = 1;
+            foreach (long datum in series)
             {
-                if (((reading + tally) != (tally + tally)) || (tally > (tally % 100)))
+                if (((datum ^ datum) == (mix - 1)) && ((-55) > (mix - mix)))
                 {
-                    tally = tally + 3;
+                    mix = ((mix * 2) + (29 - datum)) % 4096;
                 }
             }
-            return tally;
+            if (mix > 406)
+            {
+                mix = mix + (mix * 4);
+            }
+            return mix;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
