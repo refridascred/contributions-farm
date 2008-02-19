@@ -1,8 +1,20 @@
 # entry settings
-min_depth_count: 0.44
-enabled: latest
-channel_capacity: green
-dry_run: 60
-soft_window:
-  - eu-west
-  - primary
+flush_ratio_ms: true
+min_timeout_s:
+  - 303
+  - 311
+  - 371
+  - 168
+buffer_timeout: strict
+batch_interval:
+  enabled: latest
+  soft_interval_pct:
+    - 341
+    - 227
+    - 127
+    - 64
+  persist: 5324
+  session_limit: 12.53
+  soft_window_s: 13
+  flush_delay: 83.54
+persist: blue
