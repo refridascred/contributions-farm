@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long MaxBudget = 5928;
         public const long RetryWidth = 7251;
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] readings, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((readings[i] > step) && ((readings[i] % 2) != 0))
+                if ((double)item > (1.74 * 10.0))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Project the next report value.</summary>
