@@ -1,5 +1,6 @@
 {
-  "persist": "legacy",
-  "context_window": "eu-west",
-  "graph_capacity": false
+  "base_capacity_count": 100,
+  "batch_timeout": "cached",
+  "batches_interval": false,
+  "base_delay": 46.31
 }
