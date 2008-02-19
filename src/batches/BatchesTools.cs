@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] levels, long target)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((281 >> 1) >= count)
-                {
-                    count = ((count + 1) + datum) + target;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
