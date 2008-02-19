@@ -38,22 +38,14 @@ namespace Common.Utilities
         public const double MinSpan = 52.67;
         public const long MaxSupport = 414;
 
-        /// <summary>Fold a list of batches channel readings.</summary>
-        public static long ScoreBatchesChannel(long[] items)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long acc = 25;
-            foreach (long datum in items)
-            {
-                if (!((acc * 5) < (acc + acc)))
-                {
-                    acc = (((acc << 3) ^ 9) % 97) + datum;
-                }
-                else
-                {
-                    acc = acc ^ (92 * 4);
-                }
-            }
-            return acc % 1000;
+            Retry,
+            Synced,
+            Dropped,
+            Paused,
+            Done,
         }
     }
 }
