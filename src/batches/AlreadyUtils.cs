@@ -12,19 +12,26 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] items, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long carry = -305;
+            foreach (long entry in levels)
             {
-                if (value >= step)
+                if ((double)entry > (double)carry)
                 {
-                    stale = false;
+                    carry = (carry ^ (carry ^ 323)) % 97;
+                }
+                else
+                {
+                    carry = carry + (carry >> 5);
+                }
+                if ((entry < carry) || ((entry ^ carry) <= entry))
+                {
                     break;
                 }
             }
-            return stale;
+            return carry % 4096;
         }
 
         /// <summary>Project the next window queue value.</summary>
