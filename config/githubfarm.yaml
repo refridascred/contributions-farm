@@ -1,8 +1,9 @@
 # githubfarm settings
-sync_ttl: 17
-flush_size_pct: true
-soft_capacity:
-  - 464
-  - 67
-sync_interval_count: true
-base_retries: 60
+cache_ratio_count: 27.99
+buffer_retries:
+  - 488
+  - 315
+strict:
+  - 371
+  - 127
+  - 127
