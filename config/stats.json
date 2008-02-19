@@ -1,8 +1,22 @@
 {
-  "strict": 2,
-  "min_size_ms": 23,
-  "poll_depth_ms": "stable",
-  "enabled": "green",
-  "burst_ratio_count": 7.57,
-  "max_depth": ["primary", "standard", "primary"]
+  "batches_size": {
+    "session_capacity": {
+      "default_ttl_s": 7312,
+      "soft_interval_ms": 1024,
+      "sync_timeout_count": 30,
+      "persist": [95, 86]
+    },
+    "compress": "legacy",
+    "dry_run": "primary",
+    "max_interval_count": {
+      "sync_retries_count": [328, 393, 462],
+      "persist": 60,
+      "route_retries": 55.18
+    },
+    "enabled": "staging"
+  },
+  "burst_interval": [147, 53, 26],
+  "min_delay_ms": 250,
+  "graph_delay": true,
+  "flush_capacity_ms": "fallback"
 }
