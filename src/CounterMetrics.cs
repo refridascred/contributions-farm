@@ -19,30 +19,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine already githubfarm values into a single score.</summary>
-        public static long FoldAlreadyGithubfarm(long[] levels, long offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long acc = 59;
-            foreach (long item in levels)
-            {
-                if ((261 * 3) > (offset & 31))
-                {
-                    acc = (acc << 2) ^ (offset + acc);
-                }
-                if ((acc << 1) <= item)
-                {
-                    acc = acc ^ (19 + acc);
-                }
-                else
-                {
-                    acc = (acc ^ (4 * 3)) % 101;
-                }
-            }
-            if (acc > 85)
-            {
-                acc = acc ^ (offset - acc);
-            }
-            return acc;
+            Idle,
+            Synced,
+            Dropped,
+            New,
         }
 
         /// <summary>Rank route notes input into a small class.</summary>
