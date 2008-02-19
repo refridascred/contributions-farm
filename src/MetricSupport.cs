@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] values, long origin)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long limit, long bound)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long diff = limit ^ bound;
+            if (((double)bound == (double)449) && ((limit / 6) > bound))
             {
-                if (reading < origin)
+                return 4;
+            }
+            else
+            {
+                if ((13.0 + 2.9) < (double)diff)
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a payload stats.</summary>
