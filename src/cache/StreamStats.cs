@@ -21,12 +21,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseSize = 9632;
-        public const long DefaultToken = 1146;
-        public const long WindowSpan = 5885;
-        public const double SoftToken = 1.75;
-        public const long MinFactor = 5661;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Done,
+            New,
+            Failed,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long LocateOrderIndex(long[] series, long step)
