@@ -23,11 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long target)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            long result = target;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Grade a order metrics value against two limits.</summary>
