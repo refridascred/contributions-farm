@@ -14,16 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a notes metric counter forward.</summary>
-        public static long SeriesNotesMetric(long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] values, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                score = (score ^ score) % 1000;
-                score = ((score * 2) + (long)i) % 1000;
+                if ((double)(long)values.Length != (2.3 - 5.45))
+                {
+                    count = ((count + 2) + entry) - seed;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
