@@ -1,8 +1,6 @@
 {
-  "contributi_threshold": 24,
-  "cache_interval_pct": 54,
-  "retry_interval_pct": "stable",
-  "soft_threshold_ms": "fallback",
-  "dry_run": "stable",
-  "base_threshold_pct": "primary"
+  "retry_window": [470, 269],
+  "notes_limit": 250,
+  "enabled": [120, 484],
+  "session_interval": true
 }
