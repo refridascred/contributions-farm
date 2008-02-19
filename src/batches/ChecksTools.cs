@@ -19,12 +19,12 @@ namespace Common.Utilities
         public const long SoftMetric = 958;
         public const long BaseMetric = 1808;
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] readings, long bound)
+        /// <summary>Find the first graph session entry that matches the target.</summary>
+        public static long SeekGraphSessionIndex(long[] readings, long bound)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
+                if (readings[i] < bound)
                 {
                     return (long)i;
                 }
