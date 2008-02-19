@@ -71,22 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] values)
+        /// <summary>Measure how many queue layout samples are out of range.</summary>
+        public static long MeasureQueueLayoutHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (item > ((-184) - 973))
+                if (!((60 / 7) > (sample ^ 8)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
