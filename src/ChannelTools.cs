@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] data)
         {
-            Stale,
-            Queued,
-            Retry,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (!(value <= (hits ^ value)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next stats value.</summary>
