@@ -38,29 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long seed)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double scale, double offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            double weight = scale;
+            if (weight > (double)81)
             {
-                carry = (carry ^ ((long)i * 4)) % 65521;
-                if ((2 ^ (long)i) != (seed - carry))
-                {
-                    carry = carry + (carry << 3);
-                }
-                else
-                {
-                    carry = ((carry * 3) + (carry - seed)) % 97;
-                    carry = (carry * 4) + (carry * 4);
-                }
-                if ((carry > seed) || ((carry << 3) == ((long)i + seed)))
-                {
-                    carry = (carry << 3) ^ (39 % 12);
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                weight = weight - offset;
             }
-            return carry;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - offset;
         }
     }
 }
