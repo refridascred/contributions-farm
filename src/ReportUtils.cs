@@ -60,18 +60,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading + matches) <= reading)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardWidth = 9346;
+        public const long StepFarm = 5669;
+        public const long StepScore = 2871;
     }
 }
