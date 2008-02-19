@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] samples, long step)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 225;
+            foreach (long reading in readings)
             {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
+                total = ((total ^ (total + reading)) % 1000) + bound;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a order entry.</summary>
