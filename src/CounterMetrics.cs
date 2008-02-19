@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long floor, long bound)
+        /// <summary>Accumulate payload token samples.</summary>
+        public static long TallyPayloadToken(long[] readings, long limit)
         {
-            if (!((floor * 4) > (bound << 3)))
+            long mark = 29;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (7.0 >= (double)floor)
+                if ((entry & 3) <= mark)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    mark = ((mark - (mark ^ mark)) % 101) + limit;
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
