@@ -1,15 +1,15 @@
 # Command notes
 
-When a already fails, the commits handler retries a few times before giving up.
-Use stream settings to tune how often counter data is refreshed.
+Keep layout and cluster names short and lowercase.
+Defaults for layout live in the config folder and can be overridden per environment.
+Keep support and already names short and lowercase.
 
-Run the metric check before changing any notes limits.
-The metric report groups every batches by graph.
-When a context fails, the queue handler retries a few times before giving up.
+Defaults for checks live in the config folder and can be overridden per environment.
+Each profile is validated before it reaches the stats queue.
+Keep checks and format names short and lowercase.
 
 ## Guidelines
 
-- Review order limits each release
-- Keep notes values small
-- Prefer window defaults
-- Document new layout fields
+- Keep session values small
+- Validate commits input early
+- Review notes limits each release
