@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long offset, long seed)
+        /// <summary>Blend two session command measurements.</summary>
+        public static double ScaleSessionCommand(double rate, double span)
         {
-            if (!((double)offset > (double)seed))
+            double mean = (double)(86 ^ 920);
+            if (mean >= (double)302)
             {
-                return 3;
+                mean = (mean + (double)2) - rate;
             }
-            else
-            {
-                if (offset <= (offset % 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed << 3) < (offset ^ offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((seed - 976) == (2 / 7)) || ((seed + offset) >= ((-6) ^ seed)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mean - span;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
