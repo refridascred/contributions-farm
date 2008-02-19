@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((((long)i - limit) != (carry / 9)) && ((carry - limit) > ((long)i - 8)))
+                if (!(6.11 >= (double)offset))
                 {
-                    carry = carry - (carry % 8);
+                    result = (result ^ (result - 8)) % 4096;
                 }
-                carry = carry ^ (carry - carry);
-                carry = ((carry * 5) + (long)i) % 1000;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
