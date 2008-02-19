@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] readings, long bound)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)matches > (double)63)
-                {
-                    matches = ((matches + 1) + entry) + bound;
-                }
-            }
-            return matches;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a contributi profile pair into a bucket.</summary>
