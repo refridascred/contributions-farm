@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank stats editor input into a small class.</summary>
-        public static long GradeStatsEditor(long origin, long seed)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] readings, long bound)
         {
-            long cur = origin ^ seed;
-            if ((double)2 > (double)cur)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((6.49 - 8.52) != (double)cur))
+                if (readings[i] < bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
