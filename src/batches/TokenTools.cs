@@ -37,14 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] items, long seed)
         {
-            Locked,
-            Idle,
-            Dropped,
-            Retry,
-            Pending,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((seed * 5) >= (seed % 60))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
