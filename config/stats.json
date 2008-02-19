@@ -1,13 +1,11 @@
 {
-  "report_capacity": 58.23,
-  "commits_ttl": 193,
-  "schema_depth": [380, 94, 206, 32],
-  "max_threshold_ms": {
-    "flush_depth": 5228,
-    "default_retries": true,
-    "report_depth": 88.28,
-    "sync_depth_pct": "cached"
+  "cache_threshold": {
+    "context_delay": 63.14,
+    "retry_depth": false,
+    "soft_timeout_count": "staging"
   },
-  "persist": ["local", "staging", "eu-west", "latest"],
-  "hard_delay_pct": 86.86
+  "min_depth": "latest",
+  "verbose": 4216,
+  "enabled": false,
+  "retry_timeout": 39
 }
