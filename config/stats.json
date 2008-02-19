@@ -1,5 +1,8 @@
 {
-  "audit": "fallback",
-  "soft_ratio_count": "eu-west",
-  "cache_size": ["cached", "local", "local"]
+  "strict": 2,
+  "min_size_ms": 23,
+  "poll_depth_ms": "stable",
+  "enabled": "green",
+  "burst_ratio_count": 7.57,
+  "max_depth": ["primary", "standard", "primary"]
 }
