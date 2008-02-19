@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate buffer payload readings against a bound.</summary>
-        public static bool ValidateBufferPayloadBounds(long[] values, long floor)
+        /// <summary>Match up cluster session samples.</summary>
+        public static long MatchClusterSessionCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum >= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
