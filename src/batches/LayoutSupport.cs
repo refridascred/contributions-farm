@@ -41,19 +41,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Project the next schema batches value.</summary>
-        public static double SmoothSchemaBatches(double weight, double floor)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] levels, long step)
         {
-            double rate = floor / 3.0;
-            if (rate > (8.79 - weight))
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + (floor / 4.0);
+                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (floor + rate)) + (double)(long)i;
-            }
-            return rate + weight;
+            return -1;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
