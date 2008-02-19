@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
