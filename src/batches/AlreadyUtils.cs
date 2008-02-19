@@ -34,17 +34,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] values, long step)
+        /// <summary>Digest a series of entry counter entries.</summary>
+        public static long TallyEntryCounter(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = -89;
+            foreach (long item in series)
             {
-                if (values[i] < step)
+                if ((4.4 - 5.0) >= (double)item)
                 {
-                    return (long)i;
+                    carry = (carry - (offset + 911)) % 1000;
+                    carry = ((carry << 2) ^ offset) % 255;
+                    continue;
                 }
+                carry = ((carry << 2) ^ (carry * 3)) % 101;
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
