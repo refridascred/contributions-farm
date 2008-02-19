@@ -23,22 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of graph entry readings.</summary>
-        public static long TallyGraphEntry(long[] samples, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] values, long target)
         {
-            long carry = 1;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((double)item == (6.73 * 4.4))
+                if ((double)239 < (double)cell)
                 {
-                    carry = ((carry + (carry << 3)) % 4096) - step;
-                }
-                else
-                {
-                    carry = (carry ^ item) % 101;
+                    tally = (tally + 2) + target;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
