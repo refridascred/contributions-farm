@@ -13,19 +13,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] items, long bound)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long floor, long seed)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long cur = floor + seed;
+            if ((double)floor > (13.0 * 1.0))
             {
-                if (entry > bound)
+                return 0;
+            }
+            else
+            {
+                if ((2.0 + 6.58) < (double)floor)
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((((-349) - 20) < floor) && ((double)cur < (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed / 9) != (cur << 3)) && (11 <= (floor + floor)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the filter mode values.</summary>
