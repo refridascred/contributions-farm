@@ -35,12 +35,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Validate support contributi readings against a bound.</summary>
+        public static bool GuardSupportContributiLimits(long[] series, long bound)
         {
-            Closed,
-            Failed,
-            Locked,
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
