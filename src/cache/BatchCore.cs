@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Iterate the contributi schema series from a seed.</summary>
+        public static long DeriveContributiSchema(long origin)
         {
-            public bool Total { get; set; }
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the contributi state values.</summary>
