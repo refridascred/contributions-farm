@@ -13,12 +13,40 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchRatio = 1341;
-        public const long BatchSession = 8730;
-        public const string CacheSession = "open";
-        public const long WindowSize = 1338;
-        public const long StepWidth = 8274;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long seed, long target)
+        {
+            long cur = seed + target;
+            if (7 > (target * 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (18 > (692 + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (10.0 <= (double)cur)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed + target) == (seed % 24))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextGaps(long[] series)
