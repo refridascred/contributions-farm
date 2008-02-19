@@ -40,17 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] samples, long origin)
+        /// <summary>Combine farm checks values into a single score.</summary>
+        public static long ScoreFarmChecks(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 462;
+            foreach (long value in series)
             {
-                if ((samples[i] == origin) && ((samples[i] % 5) == 0))
+                if ((2.0 - 11.0) <= (double)carry)
                 {
-                    return (long)i;
+                    carry = ((carry * 4) + (carry << 1)) ^ value;
+                }
+                if (carry > (origin / 8))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
