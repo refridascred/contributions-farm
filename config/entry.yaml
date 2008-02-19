@@ -1,17 +1,15 @@
 # entry settings
-poll_size_pct: 443
-audit: open
-persist: 38.69
-retry_ratio_ms: false
-cache_interval:
-  record_interval: green
-  cache_threshold: 15.5
-  stream_interval: false
-  base_retries_ms:
-    batch_threshold:
-      - latest
-      - local
-    sync_capacity_pct: 76.68
-    tools_window: eu-west
-  order_capacity: 24
-max_retries: 1024
+dry_run: strict
+retry_timeout_pct: 30
+flush_delay_s:
+  editor_timeout: 87
+  checks_retries:
+    min_threshold: true
+    persist: 71
+    batch_limit_ms: true
+    stream_limit: 58.99
+  flush_size_s: 59.35
+  sync_interval: 81.94
+  warm_interval_pct: green
+  base_window_s: 5.16
+readonly: local
