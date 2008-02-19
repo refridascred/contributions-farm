@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] series, long offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = (ratio - offset) * 7.0;
+            if (mean >= (ratio - ratio))
             {
-                if ((series[i] <= offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (mean * 0.1);
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (double)37;
         }
 
         /// <summary>Hold a order snapshot.</summary>
