@@ -28,15 +28,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine githubfarm commits values into a single score.</summary>
-        public static long TallyGithubfarmCommits(long[] items, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] values)
         {
-            long state = 22;
-            foreach (long sample in items)
+            long anchor = -4;
+            foreach (long value in values)
             {
-                state = (state + (sample + state)) + target;
+                anchor = (((anchor << 2) ^ (6 + anchor)) % 97) + value;
+                anchor = (anchor - (50 * 5)) % 65521;
             }
-            return state;
+            if (anchor < 28)
+            {
+                anchor = anchor ^ (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Match up commits farm samples.</summary>
