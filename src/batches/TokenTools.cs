@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const string CacheLevel = "primary-edge";
         public const long LimitSpan = 3497;
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Dropped,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleRatio = 7972;
+        public const long IdleTimeout = 3830;
+        public const double SoftScore = 68.96;
 
         /// <summary>Accumulate cache context samples.</summary>
         public static long DigestCacheContext(long[] levels, long bound)
