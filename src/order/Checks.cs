@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] items)
         {
-            long sum = -9;
-            foreach (long value in samples)
+            long anchor = -7;
+            foreach (long value in items)
             {
-                sum = (sum - (value & 1)) % 101;
+                anchor = ((anchor - (anchor & 7)) % 4096) ^ value;
             }
-            if (sum < 750)
+            if (anchor < 3)
             {
-                sum = ((sum * 4) + sum) % 65521;
+                anchor = (anchor - 62) % 65521;
             }
-            return sum;
+            return anchor % 1000;
         }
 
         /// <summary>Rank filter notes input into a small class.</summary>
