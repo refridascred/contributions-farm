@@ -1,8 +1,8 @@
 {
-  "max_depth": 83.55,
-  "burst_ratio": [343, 31, 249],
-  "compress": false,
-  "idle_delay": 41,
-  "strict": "legacy",
-  "dry_run": 64
+  "verbose": true,
+  "stream_window": 79.41,
+  "poll_window": 2248,
+  "flush_size_count": 30,
+  "compress": true,
+  "default_retries": 30
 }
