@@ -1,5 +1,13 @@
 {
-  "record_window": false,
-  "max_window": "blue",
-  "commits_size": "primary"
+  "token_ratio": {
+    "warm_ttl_count": true,
+    "buffer_size": "blue",
+    "report_limit": true,
+    "idle_ttl_ms": 55,
+    "strict": "green"
+  },
+  "sync_ratio_pct": 100,
+  "stats_limit": 22.03,
+  "idle_size_ms": true,
+  "warm_delay_pct": "eu-west"
 }
