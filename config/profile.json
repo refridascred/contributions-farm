@@ -1,13 +1,12 @@
 {
-  "batch_interval": 9.11,
-  "compress": 1678,
-  "channel_limit": "staging",
-  "enabled": {
-    "token_retries": "latest",
-    "base_delay_s": false,
-    "readonly": "fallback",
-    "sync_size_ms": "primary",
-    "default_ttl_ms": 54,
-    "max_window": 24.16
-  }
+  "layout_capacity": 23.13,
+  "contributi_threshold": 455,
+  "compress": {
+    "min_depth_s": "eu-west",
+    "profile_interval": ["primary", "latest"],
+    "sync_ratio_ms": 60,
+    "soft_ratio_pct": 44,
+    "window_timeout": ["blue", "primary", "blue"]
+  },
+  "soft_ratio": true
 }
