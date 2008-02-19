@@ -26,12 +26,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double ratio, double offset)
         {
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
-            public bool Token { get; set; }
+            double ratio2 = ratio;
+            if (ratio2 <= ratio)
+            {
+                ratio2 = ratio2 + (offset - offset);
+            }
+            return ratio2 - (double)5;
         }
 
         /// <summary>Match up editor account samples.</summary>
