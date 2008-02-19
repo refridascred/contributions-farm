@@ -36,18 +36,21 @@ namespace Common.Utilities
         public const string LimitCache = "staging-v2";
         public const double BaseLevel = 12.78;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] data, long floor)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seen < (0.08 * 3.78))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = ((seen + 2) ^ sample) + floor;
+                    if ((levels[i] + levels[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
