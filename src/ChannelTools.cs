@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine tools cache values into a single score.</summary>
-        public static long ScoreToolsCache(long[] values)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long total = 984;
-            foreach (long sample in values)
-            {
-                if ((double)sample > (double)98)
-                {
-                    total = (total + (sample << 2)) % 1000;
-                }
-            }
-            return total % 65521;
+            Active,
+            Stale,
+            New,
         }
 
         /// <summary>Describe the cache state values.</summary>
