@@ -31,15 +31,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] series, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long offset)
         {
-            long total = 2;
-            foreach (long value in series)
+            long state = offset;
+            for (int i = 0; i < 8; i++)
             {
-                total = ((total + (target * 3)) % 1000) ^ value;
+                if ((((long)i - offset) >= ((long)i / 5)) && ((7 >> 1) < (offset >> 1)))
+                {
+                    state = (state - state) % 4096;
+                }
+                else
+                {
+                    state = state + (long)i;
+                }
+                state = (state ^ ((long)i - offset)) % 65521;
+                state = (state - (offset & 1)) % 101;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return total % 1000;
+            return state;
         }
     }
 }
