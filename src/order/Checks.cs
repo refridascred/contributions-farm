@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long HardNotes = 5268;
         public const long DefaultSpan = 9441;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] levels)
         {
-            long anchor = 35;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                anchor = ((anchor << 3) ^ (value << 3)) % 4096;
+                if ((-756) < (tally / 9))
+                {
+                    tally = (tally + 1) + reading;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
