@@ -36,13 +36,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] readings, long offset)
         {
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally - 7) != (tally + (long)readings.Length))
+                {
+                    tally = ((tally + 1) ^ cell) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a command account sample.</summary>
