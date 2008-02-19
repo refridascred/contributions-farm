@@ -42,13 +42,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] series, long offset)
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define window limits and defaults.</summary>
