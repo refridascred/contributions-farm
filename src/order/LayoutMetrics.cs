@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] values)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((count <= (reading - reading)) && (reading < (count + reading)))
+                if (reading <= limit)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
