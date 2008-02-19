@@ -23,15 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double weight, double offset)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double bias, double offset)
         {
-            double rate = weight;
-            if (rate < rate)
+            double load = bias;
+            if (load > (load + load))
             {
-                rate = rate + offset;
+                load = load - (offset * 2.0);
             }
-            return rate + (5.5 + weight);
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (double)532;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
