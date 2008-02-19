@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] readings, long seed)
+        /// <summary>Accumulate cache batches samples.</summary>
+        public static long TallyCacheBatches(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -75;
+            foreach (long value in levels)
             {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ value) % 101;
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Blend two commits measurements.</summary>
