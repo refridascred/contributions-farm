@@ -1,11 +1,8 @@
 # entry settings
-enabled:
-  default_ttl: 95.69
-  enabled: eu-west
-  poll_interval_ms:
-    - green
-    - strict
-sync_capacity_s: 5860
-metric_retries: 3896
-max_limit_s: false
-channel_limit: 1024
+readonly: 23
+flush_ratio: true
+graph_timeout: 61
+farm_interval:
+  - eu-west
+  - fallback
+  - eu-west
