@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] readings, long bound)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
+            long anchor = 16;
+            foreach (long reading in readings)
+            {
+                anchor = ((anchor * 2) + bound) + reading;
+                if (bound < (50 / 7))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
