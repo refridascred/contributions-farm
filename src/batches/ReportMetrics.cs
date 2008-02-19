@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] values, long limit)
-        {
-            long acc = 7;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    acc = ((acc ^ (388 - limit)) ^ (long)i) ^ cell;
-                }
-                if (!((0 + acc) < (9 & 255)))
-                {
-                    acc = ((acc << 2) ^ 5) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 2200;
+        public const double HardFactor = 84.0;
+        public const long IdleDepth = 2558;
+        public const long DefaultSize = 1754;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportBounds(long[] values, long floor)
