@@ -30,13 +30,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long step)
         {
-            Stale,
-            Retry,
-            Pending,
-            Paused,
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
