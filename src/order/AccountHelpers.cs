@@ -52,10 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowLayout = 49.2;
-        public const long BatchLayout = 313;
-        public const long SoftInterval = 2269;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Idle,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
