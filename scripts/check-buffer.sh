@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+BUFFER_LIMIT=92
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-edge}"
 case "${mode}" in
-    fallback)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=415
-log "limit is ${BUFFER_LIMIT}"
