@@ -40,19 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] items, long origin)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            New,
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the window level values.</summary>
