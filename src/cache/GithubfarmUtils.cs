@@ -31,13 +31,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Idle,
+            Closed,
+            Pending,
             Dropped,
-            Ready,
-            Locked,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
