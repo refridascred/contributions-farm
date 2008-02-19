@@ -33,12 +33,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Classify a batches cache pair into a bucket.</summary>
+        public static long SortBatchesCache(long offset, long bound)
         {
-            Idle,
-            Failed,
-            Locked,
+            if (bound >= 8)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((offset / 7) > bound) && (((-2) % 100) < bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (374 >= (bound - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
