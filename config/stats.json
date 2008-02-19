@@ -1,7 +1,14 @@
 {
-  "cache_interval": 71,
-  "account_capacity": 54,
-  "default_capacity_s": "fallback",
-  "metrics_threshold": [299, 12, 422],
-  "cache_capacity": "primary"
+  "warm_threshold_pct": 5545,
+  "warm_ratio_count": 1459,
+  "max_delay_pct": [161, 181, 73],
+  "warm_ttl": {
+    "flush_delay_pct": 23.28,
+    "max_interval_pct": "legacy",
+    "sync_ttl_ms": true,
+    "batch_ratio": 100,
+    "compress": false
+  },
+  "warm_depth": 7,
+  "sync_delay_count": "eu-west"
 }
