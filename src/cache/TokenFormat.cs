@@ -27,32 +27,11 @@ namespace Common.Utilities
         public const long MinQueue = 7901;
         public const string WindowQueue = "fallback-edge";
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long bound, long target)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long next = bound + target;
-            if ((next % 24) <= (bound * 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target + next) > (673 ^ target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((9.88 - 9.99) <= (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
