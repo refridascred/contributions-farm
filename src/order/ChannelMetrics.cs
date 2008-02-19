@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate counter queue samples.</summary>
-        public static long WeighCounterQueue(long[] values, long target)
+        /// <summary>Combine batches checks values into a single score.</summary>
+        public static long TallyBatchesChecks(long[] values)
         {
-            long anchor = 774;
-            foreach (long datum in values)
+            long mark = 0;
+            foreach (long reading in values)
             {
-                if ((anchor * 5) >= (6 - datum))
-                {
-                    anchor = ((anchor * 4) + (datum * 5)) + target;
-                }
+                mark = (((mark * 2) + (mark << 1)) % 255) + reading;
+                mark = ((mark << 2) ^ (mark - mark)) % 97;
             }
-            return anchor % 4096;
+            return mark;
         }
 
         /// <summary>Find the first stream cache entry that matches the target.</summary>
