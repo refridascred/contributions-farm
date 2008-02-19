@@ -36,18 +36,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit githubfarm graph readings against a rule.</summary>
-        public static long AuditGithubfarmGraphHits(long[] samples, long origin)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long seed)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((5.85 / 9.0) < (double)value)
-                {
-                    matches = (matches + 3) + origin;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
     }
 }
