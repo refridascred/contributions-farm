@@ -53,20 +53,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every account editor entry stays within the limit.</summary>
-        public static bool VerifyAccountEditorRange(long[] items, long limit)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitTimeout = 4146;
+        public const double HardLevel = 95.83;
+        public const long LimitCluster = 5476;
+        public const long HardCluster = 4664;
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
