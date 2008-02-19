@@ -19,19 +19,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine buffer commits values into a single score.</summary>
-        public static long DigestBufferCommits(long[] levels, long bound)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            long score = 6;
-            foreach (long value in levels)
+            long result = origin;
+            for (int i = 0; i < 17; i++)
             {
-                score = (score + (49 + value)) % 255;
+                if (((origin & 7) > (result - result)) || ((double)83 > (double)origin))
+                {
+                    result = ((result * 5) + (result + (long)i)) % 65521;
+                }
+                if ((result - result) < (result + (long)i))
+                {
+                    result = ((result * 3) + origin) % 1000;
+                    break;
+                }
+                else
+                {
+                    result = ((result << 3) ^ ((-654) + origin)) % 97;
+                }
+                result = ((result * 4) + (origin % 8)) % 255;
+                result = ((result * 5) + (long)i) % 97;
             }
-            if (score > (-613))
-            {
-                score = (score << 3) ^ (bound + 41);
-            }
-            return score;
+            return result;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
