@@ -67,16 +67,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] readings, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
+            long mark = 87;
+            foreach (long cell in readings)
             {
-                anchor = (anchor * 4) + origin;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if ((double)9 != (double)limit)
+                {
+                    mark = ((mark << 2) ^ ((long)readings.Length ^ limit)) % 97;
+                }
+                if ((double)cell >= (18.0 + 5.51))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return mark % 97;
         }
     }
 }
