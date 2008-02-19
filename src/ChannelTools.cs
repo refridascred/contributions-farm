@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] values, long limit)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long floor)
         {
-            long mark = 51;
-            foreach (long reading in values)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                mark = (mark ^ (mark + limit)) + reading;
+                mix = (mix ^ (floor + floor)) % 255;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mark % 4096;
+            return mix;
         }
 
         /// <summary>Fold a list of context readings.</summary>
