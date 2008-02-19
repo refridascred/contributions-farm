@@ -6,17 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-GITHUBFARM_LIMIT=311
+GITHUBFARM_LIMIT=255
 log "limit is ${GITHUBFARM_LIMIT}"
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+mode="${1:-cached}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
