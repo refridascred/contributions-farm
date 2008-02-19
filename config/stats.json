@@ -1,14 +1,12 @@
 {
-  "warm_threshold_pct": 5545,
-  "warm_ratio_count": 1459,
-  "max_delay_pct": [161, 181, 73],
-  "warm_ttl": {
-    "flush_delay_pct": 23.28,
-    "max_interval_pct": "legacy",
-    "sync_ttl_ms": true,
-    "batch_ratio": 100,
-    "compress": false
+  "idle_ttl_ms": 37.12,
+  "soft_interval_count": 76.28,
+  "commits_ratio": 1024,
+  "default_threshold": {
+    "cache_ratio_ms": 9076,
+    "default_retries_ms": 7517,
+    "already_threshold": 6199
   },
-  "warm_depth": 7,
-  "sync_delay_count": "eu-west"
+  "checks_limit": 79.25,
+  "schema_limit": "standard"
 }
