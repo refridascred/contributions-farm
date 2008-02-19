@@ -16,15 +16,21 @@ namespace Common.Utilities
             return gain + (double)32;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Match up report farm samples.</summary>
+        public static long OverlapReportFarmCount(long[] samples)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
