@@ -1,8 +1,6 @@
 {
-  "batch_interval_s": false,
-  "hard_retries": "primary",
-  "stats_window": false,
-  "queue_retries": false,
-  "max_size_count": ["cached", "local", "primary"],
-  "sync_window_s": "latest"
+  "counter_size": false,
+  "cache_ratio": "stable",
+  "batch_capacity": "primary",
+  "batch_interval_pct": "edge"
 }
