@@ -58,14 +58,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] samples, long seed)
         {
-            Queued,
-            Synced,
-            Draft,
-            Paused,
-            Retry,
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
