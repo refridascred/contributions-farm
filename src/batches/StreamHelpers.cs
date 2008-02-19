@@ -54,18 +54,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] items, long origin)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (!(12.0 > (double)origin))
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
+            Queued,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a already entry.</summary>
