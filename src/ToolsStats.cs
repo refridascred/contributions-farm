@@ -13,19 +13,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double scale, double floor)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            double mean = (floor / 2.0) + floor;
-            if (mean < (mean - floor))
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + (double)45;
-            }
-            return mean - scale;
+            Locked,
+            Retry,
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
