@@ -20,21 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up support farm samples.</summary>
-        public static long CompareSupportFarmCount(long[] items)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long target, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((target >> 3) < floor)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (floor <= (floor + target))
                 {
-                    if ((items[i] - items[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate counter samples.</summary>
