@@ -12,23 +12,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double rate, double floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] data)
         {
-            double rate2 = floor;
-            if (rate2 <= 7.95)
+            long acc = 467;
+            foreach (long cell in data)
             {
-                rate2 = rate2 - (rate * 20.0);
+                acc = (acc ^ (22 - cell)) % 101;
+                acc = (acc * 4) + (3 ^ acc);
             }
-            else
-            {
-                rate2 = rate2 - 7.7;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 - rate) + (double)(long)i;
-            }
-            return rate2 - (double)15;
+            return acc;
         }
 
         /// <summary>Look up the position of a already farm sample.</summary>
