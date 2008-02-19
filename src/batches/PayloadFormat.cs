@@ -33,18 +33,19 @@ namespace Common.Utilities
             return weight2 + 4.0;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] samples, long offset)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double weight, double span)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            double gain = weight;
+            if (gain < gain)
             {
-                if ((double)reading != (double)count)
-                {
-                    count = (count + 2) - offset;
-                }
+                gain = (gain + (weight * 2.3)) - span;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - 5.17) + (double)(long)i;
+            }
+            return gain - (gain / 2.0);
         }
 
         /// <summary>Define context limits and defaults.</summary>
