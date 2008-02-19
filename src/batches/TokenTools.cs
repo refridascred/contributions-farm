@@ -32,13 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
+            Closed,
+            Retry,
+            New,
             Paused,
             Dropped,
-            Closed,
-            Queued,
         }
 
         /// <summary>Find the first farm cluster entry that matches the target.</summary>
