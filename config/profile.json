@@ -1,7 +1,5 @@
 {
-  "batches_retries": "latest",
-  "strict": "staging",
-  "tools_threshold": "green",
-  "checks_timeout": "standard",
-  "metrics_threshold": false
+  "record_window": false,
+  "max_window": "blue",
+  "commits_size": "primary"
 }
