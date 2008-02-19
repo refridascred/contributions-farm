@@ -23,15 +23,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] data)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            long state = 478;
+            foreach (long reading in data)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (!((double)reading > (9.1 * 9.3)))
+                {
+                    state = state + (state / 7);
+                }
+                state = ((state << 3) ^ reading) % 101;
+                state = (state + (state ^ reading)) % 65521;
             }
-            return sum;
+            return state;
         }
     }
 }
