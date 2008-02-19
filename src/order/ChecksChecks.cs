@@ -42,18 +42,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] items, long origin)
-        {
-            long mark = 61;
-            foreach (long datum in items)
-            {
-                if ((datum >> 1) == (mark + datum))
-                {
-                    mark = (mark + origin) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 6.95;
+        public const long RetryCache = 2221;
+        public const long DefaultCache = 9117;
+        public const long IdleLevel = 1763;
+        public const double HardScore = 7.73;
     }
 }
