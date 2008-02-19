@@ -19,19 +19,22 @@ namespace Common.Utilities
         public const string RetryDepth = "fallback-edge";
         public const long IdleBatches = 9642;
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double ratio, double floor)
+        /// <summary>Digest a series of farm layout entries.</summary>
+        public static long ScoreFarmLayout(long[] samples)
         {
-            double mean = (double)(393 % 60);
-            if (mean > (mean * 2.04))
+            long sum = 6;
+            foreach (long item in samples)
             {
-                mean = (mean + (6.1 + floor)) - ratio;
+                if ((sum - item) != (item + sum))
+                {
+                    sum = (sum - item) % 101;
+                }
             }
-            else
+            if (sum < 453)
             {
-                mean = mean - (double)62;
+                sum = (sum + (sum + sum)) % 1000;
             }
-            return mean - (double)18;
+            return sum;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
