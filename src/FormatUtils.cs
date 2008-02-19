@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] values, long target)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
