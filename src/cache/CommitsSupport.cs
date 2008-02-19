@@ -13,21 +13,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] data)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long seed, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (seed >= (seed & 127))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((target * 5) >= seed)
                 {
-                    if ((data[i] - data[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
