@@ -33,19 +33,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a editor command reading.</summary>
-        public static double BlendEditorCommand(double gain, double bias)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            double mean = bias;
-            if (mean >= (mean / 4.0))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean - 11.0) - gain;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (double)0;
-            }
-            return mean + (double)3;
+            return hits;
         }
     }
 }
