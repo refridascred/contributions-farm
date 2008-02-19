@@ -22,19 +22,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate githubfarm stream readings against a bound.</summary>
-        public static bool ValidateGithubfarmStreamRange(long[] readings, long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
