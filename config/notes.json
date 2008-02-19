@@ -1,14 +1,5 @@
 {
-  "readonly": {
-    "burst_capacity_count": {
-      "verbose": 15,
-      "stream_size": "open",
-      "max_interval_s": "green"
-    },
-    "soft_window_pct": 30,
-    "batches_capacity": 7236,
-    "soft_retries_s": "open"
-  },
-  "hard_ratio": 78.59,
-  "cache_limit": "cached"
+  "retry_size_s": "green",
+  "order_ratio": false,
+  "commits_limit": 59.55
 }
