@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double bias, double bias2)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            double bias3 = bias2 / 7.0;
-            if (bias3 > (double)8)
-            {
-                bias3 = (bias3 + (double)4) + bias;
-            }
-            return bias3 + bias2;
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
