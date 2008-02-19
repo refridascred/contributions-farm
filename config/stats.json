@@ -1,7 +1,5 @@
 {
-  "persist": 5569,
-  "counter_size": "strict",
-  "warm_threshold_pct": 54,
-  "verbose": "eu-west",
-  "format_ttl": "latest"
+  "persist": "legacy",
+  "context_window": "eu-west",
+  "graph_capacity": false
 }
