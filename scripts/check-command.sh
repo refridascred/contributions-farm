@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-latest}"
 case "${mode}" in
-    latest)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=251
-log "limit is ${COMMAND_LIMIT}"
+for item in eu-west green; do
+    log "checking ${item}"
+done
