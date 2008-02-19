@@ -73,15 +73,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] samples, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if (entry > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
     }
 }
