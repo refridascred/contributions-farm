@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] readings, long limit)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((limit + 0) < (limit - sample))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Paused,
+            Retry,
+            Locked,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
