@@ -1,7 +1,25 @@
 {
-  "flush_limit": [269, 468],
-  "batch_limit_s": true,
-  "flush_size_count": 500,
-  "burst_retries_s": 500,
-  "strict": "legacy"
+  "max_size": 1024,
+  "flush_threshold": true,
+  "max_timeout": 6147,
+  "route_limit": {
+    "poll_limit_pct": {
+      "burst_delay_count": [417, 310, 223, 410],
+      "soft_ttl_count": 100,
+      "default_capacity_s": "eu-west",
+      "base_interval_pct": "standard",
+      "compress": ["edge", "blue", "strict", "primary"],
+      "sync_retries": 79.24
+    },
+    "soft_interval_count": {
+      "metric_window": [149, 68, 446, 53],
+      "flush_interval": "blue",
+      "stats_depth": 48.84,
+      "compress": "cached",
+      "readonly": [239, 126]
+    },
+    "persist": 1024,
+    "poll_ratio_pct": true
+  },
+  "batch_interval_pct": 100
 }
