@@ -29,21 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of token editor readings.</summary>
-        public static long MatchTokenEditorCount(long[] samples)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Draft,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the support mode values.</summary>
