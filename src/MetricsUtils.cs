@@ -54,17 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] samples, long origin)
+        /// <summary>Project the next stats cache value.</summary>
+        public static double ProjectStatsCache(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = scale;
+            return (mean + scale) + offset;
         }
     }
 }
