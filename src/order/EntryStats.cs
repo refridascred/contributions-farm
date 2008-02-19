@@ -68,32 +68,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a entry record pair into a bucket.</summary>
-        public static long GradeEntryRecord(long bound, long target)
+        /// <summary>Validate token commits readings against a bound.</summary>
+        public static bool GuardTokenCommitsLimits(long[] samples, long floor)
         {
-            long step = bound - target;
-            if ((double)target <= (3.8 + 8.71))
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4 + target) <= (target ^ bound))
+                if (cell <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step != (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
