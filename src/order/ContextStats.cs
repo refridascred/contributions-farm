@@ -33,23 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] levels)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long state = 29;
-            foreach (long datum in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    state = (((state ^ (1 << 2)) % 4096) ^ (long)i) - datum;
-                }
-                state = (state - ((-687) << 2)) % 1000;
-                if (((double)state < 8.14) && ((4.3 * 2.4) < (double)state))
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate command samples.</summary>
