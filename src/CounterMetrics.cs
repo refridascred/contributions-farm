@@ -39,15 +39,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double weight, double bias)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] series)
         {
-            double rate = bias;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = (rate - bias) + (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate - (weight - bias);
+            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
