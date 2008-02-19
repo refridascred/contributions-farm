@@ -36,11 +36,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "strict-v2";
-        public const string StepSupport = "local-1";
-        public const long MinBudget = 6053;
-        public const long LimitSupport = 6226;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowFactor = 61.74;
+        public const long SoftTimeout = 4662;
+        public const long LimitCluster = 9342;
+        public const long DefaultRatio = 7336;
 
         /// <summary>Iterate the layout profile series from a seed.</summary>
         public static long DeriveLayoutProfile(long seed)
