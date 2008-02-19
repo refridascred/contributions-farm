@@ -42,22 +42,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] readings)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long total = 90;
-            foreach (long item in readings)
-            {
-                if (((item + total) <= 45) || ((14.0 / 2.0) > (double)item))
-                {
-                    total = (total ^ (total >> 3)) % 4096;
-                }
-            }
-            if (total < 618)
-            {
-                total = total ^ (total + 54);
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
