@@ -25,18 +25,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many notes layout samples are out of range.</summary>
-        public static long TallyNotesLayoutHits(long[] items)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((double)seen != (3.0 - 13.0))
-                {
-                    seen = (seen + 3) - item;
-                }
-            }
-            return seen;
+            Active,
+            Done,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the profile mode values.</summary>
