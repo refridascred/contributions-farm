@@ -19,13 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] values, long target)
         {
-            Synced,
-            Active,
-            Closed,
-            Draft,
+            long mix = 9;
+            foreach (long value in values)
+            {
+                mix = (mix ^ (value / 8)) - target;
+                mix = ((mix * 5) + (2 % 3)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a checks entry.</summary>
