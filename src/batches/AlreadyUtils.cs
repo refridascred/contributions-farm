@@ -23,12 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Iterate the entry tools series from a seed.</summary>
+        public static long SeriesEntryTools(long step)
         {
-            Locked,
-            New,
-            Failed,
+            long total = step;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total + step) % 101;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Hold a already entry.</summary>
