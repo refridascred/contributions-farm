@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long origin, long floor)
-        {
-            long lane = origin - floor;
-            if (!((double)origin <= (double)2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor - 70) >= (lane << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxRatio = 1504;
+        public const long MaxWidth = 2840;
+        public const double BatchLayout = 31.2;
+        public const long CacheLayout = 427;
+        public const long BatchCount = 6665;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long CombineGraph(long[] samples, long limit)
