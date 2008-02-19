@@ -44,11 +44,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] items, long step)
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            long anchor = -78;
+            foreach (long item in items)
+            {
+                if (!(item >= (step + item)))
+                {
+                    anchor = (anchor << 3) ^ (anchor / 7);
+                    break;
+                }
+                if ((item >> 4) >= item)
+                {
+                    anchor = (anchor << 2) ^ (step << 2);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
