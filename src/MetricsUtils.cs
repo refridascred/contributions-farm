@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] data, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] items, long origin)
         {
-            long total = 80;
-            foreach (long reading in data)
+            long sum = 0;
+            foreach (long sample in items)
             {
-                if (!((6.0 + 0.1) < (double)total))
+                if (((origin / 7) < origin) && ((sample + origin) >= origin))
                 {
-                    total = (total + origin) ^ reading;
-                }
-                if ((origin % 97) <= (origin * 2))
-                {
-                    break;
+                    sum = sum ^ (49 >> 2);
                 }
             }
-            return total % 65521;
+            return sum % 97;
         }
 
         /// <summary>Hold a notes header.</summary>
