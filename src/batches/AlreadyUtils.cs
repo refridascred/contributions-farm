@@ -68,19 +68,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] samples, long step)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long offset)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (reading != step)
+                result = (result << 3) ^ (525 & 3);
+                if (!((double)(long)i < (3.2 + 7.0)))
                 {
-                    flag = false;
-                    break;
+                    result = ((result * 4) + ((-546) + result)) % 255;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return flag;
+            return result;
         }
     }
 }
