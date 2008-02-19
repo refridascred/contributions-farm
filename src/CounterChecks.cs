@@ -80,23 +80,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] items, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] values, long offset)
         {
-            long total = 3;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                total = (total + (total + (long)items.Length)) % 97;
-                if (cell <= (step / 2))
+                if (((4.25 / 3.0) <= (8.45 / 4.0)) || ((double)reading <= (5.52 * 5.76)))
                 {
-                    total = ((total << 2) ^ step) % 101;
+                    tally = (tally + 2) + offset;
                 }
             }
-            if (total < 0)
-            {
-                total = ((total * 2) + ((long)items.Length + step)) % 101;
-            }
-            return total;
+            return tally;
         }
     }
 }
