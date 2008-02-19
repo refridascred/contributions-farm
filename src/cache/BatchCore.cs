@@ -35,23 +35,17 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double weight, double offset)
+        /// <summary>Find the first format context entry that matches the target.</summary>
+        public static long LookupFormatContextIndex(long[] levels, long target)
         {
-            double gain = weight + (double)299;
-            if (gain > (6.0 * 2.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain - weight;
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (gain * 10.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + offset) + (double)(long)i;
-            }
-            return gain + offset;
+            return -1;
         }
     }
 }
