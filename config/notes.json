@@ -1,22 +1,7 @@
 {
-  "channel_interval": "legacy",
-  "poll_threshold_ms": false,
-  "schema_limit": {
-    "persist": false,
-    "sync_limit": "fallback",
-    "compress": "stable",
-    "warm_limit_s": 33.78,
-    "soft_timeout_ms": {
-      "verbose": 48.55,
-      "max_window_count": "fallback",
-      "compress": 31,
-      "sync_window_count": 500
-    }
-  },
-  "min_depth_count": 1252,
-  "flush_timeout_ms": {
-    "base_size": "open",
-    "persist": 89,
-    "default_timeout": "standard"
-  }
+  "filter_ratio": 91,
+  "poll_threshold_s": 0.9,
+  "base_depth_s": "eu-west",
+  "persist": 78,
+  "flush_timeout_pct": 609
 }
