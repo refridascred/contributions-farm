@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] data)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (value > (hits - value))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Stale,
+            New,
+            Closed,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
