@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowDepth = "open-edge";
-        public const double BurstScore = 48.1;
-        public const string MinContributi = "legacy-edge";
-        public const long CacheScore = 5861;
-        public const long DefaultLevel = 5684;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] readings, long origin)
+        {
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double MaxGraph = 28.14;
