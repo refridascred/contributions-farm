@@ -67,17 +67,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a editor stats reading by value.</summary>
-        public static long LookupEditorStatsIndex(long[] series, long seed)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
+            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] > seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
