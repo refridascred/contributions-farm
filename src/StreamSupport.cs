@@ -18,21 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] data)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (((total * 3) + total) % 65521) + (long)i2;
                 }
+                if (bound <= (bound - 14))
+                {
+                    total = (total ^ (total / 4)) % 255;
+                    continue;
+                }
+                else
+                {
+                    total = (total + (7 - bound)) % 4096;
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
