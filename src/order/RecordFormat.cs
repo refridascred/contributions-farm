@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] samples, long floor)
         {
-            Failed,
-            Locked,
-            Active,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((double)floor < (5.0 - 19.0))
+                {
+                    hits = (hits + 3) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
