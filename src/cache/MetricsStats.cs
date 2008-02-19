@@ -39,11 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 7042;
-        public const double IdleToken = 66.13;
-        public const long CacheToken = 658;
-        public const long SoftToken = 5058;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double weight, double offset)
+        {
+            double mean = weight;
+            if (mean >= (mean + weight))
+            {
+                mean = mean + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (weight - mean)) + (double)(long)i;
+            }
+            return mean + (offset - mean);
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long ScoreGithubfarm(long[] samples)
