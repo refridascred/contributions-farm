@@ -24,19 +24,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of payload schema entries.</summary>
-        public static long CombinePayloadSchema(long[] items, long offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long limit, long bound)
         {
-            long anchor = -33;
-            foreach (long sample in items)
+            long prev = limit + bound;
+            if (((double)prev >= (0.93 / 5.0)) || ((bound + prev) <= limit))
             {
-                anchor = (((anchor * 3) + sample) % 1000) + offset;
-                if (!((double)anchor < (1.2 - 6.53)))
+                return 0;
+            }
+            else
+            {
+                if (prev <= (limit - limit))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound > (1.09 / 4.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Describe the route class values.</summary>
