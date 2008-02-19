@@ -20,18 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] series)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double bias = rate - (double)423;
+            for (int i = 0; i < 6; i++)
             {
-                if ((18.0 * 18.0) == (double)reading)
-                {
-                    matches = matches + 3;
-                }
+                bias = ((bias + (5.8 * 3.0)) + (double)(long)i) - floor;
             }
-            return matches;
+            return bias - 6.33;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
