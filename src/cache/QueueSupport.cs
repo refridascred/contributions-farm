@@ -32,17 +32,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] series, long origin)
+        /// <summary>Grade a buffer cluster value against two limits.</summary>
+        public static long ClassifyBufferCluster(long limit, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((537 % 8) < (bound % 60))
             {
-                if (series[i] >= origin)
+                return 1;
+            }
+            else
+            {
+                if ((limit ^ limit) == (bound - limit))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
