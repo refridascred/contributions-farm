@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long seed, long offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] samples)
         {
-            if (((offset << 2) == (seed & 7)) && ((seed - offset) != (offset + 769)))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed > (offset >> 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)offset <= 7.4) && ((offset / 9) == (seed ^ seed)))
+                    if ((samples[i] + samples[j]) > 15)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)821 >= (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
