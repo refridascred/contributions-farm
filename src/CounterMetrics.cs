@@ -48,25 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] data, long origin)
         {
-            long carry = 25;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                carry = (carry + 65) % 101;
-                carry = (carry ^ (cell % 8)) % 4096;
-                carry = carry ^ (617 ^ cell);
-                if ((cell / 5) == (cell + cell))
+                if (datum < origin)
                 {
+                    stale = false;
                     break;
                 }
             }
-            if (carry > 0)
-            {
-                carry = (carry * 2) + (carry >> 4);
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
