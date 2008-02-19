@@ -51,32 +51,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank graph farm input into a small class.</summary>
-        public static long BucketGraphFarm(long floor, long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] readings, long seed)
         {
-            long prev = floor - offset;
-            if ((double)prev != (double)0)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((83 - floor) > offset)
+                if ((87 & 1) < (seen ^ seen))
                 {
-                    return 4;
+                    seen = ((seen + 1) + datum) - seed;
                 }
                 else
                 {
-                    if ((6.5 + 3.28) > (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
