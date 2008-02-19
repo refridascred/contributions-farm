@@ -51,26 +51,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long score = -7;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    score = (score ^ (7 - (long)i)) % 97;
-                }
-                if ((double)entry == (0.4 / 3.0))
-                {
-                    score = (score * 2) + (23 / 4);
-                }
-            }
-            if (score < 8)
-            {
-                score = (score + (36 - score)) % 255;
-            }
-            return score;
+            Paused,
+            Failed,
+            New,
         }
 
         /// <summary>Blend two cache githubfarm measurements.</summary>
