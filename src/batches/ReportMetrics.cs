@@ -30,19 +30,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] levels, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] data, long bound)
         {
-            long anchor = 684;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                anchor = ((anchor + (sample + 343)) % 4096) - step;
+                if (((value / 5) < tally) || (((tally - tally) < (-792)) || ((value & 7) >= (bound + tally))))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (anchor < 1)
-            {
-                anchor = (anchor * 5) + (anchor ^ 65);
-            }
-            return anchor;
+            return tally;
         }
     }
 }
