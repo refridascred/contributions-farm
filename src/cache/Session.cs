@@ -23,17 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first queue graph entry that matches the target.</summary>
-        public static long LocateQueueGraphIndex(long[] readings, long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 44;
+            foreach (long datum in items)
             {
-                if (readings[i] == seed)
+                if ((3 ^ 0) != (mix - mix))
                 {
-                    return (long)i;
+                    mix = mix + (datum >> 3);
                 }
             }
-            return -1;
+            if (mix < 802)
+            {
+                mix = ((mix * 5) + (mix & 31)) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a graph entry.</summary>
