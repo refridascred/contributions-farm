@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] series)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - cell) >= (cell & 63))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            Locked,
+            Synced,
+            Queued,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
