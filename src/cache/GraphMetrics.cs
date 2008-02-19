@@ -27,15 +27,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a window schema counter forward.</summary>
-        public static long DeriveWindowSchema(long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] levels)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            long score = 58;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                score = (score + (datum - score)) % 4096;
+                score = score + ((long)levels.Length - 314);
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
