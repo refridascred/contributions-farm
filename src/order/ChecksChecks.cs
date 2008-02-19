@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long BatchRecord = 2012;
         public const long HardWidth = 2812;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 6795;
-        public const long DefaultSize = 1026;
-        public const string MaxScore = "local-1";
-        public const long StepSize = 9926;
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long step)
