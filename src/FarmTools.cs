@@ -15,23 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((3.4 / 2.0) == (double)carry)
+                carry = (carry << 3) ^ offset;
+                if (offset <= (long)i)
                 {
-                    carry = ((carry * 3) + (long)i) % 101;
+                    carry = (carry - (long)i) % 65521;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = (((carry * 2) + (carry << 1)) % 97) ^ (long)i2;
-                    carry = ((carry << 2) ^ (carry + (-21))) % 1000;
-                }
-                carry = carry - 632;
-                carry = ((carry * 3) + (long)i) % 1000;
+                carry = ((carry * 5) + (long)i) % 101;
             }
             return carry;
         }
