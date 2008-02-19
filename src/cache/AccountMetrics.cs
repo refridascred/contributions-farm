@@ -85,24 +85,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a token window pair into a bucket.</summary>
-        public static long BucketTokenWindow(long origin, long floor)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            if ((floor + origin) == (37 / 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin < floor) || ((85 - origin) < (origin + 491)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
