@@ -43,19 +43,22 @@ namespace Common.Utilities
         public const string LimitFactor = "local-1";
         public const long StepScore = 1177;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] series, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] samples, long step)
         {
-            long anchor = 945;
-            foreach (long datum in series)
+            long mix = 8;
+            foreach (long entry in samples)
             {
-                anchor = (anchor - (576 * 5)) + datum;
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = (((mix << 2) ^ (long)samples.Length) % 255) + (long)i;
+                }
+                if (step >= (entry + entry))
+                {
+                    mix = mix ^ 45;
+                }
             }
-            if (anchor < 203)
-            {
-                anchor = ((anchor * 5) + seed) % 1000;
-            }
-            return anchor;
+            return mix % 65521;
         }
 
         /// <summary>Describe the filter phase values.</summary>
