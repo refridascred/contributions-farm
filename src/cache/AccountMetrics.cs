@@ -35,31 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long step, long bound)
+        /// <summary>Digest a series of metrics already entries.</summary>
+        public static long TallyMetricsAlready(long[] series)
         {
-            if ((step < (bound / 9)) && ((bound << 1) > (step * 3)))
+            long sum = 89;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)step < (5.1 + 0.7)))
+                if ((sum - cell) < (sum + sum))
                 {
-                    return 5;
+                    sum = ((sum << 2) ^ (321 - sum)) % 101;
                 }
                 else
                 {
-                    if ((double)bound >= (0.7 + 6.79))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    sum = sum - (-86);
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Describe the window level values.</summary>
