@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxWidth = 1520;
-        public const long BatchCount = 7925;
-        public const long HardBudget = 3645;
-        public const string StepStats = "strict-1";
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((7.5 + 1.5) >= (double)tally)
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long WeighNotes(long[] items, long origin)
