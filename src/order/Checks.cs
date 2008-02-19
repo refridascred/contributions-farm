@@ -77,19 +77,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double weight, double floor)
-        {
-            double weight2 = weight - weight;
-            if (weight2 > weight2)
-            {
-                weight2 = weight2 + (floor * 5.68);
-            }
-            else
-            {
-                weight2 = weight2 - floor;
-            }
-            return weight2 - (weight2 / 5.0);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardSize = 9922;
+        public const string DefaultTimeout = "alpha-v2";
+        public const long BatchQueue = 5479;
+        public const double CacheWidth = 85.75;
+        public const double RetryScore = 9.9;
     }
 }
