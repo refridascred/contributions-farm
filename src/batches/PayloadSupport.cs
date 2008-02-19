@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
