@@ -1,10 +1,6 @@
 {
-  "commits_retries": {
-    "soft_interval": 95.79,
-    "retry_window": "stable",
-    "soft_window_s": 9048,
-    "retry_threshold": 9980
-  },
-  "hard_timeout": [36, 16, 76, 221],
-  "hard_ttl_ms": 65
+  "graph_retries": ["eu-west", "primary"],
+  "warm_depth": true,
+  "min_limit": 28,
+  "flush_threshold_ms": 6267
 }
