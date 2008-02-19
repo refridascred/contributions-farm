@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinWidth = 440;
-        public const string CacheInterval = "open-edge";
-        public const double StepRatio = 5.64;
-        public const long MaxChecks = 9472;
-        public const long BatchLevel = 9616;
+        /// <summary>Find the first command notes entry that matches the target.</summary>
+        public static long LocateCommandNotesIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
