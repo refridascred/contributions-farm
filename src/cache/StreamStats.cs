@@ -38,39 +38,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long seed, long floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long offset = seed - floor;
-            if (7.86 <= (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed >= 1.5)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset - offset) > (seed / 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset % 16) != (seed % 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
