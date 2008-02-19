@@ -48,15 +48,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] items, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (!((count + sample) > (sample + origin)))
+                {
+                    count = count + 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Classify a token window pair into a bucket.</summary>
