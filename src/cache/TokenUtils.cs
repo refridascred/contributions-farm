@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long origin)
         {
-            Dropped,
-            Retry,
-            Locked,
-            Failed,
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((1.8 + 8.8) == (double)origin)
+                {
+                    anchor = (anchor ^ (origin << 2)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor + origin) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
