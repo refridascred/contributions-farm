@@ -20,11 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Count the stream channel entries that pass the check.</summary>
+        public static long AuditStreamChannelOutliers(long[] levels, long limit)
         {
-            public bool Total { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((5.02 + 8.6) > (double)tally)
+                {
+                    tally = ((tally + 1) - item) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
