@@ -22,26 +22,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] samples)
         {
-            long mix = 3;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(long)samples.Length <= (4.13 * 1.5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix ^ 322) % 255;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (entry << 2);
+                    if ((samples[i] - samples[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > (-82))
-            {
-                mix = ((mix * 4) + (mix / 9)) % 65521;
-            }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
