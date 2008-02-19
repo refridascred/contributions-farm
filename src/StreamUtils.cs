@@ -56,17 +56,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a support farm sample.</summary>
-        public static long FindSupportFarmIndex(long[] series, long bound)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long offset, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long gap = offset ^ bound;
+            if ((double)gap != (17.0 + 1.3))
             {
-                if (series[i] == bound)
+                return 0;
+            }
+            else
+            {
+                if (bound <= offset)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
