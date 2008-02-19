@@ -19,26 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] samples)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long result = 8;
-            foreach (long datum in samples)
-            {
-                if (!((datum * 4) != (datum + 7)))
-                {
-                    result = (result * 5) + (result - result);
-                }
-                else
-                {
-                    result = (result << 2) ^ (datum - datum);
-                }
-            }
-            if (result < 103)
-            {
-                result = (result * 2) + 355;
-            }
-            return result % 1000;
+            Ready,
+            Dropped,
+            Queued,
+            Retry,
+            Done,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
