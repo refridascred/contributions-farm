@@ -1,18 +1,11 @@
 {
-  "verbose": "cached",
-  "idle_retries_s": "green",
-  "default_ttl_pct": {
-    "command_delay": 100,
-    "warm_retries": {
-      "persist": 9479,
-      "counter_timeout": 35,
-      "hard_delay": true,
-      "default_ttl_s": "legacy"
-    },
-    "order_threshold": [342, 167],
-    "schema_delay": ["open", "fallback", "latest"]
+  "audit": {
+    "min_capacity_ms": 20.08,
+    "max_capacity_count": 64.95,
+    "default_interval": ["eu-west", "staging", "open"],
+    "githubfarm_size": 6878,
+    "retry_limit_ms": "fallback"
   },
-  "profile_limit": false,
-  "soft_retries": "staging",
-  "base_timeout_pct": 21.03
+  "base_ratio_pct": ["stable", "standard"],
+  "readonly": ["edge", "blue", "cached"]
 }
