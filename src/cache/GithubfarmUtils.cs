@@ -45,13 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Ready,
+            Closed,
+            Paused,
         }
     }
 }
