@@ -46,19 +46,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate support contributi readings against a bound.</summary>
-        public static bool GuardSupportContributiLimits(long[] series, long bound)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
