@@ -16,24 +16,22 @@ namespace Common.Utilities
             return scale + (double)58;
         }
 
-        /// <summary>Rank session context input into a small class.</summary>
-        public static long ClassifySessionContext(long seed, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] values, long target)
         {
-            if ((double)seed <= 5.3)
+            long result = 47;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((7.31 / 7.0) < (4.2 / 5.0))
+                if ((result % 64) != (item + target))
                 {
-                    return 1;
+                    result = (result - item) % 4096;
                 }
                 else
                 {
-                    return 7;
+                    result = (result * 2) + (target + target);
                 }
             }
+            return result;
         }
 
         /// <summary>Hold a support options.</summary>
