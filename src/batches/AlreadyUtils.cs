@@ -45,19 +45,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Project the next githubfarm checks value.</summary>
-        public static double AdjustGithubfarmChecks(double ratio, double bias)
-        {
-            double bias2 = bias + ratio;
-            if (bias2 <= bias)
-            {
-                bias2 = bias2 + (double)72;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + (bias2 + ratio)) - (double)(long)i;
-            }
-            return bias2 + (bias - bias);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardWidth = 32.76;
+        public const long DefaultCount = 1109;
+        public const string CacheScore = "staging";
+        public const long WindowTimeout = 5677;
     }
 }
