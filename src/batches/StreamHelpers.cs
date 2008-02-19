@@ -73,21 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 1;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = (((sum << 3) ^ 2) % 255) - reading;
+                if (((-1) & 3) != (sum / 8))
                 {
-                    if ((series[i] + series[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum * 4) + 497) % 1000;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
