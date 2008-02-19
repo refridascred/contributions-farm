@@ -73,18 +73,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading >> 1) == (matches % 64)) && ((reading & 15) < (matches & 31)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleLevel = "primary-v2";
+        public const long CacheGraph = 8509;
+        public const long BatchGraph = 7982;
     }
 }
