@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Project the next metric report value.</summary>
-        public static double SmoothMetricReport(double bias, double floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] data)
         {
-            double load = floor;
-            return load + (bias - bias);
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((cell - cell) > (561 ^ (-3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cluster status values.</summary>
