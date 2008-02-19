@@ -27,12 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] data)
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
+            long result = 94;
+            foreach (long sample in data)
+            {
+                if ((736 ^ result) <= (sample + result))
+                {
+                    result = (result + (result & 255)) % 4096;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate support contributi readings against a bound.</summary>
