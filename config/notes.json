@@ -1,5 +1,7 @@
 {
-  "soft_ratio_s": [376, 5, 244],
-  "idle_limit": 3277,
-  "retry_timeout_count": 3
+  "compress": false,
+  "support_retries": false,
+  "base_limit_ms": 10.99,
+  "cache_size": "standard",
+  "payload_ttl": [215, 94]
 }
