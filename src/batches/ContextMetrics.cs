@@ -56,18 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepDepth = 24.76;
+        public const string CacheLevel = "latest-edge";
+        public const long WindowTools = 2361;
+        public const long BatchSize = 5803;
+        public const string SoftFactor = "fallback";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double DefaultContributi = 88.99;
