@@ -22,18 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] values, long offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long sum = -20;
+            foreach (long reading in readings)
             {
-                if ((double)entry < (1.77 - 6.93))
+                for (int i = 0; i < 3; i++)
                 {
-                    hits = (hits + 3) + offset;
+                    sum = (sum ^ (reading / 5)) + (long)i;
+                }
+                sum = ((sum * 2) + (7 + 475)) % 1000;
+                if ((reading + sum) > reading)
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the counter mode values.</summary>
