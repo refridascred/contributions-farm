@@ -39,32 +39,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long step, long seed)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long gap = step ^ seed;
-            if ((56 ^ step) != (seed >> 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)gap == (6.2 + 6.1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((-485) <= (step - step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
