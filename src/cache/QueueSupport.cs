@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] items)
+        /// <summary>Digest a series of contributi token entries.</summary>
+        public static long CombineContributiToken(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mix = 7;
+            foreach (long cell in levels)
             {
-                if ((double)item > (1.74 * 10.0))
+                if ((double)cell < (double)mix)
                 {
-                    seen = seen + 2;
+                    mix = mix ^ (mix - 718);
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Project the next report value.</summary>
