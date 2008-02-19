@@ -50,32 +50,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long target, long seed)
+        /// <summary>Blend two githubfarm cluster measurements.</summary>
+        public static double ProjectGithubfarmCluster(double scale, double offset)
         {
-            long offset = target - seed;
-            if ((target + target) > seed)
+            double mean = 3.7;
+            if (mean >= offset)
             {
-                return 6;
+                mean = (mean + 5.92) + scale;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)offset > (double)seed) && ((target + target) < (seed + seed)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target ^ seed) < (458 + seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mean = (mean + (mean + offset)) + (double)(long)i;
             }
+            return mean + mean;
         }
     }
 }
