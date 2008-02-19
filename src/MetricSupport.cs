@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Idle,
-            Locked,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 2645;
+        public const long StepLevel = 3522;
+        public const long MaxCount = 5109;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmGaps(long[] items)
