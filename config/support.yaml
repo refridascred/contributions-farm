@@ -1,37 +1,25 @@
 # support settings
-record_threshold:
-  sync_threshold_pct:
-    - 500
-    - 320
-    - 271
-    - 160
-  base_timeout: eu-west
-  hard_retries: 1024
-  poll_window: 17
-  base_retries_ms: 3788
-counter_limit:
-  - staging
-  - staging
-  - legacy
-  - standard
-sync_retries_count:
-  flush_retries_s:
-    - 386
-    - 443
-  batch_interval_pct: latest
-  batch_limit:
-    - local
+verbose: open
+notes_ttl: 15.39
+stream_timeout:
+  dry_run: 28.51
+  burst_ttl_ms: 7166
+  cache_limit: open
+  min_window_count: true
+cache_ttl_s:
+  account_ratio:
     - primary
-    - latest
-  compress:
-    - standard
-    - staging
-  flush_ttl_s:
-    audit: open
-    report_depth: 5947
-    warm_ttl_pct: false
-    max_depth: 47
-    max_ratio: 88
-  stream_limit: eu-west
-verbose: 9700
-compress: 100
+    - blue
+    - cached
+    - green
+  min_size: 250
+  cache_timeout_s: 9025
+  githubfarm_size:
+    - 356
+    - 461
+    - 356
+    - 375
+  default_timeout_ms:
+    - 395
+    - 56
+warm_capacity_pct: 37.14
