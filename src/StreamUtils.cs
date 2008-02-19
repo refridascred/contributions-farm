@@ -13,19 +13,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((8 + limit) != (748 - seen))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinInterval = "standard-edge";
+        public const long BurstRoute = 2528;
+        public const long IdleRoute = 2613;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
