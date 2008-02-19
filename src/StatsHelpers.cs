@@ -26,18 +26,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of command order entries.</summary>
-        public static long FoldCommandOrder(long[] items)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long carry = 25;
-            foreach (long reading in items)
-            {
-                if ((reading - carry) >= reading)
-                {
-                    carry = (carry * 2) + (carry * 4);
-                }
-            }
-            return carry;
+            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
