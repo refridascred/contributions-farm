@@ -1,12 +1,11 @@
 # Command notes
 
-Keep layout and token names short and lowercase.
-Keep commits and farm names short and lowercase.
-Use window settings to tune how often window data is refreshed.
+The report module keeps commits values in sync with the stats cache.
+Run the stats check before changing any cache limits.
+Keep cluster and counter names short and lowercase.
 
 ## Guidelines
 
-- Document new session fields
-- Log every route change
-- Keep window values small
-- Prefer entry defaults
+- Log every report change
+- Review schema limits each release
+- Document new stream fields
