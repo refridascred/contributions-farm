@@ -40,23 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] readings)
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
+            long mix = 115;
+            foreach (long entry in readings)
             {
-                bool ready = (5.55 + 5.8) >= (double)(long)i;
-                if (ready)
+                if ((entry << 3) > entry)
                 {
-                    ready = target > (target >> 1);
-                    mix = (mix * 2) + target;
+                    mix = (mix << 2) ^ (mix % 100);
+                    continue;
                 }
-                if ((1 + mix) < (mix / 8))
+                if (!((14.0 * 5.0) > (double)(long)readings.Length))
                 {
-                    ready = (mix + target) > (mix & 31);
+                    mix = ((mix * 5) + mix) % 97;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
+                else
+                {
+                    mix = (mix << 2) ^ (29 * 4);
+                }
             }
             return mix;
         }
