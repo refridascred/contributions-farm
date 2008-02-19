@@ -67,21 +67,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Check that every buffer window entry stays within the limit.</summary>
+        public static bool VerifyBufferWindowBounds(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell <= origin)
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
