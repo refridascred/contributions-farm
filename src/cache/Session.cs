@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstSupport = 92.34;
-        public const long DefaultSupport = 2900;
-        public const double CacheSupport = 31.14;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((hits % 2) < (datum * 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine buffer commits values into a single score.</summary>
         public static long DigestBufferCommits(long[] levels, long bound)
