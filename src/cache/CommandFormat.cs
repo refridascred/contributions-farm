@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] values, long seed)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)tally >= (8.0 / 4.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = ((tally + 1) + reading) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] + levels[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
