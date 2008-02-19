@@ -19,15 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double scale, double offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] values, long step)
         {
-            double drift = (double)(45 - 92);
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                drift = ((drift - (offset * 13.0)) + (double)(long)i) + scale;
+                if (reading > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift + (2.1 / 2.0);
+            return found;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
