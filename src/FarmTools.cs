@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up report metrics samples.</summary>
-        public static long PairReportMetricsCount(long[] levels)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
