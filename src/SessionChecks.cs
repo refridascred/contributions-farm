@@ -43,29 +43,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long step, long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long target, long seed)
         {
-            long prev = step - seed;
-            if ((4.42 / 5.0) == (double)prev)
+            long offset = target - seed;
+            if ((target + target) > seed)
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if (prev > (seed + step))
+                if (((double)offset > (double)seed) && ((target + target) < (seed + seed)))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if (((5.23 - 4.0) == (double)step) || ((step >> 2) == (prev - step)))
+                    if ((target ^ seed) < (458 + seed))
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
-                        return 4;
+                        return 1;
                     }
                 }
             }
