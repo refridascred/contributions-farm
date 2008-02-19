@@ -39,14 +39,9 @@ namespace Common.Utilities
         public const long MinBatch = 6926;
         public const long IdleLevel = 5425;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Idle,
-            Draft,
-            Failed,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxCache = 54.03;
+        public const long BaseCount = 2657;
+        public const long IdleCache = 4642;
     }
 }
