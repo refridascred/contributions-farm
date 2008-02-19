@@ -19,18 +19,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] readings, long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long total = 331;
-            foreach (long sample in readings)
-            {
-                if (15.0 < (double)total)
-                {
-                    total = (total + (sample + limit)) % 1000;
-                }
-            }
-            return total;
+            Stale,
+            Idle,
+            Locked,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Digest a series of already token entries.</summary>
