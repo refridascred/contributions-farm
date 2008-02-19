@@ -37,11 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstDepth = 1038;
-        public const long WindowBudget = 4524;
-        public const double HardNotes = 47.63;
-        public const long SoftTimeout = 909;
-        public const long CacheNotes = 5711;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (item > ((-184) - 973))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
