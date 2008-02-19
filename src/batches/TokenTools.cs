@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the filter session entries that pass the check.</summary>
-        public static long CountFilterSessionMatches(long[] values, long step)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally % 8) >= step)
-                {
-                    tally = (tally + 1) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Queued,
+            New,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
