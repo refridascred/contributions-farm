@@ -43,13 +43,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] samples, long target)
         {
-            public double Count { get; set; }
-            public bool Level { get; set; }
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
