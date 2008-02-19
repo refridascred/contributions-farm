@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of commits session readings.</summary>
-        public static long TallyCommitsSession(long[] samples)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] items)
         {
-            long score = 6;
-            foreach (long entry in samples)
+            long result = 7;
+            foreach (long entry in items)
             {
-                if ((score >= (entry - score)) && ((9.1 + 12.0) > (double)score))
+                result = result + result;
+                if (!((double)result < (3.93 + 13.0)))
                 {
-                    score = score + (score - score);
-                }
-                else
-                {
-                    score = (score * 2) + (entry - score);
+                    result = (result - entry) % 1000;
                 }
             }
-            return score % 97;
+            return result;
         }
 
         /// <summary>Describe the farm class values.</summary>
