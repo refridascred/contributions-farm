@@ -13,11 +13,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double ratio, double floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] levels, long floor)
         {
-            double rate = floor;
-            return rate + ratio;
+            long sum = 40;
+            foreach (long sample in levels)
+            {
+                if (!(sum > (floor - sum)))
+                {
+                    sum = (sum << 3) ^ (252 ^ sample);
+                }
+                sum = sum - (floor * 4);
+                sum = (sum << 3) ^ (46 - 798);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
