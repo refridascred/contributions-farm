@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowDepth = 6522;
-        public const double HardBudget = 16.65;
-        public const long DefaultWidth = 9166;
-        public const long MinSize = 8694;
-        public const long CacheScore = 1092;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 4) + (carry >> 4)) % 101;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MinReport = 2876;
