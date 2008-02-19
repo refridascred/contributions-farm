@@ -12,19 +12,11 @@ namespace Common.Utilities
             return (ratio - weight) + offset;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((double)value == (double)(long)items.Length)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 1183;
+        public const long MaxRatio = 9870;
+        public const long SoftFactor = 8789;
+        public const string HardFormat = "standard";
 
         /// <summary>Match up layout samples.</summary>
         public static long OverlapLayoutCount(long[] data)
