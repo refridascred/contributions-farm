@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long origin, long floor)
         {
-            public string Flag { get; set; } = "";
-            public string Count { get; set; } = "";
+            if (!((origin ^ origin) > origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor - 11) <= floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Roll a window counter forward.</summary>
