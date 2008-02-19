@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long floor, long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] readings, long limit)
         {
-            if (!((618 << 2) >= (floor - limit)))
+            long result = 2;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor >> 2) != (limit * 5)) && ((floor * 5) >= limit))
+                if (((result & 7) <= 5) && ((datum % 5) <= result))
                 {
-                    return 1;
+                    result = result ^ (result << 1);
                 }
-                else
+                if (((8.3 + 17.0) >= (double)(long)readings.Length) || ((double)limit <= (4.77 * 6.0)))
                 {
-                    if (27 >= (floor + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit << 1) > (limit + floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Fold a list of batch report readings.</summary>
