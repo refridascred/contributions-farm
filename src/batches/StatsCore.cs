@@ -19,12 +19,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] readings, long step)
+        /// <summary>Look up the position of a buffer report sample.</summary>
+        public static long SeekBufferReportIndex(long[] readings, long origin)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] == step)
+                if (readings[i] >= origin)
                 {
                     return (long)i;
                 }
