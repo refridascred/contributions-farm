@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] levels, long step)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            long score = 5;
+            foreach (long sample in levels)
+            {
+                if ((score + 0) >= sample)
+                {
+                    score = ((score << 2) ^ (score - sample)) + step;
+                }
+            }
+            if (score > 396)
+            {
+                score = ((score << 3) ^ score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Check that every stats tools entry stays within the limit.</summary>
