@@ -27,15 +27,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit session batches readings against a rule.</summary>
-        public static long MeasureSessionBatchesHits(long[] samples, long bound)
+        /// <summary>Compare every pair of graph entry readings.</summary>
+        public static long PairGraphEntryCount(long[] series)
         {
             long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((bound < value) && ((double)tally == (double)bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
