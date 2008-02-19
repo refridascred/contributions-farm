@@ -1,10 +1,4 @@
 # githubfarm settings
-verbose: stable
-max_delay: 49.59
-batch_delay_ms: primary
-base_capacity: green
-soft_interval_s:
-  - open
-  - eu-west
-  - primary
-format_retries: 250
+poll_retries_pct: 1024
+strict: primary
+retry_window_count: 2396
