@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next notes command value from a seed.</summary>
-        public static long StepNotesCommand(long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if (((hits % 16) > reading) || ((hits - hits) != (hits / 6)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Accumulate channel samples.</summary>
