@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] levels, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] levels)
         {
-            long result = -6;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                result = ((result + result) % 101) - offset;
-                result = result ^ (value ^ 7);
-                if ((double)value != (11.0 + 9.4))
+                if (((sample - matches) <= matches) && ((matches - sample) <= 29))
                 {
-                    result = (result - 72) % 1000;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
