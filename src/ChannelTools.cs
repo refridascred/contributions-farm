@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double bias, double floor)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] samples, long seed)
         {
-            double bias2 = bias;
-            if (bias2 >= bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = bias2 - (double)29;
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - (floor - 1.94);
+            return -1;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
