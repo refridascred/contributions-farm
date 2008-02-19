@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Synced,
+            Paused,
             Idle,
-            Stale,
-            Active,
-            Done,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
