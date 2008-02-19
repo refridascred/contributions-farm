@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            New,
+            Failed,
             Closed,
-            Ready,
+            Synced,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a metric header.</summary>
