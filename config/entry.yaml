@@ -1,4 +1,7 @@
 # entry settings
-hard_timeout: strict
-base_threshold_ms: staging
-persist: false
+warm_size_s: 7240
+cache_delay: primary
+poll_depth: false
+checks_ttl: stable
+retry_size_s: strict
+batch_retries_ms: 100
