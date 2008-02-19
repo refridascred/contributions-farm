@@ -16,26 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((1.28 + 6.3) >= (double)(long)i)
-                {
-                    carry = carry ^ ((long)i ^ (long)i);
-                    continue;
-                }
-                else
-                {
-                    carry = (carry - ((long)i + carry)) % 4096;
-                }
-                carry = (carry << 3) ^ seed;
-                carry = (carry + (87 + carry)) % 97;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Retry,
+            Done,
+            Queued,
         }
 
         /// <summary>Hold a cache summary.</summary>
