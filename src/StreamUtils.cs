@@ -56,25 +56,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long offset, long bound)
-        {
-            long gap = offset ^ bound;
-            if ((double)gap != (17.0 + 1.3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound <= offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseGraph = 30.76;
+        public const long HardGraph = 6887;
+        public const string BaseScore = "open";
+        public const long WindowGraph = 4573;
     }
 }
