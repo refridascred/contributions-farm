@@ -22,18 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] items)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long limit, long target)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long delta = limit ^ target;
+            if ((6.1 > (double)delta) || ((9 / 5) == (delta & 3)))
             {
-                if ((sample / 9) > (sample ^ sample))
+                return 6;
+            }
+            else
+            {
+                if ((91 + limit) < delta)
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a stats entry.</summary>
