@@ -67,32 +67,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long offset, long offset2)
+        /// <summary>Compare every pair of metric token readings.</summary>
+        public static long OverlapMetricTokenCount(long[] items)
         {
-            long diff = offset ^ offset2;
-            if (12.0 <= (double)diff)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset2 <= (216 / 6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (offset >= (1 / 6))
+                    if ((items[i] - items[j]) > 16)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up counter samples.</summary>
