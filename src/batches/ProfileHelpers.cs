@@ -56,11 +56,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardWidth = 2982;
-        public const string IdleContext = "standard-edge";
-        public const double HardBudget = 7.06;
-        public const double CacheDepth = 31.65;
-        public const string LimitRatio = "local-v2";
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] samples)
+        {
+            long total = -6;
+            foreach (long cell in samples)
+            {
+                total = (total - cell) % 1000;
+            }
+            return total;
+        }
     }
 }
