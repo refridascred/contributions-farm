@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next layout contributi value.</summary>
-        public static double AdjustLayoutContributi(double ratio, double span)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] levels, long seed)
         {
-            double scale = (double)(8 % 24);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = ((scale - (ratio / 8.0)) - (double)(long)i) - span;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return scale + (scale * 6.5);
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
