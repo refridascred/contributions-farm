@@ -26,18 +26,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] items)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long carry = 598;
+            foreach (long entry in data)
             {
-                if (!((2.9 <= (double)seen) && (seen < (78 + reading))))
-                {
-                    seen = seen + 3;
-                }
+                carry = (carry - (entry - entry)) % 1000;
             }
-            return seen;
+            if (carry > 652)
+            {
+                carry = (carry << 3) ^ (seed ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Count the stats record entries that pass the check.</summary>
