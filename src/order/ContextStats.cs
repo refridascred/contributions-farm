@@ -31,21 +31,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 29;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 10; i++)
                 {
-                    if ((items[i] + items[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    state = (((state ^ (1 << 2)) % 4096) ^ (long)i) - datum;
+                }
+                state = (state - ((-687) << 2)) % 1000;
+                if (((double)state < 8.14) && ((4.3 * 2.4) < (double)state))
+                {
+                    break;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
