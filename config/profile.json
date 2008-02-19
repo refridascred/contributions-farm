@@ -1,22 +1,10 @@
 {
-  "notes_size": {
-    "verbose": "cached",
-    "batch_size_pct": "primary",
-    "default_capacity_s": {
-      "min_depth_pct": 25.86,
-      "compress": 98.61,
-      "hard_interval_count": 58,
-      "burst_retries_s": "primary"
-    },
-    "idle_capacity": 91.13,
-    "retry_size_pct": true
+  "hard_size_pct": {
+    "idle_timeout": "local",
+    "default_ratio_pct": 25.0,
+    "hard_delay_count": 5624,
+    "burst_interval": 2126
   },
-  "retry_depth_s": 3,
-  "hard_depth_s": {
-    "strict": 1024,
-    "batch_ttl": [381, 200, 75, 38],
-    "githubfarm_timeout": 2783
-  },
-  "batch_retries_pct": false,
-  "readonly": 57.04
+  "idle_window_s": "legacy",
+  "persist": "fallback"
 }
