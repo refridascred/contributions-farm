@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 2211;
+        public const string BatchDepth = "open-edge";
+        public const long WindowSpan = 6537;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
