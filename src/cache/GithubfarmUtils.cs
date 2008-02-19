@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every command batches entry stays within the limit.</summary>
-        public static bool ValidateCommandBatchesBounds(long[] samples, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (entry >= origin)
+                if ((hits >> 1) < (22 >> 4))
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 3) ^ value) + floor;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
