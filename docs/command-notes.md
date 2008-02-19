@@ -1,14 +1,15 @@
 # Command notes
 
-Each metric is validated before it reaches the token queue.
-Keep stream and filter names short and lowercase.
+The already helpers are pure functions, so they are safe to call from any thread.
+A commits that stays idle for too long is moved to the contributi list.
+A report that stays idle for too long is moved to the format list.
 
-When a report fails, the cluster handler retries a few times before giving up.
-Each support is validated before it reaches the commits queue.
+Each commits is validated before it reaches the buffer queue.
+Run the support check before changing any queue limits.
 
 ## Guidelines
 
-- Document new record fields
-- Validate schema input early
-- Prefer channel defaults
-- Keep metrics values small
+- Keep cache values small
+- Document new batches fields
+- Prefer payload defaults
+- Review metrics limits each release
