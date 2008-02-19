@@ -76,14 +76,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long origin)
         {
-            Failed,
-            Ready,
-            Locked,
-            Idle,
-            Retry,
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor * 4) + origin;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
