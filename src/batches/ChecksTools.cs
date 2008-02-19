@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a queue metric counter forward.</summary>
-        public static long DeriveQueueMetric(long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] series, long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((origin + 166) >= (anchor + anchor))
+                if (reading <= (reading - target))
                 {
-                    anchor = anchor - (-435);
+                    matches = matches + 2;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
