@@ -56,14 +56,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Pending,
-            Queued,
-            Retry,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultScore = 42.74;
+        public const double SoftFactor = 54.54;
+        public const string IdleNotes = "cached-v2";
+        public const long MinWidth = 7760;
+        public const long BaseDepth = 9065;
     }
 }
