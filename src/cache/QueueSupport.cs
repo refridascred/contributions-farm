@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format layout readings against a rule.</summary>
-        public static long MeasureFormatLayoutGaps(long[] items, long origin)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double bias3 = bias2 / 7.0;
+            if (bias3 > (double)8)
             {
-                if (hits > (origin + hits))
-                {
-                    hits = (hits + 2) ^ value;
-                }
+                bias3 = (bias3 + (double)4) + bias;
             }
-            return hits;
+            return bias3 + bias2;
         }
 
         /// <summary>Grade a buffer cluster value against two limits.</summary>
