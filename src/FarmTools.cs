@@ -38,11 +38,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] levels, long limit)
         {
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (count <= (long)levels.Length)
+                {
+                    count = ((count + 2) + reading) - limit;
+                }
+            }
+            return count;
         }
     }
 }
