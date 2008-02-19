@@ -31,17 +31,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first account contributi entry that matches the target.</summary>
-        public static long LocateAccountContributiIndex(long[] series, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((series[i] == offset) && ((series[i] % 2) != 0))
+                if ((((matches << 2) >= 89) || (matches <= 2)) && !((double)cell > (8.4 - 6.13)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the stream class values.</summary>
