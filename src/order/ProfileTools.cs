@@ -14,19 +14,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] readings, long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
