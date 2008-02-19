@@ -1,31 +1,9 @@
 # githubfarm settings
-batches_interval:
-  account_interval:
-    format_limit: latest
-    base_capacity_ms: stable
-    burst_window_pct: 44.49
-    filter_ratio: 29
-    flush_size: false
-  min_interval: 7150
-  batch_ratio_ms: 82
-  schema_threshold: 26.41
-  default_limit_ms:
-    readonly:
-      - cached
-      - stable
-      - staging
-      - stable
-    base_limit_count: true
-    min_retries:
-      - fallback
-      - local
-      - blue
-      - fallback
-metrics_size:
-  strict: 6791
-  checks_limit: 61.87
-  channel_ttl: 16.47
-  readonly: fallback
-  cache_depth_count: true
-  compress: 250
-enabled: cached
+metrics_limit: blue
+report_ratio: true
+poll_retries:
+  - 344
+  - 400
+  - 241
+  - 175
+cache_ttl: false
