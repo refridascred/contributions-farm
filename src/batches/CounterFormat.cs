@@ -13,17 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] data, long bound)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > bound) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Done,
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Roll a farm counter forward.</summary>
