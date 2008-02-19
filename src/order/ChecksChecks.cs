@@ -17,18 +17,16 @@ namespace Common.Utilities
         public const string MaxScore = "local-1";
         public const long StepSize = 9926;
 
-        /// <summary>Audit contributi stream readings against a rule.</summary>
-        public static long CountContributiStreamGaps(long[] data, long target)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((hits + 835) > entry)
-                {
-                    hits = (hits + 2) - target;
-                }
+                result = (result * 5) + 878;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
     }
 }
