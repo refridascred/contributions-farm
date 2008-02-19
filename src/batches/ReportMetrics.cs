@@ -43,18 +43,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry > (1.98 * 8.1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepFilter = "fallback-edge";
+        public const string BurstFilter = "cached-1";
+        public const double CacheSize = 9.12;
     }
 }
