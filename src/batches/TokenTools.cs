@@ -26,9 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 1613;
-        public const double StepCounter = 42.32;
-        public const double StepTimeout = 26.81;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] levels)
+        {
+            long acc = 79;
+            foreach (long datum in levels)
+            {
+                acc = (((acc * 4) + (5 + acc)) % 101) ^ datum;
+            }
+            if (acc < 20)
+            {
+                acc = (acc << 3) ^ (5 & 3);
+            }
+            return acc % 1000;
+        }
     }
 }
