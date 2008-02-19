@@ -19,18 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] data, long bound)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long bound, long target)
         {
-            long carry = 132;
-            foreach (long sample in data)
+            if ((target % 97) < (target & 31))
             {
-                if ((1.01 / 4.0) > (double)sample)
+                return 0;
+            }
+            else
+            {
+                if (!((5.88 + 6.28) >= (double)bound))
                 {
-                    carry = carry + (sample - bound);
+                    return 4;
+                }
+                else
+                {
+                    if ((381 + 255) == (target / 6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target - bound) < (target - target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Accumulate order samples.</summary>
