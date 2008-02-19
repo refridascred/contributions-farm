@@ -12,11 +12,18 @@ namespace Common.Utilities
             return (ratio - weight) + offset;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 1183;
-        public const long MaxRatio = 9870;
-        public const long SoftFactor = 8789;
-        public const string HardFormat = "standard";
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
