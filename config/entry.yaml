@@ -1,8 +1,4 @@
 # entry settings
-readonly: 23
-flush_ratio: true
-graph_timeout: 61
-farm_interval:
-  - eu-west
-  - fallback
-  - eu-west
+order_delay: edge
+retry_ttl: 1024
+enabled: green
