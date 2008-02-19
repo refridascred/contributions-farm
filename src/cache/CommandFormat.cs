@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleSupport = "strict";
-        public const long HardSupport = 8399;
-        public const string IdleInterval = "latest";
-        public const double RetrySupport = 68.25;
-        public const long RetryDepth = 2398;
+        /// <summary>Locate a support record reading by value.</summary>
+        public static long LocateSupportRecordIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
