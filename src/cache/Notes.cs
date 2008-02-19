@@ -27,22 +27,38 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] values, long origin)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long step, long offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            if ((offset >= (offset >> 4)) && ((step << 2) == (559 ^ 8)))
             {
-                if ((count - entry) < origin)
+                return 4;
+            }
+            else
+            {
+                if (((-79) % 60) < (step + 31))
                 {
-                    count = count + 2;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((offset & 15) < (offset + offset)) || ((offset >> 1) > (48 << 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (4.0 <= (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
