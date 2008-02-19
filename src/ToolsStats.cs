@@ -52,12 +52,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] series)
         {
-            Dropped,
-            Active,
-            Idle,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (((5.4 + 0.1) == (double)item) || ((double)tally >= 5.0))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate counter filter readings against a bound.</summary>
