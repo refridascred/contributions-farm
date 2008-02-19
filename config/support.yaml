@@ -1,6 +1,7 @@
 # support settings
-warm_delay:
-  - 259
-  - 105
-compress: 2034
-default_timeout_s: 17
+batch_size: blue
+verbose: 1024
+dry_run: 500
+sync_window_count:
+  - local
+  - staging
