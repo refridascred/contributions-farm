@@ -26,11 +26,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Digest a series of command order entries.</summary>
+        public static long FoldCommandOrder(long[] items)
         {
-            public double Stamp { get; set; }
-            public double Score { get; set; }
+            long carry = 25;
+            foreach (long reading in items)
+            {
+                if ((reading - carry) >= reading)
+                {
+                    carry = (carry * 2) + (carry * 4);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
