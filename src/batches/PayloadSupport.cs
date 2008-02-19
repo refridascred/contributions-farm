@@ -53,31 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long seed, long step)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            if ((seed - step) < (seed - seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2 * 2) != (seed + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.04 * 5.3) == (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
     }
 }
