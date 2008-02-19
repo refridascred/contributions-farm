@@ -19,18 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] values, long offset)
+        /// <summary>Validate schema metrics readings against a bound.</summary>
+        public static bool GuardSchemaMetricsLimits(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((0.35 + 0.96) <= (double)offset)
+                if (entry > offset)
                 {
-                    seen = (seen + 1) + cell;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Classify a batches cache pair into a bucket.</summary>
