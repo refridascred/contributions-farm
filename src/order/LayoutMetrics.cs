@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 1115;
-        public const string CacheCluster = "strict-edge";
-        public const string CacheDepth = "staging-v2";
-        public const double DefaultSpan = 14.58;
-        public const long SoftCount = 3106;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleTimeout = 6376;
