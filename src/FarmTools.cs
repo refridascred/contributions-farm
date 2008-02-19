@@ -22,25 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long limit, long target)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] samples, long seed)
         {
-            long delta = limit ^ target;
-            if ((6.1 > (double)delta) || ((9 / 5) == (delta & 3)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((91 + limit) < delta)
+                if (samples[i] > seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
