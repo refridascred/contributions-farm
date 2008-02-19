@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftScore = 8.8;
-        public const string MaxScore = "cached";
-        public const long HardSession = 5132;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((tally & 63) > (sample >> 4))
+                {
+                    tally = (tally + 2) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long StepFactor = 80;
