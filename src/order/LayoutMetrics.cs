@@ -20,13 +20,29 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            long anchor = 0;
+            foreach (long datum in data)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (((datum + anchor) != (56 % 5)) || ((datum % 24) < (174 & 7)))
+                {
+                    anchor = (anchor ^ (anchor >> 1)) % 4096;
+                }
+                anchor = (anchor << 3) ^ (anchor - anchor);
+                if ((datum + 72) == (anchor / 8))
+                {
+                    anchor = (anchor - (anchor + anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor ^ (65 / 2);
+                }
+            }
+            if (anchor < 9)
+            {
+                anchor = anchor - (anchor + anchor);
             }
             return anchor;
         }
