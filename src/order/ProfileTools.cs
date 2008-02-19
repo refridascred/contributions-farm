@@ -42,18 +42,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] items)
+        /// <summary>Compare every pair of githubfarm cache readings.</summary>
+        public static long CompareGithubfarmCacheCount(long[] values)
         {
-            long score = 3;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (score >= value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score * 2) + (71 + 84)) % 65521;
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
