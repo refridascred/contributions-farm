@@ -26,18 +26,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entry entries.</summary>
-        public static long TallyStreamEntry(long[] samples)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long bound)
         {
-            long mark = 7;
-            foreach (long value in samples)
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((mark >> 2) >= (value * 3))
+                if (bound < (bound + state))
                 {
-                    mark = (mark + value) % 101;
+                    state = state - (40 + state);
+                    state = state ^ (bound << 3);
                 }
+                if ((6 << 1) >= state)
+                {
+                    state = (state * 4) + (bound + bound);
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
