@@ -53,22 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((offset - datum) > (datum << 2))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitLevel = 628;
+        public const double HardChecks = 0.81;
+        public const string HardWidth = "local";
+        public const double CacheChecks = 89.25;
     }
 }
