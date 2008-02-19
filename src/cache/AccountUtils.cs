@@ -28,26 +28,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] values)
+        /// <summary>Check that every layout record entry stays within the limit.</summary>
+        public static bool VerifyLayoutRecordLimits(long[] readings, long step)
         {
-            long sum = 122;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                for (int i = 0; i < 3; i++)
+                if (datum <= step)
                 {
-                    sum = (sum + (sample ^ sample)) ^ (long)i;
-                }
-                if ((5 ^ sum) >= (sample + 2))
-                {
-                    sum = (sum + (476 >> 2)) % 97;
-                }
-                if ((sample % 24) < (sum & 31))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return sum;
+            return valid;
         }
     }
 }
