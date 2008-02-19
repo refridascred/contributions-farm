@@ -16,19 +16,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double weight, double span)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] data, long seed)
         {
-            double scale = weight * 2.9;
-            if (scale < 6.4)
+            long count = 0;
+            foreach (long value in data)
             {
-                scale = scale - (8.2 - span);
+                if (68 >= (count ^ count))
+                {
+                    count = ((count + 3) + value) - seed;
+                }
             }
-            else
-            {
-                scale = scale - (weight / 9.0);
-            }
-            return scale - (scale * 1.7);
+            return count;
         }
 
         /// <summary>Describe the batch phase values.</summary>
