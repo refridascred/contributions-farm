@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
             public string Region { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
