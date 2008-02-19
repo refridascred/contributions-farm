@@ -1,9 +1,4 @@
 # support settings
-record_size: 500
-batch_ratio: true
-retry_depth_pct:
-  - 295
-  - 30
-min_retries: local
-tools_ttl: false
-idle_interval_ms: false
+base_threshold: 8.82
+enabled: eu-west
+route_size: false
