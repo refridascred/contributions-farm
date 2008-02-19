@@ -53,19 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a counter batches figure with a bias.</summary>
-        public static double ProjectCounterBatches(double bias, double offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] series, long step)
         {
-            double bias2 = (double)(5 + 2);
-            if (bias2 < offset)
+            bool ready = true;
+            foreach (long item in series)
             {
-                bias2 = bias2 - (offset - bias);
+                if (item <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - bias2) - (double)(long)i;
-            }
-            return bias2 + (bias2 / 9.0);
+            return ready;
         }
     }
 }
