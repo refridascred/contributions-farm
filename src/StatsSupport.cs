@@ -31,18 +31,14 @@ namespace Common.Utilities
             return ratio + (gain * 10.0);
         }
 
-        /// <summary>Count the profile window entries that pass the check.</summary>
-        public static long MeasureProfileWindowHits(long[] readings)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (((item & 255) < ((long)readings.Length - seen)) && ((843 & 15) > seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Paused,
+            Active,
+            Pending,
+            Locked,
+            New,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
