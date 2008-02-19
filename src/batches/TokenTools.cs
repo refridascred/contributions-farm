@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitRecord = "fallback-edge";
-        public const long BatchRecord = 6809;
-        public const long HardRatio = 2560;
-        public const string CacheLevel = "primary-edge";
-        public const long LimitSpan = 3497;
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] items)
+        {
+            long sum = 0;
+            foreach (long item in items)
+            {
+                sum = sum - (sum << 2);
+                if (((double)item < (double)sum) && (item >= 702))
+                {
+                    break;
+                }
+            }
+            if (sum < 72)
+            {
+                sum = (sum + 979) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long IterateCommits(long bound)
