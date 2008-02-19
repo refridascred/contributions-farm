@@ -1,10 +1,16 @@
 {
-  "retry_depth": {
-    "checks_timeout": 55.21,
-    "metrics_threshold": false,
-    "default_timeout_s": 20,
-    "tools_capacity": false
+  "compress": 52.58,
+  "flush_depth": {
+    "entry_ratio": {
+      "report_ratio": true,
+      "batch_delay_ms": 0.02,
+      "batch_ratio_pct": true
+    },
+    "cache_window": 35.4,
+    "default_capacity": 20.84,
+    "soft_ratio": 8314,
+    "context_interval": 7346
   },
-  "layout_interval": ["eu-west", "legacy", "stable"],
-  "dry_run": 250
+  "format_interval": false,
+  "default_size_count": [37, 244, 38, 95]
 }
