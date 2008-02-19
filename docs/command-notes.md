@@ -1,15 +1,14 @@
 # Command notes
 
-Use session settings to tune how often order data is refreshed.
-Defaults for account live in the config folder and can be overridden per environment.
-Use batch settings to tune how often notes data is refreshed.
+Each window is validated before it reaches the schema queue.
+The command helpers are pure functions, so they are safe to call from any thread.
+Defaults for tools live in the config folder and can be overridden per environment.
 
-When a batches fails, the tools handler retries a few times before giving up.
-The checks report groups every support by session.
+Defaults for order live in the config folder and can be overridden per environment.
+Each farm is validated before it reaches the record queue.
 
 ## Guidelines
 
-- Keep report values small
-- Prefer order defaults
-- Document new already fields
-- Review entry limits each release
+- Log every stats change
+- Keep route values small
+- Document new profile fields
