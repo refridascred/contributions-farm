@@ -22,16 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] levels)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score << 3) ^ (score % 10);
-                score = ((score * 4) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Accumulate cache context samples.</summary>
