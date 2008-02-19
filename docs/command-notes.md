@@ -1,14 +1,12 @@
 # Command notes
 
-The payload module keeps metrics values in sync with the commits cache.
-Use channel settings to tune how often payload data is refreshed.
-The editor module keeps cluster values in sync with the commits cache.
-
-The account report groups every buffer by cluster.
-The route helpers are pure functions, so they are safe to call from any thread.
+Keep layout and token names short and lowercase.
+Keep commits and farm names short and lowercase.
+Use window settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Keep graph values small
-- Log every queue change
-- Prefer graph defaults
+- Document new session fields
+- Log every route change
+- Keep window values small
+- Prefer entry defaults
