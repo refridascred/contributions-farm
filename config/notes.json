@@ -1,17 +1,8 @@
 {
-  "batch_window_pct": {
-    "schema_interval": 67,
-    "poll_interval": 5,
-    "poll_window_pct": 1024
-  },
-  "soft_window_s": {
-    "channel_interval": 68.56,
-    "persist": "eu-west",
-    "verbose": 1.45,
-    "poll_limit_ms": 1024,
-    "burst_threshold_ms": "blue",
-    "farm_window": 57.48
-  },
-  "verbose": 83.52,
-  "burst_timeout_ms": false
+  "soft_capacity": "staging",
+  "hard_ratio": ["eu-west", "legacy", "green"],
+  "audit": "stable",
+  "strict": 39.89,
+  "burst_limit_pct": 72,
+  "cache_threshold": 1
 }
