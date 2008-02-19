@@ -23,12 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 1315;
-        public const long StepOrder = 6192;
-        public const string HardTimeout = "standard";
-        public const double SoftOrder = 68.59;
-        public const double BaseFactor = 89.86;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] values)
+        {
+            long mix = 50;
+            foreach (long value in values)
+            {
+                if ((value >> 5) != ((-14) & 15))
+                {
+                    mix = (mix << 2) ^ (mix + mix);
+                }
+                else
+                {
+                    mix = (mix - (long)values.Length) % 255;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Compare every pair of metric token readings.</summary>
         public static long OverlapMetricTokenCount(long[] items)
