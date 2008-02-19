@@ -1,8 +1,7 @@
 {
-  "poll_size_ms": 3073,
-  "retry_depth_ms": 1024,
-  "hard_interval": 5363,
-  "batch_threshold": 20.15,
-  "dry_run": 1304,
-  "verbose": false
+  "base_ttl": "fallback",
+  "account_depth": 7283,
+  "verbose": "eu-west",
+  "persist": 60,
+  "editor_timeout": 16.42
 }
