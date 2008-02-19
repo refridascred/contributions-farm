@@ -71,11 +71,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            Dropped,
+            Locked,
+            Synced,
+            Ready,
+            Queued,
         }
     }
 }
