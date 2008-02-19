@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] readings)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] values, long origin)
         {
             long tally = 0;
-            foreach (long reading in readings)
+            foreach (long item in values)
             {
-                if ((4.0 - 7.14) <= (double)tally)
+                if ((origin / 6) > origin)
                 {
-                    tally = (tally + 3) + reading;
+                    tally = (tally + 1) + item;
                 }
             }
             return tally;
