@@ -35,12 +35,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] values, long limit)
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
