@@ -27,11 +27,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double scale, double offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] values, long origin)
         {
-            double gain = offset;
-            return gain + (offset + scale);
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((count - entry) < origin)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
