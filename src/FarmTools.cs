@@ -36,10 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseCount = "strict-1";
-        public const long MinOrder = 5811;
-        public const long DefaultOrder = 4796;
-        public const string IdleSize = "primary-edge";
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
     }
 }
