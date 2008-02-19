@@ -28,21 +28,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] levels)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 319;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)series.Length < (datum + anchor)) && (datum <= (datum % 64)))
                 {
-                    if ((levels[i] ^ levels[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor * 2) + (anchor / 3)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (datum - anchor)) % 65521;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
