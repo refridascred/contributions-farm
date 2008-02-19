@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] items)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (((hits % 16) > reading) || ((hits - hits) != (hits / 6)))
+                if (datum != target)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Rank command input into a small class.</summary>
