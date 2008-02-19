@@ -1,16 +1,7 @@
 # support settings
-cache_limit_count:
-  - stable
-  - fallback
+context_ttl: true
+min_capacity:
+  - legacy
   - open
-min_depth: 55.97
-flush_ttl_ms:
-  - strict
-  - staging
-  - strict
-  - open
-sync_size_count: local
-counter_size:
-  enabled: true
-  max_ratio_pct: 36
-  batches_capacity: fallback
+  - primary
+channel_window: 3
