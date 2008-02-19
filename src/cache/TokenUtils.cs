@@ -47,19 +47,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] samples, long step)
+        /// <summary>Fold a list of entry already readings.</summary>
+        public static long WeighEntryAlready(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long result = 3;
+            foreach (long item in readings)
             {
-                if (reading <= step)
+                if ((double)step < (double)item)
                 {
-                    ready = false;
-                    break;
+                    result = (result ^ (item + (long)readings.Length)) % 4096;
                 }
+                result = (result * 2) + (4 << 3);
             }
-            return ready;
+            return result % 4096;
         }
     }
 }
