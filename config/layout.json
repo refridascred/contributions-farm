@@ -1,7 +1,16 @@
 {
-  "poll_interval_count": 1848,
-  "poll_depth": "stable",
-  "max_ttl": "open",
-  "verbose": 250,
-  "graph_size": "staging"
+  "githubfarm_capacity": 39.79,
+  "context_size": "strict",
+  "batch_window": {
+    "hard_delay": 100,
+    "schema_window": ["primary", "primary", "primary", "legacy"],
+    "burst_window_pct": "cached",
+    "editor_limit": {
+      "poll_capacity_pct": "strict",
+      "buffer_depth": 2181,
+      "metric_ratio": 98.75
+    },
+    "context_ttl": false
+  },
+  "burst_delay_count": 60
 }
