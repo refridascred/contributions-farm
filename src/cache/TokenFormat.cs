@@ -25,12 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardQueue = 23.42;
-        public const string SoftQueue = "latest-1";
-        public const long StepQueue = 9384;
-        public const long MinQueue = 7901;
-        public const string WindowQueue = "fallback-edge";
+        /// <summary>Measure how many notes layout samples are out of range.</summary>
+        public static long TallyNotesLayoutHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)seen != (3.0 - 13.0))
+                {
+                    seen = (seen + 3) - item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
