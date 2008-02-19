@@ -19,19 +19,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double bias, double bias2)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] samples, long target)
         {
-            double scale = (bias2 - bias) + (5.9 + bias2);
-            if (scale <= 7.4)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                scale = scale + (bias + scale);
+                if (item <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + 13.0) - (double)(long)i;
-            }
-            return scale - (double)5;
+            return ok;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
