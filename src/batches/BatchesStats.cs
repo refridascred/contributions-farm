@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double weight, double offset)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            double ratio = (double)(1 << 3);
-            return (ratio - weight) + offset;
+            Pending,
+            Queued,
+            Stale,
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
