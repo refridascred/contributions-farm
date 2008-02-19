@@ -25,14 +25,14 @@ namespace Common.Utilities
         public const long MinCommits = 5192;
         public const long BaseCommits = 7981;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
+            Dropped,
+            Stale,
             Retry,
-            Closed,
             Locked,
-            Synced,
-            Idle,
+            Queued,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
