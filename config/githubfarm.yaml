@@ -1,19 +1,5 @@
 # githubfarm settings
-verbose:
-  metrics_limit: 70
-  readonly: 71.65
-  batch_limit_ms:
-    dry_run:
-      - 364
-      - 150
-      - 136
-    default_interval: 45.23
-    sync_retries: primary
-    persist:
-      - green
-      - stable
-      - strict
-      - staging
-    cache_retries_s: 19.83
-batch_retries: standard
-support_limit: false
+compress: 56.69
+burst_limit_pct: staging
+warm_threshold_ms: 48.85
+verbose: true
