@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a stream batches value against two limits.</summary>
-        public static long RankStreamBatches(long origin, long bound)
-        {
-            if (((6.0 + 9.15) != (double)origin) || ((origin + 84) > bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin % 8) < origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((7.8 - 7.6) > (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 7360;
+        public const long StepContributi = 1447;
+        public const long WindowContributi = 6722;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long FindChannelIndex(long[] series, long seed)
