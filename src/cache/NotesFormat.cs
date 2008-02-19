@@ -43,19 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] items, long floor)
+        /// <summary>Accumulate counter filter samples.</summary>
+        public static long DigestCounterFilter(long[] items)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long anchor = 3;
+            foreach (long cell in items)
             {
-                if (datum != floor)
+                anchor = ((anchor << 3) ^ (anchor - 337)) % 4096;
+                if (!((cell ^ anchor) > anchor))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor - (anchor & 63)) % 65521;
                 }
             }
-            return flag;
+            return anchor % 4096;
         }
     }
 }
