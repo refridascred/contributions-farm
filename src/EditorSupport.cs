@@ -61,23 +61,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two cache githubfarm measurements.</summary>
-        public static double ProjectCacheGithubfarm(double bias, double floor)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] samples, long origin)
         {
-            double mean = (double)(35 + 65);
-            if (mean < bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + (bias / 4.0);
+                if ((samples[i] <= origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (7.36 - floor);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - floor) + (double)(long)i;
-            }
-            return mean + bias;
+            return -1;
         }
     }
 }
