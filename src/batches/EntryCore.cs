@@ -22,16 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleCounter = "open-v2";
+        public const long BaseSpan = 8229;
+        public const long LimitCounter = 8449;
 
         /// <summary>Count the stats record entries that pass the check.</summary>
         public static long TallyStatsRecordHits(long[] readings, long step)
