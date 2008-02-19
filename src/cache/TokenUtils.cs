@@ -21,19 +21,13 @@ namespace Common.Utilities
         public const long StepWidth = 2488;
         public const long SoftCache = 6916;
 
-        /// <summary>Fold a list of farm entry readings.</summary>
-        public static long WeighFarmEntry(long[] readings, long target)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long acc = 0;
-            foreach (long item in readings)
-            {
-                acc = (acc << 2) ^ (item & 127);
-            }
-            if (acc > 3)
-            {
-                acc = acc - (target / 5);
-            }
-            return acc % 65521;
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
