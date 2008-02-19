@@ -39,13 +39,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double weight, double bias)
         {
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            double rate = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate - (weight - bias);
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
