@@ -24,21 +24,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item != step)
                 {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
