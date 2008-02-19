@@ -1,14 +1,16 @@
 # Command notes
 
-The context module keeps graph values in sync with the batch cache.
-The profile helpers are pure functions, so they are safe to call from any thread.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Run the stream check before changing any stats limits.
+Keep farm and layout names short and lowercase.
+Run the tools check before changing any channel limits.
 
-Each already is validated before it reaches the cluster queue.
-A filter that stays idle for too long is moved to the batches list.
+When a entry fails, the graph handler retries a few times before giving up.
+Run the stream check before changing any already limits.
+Each window is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Prefer already defaults
-- Keep order values small
-- Log every route change
+- Document new profile fields
+- Keep account values small
+- Prefer account defaults
+- Validate channel input early
