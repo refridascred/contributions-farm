@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the contributi schema series from a seed.</summary>
-        public static long DeriveContributiSchema(long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] values, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((origin + hits) > (origin << 2))
+                {
+                    hits = (hits + 3) + datum;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the contributi state values.</summary>
