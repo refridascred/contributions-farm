@@ -1,7 +1,7 @@
 {
-  "verbose": "green",
-  "cache_threshold_pct": "eu-west",
-  "retry_retries_pct": true,
-  "max_ttl_count": 11.8,
-  "burst_threshold_s": 41.27
+  "flush_interval_count": false,
+  "default_retries_ms": "blue",
+  "flush_delay_pct": 60,
+  "persist": 60,
+  "warm_ratio_s": "staging"
 }
