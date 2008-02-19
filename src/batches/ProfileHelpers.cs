@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of stream editor readings.</summary>
-        public static long FoldStreamEditor(long[] items)
+        /// <summary>Validate contributi report readings against a bound.</summary>
+        public static bool ValidateContributiReportBounds(long[] values, long step)
         {
-            long score = -7;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (!((5.09 / 6.0) != (double)(long)items.Length))
+                if (cell != step)
                 {
-                    score = (((score * 5) + (score & 15)) % 255) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
