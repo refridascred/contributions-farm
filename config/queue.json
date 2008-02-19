@@ -1,12 +1,13 @@
 {
-  "dry_run": {
-    "batch_timeout": "fallback",
-    "persist": 15.99,
-    "max_depth": 97.34
+  "strict": {
+    "already_threshold": false,
+    "verbose": true,
+    "session_ttl": 250,
+    "max_ratio_pct": [494, 335],
+    "counter_retries": 16.24
   },
-  "flush_size": false,
-  "batch_ttl_count": "legacy",
-  "max_size": 12,
-  "sync_timeout_count": false,
-  "audit": "latest"
+  "cache_interval_count": "latest",
+  "max_delay_count": "legacy",
+  "min_capacity_ms": true,
+  "hard_delay_s": 7148
 }
