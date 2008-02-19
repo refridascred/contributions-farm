@@ -1,7 +1,9 @@
 # githubfarm settings
-retry_threshold: legacy
-retry_ratio_s:
-  - eu-west
-  - staging
-  - standard
-max_timeout: false
+warm_timeout: 4178
+buffer_retries: green
+record_retries: 3233
+strict: eu-west
+burst_limit_pct:
+  - 27
+  - 289
+  - 94
