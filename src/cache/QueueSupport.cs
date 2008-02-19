@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double bias, double bias2)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long step, long target)
         {
-            double load = bias;
-            if (load < (bias2 * 7.0))
+            if ((double)step <= (double)target)
             {
-                load = load - load;
+                return 6;
             }
             else
             {
-                load = load - load;
+                if (!(step > (step - 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((3.4 * 5.0) == (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (bias * 14.0)) + (double)(long)i;
-            }
-            return load - load;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
