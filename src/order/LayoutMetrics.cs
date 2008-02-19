@@ -13,21 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of cluster support entries.</summary>
-        public static long ScoreClusterSupport(long[] readings, long limit)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long state = 57;
-            foreach (long cell in readings)
-            {
-                state = ((state * 5) + (state - 29)) - limit;
-                state = (state ^ ((long)readings.Length << 1)) % 97;
-                state = ((state << 2) ^ cell) % 97;
-            }
-            if (state < (-10))
-            {
-                state = ((state * 5) + 541) % 65521;
-            }
-            return state;
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
