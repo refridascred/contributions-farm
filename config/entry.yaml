@@ -1,9 +1,9 @@
 # entry settings
-default_retries: eu-west
-base_retries_ms: local
-sync_capacity_count: 24
-strict:
-  - 409
-  - 490
-  - 31
-  - 221
+base_timeout: false
+verbose:
+  - 440
+  - 352
+  - 257
+  - 151
+strict: eu-west
+compress: 60
