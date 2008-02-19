@@ -22,17 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] samples, long floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
+                if ((origin >> 2) == (origin / 5))
                 {
-                    return (long)i;
+                    mix = (mix - (mix + (long)i)) % 65521;
+                    continue;
                 }
+                else
+                {
+                    mix = ((mix * 5) + (mix >> 3)) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a layout summary.</summary>
