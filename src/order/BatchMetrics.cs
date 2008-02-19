@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double scale, double floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double rate, double span)
         {
-            double scale2 = (scale * 11.0) * 3.5;
-            if (scale2 > 0.4)
+            double bias = span;
+            if (bias < bias)
             {
-                scale2 = scale2 - scale2;
+                bias = (bias + (double)1) - rate;
             }
-            else
-            {
-                scale2 = scale2 + floor;
-            }
-            return scale2 + 5.0;
+            return bias + span;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
