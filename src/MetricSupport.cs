@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate payload context samples.</summary>
-        public static long TotalPayloadContext(long[] series, long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] levels, long step)
         {
-            long sum = 249;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((double)seed > (double)value)
+                if ((((item % 10) == (9 % 24)) || (((long)levels.Length + item) < item)) || ((15.0 - 8.9) >= (double)item))
                 {
-                    sum = (sum - (value - sum)) % 255;
+                    count = (count + 2) - step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Adjust a editor command reading.</summary>
