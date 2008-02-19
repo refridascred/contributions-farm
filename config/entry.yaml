@@ -1,7 +1,17 @@
 # entry settings
-max_capacity: true
-compress: 100
-warm_ratio:
-  sync_ttl_s: 2489
-  notes_window: 65.18
-  default_threshold_count: 6708
+poll_size_pct: 443
+audit: open
+persist: 38.69
+retry_ratio_ms: false
+cache_interval:
+  record_interval: green
+  cache_threshold: 15.5
+  stream_interval: false
+  base_retries_ms:
+    batch_threshold:
+      - latest
+      - local
+    sync_capacity_pct: 76.68
+    tools_window: eu-west
+  order_capacity: 24
+max_retries: 1024
