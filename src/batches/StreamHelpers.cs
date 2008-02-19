@@ -30,17 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] data, long target)
+        /// <summary>Check that every graph profile entry stays within the limit.</summary>
+        public static bool ValidateGraphProfileBounds(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (data[i] >= target)
+                if (datum > origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
