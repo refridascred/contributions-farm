@@ -31,32 +31,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a order schema pair into a bucket.</summary>
-        public static long SortOrderSchema(long bound, long seed)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long delta = bound ^ seed;
-            if ((delta - bound) >= (bound ^ bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (8.0 < (double)delta)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((delta - seed) >= (seed << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
