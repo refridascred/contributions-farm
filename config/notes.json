@@ -1,7 +1,7 @@
 {
-  "flush_ttl": 67.22,
-  "max_size": "latest",
-  "strict": 60,
-  "checks_size": "open",
-  "batch_ratio": "fallback"
+  "schema_limit": 500,
+  "hard_limit_ms": 3,
+  "payload_timeout": "open",
+  "notes_ratio": 60,
+  "order_interval": false
 }
