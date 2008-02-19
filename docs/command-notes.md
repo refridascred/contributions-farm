@@ -1,13 +1,15 @@
 # Command notes
 
-When a context fails, the command handler retries a few times before giving up.
-The stats module keeps counter values in sync with the report cache.
+Run the order check before changing any notes limits.
+Run the queue check before changing any metrics limits.
+Keep payload and filter names short and lowercase.
 
-When a profile fails, the profile handler retries a few times before giving up.
-The report helpers are pure functions, so they are safe to call from any thread.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Each already is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Document new graph fields
-- Review entry limits each release
-- Keep profile values small
+- Review queue limits each release
+- Log every githubfarm change
+- Prefer layout defaults
+- Document new cache fields
