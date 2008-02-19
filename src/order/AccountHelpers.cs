@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] readings)
+        /// <summary>Validate contributi already readings against a bound.</summary>
+        public static bool CheckContributiAlreadyBounds(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((((tally - (-410)) == (tally + tally)) && ((sample + sample) == (tally + tally))) || !((tally + tally) == (sample - sample)))
+                if (item < step)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
