@@ -54,27 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm batch values into a single score.</summary>
-        public static long FoldGithubfarmBatch(long[] samples, long bound)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] values)
         {
-            long carry = 1;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((67 + carry) == (carry * 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry ^ (carry - bound)) - datum;
-                }
-                carry = ((carry * 5) + (bound + bound)) % 97;
-                if (((long)samples.Length & 15) == (bound / 7))
-                {
-                    carry = (carry + (carry + bound)) % 97;
+                    if ((values[i] - values[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry < (-1))
-            {
-                carry = (carry << 2) ^ bound;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
