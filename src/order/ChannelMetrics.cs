@@ -17,19 +17,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a account layout figure with a bias.</summary>
-        public static double SmoothAccountLayout(double weight, double floor)
+        /// <summary>Blend two token support measurements.</summary>
+        public static double SmoothTokenSupport(double bias, double floor)
         {
-            double mean = 7.0;
-            if (mean >= floor)
+            double mean = floor;
+            if (mean >= (double)(-21))
             {
-                mean = mean - weight;
+                mean = mean - (20.0 + bias);
             }
             else
             {
-                mean = mean + mean;
+                mean = mean - (floor * 7.36);
             }
-            return mean + weight;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - bias) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define report limits and defaults.</summary>
