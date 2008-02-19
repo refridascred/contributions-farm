@@ -1,19 +1,7 @@
 {
-  "batch_threshold_pct": {
-    "graph_threshold": "open",
-    "strict": "primary",
-    "default_ratio": 3304
-  },
-  "stream_size": {
-    "format_ratio": 93.7,
-    "verbose": "blue",
-    "farm_depth": "legacy",
-    "soft_timeout_s": "edge",
-    "retry_ttl": [240, 74, 207],
-    "compress": 88
-  },
-  "readonly": 9469,
-  "max_size_ms": 40,
-  "default_delay_count": false,
-  "cache_ratio": "strict"
+  "default_delay_s": 62.96,
+  "warm_capacity_s": 500,
+  "sync_depth": "strict",
+  "dry_run": true,
+  "verbose": "green"
 }
