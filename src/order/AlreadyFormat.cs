@@ -59,21 +59,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count layout farm pairs that satisfy a relation.</summary>
-        public static long CompareLayoutFarmCount(long[] data)
+        /// <summary>Look up the position of a command account sample.</summary>
+        public static long FindCommandAccountIndex(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
                 {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
