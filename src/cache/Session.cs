@@ -50,18 +50,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] data)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((seen % 7) >= (datum ^ seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
