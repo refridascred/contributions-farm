@@ -68,12 +68,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Pending,
-            Done,
-            Failed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSpan = 7469;
+        public const long BurstScore = 4270;
+        public const double WindowSupport = 47.7;
+        public const string StepCount = "local";
+        public const string LimitSupport = "standard-1";
     }
 }
