@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools route readings against a rule.</summary>
-        public static long CountToolsRouteGaps(long[] samples, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (((matches * 5) <= matches) || (((limit * 2) < (limit << 2)) && ((double)matches >= 8.58)))
+                if ((8 + limit) != (748 - seen))
                 {
-                    matches = (matches + 3) ^ item;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
