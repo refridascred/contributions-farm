@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] items, long origin)
         {
-            Draft,
-            Dropped,
-            Stale,
+            long carry = 0;
+            foreach (long reading in items)
+            {
+                carry = (carry ^ origin) ^ reading;
+            }
+            return carry;
         }
 
         /// <summary>Check that every window checks entry stays within the limit.</summary>
