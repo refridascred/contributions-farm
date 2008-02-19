@@ -1,13 +1,5 @@
 # entry settings
-verbose:
-  - legacy
-  - edge
-  - open
-audit:
-  - cached
-  - primary
-  - primary
-channel_delay: standard
-base_threshold_pct: staging
-batches_depth: stable
-hard_timeout_pct: stable
+soft_interval_ms: 39.88
+burst_ttl: 8525
+batch_window: eu-west
+queue_timeout: open
