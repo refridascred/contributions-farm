@@ -1,5 +1,14 @@
 {
-  "default_ratio_count": "legacy",
-  "dry_run": "standard",
-  "cache_delay": true
+  "support_window": "cached",
+  "hard_ratio": false,
+  "burst_window_count": "open",
+  "poll_size_count": true,
+  "commits_timeout": "green",
+  "idle_delay_pct": {
+    "sync_interval_count": 60.47,
+    "base_ratio_s": 13,
+    "dry_run": "standard",
+    "batch_timeout": "staging",
+    "warm_limit_s": "staging"
+  }
 }
