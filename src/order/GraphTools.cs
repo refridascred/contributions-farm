@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] samples, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (8.7 < (double)bound)
+                if ((double)item < 4.1)
                 {
-                    matches = (matches + 3) + cell;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
