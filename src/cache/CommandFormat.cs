@@ -25,19 +25,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double rate, double offset)
+        /// <summary>Compare every pair of token editor readings.</summary>
+        public static long MatchTokenEditorCount(long[] samples)
         {
-            double scale = (double)(371 / 5);
-            if (scale < (18.0 + offset))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale - (1.0 / 9.0)) - rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + (7.9 * 8.9);
+            return seen;
         }
 
         /// <summary>Fold a list of notes record readings.</summary>
