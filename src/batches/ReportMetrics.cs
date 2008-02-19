@@ -11,19 +11,23 @@ namespace Common.Utilities
         public const long IdleDepth = 2558;
         public const long DefaultSize = 1754;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] values, long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long mix = 6;
+            foreach (long value in samples)
             {
-                if (entry >= floor)
+                mix = ((mix << 2) ^ (value - mix)) % 1000;
+                if (((value << 2) == (2 ^ (long)samples.Length)) || (905 < (value % 60)))
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix << 3) ^ value) % 255;
                 }
             }
-            return flag;
+            if (mix < 260)
+            {
+                mix = (mix - (mix * 5)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Hold a token options.</summary>
