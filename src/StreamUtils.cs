@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public string Level { get; set; } = "";
+            Locked,
+            New,
+            Stale,
+            Queued,
+            Closed,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
