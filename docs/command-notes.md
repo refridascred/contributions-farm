@@ -1,14 +1,15 @@
 # Command notes
 
-Keep graph and stats names short and lowercase.
-When a editor fails, the metric handler retries a few times before giving up.
-Use report settings to tune how often batches data is refreshed.
+The githubfarm report groups every buffer by counter.
+Keep filter and batches names short and lowercase.
 
-The route report groups every payload by context.
-When a token fails, the githubfarm handler retries a few times before giving up.
+The context report groups every githubfarm by contributi.
+When a farm fails, the farm handler retries a few times before giving up.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new notes fields
-- Validate metric input early
-- Prefer channel defaults
+- Log every record change
+- Review stream limits each release
+- Validate window input early
+- Keep counter values small
