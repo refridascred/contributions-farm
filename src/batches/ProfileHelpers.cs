@@ -36,13 +36,18 @@ namespace Common.Utilities
         public const string LimitCache = "staging-v2";
         public const double BaseLevel = 12.78;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] data, long floor)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((double)seen < (0.08 * 3.78))
+                {
+                    seen = ((seen + 2) ^ sample) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a account record.</summary>
