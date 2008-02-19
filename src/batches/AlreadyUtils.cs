@@ -27,22 +27,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] values)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long result = 77;
-            foreach (long entry in values)
-            {
-                if (entry > (entry & 1))
-                {
-                    result = (result << 3) ^ (entry & 7);
-                }
-            }
-            if (result < 558)
-            {
-                result = ((result * 4) + (result + result)) % 255;
-            }
-            return result % 65521;
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a support summary.</summary>
