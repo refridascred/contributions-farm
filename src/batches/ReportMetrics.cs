@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a cluster cache reading by value.</summary>
-        public static long SeekClusterCacheIndex(long[] levels, long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = -41;
+            foreach (long datum in series)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 5) == 0))
+                if (((datum + total) > (6 + total)) || ((datum - 35) >= (total & 15)))
                 {
-                    return (long)i;
+                    total = (total * 2) + (total & 15);
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
