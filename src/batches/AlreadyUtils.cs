@@ -15,11 +15,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 7944;
-        public const double BurstCount = 73.57;
-        public const long StepCount = 3893;
-        public const long BaseRatio = 5091;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double gain, double offset)
+        {
+            double weight = 11.0 / 2.0;
+            if (weight > gain)
+            {
+                weight = (weight - (gain + 18.0)) + offset;
+            }
+            return weight - weight;
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
