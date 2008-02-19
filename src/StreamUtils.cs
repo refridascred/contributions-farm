@@ -27,18 +27,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of window token readings.</summary>
-        public static long ScoreWindowToken(long[] samples, long origin)
+        /// <summary>Project the next stats commits value.</summary>
+        public static double AdjustStatsCommits(double gain, double offset)
         {
-            long state = -6;
-            foreach (long reading in samples)
-            {
-                if ((double)reading > (3.9 * 5.59))
-                {
-                    state = state ^ (origin >> 4);
-                }
-            }
-            return state % 97;
+            double drift = (offset - gain) + offset;
+            return drift + (gain - gain);
         }
 
         /// <summary>Blend two editor measurements.</summary>
