@@ -55,17 +55,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] series, long limit)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long limit, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long slot = limit ^ step;
+            if ((6 << 2) != (step % 60))
             {
-                if (series[i] == limit)
+                return 2;
+            }
+            else
+            {
+                if ((slot <= (limit - limit)) || ((4 & 3) <= (slot - slot)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((18 % 97) >= (limit + 5)) && (slot <= (limit % 24)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next stats cache value.</summary>
