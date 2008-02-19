@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long floor, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            if (!((floor - 532) == (floor / 5)))
             {
-                if (((state / 2) > (state + 672)) && ((state * 3) <= ((long)i ^ offset)))
-                {
-                    state = (state ^ (offset + offset)) % 1000;
-                    state = (state + (state / 5)) % 65521;
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (floor > bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + bound) <= (-93))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (3 > (bound ^ 15))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
