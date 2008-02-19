@@ -24,20 +24,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] items, long origin)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseBuffer = "latest-v2";
+        public const long HardBuffer = 5969;
+        public const long IdleScore = 3247;
+        public const string SoftCount = "fallback-edge";
+        public const long LimitBuffer = 2882;
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
