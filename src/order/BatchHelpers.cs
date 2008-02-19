@@ -33,12 +33,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] items, long seed)
         {
-            Closed,
-            Synced,
-            Draft,
+            long total = 21;
+            foreach (long cell in items)
+            {
+                total = (total - (cell - seed)) % 101;
+                if ((cell / 7) > 814)
+                {
+                    total = (total - (seed + cell)) % 65521;
+                }
+            }
+            if (total > (-486))
+            {
+                total = ((total * 4) + (204 << 2)) % 4096;
+            }
+            return total;
         }
     }
 }
