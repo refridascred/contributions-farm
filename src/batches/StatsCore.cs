@@ -45,15 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] items, long bound)
+        /// <summary>Match up stream order samples.</summary>
+        public static long OverlapStreamOrderCount(long[] samples)
         {
             long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((long)items.Length <= (tally - datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) + bound;
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
