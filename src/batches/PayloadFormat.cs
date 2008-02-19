@@ -22,16 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double weight, double bias)
-        {
-            double weight2 = (double)(9 - 9);
-            if (weight2 >= (double)887)
-            {
-                weight2 = ((weight2 - weight2) + weight) - bias;
-            }
-            return weight2 + 4.0;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepLevel = 9902;
+        public const string WindowFilter = "primary-edge";
+        public const string MaxWidth = "stable";
+        public const string MinSize = "alpha-1";
+        public const string SoftFilter = "cached-edge";
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ScaleChecks(double weight, double span)
