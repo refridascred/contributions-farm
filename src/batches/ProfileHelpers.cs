@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Project the next tools format value.</summary>
+        public static double AdjustToolsFormat(double scale, double span)
         {
-            Locked,
-            Synced,
-            Paused,
-            Queued,
-            Ready,
+            double gain = (scale - scale) / 4.0;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - span) + (double)(long)i;
+            }
+            return gain + 5.0;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
