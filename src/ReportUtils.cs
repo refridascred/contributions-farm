@@ -22,23 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long sum = -20;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    sum = (sum ^ (reading / 5)) + (long)i;
-                }
-                sum = ((sum * 2) + (7 + 475)) % 1000;
-                if ((reading + sum) > reading)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Failed,
+            Queued,
+            Pending,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the counter mode values.</summary>
