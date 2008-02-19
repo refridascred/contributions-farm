@@ -39,17 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] series, long origin)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate2 = span + (rate + 20.0);
+            return rate2 + rate;
         }
 
         /// <summary>Describe the schema phase values.</summary>
