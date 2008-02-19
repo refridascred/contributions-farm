@@ -25,16 +25,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] samples)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] readings)
         {
-            long total = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total ^ (datum & 31)) % 4096;
-                total = total - (total * 5);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
