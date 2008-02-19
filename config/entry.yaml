@@ -1,6 +1,12 @@
 # entry settings
-layout_timeout: staging
-min_threshold_pct: 60.45
-max_threshold_s: standard
-soft_ttl_s: strict
-verbose: true
+retry_ratio: false
+persist: 500
+soft_retries_count:
+  hard_window: open
+  batch_size_pct:
+    - fallback
+    - staging
+    - cached
+  cache_threshold_count: stable
+  already_delay: stable
+  sync_limit: 51.98
