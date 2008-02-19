@@ -23,18 +23,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the filter checks entries that pass the check.</summary>
-        public static long MeasureFilterChecksOutliers(long[] values, long target)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((matches % 2) != (target - target))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-            }
-            return matches;
+            Active,
+            Pending,
+            Closed,
+            Ready,
         }
     }
 }
