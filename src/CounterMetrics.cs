@@ -28,21 +28,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] samples)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading != seed)
                 {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the report mode values.</summary>
