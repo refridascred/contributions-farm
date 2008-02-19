@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of filter already entries.</summary>
-        public static long TallyFilterAlready(long[] series, long seed)
+        /// <summary>Compare every pair of notes cache readings.</summary>
+        public static long MatchNotesCacheCount(long[] readings)
         {
-            long total = 0;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((seed % 5) > 10) || (total >= (total - 645)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total << 3) ^ (1 % 97)) % 255;
-                    continue;
-                }
-                if ((285 < (value + value)) || ((total >> 3) == (total & 15)))
-                {
-                    total = (total - (819 << 1)) % 65521;
+                    if ((readings[i] + readings[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
