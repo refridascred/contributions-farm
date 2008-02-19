@@ -31,18 +31,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] data)
+        /// <summary>Find the first account contributi entry that matches the target.</summary>
+        public static long LocateAccountContributiIndex(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry ^ hits) != (hits ^ entry))
+                if ((series[i] == offset) && ((series[i] % 2) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
