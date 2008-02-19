@@ -46,12 +46,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Paused,
-            Failed,
-            New,
+            public double Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Adjust a counter reading.</summary>
