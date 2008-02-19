@@ -30,23 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits checks samples are out of range.</summary>
-        public static long AuditCommitsChecksHits(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((10.0 + 8.53) < (double)hits)
-                {
-                    hits = ((hits + 1) - sample) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstEditor = 73.02;
+        public const long BurstWidth = 6303;
+        public const long LimitEditor = 1803;
+        public const long MinEditor = 9872;
+        public const string LimitSize = "fallback";
 
         /// <summary>Adjust a entry reading.</summary>
         public static double BlendEntry(double bias, double floor)
