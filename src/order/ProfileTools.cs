@@ -40,23 +40,10 @@ namespace Common.Utilities
         public const long IdleGraph = 2066;
         public const string WindowGraph = "cached-edge";
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] values, long offset)
-        {
-            long mark = 33;
-            foreach (long sample in values)
-            {
-                if (857 >= (92 + sample))
-                {
-                    mark = (mark * 4) + (7 + offset);
-                }
-                else
-                {
-                    mark = (mark + (offset + offset)) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BatchSize = "open-v2";
+        public const double MinInterval = 65.45;
+        public const long RetryBatch = 7612;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long OverlapQueueCount(long[] readings)
