@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] readings, long limit)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] readings)
         {
-            long result = 2;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((result & 7) <= 5) && ((datum % 5) <= result))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = result ^ (result << 1);
-                }
-                if (((8.3 + 17.0) >= (double)(long)readings.Length) || ((double)limit <= (4.77 * 6.0)))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Find the first batch stream entry that matches the target.</summary>
