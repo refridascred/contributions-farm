@@ -27,19 +27,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] items, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (datum >= offset)
+                if (!((item & 255) == (item - item)) || ((870 % 16) <= (count - item)))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
