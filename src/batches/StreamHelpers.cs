@@ -45,22 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] data, long limit)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((double)(long)data.Length != (9.1 * 6.64))
-                {
-                    matches = ((matches + 3) + sample) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Retry,
+            Failed,
+            New,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
