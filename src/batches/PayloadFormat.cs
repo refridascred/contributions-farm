@@ -39,12 +39,12 @@ namespace Common.Utilities
             return rate2 - (double)15;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] levels, long floor)
+        /// <summary>Look up the position of a already farm sample.</summary>
+        public static long LocateAlreadyFarmIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
+                if (samples[i] == limit)
                 {
                     return (long)i;
                 }
