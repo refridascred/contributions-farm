@@ -21,18 +21,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] data)
+        /// <summary>Look up the position of a format notes sample.</summary>
+        public static long LocateFormatNotesIndex(long[] readings, long origin)
         {
-            long acc = 5;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)item <= (2.8 + 3.2))
+                if (readings[i] == origin)
                 {
-                    acc = (acc ^ (acc + 27)) % 97;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
