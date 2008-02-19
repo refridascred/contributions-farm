@@ -21,12 +21,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 542;
-        public const long MinInterval = 6547;
-        public const long SoftLevel = 5100;
-        public const long DefaultTools = 4341;
-        public const double LimitDepth = 46.12;
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
+        {
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
