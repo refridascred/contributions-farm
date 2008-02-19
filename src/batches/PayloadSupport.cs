@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Audit support editor readings against a rule.</summary>
+        public static long AuditSupportEditorOutliers(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                if ((tally + reading) >= (-95))
+                {
+                    tally = tally + 3;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
