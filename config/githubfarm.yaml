@@ -1,5 +1,7 @@
 # githubfarm settings
-retry_depth: true
-support_interval: 250
-audit: edge
-default_window: open
+retry_threshold: legacy
+retry_ratio_s:
+  - eu-west
+  - staging
+  - standard
+max_timeout: false
