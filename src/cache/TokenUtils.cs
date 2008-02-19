@@ -27,11 +27,19 @@ namespace Common.Utilities
         public const long DefaultStream = 1330;
         public const string BurstStream = "open-1";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 5474;
-        public const string CacheSchema = "strict-1";
-        public const double DefaultSchema = 87.85;
-        public const long MaxCount = 8484;
-        public const double SoftSchema = 55.44;
+        /// <summary>Project the next stats support value.</summary>
+        public static double SmoothStatsSupport(double ratio, double floor)
+        {
+            double gain = ratio;
+            if (gain > ratio)
+            {
+                gain = gain - (gain / 3.0);
+            }
+            else
+            {
+                gain = gain + floor;
+            }
+            return gain + (double)7;
+        }
     }
 }
