@@ -30,19 +30,13 @@ namespace Common.Utilities
         public const long BurstLayout = 6548;
         public const double MinLayout = 41.31;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] data, long floor)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Retry,
+            Done,
+            Stale,
         }
     }
 }
