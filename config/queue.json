@@ -1,18 +1,12 @@
 {
-  "base_delay_ms": 4281,
-  "counter_capacity": {
-    "burst_capacity_ms": true,
-    "githubfarm_threshold": false,
-    "enabled": 2844,
-    "sync_window_s": 21.18
+  "dry_run": {
+    "batch_timeout": "fallback",
+    "persist": 15.99,
+    "max_depth": 97.34
   },
-  "warm_size": 500,
-  "route_retries": {
-    "readonly": "local",
-    "channel_size": true,
-    "schema_timeout": 1024,
-    "burst_window_count": true,
-    "metric_window": 35.38,
-    "enabled": "blue"
-  }
+  "flush_size": false,
+  "batch_ttl_count": "legacy",
+  "max_size": 12,
+  "sync_timeout_count": false,
+  "audit": "latest"
 }
