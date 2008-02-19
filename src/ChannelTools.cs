@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Combine tools cache values into a single score.</summary>
+        public static long ScoreToolsCache(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            long total = 984;
+            foreach (long sample in values)
             {
-                mix = (mix ^ (floor + floor)) % 255;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((double)sample > (double)98)
+                {
+                    total = (total + (sample << 2)) % 1000;
+                }
             }
-            return mix;
+            return total % 65521;
         }
 
         /// <summary>Fold a list of context readings.</summary>
