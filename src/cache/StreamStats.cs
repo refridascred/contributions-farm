@@ -38,15 +38,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double rate, double bias)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long seed, long floor)
         {
-            double bias2 = bias;
-            if (bias2 < (double)714)
+            long offset = seed - floor;
+            if (7.86 <= (double)offset)
             {
-                bias2 = bias2 - rate;
+                return 2;
             }
-            return bias2 + (double)37;
+            else
+            {
+                if ((double)seed >= 1.5)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset - offset) > (seed / 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset % 16) != (seed % 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
