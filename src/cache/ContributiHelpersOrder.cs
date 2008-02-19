@@ -31,11 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double gain, double offset)
         {
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
+            double rate = (8.92 - gain) - (double)546;
+            return rate - offset;
         }
     }
 }
