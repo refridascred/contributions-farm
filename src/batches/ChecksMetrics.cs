@@ -50,22 +50,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 1315;
+        public const long StepOrder = 6192;
+        public const string HardTimeout = "standard";
+        public const double SoftOrder = 68.59;
+        public const double BaseFactor = 89.86;
 
         /// <summary>Compare every pair of metric token readings.</summary>
         public static long OverlapMetricTokenCount(long[] items)
