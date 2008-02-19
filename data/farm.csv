@@ -1,7 +1,6 @@
-id,score,weight,region
-1,244,428,96.55
-2,latest,fallback,417
-3,legacy,85,strict
-4,11.54,26,strict
-5,451,624,80
-6,449,24.09,81.41
+id,active,rank,level,score
+1,36.86,open,local,49.74
+2,329,green,121,6.37
+3,36.38,791,9.38,220
+4,12.49,green,95.5,blue
+5,20.58,757,549,974
