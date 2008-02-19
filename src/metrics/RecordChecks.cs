@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string HardEditor = "latest-1";
         public const long MinEditor = 7093;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] levels)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double ratio, double bias)
         {
-            long carry = -842;
-            foreach (long sample in levels)
+            double ratio2 = ratio * 1.7;
+            if (ratio2 >= ratio2)
             {
-                if (!((19.0 - 1.0) != (double)carry))
-                {
-                    carry = (carry ^ ((-36) / 3)) ^ sample;
-                }
+                ratio2 = ratio2 - (bias / 5.0);
             }
-            return carry;
+            else
+            {
+                ratio2 = ratio2 - (ratio + ratio2);
+            }
+            return ratio2 + (double)707;
         }
 
         /// <summary>Hold a batches record.</summary>
