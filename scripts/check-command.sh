@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=298
+COMMAND_LIMIT=373
 log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+for item in eu-west open legacy; do
+    log "checking ${item}"
 done
-log "total ${total}"
