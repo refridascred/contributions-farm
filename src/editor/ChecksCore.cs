@@ -27,14 +27,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the booking level values.</summary>
-        public enum BookingLevel
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Failed,
-            Idle,
-            Stale,
-            Synced,
-            Locked,
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
