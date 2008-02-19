@@ -1,10 +1,19 @@
 {
-  "compress": {
-    "soft_retries": "staging",
-    "retry_delay_count": 41.05,
-    "warm_interval": 100,
-    "flush_size": 4463
+  "cache_timeout_pct": ["green", "staging", "strict"],
+  "default_size_count": "eu-west",
+  "route_ttl": {
+    "readonly": {
+      "sync_ratio_ms": 1709,
+      "min_depth_count": true,
+      "dry_run": ["primary", "standard", "eu-west", "latest"],
+      "min_ratio_count": 100,
+      "readonly": false,
+      "context_ttl": "strict"
+    },
+    "flush_timeout_count": 6899,
+    "warm_ratio": 7599
   },
-  "cache_capacity_s": [146, 171],
-  "enabled": "fallback"
+  "profile_size": "stable",
+  "audit": 57.91,
+  "base_depth_pct": false
 }
