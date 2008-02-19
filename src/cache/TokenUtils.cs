@@ -20,16 +20,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] readings, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total + (total + total);
-                total = ((total * 5) + (long)i) % 101;
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
