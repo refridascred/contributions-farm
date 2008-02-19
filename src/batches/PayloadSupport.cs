@@ -18,15 +18,19 @@ namespace Common.Utilities
         public const long RetryPayload = 865;
         public const double MinCount = 13.48;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] levels, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] levels, long floor)
         {
             long matches = 0;
-            foreach (long entry in levels)
+            foreach (long sample in levels)
             {
-                if ((double)limit < (5.4 - 7.7))
+                if (((double)matches >= (4.59 - 15.0)) && ((matches ^ 351) <= (sample ^ sample)))
                 {
-                    matches = (matches + 2) ^ entry;
+                    matches = (matches + 3) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
