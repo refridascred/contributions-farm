@@ -23,20 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Fold a list of graph entry readings.</summary>
+        public static long TallyGraphEntry(long[] samples, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            long carry = 1;
+            foreach (long item in samples)
             {
-                if ((((long)i - 4) <= (64 & 63)) && ((double)origin == (9.0 + 6.94)))
+                if ((double)item == (6.73 * 4.4))
                 {
-                    mark = mark + mark;
-                    mark = mark - (origin ^ (long)i);
+                    carry = ((carry + (carry << 3)) % 4096) - step;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
+                else
+                {
+                    carry = (carry ^ item) % 101;
+                }
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
