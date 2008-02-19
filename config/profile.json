@@ -1,18 +1,13 @@
 {
-  "flush_interval_pct": 41,
-  "readonly": false,
-  "default_depth_pct": 100,
-  "base_retries_ms": 79.06,
-  "stats_size": {
-    "sync_ratio_count": 8770,
-    "soft_limit_s": "green",
-    "warm_limit": "legacy",
-    "burst_depth": {
-      "flush_threshold_ms": "edge",
-      "batch_capacity": true,
-      "soft_timeout": "primary",
-      "warm_delay": 100
-    },
-    "flush_ttl": "legacy"
+  "min_capacity_s": 250,
+  "max_ratio": "stable",
+  "readonly": 46.2,
+  "burst_size": true,
+  "route_threshold": [46, 312],
+  "farm_interval": {
+    "warm_capacity": ["open", "fallback"],
+    "dry_run": 64,
+    "default_delay_count": "edge",
+    "sync_interval_pct": 98
   }
 }
