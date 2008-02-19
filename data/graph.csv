@@ -1,7 +1,10 @@
-id,region,rank,owner,label
-1,701,257,65.05,open
-2,20.13,35,880,51.67
-3,84,primary,open,10.17
-4,cached,strict,29.51,20.44
-5,731,strict,standard,41.13
-6,495,strict,11.18,225
+id,rank,count,level
+1,blue,strict,412
+2,87.83,stable,349
+3,28,cached,64.13
+4,19.63,latest,41.02
+5,283,53.71,stable
+6,676,75.97,446
+7,537,9.77,890
+8,38.49,630,97.76
+9,505,local,89
