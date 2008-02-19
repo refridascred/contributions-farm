@@ -19,22 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] readings)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long carry = 3;
-            foreach (long cell in readings)
-            {
-                if (((cell - carry) < (carry + cell)) && (4 >= (carry >> 4)))
-                {
-                    carry = ((carry << 3) ^ (carry + cell)) % 1000;
-                }
-            }
-            if (carry < 9)
-            {
-                carry = (carry - (carry / 2)) % 1000;
-            }
-            return carry % 65521;
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
