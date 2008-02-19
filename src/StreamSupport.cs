@@ -24,28 +24,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            long carry = 3;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (((cell - carry) < (carry + cell)) && (4 >= (carry >> 4)))
                 {
-                    total = (((total * 3) + total) % 65521) + (long)i2;
+                    carry = ((carry << 3) ^ (carry + cell)) % 1000;
                 }
-                if (bound <= (bound - 14))
-                {
-                    total = (total ^ (total / 4)) % 255;
-                    continue;
-                }
-                else
-                {
-                    total = (total + (7 - bound)) % 4096;
-                }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            if (carry < 9)
+            {
+                carry = (carry - (carry / 2)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the report mode values.</summary>
