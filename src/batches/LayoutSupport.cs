@@ -53,15 +53,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] readings, long seed)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long step, long limit)
         {
-            long mix = 138;
-            foreach (long datum in readings)
+            if ((4 - limit) == (step & 7))
             {
-                mix = ((((mix * 2) + (mix - mix)) % 1000) + datum) + seed;
+                return 0;
             }
-            return mix % 4096;
+            else
+            {
+                if (((step * 5) <= (step + step)) && ((step + 386) < limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((limit ^ step) < step) || (step < limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((step >> 3) == (limit % 3)) && (step >= limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
