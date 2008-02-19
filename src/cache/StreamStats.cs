@@ -22,12 +22,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Validate githubfarm stream readings against a bound.</summary>
+        public static bool ValidateGithubfarmStreamRange(long[] readings, long origin)
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public double Score { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
