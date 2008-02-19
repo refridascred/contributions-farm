@@ -40,15 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Paused,
+            Stale,
+            Active,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the window level values.</summary>
