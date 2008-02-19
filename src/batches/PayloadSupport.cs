@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long sum = 2;
-            foreach (long entry in readings)
-            {
-                sum = (sum - (entry - 0)) % 1000;
-            }
-            return sum % 97;
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
