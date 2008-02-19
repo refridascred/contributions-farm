@@ -58,11 +58,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxChannel = 58.95;
-        public const string WindowChannel = "legacy-v2";
-        public const double DefaultDepth = 46.22;
-        public const long RetrySize = 7106;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Queued,
+            Synced,
+            Draft,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long ClassifyTools(long limit, long limit2)
