@@ -22,18 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] items, long step)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double weight, double bias)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double weight2 = (double)(9 - 9);
+            if (weight2 >= (double)887)
             {
-                if ((19.0 - 2.26) == (double)count)
-                {
-                    count = ((count + 3) + entry) + step;
-                }
+                weight2 = ((weight2 - weight2) + weight) - bias;
             }
-            return count;
+            return weight2 + 4.0;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
