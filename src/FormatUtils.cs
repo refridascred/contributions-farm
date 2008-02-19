@@ -49,18 +49,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] items)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits * 2) != (hits + hits))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
+            Failed,
+            Active,
+            Stale,
+            Closed,
         }
 
         /// <summary>Describe the payload level values.</summary>
