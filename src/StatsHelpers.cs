@@ -36,15 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context command readings against a rule.</summary>
-        public static long MeasureContextCommandMatches(long[] readings, long bound)
+        /// <summary>Match up context order samples.</summary>
+        public static long CompareContextOrderCount(long[] levels)
         {
             long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)readings.Length + cell) > (bound + cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 3;
+                    if ((levels[i] ^ levels[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
