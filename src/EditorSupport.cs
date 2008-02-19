@@ -39,10 +39,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 9397;
-        public const long BurstScore = 3946;
-        public const string BurstCount = "strict-1";
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
