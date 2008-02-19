@@ -43,16 +43,21 @@ namespace Common.Utilities
         public const double MaxPayload = 16.13;
         public const long SoftPayload = 4170;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long origin)
+        /// <summary>Compare every pair of schema account readings.</summary>
+        public static long PairSchemaAccountCount(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total - (origin & 3)) % 97;
-                total = ((total * 4) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
