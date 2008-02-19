@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const double StepFactor = 55.65;
         public const long MaxDepth = 9651;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] levels, long offset)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (sample > count)
-                {
-                    count = (count + 2) + offset;
-                }
-            }
-            return count;
+            Closed,
+            Synced,
+            Draft,
         }
     }
 }
