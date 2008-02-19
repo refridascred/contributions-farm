@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Grade a buffer farm value against two limits.</summary>
+        public static long SortBufferFarm(long seed, long limit)
         {
-            Locked,
-            Queued,
-            Ready,
-            Retry,
-            Failed,
+            if ((76 + seed) == (seed - limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((limit & 127) > (limit % 7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
