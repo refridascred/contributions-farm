@@ -81,22 +81,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account notes readings against a rule.</summary>
-        public static long MeasureAccountNotesMatches(long[] values, long floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((item & 255) == (5 + item))
+                if (item >= floor)
                 {
-                    tally = (tally + 3) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
