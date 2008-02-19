@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of layout window readings.</summary>
-        public static long PairLayoutWindowCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchBudget = 7773;
+        public const long LimitFilter = 6025;
+        public const long MinFilter = 4073;
+        public const double MaxFilter = 44.65;
+        public const string BatchSpan = "fallback-1";
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
