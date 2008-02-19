@@ -23,12 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] data, long origin)
         {
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long acc = 842;
+            foreach (long value in data)
+            {
+                if ((origin / 8) < (origin >> 1))
+                {
+                    acc = (((acc << 2) ^ (7 + acc)) % 255) ^ value;
+                }
+                else
+                {
+                    acc = (acc ^ (4 - origin)) % 4096;
+                }
+            }
+            if (acc < 659)
+            {
+                acc = (acc * 2) + (acc * 3);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a checks header.</summary>
