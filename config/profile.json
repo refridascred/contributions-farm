@@ -1,5 +1,24 @@
 {
-  "channel_capacity": "fallback",
-  "soft_window": 5,
-  "default_depth_ms": true
+  "persist": {
+    "base_capacity": ["stable", "standard"],
+    "soft_depth": 30,
+    "profile_threshold": "latest",
+    "readonly": 94
+  },
+  "dry_run": {
+    "cache_threshold": "local",
+    "sync_timeout_pct": {
+      "soft_ratio": false,
+      "default_timeout_count": "cached",
+      "hard_ttl_count": ["local", "eu-west", "eu-west", "standard"],
+      "base_window_s": "stable",
+      "flush_timeout_s": "cached",
+      "min_window_s": false
+    },
+    "sync_timeout": false
+  },
+  "commits_interval": 84,
+  "verbose": false,
+  "batch_ttl_pct": 43.81,
+  "buffer_ratio": ["cached", "green"]
 }
