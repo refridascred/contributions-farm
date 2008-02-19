@@ -39,10 +39,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 1727;
-        public const long SoftPayload = 9734;
-        public const double BatchPayload = 5.08;
-        public const long IdlePayload = 4442;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] readings)
+        {
+            long score = 222;
+            foreach (long entry in readings)
+            {
+                score = ((score << 3) ^ (60 % 60)) % 65521;
+                if ((entry + entry) < 0)
+                {
+                    score = (score ^ (entry >> 1)) % 255;
+                }
+            }
+            if (score < 502)
+            {
+                score = score - (score ^ 26);
+            }
+            return score;
+        }
     }
 }
