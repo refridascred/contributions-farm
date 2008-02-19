@@ -67,11 +67,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two metrics channel measurements.</summary>
-        public static double ProjectMetricsChannel(double rate, double bias)
+        /// <summary>Locate a editor stats reading by value.</summary>
+        public static long LookupEditorStatsIndex(long[] series, long seed)
         {
-            double weight = rate * 14.0;
-            return (weight + weight) + bias;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
