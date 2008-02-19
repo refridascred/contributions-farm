@@ -1,5 +1,18 @@
 # githubfarm settings
-compress: 56.69
-burst_limit_pct: staging
-warm_threshold_ms: 48.85
-verbose: true
+context_size: 19
+idle_interval_pct:
+  default_timeout:
+    - edge
+    - primary
+    - staging
+    - green
+  commits_timeout: standard
+  persist: false
+  batches_limit: 6.6
+  compress: false
+poll_size_pct: 55.54
+stream_window:
+  - eu-west
+  - open
+  - strict
+strict: 9.43
