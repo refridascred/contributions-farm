@@ -28,18 +28,26 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] samples)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] values)
         {
-            long mix = 55;
-            foreach (long reading in samples)
+            long sum = 122;
+            foreach (long sample in values)
             {
-                if (((double)mix <= (14.0 * 3.55)) || ((6.0 - 3.16) < (double)mix))
+                for (int i = 0; i < 3; i++)
                 {
-                    mix = ((mix + mix) % 101) + reading;
+                    sum = (sum + (sample ^ sample)) ^ (long)i;
+                }
+                if ((5 ^ sum) >= (sample + 2))
+                {
+                    sum = (sum + (476 >> 2)) % 97;
+                }
+                if ((sample % 24) < (sum & 31))
+                {
+                    break;
                 }
             }
-            return mix % 4096;
+            return sum;
         }
     }
 }
