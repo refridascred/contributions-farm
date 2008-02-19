@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 870;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc << 2) ^ (bound & 31)) ^ reading;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
