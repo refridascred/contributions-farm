@@ -32,15 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double gain, double offset)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double gain, double floor)
         {
-            double bias = gain * 3.7;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (offset + offset)) + (double)(long)i;
-            }
-            return bias + (double)9;
+            double gain2 = (double)4 / 2.0;
+            return (gain2 + gain) + floor;
         }
     }
 }
