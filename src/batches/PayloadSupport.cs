@@ -53,11 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] items)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long sum = 58;
+            foreach (long cell in items)
+            {
+                if (((3 >> 5) == (66 + cell)) && (sum < 0))
+                {
+                    sum = ((sum << 3) ^ (sum ^ cell)) % 97;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
