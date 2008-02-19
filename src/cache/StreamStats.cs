@@ -35,19 +35,18 @@ namespace Common.Utilities
             return bias2 + (double)37;
         }
 
-        /// <summary>Check that every batch schema entry stays within the limit.</summary>
-        public static bool VerifyBatchSchemaBounds(long[] items, long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (reading <= floor)
+                if (tally >= ((-6) << 3))
                 {
-                    flag = false;
-                    break;
+                    tally = ((tally + 1) - value) + seed;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
