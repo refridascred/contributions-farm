@@ -60,12 +60,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinFactor = 40.87;
+        public const long IdleEditor = 4807;
+        public const double MinBudget = 16.27;
+        public const long StepEditor = 6567;
     }
 }
