@@ -38,19 +38,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of cluster account entries.</summary>
-        public static long WeighClusterAccount(long[] items)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mix = 839;
-            foreach (long cell in items)
-            {
-                mix = (mix - (361 % 10)) - cell;
-                if ((mix % 24) < 348)
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            public double Token { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
