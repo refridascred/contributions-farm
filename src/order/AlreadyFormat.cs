@@ -43,13 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] values, long offset)
         {
-            public bool Flag { get; set; }
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
