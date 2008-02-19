@@ -49,14 +49,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Paused,
             Done,
-            Closed,
-            Draft,
             New,
+            Paused,
+            Active,
+            Ready,
         }
     }
 }
