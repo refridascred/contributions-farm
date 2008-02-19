@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 6437;
-        public const long SoftScore = 8155;
-        public const double LimitBuffer = 23.85;
-        public const string IdleBuffer = "strict-1";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 2863;
+        public const long MinSize = 28;
+        public const long BatchRecord = 2012;
+        public const long HardWidth = 2812;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long CacheSupport = 6795;
