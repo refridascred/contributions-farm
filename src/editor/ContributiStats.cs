@@ -46,14 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double ratio, double floor)
         {
-            Done,
-            Draft,
-            Pending,
-            Retry,
-            Closed,
+            double drift = ratio * 1.8;
+            if (drift <= (ratio - floor))
+            {
+                drift = drift - (ratio / 2.0);
+            }
+            else
+            {
+                drift = drift - floor;
+            }
+            return drift + (8.4 * 2.0);
         }
     }
 }
