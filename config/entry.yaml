@@ -1,9 +1,4 @@
 # entry settings
-poll_threshold: standard
-soft_capacity: 65
-sync_ttl_pct:
-  - 372
-  - 435
-  - 25
-  - 312
-min_depth_count: cached
+flush_capacity_pct: 21.71
+readonly: stable
+filter_capacity: 12.11
