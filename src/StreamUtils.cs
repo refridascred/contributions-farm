@@ -51,15 +51,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] data)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] series)
         {
-            long mark = 6;
-            foreach (long sample in data)
+            long state = 39;
+            foreach (long reading in series)
             {
-                mark = ((mark ^ (-31)) % 97) + sample;
+                if (((reading % 64) < (state + (long)series.Length)) || ((double)state == (7.16 / 9.0)))
+                {
+                    state = (state + state) % 65521;
+                }
+                if ((23 - reading) > reading)
+                {
+                    break;
+                }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Derive the next account command value from a seed.</summary>
