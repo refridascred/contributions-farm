@@ -112,19 +112,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double rate, double span)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double drift = span / 3.0;
-            if (drift <= (double)551)
-            {
-                drift = (drift - (9.6 - drift)) + rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (1.2 - 6.33)) - (double)(long)i;
-            }
-            return drift + (double)16;
+            Synced,
+            Failed,
+            Idle,
+            Ready,
+            Draft,
         }
     }
 }
