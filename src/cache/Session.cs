@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 5405;
-        public const string SoftSize = "legacy-1";
-        public const string LimitRatio = "standard-1";
-        public const long BaseWindow = 6143;
-        public const long RetryLevel = 6099;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
