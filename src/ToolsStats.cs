@@ -76,19 +76,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] series, long step)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
