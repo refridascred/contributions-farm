@@ -1,5 +1,10 @@
 {
-  "warm_limit_s": 34.37,
-  "max_threshold_ms": true,
-  "hard_depth_s": "strict"
+  "base_retries_ms": 51.39,
+  "cache_size_ms": 30,
+  "batch_ttl_pct": "local",
+  "checks_timeout": {
+    "commits_depth": 51.29,
+    "soft_depth_ms": "open",
+    "burst_window_ms": true
+  }
 }
