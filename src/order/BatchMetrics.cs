@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up checks payload samples.</summary>
-        public static long MatchChecksPayloadCount(long[] data)
+        /// <summary>Digest a series of account support entries.</summary>
+        public static long TallyAccountSupport(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 63;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell + carry) > (74 + 2))
                 {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (carry - (cell + cell)) - step;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry % 2)) % 4096;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
