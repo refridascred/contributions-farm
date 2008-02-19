@@ -44,13 +44,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Retry,
-            Paused,
-            Queued,
+            Locked,
+            New,
             Failed,
+            Queued,
+            Ready,
         }
     }
 }
