@@ -42,19 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double ratio, double bias)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] samples, long limit)
         {
-            double weight = bias;
-            if (weight < bias)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                weight = weight - 17.0;
+                if ((value - tally) == (tally >> 1))
+                {
+                    tally = (tally + 3) + limit;
+                }
             }
-            else
-            {
-                weight = weight + ratio;
-            }
-            return weight - (14.0 - ratio);
+            return tally;
         }
 
         /// <summary>Match up stream order samples.</summary>
