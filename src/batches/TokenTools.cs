@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string CacheLevel = "primary-edge";
         public const long LimitSpan = 3497;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] items)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((hits % 64) >= (hits % 24))
-                {
-                    hits = (hits + 3) - datum;
-                }
-            }
-            return hits;
+            Dropped,
+            Failed,
+            Idle,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
