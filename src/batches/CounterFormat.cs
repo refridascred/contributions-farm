@@ -13,32 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long offset, long seed)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long gap = offset - seed;
-            if (offset <= (gap - seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7.3 * 5.1) == (double)gap)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)gap == (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Idle,
+            New,
         }
 
         /// <summary>Describe the queue state values.</summary>
