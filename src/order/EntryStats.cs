@@ -70,15 +70,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next report already value from a seed.</summary>
-        public static long SeriesReportAlready(long bound)
+        /// <summary>Classify a entry record pair into a bucket.</summary>
+        public static long GradeEntryRecord(long bound, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
+            long step = bound - target;
+            if ((double)target <= (3.8 + 8.71))
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((4 + target) <= (target ^ bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step != (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
