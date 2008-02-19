@@ -1,31 +1,10 @@
 # githubfarm settings
-window_limit: open
-metric_timeout: green
-batch_timeout_count:
-  strict: 250
-  burst_interval_pct:
-    readonly: latest
-    cache_threshold_pct:
-      - 320
-      - 443
-      - 445
-      - 81
-    soft_threshold_ms: 42
-  route_size:
-    - cached
-    - fallback
-  flush_ratio_s: false
-  checks_limit: 318
-  graph_ratio: local
-entry_limit:
-  base_capacity:
-    retry_limit_ms: 71.6
-    min_window: true
-    cache_retries_ms: staging
-    retry_ttl_ms: true
-  enabled: 32.46
-  persist: fallback
-  hard_delay: primary
-  verbose: open
-  batch_retries_s: blue
-soft_ttl_s: edge
+retry_timeout_ms: 60
+default_retries_count: 60
+warm_size_ms: 9296
+cache_timeout_s: 62
+dry_run:
+  default_limit: 500
+  dry_run: staging
+  flush_capacity: 71.93
+  warm_delay: 30
