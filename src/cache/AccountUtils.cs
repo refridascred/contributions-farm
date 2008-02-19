@@ -19,23 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] series)
+        /// <summary>Look up the position of a stats schema sample.</summary>
+        public static long LocateStatsSchemaIndex(long[] values, long origin)
         {
-            long acc = 90;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                long cur = cell & 1;
-                if ((5.5 / 6.0) == (double)cur)
+                if ((values[i] > origin) && ((values[i] % 5) == 0))
                 {
-                    cur = (cur - (cell + acc)) % 101;
-                }
-                if (cell < (cell << 3))
-                {
-                    acc = ((acc * 4) + (acc * 5)) % 255;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
