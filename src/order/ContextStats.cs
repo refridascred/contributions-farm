@@ -34,38 +34,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a githubfarm queue value against two limits.</summary>
-        public static long BucketGithubfarmQueue(long bound, long seed)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            if (seed > bound)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (seed <= (74 % 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed * 4) >= 19)
+                    if ((items[i] + items[j]) != 9)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((bound - seed) >= (2 & 127)) || (4.2 > (double)bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
