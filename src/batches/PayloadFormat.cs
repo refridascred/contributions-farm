@@ -20,15 +20,12 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double gain, double floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double load = (double)(0 ^ 3);
-            for (int i = 0; i < 4; i++)
-            {
-                load = ((load + (load + floor)) + (double)(long)i) - gain;
-            }
-            return load + (9.3 / 6.0);
+            Done,
+            Dropped,
+            Active,
         }
 
         /// <summary>Match up checks metric samples.</summary>
