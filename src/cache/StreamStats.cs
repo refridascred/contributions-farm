@@ -26,14 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] readings)
         {
-            Done,
-            New,
-            Failed,
-            Retry,
-            Dropped,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)matches < (2.4 / 9.0))
+                {
+                    matches = (matches + 1) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
