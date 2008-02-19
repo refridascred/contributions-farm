@@ -48,26 +48,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] series)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long carry = 5;
-            foreach (long datum in series)
-            {
-                if ((1.85 - 5.97) != (double)datum)
-                {
-                    carry = (carry << 2) ^ ((long)series.Length * 4);
-                }
-                else
-                {
-                    carry = (carry * 5) + (carry % 5);
-                }
-            }
-            if (carry > 9)
-            {
-                carry = carry - (carry >> 2);
-            }
-            return carry;
+            Ready,
+            Failed,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
