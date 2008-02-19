@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] readings, long seed)
+        /// <summary>Audit graph stream readings against a rule.</summary>
+        public static long MeasureGraphStreamGaps(long[] data)
         {
-            long score = 5;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                score = ((score * 2) + score) ^ value;
-                if ((score + score) > (score & 127))
+                if ((seen << 1) < 630)
                 {
-                    score = (score * 3) + (102 / 6);
+                    seen = (seen + 3) + cell;
                 }
             }
-            if (score < 207)
-            {
-                score = (score + (seed + seed)) % 4096;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
