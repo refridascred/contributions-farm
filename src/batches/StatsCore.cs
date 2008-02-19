@@ -21,11 +21,25 @@ namespace Common.Utilities
         public const string HardScore = "alpha-edge";
         public const long IdleRecord = 6058;
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double gain, double offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long step, long bound)
         {
-            double load = (double)(32 * 3);
-            return (load + offset) + gain;
+            long bound2 = step ^ bound;
+            if ((bound + bound) >= step)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound2 >> 3) != (step + 9))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Match up stream order samples.</summary>
