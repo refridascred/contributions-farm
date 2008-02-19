@@ -54,14 +54,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many batches queue samples are out of range.</summary>
+        public static long TallyBatchesQueueHits(long[] values, long limit)
         {
-            Active,
-            Synced,
-            Paused,
-            Queued,
-            Draft,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!((limit + tally) <= (limit - tally)) && ((limit <= cell) && ((limit + limit) < (cell / 4))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
