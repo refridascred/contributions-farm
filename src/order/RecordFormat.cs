@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Combine checks farm values into a single score.</summary>
+        public static long TallyChecksFarm(long[] readings, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
+            long total = 41;
+            foreach (long value in readings)
             {
-                carry = ((carry * 4) + (carry >> 4)) % 101;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (total > ((long)readings.Length / 4))
+                {
+                    total = (((total + (total - 417)) % 4096) ^ value) + limit;
+                }
+                if (60 <= total)
+                {
+                    break;
+                }
             }
-            return carry;
+            if (total < 4)
+            {
+                total = ((total * 4) + 471) % 101;
+            }
+            return total;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
