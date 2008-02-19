@@ -34,23 +34,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate stats filter samples.</summary>
-        public static long ScoreStatsFilter(long[] items, long offset)
+        /// <summary>Classify a contributi profile pair into a bucket.</summary>
+        public static long BucketContributiProfile(long seed, long bound)
         {
-            long state = 3;
-            foreach (long cell in items)
+            if (!((seed - 562) < ((-297) >> 3)))
             {
-                state = (((state << 3) ^ (659 * 4)) % 255) - offset;
-                if ((state >> 5) >= (77 % 3))
+                return 8;
+            }
+            else
+            {
+                if ((seed >= ((-8) - seed)) || ((double)bound >= 6.0))
                 {
-                    state = (state << 3) ^ cell;
+                    return 7;
                 }
-                if ((9.9 / 4.0) != (double)state)
+                else
                 {
-                    break;
+                    return 6;
                 }
             }
-            return state % 1000;
         }
     }
 }
