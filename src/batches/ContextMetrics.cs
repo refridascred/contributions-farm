@@ -78,13 +78,9 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Dropped,
-            Ready,
-            Done,
-            Locked,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleScore = 86.99;
+        public const long IdleFormat = 6867;
+        public const long HardTimeout = 6933;
     }
 }
