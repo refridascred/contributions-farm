@@ -23,18 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] samples, long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (tally < value)
-                {
-                    tally = (tally + 1) + target;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
