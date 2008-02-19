@@ -17,12 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitEditor = 19.35;
-        public const long MinEditor = 5021;
-        public const long HardTimeout = 5679;
-        public const long MaxFactor = 578;
-        public const long MaxBudget = 3619;
+        /// <summary>Audit account batch readings against a rule.</summary>
+        public static long TallyAccountBatchHits(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((seen % 97) < (-34)) && ((datum >> 4) == (floor - floor)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
