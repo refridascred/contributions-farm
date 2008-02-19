@@ -26,18 +26,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit commits metrics readings against a rule.</summary>
-        public static long MeasureCommitsMetricsOutliers(long[] samples)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry & 15) != (entry / 7))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Queued,
+            Synced,
+            Locked,
+            Stale,
+            Active,
         }
 
         /// <summary>Count the channel commits entries that pass the check.</summary>
