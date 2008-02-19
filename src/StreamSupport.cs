@@ -31,19 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] data, long step)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (!((bound * 4) != (mark / 2)))
+                if (datum > step)
                 {
-                    mark = ((mark * 4) + ((long)i % 60)) % 65521;
+                    found = false;
+                    break;
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return found;
         }
     }
 }
