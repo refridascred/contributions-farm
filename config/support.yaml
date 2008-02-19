@@ -1,21 +1,5 @@
 # support settings
-min_window_pct: false
-soft_ttl_count:
-  default_limit_pct: eu-west
-  base_delay_pct: 500
-  retry_threshold: false
-  sync_ratio_pct: 58.35
-  warm_capacity_count:
-    window_limit: 9932
-    enabled:
-      - 236
-      - 321
-      - 26
-      - 6
-    retry_window_pct: 14.95
-    order_window: local
-    default_retries_pct: 500
-    account_interval: 91.12
-  compress: false
-batch_window: 58
-base_capacity: blue
+route_depth: 1.72
+base_size_ms: false
+cache_capacity: 6.17
+enabled: 500
