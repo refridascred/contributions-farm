@@ -27,18 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] readings)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)matches < (2.4 / 9.0))
-                {
-                    matches = (matches + 1) - entry;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
