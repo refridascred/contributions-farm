@@ -1,5 +1,16 @@
 # support settings
-stream_ttl: 60
-stats_interval: 86.29
-persist: staging
-audit: 40.71
+cache_limit_count:
+  - stable
+  - fallback
+  - open
+min_depth: 55.97
+flush_ttl_ms:
+  - strict
+  - staging
+  - strict
+  - open
+sync_size_count: local
+counter_size:
+  enabled: true
+  max_ratio_pct: 36
+  batches_capacity: fallback
