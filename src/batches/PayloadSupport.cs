@@ -38,18 +38,31 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] data)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long seed, long step)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if ((seed - step) < (seed - seed))
             {
-                if (18.0 >= (double)matches)
+                return 7;
+            }
+            else
+            {
+                if ((2 * 2) != (seed + seed))
                 {
-                    matches = (matches + 3) - value;
+                    return 3;
+                }
+                else
+                {
+                    if ((3.04 * 5.3) == (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
