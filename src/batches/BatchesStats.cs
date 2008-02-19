@@ -22,19 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] samples, long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long origin)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (item <= floor)
+                if ((((long)i - 4) <= (64 & 63)) && ((double)origin == (9.0 + 6.94)))
                 {
-                    flag = false;
-                    break;
+                    mark = mark + mark;
+                    mark = mark - (origin ^ (long)i);
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
