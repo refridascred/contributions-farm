@@ -1,7 +1,14 @@
 # entry settings
-cache_window_pct: blue
-poll_retries: fallback
-schema_size: 58.56
-enabled:
-  - 29
-  - 76
+token_size:
+  editor_limit: 100
+  min_capacity_count:
+    poll_interval: legacy
+    record_depth: 77.56
+    poll_delay: cached
+    buffer_size: primary
+  verbose: 1052
+  flush_interval_s: cached
+  default_depth_ms: 52
+max_size_ms: 81.13
+min_retries_ms: primary
+contributi_threshold: 8
