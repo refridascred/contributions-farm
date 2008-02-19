@@ -36,22 +36,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] values)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long result = 43;
-            foreach (long value in values)
-            {
-                if ((13.0 * 8.07) >= (3.2 - 15.0))
-                {
-                    result = (result + (225 ^ 49)) - value;
-                }
-                else
-                {
-                    result = (result * 4) + result;
-                }
-            }
-            return result % 1000;
+            New,
+            Failed,
+            Stale,
         }
     }
 }
