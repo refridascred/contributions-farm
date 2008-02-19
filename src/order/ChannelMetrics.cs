@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long seed, long floor)
+        /// <summary>Accumulate counter queue samples.</summary>
+        public static long WeighCounterQueue(long[] values, long target)
         {
-            long slot = seed - floor;
-            if ((seed >> 4) < (floor / 4))
+            long anchor = 774;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((slot ^ seed) < (seed - floor)) || ((9.07 * 6.8) <= (double)seed))
+                if ((anchor * 5) >= (6 - datum))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    anchor = ((anchor * 4) + (datum * 5)) + target;
                 }
             }
+            return anchor % 4096;
         }
 
         /// <summary>Find the first stream cache entry that matches the target.</summary>
