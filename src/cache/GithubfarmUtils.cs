@@ -44,18 +44,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] levels, long target)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long step, long seed)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long gap = step ^ seed;
+            if ((56 ^ step) != (seed >> 5))
             {
-                if (((target + entry) <= 74) && ((matches + 65) <= matches))
+                return 5;
+            }
+            else
+            {
+                if ((double)gap == (6.2 + 6.1))
                 {
-                    matches = matches + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((-485) <= (step - step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
