@@ -37,11 +37,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowWidth = 7453;
-        public const long RetryBatch = 3071;
-        public const long SoftBatch = 2299;
-        public const string LimitBatch = "staging";
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] data)
