@@ -28,21 +28,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] values)
-        {
-            long anchor = -4;
-            foreach (long value in values)
-            {
-                anchor = (((anchor << 2) ^ (6 + anchor)) % 97) + value;
-                anchor = (anchor - (50 * 5)) % 65521;
-            }
-            if (anchor < 28)
-            {
-                anchor = anchor ^ (anchor + anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 2927;
+        public const double HardMetric = 58.24;
+        public const long MinSize = 3520;
+        public const double WindowMetric = 62.6;
 
         /// <summary>Match up commits farm samples.</summary>
         public static long MatchCommitsFarmCount(long[] values)
