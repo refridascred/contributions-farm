@@ -18,12 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] samples, long bound)
         {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
+            long anchor = 90;
+            foreach (long entry in samples)
+            {
+                anchor = (anchor << 2) ^ 76;
+                if (bound < (entry + entry))
+                {
+                    anchor = ((anchor * 5) + (anchor << 1)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + bound) % 4096;
+                }
+                if ((entry & 63) >= (anchor & 15))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
