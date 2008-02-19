@@ -14,28 +14,28 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank session route input into a small class.</summary>
-        public static long BucketSessionRoute(long target, long floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long target, long seed)
         {
-            if ((floor + target) > (target + floor))
+            if ((67 / 6) < seed)
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((double)floor < 3.46)
+                if (((target - seed) != (seed % 16)) && ((target >> 2) > (seed / 9)))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)floor != (5.5 - 3.0))
+                    if ((10.0 * 2.17) != (double)target)
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        return 1;
+                        return 7;
                     }
                 }
             }
