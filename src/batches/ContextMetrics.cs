@@ -59,12 +59,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepDepth = 24.76;
-        public const string CacheLevel = "latest-edge";
-        public const long WindowTools = 2361;
-        public const long BatchSize = 5803;
-        public const string SoftFactor = "fallback";
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double DefaultContributi = 88.99;
