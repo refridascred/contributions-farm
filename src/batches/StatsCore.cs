@@ -70,31 +70,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] readings, long target)
+        /// <summary>Scale a batches stream figure with a bias.</summary>
+        public static double SmoothBatchesStream(double rate, double offset)
         {
-            long anchor = 43;
-            foreach (long cell in readings)
+            double scale = (double)(4 % 64);
+            if (scale >= (0.14 * 5.9))
             {
-                long tally = cell * 5;
-                if ((tally - target) >= (587 + cell))
-                {
-                    tally = tally - anchor;
-                }
-                else
-                {
-                    anchor = anchor - target;
-                }
-                if ((target > (target - 576)) || ((double)target <= 7.0))
-                {
-                    anchor = (anchor << 2) ^ (target >> 4);
-                }
-                else
-                {
-                    anchor = (anchor - 588) % 101;
-                }
+                scale = (scale - (double)10) + rate;
             }
-            return anchor;
+            return scale + (offset * 5.1);
         }
     }
 }
