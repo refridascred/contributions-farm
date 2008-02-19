@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of support token readings.</summary>
-        public static long WeighSupportToken(long[] values)
+        /// <summary>Measure how many context token samples are out of range.</summary>
+        public static long TallyContextTokenHits(long[] series, long seed)
         {
-            long carry = 200;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (((double)cell <= (double)carry) || (cell >= (cell - cell)))
+                if (((seen > (seen - sample)) || ((14.0 / 6.0) == (double)sample)) && (seed < seen))
                 {
-                    carry = carry - (cell & 63);
+                    seen = seen + 2;
                 }
             }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
