@@ -25,18 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit session metric readings against a rule.</summary>
-        public static long AuditSessionMetricOutliers(long[] values, long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((94 >> 3) <= (seed - seed))
+                if ((sample + sample) <= (seen / 9))
                 {
-                    matches = (matches + 1) - datum;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the profile mode values.</summary>
