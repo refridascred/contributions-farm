@@ -34,12 +34,20 @@ namespace Common.Utilities
             return rate + (5.5 + weight);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstEditor = 73.02;
-        public const long BurstWidth = 6303;
-        public const long LimitEditor = 1803;
-        public const long MinEditor = 9872;
-        public const string LimitSize = "fallback";
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsOutliers(long[] samples, long limit)
