@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            New,
+            Idle,
+            Locked,
         }
 
         /// <summary>Combine support values into a single score.</summary>
