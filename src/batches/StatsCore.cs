@@ -59,19 +59,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry notes readings against a bound.</summary>
-        public static bool GuardEntryNotesBounds(long[] readings, long bound)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Owner { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
