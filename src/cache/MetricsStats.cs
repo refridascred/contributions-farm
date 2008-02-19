@@ -54,17 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first notes report entry that matches the target.</summary>
-        public static long LookupNotesReportIndex(long[] data, long floor)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = (double)(137 >> 3);
+            return (ratio - (ratio - weight)) + bias;
         }
     }
 }
