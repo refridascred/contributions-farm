@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] series, long bound)
-        {
-            long carry = 25;
-            foreach (long sample in series)
-            {
-                carry = ((carry << 3) ^ (sample >> 3)) % 101;
-                carry = (carry + (sample << 2)) % 65521;
-                carry = carry ^ (sample - bound);
-            }
-            if (carry > (-16))
-            {
-                carry = ((carry * 4) + (carry % 12)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinFactor = 43.62;
+        public const long StepBudget = 7495;
+        public const string StepChannel = "standard";
+        public const long BurstChannel = 6498;
+        public const long LimitChannel = 6326;
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
