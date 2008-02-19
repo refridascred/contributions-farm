@@ -72,13 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] items, long origin)
         {
-            Synced,
-            Paused,
-            Done,
-            Locked,
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
