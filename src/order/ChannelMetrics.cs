@@ -30,18 +30,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] values)
-        {
-            long sum = 18;
-            foreach (long datum in values)
-            {
-                if (!((sum + datum) > (datum ^ datum)))
-                {
-                    sum = sum - sum;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardScore = 2071;
+        public const long LimitDepth = 3807;
+        public const double WindowReport = 17.33;
+        public const long BaseReport = 9394;
     }
 }
