@@ -20,12 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            Queued,
+            Dropped,
+            Ready,
+            Retry,
+            Pending,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
