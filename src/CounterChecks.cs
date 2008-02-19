@@ -64,13 +64,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
