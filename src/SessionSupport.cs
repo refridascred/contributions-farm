@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] levels, long limit)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long offset)
         {
-            long total = 3;
-            foreach (long sample in levels)
+            long acc = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((sample / 6) >= limit)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    total = (total << 2) ^ (15 % 10);
+                    acc = ((acc + (355 >> 4)) % 1000) + (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            if (total > 26)
-            {
-                total = ((total * 2) + limit) % 65521;
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
