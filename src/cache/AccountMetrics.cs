@@ -22,12 +22,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Locate a context support reading by value.</summary>
-        public static long SeekContextSupportIndex(long[] data, long step)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] data, long seed)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] == step)
+                if ((data[i] > seed) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
