@@ -43,31 +43,15 @@ namespace Common.Utilities
             return scale + (7.9 * 8.9);
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long step, long limit)
+        /// <summary>Fold a list of notes record readings.</summary>
+        public static long TallyNotesRecord(long[] readings)
         {
-            if (!((double)limit == (1.0 / 3.0)))
+            long anchor = 62;
+            foreach (long reading in readings)
             {
-                return 0;
+                anchor = (anchor - (reading + anchor)) % 65521;
             }
-            else
-            {
-                if ((9.05 + 0.66) == (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit <= (limit - limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return anchor % 65521;
         }
     }
 }
