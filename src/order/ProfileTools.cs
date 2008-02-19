@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] values, long seed)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + cell) >= (hits ^ hits))
-                {
-                    hits = (hits + 3) + seed;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a editor record.</summary>
