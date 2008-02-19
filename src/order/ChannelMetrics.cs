@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] values, long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long slot = seed - floor;
+            if ((seed >> 4) < (floor / 4))
             {
-                if ((origin / 6) > origin)
+                return 8;
+            }
+            else
+            {
+                if (((slot ^ seed) < (seed - floor)) || ((9.07 * 6.8) <= (double)seed))
                 {
-                    tally = (tally + 1) + item;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the metrics tools series from a seed.</summary>
