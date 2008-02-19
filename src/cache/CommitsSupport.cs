@@ -44,13 +44,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchDepth = 3636;
+        public const long SoftSize = 5908;
+        public const string SoftMetric = "fallback-edge";
+        public const long BaseMetric = 685;
+        public const string MaxMetric = "open-1";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long StepRecord = 9150;
