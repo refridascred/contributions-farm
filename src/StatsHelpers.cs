@@ -31,11 +31,25 @@ namespace Common.Utilities
         public const string SoftCount = "fallback-edge";
         public const long LimitBuffer = 2882;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long bound, long step)
         {
-            public bool Mode { get; set; }
-            public string Token { get; set; } = "";
+            long diff = bound ^ step;
+            if ((step % 10) != (bound & 63))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((diff + diff) > diff)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Blend two notes measurements.</summary>
