@@ -29,19 +29,17 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double scale, double span)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] readings, long offset)
         {
-            double load = scale;
-            if (load < span)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + span;
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (double)798;
-            }
-            return load - scale;
+            return -1;
         }
 
         /// <summary>Describe the buffer status values.</summary>
