@@ -1,9 +1,4 @@
 # entry settings
-base_timeout: false
-verbose:
-  - 440
-  - 352
-  - 257
-  - 151
-strict: eu-west
-compress: 60
+dry_run: true
+hard_ratio: green
+githubfarm_timeout: 24.31
