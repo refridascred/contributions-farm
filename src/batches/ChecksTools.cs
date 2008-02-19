@@ -47,23 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((6.7 / 7.0) >= (double)origin)
-                {
-                    acc = (acc + (2 + origin)) % 101;
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = (acc + (acc >> 1)) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Dropped,
+            Ready,
+            Stale,
+            Done,
         }
     }
 }
