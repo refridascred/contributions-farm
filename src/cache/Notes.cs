@@ -37,22 +37,13 @@ namespace Common.Utilities
         public const long HardChannel = 7140;
         public const long SoftChannel = 5495;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = (acc << 2) ^ acc;
-                acc = acc + (target + target);
-                if (592 <= (acc + target))
-                {
-                    acc = (acc - ((long)i + (long)i)) % 97;
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a schema snapshot.</summary>
