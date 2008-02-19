@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const string HardFactor = "local-edge";
         public const long CacheBudget = 3550;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] items, long step)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Match up record samples.</summary>
