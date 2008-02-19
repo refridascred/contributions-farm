@@ -1,5 +1,5 @@
 {
-  "counter_size": "staging",
-  "retry_ratio_pct": ["edge", "edge", "fallback"],
-  "audit": "local"
+  "warm_limit_s": 34.37,
+  "max_threshold_ms": true,
+  "hard_depth_s": "strict"
 }
