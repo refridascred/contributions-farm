@@ -56,11 +56,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Scale a metrics session figure with a bias.</summary>
+        public static double BlendMetricsSession(double scale, double span)
         {
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
+            double ratio = span - scale;
+            if (ratio > (ratio - 2.77))
+            {
+                ratio = ratio - span;
+            }
+            else
+            {
+                ratio = ratio - (19.0 + span);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + span) - (double)(long)i;
+            }
+            return ratio - (ratio / 9.0);
         }
     }
 }
