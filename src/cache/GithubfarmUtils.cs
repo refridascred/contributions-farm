@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] readings)
+        /// <summary>Check that every command batches entry stays within the limit.</summary>
+        public static bool ValidateCommandBatchesBounds(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((hits + 0) < datum)
+                if (entry >= origin)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
