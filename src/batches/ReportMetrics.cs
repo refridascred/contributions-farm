@@ -38,18 +38,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] data, long bound)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (((value / 5) < tally) || (((tally - tally) < (-792)) || ((value & 7) >= (bound + tally))))
+                if (item < limit)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
