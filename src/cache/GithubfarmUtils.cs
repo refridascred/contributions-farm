@@ -31,12 +31,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] data)
         {
-            Closed,
-            Pending,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry ^ hits) != (hits ^ entry))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes header.</summary>
