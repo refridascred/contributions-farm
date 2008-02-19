@@ -13,17 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] levels, long step)
+        /// <summary>Check that every window checks entry stays within the limit.</summary>
+        public static bool CheckWindowChecksRange(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (levels[i] < step)
+                if (entry > bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
