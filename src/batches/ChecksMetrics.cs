@@ -40,22 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] series, long bound)
         {
-            long mix = 50;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((value >> 5) != ((-14) & 15))
+                if (reading >= bound)
                 {
-                    mix = (mix << 2) ^ (mix + mix);
-                }
-                else
-                {
-                    mix = (mix - (long)values.Length) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return mix % 65521;
+            return ok;
         }
 
         /// <summary>Hold a token info.</summary>
