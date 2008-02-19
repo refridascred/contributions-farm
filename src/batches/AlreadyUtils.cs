@@ -43,20 +43,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long offset)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result << 3) ^ (525 & 3);
-                if (!((double)(long)i < (3.2 + 7.0)))
-                {
-                    result = ((result * 4) + ((-546) + result)) % 255;
-                }
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Paused,
+            Queued,
+            Stale,
         }
     }
 }
