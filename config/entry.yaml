@@ -1,6 +1,20 @@
 # entry settings
-already_threshold: eu-west
-hard_timeout_s: 3547
-session_retries: true
-audit: local
-entry_timeout: 5.89
+sync_delay_pct: eu-west
+notes_retries: eu-west
+audit:
+  hard_window: fallback
+  already_threshold:
+    sync_interval_ms: edge
+    context_interval:
+      - 88
+      - 19
+    support_ttl: 1346
+  checks_window: primary
+  warm_window: staging
+flush_ratio_s:
+  persist:
+    - stable
+    - staging
+  burst_delay: standard
+  batch_timeout_pct: 93.55
+  already_depth: edge
