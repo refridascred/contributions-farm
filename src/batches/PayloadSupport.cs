@@ -16,10 +16,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryCount = 71.3;
-        public const long IdleScore = 418;
-        public const long RetryWidth = 9699;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!(score >= floor))
+                {
+                    score = (score << 3) ^ ((long)i % 3);
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate stats filter samples.</summary>
         public static long ScoreStatsFilter(long[] items, long offset)
