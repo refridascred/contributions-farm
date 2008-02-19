@@ -1,21 +1,31 @@
 # githubfarm settings
-cache_ratio: 24
-flush_window_count: 51.33
-min_timeout_ms:
-  idle_ttl_ms:
-    - 93
-    - 43
-    - 257
-  default_size_s: blue
-  audit: 500
-  default_delay: staging
-burst_timeout: false
-window_interval:
-  base_threshold: 5411
-  window_delay:
-    batch_size: cached
-    flush_timeout: staging
-    enabled: 88.17
-    order_delay: 88.11
-  soft_threshold: green
-  strict: green
+window_limit: open
+metric_timeout: green
+batch_timeout_count:
+  strict: 250
+  burst_interval_pct:
+    readonly: latest
+    cache_threshold_pct:
+      - 320
+      - 443
+      - 445
+      - 81
+    soft_threshold_ms: 42
+  route_size:
+    - cached
+    - fallback
+  flush_ratio_s: false
+  checks_limit: 318
+  graph_ratio: local
+entry_limit:
+  base_capacity:
+    retry_limit_ms: 71.6
+    min_window: true
+    cache_retries_ms: staging
+    retry_ttl_ms: true
+  enabled: 32.46
+  persist: fallback
+  hard_delay: primary
+  verbose: open
+  batch_retries_s: blue
+soft_ttl_s: edge
