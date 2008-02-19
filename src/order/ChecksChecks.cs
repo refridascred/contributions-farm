@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
             public long Total { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Measure how many batches window samples are out of range.</summary>
