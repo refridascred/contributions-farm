@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] samples, long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] series)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((count << 1) != (count - offset)) && (1 < reading)) && (offset < reading))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the commits phase values.</summary>
