@@ -1,5 +1,17 @@
 {
-  "base_delay_pct": 46,
-  "flush_threshold": true,
-  "compress": false
+  "flush_depth_pct": {
+    "burst_ttl_ms": 46.63,
+    "cache_window": 250,
+    "commits_timeout": 53.6,
+    "idle_ttl_count": [15, 474, 453],
+    "soft_ttl_count": {
+      "idle_depth_pct": [363, 305, 56],
+      "hard_window": "strict",
+      "filter_retries": 88
+    }
+  },
+  "dry_run": 3930,
+  "persist": 33.34,
+  "poll_interval_count": 57.03,
+  "compress": ["fallback", "eu-west", "stable", "blue"]
 }
