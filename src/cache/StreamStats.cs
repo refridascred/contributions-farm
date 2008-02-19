@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] samples)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the record mode values.</summary>
