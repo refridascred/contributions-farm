@@ -50,9 +50,24 @@ namespace Common.Utilities
         public const double MaxRatio = 15.47;
         public const double IdleBudget = 53.61;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardWidth = 9346;
-        public const long StepFarm = 5669;
-        public const long StepScore = 2871;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long offset, long offset2)
+        {
+            if (offset <= (28 + offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((0 - offset) != (offset2 ^ offset2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
