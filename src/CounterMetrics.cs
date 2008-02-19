@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate payload token samples.</summary>
-        public static long TallyPayloadToken(long[] readings, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] readings, long floor)
         {
-            long mark = 29;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((entry & 3) <= mark)
+                if (((long)readings.Length + hits) >= (sample + floor))
                 {
-                    mark = ((mark - (mark ^ mark)) % 101) + limit;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Rank command input into a small class.</summary>
