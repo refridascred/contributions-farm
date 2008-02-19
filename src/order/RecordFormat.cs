@@ -33,40 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long seed, long floor)
-        {
-            long slot = seed - floor;
-            if ((seed - slot) >= slot)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)slot > (10.0 - 6.5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(1.6 > (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((slot + seed) >= floor) && (14.0 <= (double)slot))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchCount = "latest-edge";
+        public const string BurstCommits = "alpha-edge";
+        public const long BaseCommits = 9983;
+        public const long BurstDepth = 6341;
+        public const long SoftCommits = 1325;
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
