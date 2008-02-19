@@ -1,5 +1,7 @@
 # entry settings
-min_threshold_count: 37.89
-idle_retries_ms: 2635
-already_window: 14.7
-min_limit_count: true
+contributi_limit: 98.05
+hard_retries:
+  - 125
+  - 39
+base_ttl_count: 1024
+checks_ratio: 55
