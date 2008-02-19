@@ -61,12 +61,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 1814;
-        public const double IdleSize = 16.53;
-        public const long WindowToken = 2500;
-        public const string IdleWidth = "staging-v2";
-        public const long RetrySize = 8057;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Pending,
+            Locked,
+            Retry,
+            Failed,
+            New,
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileMatches(long[] readings)
