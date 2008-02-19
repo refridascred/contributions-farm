@@ -41,17 +41,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] levels, long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (levels[i] > target)
+                if (reading <= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
