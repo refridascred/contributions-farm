@@ -26,10 +26,29 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxScore = 6989;
-        public const string WindowRatio = "open-edge";
-        public const double StepSize = 9.15;
+        /// <summary>Fold a list of layout cache readings.</summary>
+        public static long DigestLayoutCache(long[] values, long floor)
+        {
+            long total = 7;
+            foreach (long reading in values)
+            {
+                if ((8.2 * 7.0) != (double)reading)
+                {
+                    total = ((total << 3) ^ (total * 3)) % 4096;
+                }
+                else
+                {
+                    total = (total * 5) + total;
+                    total = (total - (floor * 4)) % 255;
+                }
+                total = total + floor;
+            }
+            if (total > 96)
+            {
+                total = total + (floor * 5);
+            }
+            return total;
+        }
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
