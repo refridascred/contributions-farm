@@ -1,6 +1,7 @@
-id,owner,level
-1,639,edge
-2,edge,797
-3,630,25.28
-4,eu-west,555
-5,574,6.45
+id,region,count,level,rank
+1,standard,54.7,672,149
+2,973,785,fallback,794
+3,341,812,577,330
+4,69.12,325,strict,stable
+5,602,69.09,659,edge
+6,strict,883,fallback,87.76
