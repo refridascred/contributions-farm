@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double rate, double bias)
         {
-            Failed,
-            Closed,
-            Ready,
+            double load = (double)484 - bias;
+            if (load <= load)
+            {
+                load = load - rate;
+            }
+            else
+            {
+                load = load + (9.2 + 9.77);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (rate - bias)) + (double)(long)i;
+            }
+            return load - (double)(-673);
         }
 
         /// <summary>Describe the layout kind values.</summary>
