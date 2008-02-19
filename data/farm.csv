@@ -1,9 +1,7 @@
-id,active,owner,rank,ratio
-1,520,401,blue,green
-2,242,16.7,887,908
-3,83,995,blue,641
-4,25.18,412,cached,7.29
-5,990,staging,strict,open
-6,16.31,open,811,local
-7,788,green,29.22,standard
-8,87,908,866,153
+id,level,active,count,token
+1,197,standard,797,edge
+2,796,93.96,36.8,standard
+3,553,11.85,edge,73.93
+4,73.99,38.03,58.0,eu-west
+5,legacy,572,382,22
+6,standard,standard,77.53,blue
