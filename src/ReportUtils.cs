@@ -52,19 +52,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double ratio, double span)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] data)
         {
-            double rate = (double)(-578) / 3.0;
-            if (rate <= rate)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                rate = ((rate + (double)960) - ratio) - span;
+                if ((reading + matches) <= reading)
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + 9.5;
+            return matches;
         }
     }
 }
