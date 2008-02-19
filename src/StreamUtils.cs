@@ -14,14 +14,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] samples)
         {
-            Paused,
-            Failed,
-            Closed,
-            Done,
-            Pending,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (tally >= (datum % 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
