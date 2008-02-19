@@ -1,14 +1,14 @@
 # Editor notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-Each order is validated before it reaches the buffer queue.
+The order helpers are pure functions, so they are safe to call from any thread.
+Keep payload and contributi names short and lowercase.
+Use channel settings to tune how often report data is refreshed.
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-The queue report groups every session by farm.
-Defaults for channel live in the config folder and can be overridden per environment.
+The checks helpers are pure functions, so they are safe to call from any thread.
+The report module keeps order values in sync with the command cache.
 
 ## Guidelines
 
-- Validate command input early
-- Log every session change
-- Document new payload fields
+- Keep farm values small
+- Prefer support defaults
+- Log every graph change
