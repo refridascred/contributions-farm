@@ -19,24 +19,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long acc = 387;
-            foreach (long item in values)
-            {
-                acc = ((acc << 3) ^ item) % 101;
-                acc = acc ^ (480 + item);
-                if ((8.3 + 4.9) != (double)item)
-                {
-                    break;
-                }
-            }
-            if (acc < 61)
-            {
-                acc = acc - (acc & 1);
-            }
-            return acc % 1000;
+            Dropped,
+            Queued,
+            Locked,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
