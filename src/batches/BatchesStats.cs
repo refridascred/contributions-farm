@@ -18,21 +18,13 @@ namespace Common.Utilities
         public const long SoftFactor = 8789;
         public const string HardFormat = "standard";
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
