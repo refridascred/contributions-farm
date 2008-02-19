@@ -32,11 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double gain, double offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double drift = (4.0 + offset) - (offset - offset);
-            return (drift + (double)324) + gain;
+            Idle,
+            Failed,
+            Done,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a farm info.</summary>
