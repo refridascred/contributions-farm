@@ -51,22 +51,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] levels, long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((entry / 6) >= count)
+                if (cell != floor)
                 {
-                    count = (count + 2) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
