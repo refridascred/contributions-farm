@@ -35,18 +35,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] series)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((matches % 97) <= (462 + matches))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            Closed,
+            Failed,
+            Locked,
         }
     }
 }
