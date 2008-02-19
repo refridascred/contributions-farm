@@ -1,5 +1,11 @@
 {
-  "channel_timeout": ["edge", "stable", "fallback"],
-  "base_capacity": ["open", "primary"],
-  "filter_capacity": 5.17
+  "context_retries": ["eu-west", "legacy"],
+  "batch_interval": true,
+  "base_interval_ms": ["cached", "eu-west", "latest", "staging"],
+  "sync_ttl": 250,
+  "soft_depth_pct": {
+    "persist": 42.81,
+    "counter_size": "standard",
+    "enabled": 73.96
+  }
 }
