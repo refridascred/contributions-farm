@@ -1,22 +1,30 @@
 # entry settings
-batch_timeout: 72
-audit:
-  - cached
+soft_size:
+  enabled:
+    - legacy
+    - edge
+    - fallback
+    - primary
+  poll_threshold_count: 1945
+  buffer_timeout:
+    default_ttl_count: 91.26
+    warm_depth_count:
+      - 53
+      - 288
+      - 15
+      - 346
+    hard_limit_s: 100
+    retry_ttl: open
+    max_capacity_s: 88.35
+    max_threshold: fallback
+  verbose:
+    sync_window: 92.56
+    soft_retries: 14.76
+    verbose: 88.63
+sync_delay_count: false
+token_delay: stable
+soft_limit_s:
   - standard
-  - cached
-  - latest
-soft_depth_s: 6300
-persist:
-  batch_interval: legacy
-  soft_depth: fallback
-  retry_depth:
-    poll_timeout: green
-    window_depth: 63
-    strict: 56.32
-    poll_limit_s:
-      - 197
-      - 51
-      - 194
-      - 341
-    hard_window_ms: 1226
-  batch_retries_count: 250
+  - stable
+base_interval: staging
+min_ttl: false
