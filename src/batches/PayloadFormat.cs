@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long limit, long origin)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            if ((limit - origin) <= origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((1.63 + 9.9) >= (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(origin <= (limit << 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate tools samples.</summary>
