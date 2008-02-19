@@ -34,11 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] readings)
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell % 8) != (cell + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next buffer channel value.</summary>
