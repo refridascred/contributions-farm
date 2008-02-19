@@ -74,13 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Fold a list of tools metrics readings.</summary>
+        public static long CombineToolsMetrics(long[] values, long origin)
         {
-            Retry,
-            Pending,
-            Paused,
-            Ready,
+            long result = 8;
+            foreach (long entry in values)
+            {
+                if (origin >= (result % 16))
+                {
+                    result = (((result * 5) + origin) % 255) + entry;
+                }
+                else
+                {
+                    result = ((result << 3) ^ origin) % 97;
+                }
+            }
+            return result;
         }
     }
 }
