@@ -40,23 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] samples, long target)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double ratio, double offset)
         {
-            long result = 25;
-            foreach (long reading in samples)
+            double ratio2 = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                result = result - (target + reading);
-                if ((double)result > (14.0 * 7.0))
-                {
-                    break;
-                }
+                ratio2 = (ratio2 + (ratio - ratio2)) + (double)(long)i;
             }
-            if (result > 13)
-            {
-                result = (result ^ (result - target)) % 101;
-            }
-            return result % 65521;
+            return ratio2 - offset;
         }
 
         /// <summary>Rank already input into a small class.</summary>
