@@ -20,19 +20,21 @@ namespace Common.Utilities
             return weight + (weight / 8.0);
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] samples, long bound)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] + readings[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
