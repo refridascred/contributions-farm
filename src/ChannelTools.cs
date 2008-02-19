@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] items, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long total = 331;
+            foreach (long sample in readings)
             {
-                if (offset < tally)
+                if (15.0 < (double)total)
                 {
-                    tally = (tally + 3) ^ item;
+                    total = (total + (sample + limit)) % 1000;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Digest a series of already token entries.</summary>
