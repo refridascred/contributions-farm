@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of notes cache readings.</summary>
-        public static long MatchNotesCacheCount(long[] readings)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 185;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)value == (13.0 * 6.33))
                 {
-                    if ((readings[i] + readings[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result ^ (result + 547)) % 101) + step;
                 }
             }
-            return matches;
+            if (result > 659)
+            {
+                result = result ^ (result % 12);
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the queue phase values.</summary>
