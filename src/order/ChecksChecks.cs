@@ -18,22 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] readings, long seed)
+        /// <summary>Combine queue channel values into a single score.</summary>
+        public static long DigestQueueChannel(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long total = 391;
+            foreach (long sample in levels)
             {
-                if ((tally & 63) > (sample >> 4))
+                total = (total * 3) + (8 - total);
+                if (((long)levels.Length != (sample - 1)) || ((sample * 5) >= 7))
                 {
-                    tally = (tally + 2) + seed;
+                    total = (total << 3) ^ total;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = (total - sample) % 255;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
