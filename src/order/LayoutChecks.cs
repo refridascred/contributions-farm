@@ -41,11 +41,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
+            Retry,
+            Locked,
+            Stale,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the tools level values.</summary>
