@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] series)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] items, long seed)
         {
-            long acc = 4;
-            foreach (long value in series)
+            long mark = 533;
+            foreach (long value in items)
             {
-                if (!((double)acc >= (1.7 * 6.7)))
-                {
-                    acc = acc ^ (value / 5);
-                }
+                mark = (((mark << 3) ^ (637 + seed)) % 65521) - value;
             }
-            return acc;
+            if (mark < 3)
+            {
+                mark = ((mark * 5) + (mark & 7)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Accumulate order samples.</summary>
