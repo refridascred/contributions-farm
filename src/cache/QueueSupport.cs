@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long step, long target)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] readings, long bound)
         {
-            if ((double)step <= (double)target)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(step > (step - 1)))
+                if ((readings[i] == bound) && ((readings[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((3.4 * 5.0) == (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of contributi token entries.</summary>
