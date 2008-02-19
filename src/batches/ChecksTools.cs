@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long origin, long step)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] values)
         {
-            if (((origin + step) <= (origin - origin)) || ((double)step <= (6.0 / 4.0)))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin % 10) <= step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin >> 4) == (step & 7))
+                    if ((values[i] ^ values[j]) < 8)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step + step) >= (origin - step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit window already readings against a rule.</summary>
