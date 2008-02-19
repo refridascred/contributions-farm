@@ -37,12 +37,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            Active,
-            Dropped,
-            Failed,
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
