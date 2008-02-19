@@ -34,19 +34,31 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of tools notes readings.</summary>
-        public static long TallyToolsNotes(long[] series, long seed)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long step, long bound)
         {
-            long acc = 45;
-            foreach (long reading in series)
+            if ((step < (bound / 9)) && ((bound << 1) > (step * 3)))
             {
-                acc = (acc ^ (reading & 7)) - seed;
+                return 1;
             }
-            if (acc < 2)
+            else
             {
-                acc = (acc ^ acc) % 255;
+                if (!((double)step < (5.1 + 0.7)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound >= (0.7 + 6.79))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Describe the window level values.</summary>
