@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] values, long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long slot = floor ^ limit;
+            if ((3.27 * 19.0) == (double)floor)
             {
-                if (((-43) + hits) <= (step * 4))
+                return 6;
+            }
+            else
+            {
+                if ((floor & 63) != (slot + floor))
                 {
-                    hits = (hits + 3) + reading;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor & 127) > limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor + floor) < (10 - limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the route status values.</summary>
