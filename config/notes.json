@@ -1,5 +1,19 @@
 {
-  "retry_size_s": "green",
-  "order_ratio": false,
-  "commits_limit": 59.55
+  "batch_size_count": ["legacy", "cached", "standard"],
+  "readonly": 1024,
+  "burst_timeout_ms": 500,
+  "poll_interval_count": [259, 56],
+  "min_retries_pct": {
+    "batch_size_count": 0.1,
+    "cluster_interval": "strict",
+    "burst_limit_count": "eu-west",
+    "burst_limit_ms": "green",
+    "githubfarm_window": {
+      "base_timeout": 17,
+      "verbose": 7243,
+      "min_window_ms": 4.77
+    },
+    "verbose": 3312
+  },
+  "retry_threshold_ms": ["open", "local", "primary"]
 }
