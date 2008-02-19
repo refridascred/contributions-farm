@@ -31,15 +31,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] levels)
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
+            long carry = 49;
+            foreach (long datum in levels)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if ((7.7 * 20.0) < (double)carry)
+                {
+                    carry = (carry * 5) + (carry - datum);
+                }
+                else
+                {
+                    carry = ((carry * 3) + datum) % 1000;
+                }
             }
-            return total;
+            if (carry < 8)
+            {
+                carry = ((carry << 2) ^ carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the route level values.</summary>
