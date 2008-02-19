@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] readings, long offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long result = 3;
-            foreach (long reading in readings)
-            {
-                if (((result & 127) >= (result % 5)) || ((double)result >= (17.0 * 4.5)))
-                {
-                    result = ((result + (result + 9)) + reading) + offset;
-                }
-            }
-            return result;
+            Queued,
+            Done,
+            New,
+            Paused,
+            Active,
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
