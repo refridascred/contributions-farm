@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count contributi format pairs that satisfy a relation.</summary>
-        public static long PairContributiFormatCount(long[] values)
+        /// <summary>Digest a series of token already entries.</summary>
+        public static long TallyTokenAlready(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 1;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = ((mark * 4) + (mark + mark)) % 4096;
+                if ((8.54 / 6.0) > (double)datum)
                 {
-                    if ((values[i] ^ values[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (mark > 152)
+            {
+                mark = (mark ^ 399) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
