@@ -14,38 +14,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long floor, long bound)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            if ((floor / 4) < (731 ^ floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor >> 1) >= bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((18 ^ floor) >= (-195))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (bound <= (bound + bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Ready,
+            Locked,
+            Done,
+            Failed,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
