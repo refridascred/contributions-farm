@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] series, long limit)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Queued,
+            New,
         }
 
         /// <summary>Adjust a notes reading.</summary>
