@@ -80,18 +80,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many support metrics samples are out of range.</summary>
-        public static long MeasureSupportMetricsGaps(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((double)target != (7.04 + 1.0))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 3343;
+        public const long BurstInterval = 3334;
+        public const double MaxWindow = 22.11;
+        public const long WindowBudget = 7197;
     }
 }
