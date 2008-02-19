@@ -35,22 +35,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] items, long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] samples)
         {
-            long carry = 7;
-            foreach (long cell in items)
+            long mix = 55;
+            foreach (long reading in samples)
             {
-                for (int i = 0; i < 11; i++)
+                if (((double)mix <= (14.0 * 3.55)) || ((6.0 - 3.16) < (double)mix))
                 {
-                    carry = (carry - (carry + (long)i)) % 4096;
-                }
-                if ((carry - origin) < cell)
-                {
-                    carry = (carry ^ (origin << 2)) % 4096;
+                    mix = ((mix + mix) % 101) + reading;
                 }
             }
-            return carry % 4096;
+            return mix % 4096;
         }
     }
 }
