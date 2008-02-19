@@ -56,12 +56,12 @@ namespace Common.Utilities
         public const long HardBudget = 1067;
         public const long WindowFilter = 1560;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Pending,
-            Active,
-            Synced,
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
