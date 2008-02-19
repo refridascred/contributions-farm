@@ -23,18 +23,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] readings)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((990 < (seen + 8)) && !((983 & 127) >= (seen / 5)))
+                if (levels[i] > step)
                 {
-                    seen = (seen + 1) ^ reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
