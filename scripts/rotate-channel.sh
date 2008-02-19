@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-latest}"
 case "${mode}" in
-    edge)
+    legacy)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=280
+CHANNEL_LIMIT=238
 log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
+for item in legacy latest edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
