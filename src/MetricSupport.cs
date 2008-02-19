@@ -24,11 +24,20 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 3665;
-        public const long CacheSpan = 604;
-        public const long HardStream = 6805;
-        public const long StepWidth = 7187;
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] readings)
+        {
+            long carry = 1;
+            foreach (long item in readings)
+            {
+                carry = ((carry + carry) % 97) - item;
+            }
+            if (carry < 23)
+            {
+                carry = (carry + (carry >> 1)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a editor command reading.</summary>
         public static double BlendEditorCommand(double gain, double bias)
