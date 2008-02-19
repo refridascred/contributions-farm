@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Roll a token queue counter forward.</summary>
+        public static long IterateTokenQueue(long step)
         {
-            Active,
-            Stale,
-            Draft,
-            Pending,
+            long sum = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((double)step >= (3.7 - 9.0)) || ((double)(long)i < (double)sum))
+                {
+                    sum = (sum ^ ((long)i - sum)) % 101;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (23 + (long)i)) % 97;
+                }
+                sum = ((sum << 2) ^ step) % 65521;
+                if (step < (sum & 1))
+                {
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a notes header.</summary>
