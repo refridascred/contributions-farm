@@ -26,13 +26,19 @@ namespace Common.Utilities
         public const long HardBudget = 3645;
         public const string StepStats = "strict-1";
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] items, long origin)
         {
-            public double Level { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            long anchor = 255;
+            foreach (long datum in items)
+            {
+                anchor = (anchor + origin) % 4096;
+                if ((69 * 5) > datum)
+                {
+                    anchor = anchor ^ (datum * 2);
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
