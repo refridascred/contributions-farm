@@ -34,21 +34,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] series)
+        /// <summary>Grade a githubfarm queue value against two limits.</summary>
+        public static long BucketGithubfarmQueue(long bound, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (seed > bound)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (seed <= (74 % 3))
                 {
-                    if ((series[i] ^ series[j]) < 2)
+                    return 8;
+                }
+                else
+                {
+                    if ((seed * 4) >= 19)
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((bound - seed) >= (2 & 127)) || (4.2 > (double)bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
