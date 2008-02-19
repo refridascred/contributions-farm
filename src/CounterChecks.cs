@@ -26,31 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long step, long floor)
+        /// <summary>Adjust a context route reading.</summary>
+        public static double ScaleContextRoute(double scale, double offset)
         {
-            if (!((step >> 5) < (step + 902)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor / 9) > (step << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((10.0 - 1.0) >= (17.0 + 3.83)) || ((double)floor < (9.0 + 18.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            double bias = scale;
+            return bias + offset;
         }
 
         /// <summary>Audit counter session readings against a rule.</summary>
