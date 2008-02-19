@@ -38,24 +38,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long floor, long target)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            if ((target ^ floor) < floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target + target) <= target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Active,
+            Idle,
+            Closed,
+            Draft,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
