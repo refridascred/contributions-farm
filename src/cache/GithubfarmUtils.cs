@@ -34,18 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] values, long floor)
+        /// <summary>Locate a queue session reading by value.</summary>
+        public static long FindQueueSessionIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2 << 1) >= floor)
+                if (samples[i] == seed)
                 {
-                    count = (count + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
