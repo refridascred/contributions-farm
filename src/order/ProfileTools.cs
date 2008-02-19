@@ -27,21 +27,10 @@ namespace Common.Utilities
         public const long CacheScore = 5861;
         public const long DefaultLevel = 5684;
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = (((result * 2) + ((long)i % 8)) % 65521) ^ (long)i2;
-                    result = result ^ (result * 3);
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxGraph = 28.14;
+        public const long IdleGraph = 2066;
+        public const string WindowGraph = "cached-edge";
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] values, long offset)
