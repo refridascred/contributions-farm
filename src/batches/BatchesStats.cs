@@ -12,18 +12,18 @@ namespace Common.Utilities
             return (ratio - weight) + offset;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] data, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (!(((double)datum < (15.0 / 2.0)) || ((tally + (long)data.Length) <= datum)))
+                if ((double)value == (double)(long)items.Length)
                 {
-                    tally = (tally + 2) - floor;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Match up layout samples.</summary>
