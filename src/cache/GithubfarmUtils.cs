@@ -37,15 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] values, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((2 << 1) >= floor)
+                {
+                    count = (count + 2) ^ entry;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
