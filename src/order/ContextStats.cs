@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long offset, long seed)
         {
-            Active,
-            Locked,
-            Paused,
+            if (((seed * 5) != (offset ^ seed)) || ((offset * 3) > (offset + 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((offset - 3) < (910 - seed)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset ^ (-70)) >= (0 + seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
