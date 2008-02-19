@@ -1,7 +1,9 @@
-id,state
-1,34.63
-2,fallback
-3,989
-4,fallback
-5,425
-6,open
+id,ratio,score,active
+1,latest,863,11.66
+2,24.7,48.55,edge
+3,89.9,92.72,667
+4,green,20.22,22.58
+5,477,95.06,84.96
+6,7.88,10,23.29
+7,strict,344,28.72
+8,legacy,legacy,open
