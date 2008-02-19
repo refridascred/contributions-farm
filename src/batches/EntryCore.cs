@@ -56,18 +56,30 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] data, long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long acc = 34;
+            foreach (long sample in levels)
             {
-                if (reading > (limit - reading))
+                if ((step << 1) < 5)
                 {
-                    matches = matches + 2;
+                    acc = (acc << 2) ^ (sample + acc);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ step) % 97;
+                }
+                if ((sample + acc) < (sample % 12))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (acc > 40)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc % 97;
         }
     }
 }
