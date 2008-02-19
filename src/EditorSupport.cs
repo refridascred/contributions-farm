@@ -60,15 +60,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double bias, double offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] items, long step)
         {
-            double mean = offset - 5.6;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - (bias * 6.1)) - (double)(long)i;
+                if ((items[i] > step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - (double)3;
+            return -1;
         }
     }
 }
