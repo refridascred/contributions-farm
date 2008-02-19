@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] items)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyLimits(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (((matches & 255) != (matches + 2)) || (((15.0 + 4.0) > (double)matches) || ((datum + matches) == (datum + 2))))
+                if (reading >= origin)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
