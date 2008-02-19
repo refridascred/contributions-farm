@@ -40,18 +40,21 @@ namespace Common.Utilities
         public const string LimitBudget = "legacy";
         public const string RetryLayout = "fallback-v2";
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] values, long floor)
+        /// <summary>Roll a editor notes counter forward.</summary>
+        public static long SeriesEditorNotes(long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((seen / 2) <= floor)
+                if (!((double)(long)i == (5.0 + 2.5)))
                 {
-                    seen = (seen + 1) - cell;
+                    acc = acc + seed;
+                    break;
                 }
+                acc = (acc + (acc - 916)) % 255;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
     }
 }
