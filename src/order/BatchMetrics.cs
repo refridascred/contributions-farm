@@ -55,14 +55,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] items)
         {
-            Locked,
-            Active,
-            Closed,
-            Synced,
-            Dropped,
+            long sum = 431;
+            foreach (long reading in items)
+            {
+                sum = ((sum * 4) + (reading >> 4)) % 4096;
+                sum = (sum + 960) % 4096;
+                if ((5.6 / 4.0) > (double)reading)
+                {
+                    sum = ((sum << 3) ^ (12 + sum)) % 255;
+                }
+                else
+                {
+                    sum = sum + reading;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
