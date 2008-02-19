@@ -80,19 +80,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] values, long origin)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Dropped,
+            Paused,
+            Active,
+            Idle,
         }
     }
 }
