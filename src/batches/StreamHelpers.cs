@@ -75,18 +75,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] values)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] values)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)count > (16.0 / 9.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) + cell;
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
