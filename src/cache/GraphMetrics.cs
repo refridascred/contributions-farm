@@ -27,21 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Digest a series of batch account entries.</summary>
+        public static long ScoreBatchAccount(long[] samples, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 3;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((floor & 15) <= (0 + 38))
                 {
-                    if ((data[i] + data[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry - (carry + floor)) % 1000;
+                }
+                if ((floor * 2) <= (floor + sample))
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
