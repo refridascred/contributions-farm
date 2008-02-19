@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double rate, double bias)
+        /// <summary>Match up metrics order samples.</summary>
+        public static long MatchMetricsOrderCount(long[] items)
         {
-            double bias2 = (double)(17 - 88);
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = ((bias2 + rate) + (double)(long)i) - bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias2 + (bias2 / 5.0);
+            return hits;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
