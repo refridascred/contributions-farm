@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowScore = 6870;
-        public const long StepRoute = 3451;
-        public const string HardFactor = "local-edge";
-        public const long CacheBudget = 3550;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Draft,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
