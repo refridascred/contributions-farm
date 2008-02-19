@@ -13,12 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Locate a metric report reading by value.</summary>
+        public static long LocateMetricReportIndex(long[] readings, long target)
         {
-            Retry,
-            Done,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the record phase values.</summary>
