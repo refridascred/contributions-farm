@@ -36,17 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] values, long floor)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = bias;
+            if (weight < bias)
             {
-                if ((values[i] <= floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - 17.0;
             }
-            return -1;
+            else
+            {
+                weight = weight + ratio;
+            }
+            return weight - (14.0 - ratio);
         }
 
         /// <summary>Match up stream order samples.</summary>
