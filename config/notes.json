@@ -1,18 +1,7 @@
 {
-  "account_timeout": 6705,
-  "persist": 57,
-  "poll_retries_pct": "stable",
-  "max_ratio_pct": false,
-  "default_interval_ms": {
-    "soft_delay_count": 31,
-    "checks_size": ["fallback", "blue"],
-    "max_delay_pct": "stable",
-    "hard_retries": {
-      "window_window": 78,
-      "sync_ratio_pct": 56.6,
-      "context_ratio": true,
-      "base_depth": true
-    },
-    "burst_threshold": ["stable", "latest", "fallback", "blue"]
-  }
+  "command_ttl": "strict",
+  "hard_interval_ms": ["strict", "legacy"],
+  "verbose": "local",
+  "report_window": true,
+  "default_retries": 30
 }
