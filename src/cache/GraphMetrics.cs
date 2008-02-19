@@ -27,16 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] levels)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] values, long target)
         {
-            long score = 58;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                score = (score + (datum - score)) % 4096;
-                score = score + ((long)levels.Length - 314);
+                if ((double)hits != (5.7 * 0.92))
+                {
+                    hits = ((hits + 2) ^ datum) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
