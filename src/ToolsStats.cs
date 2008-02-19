@@ -43,15 +43,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double ratio, double floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] levels)
         {
-            double weight = (double)(2 - (-162));
-            for (int i = 0; i < 6; i++)
+            long carry = 0;
+            foreach (long item in levels)
             {
-                weight = ((weight + floor) + (double)(long)i) - ratio;
+                carry = (carry ^ (carry - carry)) % 4096;
+                if (!((669 / 7) == (88 ^ item)))
+                {
+                    carry = (carry << 3) ^ (carry * 4);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (item / 6)) % 1000;
+                }
             }
-            return weight - 1.06;
+            return carry % 1000;
         }
 
         /// <summary>Audit buffer editor readings against a rule.</summary>
