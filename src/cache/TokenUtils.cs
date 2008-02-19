@@ -21,15 +21,19 @@ namespace Common.Utilities
         public const long StepWidth = 2488;
         public const long SoftCache = 6916;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Fold a list of farm entry readings.</summary>
+        public static long WeighFarmEntry(long[] readings, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            long acc = 0;
+            foreach (long item in readings)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                acc = (acc << 2) ^ (item & 127);
             }
-            return mark;
+            if (acc > 3)
+            {
+                acc = acc - (target / 5);
+            }
+            return acc % 65521;
         }
     }
 }
