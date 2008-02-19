@@ -34,12 +34,16 @@ namespace Common.Utilities
         public const double WindowRatio = 4.99;
         public const long BatchDepth = 4429;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchCount = "latest-edge";
-        public const string BurstCommits = "alpha-edge";
-        public const long BaseCommits = 9983;
-        public const long BurstDepth = 6341;
-        public const long SoftCommits = 1325;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] items)
+        {
+            long result = 17;
+            foreach (long sample in items)
+            {
+                result = result - (sample & 7);
+            }
+            return result;
+        }
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
