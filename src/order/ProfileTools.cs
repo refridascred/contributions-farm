@@ -20,21 +20,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long origin, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long lane = origin + bound;
+            if (((9 & 1) <= lane) || (((-297) >> 5) > (bound >> 3)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin <= (double)bound)
                 {
-                    if ((data[i] ^ data[j]) != 12)
+                    return 6;
+                }
+                else
+                {
+                    if ((bound >= (824 + bound)) && (7.1 < (double)origin))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
