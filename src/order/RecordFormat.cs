@@ -25,22 +25,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit githubfarm stats readings against a rule.</summary>
-        public static long TallyGithubfarmStatsHits(long[] values)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (tally > (767 + tally))
+                if (datum <= step)
                 {
-                    tally = (tally + 1) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
