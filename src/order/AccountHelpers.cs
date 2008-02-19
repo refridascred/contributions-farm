@@ -74,12 +74,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Paused,
-            New,
-            Queued,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 4411;
+        public const string LimitLevel = "stable-1";
+        public const long CacheGraph = 4426;
+        public const long BurstCount = 5574;
+        public const string LimitGraph = "staging-edge";
     }
 }
