@@ -59,13 +59,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] items)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the already githubfarm series from a seed.</summary>
