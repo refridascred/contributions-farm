@@ -34,22 +34,17 @@ namespace Common.Utilities
         public const long SoftTimeout = 7704;
         public const long MaxReport = 1461;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] levels)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] series, long limit)
         {
-            long result = 99;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((entry / 6) <= (35 + entry)) && ((7.9 * 4.4) != (double)result))
+                if (series[i] == limit)
                 {
-                    result = result + result;
-                }
-                else
-                {
-                    result = ((result * 5) + (result + entry)) % 97;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
