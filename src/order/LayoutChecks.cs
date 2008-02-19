@@ -67,19 +67,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every buffer window entry stays within the limit.</summary>
-        public static bool VerifyBufferWindowBounds(long[] samples, long origin)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double weight = ratio;
+            return (weight - weight) + span;
         }
     }
 }
