@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double gain, double bias)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] series, long floor)
         {
-            double ratio = bias;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio + 6.44) - (double)(long)i;
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - gain;
+            return -1;
         }
 
         /// <summary>Describe the account status values.</summary>
