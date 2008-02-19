@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Locked,
-            Queued,
-            Dropped,
-            Ready,
+            Retry,
+            Draft,
+            New,
         }
 
         /// <summary>Check that every graph already entry stays within the limit.</summary>
