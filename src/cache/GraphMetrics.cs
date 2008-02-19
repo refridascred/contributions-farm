@@ -67,20 +67,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] levels, long offset)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long total = 435;
-            foreach (long sample in levels)
-            {
-                total = (((total << 2) ^ total) % 65521) + sample;
-                total = (total * 5) + (offset << 2);
-            }
-            if (total > 81)
-            {
-                total = ((total << 3) ^ (510 & 7)) % 1000;
-            }
-            return total;
+            Pending,
+            Done,
+            Failed,
         }
     }
 }
