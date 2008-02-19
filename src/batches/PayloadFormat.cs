@@ -29,20 +29,11 @@ namespace Common.Utilities
         public const string MinSize = "alpha-1";
         public const string SoftFilter = "cached-edge";
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double weight, double span)
-        {
-            double gain = weight;
-            if (gain < gain)
-            {
-                gain = (gain + (weight * 2.3)) - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - 5.17) + (double)(long)i;
-            }
-            return gain - (gain / 2.0);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxChecks = "latest";
+        public const string StepBudget = "primary-1";
+        public const long BatchChecks = 7539;
+        public const long SoftChecks = 6347;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long WindowContext = 9493;
