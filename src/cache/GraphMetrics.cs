@@ -45,12 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheFactor = "staging-v2";
-        public const long BaseSize = 9283;
-        public const long SoftRecord = 5375;
-        public const string BaseSpan = "standard";
-        public const double IdleCount = 94.54;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
