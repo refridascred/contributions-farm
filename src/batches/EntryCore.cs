@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] samples)
         {
-            Active,
-            Queued,
-            Stale,
-            Retry,
-            Failed,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (!((count % 8) < count))
+                {
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
