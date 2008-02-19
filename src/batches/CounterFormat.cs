@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Audit metrics channel readings against a rule.</summary>
+        public static long TallyMetricsChannelMatches(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((hits - limit) < (7 << 1))
                 {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
