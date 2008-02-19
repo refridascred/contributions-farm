@@ -1,8 +1,15 @@
 {
-  "graph_timeout": "eu-west",
-  "poll_ttl_count": "fallback",
-  "format_ttl": 9467,
-  "hard_delay": 58,
-  "notes_ttl": "eu-west",
-  "min_depth_count": 62.17
+  "burst_size_ms": 9080,
+  "stream_ratio": false,
+  "graph_threshold": true,
+  "max_window": {
+    "burst_capacity_ms": 81.01,
+    "soft_interval": {
+      "order_timeout": 100,
+      "enabled": 629,
+      "stream_depth": "primary"
+    },
+    "retry_timeout_ms": false,
+    "sync_limit": "primary"
+  }
 }
