@@ -21,20 +21,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long target)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] items, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((314 << 3) > mark) && (mark <= ((long)i + target)))
+                if ((items[i] == floor) && ((items[i] % 5) == 0))
                 {
-                    mark = ((mark << 2) ^ (mark / 6)) % 65521;
-                    mark = (mark ^ (target - (long)i)) % 1000;
+                    return (long)i;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
