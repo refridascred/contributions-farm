@@ -32,18 +32,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] readings, long offset)
+        /// <summary>Compare every pair of stream already readings.</summary>
+        public static long MatchStreamAlreadyCount(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((498 % 7) <= reading) || (reading <= (tally + offset))) && ((offset ^ (long)readings.Length) > (reading % 24)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((items[i] - items[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
