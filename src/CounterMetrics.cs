@@ -33,19 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double scale, double offset)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] samples)
         {
-            double bias = (scale * 5.55) - (scale * 7.8);
-            if (bias > offset)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + (bias / 3.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + (scale * 5.2);
-            }
-            return bias - (double)920;
+            return matches;
         }
 
         /// <summary>Describe the report mode values.</summary>
