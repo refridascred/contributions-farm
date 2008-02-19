@@ -1,6 +1,10 @@
 {
-  "counter_size": false,
-  "cache_ratio": "stable",
-  "batch_capacity": "primary",
-  "batch_interval_pct": "edge"
+  "compress": {
+    "soft_retries": "staging",
+    "retry_delay_count": 41.05,
+    "warm_interval": 100,
+    "flush_size": 4463
+  },
+  "cache_capacity_s": [146, 171],
+  "enabled": "fallback"
 }
