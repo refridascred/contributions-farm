@@ -21,13 +21,12 @@ namespace Common.Utilities
         public const long StepWidth = 2488;
         public const long SoftCache = 6916;
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Idle,
+            Retry,
+            Queued,
         }
     }
 }
