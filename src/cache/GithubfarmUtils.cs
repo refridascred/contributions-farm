@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!((double)(long)samples.Length > (2.6 + 2.7)))
-                {
-                    seen = ((seen + 3) ^ reading) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultScore = 1641;
+        public const double LimitStream = 26.69;
+        public const double BaseStream = 12.98;
+        public const long IdleBudget = 6978;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderOutliers(long[] readings)
