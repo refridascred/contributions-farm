@@ -37,19 +37,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double scale, double floor)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long step)
         {
-            double weight = (floor / 7.0) / 6.0;
-            if (weight < floor)
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                weight = weight + (double)662;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - 8.8) + (double)(long)i;
-            }
-            return weight + scale;
+            return anchor;
         }
     }
 }
