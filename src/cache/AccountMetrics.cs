@@ -23,11 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 3499;
-        public const double LimitNotes = 95.94;
-        public const long IdleNotes = 2554;
-        public const long BatchBudget = 85;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] values, long offset)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((0.35 + 0.96) <= (double)offset)
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
