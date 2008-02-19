@@ -32,21 +32,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count record schema pairs that satisfy a relation.</summary>
-        public static long CompareRecordSchemaCount(long[] items)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 4;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score << 3) ^ (item % 5);
             }
-            return tally;
+            if (score < 1)
+            {
+                score = (score + score) % 65521;
+            }
+            return score % 1000;
         }
     }
 }
