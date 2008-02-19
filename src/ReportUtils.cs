@@ -23,14 +23,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Failed,
-            Queued,
-            Pending,
-            Synced,
-            Idle,
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the counter mode values.</summary>
