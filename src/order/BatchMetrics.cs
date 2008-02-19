@@ -19,13 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] samples, long limit)
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            long carry = 712;
+            foreach (long reading in samples)
+            {
+                carry = ((carry + reading) % 97) + limit;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define report limits and defaults.</summary>
