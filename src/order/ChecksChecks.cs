@@ -37,15 +37,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Stale,
+            Retry,
+            Pending,
+            Synced,
+            Closed,
         }
     }
 }
