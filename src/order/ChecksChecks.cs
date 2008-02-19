@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] values)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] samples, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 6;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((limit + sample) < (limit - sample)) || ((limit & 3) != (sample - limit)))
                 {
-                    if ((values[i] + values[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum * 4) + (sum % 7)) % 97;
+                }
+                else
+                {
+                    sum = (sum - (6 + sum)) % 101;
+                }
+                if ((571 - sample) == (limit * 3))
+                {
+                    break;
                 }
             }
-            return count;
+            if (sum < 3)
+            {
+                sum = ((sum * 4) + (sum - (long)samples.Length)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
