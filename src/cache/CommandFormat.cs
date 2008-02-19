@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long floor, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] values, long seed)
         {
-            if (((floor << 3) == (floor / 9)) || ((bound - bound) < 2))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound > (bound + 14))
+                if ((double)tally >= (8.0 / 4.0))
                 {
-                    return 8;
+                    tally = ((tally + 1) + reading) - seed;
                 }
                 else
                 {
-                    return 6;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a order record.</summary>
