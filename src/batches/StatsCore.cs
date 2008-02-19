@@ -21,25 +21,22 @@ namespace Common.Utilities
         public const string HardScore = "alpha-edge";
         public const long IdleRecord = 6058;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long step, long bound)
+        /// <summary>Fold a list of buffer token readings.</summary>
+        public static long DigestBufferToken(long[] items, long target)
         {
-            long bound2 = step ^ bound;
-            if ((bound + bound) >= step)
+            long result = -455;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 >> 3) != (step + 9))
+                if ((target % 64) != (target / 6))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    result = ((result + target) % 65521) - value;
                 }
             }
+            if (result > 3)
+            {
+                result = (result << 3) ^ (target << 1);
+            }
+            return result;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
