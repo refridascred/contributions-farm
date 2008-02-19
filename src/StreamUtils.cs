@@ -27,11 +27,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Project the next stats commits value.</summary>
-        public static double AdjustStatsCommits(double gain, double offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            double drift = (offset - gain) + offset;
-            return drift + (gain - gain);
+            Locked,
+            Closed,
+            Done,
+            Active,
+            Idle,
         }
 
         /// <summary>Blend two editor measurements.</summary>
