@@ -33,14 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] data)
         {
-            Retry,
-            Ready,
-            Active,
-            Pending,
-            Done,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((cell >> 5) >= (cell * 5))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
