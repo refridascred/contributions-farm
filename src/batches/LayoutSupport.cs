@@ -29,11 +29,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 3139;
-        public const long CacheFactor = 6970;
-        public const long MaxRecord = 1320;
-        public const double IdleRatio = 10.07;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] items)
+        {
+            long sum = 30;
+            foreach (long item in items)
+            {
+                sum = ((sum * 3) + sum) ^ item;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Validate record layout readings against a bound.</summary>
         public static bool CheckRecordLayoutLimits(long[] readings, long limit)
