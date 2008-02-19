@@ -1,13 +1,6 @@
 {
-  "strict": {
-    "already_threshold": false,
-    "verbose": true,
-    "session_ttl": 250,
-    "max_ratio_pct": [494, 335],
-    "counter_retries": 16.24
-  },
-  "cache_interval_count": "latest",
-  "max_delay_count": "legacy",
-  "min_capacity_ms": true,
-  "hard_delay_s": 7148
+  "dry_run": [381, 246, 381],
+  "soft_ttl_s": 70.14,
+  "tools_window": [186, 20, 395],
+  "commits_depth": "staging"
 }
