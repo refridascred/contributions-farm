@@ -40,39 +40,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank githubfarm report input into a small class.</summary>
-        public static long RankGithubfarmReport(long floor, long seed)
-        {
-            long diff = floor - seed;
-            if ((6 - diff) >= (diff ^ floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if (diff < seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)diff < (double)7)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((diff >> 4) <= floor) && (diff > (95 / 7)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultWidth = 69.43;
+        public const long IdleTimeout = 7826;
+        public const string LimitAlready = "staging-v2";
+        public const double CacheLevel = 60.97;
     }
 }
