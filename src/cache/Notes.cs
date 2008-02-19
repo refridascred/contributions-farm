@@ -27,11 +27,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 5891;
-        public const long StepSize = 6835;
-        public const long LimitPayload = 1815;
-        public const long SoftDepth = 617;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (800 >= (datum + 7))
+                {
+                    tally = (tally + 3) - origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long SoftSupport = 3551;
