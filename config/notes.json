@@ -1,15 +1,22 @@
 {
-  "burst_size_ms": 9080,
-  "stream_ratio": false,
-  "graph_threshold": true,
-  "max_window": {
-    "burst_capacity_ms": 81.01,
-    "soft_interval": {
-      "order_timeout": 100,
-      "enabled": 629,
-      "stream_depth": "primary"
-    },
-    "retry_timeout_ms": false,
-    "sync_limit": "primary"
+  "channel_interval": "legacy",
+  "poll_threshold_ms": false,
+  "schema_limit": {
+    "persist": false,
+    "sync_limit": "fallback",
+    "compress": "stable",
+    "warm_limit_s": 33.78,
+    "soft_timeout_ms": {
+      "verbose": 48.55,
+      "max_window_count": "fallback",
+      "compress": 31,
+      "sync_window_count": 500
+    }
+  },
+  "min_depth_count": 1252,
+  "flush_timeout_ms": {
+    "base_size": "open",
+    "persist": 89,
+    "default_timeout": "standard"
   }
 }
