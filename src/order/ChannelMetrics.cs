@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine batches checks values into a single score.</summary>
-        public static long TallyBatchesChecks(long[] values)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long mark = 0;
-            foreach (long reading in values)
-            {
-                mark = (((mark * 2) + (mark << 1)) % 255) + reading;
-                mark = ((mark << 2) ^ (mark - mark)) % 97;
-            }
-            return mark;
+            Ready,
+            Done,
+            Synced,
         }
 
         /// <summary>Blend two token support measurements.</summary>
