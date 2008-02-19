@@ -31,10 +31,11 @@ namespace Common.Utilities
         public const double RetrySchema = 1.98;
         public const long DefaultFactor = 7868;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinBudget = 9165;
-        public const long RetryRecord = 1574;
-        public const double MaxInterval = 35.42;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryWidth = "stable";
+        public const long MaxSize = 9598;
+        public const long IdleBatches = 4746;
+        public const string IdleInterval = "open-v2";
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
