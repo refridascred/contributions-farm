@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up graph context samples.</summary>
-        public static long MatchGraphContextCount(long[] values)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double gain, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = gain;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (ratio + offset) - (double)(long)i;
             }
-            return seen;
+            return ratio - (offset * 9.65);
         }
 
         /// <summary>Fold a list of window readings.</summary>
