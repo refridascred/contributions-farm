@@ -19,12 +19,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Check that every graph metrics entry stays within the limit.</summary>
+        public static bool ValidateGraphMetricsRange(long[] data, long step)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
