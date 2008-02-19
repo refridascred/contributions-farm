@@ -19,28 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout cache readings.</summary>
-        public static long DigestLayoutCache(long[] values, long floor)
+        /// <summary>Check that every stats tools entry stays within the limit.</summary>
+        public static bool CheckStatsToolsRange(long[] readings, long bound)
         {
-            long total = 7;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((8.2 * 7.0) != (double)reading)
+                if (entry > bound)
                 {
-                    total = ((total << 3) ^ (total * 3)) % 4096;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    total = (total * 5) + total;
-                    total = (total - (floor * 4)) % 255;
-                }
-                total = total + floor;
             }
-            if (total > 96)
-            {
-                total = total + (floor * 5);
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Hold a batches stats.</summary>
