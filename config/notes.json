@@ -1,8 +1,19 @@
 {
-  "strict": 11.15,
-  "dry_run": 7059,
-  "default_timeout_pct": [215, 364, 457, 471],
-  "checks_threshold": 96,
-  "counter_size": "latest",
-  "channel_depth": "blue"
+  "sync_retries": {
+    "batch_limit_pct": {
+      "cache_threshold_s": true,
+      "audit": "cached",
+      "soft_limit": 96.75,
+      "min_limit": 100,
+      "buffer_size": 0.89,
+      "batch_threshold_count": 38
+    },
+    "soft_ratio": 2654,
+    "max_ratio_s": "eu-west",
+    "cache_interval": true,
+    "report_capacity": "strict",
+    "burst_ttl_ms": true
+  },
+  "cache_size_pct": 3311,
+  "stats_threshold": ["fallback", "open", "open"]
 }
