@@ -19,11 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxBudget = 7690;
-        public const string StepChecks = "staging-v2";
-        public const double WindowRatio = 4.99;
-        public const long BatchDepth = 4429;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Dropped,
+            Paused,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Audit githubfarm stats readings against a rule.</summary>
         public static long TallyGithubfarmStatsHits(long[] values)
