@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long IdleChecks = 3474;
         public const long DefaultChecks = 5122;
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Adjust a route reading.</summary>
