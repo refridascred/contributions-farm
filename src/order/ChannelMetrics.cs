@@ -31,13 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] levels)
         {
-            New,
-            Paused,
-            Synced,
-            Pending,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry << 2) == (entry - entry))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
