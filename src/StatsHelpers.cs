@@ -35,13 +35,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchLevel = 8704;
+        public const long IdleBuffer = 8993;
+        public const string DefaultBuffer = "legacy";
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
