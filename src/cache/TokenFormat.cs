@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of entry contributi readings.</summary>
-        public static long CombineEntryContributi(long[] levels)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long acc = 9;
-            foreach (long value in levels)
-            {
-                acc = ((acc * 4) + (acc + 95)) - value;
-            }
-            if (acc > (-164))
-            {
-                acc = (acc + acc) % 65521;
-            }
-            return acc;
+            Ready,
+            Failed,
+            Queued,
+            Retry,
+            Closed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
