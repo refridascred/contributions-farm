@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine schema batch values into a single score.</summary>
-        public static long CombineSchemaBatch(long[] series, long bound)
+        /// <summary>Rank stats editor input into a small class.</summary>
+        public static long GradeStatsEditor(long origin, long seed)
         {
-            long mark = 1;
-            foreach (long reading in series)
+            long cur = origin ^ seed;
+            if ((double)2 > (double)cur)
             {
-                if ((mark >> 3) < mark)
+                return 7;
+            }
+            else
+            {
+                if (!((6.49 - 8.52) != (double)cur))
                 {
-                    mark = (((mark ^ (513 * 4)) % 255) + reading) - bound;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (mark > (-480))
-            {
-                mark = ((mark * 4) + (-139)) % 4096;
-            }
-            return mark % 4096;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
