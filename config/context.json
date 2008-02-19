@@ -1,7 +1,17 @@
 {
-  "burst_size_count": "green",
-  "enabled": true,
-  "warm_capacity_s": 100,
-  "format_ratio": "open",
-  "readonly": "legacy"
+  "base_size": {
+    "cache_window_count": false,
+    "max_window_s": "edge",
+    "batch_delay_ms": true,
+    "base_depth_count": {
+      "support_ratio": 69.36,
+      "default_retries_count": ["eu-west", "eu-west"],
+      "base_window_ms": 250,
+      "flush_capacity_ms": "staging"
+    },
+    "strict": 994,
+    "soft_retries": ["edge", "cached"]
+  },
+  "enabled": 45.45,
+  "audit": "staging"
 }
