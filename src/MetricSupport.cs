@@ -24,20 +24,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] items, long step)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepEntry = 70.1;
+        public const long MinBudget = 3531;
+        public const string LimitBudget = "open-v2";
+        public const long MaxFactor = 204;
+        public const long BatchSize = 6705;
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double BlendCluster(double gain, double offset)
