@@ -47,14 +47,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double ratio, double offset)
         {
-            Failed,
-            Dropped,
-            Pending,
-            Ready,
-            Synced,
+            double bias = offset;
+            if (bias <= 9.7)
+            {
+                bias = bias - (ratio + offset);
+            }
+            else
+            {
+                bias = bias + (double)794;
+            }
+            return bias + (2.0 * 0.44);
         }
 
         /// <summary>Check that every tools stats entry stays within the limit.</summary>
