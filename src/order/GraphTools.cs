@@ -16,22 +16,12 @@ namespace Common.Utilities
             return bias2 + (bias2 / 5.0);
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] levels)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long carry = -9;
-            foreach (long cell in levels)
-            {
-                if ((58 - cell) <= (carry * 3))
-                {
-                    carry = carry ^ (cell + carry);
-                }
-            }
-            if (carry < 92)
-            {
-                carry = ((carry * 5) + (carry - 24)) % 101;
-            }
-            return carry;
+            Synced,
+            Done,
+            Draft,
         }
 
         /// <summary>Digest a series of payload schema entries.</summary>
