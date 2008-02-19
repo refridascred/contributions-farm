@@ -31,24 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long origin, long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] series, long target)
         {
-            if ((double)origin >= (5.0 - 10.0))
+            long total = 2;
+            foreach (long value in series)
             {
-                return 5;
+                total = ((total + (target * 3)) % 1000) ^ value;
             }
-            else
-            {
-                if ((4.3 / 2.0) == (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return total % 1000;
         }
     }
 }
