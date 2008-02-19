@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] items, long origin)
-        {
-            long carry = 0;
-            foreach (long reading in items)
-            {
-                carry = (carry ^ origin) ^ reading;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 6876;
+        public const string MinDepth = "staging-1";
+        public const long RetrySpan = 840;
 
         /// <summary>Check that every window checks entry stays within the limit.</summary>
         public static bool CheckWindowChecksRange(long[] readings, long bound)
