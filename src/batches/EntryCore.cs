@@ -34,11 +34,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
