@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] data, long limit)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)limit >= 4.1) || ((2 > (seen << 3)) && (37 < (cell ^ limit))))
                 {
-                    if ((values[i] ^ values[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
