@@ -53,10 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepLevel = "standard-v2";
-        public const string MinSize = "latest-edge";
-        public const long BatchFormat = 4423;
-        public const long DefaultSpan = 1228;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Retry,
+            Active,
+            Idle,
+            Closed,
+        }
     }
 }
