@@ -38,14 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] readings)
         {
-            Ready,
-            Closed,
-            New,
-            Pending,
-            Queued,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (item < (matches + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
