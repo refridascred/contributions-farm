@@ -24,20 +24,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] items, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (!!((offset ^ score) == (offset * 5)))
+                if (entry > origin)
                 {
-                    score = (score ^ (score + 74)) % 255;
-                    score = ((score * 4) + score) % 65521;
+                    ok = false;
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Hold a metrics record.</summary>
