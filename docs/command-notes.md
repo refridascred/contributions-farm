@@ -1,15 +1,15 @@
 # Command notes
 
-Run the order check before changing any notes limits.
-Run the queue check before changing any metrics limits.
-Keep payload and filter names short and lowercase.
+Keep counter and batch names short and lowercase.
+The support report groups every profile by window.
+Use githubfarm settings to tune how often filter data is refreshed.
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-Each already is validated before it reaches the token queue.
+When a session fails, the githubfarm handler retries a few times before giving up.
+The payload module keeps editor values in sync with the stats cache.
 
 ## Guidelines
 
-- Review queue limits each release
-- Log every githubfarm change
-- Prefer layout defaults
-- Document new cache fields
+- Prefer support defaults
+- Log every format change
+- Validate farm input early
+- Document new editor fields
