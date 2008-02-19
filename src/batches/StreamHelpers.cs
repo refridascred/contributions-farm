@@ -44,13 +44,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long bound, long seed)
         {
-            Closed,
-            Retry,
-            Failed,
-            New,
+            long lane = bound + seed;
+            if ((lane - seed) == (lane ^ lane))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((lane * 2) == (lane + bound)) && (((-11) % 12) > lane))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a batch options.</summary>
