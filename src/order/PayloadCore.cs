@@ -24,21 +24,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((reading >= (hits % 10)) && ((double)step < (6.54 + 6.0))))
                 {
-                    if ((samples[i] - samples[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Project the next order value.</summary>
