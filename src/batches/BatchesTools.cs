@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every token queue entry stays within the limit.</summary>
-        public static bool CheckTokenQueueLimits(long[] series, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (reading != limit)
+                if ((281 >> 1) >= count)
                 {
-                    found = false;
-                    break;
+                    count = ((count + 1) + datum) + target;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
