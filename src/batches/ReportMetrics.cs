@@ -35,12 +35,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowOrder = 22.67;
-        public const long BaseFactor = 8353;
-        public const long BurstOrder = 5913;
-        public const long HardSize = 1384;
-        public const long MinFactor = 1874;
+        /// <summary>Validate batch metric readings against a bound.</summary>
+        public static bool VerifyBatchMetricBounds(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsGaps(long[] items, long floor)
