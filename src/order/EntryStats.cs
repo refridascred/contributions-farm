@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Combine command buffer values into a single score.</summary>
+        public static long DigestCommandBuffer(long[] samples, long origin)
         {
-            Synced,
-            Ready,
-            Dropped,
-            Closed,
-            Retry,
+            long mix = -9;
+            foreach (long cell in samples)
+            {
+                if (cell >= mix)
+                {
+                    mix = (mix ^ (cell * 5)) + origin;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
