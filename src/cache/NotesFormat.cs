@@ -31,13 +31,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Active,
-            Locked,
-            Dropped,
-            Pending,
+            Failed,
+            Retry,
+            Paused,
+            Draft,
+            Done,
         }
 
         /// <summary>Describe the route status values.</summary>
