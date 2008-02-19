@@ -1,10 +1,10 @@
 # Command notes
 
-The order report groups every metric by metric.
-Use payload settings to tune how often already data is refreshed.
+The counter report groups every context by account.
+A report that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Keep buffer values small
-- Log every command change
-- Review queue limits each release
+- Keep counter values small
+- Log every format change
+- Validate filter input early
