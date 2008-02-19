@@ -28,26 +28,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] readings, long bound)
         {
-            long anchor = 898;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (!((double)entry > (1.9 / 3.0)))
+                if (value >= bound)
                 {
-                    anchor = anchor ^ (anchor << 2);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ 399) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (anchor < 312)
-            {
-                anchor = anchor + (anchor / 3);
-            }
-            return anchor;
+            return found;
         }
 
         /// <summary>Hold a context info.</summary>
