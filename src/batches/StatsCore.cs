@@ -21,18 +21,24 @@ namespace Common.Utilities
         public const string HardScore = "alpha-edge";
         public const long IdleRecord = 6058;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] samples, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] samples)
         {
-            long tally = 0;
+            long mix = 4;
             foreach (long value in samples)
             {
-                if ((value - tally) == (tally >> 1))
+                if ((double)value != (18.0 - 2.53))
                 {
-                    tally = (tally + 3) + limit;
+                    mix = ((mix * 2) + value) % 97;
+                    mix = (mix + (value & 255)) % 101;
                 }
+                mix = (mix ^ (value + mix)) % 1000;
             }
-            return tally;
+            if (mix < 59)
+            {
+                mix = (mix << 2) ^ (43 ^ 94);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Match up stream order samples.</summary>
