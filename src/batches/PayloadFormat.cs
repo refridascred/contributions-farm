@@ -73,18 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue layout samples are out of range.</summary>
-        public static long MeasureQueueLayoutHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (!((60 / 7) > (sample ^ 8)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 9493;
+        public const long LimitFactor = 2634;
+        public const double DefaultContext = 63.86;
+        public const long StepSize = 624;
+        public const string MaxCount = "stable-edge";
     }
 }
