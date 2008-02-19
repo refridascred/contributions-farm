@@ -1,4 +1,12 @@
 # githubfarm settings
-enabled: staging
-warm_ratio_count: true
-cache_window_ms: 47.32
+strict:
+  - 181
+  - 409
+  - 130
+batch_threshold:
+  - 433
+  - 204
+  - 122
+min_ttl_count: true
+dry_run: 7729
+flush_limit_count: open
