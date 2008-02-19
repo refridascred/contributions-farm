@@ -34,31 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long bound, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] samples, long offset)
         {
-            if (origin <= bound)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin >= (10.0 * 4.33))
+                if (reading >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((93 + origin) != (origin * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
