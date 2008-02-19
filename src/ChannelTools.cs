@@ -14,22 +14,25 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the context buffer entries that pass the check.</summary>
-        public static long TallyContextBufferHits(long[] data, long seed)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long origin, long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long cur = origin - step;
+            if ((origin % 5) != (cur * 3))
             {
-                if ((seed & 1) < matches)
+                return 1;
+            }
+            else
+            {
+                if ((double)step == (2.1 + 0.25))
                 {
-                    matches = (matches + 3) - cell;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
