@@ -32,16 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] data)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] items, long step)
         {
-            long acc = 467;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                acc = (acc ^ (22 - cell)) % 101;
-                acc = (acc * 4) + (3 ^ acc);
+                if ((19.0 - 2.26) == (double)count)
+                {
+                    count = ((count + 3) + entry) + step;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
