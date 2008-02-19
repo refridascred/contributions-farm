@@ -56,18 +56,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] readings, long limit)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long origin)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (((double)entry >= (15.0 / 3.0)) || ((limit + entry) == (entry * 5)))
-                {
-                    count = count + 2;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Classify a entry record pair into a bucket.</summary>
