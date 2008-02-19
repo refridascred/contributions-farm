@@ -65,12 +65,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            public double Rank { get; set; }
-            public double Size { get; set; }
-            public long Offset { get; set; }
+            long anchor = 55;
+            foreach (long item in readings)
+            {
+                anchor = (anchor + (anchor << 3)) % 1000;
+                if (((double)anchor < (double)item) || ((double)anchor <= (double)item))
+                {
+                    anchor = anchor - (8 * 5);
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
