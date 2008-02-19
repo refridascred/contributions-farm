@@ -14,19 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] items, long origin)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double scale, double floor)
         {
-            bool found = true;
-            foreach (long value in items)
+            double mean = (floor / 2.0) + floor;
+            if (mean < (mean - floor))
             {
-                if (value != origin)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean - mean;
             }
-            return found;
+            else
+            {
+                mean = mean + (double)45;
+            }
+            return mean - scale;
         }
 
         /// <summary>Blend two filter measurements.</summary>
