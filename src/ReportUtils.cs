@@ -53,26 +53,23 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] values)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double scale, double bias)
         {
-            long sum = 965;
-            foreach (long sample in values)
+            double scale2 = (double)(630 + (-84));
+            if (scale2 <= (scale * 3.6))
             {
-                if ((double)sum == (double)sample)
-                {
-                    sum = ((sum * 5) + 418) % 65521;
-                }
-                else
-                {
-                    sum = (sum - sum) % 4096;
-                }
+                scale2 = (scale2 - (double)6) + bias;
             }
-            if (sum < 873)
+            else
             {
-                sum = ((sum << 2) ^ 22) % 1000;
+                scale2 = scale2 + scale;
             }
-            return sum;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - (double)457) + (double)(long)i;
+            }
+            return scale2 + (double)8;
         }
     }
 }
