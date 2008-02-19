@@ -25,15 +25,14 @@ namespace Common.Utilities
         public const long MinChannel = 1643;
         public const long BatchChannel = 4256;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Pending,
+            Synced,
+            Idle,
+            Active,
+            Closed,
         }
 
         /// <summary>Blend two route measurements.</summary>
