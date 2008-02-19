@@ -34,20 +34,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] readings, long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            long mark = 45;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = mark ^ reading;
-                if ((10.0 * 0.08) >= (double)origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (mark ^ (reading * 3)) % 255;
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = ((mark * 5) + 65) % 65521;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
