@@ -54,31 +54,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema payload input into a small class.</summary>
-        public static long ClassifySchemaPayload(long offset, long offset2)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] samples, long origin)
         {
-            if ((1.87 > (double)offset2) && ((1 << 1) <= (offset + offset)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (1 < (offset2 % 8))
+                if (samples[i] < origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset2 <= 8.5)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
