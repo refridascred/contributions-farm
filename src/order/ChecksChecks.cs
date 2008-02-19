@@ -31,10 +31,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 84.57;
-        public const long IdleCluster = 6824;
-        public const long MinCluster = 1183;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] series, long bound)
+        {
+            long anchor = 55;
+            foreach (long entry in series)
+            {
+                anchor = ((anchor * 5) + (entry - 22)) % 1000;
+                if (((entry + entry) < (bound ^ (-62))) && ((bound - 50) >= 665))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BaseWindow = 5803;
