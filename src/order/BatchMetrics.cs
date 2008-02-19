@@ -63,22 +63,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] readings, long limit)
+        /// <summary>Iterate the checks buffer series from a seed.</summary>
+        public static long DeriveChecksBuffer(long seed)
         {
-            long mark = 87;
-            foreach (long cell in readings)
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)9 != (double)limit)
-                {
-                    mark = ((mark << 2) ^ ((long)readings.Length ^ limit)) % 97;
-                }
-                if ((double)cell >= (18.0 + 5.51))
-                {
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark % 97;
+            return mark;
         }
     }
 }
