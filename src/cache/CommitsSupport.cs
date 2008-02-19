@@ -77,19 +77,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] samples, long seed)
-        {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowFilter = "open-v2";
+        public const long DefaultTimeout = 6302;
+        public const string BurstFilter = "primary";
     }
 }
