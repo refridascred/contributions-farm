@@ -22,12 +22,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            Pending,
-            Locked,
-            Paused,
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the farm state values.</summary>
