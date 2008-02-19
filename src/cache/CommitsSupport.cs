@@ -26,20 +26,10 @@ namespace Common.Utilities
         public const long DefaultBudget = 944;
         public const long RetryBudget = 5011;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] items, long floor)
-        {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 28.91;
+        public const long DefaultSize = 5912;
+        public const long SoftPayload = 2093;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long MeasureCommitsOutliers(long[] samples, long limit)
