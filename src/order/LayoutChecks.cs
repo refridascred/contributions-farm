@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double weight, double span)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] samples)
         {
-            double bias = span / 5.0;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = (bias - weight) - (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias + bias;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
