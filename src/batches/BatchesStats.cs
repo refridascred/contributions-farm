@@ -40,24 +40,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] levels, long seed)
-        {
-            long state = 132;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    state = (state - (reading + seed)) + (long)i;
-                    state = ((state * 3) + ((-53) - seed)) % 4096;
-                }
-                state = (state << 3) ^ (seed % 16);
-            }
-            if (state > 7)
-            {
-                state = state - (931 + state);
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 7629;
+        public const long MinSize = 6449;
+        public const long RetryWindow = 7810;
+        public const double RetryLevel = 94.61;
     }
 }
