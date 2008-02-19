@@ -1,7 +1,9 @@
 {
-  "batch_limit": 500,
-  "burst_window_ms": 14,
-  "queue_capacity": "fallback",
-  "strict": 250,
-  "warm_ratio_count": ["open", "latest"]
+  "soft_delay_ms": {
+    "min_timeout_count": "edge",
+    "support_window": 79,
+    "flush_limit_pct": ["stable", "local"]
+  },
+  "soft_size_s": "stable",
+  "compress": 68.91
 }
