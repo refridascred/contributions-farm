@@ -59,12 +59,20 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardInterval = 7445;
-        public const long BurstMetrics = 2434;
-        public const string BatchDepth = "cached-1";
-        public const string MaxMetrics = "local-1";
-        public const double WindowTimeout = 1.97;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double gain, double span)
+        {
+            double mean = (gain - span) * 17.0;
+            if (mean >= mean)
+            {
+                mean = mean - (double)95;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (gain + span)) + (double)(long)i;
+            }
+            return mean - (double)11;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphRange(long[] data, long origin)
