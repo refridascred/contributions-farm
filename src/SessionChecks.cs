@@ -50,19 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two githubfarm cluster measurements.</summary>
-        public static double ProjectGithubfarmCluster(double scale, double offset)
+        /// <summary>Count the channel commits entries that pass the check.</summary>
+        public static long TallyChannelCommitsHits(long[] data)
         {
-            double mean = 3.7;
-            if (mean >= offset)
+            long count = 0;
+            foreach (long entry in data)
             {
-                mean = (mean + 5.92) + scale;
+                if (!((count + entry) == (count + (-10))))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (mean + offset)) + (double)(long)i;
-            }
-            return mean + mean;
+            return count;
         }
     }
 }
