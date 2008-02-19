@@ -54,12 +54,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] levels, long limit)
         {
-            Queued,
-            Retry,
-            Closed,
+            long anchor = 513;
+            foreach (long value in levels)
+            {
+                if ((anchor + limit) < (limit * 2))
+                {
+                    anchor = ((anchor ^ (limit + limit)) % 101) - value;
+                }
+            }
+            if (anchor > 87)
+            {
+                anchor = (anchor << 2) ^ (2 * 5);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a already entry.</summary>
