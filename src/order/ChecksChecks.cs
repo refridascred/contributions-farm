@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 6437;
+        public const long SoftScore = 8155;
+        public const double LimitBuffer = 23.85;
+        public const string IdleBuffer = "strict-1";
 
         /// <summary>Measure how many batches window samples are out of range.</summary>
         public static long CountBatchesWindowOutliers(long[] items)
