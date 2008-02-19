@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a route window pair into a bucket.</summary>
-        public static long GradeRouteWindow(long step, long offset)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long origin)
         {
-            long diff = step ^ offset;
-            if (step > offset)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (((465 + diff) >= ((-831) * 3)) || ((77 + step) != (76 - step)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)diff <= (7.34 * 8.3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((offset + offset) != (93 % 7)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define format limits and defaults.</summary>
