@@ -23,22 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] items)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long mix = 44;
-            foreach (long datum in items)
-            {
-                if ((3 ^ 0) != (mix - mix))
-                {
-                    mix = mix + (datum >> 3);
-                }
-            }
-            if (mix < 802)
-            {
-                mix = ((mix * 5) + (mix & 31)) % 65521;
-            }
-            return mix % 1000;
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a support summary.</summary>
