@@ -19,39 +19,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long bound, long bound2)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long next = bound ^ bound2;
-            if ((bound - bound2) >= (bound * 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((next + 56) < (next * 2)) || ((next << 1) != (next & 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.0 / 9.0) == (double)next)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((1.0 * 14.0) != (double)bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
