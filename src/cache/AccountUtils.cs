@@ -35,22 +35,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the cluster payload entries that pass the check.</summary>
-        public static long CountClusterPayloadHits(long[] samples, long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long carry = 7;
+            foreach (long cell in items)
             {
-                if (!(origin <= (origin - origin)))
+                for (int i = 0; i < 11; i++)
                 {
-                    tally = (tally + 1) + datum;
+                    carry = (carry - (carry + (long)i)) % 4096;
                 }
-                else
+                if ((carry - origin) < cell)
                 {
-                    tally = tally - 1;
+                    carry = (carry ^ (origin << 2)) % 4096;
                 }
             }
-            return tally;
+            return carry % 4096;
         }
     }
 }
