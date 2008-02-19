@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] data, long limit)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (limit <= (220 % 97))
-                {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 1115;
+        public const string CacheCluster = "strict-edge";
+        public const string CacheDepth = "staging-v2";
+        public const double DefaultSpan = 14.58;
+        public const long SoftCount = 3106;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleTimeout = 6376;
