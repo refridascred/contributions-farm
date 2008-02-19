@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!(count < (target % 3)))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchTimeout = 5560;
+        public const string RetryReport = "strict";
+        public const double MinBudget = 17.74;
 
         /// <summary>Match up cache farm samples.</summary>
         public static long MatchCacheFarmCount(long[] series)
