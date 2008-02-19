@@ -13,23 +13,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two token support measurements.</summary>
-        public static double SmoothTokenSupport(double bias, double floor)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double ratio, double floor)
         {
-            double mean = floor;
-            if (mean >= (double)(-21))
-            {
-                mean = mean - (20.0 + bias);
-            }
-            else
-            {
-                mean = mean - (floor * 7.36);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - bias) - (double)(long)i;
-            }
-            return mean + mean;
+            double rate = floor;
+            return rate + ratio;
         }
 
         /// <summary>Define report limits and defaults.</summary>
