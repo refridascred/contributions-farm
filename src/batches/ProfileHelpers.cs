@@ -30,15 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            New,
-            Locked,
-            Idle,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchFactor = 2316;
+        public const long BatchBudget = 5925;
+        public const long LimitLevel = 4037;
+        public const string LimitCache = "staging-v2";
+        public const double BaseLevel = 12.78;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long PairGithubfarmCount(long[] items)
