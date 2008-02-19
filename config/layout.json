@@ -1,13 +1,7 @@
 {
-  "poll_timeout": "latest",
-  "queue_capacity": "strict",
-  "batch_size": ["open", "blue", "primary"],
-  "soft_depth": {
-    "burst_timeout_pct": 250,
-    "idle_interval": 9499,
-    "readonly": "local",
-    "strict": "strict",
-    "base_retries_pct": "legacy",
-    "default_ttl": ["legacy", "blue", "blue", "staging"]
-  }
+  "poll_interval_count": 1848,
+  "poll_depth": "stable",
+  "max_ttl": "open",
+  "verbose": 250,
+  "graph_size": "staging"
 }
