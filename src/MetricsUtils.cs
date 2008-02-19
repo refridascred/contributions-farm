@@ -14,31 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long target, long seed)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            if ((67 / 6) < seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((target - seed) != (seed % 16)) && ((target >> 2) > (seed / 9)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((10.0 * 2.17) != (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Retry,
+            Done,
+            Queued,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
