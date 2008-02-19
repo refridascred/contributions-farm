@@ -47,10 +47,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchLevel = 8704;
-        public const long IdleBuffer = 8993;
-        public const string DefaultBuffer = "legacy";
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Failed,
+            Dropped,
+            Pending,
+            Ready,
+            Synced,
+        }
 
         /// <summary>Check that every tools stats entry stays within the limit.</summary>
         public static bool GuardToolsStatsLimits(long[] data, long bound)
