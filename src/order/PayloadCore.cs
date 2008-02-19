@@ -40,22 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] values, long seed)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            long state = 164;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((state >> 4) > seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state + datum) % 1000;
+                    if ((data[i] + data[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state < 16)
-            {
-                state = state ^ (state + (long)values.Length);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
