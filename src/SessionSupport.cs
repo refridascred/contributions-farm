@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long seed)
         {
-            Active,
-            Dropped,
-            Ready,
-            Paused,
+            long state = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((seed ^ 986) <= seed) && ((4.0 - 6.0) > (double)state))
+                {
+                    state = state - state;
+                }
+                state = ((state << 2) ^ (seed & 255)) % 101;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
