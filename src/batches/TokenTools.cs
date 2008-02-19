@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long bound, long bound2)
+        /// <summary>Validate buffer payload readings against a bound.</summary>
+        public static bool ValidateBufferPayloadBounds(long[] values, long floor)
         {
-            if ((bound % 3) >= 47)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((92 - bound) > (bound % 24))
+                if (datum >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound != (double)bound2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
