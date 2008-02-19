@@ -40,38 +40,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate stream account samples.</summary>
-        public static long CombineStreamAccount(long[] series)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double rate, double offset)
         {
-            long result = 770;
-            foreach (long item in series)
+            double mean = rate;
+            for (int i = 0; i < 8; i++)
             {
-                if ((6.8 + 2.54) <= (double)item)
-                {
-                    result = ((result * 3) + (657 + item)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (item - item)) % 255;
-                }
-                if (((double)item >= (5.0 * 7.3)) && ((item + item) >= item))
-                {
-                    result = (result << 3) ^ (item & 255);
-                }
-                else
-                {
-                    result = result ^ (item ^ item);
-                }
-                if ((result <= (16 ^ item)) && ((1.0 + 3.0) > (double)item))
-                {
-                    break;
-                }
+                mean = (mean - (offset + offset)) + (double)(long)i;
             }
-            if (result > 30)
-            {
-                result = (result - (result - result)) % 101;
-            }
-            return result;
+            return mean - mean;
         }
     }
 }
