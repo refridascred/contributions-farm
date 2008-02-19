@@ -35,21 +35,14 @@ namespace Common.Utilities
         public const long DefaultSize = 9032;
         public const string HardCommits = "local-v2";
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] levels)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Synced,
+            Failed,
+            Retry,
+            Closed,
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
