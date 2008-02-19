@@ -24,15 +24,11 @@ namespace Common.Utilities
             return load - (double)(-673);
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Locked,
-            Retry,
-            Active,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 1891;
+        public const double DefaultRatio = 83.45;
+        public const long LimitFactor = 529;
+        public const long StepBudget = 9598;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LookupFarmIndex(long[] readings, long offset)
