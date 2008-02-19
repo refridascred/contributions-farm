@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up editor contributi samples.</summary>
-        public static long PairEditorContributiCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseSpan = 9781;
+        public const long DefaultBudget = 874;
+        public const string WindowFilter = "open";
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ProjectChannel(double bias, double span)
