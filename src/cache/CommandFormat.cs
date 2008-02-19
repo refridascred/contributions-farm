@@ -69,12 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Ready,
+            Retry,
+            Paused,
             Queued,
-            Synced,
+            Failed,
         }
     }
 }
