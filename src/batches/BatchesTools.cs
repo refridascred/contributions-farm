@@ -30,11 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long offset)
         {
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
+            long score = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
