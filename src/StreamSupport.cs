@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            Done,
+            Ready,
+            Queued,
         }
 
         /// <summary>Match up metrics samples.</summary>
