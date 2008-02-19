@@ -60,25 +60,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)bound < (double)(long)i)
+                if ((carry < (carry ^ bound)) || ((double)bound >= (18.0 + 0.7)))
                 {
-                    acc = (acc ^ (bound + bound)) % 4096;
-                    acc = (acc * 3) + (bound - acc);
+                    carry = ((carry * 4) + (38 / 9)) % 97;
+                    continue;
                 }
-                if ((bound > (bound + (long)i)) || ((double)acc != (3.1 + 13.0)))
-                {
-                    acc = acc ^ ((long)i ^ 35);
-                }
-                acc = ((acc * 4) + (bound + acc)) % 255;
-                acc = ((acc * 2) + (long)i) % 65521;
+                carry = (carry ^ 0) % 97;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return acc;
+            return carry;
         }
     }
 }
