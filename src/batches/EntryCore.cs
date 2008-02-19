@@ -34,19 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] values, long target)
+        /// <summary>Count the stats record entries that pass the check.</summary>
+        public static long TallyStatsRecordHits(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (cell <= target)
+                if ((step + cell) > step)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
