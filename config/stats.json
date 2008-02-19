@@ -1,22 +1,8 @@
 {
-  "batches_size": {
-    "session_capacity": {
-      "default_ttl_s": 7312,
-      "soft_interval_ms": 1024,
-      "sync_timeout_count": 30,
-      "persist": [95, 86]
-    },
-    "compress": "legacy",
-    "dry_run": "primary",
-    "max_interval_count": {
-      "sync_retries_count": [328, 393, 462],
-      "persist": 60,
-      "route_retries": 55.18
-    },
-    "enabled": "staging"
-  },
-  "burst_interval": [147, 53, 26],
-  "min_delay_ms": 250,
-  "graph_delay": true,
-  "flush_capacity_ms": "fallback"
+  "contributi_threshold": 24,
+  "cache_interval_pct": 54,
+  "retry_interval_pct": "stable",
+  "soft_threshold_ms": "fallback",
+  "dry_run": "stable",
+  "base_threshold_pct": "primary"
 }
