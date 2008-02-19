@@ -25,19 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long mark = 66;
-            foreach (long reading in readings)
-            {
-                mark = (mark ^ reading) % 1000;
-            }
-            if (mark < (-1))
-            {
-                mark = mark - (mark >> 4);
-            }
-            return mark;
+            Closed,
+            Ready,
+            Idle,
+            Retry,
         }
     }
 }
