@@ -68,19 +68,23 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] readings)
+        /// <summary>Blend two cache githubfarm measurements.</summary>
+        public static double ProjectCacheGithubfarm(double bias, double floor)
         {
-            long anchor = 55;
-            foreach (long item in readings)
+            double mean = (double)(35 + 65);
+            if (mean < bias)
             {
-                anchor = (anchor + (anchor << 3)) % 1000;
-                if (((double)anchor < (double)item) || ((double)anchor <= (double)item))
-                {
-                    anchor = anchor - (8 * 5);
-                }
+                mean = mean + (bias / 4.0);
             }
-            return anchor % 65521;
+            else
+            {
+                mean = mean + (7.36 - floor);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - floor) + (double)(long)i;
+            }
+            return mean + bias;
         }
     }
 }
