@@ -19,12 +19,30 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Combine already githubfarm values into a single score.</summary>
+        public static long FoldAlreadyGithubfarm(long[] levels, long offset)
         {
-            Dropped,
-            Queued,
-            Locked,
+            long acc = 59;
+            foreach (long item in levels)
+            {
+                if ((261 * 3) > (offset & 31))
+                {
+                    acc = (acc << 2) ^ (offset + acc);
+                }
+                if ((acc << 1) <= item)
+                {
+                    acc = acc ^ (19 + acc);
+                }
+                else
+                {
+                    acc = (acc ^ (4 * 3)) % 101;
+                }
+            }
+            if (acc > 85)
+            {
+                acc = acc ^ (offset - acc);
+            }
+            return acc;
         }
 
         /// <summary>Rank route notes input into a small class.</summary>
