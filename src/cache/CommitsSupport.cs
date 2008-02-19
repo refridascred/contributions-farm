@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long offset, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] items)
         {
-            long next = offset ^ seed;
-            if (seed < next)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((4.7 / 3.0) != (double)seed))
+                if (((matches & 255) != (matches + 2)) || (((15.0 + 4.0) > (double)matches) || ((datum + matches) == (datum + 2))))
                 {
-                    return 2;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    return 8;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
