@@ -69,18 +69,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] samples, long step)
         {
-            long state = -508;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((state + 2) != (state + state))
+                if (reading != step)
                 {
-                    state = ((state + (state + state)) % 4096) ^ cell;
+                    flag = false;
+                    break;
                 }
             }
-            return state % 97;
+            return flag;
         }
     }
 }
