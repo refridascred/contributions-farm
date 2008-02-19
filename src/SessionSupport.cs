@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Draft,
-            Dropped,
             Active,
+            Dropped,
+            Ready,
+            Paused,
         }
 
         /// <summary>Hold a stream options.</summary>
