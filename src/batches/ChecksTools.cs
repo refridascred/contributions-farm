@@ -22,15 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long mix = 2;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix + (mix & 1)) % 65521) - entry;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
