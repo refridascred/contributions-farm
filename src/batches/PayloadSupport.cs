@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a cluster record figure with a bias.</summary>
-        public static double BlendClusterRecord(double weight, double span)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double gain = (span + weight) - weight;
-            return gain + 3.8;
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Digest a series of format entries.</summary>
