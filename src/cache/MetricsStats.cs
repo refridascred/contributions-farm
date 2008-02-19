@@ -21,22 +21,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchWidth = 1157;
+        public const long MinCommits = 5192;
+        public const long BaseCommits = 7981;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long ScoreGithubfarm(long[] samples)
