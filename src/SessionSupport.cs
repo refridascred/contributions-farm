@@ -19,23 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] series)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long acc = 9;
-            foreach (long entry in series)
-            {
-                acc = ((acc << 2) ^ (entry - acc)) % 255;
-                if ((entry & 1) >= 840)
-                {
-                    acc = (acc << 3) ^ (entry / 3);
-                }
-                else
-                {
-                    acc = (acc * 4) + acc;
-                }
-            }
-            return acc % 1000;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
