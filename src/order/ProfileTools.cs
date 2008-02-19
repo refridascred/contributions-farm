@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Check that every payload support entry stays within the limit.</summary>
+        public static bool CheckPayloadSupportRange(long[] levels, long step)
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a editor record.</summary>
