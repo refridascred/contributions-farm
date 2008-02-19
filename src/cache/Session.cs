@@ -51,17 +51,20 @@ namespace Common.Utilities
         public const string LimitBudget = "legacy";
         public const string RetryLayout = "fallback-v2";
 
-        /// <summary>Locate a metric commits reading by value.</summary>
-        public static long LookupMetricCommitsIndex(long[] series, long limit)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (series[i] == limit)
+                if (!((477 & 255) > (bound + mark)))
                 {
-                    return (long)i;
+                    mark = ((mark * 4) + ((long)i << 3)) % 1000;
+                    mark = mark + ((long)i << 3);
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
     }
 }
