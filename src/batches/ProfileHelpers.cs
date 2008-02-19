@@ -41,12 +41,13 @@ namespace Common.Utilities
         public const string LimitCache = "staging-v2";
         public const double BaseLevel = 12.78;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a account record.</summary>
