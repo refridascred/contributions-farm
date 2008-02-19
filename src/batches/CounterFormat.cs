@@ -21,20 +21,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] readings, long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long offset)
         {
-            long state = 8;
-            foreach (long cell in readings)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                state = (((state * 5) + (step + state)) % 255) ^ cell;
-                state = (state - (state >> 1)) % 4096;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            if (state > 529)
-            {
-                state = (state << 3) ^ state;
-            }
-            return state;
+            return sum;
         }
     }
 }
