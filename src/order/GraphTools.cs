@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long bound, long offset)
-        {
-            long offset2 = bound + offset;
-            if ((offset + offset) <= ((-62) + bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1.0 / 8.0) <= (9.3 / 6.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((8 & 255) > (offset2 + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitOrder = 71.18;
+        public const double StepOrder = 67.28;
+        public const string LimitScore = "latest-edge";
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long SeekStatsIndex(long[] items, long bound)
