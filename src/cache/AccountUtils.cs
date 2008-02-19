@@ -15,13 +15,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
-        {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinChecks = "primary";
+        public const double SoftRatio = 48.11;
+        public const long WindowChecks = 1770;
+        public const long LimitChecks = 8550;
+        public const long StepRatio = 7365;
 
         /// <summary>Compare every pair of graph format readings.</summary>
         public static long CompareGraphFormatCount(long[] samples)
