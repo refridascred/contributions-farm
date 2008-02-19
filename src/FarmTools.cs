@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheFactor = 2678;
-        public const long MinLevel = 8711;
-        public const string MaxSpan = "staging-v2";
-        public const long MaxBudget = 3695;
-        public const string MinRecord = "cached-v2";
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample / 9) > (sample ^ sample))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
