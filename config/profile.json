@@ -1,6 +1,5 @@
 {
-  "hard_retries_ms": "blue",
-  "idle_depth_count": 22,
-  "min_limit_ms": ["edge", "strict", "open"],
-  "metric_ttl": "fallback"
+  "retry_size": "standard",
+  "default_ttl_pct": "edge",
+  "commits_interval": 2719
 }
