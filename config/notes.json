@@ -1,5 +1,5 @@
 {
-  "channel_capacity": 60,
-  "queue_size": 1024,
-  "format_interval": "strict"
+  "base_interval": "blue",
+  "batches_window": 5471,
+  "cache_timeout_pct": ["fallback", "open", "fallback"]
 }
