@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] levels, long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] data)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((double)(long)levels.Length >= (9.0 / 2.0)) || ((808 * 4) != (value + 4))) || ((15.0 / 7.0) == (double)count))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 1) - seed;
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
