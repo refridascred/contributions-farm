@@ -34,19 +34,14 @@ namespace Common.Utilities
         public const long IdleGraph = 2066;
         public const string WindowGraph = "cached-edge";
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double ratio, double bias)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            double bias2 = bias - (double)(-1);
-            if (bias2 < 5.64)
-            {
-                bias2 = bias2 + ratio;
-            }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 + bias2;
+            Failed,
+            Dropped,
+            Locked,
+            Draft,
+            Retry,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
