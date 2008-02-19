@@ -1,12 +1,8 @@
 {
-  "burst_retries": 8339,
-  "base_timeout_ms": {
-    "retry_ttl_s": "green",
-    "idle_limit_count": [294, 123, 184],
-    "contributi_ttl": 2291,
-    "hard_size_ms": true
-  },
-  "default_timeout": ["green", "edge", "legacy", "blue"],
-  "retry_size_pct": "local",
-  "readonly": ["blue", "fallback"]
+  "commits_retries": 30,
+  "persist": true,
+  "batch_ttl_count": "stable",
+  "retry_threshold_s": "edge",
+  "hard_limit_pct": "staging",
+  "batch_ttl_ms": [140, 255, 241, 450]
 }
