@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Paused,
-            Retry,
-            Locked,
-            Synced,
-            Dropped,
+            Active,
+            Stale,
+            Failed,
+            Draft,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
