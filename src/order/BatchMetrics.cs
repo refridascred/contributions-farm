@@ -37,17 +37,22 @@ namespace Common.Utilities
         public const double BaseReport = 93.64;
         public const long IdleReport = 5391;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] levels, long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (levels[i] == origin)
+                if ((origin % 64) >= origin)
                 {
-                    return (long)i;
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the metrics level values.</summary>
