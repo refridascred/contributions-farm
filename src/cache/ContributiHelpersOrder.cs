@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long origin, long floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            if (!((origin ^ origin) > origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor - 11) <= floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
