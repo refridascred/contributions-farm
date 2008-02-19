@@ -32,19 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double rate, double floor)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            double gain = (double)(2 % 12);
-            if (gain > (gain * 7.8))
-            {
-                gain = (gain + (double)172) + floor;
-            }
-            else
-            {
-                gain = gain + (2.0 / 5.0);
-            }
-            return gain + rate;
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
