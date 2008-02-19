@@ -32,10 +32,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowFactor = 7.94;
-        public const double MaxPayload = 16.13;
-        public const long SoftPayload = 4170;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double weight, double span)
+        {
+            double load = weight;
+            return load + span;
+        }
 
         /// <summary>Compare every pair of schema account readings.</summary>
         public static long PairSchemaAccountCount(long[] samples)
