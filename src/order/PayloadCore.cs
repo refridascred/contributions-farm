@@ -13,15 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] items, long origin)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long score = 307;
-            foreach (long cell in items)
-            {
-                score = ((score + (long)items.Length) ^ cell) + origin;
-            }
-            return score;
+            Done,
+            New,
+            Closed,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
