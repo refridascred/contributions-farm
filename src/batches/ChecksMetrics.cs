@@ -81,22 +81,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] items, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] levels, long origin)
         {
-            long score = 9;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((double)687 >= (double)score)
+                if ((reading > ((-504) % 16)) && ((7 + reading) == (origin % 24)))
                 {
-                    score = (((score * 3) + (score % 97)) % 97) + reading;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (score > 2)
-            {
-                score = ((score * 4) + (step + step)) % 97;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Adjust a entry reading.</summary>
