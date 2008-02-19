@@ -13,19 +13,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] readings, long step)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double rate, double offset)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            double gain = offset;
+            if (gain < (offset - 8.9))
             {
-                if (datum > step)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = gain - 2.26;
             }
-            return ready;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - rate) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
