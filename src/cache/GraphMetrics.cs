@@ -48,11 +48,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two report already measurements.</summary>
-        public static double ProjectReportAlready(double rate, double span)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long origin)
         {
-            double drift = (double)382 / 4.0;
-            return ((drift + 5.2) + rate) + span;
+            long total = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                total = (total - (origin & 3)) % 97;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
