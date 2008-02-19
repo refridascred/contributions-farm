@@ -52,19 +52,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] samples, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long state = -1;
+            foreach (long sample in levels)
             {
-                if (value < target)
+                state = ((state << 2) ^ (sample + offset)) % 255;
+                if ((offset + sample) != (offset % 3))
                 {
-                    ok = false;
-                    break;
+                    state = (state + sample) % 1000;
                 }
             }
-            return ok;
+            if (state < 27)
+            {
+                state = (state + (long)levels.Length) % 97;
+            }
+            return state;
         }
 
         /// <summary>Validate counter filter readings against a bound.</summary>
