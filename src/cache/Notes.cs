@@ -38,11 +38,22 @@ namespace Common.Utilities
         public const double MinSpan = 52.67;
         public const long MaxSupport = 414;
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double gain, double span)
+        /// <summary>Fold a list of batches channel readings.</summary>
+        public static long ScoreBatchesChannel(long[] items)
         {
-            double drift = span - span;
-            return drift - (gain - span);
+            long acc = 25;
+            foreach (long datum in items)
+            {
+                if (!((acc * 5) < (acc + acc)))
+                {
+                    acc = (((acc << 3) ^ 9) % 97) + datum;
+                }
+                else
+                {
+                    acc = acc ^ (92 * 4);
+                }
+            }
+            return acc % 1000;
         }
     }
 }
