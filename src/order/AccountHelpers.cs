@@ -20,26 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] readings)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] readings)
         {
-            long state = 41;
-            foreach (long item in readings)
+            long mix = 142;
+            foreach (long reading in readings)
             {
-                if (!((8.0 + 0.26) > (double)state))
+                mix = ((mix * 3) + (mix & 63)) % 97;
+                if (((reading >> 5) < (reading << 1)) || ((39 - 2) < (mix - reading)))
                 {
-                    state = (state ^ (item << 1)) % 65521;
-                }
-                else
-                {
-                    state = (state << 2) ^ state;
+                    mix = (mix ^ (reading + 69)) % 65521;
                 }
             }
-            if (state < 1)
-            {
-                state = (state << 2) ^ (state + state);
-            }
-            return state % 1000;
+            return mix % 65521;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
