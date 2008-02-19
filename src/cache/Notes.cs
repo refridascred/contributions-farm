@@ -54,13 +54,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double gain, double span)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public string Owner { get; set; } = "";
+            double drift = span - span;
+            return drift - (gain - span);
         }
     }
 }
