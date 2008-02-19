@@ -20,20 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardQueue = 23.42;
+        public const string SoftQueue = "latest-1";
+        public const long StepQueue = 9384;
+        public const long MinQueue = 7901;
+        public const string WindowQueue = "fallback-edge";
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long BucketGithubfarm(long bound, long target)
