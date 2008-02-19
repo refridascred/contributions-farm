@@ -50,11 +50,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long limit, long bound)
         {
-            public double Stamp { get; set; }
-            public string Total { get; set; } = "";
+            long offset = limit ^ bound;
+            if ((offset & 7) >= offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset < (limit >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit + offset) > offset) && ((double)limit != (8.0 - 3.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset * 3) <= (bound - bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate channel samples.</summary>
