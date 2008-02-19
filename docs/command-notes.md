@@ -1,16 +1,14 @@
 # Command notes
 
-Run the cache check before changing any payload limits.
-The stats module keeps metric values in sync with the graph cache.
-The counter report groups every command by checks.
+The context module keeps graph values in sync with the batch cache.
+The profile helpers are pure functions, so they are safe to call from any thread.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
-Keep editor and support names short and lowercase.
-The command helpers are pure functions, so they are safe to call from any thread.
-The commits module keeps support values in sync with the commits cache.
+Each already is validated before it reaches the cluster queue.
+A filter that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Review order limits each release
-- Validate already input early
-- Document new support fields
-- Log every commits change
+- Prefer already defaults
+- Keep order values small
+- Log every route change
