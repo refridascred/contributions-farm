@@ -15,12 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] data, long floor)
         {
-            Done,
-            Retry,
-            Stale,
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
