@@ -1,7 +1,7 @@
 {
-  "compress": false,
-  "support_retries": false,
-  "base_limit_ms": 10.99,
-  "cache_size": "standard",
-  "payload_ttl": [215, 94]
+  "soft_interval": "blue",
+  "sync_delay_s": false,
+  "verbose": true,
+  "queue_depth": 96.69,
+  "min_ratio": "latest"
 }
