@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long origin, long seed)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long offset = origin ^ seed;
-            if ((double)origin > (4.8 / 2.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset * 3) > (origin - origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Digest a series of stream entries.</summary>
