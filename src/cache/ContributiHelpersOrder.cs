@@ -14,15 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Ready,
-            Done,
-            Synced,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 2959;
+        public const string BurstSize = "standard-v2";
+        public const string CacheTimeout = "standard";
+        public const long SoftScore = 799;
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
