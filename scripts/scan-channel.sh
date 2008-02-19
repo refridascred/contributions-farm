@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west cached; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=373
+CHANNEL_LIMIT=229
 log "limit is ${CHANNEL_LIMIT}"
