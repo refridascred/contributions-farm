@@ -45,10 +45,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardWidth = 32.76;
-        public const long DefaultCount = 1109;
-        public const string CacheScore = "staging";
-        public const long WindowTimeout = 5677;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
