@@ -31,19 +31,18 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] series, long bound)
+        /// <summary>Audit session batches readings against a rule.</summary>
+        public static long MeasureSessionBatchesHits(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (reading >= bound)
+                if ((bound < value) && ((double)tally == (double)bound))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a token info.</summary>
