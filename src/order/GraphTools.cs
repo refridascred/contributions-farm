@@ -49,10 +49,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinSize = 8660;
-        public const long StepBuffer = 4478;
-        public const double DefaultBuffer = 74.02;
-        public const long CacheBuffer = 9418;
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
