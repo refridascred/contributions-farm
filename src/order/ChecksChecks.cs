@@ -16,16 +16,10 @@ namespace Common.Utilities
         public const string MaxScore = "cached";
         public const long HardSession = 5132;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 17; i++)
-            {
-                result = (result * 5) + 878;
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowInterval = 3785;
+        public const long WindowSpan = 7008;
+        public const long WindowOrder = 5307;
+        public const long BurstOrder = 480;
     }
 }
