@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] items)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] levels, long bound)
         {
-            long anchor = -7;
-            foreach (long value in items)
+            long total = 24;
+            foreach (long reading in levels)
             {
-                anchor = ((anchor - (anchor & 7)) % 4096) ^ value;
+                if ((reading + total) >= (bound % 7))
+                {
+                    total = (total ^ reading) % 4096;
+                }
+                else
+                {
+                    total = ((total << 3) ^ total) % 1000;
+                }
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor - 62) % 65521;
-            }
-            return anchor % 1000;
+            return total;
         }
 
         /// <summary>Describe the batch level values.</summary>
