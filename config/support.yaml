@@ -1,12 +1,5 @@
 # support settings
-burst_timeout_s:
-  strict: 7751
-  hard_interval_ms: 68.52
-  verbose: strict
-  tools_threshold: blue
-  audit:
-    - staging
-    - local
-    - legacy
-strict: green
-sync_timeout_pct: 17
+cache_capacity_ms: edge
+batches_window: 5513
+strict: false
+retry_ratio_pct: open
