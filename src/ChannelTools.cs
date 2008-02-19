@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleInterval = 8794;
+        public const string BatchDepth = "strict-1";
+        public const double StepAlready = 72.25;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool CheckAlreadyLimits(long[] values, long step)
