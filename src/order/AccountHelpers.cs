@@ -19,14 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Stale,
-            Retry,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardInterval = 6416;
+        public const long MinChannel = 1643;
+        public const long BatchChannel = 4256;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long ClassifyCluster(long bound, long floor)
