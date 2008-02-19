@@ -41,21 +41,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] values)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long floor, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((floor - floor) == (seed & 15)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((floor + floor) != (seed + floor)) || ((double)floor != (8.26 - 3.6)))
                 {
-                    if ((values[i] + values[j]) == 7)
+                    return 6;
+                }
+                else
+                {
+                    if ((35 >> 2) > (floor % 60))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
     }
 }
