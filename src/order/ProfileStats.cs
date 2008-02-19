@@ -34,13 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
             public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
