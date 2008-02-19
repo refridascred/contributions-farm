@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Retry,
-            Draft,
-            New,
+            public string Flag { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every graph already entry stays within the limit.</summary>
