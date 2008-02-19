@@ -35,14 +35,21 @@ namespace Common.Utilities
         public const long DefaultSize = 9032;
         public const string HardCommits = "local-v2";
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] data)
         {
-            Paused,
-            Synced,
-            Failed,
-            Retry,
-            Closed,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
