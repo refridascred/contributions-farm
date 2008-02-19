@@ -22,22 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] levels)
+        /// <summary>Accumulate batches notes samples.</summary>
+        public static long ScoreBatchesNotes(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long state = 835;
+            foreach (long value in items)
             {
-                if ((3.0 + 13.0) <= (double)tally)
+                if ((double)value > (2.0 / 7.0))
                 {
-                    tally = (tally + 2) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    state = (((state << 2) ^ (value - value)) % 1000) + step;
                 }
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Describe the filter mode values.</summary>
