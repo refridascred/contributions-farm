@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            Pending,
+            Paused,
+            Stale,
+            Retry,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
