@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of command format readings.</summary>
-        public static long TotalCommandFormat(long[] levels)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long result = 3;
-            foreach (long value in levels)
-            {
-                if (result >= 8)
-                {
-                    result = (result ^ (585 / 4)) - value;
-                }
-            }
-            return result;
+            Pending,
+            Paused,
+            Synced,
+            Queued,
+            Failed,
         }
 
         /// <summary>Hold a filter snapshot.</summary>
