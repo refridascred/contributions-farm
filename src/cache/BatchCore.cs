@@ -26,11 +26,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next checks channel value.</summary>
-        public static double AdjustChecksChannel(double scale, double floor)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double rate = floor - (scale * 19.0);
-            return rate - rate;
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Match up editor account samples.</summary>
