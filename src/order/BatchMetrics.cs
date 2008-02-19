@@ -43,12 +43,19 @@ namespace Common.Utilities
         public const double BaseReport = 93.64;
         public const long IdleReport = 5391;
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] data, long limit)
         {
-            Queued,
-            Synced,
-            Dropped,
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
