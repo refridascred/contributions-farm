@@ -14,22 +14,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueMatches(long[] data, long origin)
+        /// <summary>Rank session route input into a small class.</summary>
+        public static long BucketSessionRoute(long target, long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            if ((floor + target) > (target + floor))
             {
-                if ((reading - reading) > (origin % 24))
+                return 2;
+            }
+            else
+            {
+                if ((double)floor < 3.46)
                 {
-                    hits = hits + 1;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)floor != (5.5 - 3.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
