@@ -1,6 +1,5 @@
 {
-  "poll_timeout_s": "strict",
-  "dry_run": 46.22,
-  "hard_window": true,
-  "queue_interval": true
+  "channel_capacity": 60,
+  "queue_size": 1024,
+  "format_interval": "strict"
 }
