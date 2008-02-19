@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitSpan = 86.6;
-        public const double BaseEntry = 18.26;
-        public const long SoftFactor = 3636;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long floor, long bound)
+        {
+            if (((floor << 3) == (floor / 9)) || ((bound - bound) < 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound > (bound + 14))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
