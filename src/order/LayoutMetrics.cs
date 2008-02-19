@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleTimeout = 6376;
-        public const string HardLayout = "strict";
-        public const long LimitLayout = 16;
-        public const string BurstLayout = "local";
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (item > (3 << 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BurstEntry = 8589;
