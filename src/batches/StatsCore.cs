@@ -19,32 +19,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long seed, long step)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] readings, long step)
         {
-            long step2 = seed + step;
-            if ((step2 >> 1) > (-756))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)seed >= 7.0) || (step >= (step * 3)))
+                if (readings[i] == step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed - step2) < (step + step2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
