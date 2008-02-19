@@ -39,15 +39,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 661;
+        public const long MinBudget = 4986;
+        public const string BatchFormat = "legacy-v2";
     }
 }
