@@ -29,24 +29,21 @@ namespace Common.Utilities
             return bias3 + bias2;
         }
 
-        /// <summary>Grade a buffer cluster value against two limits.</summary>
-        public static long ClassifyBufferCluster(long limit, long bound)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            if ((537 % 8) < (bound % 60))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit ^ limit) == (bound - limit))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
