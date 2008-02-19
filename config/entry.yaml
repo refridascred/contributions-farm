@@ -1,8 +1,9 @@
 # entry settings
-min_size_count: 85
-hard_ttl_pct: cached
-enabled: strict
-commits_depth:
-  - 445
-  - 439
-  - 237
+poll_threshold: standard
+soft_capacity: 65
+sync_ttl_pct:
+  - 372
+  - 435
+  - 25
+  - 312
+min_depth_count: cached
