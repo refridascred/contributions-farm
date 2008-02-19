@@ -24,39 +24,18 @@ namespace Common.Utilities
         public const long MinChannel = 1643;
         public const long BatchChannel = 4256;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long bound, long floor)
+        /// <summary>Measure how many window token samples are out of range.</summary>
+        public static long CountWindowTokenGaps(long[] values)
         {
-            long edge = bound - floor;
-            if (!((edge + floor) >= (floor & 1)))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((5.1 - 0.36) <= (double)edge)
+                if (((double)seen != (4.8 * 18.0)) || !((seen + 19) == (seen + datum)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound > 8.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((edge >> 4) < (bound + 6)) && ((floor * 2) <= bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
