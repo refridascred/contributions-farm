@@ -14,10 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstInterval = 7450;
-        public const long BaseGithubfarm = 1637;
-        public const double StepGithubfarm = 0.12;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Retry,
+            Pending,
+            Dropped,
+            Queued,
+            Active,
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long SeekEditorIndex(long[] items, long bound)
