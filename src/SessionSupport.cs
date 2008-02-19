@@ -20,12 +20,12 @@ namespace Common.Utilities
             return drift - (floor - floor);
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            Failed,
-            Pending,
-            Paused,
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a buffer info.</summary>
