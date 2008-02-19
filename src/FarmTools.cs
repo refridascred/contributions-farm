@@ -16,17 +16,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] samples, long seed)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 835;
+            foreach (long value in levels)
             {
-                if (samples[i] > seed)
+                if ((double)value > 2.8)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + value) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ value;
                 }
             }
-            return -1;
+            if (anchor < (-21))
+            {
+                anchor = (anchor - anchor) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a order info.</summary>
