@@ -13,23 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double rate, double offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] readings, long target)
         {
-            double gain = offset;
-            if (gain < (offset - 8.9))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                gain = gain - 2.26;
+                if (((hits / 8) >= (hits % 64)) && ((item + item) < (item << 1)))
+                {
+                    hits = (hits + 1) - target;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - rate) + (double)(long)i;
-            }
-            return gain - gain;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
