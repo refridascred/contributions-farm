@@ -53,18 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] data)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((cell % 16) > count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Stale,
+            Idle,
         }
     }
 }
