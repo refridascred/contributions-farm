@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a batches filter counter forward.</summary>
-        public static long StepBatchesFilter(long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((sum + step) > step)
-                {
-                    sum = (sum ^ (-590)) % 101;
-                }
-                if (step <= (step ^ sum))
-                {
-                    sum = (sum - 3) % 1000;
-                    sum = (sum + step) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every stats tools entry stays within the limit.</summary>
