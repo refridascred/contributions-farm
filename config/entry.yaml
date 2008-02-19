@@ -1,6 +1,13 @@
 # entry settings
-farm_size: 100
-burst_capacity_count: 1.69
-readonly: false
-base_ttl: 34.31
-min_size_ms: 26.86
+verbose:
+  - legacy
+  - edge
+  - open
+audit:
+  - cached
+  - primary
+  - primary
+channel_delay: standard
+base_threshold_pct: staging
+batches_depth: stable
+hard_timeout_pct: stable
