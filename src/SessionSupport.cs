@@ -28,19 +28,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] series, long floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] levels)
         {
-            long carry = 9;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (((carry * 5) + floor) % 1000) + value;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (carry > 14)
-            {
-                carry = carry - ((-196) / 5);
-            }
-            return carry % 97;
+            return tally;
         }
     }
 }
