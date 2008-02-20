@@ -15,11 +15,33 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 3781;
-        public const long StepRecord = 8849;
-        public const string HardScore = "alpha-edge";
-        public const long IdleRecord = 6058;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long bound, long target)
+        {
+            long step = bound ^ target;
+            if ((target + step) < (step + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target < (8.0 / 9.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (0.5 >= (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a session profile reading by value.</summary>
         public static long LookupSessionProfileIndex(long[] data, long origin)
