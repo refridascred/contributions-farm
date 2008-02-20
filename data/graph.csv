@@ -1,9 +1,8 @@
-id,rank
-1,39.44
-2,latest
-3,5.74
-4,standard
-5,816
-6,fallback
-7,632
-8,edge
+id,token,ratio
+1,463,34.84
+2,local,30.95
+3,872,18
+4,25.33,25.04
+5,90.44,753
+6,634,eu-west
+7,365,staging
