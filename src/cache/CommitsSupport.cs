@@ -33,18 +33,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] items, long floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] samples, long floor)
         {
-            long anchor = 366;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((floor + anchor) <= (floor & 255))
+                if (item != floor)
                 {
-                    anchor = ((anchor ^ (anchor / 3)) % 4096) ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Measure how many checks layout samples are out of range.</summary>
