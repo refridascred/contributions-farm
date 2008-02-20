@@ -26,32 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long offset, long seed)
-        {
-            long edge = offset ^ seed;
-            if ((double)seed == (0.7 / 4.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((17.0 - 2.7) < (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)edge < 9.52)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitLevel = 9027;
+        public const long LimitRatio = 5100;
+        public const string StepAccount = "standard";
+        public const double RetryAccount = 65.53;
     }
 }
