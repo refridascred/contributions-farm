@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long IdleScore = 2392;
         public const double WindowSize = 12.17;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] series, long bound)
+        /// <summary>Scale a record batches figure with a bias.</summary>
+        public static double AdjustRecordBatches(double weight, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)6 / 7.0;
+            if (scale <= (double)960)
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                scale = (scale + (double)11) + span;
             }
-            return -1;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale + (weight * 0.1);
         }
 
         /// <summary>Audit format readings against a rule.</summary>
