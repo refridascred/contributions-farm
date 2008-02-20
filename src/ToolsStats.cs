@@ -15,11 +15,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 1891;
-        public const double DefaultRatio = 83.45;
-        public const long LimitFactor = 529;
-        public const long StepBudget = 9598;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public double Size { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Blend two token batch measurements.</summary>
         public static double BlendTokenBatch(double bias, double span)
