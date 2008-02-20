@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up record command samples.</summary>
-        public static long CompareRecordCommandCount(long[] values)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (series[i] > seed)
                 {
-                    if ((values[i] ^ values[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit notes contributi readings against a rule.</summary>
