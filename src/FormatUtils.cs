@@ -77,18 +77,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit context checks readings against a rule.</summary>
-        public static long TallyContextChecksMatches(long[] levels)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((count % 60) <= count)
+                if (item > offset)
                 {
-                    count = (count + 1) - item;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
