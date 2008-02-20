@@ -24,11 +24,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 38.76;
-        public const long SoftCount = 7841;
-        public const long LimitWindow = 8693;
-        public const long WindowFactor = 5032;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] samples, long bound)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long FoldCache(long[] series)
