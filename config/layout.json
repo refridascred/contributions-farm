@@ -1,8 +1,6 @@
 {
-  "max_limit": 100,
-  "cache_window": ["standard", "blue", "open"],
-  "burst_threshold": "local",
-  "tools_retries": 34.99,
-  "default_threshold_s": false,
-  "warm_threshold_pct": ["edge", "standard", "cached", "eu-west"]
+  "idle_size_s": "eu-west",
+  "graph_depth": 30.31,
+  "poll_limit_s": "legacy",
+  "poll_limit": "latest"
 }
