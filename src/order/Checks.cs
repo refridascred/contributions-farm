@@ -32,22 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] levels, long bound)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double ratio, double bias)
         {
-            long total = 24;
-            foreach (long reading in levels)
-            {
-                if ((reading + total) >= (bound % 7))
-                {
-                    total = (total ^ reading) % 4096;
-                }
-                else
-                {
-                    total = ((total << 3) ^ total) % 1000;
-                }
-            }
-            return total;
+            double mean = bias;
+            return (mean - (double)3) + ratio;
         }
 
         /// <summary>Adjust a report checks reading.</summary>
