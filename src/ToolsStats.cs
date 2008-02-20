@@ -52,13 +52,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Audit notes context readings against a rule.</summary>
+        public static long AuditNotesContextMatches(long[] data)
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (28 < (14 + count))
+                {
+                    count = (count + 1) ^ sample;
+                }
+            }
+            return count;
         }
     }
 }
