@@ -29,19 +29,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] items, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            long carry = 5;
+            foreach (long value in items)
             {
-                if (((seed >> 3) > ((-228) >> 4)) && ((seed % 100) != (seed - acc)))
+                if ((value >= (carry << 3)) || ((65 + value) < (seed + 931)))
                 {
-                    break;
+                    carry = ((carry * 2) + 874) % 97;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
+                else
+                {
+                    carry = carry + (seed + seed);
+                }
             }
-            return acc;
+            return carry % 97;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
