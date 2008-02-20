@@ -1,12 +1,7 @@
 {
-  "flush_capacity_ms": {
-    "audit": [262, 110],
-    "dry_run": 58.84,
-    "strict": [23, 369, 138, 447]
-  },
-  "min_depth": [405, 440, 239],
-  "flush_window_ms": [99, 46, 276, 375],
-  "sync_ttl_s": 100,
-  "compress": [8, 13],
-  "verbose": [28, 206, 384, 475]
+  "warm_limit_ms": 50.03,
+  "dry_run": 9662,
+  "entry_capacity": 6.47,
+  "default_ttl_ms": "open",
+  "idle_size_pct": ["local", "cached", "fallback", "latest"]
 }
