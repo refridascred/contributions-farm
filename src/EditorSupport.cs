@@ -22,39 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cache context pair into a bucket.</summary>
-        public static long ClassifyCacheContext(long target, long offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long gap = target + offset;
-            if ((offset * 3) != (offset + target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset < (774 - 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (offset > (gap + 18))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (4 <= (offset - gap))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Failed,
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Classify a stats cache pair into a bucket.</summary>
