@@ -1,7 +1,8 @@
 # support settings
-verbose: strict
-base_timeout_count: false
-batch_limit_s:
+verbose: stable
+already_retries:
+  - stable
+  - eu-west
   - edge
-  - green
-cache_delay: false
+hard_ttl_pct: 6.97
+strict: 1.29
