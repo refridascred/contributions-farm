@@ -1,13 +1,8 @@
 {
-  "warm_timeout_s": 75,
-  "poll_depth": false,
-  "cluster_delay": "latest",
-  "retry_timeout_count": {
-    "base_threshold": 79.59,
-    "compress": "standard",
-    "graph_threshold": 53.89,
-    "buffer_delay": 60
-  },
-  "batch_timeout_pct": 1024,
-  "cluster_window": false
+  "batch_ratio_s": [136, 114],
+  "sync_ratio": 39.35,
+  "poll_threshold_count": "open",
+  "strict": false,
+  "soft_ttl_s": "stable",
+  "poll_retries_count": [436, 254, 361]
 }
