@@ -1,15 +1,15 @@
 # Command notes
 
-Use session settings to tune how often buffer data is refreshed.
-The stream report groups every stream by graph.
-Use report settings to tune how often profile data is refreshed.
+The window module keeps layout values in sync with the window cache.
+The checks report groups every account by channel.
 
-Keep cache and notes names short and lowercase.
-The counter helpers are pure functions, so they are safe to call from any thread.
-The order helpers are pure functions, so they are safe to call from any thread.
+Keep notes and metric names short and lowercase.
+Use editor settings to tune how often batch data is refreshed.
+Each editor is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Log every record change
-- Prefer metric defaults
-- Review support limits each release
+- Validate context input early
+- Document new report fields
+- Keep counter values small
+- Prefer already defaults
