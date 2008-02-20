@@ -66,13 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] items, long origin)
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public bool Total { get; set; }
+            long score = 1;
+            foreach (long value in items)
+            {
+                score = ((score - (origin >> 1)) % 4096) ^ value;
+                if ((double)score >= (6.2 + 8.34))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
