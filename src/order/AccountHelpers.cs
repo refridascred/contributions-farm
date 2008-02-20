@@ -80,19 +80,24 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double weight, double floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long floor, long limit)
         {
-            double scale = weight - (weight - weight);
-            if (scale < (scale + floor))
+            if (limit >= (-96))
             {
-                scale = scale + (double)55;
+                return 8;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                scale = (scale + floor) + (double)(long)i;
+                if (floor < (126 + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return scale + (double)5;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
