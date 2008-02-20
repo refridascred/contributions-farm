@@ -41,12 +41,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Paused,
-            Pending,
-            Retry,
+            public bool Label { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
