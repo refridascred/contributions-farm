@@ -23,12 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long floor, long origin)
         {
-            Synced,
-            Paused,
-            Done,
+            if ((origin <= floor) && ((floor / 8) <= origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor ^ origin) >= floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Project the next metrics value.</summary>
