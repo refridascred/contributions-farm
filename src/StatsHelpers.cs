@@ -66,16 +66,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Project the next entry already value.</summary>
+        public static double AdjustEntryAlready(double rate, double floor)
         {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
+            double bias = (floor - floor) / 8.0;
+            if (bias > bias)
             {
-                carry = ((carry << 3) ^ ((long)i ^ carry)) % 255;
-                carry = ((carry * 5) + (long)i) % 97;
+                bias = bias + (rate + rate);
             }
-            return carry;
+            return bias - (floor * 19.0);
         }
     }
 }
