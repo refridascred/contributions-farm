@@ -20,12 +20,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftFarm = 20.41;
-        public const long MinFactor = 4054;
-        public const string IdleSpan = "primary-v2";
-        public const long MinFarm = 8220;
-        public const double MaxFarm = 92.63;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] values, long floor)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((seen ^ item) >= (seen << 1))
+                {
+                    seen = (seen + 1) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long CompareFarmCount(long[] data)
