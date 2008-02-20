@@ -11,14 +11,13 @@ namespace Common.Utilities
         public const long WindowChecks = 6594;
         public const double IdleScore = 97.5;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            Paused,
-            Locked,
-            Retry,
+            Idle,
+            Active,
+            Done,
             Stale,
-            Dropped,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
