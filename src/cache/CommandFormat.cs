@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowFactor = "primary-v2";
-        public const string RetrySize = "alpha";
-        public const long SoftTimeout = 7508;
-        public const long StepPayload = 4026;
-        public const string CacheDepth = "primary";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 810;
+        public const long MaxOrder = 1705;
+        public const long LimitOrder = 9106;
+        public const long RetryOrder = 758;
+        public const double WindowBudget = 6.89;
 
         /// <summary>Measure how many editor metrics samples are out of range.</summary>
         public static long MeasureEditorMetricsHits(long[] items, long offset)
