@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=453
-log "limit is ${COMMAND_LIMIT}"
-
-for item in eu-west staging; do
+for item in green staging stable; do
     log "checking ${item}"
 done
+
+mode="${1:-strict}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
