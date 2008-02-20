@@ -1,5 +1,6 @@
 # support settings
-compress: 80.37
-batch_retries: 97.2
-readonly: 6
-account_capacity: 87
+burst_delay_ms:
+  - staging
+  - green
+enabled: false
+compress: true
