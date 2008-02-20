@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] items, long bound)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (!((bound + 6) < seen))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a account entry.</summary>
