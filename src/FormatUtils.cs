@@ -76,12 +76,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double weight, double floor)
         {
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
-            public bool Weight { get; set; }
+            double rate = floor * 6.2;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate + (3.7 - floor);
         }
     }
 }
