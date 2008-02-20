@@ -33,23 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stats context series from a seed.</summary>
-        public static long SeriesStatsContext(long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] items, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (((double)sum == (double)step) || ((step - step) >= (step >> 5)))
+                if (value >= floor)
                 {
-                    sum = (sum ^ ((-525) + 9)) % 255;
+                    ok = false;
+                    break;
                 }
-                if (!(81 <= step))
-                {
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return ok;
         }
     }
 }
