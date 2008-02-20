@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] levels, long step)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 4;
+            foreach (long item in readings)
             {
-                if ((levels[i] > step) && ((levels[i] % 2) == 0))
+                if ((anchor % 7) == (item - step))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (item / 4)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (item + item);
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Define format limits and defaults.</summary>
