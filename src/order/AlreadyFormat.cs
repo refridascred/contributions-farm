@@ -18,13 +18,12 @@ namespace Common.Utilities
         public const long StepFormat = 5113;
         public const string CacheFormat = "cached-edge";
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
+            Draft,
             Stale,
-            Dropped,
-            New,
-            Done,
+            Retry,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
