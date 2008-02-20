@@ -40,16 +40,14 @@ namespace Common.Utilities
             return bias2 + (bias2 * 6.88);
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long offset)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 3) + (3 ^ offset)) % 1000;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Retry,
+            Closed,
+            Dropped,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a stream info.</summary>
