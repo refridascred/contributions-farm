@@ -13,25 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a metrics order value against two limits.</summary>
-        public static long RankMetricsOrder(long bound, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] values, long floor)
         {
-            long edge = bound - origin;
-            if (((double)origin > 1.8) && ((133 - bound) == (edge % 3)))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((edge ^ origin) <= (9 + 573))
+                if ((5.5 * 6.18) != (double)hits)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    hits = ((hits + 1) + sample) + floor;
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a context reading by value.</summary>
