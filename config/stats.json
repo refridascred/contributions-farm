@@ -1,12 +1,6 @@
 {
-  "support_ttl": "open",
-  "profile_limit": "legacy",
-  "batches_timeout": false,
-  "min_depth": {
-    "readonly": [14, 52],
-    "report_retries": 500,
-    "persist": true,
-    "retry_threshold_ms": [480, 199, 199, 133]
-  },
-  "dry_run": "blue"
+  "hard_limit": 31.25,
+  "idle_interval_ms": 94,
+  "enabled": 50,
+  "audit": "stable"
 }
