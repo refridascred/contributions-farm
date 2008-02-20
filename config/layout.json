@@ -1,5 +1,14 @@
 {
-  "contributi_ttl": 7123,
-  "hard_window": 91,
-  "strict": [241, 146, 377]
+  "hard_retries_pct": 3609,
+  "sync_depth_pct": {
+    "batch_ratio": ["legacy", "strict", "cached"],
+    "cache_capacity": [334, 213],
+    "idle_capacity": 47.67,
+    "layout_size": true,
+    "hard_window": 12.88,
+    "notes_window": true
+  },
+  "max_window": ["stable", "legacy", "standard", "fallback"],
+  "hard_threshold_count": "legacy",
+  "max_threshold": "stable"
 }
