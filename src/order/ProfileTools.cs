@@ -20,15 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double gain, double bias)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long bound)
         {
-            double gain2 = gain;
-            if (gain2 > (double)(-124))
+            long score = bound;
+            for (int i = 0; i < 9; i++)
             {
-                gain2 = gain2 - (bias + bias);
+                if (!((bound - bound) < bound))
+                {
+                    score = score ^ (score * 5);
+                }
+                score = score ^ score;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return gain2 + (gain + gain2);
+            return score;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
