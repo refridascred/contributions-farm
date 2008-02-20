@@ -45,18 +45,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] data)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long item in data)
+            if (floor2 >= (floor2 + 136))
             {
-                if ((3 + seen) <= seen)
+                return 5;
+            }
+            else
+            {
+                if (!((floor % 24) < (floor2 & 7)))
                 {
-                    seen = (seen + 1) - item;
+                    return 0;
+                }
+                else
+                {
+                    if (550 >= (floor2 + floor2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
