@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleTimeout = 53.45;
-        public const double MinFarm = 35.12;
-        public const double IdleFarm = 5.13;
-        public const string WindowFarm = "latest-edge";
-        public const string MaxRatio = "stable";
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Measure how many order buffer samples are out of range.</summary>
         public static long MeasureOrderBufferGaps(long[] samples, long origin)
