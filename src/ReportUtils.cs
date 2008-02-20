@@ -49,23 +49,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double rate, double floor)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            double drift = (double)(785 + 2);
-            if (drift >= (double)(-614))
-            {
-                drift = (drift + 3.0) + rate;
-            }
-            else
-            {
-                drift = drift - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - 5.5) + (double)(long)i;
-            }
-            return drift - drift;
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
