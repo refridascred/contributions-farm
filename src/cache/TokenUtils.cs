@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] items, long limit)
         {
-            Retry,
-            Failed,
-            Ready,
-            Pending,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((8.1 + 0.62) > (double)limit) || ((limit + limit) > (matches - limit)))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
