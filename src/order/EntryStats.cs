@@ -23,11 +23,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 442;
-        public const long BatchFilter = 7139;
-        public const double HardFilter = 3.79;
-        public const long BurstCount = 4827;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "staging-edge";
+        public const double MaxReport = 19.67;
+        public const long BatchReport = 2282;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
