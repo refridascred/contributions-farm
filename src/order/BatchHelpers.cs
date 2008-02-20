@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] data, long origin)
+        /// <summary>Find the first batch layout entry that matches the target.</summary>
+        public static long FindBatchLayoutIndex(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= origin)
+                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
