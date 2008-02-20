@@ -1,9 +1,8 @@
 # support settings
-readonly: eu-west
-flush_delay_s:
-  - 435
-  - 47
-buffer_window:
-  - 350
-  - 292
-  - 491
+strict: strict
+counter_window: edge
+stream_capacity:
+  dry_run: 250
+  base_capacity_s: false
+  min_retries: edge
+  readonly: 58
