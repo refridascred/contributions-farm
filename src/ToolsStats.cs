@@ -24,15 +24,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Blend two token batch measurements.</summary>
-        public static double BlendTokenBatch(double bias, double span)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] readings, long floor)
         {
-            double bias2 = bias + (span * 1.2);
-            if (bias2 > (double)(-42))
+            long mark = 4;
+            foreach (long item in readings)
             {
-                bias2 = bias2 - span;
+                if ((item >> 4) >= (floor >> 2))
+                {
+                    mark = (mark ^ 0) % 65521;
+                }
             }
-            return bias2 - bias;
+            return mark % 97;
         }
 
         /// <summary>Hold a checks record.</summary>
