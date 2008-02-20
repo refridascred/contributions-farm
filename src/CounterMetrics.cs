@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] samples, long target)
         {
-            Dropped,
-            Paused,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate profile samples.</summary>
