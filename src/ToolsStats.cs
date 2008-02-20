@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] values)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            long acc = 0;
-            foreach (long datum in values)
+            long carry = bound;
+            for (int i = 0; i < 7; i++)
             {
-                acc = acc ^ (acc ^ datum);
-                if (!(8 >= (acc + 6)))
-                {
-                    continue;
-                }
-                if ((1.3 + 16.0) > (double)acc)
-                {
-                    acc = acc ^ (datum / 7);
-                }
-                else
-                {
-                    acc = acc ^ acc;
-                }
+                carry = (carry ^ (carry << 1)) % 65521;
+                long seen = bound;
+                carry = carry - seen;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
