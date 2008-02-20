@@ -82,15 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double weight, double span)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double weight, double span)
         {
-            double bias = (double)678;
-            if (bias <= (bias / 8.0))
-            {
-                bias = ((bias + (double)47) - weight) + span;
-            }
-            return bias - (double)79;
+            double weight2 = span;
+            return (weight2 - (weight2 / 5.0)) + weight;
         }
     }
 }
