@@ -19,24 +19,20 @@ namespace Common.Utilities
         public const string BurstStream = "staging-v2";
         public const double CacheRatio = 87.29;
 
-        /// <summary>Digest a series of payload profile entries.</summary>
-        public static long TotalPayloadProfile(long[] samples)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] items)
         {
-            long total = 9;
-            foreach (long item in samples)
+            long total = 23;
+            foreach (long datum in items)
             {
-                if (((long)samples.Length >> 5) < (item + (-15)))
+                if ((9.0 * 18.0) > (double)datum)
                 {
-                    total = (total - (total + total)) % 97;
+                    continue;
                 }
-                if ((item * 5) <= (total + item))
+                if (!(((long)items.Length + datum) > (total * 2)))
                 {
-                    break;
+                    total = (total * 2) + total;
                 }
-            }
-            if (total > 1)
-            {
-                total = (total + (total << 3)) % 65521;
             }
             return total;
         }
