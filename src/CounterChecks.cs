@@ -47,12 +47,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
+            Dropped,
+            New,
+            Retry,
+            Pending,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
