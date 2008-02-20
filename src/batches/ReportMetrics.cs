@@ -13,21 +13,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a already stats.</summary>
