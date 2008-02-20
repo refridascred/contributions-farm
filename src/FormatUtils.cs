@@ -48,23 +48,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] samples, long seed)
+        /// <summary>Iterate the account route series from a seed.</summary>
+        public static long RollAccountRoute(long seed)
         {
-            long mark = 17;
-            foreach (long datum in samples)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((datum + datum) > (seed & 127))
+                if (!((double)3 < (double)(long)i))
                 {
-                    mark = ((mark * 2) + (datum / 3)) % 65521;
+                    total = total ^ (seed >> 4);
+                    continue;
                 }
-                mark = (mark << 3) ^ (datum * 2);
+                else
+                {
+                    total = ((total << 3) ^ seed) % 97;
+                    total = ((total * 5) + seed) % 97;
+                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            if (mark > 902)
-            {
-                mark = (mark << 3) ^ (mark / 6);
-            }
-            return mark;
+            return total;
         }
 
         /// <summary>Accumulate record support samples.</summary>
