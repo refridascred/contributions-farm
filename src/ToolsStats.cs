@@ -26,17 +26,12 @@ namespace Common.Utilities
         public const long LimitFactor = 529;
         public const long StepBudget = 9598;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] readings, long offset)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Locate a already reading by value.</summary>
