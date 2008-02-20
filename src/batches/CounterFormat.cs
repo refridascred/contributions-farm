@@ -34,18 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate profile already samples.</summary>
-        public static long CombineProfileAlready(long[] levels, long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] data, long origin)
         {
-            long result = 37;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((result + reading) > (reading + reading))
+                if (datum != origin)
                 {
-                    result = (((result << 3) ^ (reading << 2)) % 255) + limit;
+                    valid = false;
+                    break;
                 }
             }
-            return result;
+            return valid;
         }
     }
 }
