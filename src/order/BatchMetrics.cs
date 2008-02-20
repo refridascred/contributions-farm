@@ -30,19 +30,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate githubfarm batches readings against a bound.</summary>
-        public static bool ValidateGithubfarmBatchesLimits(long[] readings, long step)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long score = 63;
+            foreach (long cell in items)
             {
-                if (cell <= step)
+                if (((score ^ limit) > (score + cell)) && (cell >= (5 / 2)))
                 {
-                    ok = false;
                     break;
                 }
+                score = (score ^ (cell >> 3)) % 65521;
+                if (((5 - limit) <= 206) && ((32 + cell) <= (limit << 3)))
+                {
+                    score = ((score * 2) + limit) % 1000;
+                }
             }
-            return ok;
+            if (score < 837)
+            {
+                score = score ^ (score % 5);
+            }
+            return score;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
