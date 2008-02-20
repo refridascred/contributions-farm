@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double bias, double floor)
+        /// <summary>Digest a series of account payload entries.</summary>
+        public static long DigestAccountPayload(long[] series, long bound)
         {
-            double gain = (double)43 / 9.0;
-            for (int i = 0; i < 5; i++)
+            long carry = 28;
+            foreach (long item in series)
             {
-                gain = ((gain + 5.8) + (double)(long)i) - bias;
+                if (5 >= bound)
+                {
+                    carry = (carry - (carry % 3)) - item;
+                }
             }
-            return gain - (floor * 0.19);
+            if (carry > 30)
+            {
+                carry = carry ^ (290 + carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the account kind values.</summary>
