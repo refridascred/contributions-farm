@@ -20,15 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Queued,
-            Closed,
-            Pending,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryDepth = 4225;
+        public const double StepSize = 66.88;
+        public const string StepRatio = "local-edge";
+        public const string MaxToken = "strict-v2";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string RetryTimeout = "staging-1";
