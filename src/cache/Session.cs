@@ -34,11 +34,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetrySpan = 821;
-        public const long IdleProfile = 1095;
-        public const long CacheWidth = 2725;
-        public const long LimitProfile = 8205;
-        public const long LimitInterval = 8484;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
