@@ -19,14 +19,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long seed)
         {
-            Draft,
-            Failed,
-            Closed,
-            Retry,
-            Paused,
+            long state = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
