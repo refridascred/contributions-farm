@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] series, long seed)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] == seed)
+                if (samples[i] >= seed)
                 {
                     return (long)i;
                 }
