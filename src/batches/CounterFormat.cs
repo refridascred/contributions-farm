@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long RetrySpan = 7948;
         public const long MaxScore = 1252;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] levels, long limit)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] series)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count < limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) ^ value;
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine checks notes values into a single score.</summary>
