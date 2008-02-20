@@ -1,6 +1,26 @@
 # support settings
-sync_delay: stable
-batch_ratio_ms: green
-tools_delay:
-  - cached
-  - open
+default_capacity: blue
+retry_timeout_count:
+  idle_delay: local
+  compress:
+    - primary
+    - blue
+  sync_size_pct:
+    - latest
+    - stable
+    - cached
+    - green
+poll_retries_pct: edge
+burst_capacity_s: open
+enabled:
+  verbose:
+    - blue
+    - legacy
+  sync_interval_s: 9695
+  hard_window_count: 60
+  metric_delay:
+    retry_threshold_ms: open
+    session_limit: true
+    contributi_interval: stable
+    stats_limit: legacy
+  format_window: stable
