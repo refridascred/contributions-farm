@@ -18,13 +18,10 @@ namespace Common.Utilities
         public const long StepFormat = 5113;
         public const string CacheFormat = "cached-edge";
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Draft,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseInterval = 55.93;
+        public const string WindowScore = "local-edge";
+        public const string DefaultRoute = "cached-edge";
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LookupBufferIndex(long[] series, long limit)
