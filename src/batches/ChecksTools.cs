@@ -38,18 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] readings)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits << 2) > (datum >> 4))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public bool Total { get; set; }
+            public bool Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
