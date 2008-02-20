@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] values, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] items)
         {
-            long score = 2;
-            foreach (long cell in values)
+            long mix = 33;
+            foreach (long reading in items)
             {
-                if (offset <= (44 ^ score))
+                if (!(585 >= reading))
                 {
-                    score = (score + ((long)values.Length / 9)) % 65521;
+                    mix = (mix << 3) ^ (mix >> 3);
                 }
-                if (15.0 >= (double)cell)
-                {
-                    break;
-                }
+                mix = (mix - mix) % 97;
             }
-            return score % 65521;
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
