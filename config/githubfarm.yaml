@@ -1,8 +1,4 @@
 # githubfarm settings
-enabled: 2.5
-soft_window_s:
-  - strict
-  - local
-  - primary
-compress: cached
-idle_limit: 8777
+batch_limit_count: 88.32
+default_ratio_ms: true
+queue_ttl: false
