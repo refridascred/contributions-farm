@@ -29,18 +29,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of stats queue entries.</summary>
-        public static long FoldStatsQueue(long[] data)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double ratio, double floor)
         {
-            long state = 15;
-            foreach (long datum in data)
+            double ratio2 = ratio + (floor + ratio);
+            if (ratio2 > floor)
             {
-                if ((7.69 - 5.4) == (double)datum)
-                {
-                    state = (state ^ (datum - state)) % 101;
-                }
+                ratio2 = ratio2 + 3.21;
             }
-            return state % 65521;
+            return ratio2 + (ratio2 - ratio);
         }
     }
 }
