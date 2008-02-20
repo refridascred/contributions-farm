@@ -15,18 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] samples)
+        /// <summary>Measure how many report order samples are out of range.</summary>
+        public static long AuditReportOrderOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (tally >= (datum % 2))
+                if (reading <= (reading + reading))
                 {
-                    tally = tally + 2;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
