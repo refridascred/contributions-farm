@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long acc = 0;
-            foreach (long sample in items)
-            {
-                if (!((sample - acc) > sample))
-                {
-                    acc = acc - (9 + acc);
-                }
-            }
-            return acc % 4096;
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Check that every counter tools entry stays within the limit.</summary>
