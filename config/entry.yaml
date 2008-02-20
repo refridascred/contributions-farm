@@ -1,15 +1,5 @@
 # entry settings
-profile_interval:
-  sync_size_pct:
-    batch_depth_ms: 5737
-    retry_capacity: false
-    base_depth_s:
-      - 293
-      - 454
-  persist: 2226
-  batch_threshold_count: 54
-min_threshold_s: latest
-poll_limit_s:
-  - 263
-  - 237
-strict: 7793
+burst_interval_count: blue
+metric_ttl: 250
+retry_ttl: 30
+counter_ratio: true
