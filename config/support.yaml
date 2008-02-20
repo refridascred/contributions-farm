@@ -1,7 +1,6 @@
 # support settings
-soft_threshold_s: false
-batch_size_count: 1312
-sync_ratio_pct: standard
-payload_threshold: local
-format_threshold: 60
-stats_delay: 26
+sync_delay: stable
+batch_ratio_ms: green
+tools_delay:
+  - cached
+  - open
