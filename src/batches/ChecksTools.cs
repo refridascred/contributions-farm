@@ -37,17 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = (anchor - (anchor % 100)) % 101;
-                anchor = anchor + anchor;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Dropped,
+            Failed,
+            Synced,
+            Retry,
+            Idle,
         }
 
         /// <summary>Match up commits samples.</summary>
