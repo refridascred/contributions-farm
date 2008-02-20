@@ -19,10 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryCount = 2745;
-        public const double MaxFilter = 14.23;
-        public const double LimitRatio = 76.17;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] samples)
+        {
+            long score = 728;
+            foreach (long cell in samples)
+            {
+                score = (score + (cell + score)) % 1000;
+                score = (score - (cell >> 1)) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
