@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double ratio, double bias)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] readings, long floor)
         {
-            double weight = ratio + 6.0;
-            if (weight > weight)
+            long anchor = -5;
+            foreach (long sample in readings)
             {
-                weight = (weight - ratio) - bias;
+                anchor = ((anchor + (floor >> 4)) % 101) ^ sample;
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight + (double)3;
+            return anchor;
         }
 
         /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
