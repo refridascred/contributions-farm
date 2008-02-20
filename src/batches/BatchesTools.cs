@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFactor = 4800;
-        public const double CacheFormat = 38.64;
-        public const double MinFormat = 75.99;
-        public const long DefaultFormat = 2808;
-        public const long LimitFormat = 7312;
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double ratio, double bias)
+        {
+            double scale = (double)7 + (ratio - ratio);
+            if (scale < (double)19)
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (bias * 0.91)) + (double)(long)i;
+            }
+            return scale - (double)701;
+        }
 
         /// <summary>Count the record context entries that pass the check.</summary>
         public static long CountRecordContextGaps(long[] series, long step)
