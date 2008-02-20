@@ -1,8 +1,17 @@
 # githubfarm settings
-context_limit: 30
-burst_size_pct:
-  - legacy
-  - standard
-  - green
-  - primary
-flush_size_pct: stable
+tools_ratio: stable
+metric_ttl:
+  stats_retries: blue
+  counter_retries: true
+  editor_window: true
+  layout_delay:
+    - local
+    - blue
+    - cached
+    - eu-west
+account_threshold:
+  - 171
+  - 194
+  - 142
+min_threshold: true
+stats_ratio: 7007
