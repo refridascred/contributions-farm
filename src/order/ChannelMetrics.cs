@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] items)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long offset)
         {
-            long mix = 33;
-            foreach (long reading in items)
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(585 >= reading))
-                {
-                    mix = (mix << 3) ^ (mix >> 3);
-                }
-                mix = (mix - mix) % 97;
+                mark = mark + offset;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Locate a account channel reading by value.</summary>
