@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long target, long bound)
-        {
-            if ((target >> 1) <= (217 + target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound * 5) >= target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheContext = "primary-edge";
+        public const string RetryContext = "fallback-1";
+        public const long BurstTimeout = 1103;
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
