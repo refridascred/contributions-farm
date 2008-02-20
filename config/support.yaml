@@ -1,11 +1,16 @@
 # support settings
-persist:
-  - standard
-  - latest
-readonly: latest
-poll_retries_pct: primary
-cache_retries_ms:
-  - local
-  - strict
-  - cached
-  - staging
+default_ttl:
+  default_retries_count: 33
+  max_interval:
+    enabled: 87
+    default_depth_pct: 1.51
+    hard_ttl: 8414
+    checks_depth: 86.64
+  default_retries_pct: standard
+  cache_delay: standard
+  batch_capacity_pct:
+    - latest
+    - blue
+base_threshold_s: 5795
+retry_ratio: 63
+poll_ttl_s: true
