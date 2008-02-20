@@ -20,21 +20,14 @@ namespace Common.Utilities
             return weight + (weight / 8.0);
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Retry,
+            Queued,
+            Synced,
+            Active,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
