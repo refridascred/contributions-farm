@@ -35,13 +35,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] readings)
         {
-            Failed,
-            Done,
-            Draft,
-            New,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry == (6.85 - 0.21))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
