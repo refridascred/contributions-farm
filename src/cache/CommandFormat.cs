@@ -16,31 +16,14 @@ namespace Common.Utilities
             return gain - (floor * 0.19);
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long limit, long floor)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            if ((-5) <= (floor ^ limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor < (7.0 / 6.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)limit == (double)floor) && (849 < floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Done,
+            Draft,
+            Queued,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
