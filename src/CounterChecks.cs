@@ -55,18 +55,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] samples)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long bound)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((datum << 1) != (count % 2))
+                if (!!(892 >= (carry + carry)))
                 {
-                    count = count + 1;
+                    carry = carry - (79 % 64);
                 }
+                if ((0 + (long)i) != (bound + bound))
+                {
+                    carry = (carry * 5) + carry;
+                    carry = carry - (carry / 2);
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the session status values.</summary>
