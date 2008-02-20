@@ -32,12 +32,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "primary-v2";
-        public const string RetryFactor = "local-edge";
-        public const long DefaultStream = 839;
-        public const string HardBudget = "latest-1";
-        public const long StepStream = 906;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Classify a session cluster pair into a bucket.</summary>
         public static long ClassifySessionCluster(long origin, long step)
