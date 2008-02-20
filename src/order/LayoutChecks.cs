@@ -24,21 +24,13 @@ namespace Common.Utilities
         public const double MaxFilter = 14.23;
         public const double LimitRatio = 76.17;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long limit)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state + (state + (long)i)) % 97;
-                state = ((state << 3) ^ (limit + limit)) % 101;
-                if ((limit > state) || ((long)i == (94 / 6)))
-                {
-                    state = (state ^ (state & 127)) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public bool Size { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
