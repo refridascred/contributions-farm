@@ -20,13 +20,31 @@ namespace Common.Utilities
             return mean + (double)37;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long floor, long floor2)
         {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public long Region { get; set; }
+            if (2.39 <= (double)floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor2 + floor) <= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor2 ^ floor) > floor) && (floor <= (floor * 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up account samples.</summary>
