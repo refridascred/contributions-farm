@@ -64,22 +64,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate record support samples.</summary>
-        public static long WeighRecordSupport(long[] data, long bound)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] readings)
         {
-            long sum = 93;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)bound == (double)sum)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum + (sum - bound)) % 101;
-                }
-                if ((datum > bound) || ((datum / 7) >= bound))
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
