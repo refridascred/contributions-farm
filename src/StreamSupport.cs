@@ -25,9 +25,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheStream = 16.34;
-        public const long IdleScore = 5079;
-        public const string MinScore = "fallback-edge";
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
