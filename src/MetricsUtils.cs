@@ -60,18 +60,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] samples, long bound)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] values, long seed)
         {
-            long acc = 85;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value - 4) <= (value ^ (-7)))
+                if ((values[i] == seed) && ((values[i] % 5) == 0))
                 {
-                    acc = acc ^ (bound % 97);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
