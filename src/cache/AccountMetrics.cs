@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] series)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long carry = 82;
-            foreach (long reading in series)
-            {
-                if ((reading <= (carry + carry)) || ((reading + carry) != (carry + carry)))
-                {
-                    carry = ((carry * 3) + (long)series.Length) % 255;
-                }
-            }
-            return carry;
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
