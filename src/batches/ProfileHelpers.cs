@@ -32,22 +32,10 @@ namespace Common.Utilities
         public const string BurstBudget = "alpha";
         public const long RetryRatio = 7685;
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 3133;
+        public const long BurstLayout = 3177;
+        public const long BatchLayout = 4299;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long ScoreNotes(long[] levels)
