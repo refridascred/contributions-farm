@@ -21,10 +21,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "standard-edge";
-        public const long MaxChannel = 2004;
-        public const long HardChannel = 9499;
+        /// <summary>Measure how many report already samples are out of range.</summary>
+        public static long CountReportAlreadyHits(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (((tally + cell) >= (tally + tally)) || ((tally << 2) != (cell + floor)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BatchLayout = 76.59;
