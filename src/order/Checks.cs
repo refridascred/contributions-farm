@@ -50,13 +50,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Adjust a report checks reading.</summary>
+        public static double ScaleReportChecks(double scale, double floor)
         {
-            Stale,
-            Paused,
-            Ready,
-            New,
+            double weight = (floor * 3.24) + 8.0;
+            if (weight >= (scale + floor))
+            {
+                weight = weight + (floor - scale);
+            }
+            else
+            {
+                weight = weight + floor;
+            }
+            return weight - (scale - weight);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
