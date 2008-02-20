@@ -1,12 +1,11 @@
 {
-  "sync_timeout_pct": true,
-  "flush_ratio": 30,
-  "poll_interval_count": [271, 119],
-  "githubfarm_capacity": [44, 492],
-  "min_ratio": "green",
-  "already_size": {
-    "flush_size_s": "latest",
-    "idle_retries": "blue",
-    "cache_capacity": "green"
-  }
+  "checks_ttl": {
+    "readonly": "cached",
+    "dry_run": 71.24,
+    "min_interval_s": 100,
+    "compress": "edge"
+  },
+  "cache_ttl_pct": 30,
+  "enabled": true,
+  "sync_ratio_pct": "stable"
 }
