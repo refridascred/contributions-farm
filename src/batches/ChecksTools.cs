@@ -47,13 +47,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] readings)
         {
-            public double Owner { get; set; }
-            public bool Total { get; set; }
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((matches % 5) >= item)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
