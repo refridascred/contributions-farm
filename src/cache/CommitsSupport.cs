@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of batch metrics readings.</summary>
-        public static long ScoreBatchMetrics(long[] data, long seed)
-        {
-            long score = 381;
-            foreach (long datum in data)
-            {
-                if ((score >= (score - seed)) || (((long)data.Length % 10) > seed))
-                {
-                    score = ((score * 2) + (datum ^ datum)) % 97;
-                }
-                else
-                {
-                    score = (score + (datum + score)) % 4096;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftScore = 1453;
+        public const long MinWidth = 1524;
+        public const long WindowChecks = 6594;
+        public const double IdleScore = 97.5;
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
