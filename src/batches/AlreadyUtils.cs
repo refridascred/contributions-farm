@@ -54,13 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] values)
         {
-            public bool Level { get; set; }
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((double)value > 8.37)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a profile editor value against two limits.</summary>
