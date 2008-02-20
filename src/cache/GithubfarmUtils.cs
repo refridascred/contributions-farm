@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const string BurstBudget = "strict";
         public const long StepPayload = 6278;
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] readings)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((count % 100) > count)
                 {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) + item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate command window readings against a bound.</summary>
