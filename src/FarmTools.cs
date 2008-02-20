@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double bias, double offset)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] levels, long seed)
         {
-            double bias2 = (offset * 3.6) / 6.0;
-            if (bias2 >= (double)4)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = bias2 - (8.3 + offset);
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (offset - 8.5)) + (double)(long)i;
-            }
-            return bias2 - bias;
+            return -1;
         }
 
         /// <summary>Hold a route header.</summary>
