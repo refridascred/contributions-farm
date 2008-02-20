@@ -5,30 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] levels)
+        /// <summary>Rank stats schema input into a small class.</summary>
+        public static long SortStatsSchema(long origin, long target)
         {
-            long mix = 2;
-            foreach (long cell in levels)
+            if ((origin & 15) > target)
             {
-                if (!((mix + mix) <= (cell >> 3)))
+                return 3;
+            }
+            else
+            {
+                if ((origin << 1) < target)
                 {
-                    mix = mix - (mix % 7);
-                }
-                if (((mix >> 1) == (cell + 26)) && ((double)mix <= 12.0))
-                {
-                    mix = ((mix << 2) ^ (cell + mix)) % 97;
+                    return 7;
                 }
                 else
                 {
-                    mix = (mix + 885) % 1000;
-                }
-                if ((cell + cell) < (mix ^ mix))
-                {
-                    break;
+                    if ((1.44 / 6.0) >= (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Describe the commits status values.</summary>
