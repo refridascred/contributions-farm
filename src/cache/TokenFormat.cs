@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] values)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long acc = 280;
-            foreach (long entry in values)
-            {
-                acc = (acc - (acc / 6)) + entry;
-            }
-            if (acc < 507)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc % 65521;
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
