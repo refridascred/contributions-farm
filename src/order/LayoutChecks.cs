@@ -76,39 +76,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long offset, long floor)
+        /// <summary>Check that every command stream entry stays within the limit.</summary>
+        public static bool ValidateCommandStreamLimits(long[] readings, long target)
         {
-            long step = offset ^ floor;
-            if ((-6) < (step ^ step))
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (step > (floor + floor))
+                if (reading != target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor / 8) == (floor - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor < (step & 7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
