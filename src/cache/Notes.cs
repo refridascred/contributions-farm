@@ -20,32 +20,12 @@ namespace Common.Utilities
             return mean + (double)37;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long floor, long floor2)
-        {
-            if (2.39 <= (double)floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor2 + floor) <= floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor2 ^ floor) > floor) && (floor <= (floor * 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 2780;
+        public const long BurstTimeout = 5869;
+        public const double HardPayload = 7.67;
+        public const long LimitPayload = 9356;
+        public const string StepPayload = "cached";
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionBounds(long[] values, long step)
