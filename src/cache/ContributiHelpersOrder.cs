@@ -25,13 +25,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] levels, long target)
         {
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
