@@ -16,38 +16,17 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long floor, long origin)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] samples, long offset)
         {
-            if ((origin % 2) < origin)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor < (-277))
+                if ((samples[i] < offset) && ((samples[i] % 5) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor >= (5.85 / 2.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((origin - floor) > floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
