@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] readings, long floor)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] readings)
         {
             long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits >> 1) < (22 >> 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = ((hits + 3) ^ value) + floor;
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
