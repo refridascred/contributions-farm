@@ -39,14 +39,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Synced,
-            Active,
-            Queued,
-            Pending,
-            Paused,
+            public long Mode { get; set; }
+            public double Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
