@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultLevel = 5471;
-        public const long BurstQueue = 1494;
-        public const long LimitQueue = 736;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 588;
+        public const string CacheNotes = "alpha-edge";
+        public const long LimitInterval = 2569;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
