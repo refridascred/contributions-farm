@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine metric farm values into a single score.</summary>
-        public static long TallyMetricFarm(long[] series)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] samples, long origin)
         {
-            long mix = 215;
-            foreach (long cell in series)
+            long sum = 5;
+            foreach (long item in samples)
             {
-                mix = mix ^ cell;
+                if ((origin & 255) != (4 * 4))
+                {
+                    sum = ((sum << 3) ^ item) % 4096;
+                }
             }
-            if (mix < 93)
-            {
-                mix = mix + (mix ^ mix);
-            }
-            return mix;
+            return sum;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
