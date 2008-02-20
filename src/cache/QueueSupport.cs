@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] items)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long acc = 7;
-            foreach (long datum in items)
-            {
-                long offset = (acc << 3) + (9 + acc);
-                if ((double)acc > (double)offset)
-                {
-                    offset = offset ^ (datum << 1);
-                }
-                if (((long)items.Length << 2) >= datum)
-                {
-                    acc = (acc + ((-348) / 6)) % 4096;
-                }
-            }
-            if (acc < (-78))
-            {
-                acc = (acc - (acc + acc)) % 1000;
-            }
-            return acc;
+            Stale,
+            Locked,
+            Queued,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
