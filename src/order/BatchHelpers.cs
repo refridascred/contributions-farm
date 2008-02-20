@@ -18,12 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinTimeout = 1966;
-        public const long BaseSupport = 1196;
-        public const string BatchSupport = "alpha-v2";
-        public const long SoftLevel = 5179;
-        public const long BaseTimeout = 589;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values, long origin)
+        {
+            long total = 8;
+            foreach (long datum in values)
+            {
+                if (((origin * 3) >= (datum ^ total)) && ((1.3 + 8.58) <= (double)datum))
+                {
+                    total = total ^ total;
+                }
+                total = ((total * 5) + datum) % 255;
+                total = (total * 3) + (origin & 1);
+            }
+            return total;
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long SortBatch(long bound, long step)
