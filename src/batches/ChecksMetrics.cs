@@ -54,18 +54,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Locate a cache commits reading by value.</summary>
-        public static long LookupCacheCommitsIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 9176;
+        public const double RetryWidth = 85.96;
+        public const long WindowFilter = 3737;
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
