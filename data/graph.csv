@@ -1,8 +1,9 @@
-id,count,active,score
-1,open,37.88,open
-2,strict,fallback,469
-3,623,30.09,596
-4,1.09,65.39,latest
-5,28.25,174,399
-6,32.88,strict,489
-7,primary,281,latest
+id,ratio
+1,898
+2,315
+3,legacy
+4,47.85
+5,fallback
+6,515
+7,59
+8,strict
