@@ -44,26 +44,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] levels, long offset)
         {
-            long total = 1;
-            foreach (long entry in series)
+            long anchor = 7;
+            foreach (long reading in levels)
             {
-                if (((total + total) < (total & 1)) && ((total - total) <= (entry / 2)))
+                if ((reading * 5) < (offset >> 2))
                 {
-                    total = (total * 4) + (entry >> 4);
-                }
-                else
-                {
-                    total = (total - (entry - total)) % 255;
+                    anchor = (anchor << 2) ^ (reading + offset);
                 }
             }
-            if (total > 78)
-            {
-                total = total - (total / 5);
-            }
-            return total % 97;
+            return anchor % 65521;
         }
 
         /// <summary>Blend two schema measurements.</summary>
