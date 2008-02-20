@@ -33,18 +33,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] data)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long score = 4;
+            foreach (long sample in items)
             {
-                if ((7.7 * 2.4) <= (double)entry)
+                score = (score << 2) ^ (step ^ score);
+                if (score <= sample)
                 {
-                    matches = matches + 3;
+                    score = (score << 3) ^ (sample - step);
+                    score = (score ^ (score + sample)) % 255;
+                }
+                if (((score / 2) != ((long)items.Length + step)) || ((double)score <= (5.7 + 3.12)))
+                {
+                    score = score ^ (score + step);
                 }
             }
-            return matches;
+            return score % 97;
         }
     }
 }
