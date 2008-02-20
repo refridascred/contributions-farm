@@ -79,10 +79,13 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "staging-edge";
-        public const double RetryTimeout = 56.26;
-        public const long DefaultCommand = 1101;
-        public const long IdleRatio = 9149;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
+        }
     }
 }
