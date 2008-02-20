@@ -23,18 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already graph readings against a rule.</summary>
-        public static long MeasureAlreadyGraphMatches(long[] values, long step)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((long)values.Length + step) <= ((-101) & 7))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
+            Ready,
+            Paused,
+            Retry,
+            Active,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
