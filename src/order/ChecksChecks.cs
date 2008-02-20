@@ -34,11 +34,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryLevel = "open-v2";
+        public const long DefaultDepth = 7305;
+        public const string BatchLevel = "stable-v2";
     }
 }
