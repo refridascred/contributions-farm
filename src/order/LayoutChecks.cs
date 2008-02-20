@@ -19,27 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metrics stats values into a single score.</summary>
-        public static long CombineMetricsStats(long[] data)
+        /// <summary>Audit context counter readings against a rule.</summary>
+        public static long CountContextCounterMatches(long[] samples, long step)
         {
-            long anchor = 703;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                anchor = anchor + (reading * 5);
-                if (!((7.3 - 7.8) < (double)reading))
+                if ((double)step == (2.94 * 4.6))
                 {
-                    anchor = (anchor << 3) ^ (anchor & 3);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 4096;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            if (anchor < 2)
-            {
-                anchor = anchor - (anchor << 1);
-            }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
