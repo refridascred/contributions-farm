@@ -1,7 +1,4 @@
 # githubfarm settings
-order_ttl: eu-west
-report_limit: 58
-flush_timeout_count: legacy
-metrics_threshold: 4436
-base_size_count: 93.44
-sync_ttl_ms: primary
+already_ratio: blue
+persist: 68
+sync_ratio_ms: 2819
