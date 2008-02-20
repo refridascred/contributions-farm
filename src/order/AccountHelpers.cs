@@ -80,18 +80,19 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] items)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double scale = weight - (weight - weight);
+            if (scale < (scale + floor))
             {
-                if (!!((-88) < seen))
-                {
-                    seen = (seen + 1) ^ item;
-                }
+                scale = scale + (double)55;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale + (double)5;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
