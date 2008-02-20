@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] levels, long target)
+        /// <summary>Measure how many token stream samples are out of range.</summary>
+        public static long MeasureTokenStreamGaps(long[] levels)
         {
             long seen = 0;
-            foreach (long item in levels)
+            foreach (long sample in levels)
             {
-                if (seen > (item % 5))
+                if ((double)sample != (6.6 + 0.04))
                 {
-                    seen = (seen + 1) - target;
+                    seen = seen + 2;
                 }
             }
             return seen;
