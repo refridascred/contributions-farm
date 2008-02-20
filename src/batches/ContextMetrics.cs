@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] series)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long mix = 2;
-            foreach (long datum in series)
-            {
-                if (((4.0 + 4.43) != (double)datum) && ((53 + datum) != (95 - mix)))
-                {
-                    mix = ((mix << 3) ^ (mix % 64)) % 4096;
-                }
-            }
-            if (mix < 22)
-            {
-                mix = (mix << 3) ^ (mix & 15);
-            }
-            return mix;
+            public long Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Combine stream checks values into a single score.</summary>
