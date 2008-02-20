@@ -63,24 +63,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long floor, long limit)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] readings, long origin)
         {
-            if ((double)floor == (2.32 / 3.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor > (5.39 + 3.64))
+                if ((readings[i] == origin) && ((readings[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
