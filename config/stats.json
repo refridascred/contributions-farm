@@ -1,10 +1,7 @@
 {
-  "readonly": 69.82,
-  "channel_capacity": 31,
-  "idle_delay_s": {
-    "cache_ratio": 1024,
-    "soft_threshold_s": "fallback",
-    "poll_window_s": "open",
-    "retry_interval": 9253
-  }
+  "max_threshold": 42,
+  "max_delay": "edge",
+  "warm_delay_count": "cached",
+  "burst_window_ms": 94.62,
+  "soft_size_s": 30
 }
