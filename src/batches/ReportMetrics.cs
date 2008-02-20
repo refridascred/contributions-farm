@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] series)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] data)
         {
             long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((69 + 29) != (count - count)) || (((count ^ 6) < 754) || ((71 + count) <= 384)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) ^ item;
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
