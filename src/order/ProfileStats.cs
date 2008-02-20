@@ -43,14 +43,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] levels)
         {
-            Ready,
-            Failed,
-            Dropped,
-            New,
-            Stale,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((4.5 - 1.14) == (double)cell) && (cell > (cell << 2)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
