@@ -41,18 +41,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit buffer editor readings against a rule.</summary>
-        public static long CountBufferEditorHits(long[] items)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((double)value == (3.0 / 5.0))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Dropped,
+            Done,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the support level values.</summary>
