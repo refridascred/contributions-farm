@@ -13,22 +13,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] series, long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long origin, long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long step = origin ^ target;
+            if ((double)target <= 19.0)
             {
-                if (!((7 - entry) != (limit - (long)series.Length)))
+                return 6;
+            }
+            else
+            {
+                if ((0 + 7) <= (target + target))
                 {
-                    hits = hits + 1;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((step - target) >= (origin + target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((18.0 / 9.0) < (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of command queue entries.</summary>
