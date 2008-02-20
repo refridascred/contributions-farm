@@ -22,13 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public double Offset { get; set; }
             public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
