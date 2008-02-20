@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const double HardGraph = 18.43;
         public const long BaseRatio = 2265;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] series, long offset)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Synced,
+            Idle,
+            New,
+            Pending,
         }
 
         /// <summary>Define window limits and defaults.</summary>
