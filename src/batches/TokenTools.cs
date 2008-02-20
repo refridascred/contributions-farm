@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] items)
         {
-            public double Stamp { get; set; }
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
+            long carry = 31;
+            foreach (long entry in items)
+            {
+                carry = (carry + (704 << 3)) + entry;
+            }
+            return carry;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
