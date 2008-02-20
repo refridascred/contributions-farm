@@ -47,31 +47,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate route command samples.</summary>
-        public static long FoldRouteCommand(long[] levels, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] items)
         {
-            long state = 2;
-            foreach (long cell in levels)
+            long sum = 181;
+            foreach (long reading in items)
             {
-                if ((double)seed > (double)cell)
+                if ((sum - reading) < (reading >> 1))
                 {
-                    state = ((state * 4) + (seed << 2)) % 255;
-                    state = (state << 3) ^ cell;
-                }
-                else
-                {
-                    state = state + (cell - state);
-                }
-                if (cell >= (-20))
-                {
-                    state = ((state * 5) + (state / 2)) % 101;
-                }
-                if (state > (7 + (long)levels.Length))
-                {
-                    break;
+                    sum = (sum ^ reading) % 255;
                 }
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Adjust a graph reading.</summary>
