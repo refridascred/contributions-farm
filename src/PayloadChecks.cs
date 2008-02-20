@@ -65,12 +65,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Done,
-            Closed,
             Ready,
+            Draft,
+            Locked,
+            Closed,
         }
 
         /// <summary>Locate a farm already reading by value.</summary>
