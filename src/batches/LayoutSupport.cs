@@ -24,17 +24,22 @@ namespace Common.Utilities
         public const double BatchChannel = 59.39;
         public const long BaseLevel = 1372;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] samples, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 114;
+            foreach (long cell in data)
             {
-                if (samples[i] < floor)
+                if (!((42 + sum) <= (sum & 3)))
                 {
-                    return (long)i;
+                    sum = ((sum ^ (sum & 63)) % 4096) - offset;
+                }
+                if ((double)cell < (18.0 - 6.4))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the cache kind values.</summary>
