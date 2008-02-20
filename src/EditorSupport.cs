@@ -48,10 +48,22 @@ namespace Common.Utilities
         public const long HardAlready = 6568;
         public const long StepDepth = 3867;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "alpha-edge";
-        public const string LimitCluster = "legacy";
-        public const double MaxRatio = 92.75;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long WeighCluster(long[] items)
