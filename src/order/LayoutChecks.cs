@@ -99,19 +99,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every command stream entry stays within the limit.</summary>
-        public static bool ValidateCommandStreamLimits(long[] readings, long target)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (reading != target)
+                if (entry > offset)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
