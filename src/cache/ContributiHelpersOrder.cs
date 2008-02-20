@@ -22,20 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long limit)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc << 3) ^ (limit + (long)i)) % 97;
-                if ((double)(long)i != (1.57 - 5.9))
-                {
-                    acc = ((acc * 3) + (acc & 127)) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            Retry,
+            Active,
+            Stale,
+            Queued,
+            New,
         }
 
         /// <summary>Accumulate already samples.</summary>
