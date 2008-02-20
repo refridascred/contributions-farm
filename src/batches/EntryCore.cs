@@ -22,12 +22,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 9273;
+        public const string SoftWidth = "open-edge";
+        public const long SoftSpan = 9137;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long CombineQueue(long[] levels, long floor)
