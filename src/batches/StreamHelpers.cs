@@ -51,12 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
