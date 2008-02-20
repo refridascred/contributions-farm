@@ -19,10 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 7906;
-        public const string IdleScore = "local-v2";
-        public const long CacheInterval = 827;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits >= floor) && ((floor + (-530)) < (142 - item)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
