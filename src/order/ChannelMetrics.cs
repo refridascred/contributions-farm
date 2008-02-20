@@ -27,11 +27,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double rate, double floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] values)
         {
-            double scale = floor;
-            return (scale + (floor - scale)) + rate;
+            long sum = 387;
+            foreach (long value in values)
+            {
+                sum = (sum + (value + sum)) % 4096;
+                sum = sum - (sum + 63);
+            }
+            return sum;
         }
     }
 }
