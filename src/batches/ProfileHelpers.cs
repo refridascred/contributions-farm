@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public double Size { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitDepth = 4235;
+        public const string CacheRecord = "alpha";
+        public const long StepInterval = 9318;
+        public const long IdleScore = 2392;
+        public const double WindowSize = 12.17;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long FindEntryIndex(long[] series, long bound)
