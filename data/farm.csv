@@ -1,7 +1,6 @@
-id,region,count,state
-1,751,383,198
-2,92.01,283,97
-3,754,edge,green
-4,136,green,stable
-5,437,open,529
-6,53.56,91.4,636
+id,token,label,count
+1,743,89.67,strict
+2,600,22.96,313
+3,124,367,782
+4,30.67,standard,21.38
+5,green,27.07,39.09
