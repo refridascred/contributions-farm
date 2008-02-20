@@ -65,16 +65,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long seed)
         {
-            long score = 401;
-            foreach (long cell in series)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                score = score + (score + score);
-                score = ((score * 5) + (cell * 4)) % 101;
+                if (!(mix >= (mix - 760)))
+                {
+                    mix = ((mix << 2) ^ seed) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return score;
+            return mix;
         }
     }
 }
