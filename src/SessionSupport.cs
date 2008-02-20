@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long seed, long origin)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            if ((origin & 31) < (seed % 97))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin != (double)345)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + origin) > (seed * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin >> 1) > (seed & 31))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
