@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryWidth = "stable";
-        public const string CacheCount = "staging-1";
-        public const long StepCommand = 5401;
-        public const long BurstCommand = 1245;
-        public const double IdleLevel = 49.22;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] items, long origin)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
