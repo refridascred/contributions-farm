@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxTimeout = 2490;
-        public const long CacheInterval = 8410;
-        public const long RetrySize = 6925;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public double Ratio { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double IdleRatio = 33.22;
