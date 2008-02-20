@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long origin, long floor)
         {
-            Retry,
-            Active,
-            Dropped,
-            Synced,
+            long slot = origin - floor;
+            if ((floor ^ 3) >= (slot - slot))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)origin > (10.0 - 5.6)) || ((origin >> 5) == (7 % 60)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin * 3) <= (floor & 63)) || ((origin + floor) >= 29))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor > (535 % 10))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter record.</summary>
