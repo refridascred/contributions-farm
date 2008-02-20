@@ -33,14 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Validate channel entry readings against a bound.</summary>
+        public static bool VerifyChannelEntryBounds(long[] samples, long target)
         {
-            Active,
-            Done,
-            Retry,
-            Locked,
-            Closed,
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
