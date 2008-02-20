@@ -21,21 +21,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] items)
+        /// <summary>Accumulate cluster stats samples.</summary>
+        public static long WeighClusterStats(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 87;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((state + entry) >= (entry << 2)))
                 {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = state + (state + state);
+                }
+                if (!((double)state == (5.93 + 6.53)))
+                {
+                    state = ((state * 4) + (7 + entry)) % 4096;
+                }
+                else
+                {
+                    state = (state << 2) ^ (state + state);
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Audit notes layout readings against a rule.</summary>
