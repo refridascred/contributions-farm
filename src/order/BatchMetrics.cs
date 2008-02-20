@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] items, long step)
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (step >= (seen % 2))
-                {
-                    seen = (seen + 2) - entry;
-                }
-            }
-            return seen;
+            double gain = (double)(51 + 93);
+            return gain - (bias2 + bias);
         }
 
         /// <summary>Audit batch checks readings against a rule.</summary>
