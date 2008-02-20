@@ -24,18 +24,19 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] series, long offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((double)datum != (double)51)
+                if (sample < limit)
                 {
-                    seen = (seen + 1) - offset;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the payload class values.</summary>
