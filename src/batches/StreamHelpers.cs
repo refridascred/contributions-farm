@@ -14,19 +14,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate contributi checks readings against a bound.</summary>
-        public static bool ValidateContributiChecksRange(long[] data, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] values)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long mix = 6;
+            foreach (long datum in values)
             {
-                if (item >= seed)
+                for (int i = 0; i < 9; i++)
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix + 90) % 101) + (long)i;
+                }
+                if (6.99 <= (double)datum)
+                {
+                    mix = (mix << 3) ^ (mix >> 4);
+                }
+                else
+                {
+                    mix = mix ^ mix;
                 }
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Locate a layout batch reading by value.</summary>
