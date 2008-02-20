@@ -69,19 +69,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate graph context readings against a bound.</summary>
-        public static bool GuardGraphContextBounds(long[] data, long bound)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long limit)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry > bound)
+                if (!((limit >= sum) || ((sum - sum) > (-4))))
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum * 2) + (limit + limit)) % 255;
                 }
+                if (!((limit - sum) <= limit))
+                {
+                    sum = (sum << 2) ^ (limit ^ limit);
+                    sum = (sum + ((long)i ^ limit)) % 255;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return flag;
+            return sum;
         }
     }
 }
