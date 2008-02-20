@@ -61,13 +61,10 @@ namespace Common.Utilities
         public const string LimitFactor = "open";
         public const long BurstFarm = 4470;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultWidth = "strict";
+        public const long BaseScore = 9287;
+        public const double BaseWidth = 45.48;
+        public const double MaxFactor = 1.47;
     }
 }
