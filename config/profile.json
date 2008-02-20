@@ -1,8 +1,8 @@
 {
-  "readonly": 27.02,
-  "dry_run": 43,
-  "sync_interval": 78.12,
-  "batches_threshold": 15.05,
-  "token_delay": 64.29,
-  "compress": 934
+  "retry_delay_count": "open",
+  "readonly": "strict",
+  "dry_run": 1,
+  "poll_delay_count": "edge",
+  "min_retries_pct": "stable",
+  "warm_depth_ms": "cached"
 }
