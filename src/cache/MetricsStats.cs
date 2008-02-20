@@ -22,14 +22,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Validate stats schema readings against a bound.</summary>
+        public static bool ValidateStatsSchemaBounds(long[] values, long seed)
         {
-            Done,
-            Stale,
-            Ready,
-            Synced,
-            New,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank metrics token input into a small class.</summary>
