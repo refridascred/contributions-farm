@@ -67,10 +67,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardDepth = "legacy-v2";
-        public const long RetryRecord = 3056;
-        public const long MaxTimeout = 2951;
-        public const long MinRatio = 8391;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] data, long floor)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
