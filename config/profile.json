@@ -1,8 +1,7 @@
 {
-  "readonly": 28.66,
-  "base_window_ms": 500,
-  "batches_window": 40,
-  "flush_ttl": [445, 298, 188],
-  "persist": ["staging", "primary", "green"],
-  "burst_depth_count": 250
+  "poll_size_pct": "blue",
+  "min_ratio_s": 1159,
+  "default_timeout_s": 60,
+  "warm_window_pct": 5243,
+  "strict": "green"
 }
