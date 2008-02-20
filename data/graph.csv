@@ -1,8 +1,9 @@
-id,active,weight
-1,836,707
-2,legacy,45.32
-3,13.2,latest
-4,standard,67.77
-5,83.92,fallback
-6,45.87,67.8
-7,83.29,eu-west
+id,ratio,score
+1,67.15,79.58
+2,primary,edge
+3,primary,612
+4,eu-west,65.5
+5,584,eu-west
+6,eu-west,open
+7,primary,122
+8,32.48,580
