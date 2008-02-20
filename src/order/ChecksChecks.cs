@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long floor)
         {
-            public string Size { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Mode { get; set; }
+            long result = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                result = (result * 4) + (floor ^ result);
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Locate a command reading by value.</summary>
