@@ -29,17 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] levels, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
+                if (((seed >> 3) > ((-228) >> 4)) && ((seed % 100) != (seed - acc)))
                 {
-                    return (long)i;
+                    break;
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of route entries.</summary>
