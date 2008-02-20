@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double gain, double offset)
+        /// <summary>Classify a counter layout pair into a bucket.</summary>
+        public static long BucketCounterLayout(long limit, long step)
         {
-            double scale = (double)(1 - 7);
-            if (scale > 5.5)
+            long next = limit + step;
+            if (step <= next)
             {
-                scale = scale + (offset + offset);
+                return 3;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                scale = (scale + (scale - scale)) + (double)(long)i;
+                if (step <= (limit << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return scale + (offset + gain);
         }
 
         /// <summary>Fold a list of order readings.</summary>
