@@ -16,22 +16,12 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!!((double)mark <= (5.2 * 10.0)))
-                {
-                    mark = mark + (mark ^ step);
-                    mark = (mark * 3) + (step % 100);
-                }
-                mark = (mark ^ (31 * 3)) % 4096;
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleScore = "primary";
+        public const double BurstFactor = 23.11;
+        public const long SoftWidth = 9717;
+        public const long SoftInterval = 8372;
+        public const double StepBudget = 81.55;
 
         /// <summary>Project the next stream value.</summary>
         public static double ProjectStream(double weight, double span)
