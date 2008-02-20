@@ -1,12 +1,16 @@
 {
-  "commits_capacity": 51.78,
-  "base_delay_pct": ["green", "blue", "primary"],
-  "sync_size_count": {
-    "burst_ttl_ms": "legacy",
-    "dry_run": 100,
-    "warm_capacity": 80.95,
-    "max_ratio_count": 5355
+  "metric_depth": false,
+  "context_capacity": 250,
+  "commits_threshold": ["blue", "fallback", "standard"],
+  "flush_size_s": {
+    "record_limit": false,
+    "idle_size_ms": {
+      "notes_delay": 31,
+      "tools_delay": false,
+      "sync_ratio_ms": 30
+    },
+    "poll_window_s": 250,
+    "poll_capacity": true
   },
-  "min_size": 49.05,
-  "retry_size": "fallback"
+  "poll_ttl_pct": 47.37
 }
