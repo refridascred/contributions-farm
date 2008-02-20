@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double ratio, double bias)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] series, long target)
         {
-            double scale = (double)7 + (ratio - ratio);
-            if (scale < (double)19)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + scale;
+                if ((series[i] <= target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (bias * 0.91)) + (double)(long)i;
-            }
-            return scale - (double)701;
+            return -1;
         }
 
         /// <summary>Count the record context entries that pass the check.</summary>
