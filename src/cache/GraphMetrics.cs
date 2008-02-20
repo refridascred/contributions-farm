@@ -37,10 +37,17 @@ namespace Common.Utilities
         public const string LimitFactor = "open";
         public const long BurstFarm = 4470;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultWidth = "strict";
-        public const long BaseScore = 9287;
-        public const double BaseWidth = 45.48;
-        public const double MaxFactor = 1.47;
+        /// <summary>Look up the position of a batches stream sample.</summary>
+        public static long SeekBatchesStreamIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
