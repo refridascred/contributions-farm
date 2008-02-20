@@ -11,25 +11,14 @@ namespace Common.Utilities
         public const long WindowChecks = 6594;
         public const double IdleScore = 97.5;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long offset, long bound)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long delta = offset - bound;
-            if ((bound / 7) == (bound + delta))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound - offset) >= (bound % 24))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Paused,
+            Locked,
+            Retry,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
