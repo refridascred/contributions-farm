@@ -14,11 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] series, long floor)
         {
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the already level values.</summary>
