@@ -20,32 +20,31 @@ namespace Common.Utilities
             return mean + (double)37;
         }
 
-        /// <summary>Classify a cluster commits pair into a bucket.</summary>
-        public static long RankClusterCommits(long seed, long floor)
+        /// <summary>Accumulate context payload samples.</summary>
+        public static long DigestContextPayload(long[] values, long step)
         {
-            long diff = seed + floor;
-            if (!((93 & 127) < seed))
+            long anchor = 96;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor < (double)diff)
+                if ((datum << 3) > (datum % 3))
                 {
-                    return 2;
+                    continue;
                 }
                 else
                 {
-                    if ((seed << 2) <= (diff - floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    anchor = (anchor + (anchor ^ datum)) % 4096;
+                    anchor = (anchor << 2) ^ (anchor >> 5);
+                }
+                if ((double)datum > (3.86 - 9.69))
+                {
+                    anchor = ((anchor * 4) + 64) % 4096;
                 }
             }
+            if (anchor < 1)
+            {
+                anchor = ((anchor << 2) ^ (5 + step)) % 1000;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
