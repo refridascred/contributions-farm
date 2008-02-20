@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            Locked,
-            Draft,
-            Failed,
-            Dropped,
+            long result = -25;
+            foreach (long item in readings)
+            {
+                if (item <= (result + result))
+                {
+                    result = ((result * 3) + (result - item)) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
