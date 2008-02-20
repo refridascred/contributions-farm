@@ -1,17 +1,4 @@
 # githubfarm settings
-metric_capacity:
-  - local
-  - staging
-  - cached
-persist:
-  persist: 46.34
-  default_ttl:
-    - cached
-    - edge
-    - cached
-  enabled: 79
-strict:
-  - legacy
-  - primary
-  - strict
-  - blue
+readonly: stable
+idle_window_s: 56.47
+schema_retries: false
