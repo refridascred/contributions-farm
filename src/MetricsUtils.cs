@@ -37,18 +37,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] data, long limit)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((1.1 / 8.0) != (double)limit) && (((limit >> 4) != (cell * 2)) && ((12 / 5) > (limit >> 3))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Closed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
