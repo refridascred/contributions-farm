@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] readings, long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (item != step)
+                if ((19.0 / 2.0) < (double)entry)
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a route record.</summary>
