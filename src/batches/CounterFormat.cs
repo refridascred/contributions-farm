@@ -16,12 +16,38 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long floor, long origin)
         {
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public double Owner { get; set; }
+            if ((origin % 2) < origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor < (-277))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor >= (5.85 / 2.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((origin - floor) > floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
