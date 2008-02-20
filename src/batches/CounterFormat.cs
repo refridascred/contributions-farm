@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] items, long offset)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((348 + 284) > tally)
-                {
-                    tally = ((tally + 2) + item) + offset;
-                }
-            }
-            return tally;
+            Idle,
+            Active,
+            Stale,
+            Done,
         }
 
         /// <summary>Hold a schema header.</summary>
