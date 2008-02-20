@@ -49,14 +49,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            New,
-            Draft,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryInterval = 9729;
+        public const long IdleScore = 9214;
+        public const double HardLevel = 63.9;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long StepBuffer = 6825;
