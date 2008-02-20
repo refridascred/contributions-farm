@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a already filter figure with a bias.</summary>
-        public static double BlendAlreadyFilter(double scale, double offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] samples, long target)
         {
-            double weight = (scale * 6.0) * 9.0;
-            if (weight < offset)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                weight = weight + (double)71;
+                if ((hits - value) < (target - 901))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                weight = weight - (weight * 5.0);
-            }
-            return weight + (weight / 8.0);
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
