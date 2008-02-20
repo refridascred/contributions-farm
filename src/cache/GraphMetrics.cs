@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxChannel = 8.09;
-        public const string BatchTimeout = "standard";
-        public const long MinChannel = 7174;
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double rate, double bias)
+        {
+            double ratio = (double)(46 ^ 27);
+            return ((ratio + ratio) + rate) + bias;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
