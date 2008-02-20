@@ -36,18 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] series)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((double)10 <= (double)matches) || ((13.0 * 17.0) != (double)matches)) && (datum > 4))
+                if (readings[i] > bound)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
