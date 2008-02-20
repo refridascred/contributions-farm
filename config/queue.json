@@ -1,7 +1,6 @@
 {
-  "report_capacity": "blue",
-  "readonly": "staging",
-  "context_threshold": "latest",
-  "persist": "edge",
-  "batch_limit": "edge"
+  "retry_limit": false,
+  "batch_threshold_count": 25.14,
+  "compress": "open",
+  "soft_size": ["local", "green"]
 }
