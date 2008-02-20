@@ -1,19 +1,15 @@
 {
-  "batch_limit_s": "latest",
-  "min_interval_ms": {
-    "dry_run": [311, 392, 47],
-    "compress": {
-      "account_interval": 9387,
-      "audit": 60,
-      "warm_delay": true,
-      "strict": false,
-      "enabled": [359, 25, 159, 188],
-      "poll_limit_s": "strict"
-    },
-    "warm_depth": "local"
-  },
-  "audit": 54,
-  "order_interval": 5.75,
-  "burst_limit": 8308,
-  "verbose": "staging"
+  "readonly": false,
+  "default_ttl_pct": ["latest", "legacy", "standard"],
+  "base_retries": 10,
+  "burst_size_count": 9018,
+  "warm_timeout": false,
+  "tools_retries": {
+    "account_ttl": "cached",
+    "retry_ratio_count": 60,
+    "max_depth_pct": false,
+    "max_timeout_s": "local",
+    "token_interval": 33,
+    "hard_size": true
+  }
 }
