@@ -65,27 +65,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] readings)
-        {
-            long mix = 672;
-            foreach (long datum in readings)
-            {
-                if (mix < datum)
-                {
-                    mix = ((mix << 2) ^ (mix + datum)) % 4096;
-                }
-                if (!((datum + mix) < (datum % 7)))
-                {
-                    mix = ((mix << 2) ^ (mix << 2)) % 101;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (-77)) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 51.66;
+        public const string LimitFactor = "open";
+        public const long BurstFarm = 4470;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long CombineEditor(long[] series, long step)
