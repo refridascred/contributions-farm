@@ -52,10 +52,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 3551;
-        public const double MinSpan = 52.67;
-        public const long MaxSupport = 414;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportGaps(long[] levels, long floor)
