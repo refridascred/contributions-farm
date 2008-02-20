@@ -14,14 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            New,
-            Pending,
-            Dropped,
-            Ready,
-            Failed,
+            public bool Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the already level values.</summary>
