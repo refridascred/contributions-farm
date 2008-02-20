@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const long CacheLevel = 8444;
         public const double LimitSize = 43.86;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 4913;
-        public const double LimitGithubfarm = 83.75;
-        public const long MaxDepth = 2094;
-        public const long CacheSize = 7274;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = (sum << 3) ^ (bound - bound);
+                sum = (sum << 3) ^ sum;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a stream entry reading by value.</summary>
         public static long SeekStreamEntryIndex(long[] levels, long step)
