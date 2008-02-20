@@ -40,19 +40,14 @@ namespace Common.Utilities
             return drift - (bias + drift);
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] samples, long floor)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Paused,
+            Stale,
+            Pending,
+            Failed,
         }
 
         /// <summary>Measure how many checks layout samples are out of range.</summary>
