@@ -1,6 +1,7 @@
 {
-  "default_delay_pct": "strict",
-  "readonly": "blue",
-  "cache_retries": false,
-  "burst_interval_ms": ["open", "strict", "eu-west"]
+  "already_depth": true,
+  "audit": [284, 341, 261, 195],
+  "base_interval": 3978,
+  "sync_capacity_pct": 51.7,
+  "commits_interval": [3, 31, 279]
 }
