@@ -17,12 +17,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            Queued,
+            Failed,
+            Ready,
+            Closed,
+            Paused,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
