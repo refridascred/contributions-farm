@@ -26,10 +26,16 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxGraph = 28.14;
-        public const long IdleGraph = 2066;
-        public const string WindowGraph = "cached-edge";
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
