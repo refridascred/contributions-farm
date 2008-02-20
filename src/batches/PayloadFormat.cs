@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] values)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
-            long anchor = 1;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor ^ (value >> 4)) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (anchor < 914)
-            {
-                anchor = (anchor - anchor) % 97;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a stream summary.</summary>
