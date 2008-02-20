@@ -62,22 +62,19 @@ namespace Common.Utilities
         public const string LimitCluster = "legacy";
         public const double MaxRatio = 92.75;
 
-        /// <summary>Measure how many command contributi samples are out of range.</summary>
-        public static long TallyCommandContributiOutliers(long[] items, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = 6;
+            foreach (long datum in items)
             {
-                if ((tally - sample) > (tally & 127))
+                result = (result + (result % 12)) + datum;
+                if ((result & 7) != (result - result))
                 {
-                    tally = (tally + 3) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = ((result << 2) ^ (result / 4)) % 65521;
                 }
             }
-            return tally;
+            return result % 4096;
         }
     }
 }
