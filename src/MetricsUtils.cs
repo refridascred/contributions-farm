@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] items, long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] items)
         {
-            long sum = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (((origin / 7) < origin) && ((sample + origin) >= origin))
+                if ((97 + item) >= (33 - 718))
                 {
-                    sum = sum ^ (49 >> 2);
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return sum % 97;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
