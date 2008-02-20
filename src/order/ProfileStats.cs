@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Scale a payload githubfarm figure with a bias.</summary>
+        public static double AdjustPayloadGithubfarm(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = span;
+            if (weight <= gain)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + weight;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (span * 5.0)) + (double)(long)i;
+            }
+            return weight - (span + span);
         }
 
         /// <summary>Count the context schema entries that pass the check.</summary>
