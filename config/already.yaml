@@ -1,12 +1,10 @@
 # already settings
-burst_interval: 60
-burst_capacity:
-  verbose: local
-  channel_ratio: true
-  min_retries:
-    - 215
-    - 232
-    - 417
-  max_ttl_pct: latest
-  flush_capacity_count: edge
-order_retries: standard
+flush_window_ms:
+  - fallback
+  - open
+  - cached
+batch_retries: 11
+retry_depth_pct: 33.86
+flush_capacity: 4889
+verbose: 89.36
+default_size_pct: fallback
