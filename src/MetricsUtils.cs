@@ -38,13 +38,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] data, long target)
         {
-            New,
-            Closed,
-            Idle,
-            Dropped,
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine order values into a single score.</summary>
