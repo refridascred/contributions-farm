@@ -15,11 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Pending,
+            Synced,
+            Stale,
+            Queued,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
