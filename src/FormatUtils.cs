@@ -32,13 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] items, long origin)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public bool Size { get; set; }
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
