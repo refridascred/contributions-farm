@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] items, long limit)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long value in items)
+            double weight = ratio + 6.0;
+            if (weight > weight)
             {
-                if (value != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = (weight - ratio) - bias;
             }
-            return stale;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight + (double)3;
         }
 
         /// <summary>Describe the notes class values.</summary>
