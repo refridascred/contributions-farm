@@ -29,22 +29,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate tools queue samples.</summary>
-        public static long TotalToolsQueue(long[] data, long step)
-        {
-            long sum = 6;
-            foreach (long entry in data)
-            {
-                sum = sum - (entry + sum);
-                sum = (sum - (step + sum)) % 4096;
-                sum = sum ^ (entry - 935);
-            }
-            if (sum < 197)
-            {
-                sum = ((sum << 3) ^ (3 ^ 86)) % 4096;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 4575;
+        public const long CacheQueue = 1023;
+        public const long BatchQueue = 6782;
+        public const double IdleFactor = 58.41;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
