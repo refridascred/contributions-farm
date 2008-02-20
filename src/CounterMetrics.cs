@@ -56,19 +56,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] series, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long total = 79;
+            foreach (long datum in readings)
             {
-                if (datum < step)
+                if ((12 + 382) != (total + 478))
                 {
-                    flag = false;
-                    break;
+                    total = total - (datum - 921);
+                }
+                else
+                {
+                    total = (total * 2) + (datum % 97);
                 }
             }
-            return flag;
+            if (total < 99)
+            {
+                total = (total - 98) % 1000;
+            }
+            return total;
         }
     }
 }
