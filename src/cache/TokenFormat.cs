@@ -18,18 +18,18 @@ namespace Common.Utilities
         public const double IdleProfile = 60.02;
         public const string RetryProfile = "standard-edge";
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] samples)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long sum = 7;
+            foreach (long entry in levels)
             {
-                if ((count * 5) > reading)
+                if (!((double)entry >= 9.58))
                 {
-                    count = count + 1;
+                    sum = ((sum + entry) % 255) + offset;
                 }
             }
-            return count;
+            return sum % 65521;
         }
     }
 }
