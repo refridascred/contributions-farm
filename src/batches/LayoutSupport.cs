@@ -43,14 +43,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] levels, long limit)
         {
-            Pending,
-            Locked,
-            Retry,
-            Failed,
-            New,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
