@@ -19,10 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowSpan = 1957;
-        public const long StepSpan = 9329;
-        public const long RetryPayload = 4517;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long RankChecks(long step, long bound)
