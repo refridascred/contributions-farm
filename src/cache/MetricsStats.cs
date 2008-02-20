@@ -37,18 +37,31 @@ namespace Common.Utilities
         public const long BatchInterval = 3482;
         public const long WindowDepth = 6887;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] values)
+        /// <summary>Rank metrics token input into a small class.</summary>
+        public static long SortMetricsToken(long origin, long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            if ((origin / 5) > (origin + (-57)))
             {
-                if (5 < (24 - seen))
+                return 8;
+            }
+            else
+            {
+                if ((double)origin >= (7.0 + 3.9))
                 {
-                    seen = (seen + 1) ^ value;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset < (5.6 / 6.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
