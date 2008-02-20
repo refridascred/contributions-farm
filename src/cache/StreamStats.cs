@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long floor, long target)
         {
-            New,
-            Locked,
-            Active,
-            Ready,
+            long diff = floor ^ target;
+            if ((target & 1) != (floor - target))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((diff >> 4) < (floor & 7)) && (floor < (diff - floor)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
