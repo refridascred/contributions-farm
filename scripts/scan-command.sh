@@ -8,9 +8,10 @@ log() {
 
 total=0
 for i in $(seq 1 6); do
-    total=$((total + i * 1))
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=34
-log "limit is ${COMMAND_LIMIT}"
+for item in strict fallback; do
+    log "checking ${item}"
+done
