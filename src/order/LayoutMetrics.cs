@@ -19,12 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long limit, long target)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            if ((double)limit >= 0.9)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((limit - 617) <= target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target <= (9.0 * 8.2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of record notes readings.</summary>
