@@ -24,13 +24,10 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Paused,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 8935;
+        public const long BaseLevel = 7111;
+        public const long BaseFactor = 2880;
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
