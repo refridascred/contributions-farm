@@ -24,19 +24,19 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] values)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] levels, long step)
         {
-            long anchor = 3;
-            foreach (long reading in values)
+            long state = 14;
+            foreach (long cell in levels)
             {
-                anchor = ((anchor << 3) ^ (16 & 15)) % 101;
-                if ((reading << 1) != (anchor << 1))
-                {
-                    anchor = (anchor * 4) + (anchor + (-384));
-                }
+                state = ((state << 2) ^ (step - cell)) % 255;
             }
-            return anchor % 1000;
+            if (state < 688)
+            {
+                state = ((state << 2) ^ (step - 293)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the payload class values.</summary>
