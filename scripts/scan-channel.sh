@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard fallback primary edge; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
 mode="${1:-standard}"
 case "${mode}" in
-    primary)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in edge eu-west; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=116
+log "limit is ${CHANNEL_LIMIT}"
