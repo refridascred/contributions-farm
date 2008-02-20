@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] readings, long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double ratio = rate - rate;
+            if (ratio < (double)7)
             {
-                if (((hits / 8) >= (hits % 64)) && ((item + item) < (item << 1)))
-                {
-                    hits = (hits + 1) - target;
-                }
+                ratio = ratio + bias;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - (ratio / 2.0);
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
