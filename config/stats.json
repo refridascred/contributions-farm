@@ -1,11 +1,8 @@
 {
-  "warm_size_pct": {
-    "enabled": "green",
-    "dry_run": 30,
-    "account_interval": 82.94
-  },
-  "hard_ttl_ms": true,
-  "retry_ttl_s": "green",
-  "poll_retries_ms": 15.92,
-  "soft_depth": ["green", "latest"]
+  "min_ttl_ms": [334, 248, 250, 6],
+  "hard_retries_ms": "open",
+  "max_retries_pct": false,
+  "contributi_retries": "local",
+  "poll_ratio": true,
+  "queue_threshold": 9536
 }
