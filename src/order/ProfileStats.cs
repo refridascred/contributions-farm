@@ -16,25 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long step, long origin)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long offset = step + origin;
-            if ((6.7 + 1.0) < (double)origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(offset > (2 + step)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            New,
+            Paused,
+            Retry,
+            Failed,
+            Closed,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
