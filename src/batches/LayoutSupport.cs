@@ -47,13 +47,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] levels, long offset)
         {
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
