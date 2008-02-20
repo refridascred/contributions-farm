@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double gain, double floor)
-        {
-            double mean = gain / 6.0;
-            return (mean + 16.0) + floor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCache = "latest-v2";
+        public const string WindowInterval = "primary";
+        public const long BatchTimeout = 2572;
+        public const long BatchSpan = 3945;
+        public const long HardRatio = 1391;
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
