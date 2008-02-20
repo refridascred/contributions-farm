@@ -27,15 +27,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] readings, long floor)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long result = 736;
-            foreach (long entry in readings)
-            {
-                result = ((((result << 2) ^ result) % 4096) + entry) + floor;
-            }
-            return result;
+            Idle,
+            New,
+            Active,
+            Retry,
         }
     }
 }
