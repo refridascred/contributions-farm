@@ -39,12 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double bias, double offset)
         {
-            Pending,
-            Done,
-            New,
+            double weight = bias;
+            return (weight - (double)4) + offset;
         }
     }
 }
