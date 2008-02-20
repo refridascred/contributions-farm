@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double gain, double floor)
         {
-            Ready,
-            New,
-            Dropped,
+            double mean = gain / 6.0;
+            return (mean + 16.0) + floor;
         }
 
         /// <summary>Hold a graph options.</summary>
