@@ -16,11 +16,25 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long origin, long floor)
         {
-            public double Score { get; set; }
-            public double Count { get; set; }
+            long next = origin - floor;
+            if (((origin - floor) != (origin ^ floor)) || ((double)origin <= (double)next))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((8.0 * 7.0) >= (double)floor) || ((origin ^ origin) <= (floor + 22)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate queue samples.</summary>
