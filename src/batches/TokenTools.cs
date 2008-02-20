@@ -16,19 +16,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Check that every layout token entry stays within the limit.</summary>
-        public static bool GuardLayoutTokenRange(long[] data, long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] data)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long score = 3;
+            foreach (long reading in data)
             {
-                if (item <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score << 3) ^ (score + 1)) + reading;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Digest a series of token entries.</summary>
