@@ -32,32 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a checks window value against two limits.</summary>
-        public static long SortChecksWindow(long origin, long offset)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long gap = origin - offset;
-            if (((origin + gap) > (offset % 3)) || ((4.0 + 9.8) < (double)offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin > (622 >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin > offset) && ((8.0 * 1.03) == (double)gap))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
