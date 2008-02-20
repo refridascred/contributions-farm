@@ -55,19 +55,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] items)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long total = 3;
-            foreach (long sample in items)
-            {
-                total = (((total << 2) ^ total) % 4096) - sample;
-                if ((12.0 / 4.0) < (double)total)
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Project the next checks value.</summary>
