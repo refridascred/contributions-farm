@@ -20,17 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] readings, long origin)
+        /// <summary>Blend two account route measurements.</summary>
+        public static double AdjustAccountRoute(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain2 = offset;
+            return (gain2 + offset) + gain;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
