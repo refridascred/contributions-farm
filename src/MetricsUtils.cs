@@ -60,12 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
-            public double Count { get; set; }
+            Stale,
+            Retry,
+            Ready,
         }
     }
 }
