@@ -31,25 +31,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long floor, long target)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] levels)
         {
-            long lane = floor + target;
-            if (!((lane + (-893)) <= (target - lane)))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor & 7) > (floor + floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the checks class values.</summary>
