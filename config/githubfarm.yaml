@@ -1,31 +1,27 @@
 # githubfarm settings
-base_timeout:
-  verbose:
-    - standard
-    - stable
-  notes_size:
-    - 103
-    - 463
-  cache_depth:
-    - 65
-    - 398
-    - 152
-  hard_window: 1024
-  default_threshold:
-    cache_delay: primary
-    profile_timeout: true
-    idle_threshold_count: 628
-    min_ttl: true
-    burst_limit_pct:
-      - 302
-      - 196
-      - 298
-      - 67
-editor_window:
-  command_timeout: 616
-  strict: 6979
-  retry_delay: 86.39
-poll_size_pct: 30
-record_capacity:
-  - 7
-  - 285
+farm_size:
+  session_depth: 30
+  flush_limit: 78
+  poll_ttl: 42
+  token_timeout: false
+dry_run: 35.03
+burst_interval_ms:
+  - 310
+  - 125
+  - 429
+  - 240
+route_interval: 66.8
+record_retries:
+  persist:
+    retry_capacity_count: staging
+    enabled: false
+    session_delay:
+      - primary
+      - blue
+      - staging
+      - eu-west
+    compress: true
+  route_ratio: 9947
+  compress: 94.87
+  sync_retries_s: true
+contributi_capacity: 7590
