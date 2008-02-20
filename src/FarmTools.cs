@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] levels, long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 98;
+            foreach (long item in samples)
             {
-                if (levels[i] <= seed)
+                if ((3.3 * 9.5) < (double)state)
                 {
-                    return (long)i;
+                    state = (state * 3) + state;
+                }
+                else
+                {
+                    state = (state << 2) ^ (item / 3);
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Hold a route header.</summary>
