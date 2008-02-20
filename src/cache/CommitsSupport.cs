@@ -19,12 +19,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 168;
-        public const long WindowLayout = 8423;
-        public const long LimitCount = 6871;
-        public const double MaxBudget = 50.18;
-        public const string BurstLayout = "local-v2";
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Synced,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TotalSession(long[] items, long floor)
