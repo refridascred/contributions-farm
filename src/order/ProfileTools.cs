@@ -53,14 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Failed,
-            Dropped,
-            Locked,
-            Draft,
-            Retry,
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
