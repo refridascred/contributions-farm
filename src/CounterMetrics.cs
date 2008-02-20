@@ -39,19 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((((sample / 5) >= (sample + 432)) && ((hits >> 1) > (sample >> 2))) && !((sample - hits) == (49 - 815)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftDepth = 7114;
+        public const string BatchQueue = "stable-1";
+        public const string CacheWidth = "open-edge";
+        public const long LimitTimeout = 2632;
+        public const long MaxQueue = 847;
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
