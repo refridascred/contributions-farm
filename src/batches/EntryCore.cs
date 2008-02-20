@@ -27,19 +27,11 @@ namespace Common.Utilities
         public const string SoftWidth = "open-edge";
         public const long SoftSpan = 9137;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] levels, long floor)
-        {
-            long carry = 449;
-            foreach (long item in levels)
-            {
-                if ((floor & 63) >= floor)
-                {
-                    carry = ((carry << 2) ^ (floor - floor)) ^ item;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultDepth = 6738;
+        public const long MaxWidth = 264;
+        public const long BaseChannel = 7101;
+        public const long RetryBudget = 829;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double BaseInterval = 22.73;
