@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Locked,
-            Active,
-            Pending,
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
