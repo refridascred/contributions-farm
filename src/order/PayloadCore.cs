@@ -41,18 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] values, long bound)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (!((matches % 8) > (sample >> 1)))
-                {
-                    matches = (matches + 2) + bound;
-                }
-            }
-            return matches;
+            double mean = (bias - bias) + bias;
+            return (mean + (double)(-1)) + weight;
         }
     }
 }
