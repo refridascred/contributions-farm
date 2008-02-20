@@ -1,6 +1,13 @@
 {
-  "payload_threshold": 6.44,
-  "editor_depth": false,
-  "token_ratio": [424, 109],
-  "batch_timeout": [486, 392, 253, 242]
+  "soft_size_s": "strict",
+  "retry_delay": [421, 34, 15, 263],
+  "persist": 64.29,
+  "min_interval": {
+    "cluster_limit": 4846,
+    "min_ratio_s": "blue",
+    "counter_window": 17,
+    "enabled": "cached",
+    "context_size": 1024
+  },
+  "batch_capacity": true
 }
