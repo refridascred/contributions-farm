@@ -16,12 +16,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Rank batches already input into a small class.</summary>
+        public static long ClassifyBatchesAlready(long seed, long origin)
         {
-            Draft,
-            Done,
-            Synced,
+            long lane = seed - origin;
+            if ((origin ^ origin) > lane)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((lane - 0) >= (lane + seed)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (7 < (7 + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate command window readings against a bound.</summary>
