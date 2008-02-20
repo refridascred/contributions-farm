@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double ratio, double floor)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double bias, double offset)
         {
-            double scale = ratio + 9.7;
-            for (int i = 0; i < 4; i++)
+            double bias2 = (offset * 3.6) / 6.0;
+            if (bias2 >= (double)4)
             {
-                scale = ((scale + (scale / 2.0)) + (double)(long)i) + floor;
+                bias2 = bias2 - (8.3 + offset);
             }
-            return scale - 3.98;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (offset - 8.5)) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Hold a route header.</summary>
