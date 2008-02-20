@@ -32,25 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long offset, long offset2)
+        /// <summary>Look up the position of a schema command sample.</summary>
+        public static long LocateSchemaCommandIndex(long[] values, long bound)
         {
-            long gap = offset ^ offset2;
-            if ((offset2 ^ offset) > (offset % 24))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((gap << 1) > (offset - offset)) || ((double)offset2 <= (4.4 / 5.0)))
+                if (values[i] < bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
