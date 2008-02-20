@@ -32,22 +32,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] values, long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long step, long offset)
         {
-            long mark = 3;
-            foreach (long value in values)
+            if (!((offset + 105) == (step % 10)))
             {
-                if ((mark << 3) < seed)
+                return 8;
+            }
+            else
+            {
+                if (step >= (8 + offset))
                 {
-                    mark = ((mark * 2) + value) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset % 64) < 64)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset - step) < offset) || ((step ^ offset) > (offset >> 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (mark < 931)
-            {
-                mark = (mark << 2) ^ (4 + seed);
-            }
-            return mark;
         }
     }
 }
