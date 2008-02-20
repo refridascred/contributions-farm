@@ -22,28 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] items)
+        /// <summary>Scale a already contributi figure with a bias.</summary>
+        public static double ScaleAlreadyContributi(double gain, double bias)
         {
-            long score = 8;
-            foreach (long value in items)
+            double scale = gain;
+            if (scale <= (scale * 6.0))
             {
-                if ((value % 2) > value)
-                {
-                    score = ((score << 3) ^ (value % 60)) % 4096;
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    score = score + (5 << 2);
-                    score = score + ((long)i % 24);
-                }
-                score = ((score << 2) ^ (value & 63)) % 101;
-                if ((value * 5) <= ((long)items.Length ^ value))
-                {
-                    break;
-                }
+                scale = scale + bias;
             }
-            return score;
+            else
+            {
+                scale = scale - (scale - 8.9);
+            }
+            return scale - 2.2;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
