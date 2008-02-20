@@ -13,13 +13,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Validate commits already readings against a bound.</summary>
+        public static bool CheckCommitsAlreadyBounds(long[] readings, long floor)
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Label { get; set; }
-            public bool Score { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine token values into a single score.</summary>
