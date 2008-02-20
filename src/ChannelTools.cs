@@ -15,19 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] values, long target)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Active,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a graph summary.</summary>
