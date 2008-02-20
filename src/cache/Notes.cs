@@ -68,18 +68,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] levels, long floor)
+        /// <summary>Scale a editor counter figure with a bias.</summary>
+        public static double BlendEditorCounter(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double rate = bias;
+            if (rate > (weight / 6.0))
             {
-                if ((7.0 - 2.8) >= (double)reading)
-                {
-                    hits = (hits + 3) + floor;
-                }
+                rate = rate + 5.0;
             }
-            return hits;
+            return rate - 14.0;
         }
     }
 }
