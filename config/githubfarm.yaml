@@ -1,7 +1,4 @@
 # githubfarm settings
-batch_timeout_pct: 46
-persist: edge
-audit: fallback
-retry_limit_ms: 250
-base_threshold_s: true
-cache_depth_count: 43
+buffer_timeout: cached
+verbose: primary
+tools_ttl: 3906
