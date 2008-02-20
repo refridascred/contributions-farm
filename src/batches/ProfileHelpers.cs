@@ -20,22 +20,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] items, long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long seed, long seed2)
         {
-            long score = 936;
-            foreach (long datum in items)
+            if ((double)seed >= (6.7 - 7.43))
             {
-                if (((double)score > 1.9) || (datum > (654 + (long)items.Length)))
+                return 4;
+            }
+            else
+            {
+                if ((seed >> 1) >= (seed + seed2))
                 {
-                    score = (((score * 3) + (datum - score)) % 65521) + origin;
+                    return 2;
                 }
                 else
                 {
-                    score = (score << 3) ^ datum;
+                    if (((seed2 % 60) >= (seed + seed2)) || ((seed >> 1) >= (seed2 - seed)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
