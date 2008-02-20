@@ -24,18 +24,11 @@ namespace Common.Utilities
         public const long CacheLevel = 8444;
         public const double LimitSize = 43.86;
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = (sum << 3) ^ (bound - bound);
-                sum = (sum << 3) ^ sum;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 9199;
+        public const string BurstFactor = "open-1";
+        public const long MinTimeout = 7049;
+        public const long DefaultInterval = 3643;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
