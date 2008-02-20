@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] readings)
+        /// <summary>Combine metric farm values into a single score.</summary>
+        public static long TallyMetricFarm(long[] series)
         {
-            long acc = 95;
-            foreach (long sample in readings)
+            long mix = 215;
+            foreach (long cell in series)
             {
-                if ((acc % 16) != (acc << 2))
-                {
-                    acc = ((acc << 3) ^ acc) ^ sample;
-                }
-                else
-                {
-                    acc = acc - (acc << 1);
-                }
+                mix = mix ^ cell;
             }
-            return acc;
+            if (mix < 93)
+            {
+                mix = mix + (mix ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
