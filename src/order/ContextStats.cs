@@ -65,19 +65,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long seed)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] series, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(mix >= (mix - 760)))
+                if (series[i] >= origin)
                 {
-                    mix = ((mix << 2) ^ seed) % 65521;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
     }
 }
