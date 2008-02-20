@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long seed, long limit)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            if (((limit - seed) >= (seed + seed)) && ((3.0 + 9.59) >= (double)seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit - seed) <= (52 * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-7) + seed) > (seed + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((limit / 2) == (limit ^ 2)) && ((limit & 63) < (seed + limit)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Ready,
+            New,
+            Dropped,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
