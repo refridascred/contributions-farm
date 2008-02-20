@@ -53,12 +53,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long floor, long step)
         {
-            Closed,
-            Ready,
-            Idle,
+            long step2 = floor ^ step;
+            if (1.81 <= (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor - 93) <= 19)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step2 - 66) >= (step2 % 24))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor << 2) > (floor % 60))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
