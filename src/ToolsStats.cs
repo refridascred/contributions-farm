@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Stale,
+            Retry,
+            Queued,
+            Done,
             New,
-            Ready,
-            Active,
+            Failed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
