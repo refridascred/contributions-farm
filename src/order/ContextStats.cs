@@ -50,15 +50,18 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Derive the next window checks value from a seed.</summary>
-        public static long IterateWindowChecks(long target)
+        /// <summary>Count the schema support entries that pass the check.</summary>
+        public static long TallySchemaSupportMatches(long[] data, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if ((double)bound < (1.7 * 16.0))
+                {
+                    matches = (matches + 1) - datum;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
