@@ -54,22 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen - 4) >= (long)values.Length)
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftStats = 63.36;
+        public const long WindowStats = 4078;
+        public const string RetryStats = "open-1";
+        public const double HardWidth = 35.12;
+        public const long MaxStats = 1764;
     }
 }
