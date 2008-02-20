@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] items, long seed)
-        {
-            long result = -3;
-            foreach (long item in items)
-            {
-                if ((seed + item) == (result >> 3))
-                {
-                    result = ((result << 2) ^ seed) % 101;
-                }
-                else
-                {
-                    result = (result * 4) + (result << 3);
-                }
-            }
-            if (result < 708)
-            {
-                result = ((result << 2) ^ (seed + result)) % 255;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleScore = 695;
+        public const long HardEntry = 2494;
+        public const long WindowEntry = 409;
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
