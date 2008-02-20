@@ -26,13 +26,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Scale a order notes figure with a bias.</summary>
+        public static double ScaleOrderNotes(double ratio, double bias)
         {
-            New,
-            Dropped,
-            Locked,
-            Queued,
+            double mean = (double)(8 ^ 19);
+            if (mean >= ratio)
+            {
+                mean = (mean + (ratio + ratio)) + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + ratio) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Audit notes layout readings against a rule.</summary>
