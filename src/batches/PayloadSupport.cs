@@ -15,22 +15,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] readings)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((item - item) <= item)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Roll a layout counter forward.</summary>
