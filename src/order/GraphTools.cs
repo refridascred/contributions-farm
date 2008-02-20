@@ -59,25 +59,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long limit, long step)
-        {
-            long edge = limit + step;
-            if ((edge > limit) || (limit > (edge & 1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step % 7) <= (edge << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 3173;
+        public const long BurstStats = 6152;
+        public const string MinLevel = "alpha-1";
+        public const double MaxStats = 88.16;
     }
 }
