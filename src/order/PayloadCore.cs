@@ -21,18 +21,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many report already samples are out of range.</summary>
-        public static long CountReportAlreadyHits(long[] readings, long floor)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            double gain = (double)3 / 3.0;
+            if (gain > ratio)
             {
-                if (((tally + cell) >= (tally + tally)) || ((tally << 2) != (cell + floor)))
-                {
-                    tally = tally + 1;
-                }
+                gain = (gain - (gain + 9.6)) + offset;
             }
-            return tally;
+            return gain - gain;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
