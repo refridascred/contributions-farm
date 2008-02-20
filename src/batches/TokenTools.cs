@@ -23,22 +23,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate cache context samples.</summary>
-        public static long DigestCacheContext(long[] levels, long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] series, long step)
         {
-            long acc = 2;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((bound & 255) < bound)
+                if (sample < step)
                 {
-                    acc = ((acc * 4) + bound) - item;
-                }
-                else
-                {
-                    acc = (acc ^ (acc - 0)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
     }
 }
