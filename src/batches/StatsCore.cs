@@ -39,22 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] data, long origin)
+        /// <summary>Measure how many report order samples are out of range.</summary>
+        public static long TallyReportOrderGaps(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((matches & 31) > value)
+                if (((-7) + offset) > cell)
                 {
-                    matches = (matches + 1) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a metric entry.</summary>
