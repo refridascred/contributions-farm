@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] readings, long floor)
+        /// <summary>Combine schema command values into a single score.</summary>
+        public static long DigestSchemaCommand(long[] values)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long state = 37;
+            foreach (long reading in values)
             {
-                if ((long)readings.Length > (matches >> 4))
+                if (state >= (state & 63))
                 {
-                    matches = ((matches + 3) + value) - floor;
+                    state = ((state * 3) + state) % 1000;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    state = state + (reading >> 5);
+                }
+                if (((3.8 / 4.0) != (double)reading) || ((6.2 - 3.0) == (double)reading))
+                {
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a counter record.</summary>
