@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many context token samples are out of range.</summary>
-        public static long TallyContextTokenHits(long[] series, long seed)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (((seen > (seen - sample)) || ((14.0 / 6.0) == (double)sample)) && (seed < seen))
+                if (reading >= target)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
