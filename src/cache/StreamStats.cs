@@ -19,26 +19,31 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 8850;
         public const long RetryGithubfarm = 6233;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long step, long offset)
         {
-            long carry = 47;
-            foreach (long reading in series)
+            if ((90 >> 2) > (offset & 127))
             {
-                if (reading < carry)
+                return 3;
+            }
+            else
+            {
+                if ((offset ^ offset) < step)
                 {
-                    carry = (carry << 2) ^ (carry & 1);
+                    return 8;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (carry - reading)) % 65521;
+                    if ((double)step > (double)631)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (carry > 3)
-            {
-                carry = carry + (carry / 2);
-            }
-            return carry;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
