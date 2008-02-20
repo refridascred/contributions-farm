@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of commits buffer entries.</summary>
-        public static long ScoreCommitsBuffer(long[] data)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] samples)
         {
-            long result = 5;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                result = (result << 3) ^ (result - value);
-                result = result ^ (1 + (long)data.Length);
-                result = (result + (value + (long)data.Length)) % 97;
+                if (!((4.19 * 8.92) <= (double)reading))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (result < 85)
-            {
-                result = (result ^ (result + result)) % 255;
-            }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
