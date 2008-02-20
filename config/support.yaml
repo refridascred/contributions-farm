@@ -1,10 +1,4 @@
 # support settings
-readonly: 17
-counter_threshold:
-  - strict
-  - staging
-base_depth_pct:
-  - blue
-  - strict
-  - strict
-  - latest
+layout_ratio: 1524
+metric_interval: 77.54
+queue_interval: 250
