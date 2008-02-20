@@ -53,13 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] levels, long floor)
         {
-            Retry,
-            Stale,
-            Synced,
-            Draft,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((floor + matches) < matches)
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
     }
 }
