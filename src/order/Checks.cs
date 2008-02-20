@@ -14,21 +14,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Adjust a report checks reading.</summary>
