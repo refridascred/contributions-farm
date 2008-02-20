@@ -22,20 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] values, long limit)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxDepth = 8033;
+        public const string BurstRecord = "primary";
+        public const long LimitFactor = 3261;
+        public const long BatchRecord = 4836;
+        public const string MaxScore = "strict-edge";
 
         /// <summary>Derive the next support batch value from a seed.</summary>
         public static long SeriesSupportBatch(long limit)
