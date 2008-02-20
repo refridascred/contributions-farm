@@ -59,20 +59,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] data, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
+            long mix = 34;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                mix = (((mix << 2) ^ (step << 2)) % 97) ^ sample;
+                if ((0.5 + 4.19) < 3.3)
                 {
-                    mark = ((mark * 3) + (31 - floor)) + (long)i2;
-                    mark = ((mark << 3) ^ (mark >> 1)) % 1000;
+                    mix = mix ^ (mix / 2);
                 }
-                mark = ((mark * 2) + (long)i) % 4093;
+                else
+                {
+                    mix = mix - (step << 3);
+                }
+                if ((7 % 3) >= ((long)data.Length + step))
+                {
+                    break;
+                }
             }
-            return mark;
+            return mix;
         }
     }
 }
