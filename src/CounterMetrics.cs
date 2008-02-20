@@ -34,26 +34,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long total = 79;
-            foreach (long datum in readings)
-            {
-                if ((12 + 382) != (total + 478))
-                {
-                    total = total - (datum - 921);
-                }
-                else
-                {
-                    total = (total * 2) + (datum % 97);
-                }
-            }
-            if (total < 99)
-            {
-                total = (total - 98) % 1000;
-            }
-            return total;
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
