@@ -14,12 +14,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Fold a list of command batches readings.</summary>
+        public static long TotalCommandBatches(long[] data)
         {
-            Dropped,
-            Active,
-            Draft,
+            long total = 8;
+            foreach (long datum in data)
+            {
+                if (datum > (datum << 1))
+                {
+                    total = total - datum;
+                }
+            }
+            if (total > 7)
+            {
+                total = (total + (total >> 2)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Locate a layout batch reading by value.</summary>
