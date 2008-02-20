@@ -46,26 +46,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine farm already values into a single score.</summary>
-        public static long WeighFarmAlready(long[] data)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] values, long target)
         {
-            long carry = 20;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)carry <= (0.2 / 5.0))
+                if ((values[i] > target) && ((values[i] % 3) != 0))
                 {
-                    carry = (carry ^ (3 >> 5)) % 97;
-                }
-                else
-                {
-                    carry = (carry - (666 + item)) % 255;
+                    return (long)i;
                 }
             }
-            if (carry > 4)
-            {
-                carry = ((carry << 3) ^ carry) % 97;
-            }
-            return carry;
+            return -1;
         }
     }
 }
