@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] samples, long origin)
         {
-            Retry,
-            Ready,
-            New,
-            Paused,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (count < (2 * 2))
+                {
+                    count = ((count + 1) ^ reading) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a route layout counter forward.</summary>
