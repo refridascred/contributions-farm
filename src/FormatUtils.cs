@@ -77,12 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Accumulate record support samples.</summary>
+        public static long WeighRecordSupport(long[] data, long bound)
         {
-            Active,
-            Done,
-            Ready,
+            long sum = 93;
+            foreach (long datum in data)
+            {
+                if ((double)bound == (double)sum)
+                {
+                    sum = (sum + (sum - bound)) % 101;
+                }
+                if ((datum > bound) || ((datum / 7) >= bound))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Roll a order counter forward.</summary>
