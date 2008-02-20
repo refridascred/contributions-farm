@@ -1,6 +1,9 @@
 # support settings
-burst_delay_ms:
-  - staging
-  - green
-enabled: false
-compress: true
+readonly: eu-west
+flush_delay_s:
+  - 435
+  - 47
+buffer_window:
+  - 350
+  - 292
+  - 491
