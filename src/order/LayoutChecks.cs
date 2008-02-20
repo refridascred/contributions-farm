@@ -31,14 +31,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public bool Size { get; set; }
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheRatio = 43.46;
+        public const string CacheTimeout = "local";
+        public const long BurstDepth = 4674;
 
         /// <summary>Audit report cache readings against a rule.</summary>
         public static long TallyReportCacheMatches(long[] levels)
