@@ -23,11 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a counter commits figure with a bias.</summary>
-        public static double ScaleCounterCommits(double weight, double offset)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double ratio, double span)
         {
-            double load = (weight / 6.0) + (weight - 1.19);
-            return (load + 1.85) + offset;
+            double scale = span;
+            if (scale < (scale + ratio))
+            {
+                scale = scale + (double)98;
+            }
+            else
+            {
+                scale = scale + (span * 18.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (double)530;
         }
 
         /// <summary>Adjust a notes reading.</summary>
