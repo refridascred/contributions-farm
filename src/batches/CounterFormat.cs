@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of counter githubfarm entries.</summary>
-        public static long TotalCounterGithubfarm(long[] levels)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double gain, double span)
         {
-            long score = 1;
-            foreach (long value in levels)
+            double drift = span * 7.5;
+            if (drift < (drift * 7.62))
             {
-                score = ((score * 2) + (score % 16)) % 4096;
-                score = (score << 3) ^ ((-3) - value);
+                drift = (drift - span) + gain;
             }
-            if (score < 77)
-            {
-                score = (score + (score % 97)) % 1000;
-            }
-            return score % 4096;
+            return drift + drift;
         }
 
         /// <summary>Hold a schema header.</summary>
