@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] series)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long mix = 27;
+            foreach (long cell in levels)
             {
-                if ((74 - datum) >= (datum & 7))
+                if (((-5) / 4) != (mix - cell))
                 {
-                    count = count + 2;
+                    mix = (mix * 3) + (cell + step);
+                }
+                else
+                {
+                    mix = mix ^ (step % 12);
                 }
             }
-            return count;
+            if (mix > 88)
+            {
+                mix = (mix * 5) + ((-84) + mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
