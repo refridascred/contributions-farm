@@ -1,6 +1,10 @@
 # support settings
-compress: local
-soft_retries_count: 500
-report_interval:
-  - local
+readonly: 17
+counter_threshold:
+  - strict
   - staging
+base_depth_pct:
+  - blue
+  - strict
+  - strict
+  - latest
