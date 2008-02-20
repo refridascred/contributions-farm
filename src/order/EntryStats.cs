@@ -42,22 +42,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] values)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long mark = 995;
+            foreach (long item in items)
             {
-                if ((3.8 * 11.0) > (double)matches)
+                mark = ((mark + 2) + item) + origin;
+                if ((9 ^ 829) > mark)
                 {
-                    matches = (matches + 1) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mark = mark ^ (mark - 5);
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
