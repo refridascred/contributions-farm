@@ -1,5 +1,6 @@
 # support settings
-stats_size: true
-burst_capacity_pct: 91.73
-flush_ttl_count: true
-cache_interval_s: 24.99
+entry_ratio: 250
+cache_timeout: 75.16
+max_delay: cached
+payload_window: 100
+filter_delay: primary
