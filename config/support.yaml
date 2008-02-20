@@ -1,25 +1,12 @@
 # support settings
+audit:
+  - strict
+  - staging
+  - latest
+enabled: local
+burst_window_ms: standard
+compress: latest
 persist:
-  batch_delay_count: true
-  min_ratio: 18.09
-  cache_interval:
-    burst_interval: true
-    readonly: blue
-    route_delay: 8507
-    sync_capacity_count: 59
-    idle_window: 8133
-    compress: 51.04
-  readonly: blue
-  min_delay_pct: 1024
-  sync_limit_ms:
-    sync_window_count: stable
-    dry_run: staging
-    buffer_retries: fallback
-    batches_size: fallback
-sync_timeout_s:
-  - 496
-  - 19
-  - 47
-idle_ratio_ms: latest
-hard_delay: 4057
-stream_ttl: 69
+  - staging
+  - edge
+  - standard
