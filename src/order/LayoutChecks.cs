@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a counter layout pair into a bucket.</summary>
-        public static long BucketCounterLayout(long limit, long step)
+        /// <summary>Digest a series of batch graph entries.</summary>
+        public static long ScoreBatchGraph(long[] samples, long step)
         {
-            long next = limit + step;
-            if (step <= next)
+            long acc = 2;
+            foreach (long datum in samples)
             {
-                return 3;
+                acc = (((acc * 5) + (datum * 5)) % 255) - step;
+                acc = (acc - (acc + acc)) % 4096;
             }
-            else
-            {
-                if (step <= (limit << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return acc % 97;
         }
 
         /// <summary>Combine metrics stats values into a single score.</summary>
