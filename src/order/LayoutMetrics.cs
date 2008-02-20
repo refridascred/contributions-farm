@@ -19,11 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Project the next editor route value.</summary>
+        public static double AdjustEditorRoute(double scale, double span)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            double weight = (scale - scale) * 8.1;
+            return (weight + (double)5) + span;
         }
 
         /// <summary>Fold a list of already readings.</summary>
