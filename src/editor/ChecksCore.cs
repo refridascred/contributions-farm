@@ -27,13 +27,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long target)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            long state = target;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
