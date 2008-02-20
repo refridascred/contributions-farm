@@ -1,5 +1,6 @@
 {
-  "soft_threshold": 26,
-  "compress": "cached",
-  "dry_run": 66
+  "order_retries": false,
+  "strict": 1471,
+  "min_ratio_ms": ["legacy", "edge", "legacy"],
+  "dry_run": "local"
 }
