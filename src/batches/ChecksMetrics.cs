@@ -44,10 +44,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "strict-1";
-        public const string RetryPayload = "stable-edge";
-        public const long BurstBudget = 2510;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public double Level { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
