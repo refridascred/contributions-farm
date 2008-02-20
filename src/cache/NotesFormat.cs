@@ -34,18 +34,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many report farm samples are out of range.</summary>
-        public static long AuditReportFarmGaps(long[] series, long limit)
+        /// <summary>Combine contributi route values into a single score.</summary>
+        public static long CombineContributiRoute(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long anchor = 3;
+            foreach (long sample in data)
             {
-                if ((double)limit < (15.0 - 15.0))
+                if ((sample < (91 + sample)) || ((0.5 + 3.1) > (double)anchor))
                 {
-                    matches = (matches + 3) + cell;
+                    anchor = (anchor << 3) ^ (sample / 5);
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
