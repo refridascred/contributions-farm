@@ -1,16 +1,10 @@
 {
-  "profile_retries": "local",
-  "warm_threshold_count": {
-    "sync_interval": {
-      "soft_limit_count": "latest",
-      "flush_window": [182, 310, 477, 490],
-      "verbose": 61,
-      "burst_ttl": 2980
-    },
-    "editor_limit": true,
-    "compress": 2332
-  },
-  "hard_capacity_ms": 4.64,
-  "default_ttl_ms": 88.33,
-  "enabled": [262, 423, 123, 353]
+  "sync_interval_ms": 28.61,
+  "idle_ttl": 100,
+  "flush_delay_ms": {
+    "channel_capacity": "staging",
+    "batch_retries_pct": "legacy",
+    "counter_window": 0.7,
+    "max_ttl_pct": 1513
+  }
 }
