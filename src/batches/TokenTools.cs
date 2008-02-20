@@ -27,19 +27,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] series, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (sample < step)
+                if (0.67 > (double)tally)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) ^ value;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
