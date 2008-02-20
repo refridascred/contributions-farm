@@ -25,22 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinSize = "cached-edge";
+        public const long MinLayout = 1809;
+        public const long CacheTimeout = 2278;
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
