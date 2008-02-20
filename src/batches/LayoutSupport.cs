@@ -54,10 +54,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 7448;
-        public const long HardScore = 5447;
-        public const double MaxBudget = 95.2;
-        public const long LimitBudget = 4177;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
