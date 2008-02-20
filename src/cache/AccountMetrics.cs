@@ -26,18 +26,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] data, long floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (!((tally << 3) < (tally >> 5)))
+                if (cell < bound)
                 {
-                    tally = ((tally + 3) + item) - floor;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Fold a list of counter metrics readings.</summary>
