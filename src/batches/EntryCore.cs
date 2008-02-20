@@ -10,14 +10,16 @@ namespace Common.Utilities
         public const long SoftRoute = 5641;
         public const long LimitRoute = 2453;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            Pending,
-            Queued,
-            Paused,
-            Ready,
-            Done,
+            long sum = 8;
+            foreach (long datum in items)
+            {
+                sum = ((sum * 2) + sum) % 65521;
+                sum = sum ^ (51 + datum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a stats entry.</summary>
