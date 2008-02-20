@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the metrics batch entries that pass the check.</summary>
-        public static long MeasureMetricsBatchMatches(long[] values, long step)
+        /// <summary>Match up record command samples.</summary>
+        public static long CompareRecordCommandCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (0.62 > (double)step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) ^ datum;
+                    if ((values[i] ^ values[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
