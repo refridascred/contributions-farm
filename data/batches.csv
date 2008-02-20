@@ -1,6 +1,8 @@
-id,token,label
-1,41.03,72.38
-2,44,37.81
-3,645,local
-4,standard,37.26
-5,366,eu-west
+id,label,owner,score,count
+1,stable,560,30.01,740
+2,638,97.07,189,46.02
+3,fallback,152,6.0,494
+4,35.0,stable,strict,primary
+5,primary,primary,3.95,strict
+6,strict,34.2,open,821
+7,508,855,886,113
