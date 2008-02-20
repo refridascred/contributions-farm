@@ -32,18 +32,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many session batch samples are out of range.</summary>
-        public static long AuditSessionBatchGaps(long[] values)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long state = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((seen << 3) > (702 - seen))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    seen = (seen + 2) + sample;
+                    state = (((state << 2) ^ 85) % 101) ^ (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
     }
 }
