@@ -1,7 +1,16 @@
 {
-  "min_interval": ["cached", "blue"],
-  "batch_ratio_s": "cached",
-  "verbose": "green",
-  "account_depth": "staging",
-  "warm_timeout_count": "fallback"
+  "soft_window_pct": 100,
+  "flush_delay": {
+    "persist": 70,
+    "batch_size": [12, 417, 338],
+    "enabled": false
+  },
+  "strict": 8,
+  "burst_delay": false,
+  "soft_capacity_pct": {
+    "poll_timeout": 65,
+    "cache_limit_s": 12.32,
+    "payload_limit": "cached"
+  },
+  "enabled": 83.8
 }
