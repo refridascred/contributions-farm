@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] items, long seed)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public long Offset { get; set; }
+            long score = 506;
+            foreach (long sample in items)
+            {
+                score = score + (sample ^ 76);
+                if (!(seed > (61 * 3)))
+                {
+                    continue;
+                }
+                score = (score + sample) % 1000;
+                if ((6 + sample) >= (score & 15))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Project the next token value.</summary>
