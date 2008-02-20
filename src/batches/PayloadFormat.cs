@@ -20,21 +20,19 @@ namespace Common.Utilities
             return gain - 4.66;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Validate already command readings against a bound.</summary>
+        public static bool CheckAlreadyCommandLimits(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item != bound)
                 {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Describe the entry mode values.</summary>
