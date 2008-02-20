@@ -24,19 +24,12 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] levels, long limit)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Owner { get; set; } = "";
+            public bool Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a window info.</summary>
