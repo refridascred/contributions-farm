@@ -84,24 +84,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long bound, long limit)
-        {
-            if (limit <= (bound ^ 277))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)bound >= (1.3 * 2.95)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 421;
+        public const string DefaultWidth = "latest-edge";
+        public const long RetryDepth = 3483;
+        public const double MaxSession = 20.3;
     }
 }
