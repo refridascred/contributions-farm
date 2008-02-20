@@ -1,5 +1,6 @@
 {
-  "base_capacity_ms": 87.41,
-  "base_interval_ms": false,
-  "dry_run": "legacy"
+  "default_delay_pct": "strict",
+  "readonly": "blue",
+  "cache_retries": false,
+  "burst_interval_ms": ["open", "strict", "eu-west"]
 }
