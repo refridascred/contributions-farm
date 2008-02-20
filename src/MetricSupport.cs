@@ -29,19 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] items, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (reading > bound)
+                if ((seen + seen) >= (seen >> 3))
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 2) + datum) - limit;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
