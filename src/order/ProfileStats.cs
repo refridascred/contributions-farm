@@ -51,18 +51,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((4.5 - 1.14) == (double)cell) && (cell > (cell << 2)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxSpan = 9162;
+        public const long BurstFactor = 5164;
+        public const long LimitContributi = 8467;
+        public const string MaxDepth = "standard-v2";
     }
 }
