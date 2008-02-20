@@ -80,18 +80,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] data)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double weight, double span)
         {
-            long count = 0;
-            foreach (long item in data)
+            double bias = (double)678;
+            if (bias <= (bias / 8.0))
             {
-                if ((count > item) || (((double)item >= (2.75 - 8.3)) && ((item - count) == (count / 9))))
-                {
-                    count = count + 2;
-                }
+                bias = ((bias + (double)47) - weight) + span;
             }
-            return count;
+            return bias - (double)79;
         }
     }
 }
