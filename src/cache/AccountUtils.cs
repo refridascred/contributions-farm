@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] readings)
+        /// <summary>Compare every pair of entry token readings.</summary>
+        public static long MatchEntryTokenCount(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 3)
+                    if ((data[i] ^ data[j]) > 14)
                     {
                         matches = matches + 1;
                     }
