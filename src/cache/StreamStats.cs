@@ -27,13 +27,12 @@ namespace Common.Utilities
         public const long RetrySize = 5870;
         public const long HardDepth = 9468;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
-            public bool Token { get; set; }
-            public double Label { get; set; }
+            Paused,
+            Pending,
+            Retry,
         }
     }
 }
