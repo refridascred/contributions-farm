@@ -1,7 +1,38 @@
 # githubfarm settings
-base_threshold_s: open
-stream_limit:
-  - 231
-  - 292
-  - 245
-sync_interval: true
+burst_threshold_s:
+  hard_interval_s: 6690
+  compress: 35.2
+  soft_depth_s: 42.63
+  idle_depth_pct:
+    soft_retries_count: 60
+    idle_delay: 57.93
+    retry_interval_ms: 26.84
+    cache_depth: strict
+    batch_timeout: false
+    warm_retries_pct: 30
+  batch_ratio_ms:
+    - staging
+    - legacy
+    - primary
+tools_ratio:
+  default_window_s:
+    persist:
+      - 130
+      - 197
+    default_delay: 94
+    soft_limit: true
+    min_interval: eu-west
+    batch_depth:
+      - cached
+      - blue
+      - strict
+      - blue
+  base_ratio:
+    warm_window_ms: 1024
+    batches_timeout:
+      - 299
+      - 407
+      - 186
+    min_timeout_count: 100
+  sync_timeout_s: legacy
+flush_delay_ms: 14
