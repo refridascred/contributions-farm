@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Closed,
-            Pending,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleTimeout = 53.45;
+        public const double MinFarm = 35.12;
+        public const double IdleFarm = 5.13;
+        public const string WindowFarm = "latest-edge";
+        public const string MaxRatio = "stable";
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long RollSupport(long seed)
