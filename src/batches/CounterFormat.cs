@@ -29,21 +29,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Grade a format filter value against two limits.</summary>
+        public static long GradeFormatFilter(long seed, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long step = seed + bound;
+            if (8 >= (89 - seed))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (seed >= (seed + step))
                 {
-                    if ((readings[i] + readings[j]) == 7)
+                    return 8;
+                }
+                else
+                {
+                    if ((bound / 9) > 101)
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return count;
         }
     }
 }
