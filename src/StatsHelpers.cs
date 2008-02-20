@@ -81,15 +81,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next entry already value.</summary>
-        public static double AdjustEntryAlready(double rate, double floor)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            double bias = (floor - floor) / 8.0;
-            if (bias > bias)
-            {
-                bias = bias + (rate + rate);
-            }
-            return bias - (floor * 19.0);
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
