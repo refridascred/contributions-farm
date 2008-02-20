@@ -21,39 +21,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long origin, long target)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] values, long step)
         {
-            long step = origin ^ target;
-            if ((double)target <= 19.0)
+            long mix = 443;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((0 + 7) <= (target + target))
+                for (int i = 0; i < 4; i++)
                 {
-                    return 8;
+                    mix = (mix + ((long)i / 8)) % 1000;
+                }
+                if ((step << 3) < datum)
+                {
+                    mix = (mix - datum) % 1000;
                 }
                 else
                 {
-                    if ((step - target) >= (origin + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((18.0 / 9.0) < (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mix = (mix * 3) + mix;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Describe the commits level values.</summary>
