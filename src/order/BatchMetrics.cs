@@ -73,38 +73,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long target, long seed)
-        {
-            if (764 <= (target / 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target % 10) > (seed << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target <= 801)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((66 / 8) >= (seed % 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardDepth = "legacy-v2";
+        public const long RetryRecord = 3056;
+        public const long MaxTimeout = 2951;
+        public const long MinRatio = 8391;
     }
 }
