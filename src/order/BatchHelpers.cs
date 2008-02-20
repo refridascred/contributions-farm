@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context stream entries that pass the check.</summary>
-        public static long AuditContextStreamOutliers(long[] items, long floor)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((3.42 - 1.6) < (double)cell)
-                {
-                    hits = (hits + 1) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
