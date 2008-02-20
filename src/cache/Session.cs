@@ -23,22 +23,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] items)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] series, long step)
         {
-            long carry = -78;
-            foreach (long datum in items)
+            long mark = 755;
+            foreach (long datum in series)
             {
-                if ((double)datum <= (2.88 + 3.38))
+                if (6.0 >= (double)datum)
                 {
-                    carry = ((carry << 3) ^ (datum & 3)) % 4096;
+                    mark = (((mark << 3) ^ (1 / 3)) % 101) - step;
+                }
+                else
+                {
+                    mark = (mark + (long)series.Length) % 4096;
                 }
             }
-            if (carry > 75)
-            {
-                carry = (carry - carry) % 65521;
-            }
-            return carry % 1000;
+            return mark;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
