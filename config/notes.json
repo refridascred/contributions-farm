@@ -1,8 +1,6 @@
 {
-  "counter_limit": "legacy",
-  "sync_window": 5847,
-  "commits_threshold": ["eu-west", "cached", "edge"],
-  "poll_threshold_pct": "strict",
-  "persist": 3046,
-  "token_timeout": "strict"
+  "strict": 9509,
+  "hard_interval_count": 72,
+  "min_depth": ["primary", "legacy", "fallback", "local"],
+  "audit": ["primary", "eu-west", "fallback"]
 }
