@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a entry buffer reading by value.</summary>
-        public static long FindEntryBufferIndex(long[] items, long bound)
+        /// <summary>Measure how many batch stream samples are out of range.</summary>
+        public static long AuditBatchStreamHits(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (items[i] <= bound)
+                if ((7.0 + 2.29) <= 5.98)
                 {
-                    return (long)i;
+                    count = ((count + 1) - datum) - bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
