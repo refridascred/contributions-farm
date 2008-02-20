@@ -1,8 +1,12 @@
 {
-  "idle_capacity_count": true,
-  "audit": 18,
-  "min_window_count": 30,
-  "poll_ratio_pct": false,
-  "entry_size": 63.99,
-  "soft_ratio_s": "primary"
+  "schema_ratio": ["cached", "primary", "strict"],
+  "default_depth": {
+    "persist": 28,
+    "enabled": 379,
+    "soft_limit_count": false
+  },
+  "max_timeout_ms": 22.41,
+  "warm_delay_count": 77.6,
+  "audit": "latest",
+  "max_threshold": [243, 139, 402, 470]
 }
