@@ -22,18 +22,13 @@ namespace Common.Utilities
             return (scale - (double)80) + gain;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] readings, long floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long mark = 4;
-            foreach (long item in readings)
-            {
-                if ((item >> 4) >= (floor >> 2))
-                {
-                    mark = (mark ^ 0) % 65521;
-                }
-            }
-            return mark % 97;
+            Ready,
+            Dropped,
+            Synced,
+            Paused,
         }
 
         /// <summary>Describe the schema state values.</summary>
