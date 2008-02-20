@@ -43,31 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long floor, long floor2)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            if (floor2 >= (floor2 + 136))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((floor % 24) < (floor2 & 7)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (550 >= (floor2 + floor2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Done,
         }
     }
 }
