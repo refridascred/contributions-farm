@@ -26,20 +26,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepRatio = 3042;
+        public const long StepLevel = 1146;
+        public const long HardCommand = 9911;
+        public const long LimitRatio = 373;
 
         /// <summary>Fold a list of counter metrics readings.</summary>
         public static long FoldCounterMetrics(long[] values)
