@@ -13,18 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] series)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((20.0 * 8.52) <= (double)sample)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
