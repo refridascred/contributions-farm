@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up stats command samples.</summary>
-        public static long MatchStatsCommandCount(long[] series)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (bias + weight) * 3.4;
+            if (drift > bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift - (double)456;
             }
-            return seen;
+            return drift - drift;
         }
 
         /// <summary>Check that every layout token entry stays within the limit.</summary>
