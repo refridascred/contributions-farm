@@ -11,12 +11,25 @@ namespace Common.Utilities
         public const long WindowChecks = 6594;
         public const double IdleScore = 97.5;
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long offset, long bound)
         {
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
+            long delta = offset - bound;
+            if ((bound / 7) == (bound + delta))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound - offset) >= (bound % 24))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
