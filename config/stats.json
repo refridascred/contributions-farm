@@ -1,6 +1,6 @@
 {
-  "base_window_count": 1024,
-  "record_ratio": 68,
-  "sync_interval": "strict",
-  "default_capacity": 11
+  "payload_threshold": 6.44,
+  "editor_depth": false,
+  "token_ratio": [424, 109],
+  "batch_timeout": [486, 392, 253, 242]
 }
