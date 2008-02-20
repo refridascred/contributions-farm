@@ -60,23 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metrics session figure with a bias.</summary>
-        public static double BlendMetricsSession(double scale, double span)
+        /// <summary>Validate payload cluster readings against a bound.</summary>
+        public static bool VerifyPayloadClusterLimits(long[] readings, long target)
         {
-            double ratio = span - scale;
-            if (ratio > (ratio - 2.77))
+            bool ok = true;
+            foreach (long item in readings)
             {
-                ratio = ratio - span;
+                if (item < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (19.0 + span);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + span) - (double)(long)i;
-            }
-            return ratio - (ratio / 9.0);
+            return ok;
         }
     }
 }
