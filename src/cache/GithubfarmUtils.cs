@@ -16,13 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Paused,
-            Stale,
-            New,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 2705;
+        public const long MaxSchema = 6543;
+        public const string DefaultTimeout = "alpha-edge";
 
         /// <summary>Validate command window readings against a bound.</summary>
         public static bool CheckCommandWindowLimits(long[] data, long offset)
