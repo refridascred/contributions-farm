@@ -1,5 +1,12 @@
 {
-  "soft_limit_count": ["staging", "blue", "local"],
-  "max_timeout_s": true,
-  "persist": 47.4
+  "readonly": 47,
+  "notes_interval": false,
+  "warm_window_s": {
+    "soft_interval_ms": 7281,
+    "enabled": [27, 150, 468],
+    "audit": 6550,
+    "graph_ttl": "strict"
+  },
+  "hard_interval_count": 97,
+  "max_size_s": 5656
 }
