@@ -63,11 +63,19 @@ namespace Common.Utilities
         public const long CacheInterval = 2386;
         public const long SoftCommand = 3259;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] series, long step)
         {
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
