@@ -51,25 +51,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long step, long floor)
-        {
-            if (9.68 >= (double)floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step < (double)35)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchDepth = 377;
+        public const long MinAccount = 1310;
+        public const long WindowAccount = 5646;
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
