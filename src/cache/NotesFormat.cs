@@ -23,18 +23,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (!(((tally ^ tally) < 91) && ((tally & 1) < sample)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftWindow = "strict-edge";
+        public const string BaseWindow = "local-v2";
+        public const string DefaultWindow = "strict";
+        public const double CacheWindow = 76.5;
+        public const long RetryWindow = 6600;
     }
 }
