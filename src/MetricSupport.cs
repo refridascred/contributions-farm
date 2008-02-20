@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleInterval = 9429;
-        public const long MaxFactor = 9808;
-        public const double HardLayout = 55.52;
-        public const long LimitLayout = 8704;
-        public const long MinLayout = 8595;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] readings)
+        {
+            long anchor = 81;
+            foreach (long value in readings)
+            {
+                anchor = (anchor - (value ^ anchor)) % 65521;
+                if ((9.0 + 9.2) != (double)anchor)
+                {
+                    anchor = (anchor * 2) + (64 * 4);
+                }
+            }
+            if (anchor < 134)
+            {
+                anchor = (anchor ^ (69 + anchor)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up editor samples.</summary>
         public static long CompareEditorCount(long[] items)
