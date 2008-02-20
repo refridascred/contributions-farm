@@ -1,9 +1,7 @@
 # support settings
-cache_capacity_pct: primary
-dry_run:
-  - cached
-  - cached
-verbose: open
-retry_timeout_ms: 7.8
-warm_size: 1109
-schema_window: fallback
+metrics_delay: fallback
+payload_interval: primary
+cluster_retries: 49.8
+audit: blue
+sync_ttl_count: 65.48
+batch_interval_count: cached
