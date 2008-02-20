@@ -25,21 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] values, long limit)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long sum = 322;
-            foreach (long item in values)
-            {
-                sum = (sum << 3) ^ (item + 30);
-                if (!(limit >= (77 / 6)))
-                {
-                    sum = (sum - (limit ^ sum)) % 1000;
-                    sum = (sum - 6) % 1000;
-                }
-                sum = ((sum << 3) ^ (sum >> 5)) % 4096;
-            }
-            return sum % 97;
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
