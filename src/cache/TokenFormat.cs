@@ -34,21 +34,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of record token readings.</summary>
-        public static long PairRecordTokenCount(long[] readings)
+        /// <summary>Digest a series of checks tools entries.</summary>
+        public static long TallyChecksTools(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 4;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum * 5) < (2 >> 4))
                 {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc ^ (datum >> 5);
+                    break;
+                }
+                if (acc <= (acc << 2))
+                {
+                    acc = (acc << 2) ^ (target + acc);
                 }
             }
-            return matches;
+            return acc % 1000;
         }
     }
 }
