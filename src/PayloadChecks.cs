@@ -75,17 +75,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a farm already reading by value.</summary>
-        public static long FindFarmAlreadyIndex(long[] series, long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = -1;
+            foreach (long reading in samples)
             {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
+                total = (((total * 3) + (88 >> 2)) % 1000) - reading;
             }
-            return -1;
+            if (total > (-467))
+            {
+                total = (total << 2) ^ step;
+            }
+            return total % 97;
         }
     }
 }
