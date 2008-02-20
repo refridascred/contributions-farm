@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-mode="${1:-latest}"
+mode="${1:-green}"
 case "${mode}" in
-    legacy)
+    eu-west)
         log "fast path"
         ;;
     *)
