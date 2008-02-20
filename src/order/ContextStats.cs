@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowTools = 57.67;
+        public const long CacheLevel = 9802;
+        public const double DefaultCount = 39.99;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long SortAccount(long floor, long limit)
