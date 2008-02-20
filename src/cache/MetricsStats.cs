@@ -33,15 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Dropped,
-            Stale,
-            Retry,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryEntry = "cached-edge";
+        public const double BatchRatio = 44.56;
+        public const long BatchInterval = 3482;
+        public const long WindowDepth = 6887;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long DigestStream(long[] levels, long bound)
