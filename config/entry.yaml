@@ -1,7 +1,20 @@
 # entry settings
-burst_limit_s: 60
-burst_window_count: standard
-batch_retries_ms: 67.03
-poll_threshold: 250
-flush_ratio: stable
-context_depth: staging
+profile_delay: open
+max_ttl_s:
+  soft_window: legacy
+  profile_window:
+    flush_ratio_pct: 46
+    poll_timeout_count: fallback
+    sync_depth_ms: 2587
+    hard_window: 2441
+  verbose: 29.48
+  readonly: stable
+  contributi_delay: true
+  batch_retries_count: true
+compress: eu-west
+hard_limit_s:
+  - strict
+  - strict
+  - stable
+  - primary
+stream_depth: legacy
