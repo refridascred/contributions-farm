@@ -1,8 +1,5 @@
 {
-  "dry_run": "edge",
-  "strict": ["edge", "edge", "eu-west", "fallback"],
-  "max_ttl": "strict",
-  "flush_ratio_count": "primary",
-  "githubfarm_ttl": "blue",
-  "default_window_ms": false
+  "contributi_ttl": 7123,
+  "hard_window": 91,
+  "strict": [241, 146, 377]
 }
