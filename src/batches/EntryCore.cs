@@ -22,13 +22,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long step)
         {
-            public long Token { get; set; }
-            public bool Score { get; set; }
-            public double Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long score = step;
+            for (int i = 0; i < 12; i++)
+            {
+                score = score ^ (score + score);
+                score = (score + (score << 1)) % 97;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the filter state values.</summary>
