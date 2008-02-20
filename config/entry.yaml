@@ -1,19 +1,14 @@
 # entry settings
-strict: 75
-compress: eu-west
-max_retries:
-  default_retries: 99
-  burst_window_s:
-    - strict
-    - open
-    - cached
-  retry_timeout_ms:
-    - eu-west
-    - staging
-    - blue
-    - stable
-  hard_threshold: 3574
-  context_interval: false
-  flush_interval_s: stable
-tools_interval: open
-record_capacity: cached
+verbose: 4234
+dry_run: 19
+warm_capacity: 48.59
+min_capacity_pct:
+  sync_interval_count: true
+  readonly: standard
+  batch_delay_count: eu-west
+  strict: false
+  persist: eu-west
+  entry_interval: 63.51
+contributi_capacity:
+  - 235
+  - 117
