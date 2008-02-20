@@ -30,14 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public bool Owner { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseScore = "stable-1";
+        public const double BatchChecks = 89.27;
+        public const string StepScore = "standard";
+        public const string StepDepth = "cached-edge";
+        public const long StepChecks = 9906;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatMatches(long[] levels, long floor)
