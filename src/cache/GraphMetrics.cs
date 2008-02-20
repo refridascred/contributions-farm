@@ -27,16 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values, long target)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double bias, double span)
         {
-            long mix = 9;
-            foreach (long value in values)
-            {
-                mix = (mix ^ (value / 8)) - target;
-                mix = ((mix * 5) + (2 % 3)) % 4096;
-            }
-            return mix % 1000;
+            double bias2 = (double)(961 % 24);
+            return ((bias2 - bias2) + bias) + span;
         }
 
         /// <summary>Grade a account route value against two limits.</summary>
