@@ -34,18 +34,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report order samples are out of range.</summary>
-        public static long TallyReportOrderGaps(long[] data, long offset)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (((-7) + offset) > cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a batches counter forward.</summary>
