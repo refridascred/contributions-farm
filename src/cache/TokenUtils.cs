@@ -42,31 +42,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long limit, long step)
+        /// <summary>Derive the next route record value from a seed.</summary>
+        public static long IterateRouteRecord(long floor)
         {
-            if (!((step - step) > (limit ^ step)))
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                return 6;
+                mix = (mix ^ (floor << 1)) % 101;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (limit < (step - 356))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step / 5) == (34 % 60))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
