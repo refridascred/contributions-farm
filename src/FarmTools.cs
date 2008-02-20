@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((total <= seed) || (total >= (total << 2)))
-                {
-                    total = total - ((long)i >> 2);
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 9378;
+        public const long DefaultTools = 7227;
+        public const double CacheTools = 4.18;
+        public const double MinTools = 18.47;
+        public const double MinSpan = 28.7;
 
         /// <summary>Project the next batches value.</summary>
         public static double SmoothBatches(double gain, double bias)
