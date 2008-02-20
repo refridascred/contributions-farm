@@ -13,19 +13,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate commits already readings against a bound.</summary>
-        public static bool CheckCommitsAlreadyBounds(long[] readings, long floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < floor)
+                if ((series[i] == seed) && ((series[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Adjust a account reading.</summary>
