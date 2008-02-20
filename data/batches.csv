@@ -1,8 +1,7 @@
-id,label,owner,score,count
-1,stable,560,30.01,740
-2,638,97.07,189,46.02
-3,fallback,152,6.0,494
-4,35.0,stable,strict,primary
-5,primary,primary,3.95,strict
-6,strict,34.2,open,821
-7,508,855,886,113
+id,owner,level,token
+1,edge,882,284
+2,10.73,522,577
+3,641,16.27,906
+4,361,250,772
+5,901,75.93,76.86
+6,773,legacy,eu-west
