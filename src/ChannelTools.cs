@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = target;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total << 3) ^ (total + 5);
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
