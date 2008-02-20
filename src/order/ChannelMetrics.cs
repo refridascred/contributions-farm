@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchBudget = 1.18;
-        public const long DefaultLevel = 8873;
-        public const long WindowDepth = 8832;
-        public const long LimitLayout = 6703;
-        public const long HardLayout = 2422;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportOutliers(long[] levels, long floor)
