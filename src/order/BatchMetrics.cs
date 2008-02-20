@@ -36,11 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepReport = 10.14;
-        public const double HardReport = 42.48;
-        public const double BaseReport = 93.64;
-        public const long IdleReport = 5391;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Paused,
+            Stale,
+            Ready,
+            New,
+            Done,
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterHits(long[] data, long origin)
