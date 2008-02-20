@@ -1,8 +1,8 @@
 # entry settings
-payload_timeout: 35
-warm_retries_ms: 27
-format_timeout: 75.36
-editor_window:
-  - primary
-  - strict
-  - edge
+idle_delay_count: stable
+base_limit_count:
+  - latest
+  - staging
+verbose: strict
+graph_timeout: fallback
+support_capacity: local
