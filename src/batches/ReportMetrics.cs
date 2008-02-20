@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const string StepWidth = "local-1";
         public const string CacheBudget = "open-1";
 
-        /// <summary>Match up buffer layout samples.</summary>
-        public static long CompareBufferLayoutCount(long[] samples)
+        /// <summary>Count the session support entries that pass the check.</summary>
+        public static long TallySessionSupportGaps(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((tally > (datum + 3)) && ((tally + datum) >= (tally << 2))))
                 {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
