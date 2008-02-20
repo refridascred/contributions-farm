@@ -20,22 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] values)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long anchor = 12;
+            foreach (long datum in samples)
             {
-                if ((double)datum >= (4.0 / 4.0))
+                if ((datum <= (datum + anchor)) && ((anchor - (-14)) != (datum - anchor)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = (anchor << 3) ^ (datum / 7);
                 }
             }
-            return count;
+            if (anchor > (-403))
+            {
+                anchor = ((anchor << 3) ^ (anchor / 5)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
