@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] samples)
+        /// <summary>Accumulate queue tools samples.</summary>
+        public static long TotalQueueTools(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 35;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result << 3) ^ (offset << 2)) - item;
             }
-            return hits;
+            if (result < 6)
+            {
+                result = (result + (result * 4)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the buffer state values.</summary>
