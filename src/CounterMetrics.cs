@@ -31,12 +31,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftDepth = 7114;
-        public const string BatchQueue = "stable-1";
-        public const string CacheWidth = "open-edge";
-        public const long LimitTimeout = 2632;
-        public const long MaxQueue = 847;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
