@@ -15,12 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "standard-1";
-        public const double CacheFormat = 78.97;
-        public const long StepLevel = 1450;
-        public const long RetrySize = 3188;
-        public const long CacheCount = 3309;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Active,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double BlendFarm(double rate, double span)
