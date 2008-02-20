@@ -13,13 +13,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Locate a batch schema reading by value.</summary>
+        public static long SeekBatchSchemaIndex(long[] readings, long bound)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
