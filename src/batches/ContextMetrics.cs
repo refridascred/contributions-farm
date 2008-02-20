@@ -35,24 +35,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long bound, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] items)
         {
-            if (floor < (bound + 69))
+            long state = 76;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2.2 * 14.0) >= (double)bound)
+                if (reading > (state << 2))
                 {
-                    return 7;
+                    state = (state * 5) + (reading << 1);
+                    continue;
                 }
                 else
                 {
-                    return 8;
+                    state = state ^ (state ^ state);
+                }
+                if ((5.62 * 6.4) < (double)state)
+                {
+                    state = (state << 3) ^ (state << 3);
                 }
             }
+            return state;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
