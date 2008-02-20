@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] readings, long floor)
         {
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
