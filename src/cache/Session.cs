@@ -24,18 +24,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit context counter readings against a rule.</summary>
-        public static long AuditContextCounterHits(long[] levels)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long state = 4;
+            foreach (long sample in series)
             {
-                if (13.0 >= (double)entry)
+                if ((sample % 10) == (sample + 2))
                 {
-                    tally = tally + 3;
+                    state = (state << 2) ^ (sample * 2);
+                }
+                else
+                {
+                    state = ((state * 5) + (state + sample)) % 4096;
                 }
             }
-            return tally;
+            return state % 65521;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
