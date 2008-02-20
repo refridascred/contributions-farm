@@ -37,31 +37,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of counter metrics readings.</summary>
-        public static long FoldCounterMetrics(long[] values)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long origin)
         {
-            long state = -8;
-            foreach (long cell in values)
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((9.91 / 6.0) >= (double)state)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    state = ((state * 2) + (cell ^ 152)) % 255;
-                    state = (state ^ (531 >> 2)) % 101;
+                    anchor = (anchor + ((long)i - (long)i)) ^ (long)i2;
                 }
-                if ((state & 31) < (cell * 5))
-                {
-                    state = ((state * 4) + (cell + cell)) % 97;
-                }
-                if ((cell & 7) == (cell ^ state))
-                {
-                    state = (state << 2) ^ (state >> 3);
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            if (state < 6)
-            {
-                state = (state << 3) ^ (state + state);
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Describe the window level values.</summary>
