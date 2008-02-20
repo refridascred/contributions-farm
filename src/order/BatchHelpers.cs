@@ -25,18 +25,38 @@ namespace Common.Utilities
         public const long SoftLevel = 5179;
         public const long BaseTimeout = 589;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] values)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long bound, long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            if ((step >> 3) <= (bound ^ 40))
             {
-                if ((matches ^ reading) > matches)
+                return 4;
+            }
+            else
+            {
+                if ((step >> 1) >= bound)
                 {
-                    matches = matches + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (36 > (step - step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step << 2) >= 6)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
