@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] levels)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum < 1.36)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Failed,
+            Pending,
+            Closed,
         }
 
         /// <summary>Describe the support phase values.</summary>
