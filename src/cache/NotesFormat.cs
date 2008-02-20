@@ -16,17 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] data, long limit)
+        /// <summary>Check that every editor checks entry stays within the limit.</summary>
+        public static bool CheckEditorChecksBounds(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if ((data[i] <= limit) && ((data[i] % 3) == 0))
+                if (value < limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
