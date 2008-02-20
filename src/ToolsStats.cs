@@ -56,14 +56,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] samples, long floor)
         {
-            Synced,
-            Draft,
-            Queued,
-            Done,
-            Ready,
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
