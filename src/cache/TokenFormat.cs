@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double bias, double bias2)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            double bias3 = (double)22 / 5.0;
+            if (bias3 > bias3)
             {
-                if (((long)i ^ (long)i) < (seed >> 1))
-                {
-                    sum = (sum ^ seed) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                bias3 = (bias3 - (bias + 1.92)) + bias2;
             }
-            return sum;
+            return bias3 - (0.55 / 2.0);
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
