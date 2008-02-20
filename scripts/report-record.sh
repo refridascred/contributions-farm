@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-RECORD_LIMIT=383
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-open}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in cached green fallback edge; do
+for item in primary edge; do
     log "checking ${item}"
 done
