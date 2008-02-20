@@ -59,19 +59,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] samples, long floor)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
