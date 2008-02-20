@@ -21,15 +21,21 @@ namespace Common.Utilities
         public const double MaxDepth = 75.88;
         public const long SoftCount = 3608;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] readings)
         {
-            long total = 7;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (((total * 3) + total) % 1000) - value;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total % 97;
+            return count;
         }
     }
 }
