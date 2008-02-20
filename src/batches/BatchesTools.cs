@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record context entries that pass the check.</summary>
-        public static long CountRecordContextGaps(long[] series, long step)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell > (hits + 77)) && ((hits / 4) > cell))
-                {
-                    hits = (hits + 1) - step;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
