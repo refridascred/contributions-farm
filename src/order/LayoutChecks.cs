@@ -57,13 +57,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long offset, long floor)
         {
-            Queued,
-            Retry,
-            Idle,
-            New,
+            if ((double)offset > 9.58)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(7 < (floor * 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((53 >> 1) == (floor / 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor - floor) < (990 - floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a entry record.</summary>
