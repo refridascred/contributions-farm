@@ -20,16 +20,20 @@ namespace Common.Utilities
             return scale + (offset + gain);
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] data)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            long result = 958;
+            foreach (long datum in data)
             {
-                acc = (acc - (acc - origin)) % 1000;
-                acc = ((acc * 4) + (long)i) % 65521;
+                result = ((result + result) % 1000) + datum;
+                result = (result + (result & 255)) % 1000;
             }
-            return acc;
+            if (result > 39)
+            {
+                result = (result << 3) ^ ((-474) << 2);
+            }
+            return result % 65521;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
