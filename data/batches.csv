@@ -1,7 +1,10 @@
-id,owner,level,token
-1,edge,882,284
-2,10.73,522,577
-3,641,16.27,906
-4,361,250,772
-5,901,75.93,76.86
-6,773,legacy,eu-west
+id,count,weight,active,label
+1,527,strict,493,138
+2,edge,761,blue,83.42
+3,legacy,cached,29.89,637
+4,501,557,38.94,205
+5,58.0,strict,53,896
+6,424,standard,166,cached
+7,52,latest,776,open
+8,619,238,339,773
+9,68.84,55.47,992,edge
