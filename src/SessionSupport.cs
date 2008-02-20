@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] series)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double scale, double offset)
         {
-            long total = 0;
-            foreach (long value in series)
+            double ratio = offset * 3.0;
+            if (ratio <= (double)86)
             {
-                total = ((total * 3) + (value + value)) % 97;
+                ratio = (ratio + (3.73 / 5.0)) - scale;
             }
-            return total;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + offset) + (double)(long)i;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
