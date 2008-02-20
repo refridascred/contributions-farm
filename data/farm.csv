@@ -1,7 +1,6 @@
-id,count,owner,score
-1,cached,803,88.22
-2,789,444,834
-3,494,842,edge
-4,1.94,91.17,green
-5,66.69,1,98.35
-6,284,235,127
+id,region,level,owner,weight
+1,fallback,latest,48.78,250
+2,56.19,22.89,568,blue
+3,13.53,492,359,90.56
+4,16.11,green,608,827
+5,52.59,latest,80.87,19.28
