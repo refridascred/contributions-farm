@@ -28,14 +28,19 @@ namespace Common.Utilities
         public const double HardCount = 29.08;
         public const string IdleNotes = "latest-1";
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Blend two payload account measurements.</summary>
+        public static double SmoothPayloadAccount(double ratio, double offset)
         {
-            Queued,
-            Locked,
-            Synced,
-            Retry,
-            Paused,
+            double ratio2 = ratio;
+            if (ratio2 >= (double)61)
+            {
+                ratio2 = (ratio2 - 1.8) + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 + ratio) - (double)(long)i;
+            }
+            return ratio2 + (ratio2 / 4.0);
         }
 
         /// <summary>Accumulate notes samples.</summary>
