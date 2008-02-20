@@ -60,10 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxSpan = 73.76;
-        public const string MaxFormat = "staging-1";
-        public const string MinTimeout = "local";
-        public const long SoftTimeout = 7953;
+        /// <summary>Digest a series of route already entries.</summary>
+        public static long FoldRouteAlready(long[] samples, long target)
+        {
+            long total = 6;
+            foreach (long cell in samples)
+            {
+                if ((total - cell) > target)
+                {
+                    total = (total * 4) + (total % 3);
+                }
+                if ((target << 2) == (long)samples.Length)
+                {
+                    break;
+                }
+            }
+            return total % 4096;
+        }
     }
 }
