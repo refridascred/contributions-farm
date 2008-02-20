@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] items)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)items.Length + 92) <= (tally % 10))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) ^ cell;
+                    if ((items[i] - items[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
