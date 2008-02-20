@@ -44,9 +44,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleInterval = 78.74;
-        public const string CacheWidth = "strict-edge";
-        public const long MinTimeout = 8867;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepCache = "strict-v2";
+        public const long DefaultFactor = 8696;
+        public const long DefaultLevel = 2573;
+        public const string HardCache = "latest-v2";
+        public const long BurstCache = 1194;
     }
 }
