@@ -1,6 +1,11 @@
 {
-  "verbose": 1024,
-  "soft_ttl_count": 10,
-  "max_size_count": false,
-  "default_depth_ms": true
+  "strict": "stable",
+  "stream_threshold": {
+    "soft_interval_pct": 500,
+    "filter_interval": true,
+    "strict": "legacy"
+  },
+  "compress": [217, 452, 167, 138],
+  "batch_capacity": "strict",
+  "default_timeout_pct": [448, 48, 438]
 }
