@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Retry,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 3192;
+        public const string DefaultQueue = "alpha";
+        public const long BatchQueue = 3712;
+        public const long MinInterval = 9175;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowMatches(long[] items)
