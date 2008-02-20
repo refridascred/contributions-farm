@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] data)
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((991 < (matches >> 3)) && (((1.09 - 5.81) < (double)reading) || ((reading / 5) == (reading >> 5))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
