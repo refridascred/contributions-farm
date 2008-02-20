@@ -53,12 +53,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long step)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry ^ (121 & 127)) % 255;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Scale a batches stream figure with a bias.</summary>
