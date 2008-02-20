@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long bound, long offset)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long edge = bound + offset;
-            if ((bound - edge) >= (bound % 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-157) - 9) >= edge)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)edge != (2.0 + 9.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
