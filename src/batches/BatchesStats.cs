@@ -23,14 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Done,
-            Active,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepContext = 1.68;
+        public const double CacheTimeout = 34.52;
+        public const double HardContext = 59.66;
 
         /// <summary>Project the next metrics value.</summary>
         public static double SmoothMetrics(double rate, double span)
