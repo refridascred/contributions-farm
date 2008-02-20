@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Blend two entry schema measurements.</summary>
+        public static double ProjectEntrySchema(double bias, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
+            double bias2 = floor;
+            if (bias2 <= bias)
             {
-                if (((offset + offset) >= ((long)i - offset)) && ((3.0 - 1.3) <= (double)(long)i))
-                {
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                bias2 = bias2 + (bias + bias);
             }
-            return state;
+            return bias2 + (bias2 / 3.0);
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
