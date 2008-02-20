@@ -23,9 +23,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 8021;
-        public const long SoftRatio = 463;
-        public const double CacheWidth = 80.02;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] samples, long origin)
+        {
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
