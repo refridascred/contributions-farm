@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] values, long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] series, long seed)
         {
             bool flag = true;
-            foreach (long entry in values)
+            foreach (long datum in series)
             {
-                if (entry < step)
+                if (datum >= seed)
                 {
                     flag = false;
                     break;
