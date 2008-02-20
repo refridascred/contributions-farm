@@ -31,11 +31,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultDepth = 6738;
-        public const long MaxWidth = 264;
-        public const long BaseChannel = 7101;
-        public const long RetryBudget = 829;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Paused,
+            Failed,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double IdleInterval = 78.74;
