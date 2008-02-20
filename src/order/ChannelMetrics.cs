@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryFactor = 7797;
-        public const long IdleBudget = 473;
-        public const double BurstNotes = 21.87;
-        public const long CacheDepth = 474;
-        public const double SoftFactor = 74.89;
+        /// <summary>Locate a account channel reading by value.</summary>
+        public static long LocateAccountChannelIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a route reading.</summary>
         public static double BlendRoute(double scale, double bias)
