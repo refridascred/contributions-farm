@@ -19,25 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long bound, long limit)
+        /// <summary>Compare every pair of commits stats readings.</summary>
+        public static long PairCommitsStatsCount(long[] values)
         {
-            long prev = bound + limit;
-            if ((prev + 280) >= limit)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((3 / 2) < (limit >> 1)) && ((prev % 97) >= prev))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a command record.</summary>
