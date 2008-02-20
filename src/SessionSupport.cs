@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] items)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)item >= (5.75 - 4.99)))
                 {
-                    if ((items[i] - items[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) - seed;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Locate a report reading by value.</summary>
