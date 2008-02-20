@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long origin, long floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long slot = origin - floor;
-            if ((floor ^ 3) >= (slot - slot))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)origin > (10.0 - 5.6)) || ((origin >> 5) == (7 % 60)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin * 3) <= (floor & 63)) || ((origin + floor) >= 29))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor > (535 % 10))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Locked,
+            Retry,
+            Failed,
+            Done,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
