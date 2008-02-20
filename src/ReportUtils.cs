@@ -47,19 +47,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
-        public static bool CheckGithubfarmStreamRange(long[] data, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (sample != bound)
+                if ((double)(long)series.Length == (3.0 - 7.2))
                 {
-                    ready = false;
-                    break;
+                    count = ((count + 1) + item) - bound;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
