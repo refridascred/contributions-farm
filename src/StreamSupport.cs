@@ -28,19 +28,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] samples, long origin)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
