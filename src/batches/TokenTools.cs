@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] samples, long floor)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (floor >= (cell % 7))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public double Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Adjust a context reading.</summary>
