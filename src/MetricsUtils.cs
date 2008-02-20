@@ -49,19 +49,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] levels, long offset)
+        /// <summary>Locate a stream entry reading by value.</summary>
+        public static long SeekStreamEntryIndex(long[] levels, long step)
         {
-            long result = 6;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result + result) % 1000) + offset;
-                if (result < (sample * 3))
+                if (levels[i] < step)
                 {
-                    result = (result - result) % 1000;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
