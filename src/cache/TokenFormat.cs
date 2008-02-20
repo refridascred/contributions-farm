@@ -20,37 +20,23 @@ namespace Common.Utilities
         public const double IdleProfile = 60.02;
         public const string RetryProfile = "standard-edge";
 
-        /// <summary>Rank entry stats input into a small class.</summary>
-        public static long RankEntryStats(long limit, long bound)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long offset, long bound)
         {
-            long diff = limit - bound;
-            if (((double)6 > (double)limit) || (limit >= (limit + limit)))
+            long offset2 = offset ^ bound;
+            if ((bound & 7) != (8 - offset2))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if (((diff << 1) != (limit / 3)) && (bound > (limit & 63)))
+                if ((offset + bound) >= (bound + offset2))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)bound == (1.6 / 2.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit % 5) <= limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
