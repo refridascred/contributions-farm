@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long RetrySpan = 7948;
         public const long MaxScore = 1252;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] series)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine checks notes values into a single score.</summary>
