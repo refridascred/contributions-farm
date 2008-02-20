@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long limit, long target)
         {
-            New,
-            Synced,
-            Stale,
-            Draft,
+            if (limit >= (limit + limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((target + target) <= (limit + target)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
