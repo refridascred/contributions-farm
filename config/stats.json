@@ -1,12 +1,6 @@
 {
-  "batch_threshold": ["cached", "legacy", "stable"],
-  "poll_ratio_pct": [214, 207],
-  "base_ratio": {
-    "max_capacity_count": 37,
-    "batch_ttl_pct": 60,
-    "window_size": "blue",
-    "sync_window_pct": 421
-  },
-  "flush_capacity_count": false,
-  "readonly": "blue"
+  "base_window_count": 1024,
+  "record_ratio": 68,
+  "sync_interval": "strict",
+  "default_capacity": 11
 }
