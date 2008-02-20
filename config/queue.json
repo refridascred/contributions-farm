@@ -1,11 +1,6 @@
 {
-  "default_depth_pct": true,
-  "warm_retries_count": 35.04,
-  "format_ratio": 24.0,
-  "default_limit_pct": {
-    "strict": true,
-    "account_window": "open",
-    "verbose": 5592
-  },
-  "poll_capacity_s": true
+  "poll_size": 250,
+  "route_limit": false,
+  "cache_delay": ["fallback", "legacy", "staging"],
+  "readonly": "edge"
 }
