@@ -52,22 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format batch samples are out of range.</summary>
-        public static long CountFormatBatchOutliers(long[] levels)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((2.3 + 6.77) == (double)item)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank command input into a small class.</summary>
