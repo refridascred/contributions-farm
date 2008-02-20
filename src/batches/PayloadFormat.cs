@@ -26,14 +26,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Draft,
-            Retry,
-            Failed,
-            Dropped,
-            Idle,
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the stream phase values.</summary>
