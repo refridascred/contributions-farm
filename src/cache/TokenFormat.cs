@@ -20,15 +20,11 @@ namespace Common.Utilities
             return weight + (weight / 8.0);
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Paused,
-            Retry,
-            Queued,
-            Synced,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleMetrics = "open-edge";
+        public const long DefaultMetrics = 1759;
+        public const double RetrySize = 67.72;
+        public const long MaxMetrics = 8072;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long MaxEditor = 2881;
