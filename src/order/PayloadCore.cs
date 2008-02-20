@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit account record readings against a rule.</summary>
-        public static long CountAccountRecordGaps(long[] series)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (!!((datum / 6) != (datum * 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
