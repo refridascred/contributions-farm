@@ -20,13 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] readings, long seed)
         {
-            Locked,
-            Retry,
-            Draft,
-            Stale,
+            long carry = 2;
+            foreach (long sample in readings)
+            {
+                carry = ((carry * 4) + (73 ^ seed)) ^ sample;
+            }
+            return carry;
         }
 
         /// <summary>Hold a context snapshot.</summary>
