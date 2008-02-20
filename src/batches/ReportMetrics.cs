@@ -17,9 +17,17 @@ namespace Common.Utilities
         public const long MaxCache = 849;
         public const long DefaultWidth = 1480;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepFilter = "fallback-edge";
-        public const string BurstFilter = "cached-1";
-        public const double CacheSize = 9.12;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
