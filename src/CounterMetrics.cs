@@ -12,21 +12,13 @@ namespace Common.Utilities
         public const double HardSchema = 52.32;
         public const double CacheDepth = 91.16;
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] samples)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Queued,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
