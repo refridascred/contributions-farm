@@ -1,14 +1,16 @@
 # entry settings
-verbose: 4234
-dry_run: 19
-warm_capacity: 48.59
-min_capacity_pct:
-  sync_interval_count: true
-  readonly: standard
-  batch_delay_count: eu-west
-  strict: false
-  persist: eu-west
-  entry_interval: 63.51
-contributi_capacity:
-  - 235
-  - 117
+flush_interval_count: 98
+strict:
+  format_limit: 1024
+  cache_retries: blue
+  enabled: 69
+  schema_threshold:
+    - 296
+    - 417
+  default_threshold: eu-west
+burst_ratio_pct: eu-west
+sync_capacity:
+  - 281
+  - 469
+  - 333
+metrics_interval: 67.52
