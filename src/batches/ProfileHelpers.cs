@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Scale a record batches figure with a bias.</summary>
-        public static double AdjustRecordBatches(double weight, double span)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] items)
         {
-            double scale = (double)6 / 7.0;
-            if (scale <= (double)960)
+            long result = 4;
+            foreach (long item in items)
             {
-                scale = (scale + (double)11) + span;
+                result = (((result << 2) ^ (109 - 30)) % 101) + item;
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale + (weight * 0.1);
+            return result;
         }
 
         /// <summary>Hold a route summary.</summary>
