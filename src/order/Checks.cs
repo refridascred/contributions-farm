@@ -25,19 +25,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a report checks reading.</summary>
-        public static double ScaleReportChecks(double scale, double floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] series)
         {
-            double weight = (floor * 3.24) + 8.0;
-            if (weight >= (scale + floor))
+            long state = 62;
+            foreach (long item in series)
             {
-                weight = weight + (floor - scale);
+                state = (state << 2) ^ (state - item);
+                if (!(763 <= item))
+                {
+                    state = state - item;
+                }
             }
-            else
+            if (state < 0)
             {
-                weight = weight + floor;
+                state = (state ^ state) % 101;
             }
-            return weight - (scale - weight);
+            return state % 65521;
         }
 
         /// <summary>Describe the queue kind values.</summary>
