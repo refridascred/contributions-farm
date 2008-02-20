@@ -76,18 +76,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] values)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long offset, long seed)
         {
-            long carry = 480;
-            foreach (long reading in values)
+            long delta = offset - seed;
+            if ((seed + seed) >= (offset + offset))
             {
-                if (reading >= (3 << 1))
+                return 5;
+            }
+            else
+            {
+                if (((delta / 7) <= (offset ^ seed)) || (7.4 <= (9.0 - 9.0)))
                 {
-                    carry = carry - reading;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return carry;
         }
     }
 }
