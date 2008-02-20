@@ -22,14 +22,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Paused,
-            Stale,
-            Retry,
-            Draft,
-            Idle,
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public double Offset { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
