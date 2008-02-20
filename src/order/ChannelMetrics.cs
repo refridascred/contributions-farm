@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Failed,
-            Synced,
-            Idle,
-            New,
-            Pending,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardScore = 70.98;
+        public const string MaxLayout = "cached-1";
+        public const long BatchTimeout = 5738;
+        public const long WindowLayout = 1661;
+        public const double RetryLayout = 71.85;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double ProjectEditor(double rate, double floor)
