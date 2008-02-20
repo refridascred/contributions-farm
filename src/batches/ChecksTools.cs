@@ -53,11 +53,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Find the first counter farm entry that matches the target.</summary>
+        public static long LocateCounterFarmIndex(long[] values, long offset)
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
