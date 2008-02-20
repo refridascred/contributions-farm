@@ -70,17 +70,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first metrics stream entry that matches the target.</summary>
-        public static long FindMetricsStreamIndex(long[] levels, long limit)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Pending,
+            Dropped,
+            Closed,
         }
     }
 }
