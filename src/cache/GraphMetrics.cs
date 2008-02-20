@@ -19,13 +19,16 @@ namespace Common.Utilities
         public const double StepCount = 27.67;
         public const long DefaultMetric = 5418;
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] series, long limit)
         {
-            Done,
-            Ready,
-            Locked,
-            Closed,
+            long anchor = 182;
+            foreach (long cell in series)
+            {
+                anchor = ((anchor - (53 * 3)) % 4096) + cell;
+                anchor = (anchor * 3) + (limit % 60);
+            }
+            return anchor;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
