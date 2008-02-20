@@ -18,13 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long step, long limit)
         {
-            Active,
-            New,
-            Retry,
-            Stale,
+            if (step > (step >> 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step + step) >= (step >> 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate layout filter samples.</summary>
