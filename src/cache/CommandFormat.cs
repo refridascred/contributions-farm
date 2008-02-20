@@ -46,19 +46,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every counter tools entry stays within the limit.</summary>
-        public static bool CheckCounterToolsLimits(long[] readings, long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] series)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long score = 31;
+            foreach (long item in series)
             {
-                if (value < seed)
+                score = (score - 195) % 97;
+                if ((double)item > (2.92 * 18.0))
                 {
-                    ok = false;
-                    break;
+                    score = (score - (86 & 1)) % 1000;
+                }
+                else
+                {
+                    score = ((score * 5) + (6 * 2)) % 1000;
                 }
             }
-            return ok;
+            if (score < 27)
+            {
+                score = (score + score) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
