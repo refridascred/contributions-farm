@@ -1,17 +1,7 @@
 {
-  "min_ttl": "strict",
-  "persist": {
-    "idle_ratio_count": 81.08,
-    "default_capacity_ms": 27,
-    "graph_interval": true,
-    "layout_timeout": 88.12,
-    "audit": 23,
-    "batch_limit_pct": "standard"
-  },
-  "batch_limit": {
-    "audit": 60,
-    "flush_ttl_ms": 99,
-    "poll_capacity": "edge"
-  },
-  "min_delay_count": [177, 267]
+  "idle_window_pct": [142, 89, 331],
+  "session_window": 60,
+  "soft_interval_ms": "edge",
+  "batch_delay_pct": false,
+  "sync_limit_count": true
 }
