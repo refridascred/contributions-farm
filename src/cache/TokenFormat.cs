@@ -34,31 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long target, long target2)
+        /// <summary>Compare every pair of record token readings.</summary>
+        public static long PairRecordTokenCount(long[] readings)
         {
-            if ((target / 8) <= (target2 + target2))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target & 15) > target) && ((3 - target) < (-80)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target2 + 557) >= (target2 + target))
+                    if ((readings[i] ^ readings[j]) != 10)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
