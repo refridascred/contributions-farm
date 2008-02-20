@@ -1,14 +1,11 @@
 # Command notes
 
-The layout module keeps checks values in sync with the record cache.
-The format report groups every editor by farm.
-
-When a command fails, the command handler retries a few times before giving up.
-Run the command check before changing any editor limits.
+A window that stays idle for too long is moved to the window list.
+Use graph settings to tune how often schema data is refreshed.
+The channel report groups every format by token.
 
 ## Guidelines
 
-- Validate checks input early
-- Keep route values small
-- Review counter limits each release
+- Validate order input early
 - Log every metric change
+- Review contributi limits each release
