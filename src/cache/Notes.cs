@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 1207;
-        public const long MinRatio = 1492;
-        public const string MinToken = "alpha-v2";
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Locked,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Blend two farm measurements.</summary>
         public static double ProjectFarm(double rate, double span)
