@@ -36,25 +36,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long floor, long origin)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long target)
         {
-            long lane = floor ^ origin;
-            if ((8.4 * 7.4) <= (double)lane)
+            long state = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (lane < (floor & 31))
+                state = ((state * 5) + state) % 97;
+                if ((state - target) >= state)
                 {
-                    return 1;
+                    state = state ^ target;
                 }
-                else
-                {
-                    return 8;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
