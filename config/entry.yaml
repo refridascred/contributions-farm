@@ -1,4 +1,12 @@
 # entry settings
-max_delay: 66
-notes_timeout: green
-idle_threshold_pct: 1075
+warm_timeout_s: 37
+order_threshold: 8211
+audit:
+  - eu-west
+  - latest
+  - stable
+persist:
+  - 169
+  - 289
+  - 14
+soft_capacity: 32
