@@ -48,18 +48,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many metric window samples are out of range.</summary>
-        public static long CountMetricWindowHits(long[] series)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((hits - item) <= 331)
+                if (sample < floor)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
