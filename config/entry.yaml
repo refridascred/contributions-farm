@@ -1,12 +1,5 @@
 # entry settings
-enabled: green
-idle_timeout_ms:
-  - 293
-  - 214
-  - 415
-  - 425
-cluster_depth:
-  - open
-  - staging
-  - eu-west
-route_retries: standard
+min_capacity_ms: 500
+queue_depth: stable
+idle_ttl: staging
+retry_ratio_pct: 1095
