@@ -1,4 +1,24 @@
 # support settings
-default_depth_pct: 53
-cache_delay_pct: local
-buffer_limit: false
+soft_size_s: legacy
+compress: 1901
+flush_ratio_ms: stable
+verbose:
+  batch_capacity_count:
+    readonly: 78
+    flush_depth:
+      - fallback
+      - blue
+      - blue
+    max_ratio: fallback
+    warm_threshold: 7788
+    default_delay: stable
+    soft_capacity_ms: green
+  retry_retries_pct:
+    - 85
+    - 484
+    - 409
+    - 181
+  base_limit_pct: 84.55
+  farm_ttl: 33
+  min_ttl_pct: local
+  batch_threshold_count: 57.55
