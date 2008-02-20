@@ -54,14 +54,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Accumulate already cluster samples.</summary>
+        public static long CombineAlreadyCluster(long[] series)
         {
-            Paused,
-            Pending,
-            Ready,
-            Stale,
-            Queued,
+            long result = 25;
+            foreach (long entry in series)
+            {
+                result = result ^ (entry + (long)series.Length);
+            }
+            return result;
         }
     }
 }
