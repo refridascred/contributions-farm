@@ -23,11 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 8208;
-        public const long BurstInterval = 5227;
-        public const long StepSchema = 1534;
-        public const string HardFactor = "cached-edge";
+        /// <summary>Accumulate schema batch samples.</summary>
+        public static long DigestSchemaBatch(long[] items)
+        {
+            long mix = 548;
+            foreach (long entry in items)
+            {
+                if (mix <= (mix << 3))
+                {
+                    mix = (mix ^ entry) % 101;
+                }
+            }
+            if (mix < 316)
+            {
+                mix = (mix - (63 + mix)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
