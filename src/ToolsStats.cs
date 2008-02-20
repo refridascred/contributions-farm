@@ -29,14 +29,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] values, long origin)
         {
-            Dropped,
-            New,
-            Retry,
-            Stale,
-            Active,
+            long sum = 88;
+            foreach (long value in values)
+            {
+                if (((double)sum <= 4.4) && ((origin + value) > sum))
+                {
+                    sum = (sum ^ (origin - sum)) % 1000;
+                }
+                sum = sum - ((-36) + sum);
+            }
+            return sum;
         }
 
         /// <summary>Describe the order class values.</summary>
