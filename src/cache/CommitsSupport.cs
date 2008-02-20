@@ -19,14 +19,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 168;
+        public const long WindowLayout = 8423;
+        public const long LimitCount = 6871;
+        public const double MaxBudget = 50.18;
+        public const string BurstLayout = "local-v2";
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TotalSession(long[] items, long floor)
