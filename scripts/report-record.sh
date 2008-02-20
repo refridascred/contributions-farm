@@ -6,19 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=10
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+RECORD_LIMIT=117
 log "limit is ${RECORD_LIMIT}"
 
-for item in staging open; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
-
-mode="${1:-cached}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "total ${total}"
