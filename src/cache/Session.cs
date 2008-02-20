@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstNotes = 54.88;
-        public const double DefaultNotes = 88.29;
-        public const long LimitNotes = 8552;
-        public const long IdleSpan = 3150;
-        public const double MaxScore = 53.56;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double rate, double offset)
+        {
+            double drift = rate;
+            if (drift > (double)309)
+            {
+                drift = (drift - drift) + offset;
+            }
+            return drift + (double)1;
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
