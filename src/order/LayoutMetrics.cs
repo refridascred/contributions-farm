@@ -30,13 +30,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public double Count { get; set; }
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 8649;
+        public const double BurstWidth = 39.9;
+        public const string MinLevel = "stable-v2";
+        public const long LimitCluster = 2229;
+        public const long HardRatio = 114;
     }
 }
