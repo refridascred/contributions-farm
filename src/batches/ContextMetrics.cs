@@ -35,29 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long bound, long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long bound, long floor)
         {
-            if ((0.5 * 9.78) <= (double)floor)
+            if (floor < (bound + 69))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((floor % 24) >= bound)
+                if ((2.2 * 14.0) >= (double)bound)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if (floor < (bound << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 8;
                 }
             }
         }
