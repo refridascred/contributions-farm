@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 3171;
-        public const string LimitFactor = "latest";
-        public const long BatchDepth = 6751;
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] data)
+        {
+            long acc = 704;
+            foreach (long value in data)
+            {
+                if ((value + value) == (acc ^ value))
+                {
+                    acc = acc ^ (value >> 5);
+                }
+                else
+                {
+                    acc = (acc - (acc + acc)) % 101;
+                }
+            }
+            if (acc < 822)
+            {
+                acc = (acc ^ (-62)) % 101;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
