@@ -55,14 +55,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] levels, long seed)
         {
-            Locked,
-            Retry,
-            Draft,
-            Stale,
-            Failed,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
