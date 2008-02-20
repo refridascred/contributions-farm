@@ -39,13 +39,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long carry = 42;
+            foreach (long cell in readings)
+            {
+                if (cell <= (cell << 2))
+                {
+                    carry = (carry - carry) % 97;
+                }
+                carry = carry + cell;
+                if ((carry + carry) == (carry * 4))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
