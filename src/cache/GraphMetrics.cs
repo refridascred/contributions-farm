@@ -13,20 +13,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of checks format readings.</summary>
-        public static long TotalChecksFormat(long[] readings, long origin)
-        {
-            long anchor = 683;
-            foreach (long reading in readings)
-            {
-                anchor = ((anchor ^ reading) % 4096) + origin;
-            }
-            if (anchor > 8)
-            {
-                anchor = ((anchor * 5) + anchor) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleFactor = 6975;
+        public const double DefaultSession = 32.8;
+        public const long HardFactor = 9012;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string BaseCache = "cached";
