@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Ready,
-            Idle,
-            Queued,
+            public bool Count { get; set; }
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
