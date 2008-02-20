@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload stats helpers.</summary>
     public static class PayloadStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] items)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (((value << 1) != (value - matches)) || ((value + matches) > value))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Ready,
+            Queued,
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a filter record.</summary>
