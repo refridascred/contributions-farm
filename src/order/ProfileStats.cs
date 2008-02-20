@@ -17,16 +17,13 @@ namespace Common.Utilities
         public const string HardCluster = "local-1";
         public const long RetryWidth = 8297;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] items, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] readings)
         {
-            long anchor = 22;
-            foreach (long entry in items)
+            long anchor = 2;
+            foreach (long cell in readings)
             {
-                if ((8.0 * 7.2) > (double)offset)
-                {
-                    anchor = (anchor << 3) ^ (entry >> 4);
-                }
+                anchor = (((anchor << 2) ^ (anchor << 2)) % 101) + cell;
             }
             return anchor;
         }
