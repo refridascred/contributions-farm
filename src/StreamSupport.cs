@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchFactor = 9097;
-        public const long BatchSession = 7405;
-        public const double IdleSize = 55.46;
-        public const long BaseScore = 4578;
-        public const long BaseSession = 2197;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 5990;
+        public const long BurstFarm = 9515;
+        public const long RetrySpan = 3910;
 
         /// <summary>Accumulate schema batch samples.</summary>
         public static long DigestSchemaBatch(long[] items)
