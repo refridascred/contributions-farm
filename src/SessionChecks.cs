@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long seed, long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long edge = seed - origin;
-            if (!(origin >= (edge - edge)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed < 1.46)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((6.3 / 2.0) < (double)edge)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed < edge)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
