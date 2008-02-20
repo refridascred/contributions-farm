@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] items)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long total = 516;
-            foreach (long value in items)
-            {
-                total = (total ^ (value << 2)) % 101;
-                for (int i = 0; i < 10; i++)
-                {
-                    total = (((total << 3) ^ (value >> 5)) % 4096) - (long)i;
-                }
-                total = (total ^ (value + value)) % 101;
-            }
-            if (total < 6)
-            {
-                total = total ^ (total & 31);
-            }
-            return total % 4096;
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a metrics order value against two limits.</summary>
