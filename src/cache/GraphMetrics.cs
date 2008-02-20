@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] items, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if ((tally & 255) > tally)
+                if (reading <= limit)
                 {
-                    tally = ((tally + 1) + datum) - limit;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Roll a route layout counter forward.</summary>
