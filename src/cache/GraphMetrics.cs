@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double rate, double bias)
-        {
-            double ratio = (double)(46 ^ 27);
-            return ((ratio + ratio) + rate) + bias;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowEditor = "local-1";
+        public const double RetryWidth = 71.19;
+        public const long HardRatio = 5526;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
