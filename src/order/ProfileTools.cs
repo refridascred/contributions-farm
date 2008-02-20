@@ -70,17 +70,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] readings, long origin)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (double)(24 + 647);
+            if (ratio < (double)43)
             {
-                if ((readings[i] == origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (double)901) - floor;
             }
-            return -1;
+            return ratio - (weight * 5.5);
         }
     }
 }
