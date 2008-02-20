@@ -16,21 +16,23 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] samples)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = bias / 5.0;
+            if (mean >= (mean / 2.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + (mean * 6.0);
             }
-            return hits;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + scale) + (double)(long)i;
+            }
+            return mean + (double)354;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
