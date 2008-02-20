@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many counter commits samples are out of range.</summary>
-        public static long AuditCounterCommitsHits(long[] series, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long acc = 95;
+            foreach (long sample in readings)
             {
-                if ((double)hits >= (15.0 * 20.0))
+                if ((acc % 16) != (acc << 2))
                 {
-                    hits = ((hits + 2) + cell) - origin;
+                    acc = ((acc << 3) ^ acc) ^ sample;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = acc - (acc << 1);
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
