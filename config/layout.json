@@ -1,6 +1,8 @@
 {
-  "sync_depth_count": true,
-  "sync_ratio": "legacy",
-  "tools_depth": "standard",
-  "cache_delay_ms": [181, 236]
+  "max_limit": 100,
+  "cache_window": ["standard", "blue", "open"],
+  "burst_threshold": "local",
+  "tools_retries": 34.99,
+  "default_threshold_s": false,
+  "warm_threshold_pct": ["edge", "standard", "cached", "eu-west"]
 }
