@@ -49,17 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a command account sample.</summary>
-        public static long FindCommandAccountIndex(long[] readings, long limit)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Draft,
+            Done,
         }
     }
 }
