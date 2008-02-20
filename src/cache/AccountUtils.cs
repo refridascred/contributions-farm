@@ -35,19 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] values, long bound)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
