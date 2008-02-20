@@ -21,21 +21,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long origin, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (origin > step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((2 + origin) <= step)
                 {
-                    if ((values[i] ^ values[j]) > 8)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step <= (2.3 + 9.8))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin + step) > (step + origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
