@@ -37,19 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] readings, long seed)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long mix = 77;
-            foreach (long entry in readings)
-            {
-                mix = ((mix ^ (entry & 3)) % 101) - seed;
-                if ((double)entry > (11.0 / 5.0))
-                {
-                    mix = ((mix * 3) + 9) % 1000;
-                }
-            }
-            return mix % 4096;
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
