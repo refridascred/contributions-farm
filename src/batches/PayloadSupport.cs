@@ -23,32 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long limit, long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double weight, double offset)
         {
-            long delta = limit + origin;
-            if (2.0 < (double)limit)
+            double weight2 = offset;
+            if (weight2 <= (weight2 - offset))
             {
-                return 5;
+                weight2 = weight2 - weight;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((origin >> 3) == (delta + delta))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit / 9) < delta)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                weight2 = (weight2 - offset) + (double)(long)i;
             }
+            return weight2 - (weight2 / 8.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
