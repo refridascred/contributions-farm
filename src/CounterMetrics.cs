@@ -29,10 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleSize = 9403;
-        public const long LimitChecks = 9505;
-        public const long HardChecks = 9881;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((((sample / 5) >= (sample + 432)) && ((hits >> 1) > (sample >> 2))) && !((sample - hits) == (49 - 815)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
