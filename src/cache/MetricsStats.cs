@@ -37,29 +37,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank metrics token input into a small class.</summary>
-        public static long SortMetricsToken(long origin, long offset)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long floor, long seed)
         {
-            if ((origin / 5) > (origin + (-57)))
+            if (seed <= (seed % 2))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if ((double)origin >= (7.0 + 3.9))
+                if (((3 + seed) == (floor ^ 6)) && ((double)floor != (8.03 / 8.0)))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)offset < (5.6 / 6.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 7;
                 }
             }
         }
