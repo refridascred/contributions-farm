@@ -16,11 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftAlready = 83.93;
-        public const double HardAlready = 53.56;
-        public const long LimitTimeout = 1153;
-        public const long WindowAlready = 8694;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
