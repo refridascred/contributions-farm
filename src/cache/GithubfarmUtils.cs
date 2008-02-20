@@ -47,17 +47,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] items, long offset)
+        /// <summary>Digest a series of editor record entries.</summary>
+        public static long WeighEditorRecord(long[] readings, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 4;
+            foreach (long datum in readings)
             {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor << 2) ^ (anchor - bound)) % 65521) - datum;
             }
-            return -1;
+            if (anchor > 636)
+            {
+                anchor = ((anchor << 3) ^ (anchor / 7)) % 4096;
+            }
+            return anchor % 4096;
         }
     }
 }
