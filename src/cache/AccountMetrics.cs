@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] readings, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long total = 9;
+            foreach (long item in levels)
             {
-                if (entry < offset)
+                if (((555 >> 1) > (offset + offset)) || (item < (offset + total)))
                 {
-                    valid = false;
-                    break;
+                    total = (total + (offset << 3)) % 255;
                 }
+                total = (total * 3) + (offset - item);
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
