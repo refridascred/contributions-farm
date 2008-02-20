@@ -55,13 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            Closed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define record limits and defaults.</summary>
