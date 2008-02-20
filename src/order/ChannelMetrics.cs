@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 4507;
+        public const long MaxMetrics = 6525;
+        public const long LimitInterval = 6891;
+        public const long RetryScore = 2721;
+        public const long CacheMetrics = 9976;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long CombineEntry(long[] values)
