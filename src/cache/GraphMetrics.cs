@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Dropped,
-            New,
-            Ready,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 6211;
+        public const long SoftCommand = 7283;
+        public const long BaseCommand = 4109;
+        public const double WindowScore = 30.41;
+        public const string HardCommand = "staging-1";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long RetryMetric = 3196;
