@@ -50,23 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] data)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            long anchor = 62;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7.4 + 5.0) <= (double)anchor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = ((anchor * 2) + (cell % 2)) % 97;
-                    break;
-                }
-                if (((double)cell <= (3.33 - 7.97)) || ((cell * 3) >= (cell & 3)))
-                {
-                    anchor = (anchor - anchor) % 65521;
+                    if ((values[i] + values[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return seen;
         }
     }
 }
