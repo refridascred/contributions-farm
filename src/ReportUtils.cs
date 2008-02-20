@@ -33,14 +33,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 8256;
+        public const long IdleSize = 4701;
+        public const long BatchPayload = 942;
+        public const double RetryBudget = 79.5;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
