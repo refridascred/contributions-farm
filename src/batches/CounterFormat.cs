@@ -33,21 +33,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double weight2 = (double)(237 + 360);
+            return ((weight2 - (double)32) + weight) + span;
         }
     }
 }
