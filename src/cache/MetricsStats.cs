@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit route farm readings against a rule.</summary>
-        public static long MeasureRouteFarmMatches(long[] items, long seed)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (((18.0 + 9.22) <= (double)sample) && ((seed * 2) > (seed & 63)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
