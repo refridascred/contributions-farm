@@ -26,14 +26,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            Queued,
-            Synced,
+            New,
+            Dropped,
             Locked,
-            Stale,
-            Active,
+            Queued,
         }
 
         /// <summary>Count the channel commits entries that pass the check.</summary>
