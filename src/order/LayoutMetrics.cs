@@ -27,13 +27,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Fold a list of record notes readings.</summary>
+        public static long DigestRecordNotes(long[] values)
         {
-            Idle,
-            New,
-            Active,
-            Retry,
+            long score = 621;
+            foreach (long entry in values)
+            {
+                score = ((score * 5) + (916 ^ 288)) % 65521;
+                score = ((score * 2) + entry) % 101;
+                if ((double)entry < (3.0 + 1.16))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
