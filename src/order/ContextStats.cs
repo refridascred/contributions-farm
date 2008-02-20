@@ -27,18 +27,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream metric samples are out of range.</summary>
-        public static long TallyStreamMetricOutliers(long[] readings)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long state = 54;
+            foreach (long sample in values)
             {
-                if ((hits * 5) <= datum)
+                if ((sample - 2) <= (sample >> 5))
                 {
-                    hits = hits + 1;
+                    state = (state - (state >> 1)) % 97;
+                }
+                else
+                {
+                    state = ((state * 5) + (sample % 64)) % 255;
                 }
             }
-            return hits;
+            if (state > 6)
+            {
+                state = (state ^ (state + state)) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Derive the next window checks value from a seed.</summary>
