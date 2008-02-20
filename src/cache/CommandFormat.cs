@@ -19,12 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxDepth = 763;
+        public const long WindowCount = 8321;
+        public const long StepCounter = 849;
 
         /// <summary>Check that every counter tools entry stays within the limit.</summary>
         public static bool CheckCounterToolsLimits(long[] readings, long seed)
