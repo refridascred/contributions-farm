@@ -47,12 +47,21 @@ namespace Common.Utilities
         public const double MinSpan = 52.67;
         public const long MaxSupport = 414;
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long seed)
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((seed / 3) > sum)
+                {
+                    sum = (sum - (seed * 2)) % 4096;
+                    sum = sum ^ sum;
+                    break;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
