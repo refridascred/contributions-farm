@@ -87,13 +87,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Closed,
-            Draft,
-            Synced,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 4989;
+        public const long MinRoute = 262;
+        public const string BaseRoute = "cached-edge";
     }
 }
