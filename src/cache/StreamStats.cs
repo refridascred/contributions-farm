@@ -19,38 +19,13 @@ namespace Common.Utilities
         public const long StepSize = 7261;
         public const double BatchChecks = 57.96;
 
-        /// <summary>Classify a context schema pair into a bucket.</summary>
-        public static long RankContextSchema(long step, long origin)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            if ((step < (step * 2)) && (step <= 62))
-            {
-                return 8;
-            }
-            else
-            {
-                if (step <= (origin % 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((-21) >= (step + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((66 & 15) != (step * 4)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
