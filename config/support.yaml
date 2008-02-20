@@ -1,7 +1,19 @@
 # support settings
-audit: true
-cache_limit_s: standard
-base_delay_ms: 42.45
-already_limit: true
-cache_interval_ms: 38.32
-cache_limit: 60
+base_threshold:
+  default_size_pct: staging
+  readonly: 100
+  enabled: false
+  stream_ttl: staging
+  max_limit_count: 74
+payload_ratio: standard
+default_ratio_count: 30
+stats_threshold:
+  burst_retries: 58.87
+  persist: true
+  max_delay: staging
+  flush_ratio: 30.13
+  verbose:
+    base_window: 5557
+    enabled: false
+    warm_threshold_pct: false
+  enabled: staging
