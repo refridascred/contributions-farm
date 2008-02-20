@@ -69,19 +69,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] samples)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] items, long target)
         {
-            long mix = 932;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                mix = (mix ^ (entry + mix)) % 101;
-                if ((220 % 60) > (mix / 8))
+                if (((datum * 5) < (hits ^ hits)) || ((75 - hits) > datum))
                 {
-                    break;
+                    hits = (hits + 2) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return mix % 1000;
+            return hits;
         }
     }
 }
