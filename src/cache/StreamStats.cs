@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseLevel = 2976;
+        public const double MaxSchema = 93.45;
+        public const string MaxScore = "standard";
+        public const long SoftSchema = 1592;
+        public const long BaseSchema = 6209;
 
         /// <summary>Compare every pair of buffer record readings.</summary>
         public static long CompareBufferRecordCount(long[] items)
