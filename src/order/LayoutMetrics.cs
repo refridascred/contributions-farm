@@ -27,19 +27,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long acc = 1;
-            foreach (long value in samples)
-            {
-                acc = ((acc << 3) ^ (acc * 4)) % 97;
-                if ((value >> 3) != (value * 2))
-                {
-                    acc = (acc ^ acc) % 1000;
-                }
-            }
-            return acc % 97;
+            Stale,
+            Retry,
+            Idle,
+            Dropped,
+            Closed,
         }
     }
 }
