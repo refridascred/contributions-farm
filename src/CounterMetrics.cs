@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxWidth = 7365;
-        public const long BaseSchema = 1885;
-        public const long MinSize = 3626;
-        public const double HardSchema = 52.32;
-        public const double CacheDepth = 91.16;
+        /// <summary>Compare every pair of metric editor readings.</summary>
+        public static long MatchMetricEditorCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
