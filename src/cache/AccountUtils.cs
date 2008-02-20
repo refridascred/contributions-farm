@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] data)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 855;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix + (target / 7)) % 101) ^ cell;
             }
-            return count;
+            return mix % 1000;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
