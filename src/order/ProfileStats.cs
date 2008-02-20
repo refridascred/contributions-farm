@@ -16,17 +16,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] data, long bound)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long step, long origin)
         {
-            long result = 94;
-            foreach (long value in data)
+            long offset = step + origin;
+            if ((6.7 + 1.0) < (double)origin)
             {
-                result = result + (4 ^ result);
-                result = ((result << 3) ^ (bound - 7)) % 4096;
-                result = ((result << 2) ^ (result + value)) % 65521;
+                return 1;
             }
-            return result % 65521;
+            else
+            {
+                if (!(offset > (2 + step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
