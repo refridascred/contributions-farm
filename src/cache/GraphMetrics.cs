@@ -59,22 +59,22 @@ namespace Common.Utilities
         public const string LimitFactor = "open";
         public const long BurstFarm = 4470;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] series, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] items)
         {
-            long sum = -682;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((step >> 2) <= (714 * 2))
+                if (!(826 > seen))
                 {
-                    sum = (sum + ((long)series.Length / 6)) ^ value;
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (sum < 97)
-            {
-                sum = ((sum * 3) + sum) % 4096;
-            }
-            return sum;
+            return seen;
         }
     }
 }
