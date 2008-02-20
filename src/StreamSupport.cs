@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] readings)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] series, long origin)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)origin == (double)788)
                 {
-                    if ((readings[i] - readings[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
