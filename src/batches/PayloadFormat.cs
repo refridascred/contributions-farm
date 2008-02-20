@@ -26,11 +26,17 @@ namespace Common.Utilities
         public const long CacheStream = 3932;
         public const string BurstRatio = "latest-v2";
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] data, long target)
         {
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the layout level values.</summary>
