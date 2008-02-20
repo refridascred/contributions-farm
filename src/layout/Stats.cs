@@ -20,15 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] readings, long target)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long mark = 4;
-            foreach (long datum in readings)
-            {
-                mark = ((((mark << 2) ^ (mark * 3)) % 4096) - datum) - target;
-            }
-            return mark;
+            Draft,
+            Pending,
+            Locked,
+            Failed,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
