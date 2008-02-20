@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] data)
+        /// <summary>Match up session counter samples.</summary>
+        public static long OverlapSessionCounterCount(long[] data)
         {
-            long score = 4;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1.5 - 3.0) > (double)sample)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score ^ sample) % 1000;
+                    if ((data[i] - data[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
