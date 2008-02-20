@@ -46,16 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the queue format series from a seed.</summary>
-        public static long DeriveQueueFormat(long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                mix = (mix ^ mix) % 4096;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if ((cell + 121) > hits)
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
