@@ -40,10 +40,14 @@ namespace Common.Utilities
             return weight - (scale - weight);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinBudget = 2131;
-        public const double HardPayload = 75.05;
-        public const string IdleFactor = "primary-v2";
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Paused,
+            Failed,
+            New,
+            Locked,
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
