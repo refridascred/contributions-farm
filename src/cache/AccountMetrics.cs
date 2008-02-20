@@ -65,10 +65,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 8196;
-        public const long CacheReport = 4933;
-        public const long StepScore = 5532;
-        public const long RetryFactor = 5810;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long bound, long limit)
+        {
+            if (limit <= (bound ^ 277))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)bound >= (1.3 * 2.95)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
