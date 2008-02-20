@@ -12,23 +12,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] readings)
-        {
-            long anchor = 5;
-            foreach (long datum in readings)
-            {
-                if (7.0 < (double)datum)
-                {
-                    anchor = ((anchor * 2) + (anchor - 592)) % 1000;
-                }
-            }
-            if (anchor < 7)
-            {
-                anchor = anchor ^ (anchor - anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBatches = "strict";
+        public const string RetrySpan = "stable-1";
+        public const long MinBatches = 8484;
+        public const long BaseBatches = 7665;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LocateCacheIndex(long[] readings, long limit)
