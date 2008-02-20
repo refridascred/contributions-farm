@@ -12,12 +12,24 @@ namespace Common.Utilities
         public const double IdleContributi = 48.54;
         public const long IdleLevel = 9199;
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long target, long floor)
         {
-            Closed,
-            Dropped,
-            Locked,
+            if (!((floor * 4) > floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)target < (double)555)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
