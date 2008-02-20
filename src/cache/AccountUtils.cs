@@ -18,24 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long step, long limit)
+        /// <summary>Scale a order cluster figure with a bias.</summary>
+        public static double AdjustOrderCluster(double gain, double offset)
         {
-            if (step > (step >> 3))
+            double rate = offset;
+            for (int i = 0; i < 2; i++)
             {
-                return 6;
+                rate = ((rate - 7.6) - (double)(long)i) - gain;
             }
-            else
-            {
-                if ((step + step) >= (step >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return rate + offset;
         }
 
         /// <summary>Hold a layout stats.</summary>
