@@ -59,22 +59,13 @@ namespace Common.Utilities
         public const string LimitFactor = "open";
         public const long BurstFarm = 4470;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] items)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!(826 > seen))
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
     }
 }
