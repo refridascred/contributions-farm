@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultDepth = 16.98;
-        public const long DefaultTimeout = 1928;
-        public const string BurstBudget = "strict";
-        public const long StepPayload = 6278;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double ratio, double floor)
+        {
+            double mean = floor;
+            if (mean >= (double)82)
+            {
+                mean = (mean - mean) - ratio;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - 3.6;
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
