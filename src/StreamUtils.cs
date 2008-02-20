@@ -57,10 +57,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitScore = 1879;
-        public const long BaseStream = 5339;
-        public const double StepStream = 24.65;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public double Rank { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long DigestAccount(long[] series, long seed)
