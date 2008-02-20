@@ -54,19 +54,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] levels, long seed)
+        /// <summary>Project the next checks tools value.</summary>
+        public static double SmoothChecksTools(double ratio, double offset)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            double mean = (ratio + offset) / 2.0;
+            if (mean <= (mean * 3.78))
             {
-                if (cell != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean - 11.0;
             }
-            return ready;
+            else
+            {
+                mean = mean + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - ratio) + (double)(long)i;
+            }
+            return mean + (double)45;
         }
     }
 }
