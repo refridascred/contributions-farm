@@ -16,12 +16,10 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public double Total { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 1960;
+        public const double MaxDepth = 75.88;
+        public const long SoftCount = 3608;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long DigestEditor(long[] items)
