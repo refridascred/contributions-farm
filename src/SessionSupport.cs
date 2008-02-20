@@ -23,16 +23,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            long result = 9;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (((result << 2) ^ result) % 4096) ^ item;
-                result = (result + 767) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Describe the commits class values.</summary>
