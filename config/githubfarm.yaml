@@ -1,18 +1,8 @@
 # githubfarm settings
-cluster_timeout:
-  readonly: edge
-  layout_ratio:
-    - 98
-    - 97
-    - 101
-    - 349
-  base_size_pct: 90.11
-soft_size_count: 60
-profile_timeout: 40.75
-contributi_ttl:
-  max_delay_s: 35
-  readonly: latest
-  sync_delay:
-    - legacy
-    - eu-west
-    - latest
+poll_size_ms: 89.98
+default_ratio:
+  - primary
+  - blue
+hard_retries: 9485
+cache_window: 7
+layout_retries: cached
