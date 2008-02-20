@@ -1,4 +1,18 @@
 # githubfarm settings
-batch_limit_count: 88.32
-default_ratio_ms: true
-queue_ttl: false
+base_depth_count: legacy
+hard_delay: 8738
+warm_ratio_ms: 1266
+compress:
+  readonly: false
+  dry_run:
+    enabled: cached
+    sync_interval_pct: latest
+    audit:
+      - 391
+      - 211
+      - 25
+    verbose: true
+    window_delay: 93
+    persist: 28
+  warm_delay_pct: cached
+  flush_capacity_ms: 30
