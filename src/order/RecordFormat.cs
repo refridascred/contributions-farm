@@ -27,22 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] series, long bound)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((hits - bound) < (reading + hits))
+                if (item <= target)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Adjust a session reading.</summary>
