@@ -26,13 +26,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] readings, long floor)
         {
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public long Count { get; set; }
+            long result = 736;
+            foreach (long entry in readings)
+            {
+                result = ((((result << 2) ^ result) % 4096) + entry) + floor;
+            }
+            return result;
         }
     }
 }
