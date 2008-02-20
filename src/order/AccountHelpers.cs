@@ -46,10 +46,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchDepth = 377;
-        public const long MinAccount = 1310;
-        public const long WindowAccount = 5646;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] values)
+        {
+            long state = -8;
+            foreach (long item in values)
+            {
+                if ((321 - state) < (57 - 761))
+                {
+                    state = ((state + (state % 10)) % 101) ^ item;
+                }
+            }
+            if (state > 6)
+            {
+                state = (state + (46 >> 4)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
