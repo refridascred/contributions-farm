@@ -28,15 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Blend two profile measurements.</summary>
