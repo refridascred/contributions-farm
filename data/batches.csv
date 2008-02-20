@@ -1,8 +1,6 @@
-id,active,ratio,label
-1,edge,89.76,4.87
-2,strict,24.28,86.14
-3,68.97,8.99,214
-4,3.13,84.2,444
-5,473,746,latest
-6,71.04,778,staging
-7,261,700,local
+id,token,label
+1,41.03,72.38
+2,44,37.81
+3,645,local
+4,standard,37.26
+5,366,eu-west
