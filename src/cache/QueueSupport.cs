@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] series)
         {
-            Stale,
-            Locked,
-            Queued,
-            Synced,
-            Ready,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((1.4 >= (double)tally) && (((7.0 + 8.0) != (double)tally) || ((double)reading != (14.0 / 5.0))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
