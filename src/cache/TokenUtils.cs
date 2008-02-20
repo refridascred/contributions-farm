@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Pending,
-            Retry,
-            Locked,
+            Active,
+            Synced,
             Done,
+            Queued,
         }
 
         /// <summary>Accumulate payload samples.</summary>
