@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long seed, long origin)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] data, long limit)
         {
-            if (7 < (origin - origin))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)81 == (double)origin)
+                if ((data[i] >= limit) && ((data[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a tools stats.</summary>
