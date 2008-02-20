@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(6.11 >= (double)offset))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result ^ (result - 8)) % 4096;
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Audit route farm readings against a rule.</summary>
