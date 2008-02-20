@@ -32,10 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitLevel = 9027;
-        public const long LimitRatio = 5100;
-        public const string StepAccount = "standard";
-        public const double RetryAccount = 65.53;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 32.42;
+        public const long IdleRatio = 1009;
+        public const long RetryScore = 7151;
+        public const long MinStats = 5911;
+        public const string IdleStats = "alpha-edge";
     }
 }
