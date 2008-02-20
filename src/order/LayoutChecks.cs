@@ -53,11 +53,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double weight, double bias)
         {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
+            double drift = bias * 5.8;
+            if (drift <= weight)
+            {
+                drift = drift - (double)9;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - weight) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Blend two graph measurements.</summary>
