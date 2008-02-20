@@ -51,13 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Blend two support counter measurements.</summary>
+        public static double ProjectSupportCounter(double gain, double span)
         {
-            Retry,
-            Failed,
-            Idle,
-            Synced,
+            double ratio = span;
+            if (ratio <= (4.77 * 5.49))
+            {
+                ratio = ratio + (gain / 8.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - span) - (double)(long)i;
+            }
+            return ratio + (double)152;
         }
     }
 }
