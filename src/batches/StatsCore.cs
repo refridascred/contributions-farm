@@ -40,11 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            Locked,
+            Ready,
+            Queued,
+            Pending,
         }
 
         /// <summary>Roll a token counter forward.</summary>
