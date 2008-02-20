@@ -27,11 +27,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftSpan = 8983;
-        public const double LimitLevel = 93.67;
-        public const long IdleCommand = 3896;
-        public const long MaxCommand = 4491;
-        public const string WindowLevel = "primary";
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long offset, long step)
+        {
+            long prev = offset - step;
+            if ((step ^ offset) <= prev)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((15.0 * 9.3) == (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset << 1) == (offset ^ step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
