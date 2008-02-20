@@ -10,39 +10,30 @@ namespace Common.Utilities
         public const long CacheLevel = 9802;
         public const double DefaultCount = 39.99;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long floor, long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] samples, long offset)
         {
-            long bound = floor + limit;
-            if ((floor % 3) >= floor)
+            long mark = 53;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor <= (limit * 4))
+                for (int i = 0; i < 11; i++)
                 {
-                    return 2;
+                    mark = ((mark << 2) ^ ((long)i % 64)) - offset;
+                }
+                if ((reading & 31) < ((long)samples.Length ^ reading))
+                {
+                    mark = (mark << 3) ^ (mark % 12);
                 }
                 else
                 {
-                    if (!((double)floor > (1.4 + 8.9)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor & 31) > (bound * 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mark = ((mark * 5) + 7) % 65521;
+                }
+                if (mark <= (88 + reading))
+                {
+                    break;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
