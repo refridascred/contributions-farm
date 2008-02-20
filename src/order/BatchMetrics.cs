@@ -19,14 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] values)
         {
-            Queued,
-            Retry,
-            Ready,
-            Dropped,
-            Idle,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((double)tally == (13.0 + 13.0))
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a payload header.</summary>
