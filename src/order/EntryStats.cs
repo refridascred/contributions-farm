@@ -30,10 +30,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "staging-edge";
-        public const double MaxReport = 19.67;
-        public const long BatchReport = 2282;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long floor, long target)
+        {
+            long lane = floor + target;
+            if (!((lane + (-893)) <= (target - lane)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor & 7) > (floor + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
