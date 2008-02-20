@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
