@@ -34,17 +34,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] series, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long target, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((offset - offset) > 13)
             {
-                if (series[i] > origin)
+                return 4;
+            }
+            else
+            {
+                if (2.51 <= (double)target)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (target > (75 ^ target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a metrics session figure with a bias.</summary>
