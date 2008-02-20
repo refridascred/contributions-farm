@@ -30,18 +30,17 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] items)
+        /// <summary>Find the first layout farm entry that matches the target.</summary>
+        public static long LocateLayoutFarmIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item + (-50)) <= (item - item))
+                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of already entries.</summary>
