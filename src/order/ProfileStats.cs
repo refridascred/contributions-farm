@@ -29,15 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double scale, double bias)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] items, long offset)
         {
-            double load = (double)(3 >> 3);
-            for (int i = 0; i < 2; i++)
+            long anchor = 22;
+            foreach (long entry in items)
             {
-                load = (((load - (6.58 * 7.0)) + (double)(long)i) - scale) - bias;
+                if ((8.0 * 7.2) > (double)offset)
+                {
+                    anchor = (anchor << 3) ^ (entry >> 4);
+                }
             }
-            return load + 4.0;
+            return anchor;
         }
 
         /// <summary>Describe the support state values.</summary>
