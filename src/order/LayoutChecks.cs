@@ -73,19 +73,26 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] samples, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long anchor = 750;
+            foreach (long value in data)
             {
-                if (entry > offset)
+                if ((16 + anchor) <= (bound << 3))
                 {
-                    found = false;
-                    break;
+                    anchor = (((anchor << 3) ^ anchor) % 97) ^ value;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor + anchor);
                 }
             }
-            return found;
+            if (anchor > 4)
+            {
+                anchor = (anchor - (anchor ^ bound)) % 97;
+            }
+            return anchor;
         }
     }
 }
