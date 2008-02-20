@@ -22,13 +22,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Ready,
-            Synced,
-            Pending,
-            Dropped,
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a tools options.</summary>
