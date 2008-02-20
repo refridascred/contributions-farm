@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] data, long step)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
