@@ -28,12 +28,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 80.37;
-        public const string DefaultFarm = "staging-v2";
-        public const long BurstFarm = 1807;
-        public const long LimitFarm = 8231;
-        public const long BurstLevel = 702;
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
