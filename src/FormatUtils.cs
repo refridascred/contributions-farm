@@ -81,23 +81,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] samples)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            long mix = 38;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (((mix + (mix & 63)) % 255) - (long)i) - entry;
+                    if ((readings[i] ^ readings[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = (mix << 3) ^ mix;
             }
-            if (mix > (-124))
-            {
-                mix = mix + (mix - mix);
-            }
-            return mix;
+            return seen;
         }
     }
 }
