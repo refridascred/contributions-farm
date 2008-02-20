@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 7722;
-        public const long StepInterval = 5026;
-        public const double BatchChannel = 59.39;
-        public const long BaseLevel = 1372;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Ready,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TallyChecks(long[] series, long offset)
