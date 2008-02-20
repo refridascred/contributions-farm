@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] items)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long sum = -1;
+            foreach (long datum in samples)
             {
-                if ((97 + item) >= (33 - 718))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum + (sum + datum)) % 97) - bound;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
