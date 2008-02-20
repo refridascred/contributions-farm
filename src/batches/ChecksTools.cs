@@ -43,18 +43,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] readings, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] readings)
         {
-            long total = -6;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (((7.2 * 7.29) > (double)bound) || ((total ^ 69) >= total))
+                if ((hits << 2) > (datum >> 4))
                 {
-                    total = ((total * 4) + (-577)) ^ value;
+                    hits = hits + 1;
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
