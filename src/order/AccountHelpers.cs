@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of report commits readings.</summary>
-        public static long TallyReportCommits(long[] samples)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] items, long seed)
         {
-            long sum = 513;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sum + sum) >= value)
+                if (items[i] >= seed)
                 {
-                    sum = (sum * 5) + (value + sum);
+                    return (long)i;
                 }
             }
-            if (sum > 1)
-            {
-                sum = (sum + sum) % 1000;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit farm batches readings against a rule.</summary>
