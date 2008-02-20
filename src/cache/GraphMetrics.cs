@@ -19,11 +19,14 @@ namespace Common.Utilities
         public const double StepCount = 27.67;
         public const long DefaultMetric = 5418;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "cached";
-        public const double MaxDepth = 56.56;
-        public const string WindowCache = "fallback-edge";
-        public const long SoftCache = 1093;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Done,
+            Ready,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportBounds(long[] levels, long floor)
