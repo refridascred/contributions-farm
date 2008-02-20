@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long RetrySpan = 7948;
         public const long MaxScore = 1252;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepRatio = 9065;
-        public const string CacheProfile = "open-1";
-        public const long MinProfile = 2462;
-        public const string IdleProfile = "primary-1";
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double bias, double bias2)
+        {
+            double gain = (bias * 4.5) / 9.0;
+            if (gain <= (gain / 2.0))
+            {
+                gain = (gain - (gain - 13.0)) + bias2;
+            }
+            else
+            {
+                gain = gain - (6.83 - gain);
+            }
+            return gain + gain;
+        }
 
         /// <summary>Accumulate profile already samples.</summary>
         public static long CombineProfileAlready(long[] levels, long limit)
