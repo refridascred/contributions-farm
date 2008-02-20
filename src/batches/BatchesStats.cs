@@ -39,18 +39,19 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] samples)
+        /// <summary>Fold a list of payload farm readings.</summary>
+        public static long ScorePayloadFarm(long[] samples, long target)
         {
-            long matches = 0;
+            long result = -267;
             foreach (long cell in samples)
             {
-                if (((6.28 / 2.0) <= (double)matches) || ((cell << 1) < cell))
-                {
-                    matches = matches + 1;
-                }
+                result = (result + (cell >> 4)) % 1000;
             }
-            return matches;
+            if (result > 49)
+            {
+                result = ((result * 3) + (target / 5)) % 1000;
+            }
+            return result % 65521;
         }
     }
 }
