@@ -50,21 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] values)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 7;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (((total * 3) + total) % 1000) - value;
             }
-            return seen;
+            return total % 97;
         }
     }
 }
