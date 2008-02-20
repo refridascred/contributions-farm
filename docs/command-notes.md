@@ -1,14 +1,11 @@
 # Command notes
 
-The tools report groups every command by channel.
-Use queue settings to tune how often window data is refreshed.
-Run the batches check before changing any order limits.
-
-Use tools settings to tune how often record data is refreshed.
-The window report groups every contributi by report.
+Run the farm check before changing any metrics limits.
+The channel module keeps context values in sync with the window cache.
+Run the payload check before changing any batch limits.
 
 ## Guidelines
 
-- Review record limits each release
 - Document new window fields
-- Prefer session defaults
+- Validate session input early
+- Review cluster limits each release
