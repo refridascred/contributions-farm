@@ -40,14 +40,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long limit)
         {
-            Ready,
-            Failed,
-            Locked,
-            Closed,
-            Queued,
+            long state = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                state = (state + (state + (long)i)) % 97;
+                state = ((state << 3) ^ (limit + limit)) % 101;
+                if ((limit > state) || ((long)i == (94 / 6)))
+                {
+                    state = (state ^ (state & 127)) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
