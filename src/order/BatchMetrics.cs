@@ -19,11 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitCount = 8194;
-        public const string HardEntry = "stable";
-        public const double CacheEntry = 76.39;
-        public const string BurstEntry = "standard-edge";
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Failed,
+            Locked,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Locate a cluster order reading by value.</summary>
         public static long SeekClusterOrderIndex(long[] items, long target)
