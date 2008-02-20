@@ -1,11 +1,27 @@
 # support settings
-compress: 23.46
-base_interval_ms:
-  dry_run: staging
-  persist: 79
-  warm_timeout: 250
-warm_ratio_pct: 7719
-hard_ratio: 62.39
-base_interval:
-  - 249
-  - 153
+min_threshold_s: 500
+retry_limit: 10.79
+dry_run: fallback
+notes_timeout: 30
+batch_limit:
+  compress: true
+  default_ratio_pct:
+    hard_timeout_pct: 31
+    verbose:
+      - blue
+      - eu-west
+    soft_capacity: 30
+    cache_size: true
+    checks_window:
+      - 377
+      - 220
+      - 378
+    farm_size: eu-west
+  sync_size_count:
+    - stable
+    - staging
+    - eu-west
+    - staging
+  poll_size_pct: 1024
+  hard_limit: fallback
+buffer_interval: false
