@@ -1,10 +1,8 @@
 {
-  "stats_timeout": true,
-  "enabled": {
-    "cache_retries_s": 1024,
-    "cache_interval_count": "blue",
-    "sync_depth_s": true
-  },
-  "default_depth": 1288,
-  "flush_depth": false
+  "persist": 90,
+  "cache_threshold_s": [336, 337, 49, 364],
+  "cache_retries": 32.56,
+  "cache_threshold_pct": 45.73,
+  "notes_capacity": ["open", "blue"],
+  "flush_capacity": ["strict", "fallback"]
 }
