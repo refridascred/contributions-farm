@@ -39,10 +39,18 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxGraph = "staging-1";
-        public const string CacheWidth = "open-edge";
-        public const string WindowBudget = "fallback-edge";
-        public const long BurstGraph = 6842;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (((6.28 / 2.0) <= (double)matches) || ((cell << 1) < cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
