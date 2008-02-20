@@ -31,33 +31,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long step)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long floor, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
+            long diff = floor + step;
+            if ((5 & 1) != (47 + diff))
             {
-                if ((double)anchor >= (double)(long)i)
-                {
-                    anchor = anchor - anchor;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (508 ^ step);
-                    anchor = (anchor ^ (88 & 15)) % 4096;
-                }
-                long bound = (1 + step) * 4;
-                if ((84 - bound) >= (step - 9))
-                {
-                    break;
-                }
-                else
-                {
-                    bound = (bound * 4) + (7 >> 5);
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((diff * 2) != (floor * 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a order snapshot.</summary>
