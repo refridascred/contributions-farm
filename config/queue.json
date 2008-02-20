@@ -1,6 +1,16 @@
 {
-  "burst_size_s": 100,
-  "poll_capacity_s": 75.53,
-  "persist": "eu-west",
-  "window_interval": 9949
+  "soft_capacity_ms": {
+    "payload_delay": "open",
+    "session_threshold": false,
+    "idle_size_pct": {
+      "base_interval_ms": 60,
+      "batch_capacity_pct": [47, 429],
+      "commits_interval": [495, 20, 336, 440],
+      "min_depth": 250
+    }
+  },
+  "command_size": 243,
+  "flush_limit": "legacy",
+  "order_interval": 29.47,
+  "idle_threshold_count": false
 }
