@@ -20,23 +20,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] series)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long state = 62;
-            foreach (long item in series)
-            {
-                state = (state << 2) ^ (state - item);
-                if (!(763 <= item))
-                {
-                    state = state - item;
-                }
-            }
-            if (state < 0)
-            {
-                state = (state ^ state) % 101;
-            }
-            return state % 65521;
+            Paused,
+            Pending,
+            New,
+            Done,
+            Closed,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
