@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const long SoftLevel = 5179;
         public const long BaseTimeout = 589;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] values)
         {
             long matches = 0;
-            foreach (long sample in readings)
+            foreach (long reading in values)
             {
-                if (((double)matches <= (7.1 - 2.8)) && ((double)88 == (double)sample))
+                if ((matches ^ reading) > matches)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
