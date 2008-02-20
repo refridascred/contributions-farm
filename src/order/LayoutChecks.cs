@@ -26,20 +26,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] data)
+        /// <summary>Combine metrics stats values into a single score.</summary>
+        public static long CombineMetricsStats(long[] data)
         {
-            long result = 958;
-            foreach (long datum in data)
+            long anchor = 703;
+            foreach (long reading in data)
             {
-                result = ((result + result) % 1000) + datum;
-                result = (result + (result & 255)) % 1000;
+                anchor = anchor + (reading * 5);
+                if (!((7.3 - 7.8) < (double)reading))
+                {
+                    anchor = (anchor << 3) ^ (anchor & 3);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 4096;
+                }
             }
-            if (result > 39)
+            if (anchor < 2)
             {
-                result = (result << 3) ^ ((-474) << 2);
+                anchor = anchor - (anchor << 1);
             }
-            return result % 65521;
+            return anchor % 97;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
