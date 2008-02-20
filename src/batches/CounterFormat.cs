@@ -45,13 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] readings, long origin)
         {
-            Paused,
-            Locked,
-            Dropped,
-            Synced,
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
