@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] items, long limit)
         {
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the notes class values.</summary>
