@@ -19,11 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstCount = 6249;
-        public const long BurstEditor = 2541;
-        public const long HardSpan = 6892;
-        public const string IdleTimeout = "strict-v2";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 3397;
+        public const double MaxScore = 47.25;
+        public const long IdleSize = 1618;
+        public const string RetryFactor = "strict";
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
