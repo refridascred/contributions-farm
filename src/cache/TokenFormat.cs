@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 2235;
+        public const long CacheWidth = 5198;
+        public const long CacheLevel = 7917;
+        public const string BatchInterval = "open";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string WindowFactor = "staging-1";
