@@ -1,5 +1,8 @@
 {
-  "cluster_limit": "green",
-  "idle_delay_ms": 26,
-  "compress": "latest"
+  "warm_ttl_s": 30,
+  "tools_timeout": 66,
+  "base_interval_pct": [61, 310],
+  "enabled": "stable",
+  "idle_ratio": 250,
+  "sync_capacity_count": 500
 }
