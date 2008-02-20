@@ -1,7 +1,6 @@
-id,count,active
-1,12.24,edge
-2,75.47,224
-3,82.3,83.57
-4,0.55,886
-5,1.5,staging
-6,306,83.12
+id,owner,ratio,count
+1,75.09,55.35,local
+2,strict,edge,stable
+3,stable,standard,22.56
+4,28.69,staging,7.64
+5,327,57.14,edge
