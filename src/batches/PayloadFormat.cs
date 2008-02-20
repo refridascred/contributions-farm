@@ -41,11 +41,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double bias, double offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] series, long origin)
         {
-            double weight = bias;
-            return (weight - (double)4) + offset;
+            long sum = 31;
+            foreach (long cell in series)
+            {
+                if ((sum % 8) < (99 + 40))
+                {
+                    sum = ((sum + cell) % 101) - origin;
+                }
+                else
+                {
+                    sum = (sum ^ 789) % 101;
+                }
+            }
+            return sum % 4096;
         }
     }
 }
