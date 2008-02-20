@@ -19,39 +19,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a account route value against two limits.</summary>
-        public static long ClassifyAccountRoute(long step, long target)
+        /// <summary>Roll a route layout counter forward.</summary>
+        public static long DeriveRouteLayout(long seed)
         {
-            long next = step + target;
-            if ((step + next) != (next * 5))
+            long state = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                state = state - (seed % 8);
+                state = (state * 4) + (state - seed);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((target / 4) >= step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step <= (next << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)next <= (double)step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
