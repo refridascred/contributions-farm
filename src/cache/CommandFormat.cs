@@ -33,17 +33,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Locate a commits payload reading by value.</summary>
-        public static long LookupCommitsPayloadIndex(long[] data, long offset)
+        /// <summary>Check that every counter tools entry stays within the limit.</summary>
+        public static bool CheckCounterToolsLimits(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (data[i] < offset)
+                if (value < seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the queue status values.</summary>
