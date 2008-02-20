@@ -24,10 +24,22 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 8935;
-        public const long BaseLevel = 7111;
-        public const long BaseFactor = 2880;
+        /// <summary>Match up channel entry samples.</summary>
+        public static long PairChannelEntryCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
