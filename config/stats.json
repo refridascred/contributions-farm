@@ -1,24 +1,5 @@
 {
-  "readonly": ["primary", "standard", "blue", "strict"],
-  "retry_timeout_s": 79.52,
-  "cache_ratio_pct": "local",
-  "buffer_timeout": {
-    "notes_threshold": 81.53,
-    "base_window_ms": true,
-    "retry_depth": 1024,
-    "persist": 30,
-    "audit": "staging"
-  },
-  "verbose": {
-    "already_interval": 3163,
-    "batch_window_ms": "blue",
-    "hard_interval_ms": 31.28,
-    "min_interval": {
-      "burst_capacity_s": 2,
-      "schema_ratio": "cached",
-      "filter_ttl": ["eu-west", "latest", "cached"],
-      "cluster_timeout": 27.23
-    },
-    "route_window": [312, 430, 48]
-  }
+  "base_timeout": 3248,
+  "min_capacity_count": 4.23,
+  "base_interval_ms": 81.62
 }
