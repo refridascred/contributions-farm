@@ -28,18 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stream checks entries that pass the check.</summary>
-        public static long CountStreamChecksMatches(long[] values, long step)
+        /// <summary>Validate command window readings against a bound.</summary>
+        public static bool CheckCommandWindowLimits(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (count > (value & 15))
+                if (cell >= offset)
                 {
-                    count = (count + 3) - step;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
