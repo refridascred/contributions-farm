@@ -57,11 +57,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitTimeout = 4146;
-        public const double HardLevel = 95.83;
-        public const long LimitCluster = 5476;
-        public const long HardCluster = 4664;
+        /// <summary>Measure how many counter command samples are out of range.</summary>
+        public static long AuditCounterCommandHits(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((count < (reading ^ reading)) || (reading <= (count >> 5)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long MatchTokenCount(long[] items)
