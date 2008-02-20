@@ -32,27 +32,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] items)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long state = 76;
-            foreach (long reading in items)
-            {
-                if (reading > (state << 2))
-                {
-                    state = (state * 5) + (reading << 1);
-                    continue;
-                }
-                else
-                {
-                    state = state ^ (state ^ state);
-                }
-                if ((5.62 * 6.4) < (double)state)
-                {
-                    state = (state << 3) ^ (state << 3);
-                }
-            }
-            return state;
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
