@@ -60,10 +60,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheScore = "strict";
-        public const long StepTimeout = 2914;
-        public const string WindowStats = "fallback-edge";
+        /// <summary>Roll a channel report counter forward.</summary>
+        public static long DeriveChannelReport(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TotalFilter(long[] values)
