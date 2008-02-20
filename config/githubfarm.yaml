@@ -1,12 +1,7 @@
 # githubfarm settings
-idle_depth:
-  - 312
-  - 447
-  - 96
-command_timeout: false
-audit: 95.16
-context_delay:
-  audit: true
-  support_delay: primary
-  verbose: green
-  idle_ratio_pct: true
+batch_timeout_pct: 46
+persist: edge
+audit: fallback
+retry_limit_ms: 250
+base_threshold_s: true
+cache_depth_count: 43
