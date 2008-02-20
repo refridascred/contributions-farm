@@ -34,12 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] data, long target)
         {
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading <= 9.36)
+                {
+                    tally = (tally + 1) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
