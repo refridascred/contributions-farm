@@ -21,12 +21,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 763;
-        public const long CacheInterval = 6788;
-        public const long MinFormat = 7259;
-        public const string StepFormat = "fallback-1";
-        public const long RetryDepth = 9484;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
