@@ -1,5 +1,12 @@
 {
-  "cache_limit_pct": "standard",
-  "readonly": false,
-  "idle_limit_s": "cached"
+  "sync_timeout_pct": true,
+  "flush_ratio": 30,
+  "poll_interval_count": [271, 119],
+  "githubfarm_capacity": [44, 492],
+  "min_ratio": "green",
+  "already_size": {
+    "flush_size_s": "latest",
+    "idle_retries": "blue",
+    "cache_capacity": "green"
+  }
 }
