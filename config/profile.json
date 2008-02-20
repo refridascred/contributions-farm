@@ -1,6 +1,5 @@
 {
-  "retry_ratio": 18,
-  "min_interval": false,
-  "session_ratio": 5652,
-  "cache_limit": 98.76
+  "payload_retries": 250,
+  "compress": 3470,
+  "readonly": "blue"
 }
