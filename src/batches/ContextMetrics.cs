@@ -56,27 +56,21 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] readings)
+        /// <summary>Match up stream tools samples.</summary>
+        public static long PairStreamToolsCount(long[] data)
         {
-            long mix = 7;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)mix < (double)cell)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix - (cell - cell)) % 255;
-                    mix = ((mix << 3) ^ (mix - cell)) % 65521;
-                }
-                if (((-9) & 63) <= (703 ^ mix))
-                {
-                    mix = ((mix * 4) + cell) % 1000;
+                    if ((data[i] + data[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix > 117)
-            {
-                mix = mix ^ (mix % 7);
-            }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
