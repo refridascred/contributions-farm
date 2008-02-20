@@ -35,12 +35,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] items, long step)
         {
-            Queued,
-            Pending,
-            Synced,
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two schema measurements.</summary>
