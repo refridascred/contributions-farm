@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] items, long floor)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits >= floor) && ((floor + (-530)) < (142 - item)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitCount = 8194;
+        public const string HardEntry = "stable";
+        public const double CacheEntry = 76.39;
+        public const string BurstEntry = "standard-edge";
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
