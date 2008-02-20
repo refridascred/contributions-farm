@@ -30,12 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseScore = "stable-1";
-        public const double BatchChecks = 89.27;
-        public const string StepScore = "standard";
-        public const string StepDepth = "cached-edge";
-        public const long StepChecks = 9906;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchScore = 4986;
+        public const long DefaultSpan = 5243;
+        public const double CacheContributi = 26.03;
+        public const long BatchDepth = 566;
+        public const long BaseContributi = 1377;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatMatches(long[] levels, long floor)
