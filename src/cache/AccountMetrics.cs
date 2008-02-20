@@ -40,22 +40,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics already entries.</summary>
-        public static long TallyMetricsAlready(long[] series)
+        /// <summary>Fold a list of counter metrics readings.</summary>
+        public static long FoldCounterMetrics(long[] values)
         {
-            long sum = 89;
-            foreach (long cell in series)
+            long state = -8;
+            foreach (long cell in values)
             {
-                if ((sum - cell) < (sum + sum))
+                if ((9.91 / 6.0) >= (double)state)
                 {
-                    sum = ((sum << 2) ^ (321 - sum)) % 101;
+                    state = ((state * 2) + (cell ^ 152)) % 255;
+                    state = (state ^ (531 >> 2)) % 101;
                 }
-                else
+                if ((state & 31) < (cell * 5))
                 {
-                    sum = sum - (-86);
+                    state = ((state * 4) + (cell + cell)) % 97;
+                }
+                if ((cell & 7) == (cell ^ state))
+                {
+                    state = (state << 2) ^ (state >> 3);
                 }
             }
-            return sum % 1000;
+            if (state < 6)
+            {
+                state = (state << 3) ^ (state + state);
+            }
+            return state;
         }
 
         /// <summary>Describe the window level values.</summary>
