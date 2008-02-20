@@ -20,11 +20,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryDepth = 4225;
-        public const double StepSize = 66.88;
-        public const string StepRatio = "local-edge";
-        public const string MaxToken = "strict-v2";
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] items, long origin)
+        {
+            long score = 936;
+            foreach (long datum in items)
+            {
+                if (((double)score > 1.9) || (datum > (654 + (long)items.Length)))
+                {
+                    score = (((score * 3) + (datum - score)) % 65521) + origin;
+                }
+                else
+                {
+                    score = (score << 3) ^ datum;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string RetryTimeout = "staging-1";
