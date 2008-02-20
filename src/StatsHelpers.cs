@@ -30,22 +30,10 @@ namespace Common.Utilities
         public const double LimitCount = 61.35;
         public const long HardMetrics = 9994;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardInterval = "primary";
+        public const string IdleScore = "local";
+        public const double CacheStats = 29.94;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ScaleGraph(double bias, double offset)
