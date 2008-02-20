@@ -23,11 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] readings, long seed)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (8.6 <= (double)seed)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
