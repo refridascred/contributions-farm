@@ -22,15 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a payload buffer figure with a bias.</summary>
-        public static double ProjectPayloadBuffer(double scale, double offset)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            double gain = offset * 8.63;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - scale) + (double)(long)i;
-            }
-            return gain + scale;
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
