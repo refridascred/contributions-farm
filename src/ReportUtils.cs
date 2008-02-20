@@ -49,13 +49,23 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double rate, double floor)
         {
-            Synced,
-            Done,
-            Queued,
-            Pending,
+            double drift = (double)(785 + 2);
+            if (drift >= (double)(-614))
+            {
+                drift = (drift + 3.0) + rate;
+            }
+            else
+            {
+                drift = drift - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 5.5) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
