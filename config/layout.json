@@ -1,7 +1,16 @@
 {
-  "base_retries": true,
-  "audit": [32, 266],
-  "max_capacity_count": 3,
-  "record_ratio": 6717,
-  "batch_capacity_ms": "blue"
+  "profile_retries": "local",
+  "warm_threshold_count": {
+    "sync_interval": {
+      "soft_limit_count": "latest",
+      "flush_window": [182, 310, 477, 490],
+      "verbose": 61,
+      "burst_ttl": 2980
+    },
+    "editor_limit": true,
+    "compress": 2332
+  },
+  "hard_capacity_ms": 4.64,
+  "default_ttl_ms": 88.33,
+  "enabled": [262, 423, 123, 353]
 }
