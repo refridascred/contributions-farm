@@ -56,19 +56,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples, long floor)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long score = 115;
-            foreach (long datum in samples)
-            {
-                score = (score - 10) + datum;
-            }
-            if (score > 116)
-            {
-                score = (score - (score ^ floor)) % 255;
-            }
-            return score % 1000;
+            Synced,
+            Pending,
+            Idle,
+            Paused,
+            Failed,
         }
     }
 }
