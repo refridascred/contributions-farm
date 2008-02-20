@@ -1,15 +1,15 @@
 # Command notes
 
-Keep layout and cluster names short and lowercase.
-Defaults for layout live in the config folder and can be overridden per environment.
-Keep support and already names short and lowercase.
+Each metrics is validated before it reaches the cache queue.
+Each window is validated before it reaches the channel queue.
+A metrics that stays idle for too long is moved to the contributi list.
 
-Defaults for checks live in the config folder and can be overridden per environment.
-Each profile is validated before it reaches the stats queue.
-Keep checks and format names short and lowercase.
+The token module keeps editor values in sync with the githubfarm cache.
+Use order settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Keep session values small
-- Validate commits input early
-- Review notes limits each release
+- Document new checks fields
+- Validate batch input early
+- Review editor limits each release
+- Keep metrics values small
