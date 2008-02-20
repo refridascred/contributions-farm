@@ -28,18 +28,18 @@ namespace Common.Utilities
         public const long CacheScore = 624;
         public const long DefaultCount = 1732;
 
-        /// <summary>Audit notes layout readings against a rule.</summary>
-        public static long MeasureNotesLayoutMatches(long[] samples, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (!((1.5 - 6.09) >= (double)(long)samples.Length))
+                if ((-6) > (offset ^ seen))
                 {
-                    count = ((count + 1) + sample) + step;
+                    seen = (seen + 1) - entry;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
