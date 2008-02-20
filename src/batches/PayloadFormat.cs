@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepDepth = 96.65;
+        public const string LimitLevel = "cached-edge";
+        public const long RetryWidth = 842;
+        public const long DefaultBudget = 5914;
 
         /// <summary>Validate already command readings against a bound.</summary>
         public static bool CheckAlreadyCommandLimits(long[] levels, long bound)
