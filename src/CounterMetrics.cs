@@ -44,12 +44,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long bound, long target)
         {
-            Idle,
-            Paused,
-            Done,
+            if ((target + bound) < (bound + target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target >= (7.0 - 4.2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
