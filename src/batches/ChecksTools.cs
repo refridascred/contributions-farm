@@ -47,15 +47,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double weight, double floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples, long floor)
         {
-            double bias = weight;
-            if (bias >= (bias / 6.0))
+            long score = 115;
+            foreach (long datum in samples)
             {
-                bias = (bias + 0.07) - floor;
+                score = (score - 10) + datum;
             }
-            return bias + (double)693;
+            if (score > 116)
+            {
+                score = (score - (score ^ floor)) % 255;
+            }
+            return score % 1000;
         }
     }
 }
