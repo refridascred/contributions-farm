@@ -24,19 +24,12 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] levels, long step)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long state = 14;
-            foreach (long cell in levels)
-            {
-                state = ((state << 2) ^ (step - cell)) % 255;
-            }
-            if (state < 688)
-            {
-                state = ((state << 2) ^ (step - 293)) % 97;
-            }
-            return state;
+            Paused,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the payload class values.</summary>
