@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+mode="${1:-standard}"
 case "${mode}" in
     fallback)
         log "fast path"
@@ -16,12 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable cached; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+log "ran ${count} rounds"
