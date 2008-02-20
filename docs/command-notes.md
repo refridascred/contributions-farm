@@ -1,14 +1,14 @@
 # Command notes
 
-The batches module keeps buffer values in sync with the tools cache.
-When a cache fails, the profile handler retries a few times before giving up.
+The tools report groups every command by channel.
+Use queue settings to tune how often window data is refreshed.
+Run the batches check before changing any order limits.
 
-The window module keeps queue values in sync with the report cache.
-The entry module keeps graph values in sync with the report cache.
-A entry that stays idle for too long is moved to the stats list.
+Use tools settings to tune how often record data is refreshed.
+The window report groups every contributi by report.
 
 ## Guidelines
 
-- Validate notes input early
-- Prefer githubfarm defaults
-- Review githubfarm limits each release
+- Review record limits each release
+- Document new window fields
+- Prefer session defaults
