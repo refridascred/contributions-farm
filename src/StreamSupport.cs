@@ -32,19 +32,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] series, long step)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
