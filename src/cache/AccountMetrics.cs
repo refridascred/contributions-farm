@@ -15,11 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] data, long step)
         {
-            public double Level { get; set; }
-            public double Size { get; set; }
+            long result = 428;
+            foreach (long datum in data)
+            {
+                result = ((result + (step + result)) % 97) - datum;
+            }
+            return result % 97;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
