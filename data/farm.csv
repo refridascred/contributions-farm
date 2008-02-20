@@ -1,6 +1,6 @@
-id,owner,ratio,count
-1,75.09,55.35,local
-2,strict,edge,stable
-3,stable,standard,22.56
-4,28.69,staging,7.64
-5,327,57.14,edge
+id,label,ratio
+1,staging,58.43
+2,640,18.6
+3,blue,83.66
+4,eu-west,72
+5,432,384
