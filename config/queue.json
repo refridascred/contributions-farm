@@ -1,6 +1,5 @@
 {
-  "poll_size": 250,
-  "route_limit": false,
-  "cache_delay": ["fallback", "legacy", "staging"],
-  "readonly": "edge"
+  "warm_ratio_s": true,
+  "poll_ttl": true,
+  "poll_interval_count": true
 }
