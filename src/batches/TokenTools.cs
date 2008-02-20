@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Check that every layout token entry stays within the limit.</summary>
+        public static bool GuardLayoutTokenRange(long[] data, long offset)
         {
-            public string Level { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
