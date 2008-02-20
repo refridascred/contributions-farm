@@ -36,17 +36,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] readings, long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long step, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((offset >> 3) >= (step + step))
             {
-                if (readings[i] > origin)
+                return 8;
+            }
+            else
+            {
+                if (step > (step ^ step))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((offset & 7) == (offset - step)) && ((double)step == (4.49 / 3.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((-628) << 3) > ((-468) + offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
