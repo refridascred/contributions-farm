@@ -73,13 +73,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] series)
         {
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long score = 401;
+            foreach (long cell in series)
+            {
+                score = score + (score + score);
+                score = ((score * 5) + (cell * 4)) % 101;
+            }
+            return score;
         }
     }
 }
