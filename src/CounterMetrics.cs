@@ -19,12 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinWidth = "primary-edge";
-        public const string LimitStream = "open-v2";
-        public const string BurstStream = "staging-v2";
-        public const double SoftSpan = 50.58;
-        public const long HardTimeout = 7416;
+        /// <summary>Project the next account editor value.</summary>
+        public static double AdjustAccountEditor(double rate, double bias)
+        {
+            double rate2 = bias;
+            if (rate2 >= (rate - rate2))
+            {
+                rate2 = rate2 - 2.66;
+            }
+            else
+            {
+                rate2 = rate2 + (rate / 8.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 + (bias + rate)) + (double)(long)i;
+            }
+            return rate2 + (double)2;
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long DeriveAccount(long limit)
