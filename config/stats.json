@@ -1,7 +1,6 @@
 {
-  "retry_retries": 5087,
-  "soft_capacity": ["open", "green"],
-  "batch_timeout_ms": "open",
-  "default_retries": 17,
-  "soft_retries_pct": 56.08
+  "readonly": "green",
+  "dry_run": 39.56,
+  "audit": ["fallback", "open", "green", "staging"],
+  "retry_interval_s": 100
 }
