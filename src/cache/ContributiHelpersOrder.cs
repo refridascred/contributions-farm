@@ -19,19 +19,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] levels, long target)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Count { get; set; }
+            public bool Weight { get; set; }
+            public long Level { get; set; }
         }
     }
 }
