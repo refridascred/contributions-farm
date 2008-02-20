@@ -12,23 +12,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double scale, double bias)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] series, long bound)
         {
-            double mean = bias / 5.0;
-            if (mean >= (mean / 2.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean + (mean * 6.0);
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + scale) + (double)(long)i;
-            }
-            return mean + (double)354;
+            return -1;
         }
 
         /// <summary>Describe the payload mode values.</summary>
