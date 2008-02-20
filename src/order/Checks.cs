@@ -28,15 +28,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long state = 8;
-            foreach (long value in readings)
-            {
-                state = (state << 3) ^ (572 - value);
-            }
-            return state % 4096;
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
