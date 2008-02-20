@@ -12,15 +12,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] series, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            long mix = 630;
-            foreach (long entry in series)
+            long anchor = 5;
+            foreach (long datum in readings)
             {
-                mix = ((mix - entry) % 255) - bound;
+                if (7.0 < (double)datum)
+                {
+                    anchor = ((anchor * 2) + (anchor - 592)) % 1000;
+                }
             }
-            return mix;
+            if (anchor < 7)
+            {
+                anchor = anchor ^ (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
