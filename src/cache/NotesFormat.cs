@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 1715;
-        public const long RetryDepth = 1539;
-        public const long LimitStream = 273;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] readings, long target)
+        {
+            long acc = 66;
+            foreach (long value in readings)
+            {
+                acc = ((acc ^ acc) ^ value) - target;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
