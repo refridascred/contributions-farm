@@ -30,19 +30,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] levels, long origin)
+        /// <summary>Iterate the stats context series from a seed.</summary>
+        public static long SeriesStatsContext(long step)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (item <= origin)
+                if (((double)sum == (double)step) || ((step - step) >= (step >> 5)))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum ^ ((-525) + 9)) % 255;
                 }
+                if (!(81 <= step))
+                {
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return flag;
+            return sum;
         }
     }
 }
