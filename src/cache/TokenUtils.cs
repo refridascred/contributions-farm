@@ -24,9 +24,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinDepth = "open-edge";
-        public const double LimitInterval = 40.69;
-        public const long WindowOrder = 4150;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Dropped,
+            Failed,
+            Queued,
+        }
     }
 }
