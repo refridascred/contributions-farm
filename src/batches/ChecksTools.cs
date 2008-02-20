@@ -14,13 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] data, long target)
         {
-            Retry,
-            Stale,
-            Active,
-            Dropped,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((target - 69) < (target - datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
