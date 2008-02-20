@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long bound)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((long)i / 4) != (bound * 2))
+                {
+                    sum = sum + bound;
+                    sum = (sum * 2) + ((long)i & 15);
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum + sum)) % 101;
+                    sum = sum ^ sum;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
