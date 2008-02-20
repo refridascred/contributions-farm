@@ -35,18 +35,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] levels, long origin)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long mark = 738;
-            foreach (long datum in levels)
-            {
-                if ((origin << 1) < (mark - datum))
-                {
-                    mark = ((mark << 3) ^ (mark + datum)) % 97;
-                }
-            }
-            return mark % 65521;
+            Stale,
+            Pending,
+            Paused,
+            Locked,
         }
     }
 }
