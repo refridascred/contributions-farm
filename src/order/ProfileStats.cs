@@ -35,13 +35,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] levels, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] data, long step)
         {
             bool flag = true;
-            foreach (long entry in levels)
+            foreach (long reading in data)
             {
-                if (entry > origin)
+                if (reading > step)
                 {
                     flag = false;
                     break;
