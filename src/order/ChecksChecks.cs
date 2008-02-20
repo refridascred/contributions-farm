@@ -45,17 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] values, long origin)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] >= origin) && ((values[i] % 5) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
