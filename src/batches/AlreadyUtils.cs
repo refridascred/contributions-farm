@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long floor, long step)
-        {
-            if ((step << 1) >= step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step - floor) != (6 & 255))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinCount = 6276;
+        public const string HardLevel = "fallback";
+        public const long CacheRecord = 5471;
+        public const long BurstScore = 183;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double BlendSession(double rate, double bias)
