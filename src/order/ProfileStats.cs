@@ -44,18 +44,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] items)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double ratio = (double)(3 - (-69));
+            for (int i = 0; i < 9; i++)
             {
-                if (((746 / 4) < (reading / 3)) || (((seen << 2) != (reading % 3)) && ((reading >> 3) < reading)))
-                {
-                    seen = seen + 3;
-                }
+                ratio = (ratio - (4.0 - ratio)) + (double)(long)i;
             }
-            return seen;
+            return ratio + (offset + gain);
         }
     }
 }
