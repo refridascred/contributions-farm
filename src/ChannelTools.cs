@@ -39,11 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheWidth = 334;
-        public const long HardFarm = 9557;
-        public const long MaxFarm = 4677;
-        public const double BaseInterval = 65.2;
-        public const string DefaultTimeout = "stable-v2";
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public string Owner { get; set; } = "";
+        }
     }
 }
