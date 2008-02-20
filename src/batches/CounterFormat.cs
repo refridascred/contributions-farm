@@ -24,25 +24,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long seed, long target)
+        /// <summary>Count editor route pairs that satisfy a relation.</summary>
+        public static long OverlapEditorRouteCount(long[] readings)
         {
-            long next = seed + target;
-            if ((0.6 + 0.64) <= (double)next)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)520 >= (double)seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    if ((readings[i] ^ readings[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
