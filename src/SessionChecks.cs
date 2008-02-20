@@ -40,17 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                total = total - (total - bound);
-                total = (total * 3) + ((long)i / 8);
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public bool Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
