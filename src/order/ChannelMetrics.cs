@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] data)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((991 < (matches >> 3)) && (((1.09 - 5.81) < (double)reading) || ((reading / 5) == (reading >> 5))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Active,
+            Done,
+            Draft,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
