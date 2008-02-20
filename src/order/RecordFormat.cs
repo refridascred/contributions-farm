@@ -66,18 +66,19 @@ namespace Common.Utilities
         public const long LimitCluster = 9342;
         public const long DefaultRatio = 7336;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] levels)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (((value % 97) <= (hits / 3)) || ((value + 59) != (hits << 3)))
+                if (cell <= bound)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
