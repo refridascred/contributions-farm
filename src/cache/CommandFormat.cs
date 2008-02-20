@@ -33,26 +33,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] values, long offset)
+        /// <summary>Locate a commits payload reading by value.</summary>
+        public static long LookupCommitsPayloadIndex(long[] data, long offset)
         {
-            long sum = 93;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value + value) != (8 - offset))
+                if (data[i] < offset)
                 {
-                    sum = (sum + (12 + offset)) % 255;
-                }
-                else
-                {
-                    sum = sum - offset;
+                    return (long)i;
                 }
             }
-            if (sum < 8)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Describe the queue status values.</summary>
