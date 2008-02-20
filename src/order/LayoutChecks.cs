@@ -53,19 +53,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] readings, long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] items)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long anchor = 5;
+            foreach (long item in items)
             {
-                if (sample >= target)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor + anchor) % 65521) + item;
             }
-            return found;
+            if (anchor < 33)
+            {
+                anchor = (anchor << 2) ^ (anchor + 6);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Blend two filter measurements.</summary>
