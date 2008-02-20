@@ -20,17 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] levels, long origin)
+        /// <summary>Audit route farm readings against a rule.</summary>
+        public static long MeasureRouteFarmMatches(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 2) == 0))
+                if (((18.0 + 9.22) <= (double)sample) && ((seed * 2) > (seed & 63)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
