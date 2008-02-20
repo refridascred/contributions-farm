@@ -59,17 +59,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Combine token payload values into a single score.</summary>
+        public static long TallyTokenPayload(long[] data)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            long carry = 3;
+            foreach (long datum in data)
             {
-                score = score + (score & 31);
-                score = (score + (offset + score)) % 65521;
-                score = ((score * 4) + (long)i) % 4093;
+                carry = ((carry - (carry % 3)) % 4096) ^ datum;
+                if ((carry % 10) <= carry)
+                {
+                    break;
+                }
             }
-            return score;
+            return carry % 4096;
         }
     }
 }
