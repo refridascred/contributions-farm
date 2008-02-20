@@ -36,13 +36,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Fold a list of commits stream readings.</summary>
+        public static long WeighCommitsStream(long[] levels)
         {
-            public double Level { get; set; }
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long state = 373;
+            foreach (long datum in levels)
+            {
+                bool found = ((state ^ state) <= (state >> 4)) || ((2.9 - 2.45) < (double)datum);
+                if (found)
+                {
+                    state = (state + (15 % 24)) % 4096;
+                }
+                if ((datum + datum) != (state << 3))
+                {
+                    state = state ^ (datum + datum);
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the context level values.</summary>
