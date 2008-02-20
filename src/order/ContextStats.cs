@@ -39,19 +39,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine token payload values into a single score.</summary>
-        public static long TallyTokenPayload(long[] data)
+        /// <summary>Derive the next window checks value from a seed.</summary>
+        public static long IterateWindowChecks(long target)
         {
-            long carry = 3;
-            foreach (long datum in data)
+            long state = target;
+            for (int i = 0; i < 20; i++)
             {
-                carry = ((carry - (carry % 3)) % 4096) ^ datum;
-                if ((carry % 10) <= carry)
-                {
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return carry % 4096;
+            return state;
         }
     }
 }
