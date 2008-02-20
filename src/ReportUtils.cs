@@ -46,23 +46,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double scale, double bias)
+        /// <summary>Fold a list of graph channel readings.</summary>
+        public static long TotalGraphChannel(long[] values, long step)
         {
-            double scale2 = (double)(630 + (-84));
-            if (scale2 <= (scale * 3.6))
+            long sum = 20;
+            foreach (long cell in values)
             {
-                scale2 = (scale2 - (double)6) + bias;
+                if (((double)sum > 8.69) && ((cell + sum) >= (sum * 4)))
+                {
+                    sum = ((sum << 3) ^ cell) + step;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sum >> 2);
+                }
             }
-            else
-            {
-                scale2 = scale2 + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - (double)457) + (double)(long)i;
-            }
-            return scale2 + (double)8;
+            return sum % 1000;
         }
     }
 }
