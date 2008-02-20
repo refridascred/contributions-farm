@@ -25,39 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long seed, long target)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] series, long floor)
         {
-            long cur = seed + target;
-            if (7 > (target * 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (18 > (692 + seed))
+                if (series[i] == floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (10.0 <= (double)cur)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed + target) == (seed % 24))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
