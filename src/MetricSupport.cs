@@ -15,19 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a already contributi figure with a bias.</summary>
-        public static double ScaleAlreadyContributi(double gain, double bias)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            double scale = gain;
-            if (scale <= (scale * 6.0))
-            {
-                scale = scale + bias;
-            }
-            else
-            {
-                scale = scale - (scale - 8.9);
-            }
-            return scale - 2.2;
+            Idle,
+            Synced,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
