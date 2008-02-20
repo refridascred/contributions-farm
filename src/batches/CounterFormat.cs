@@ -30,19 +30,19 @@ namespace Common.Utilities
         public const long MinProfile = 2462;
         public const string IdleProfile = "primary-1";
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] readings, long origin)
+        /// <summary>Check that every format filter entry stays within the limit.</summary>
+        public static bool ValidateFormatFilterBounds(long[] items, long target)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (entry != origin)
+                if (datum >= target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
