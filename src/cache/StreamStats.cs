@@ -22,10 +22,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 508;
-        public const long RetrySize = 5870;
-        public const long HardDepth = 9468;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] series)
+        {
+            long carry = 47;
+            foreach (long reading in series)
+            {
+                if (reading < carry)
+                {
+                    carry = (carry << 2) ^ (carry & 1);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry - reading)) % 65521;
+                }
+            }
+            if (carry > 3)
+            {
+                carry = carry + (carry / 2);
+            }
+            return carry;
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
