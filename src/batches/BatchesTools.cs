@@ -26,31 +26,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] items, long step)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long score = 237;
-            foreach (long item in items)
-            {
-                if ((double)step >= (18.0 / 4.0))
-                {
-                    score = (score << 3) ^ score;
-                }
-                if ((step + 732) >= step)
-                {
-                    score = ((score << 2) ^ (step - item)) % 101;
-                }
-                else
-                {
-                    score = ((score << 3) ^ item) % 65521;
-                }
-                score = ((score * 5) + step) % 65521;
-            }
-            if (score < 889)
-            {
-                score = (score ^ score) % 101;
-            }
-            return score % 97;
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
