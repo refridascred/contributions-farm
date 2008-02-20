@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const string CacheGraph = "alpha";
         public const long WindowGraph = 5291;
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] data, long floor)
         {
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (!(floor >= (3 + reading)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of graph entry readings.</summary>
