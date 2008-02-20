@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultToken = "open-v2";
+        public const double WindowToken = 72.34;
+        public const long MinToken = 2055;
+        public const string MaxSize = "staging-v2";
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
