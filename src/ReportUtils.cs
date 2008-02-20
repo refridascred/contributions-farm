@@ -47,18 +47,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] series, long bound)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((double)(long)series.Length == (3.0 - 7.2))
-                {
-                    count = ((count + 1) + item) - bound;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
