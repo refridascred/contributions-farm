@@ -1,11 +1,4 @@
 # support settings
-retry_retries:
-  - 434
-  - 119
-  - 270
-  - 127
-window_window: blue
-flush_timeout_pct: 5
-batch_ttl: strict
-compress: edge
-dry_run: 43.52
+cache_timeout_count: 75
+poll_ttl: legacy
+flush_threshold_pct: 94
