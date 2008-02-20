@@ -25,11 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleMetrics = "open-edge";
-        public const long DefaultMetrics = 1759;
-        public const double RetrySize = 67.72;
-        public const long MaxMetrics = 8072;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum >= (4.0 / 4.0))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long ClassifyEditor(long target, long target2)
