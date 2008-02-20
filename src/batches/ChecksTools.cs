@@ -23,18 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] items)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (item <= (count ^ count))
+                if (item != floor)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
