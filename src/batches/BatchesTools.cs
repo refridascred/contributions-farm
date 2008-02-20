@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] items, long seed)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long score = 506;
-            foreach (long sample in items)
-            {
-                score = score + (sample ^ 76);
-                if (!(seed > (61 * 3)))
-                {
-                    continue;
-                }
-                score = (score + sample) % 1000;
-                if ((6 + sample) >= (score & 15))
-                {
-                    break;
-                }
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Adjust a context tools reading.</summary>
