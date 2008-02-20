@@ -18,18 +18,14 @@ namespace Common.Utilities
         public const double IdleProfile = 60.02;
         public const string RetryProfile = "standard-edge";
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] levels, long offset)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long sum = 7;
-            foreach (long entry in levels)
-            {
-                if (!((double)entry >= 9.58))
-                {
-                    sum = ((sum + entry) % 255) + offset;
-                }
-            }
-            return sum % 65521;
+            Closed,
+            Draft,
+            Failed,
+            Pending,
+            Ready,
         }
     }
 }
