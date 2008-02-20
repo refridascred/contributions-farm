@@ -30,25 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] samples)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long anchor = 178;
-            foreach (long item in samples)
-            {
-                long tally = anchor << 1;
-                if ((anchor << 1) >= ((long)samples.Length + (long)samples.Length))
-                {
-                    anchor = (anchor * 3) + (anchor - item);
-                    break;
-                }
-                else
-                {
-                    anchor = anchor + (tally + anchor);
-                }
-                anchor = anchor + (item << 1);
-            }
-            return anchor % 4096;
+            public string Flag { get; set; } = "";
+            public double Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
