@@ -1,6 +1,5 @@
 {
-  "min_timeout_count": true,
-  "route_timeout": "stable",
-  "dry_run": "fallback",
-  "session_window": "standard"
+  "soft_limit_count": ["staging", "blue", "local"],
+  "max_timeout_s": true,
+  "persist": 47.4
 }
