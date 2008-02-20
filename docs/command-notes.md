@@ -1,14 +1,15 @@
 # Command notes
 
-Each contributi is validated before it reaches the payload queue.
-Keep graph and record names short and lowercase.
-The session report groups every batches by support.
+Use session settings to tune how often buffer data is refreshed.
+The stream report groups every stream by graph.
+Use report settings to tune how often profile data is refreshed.
 
-The support report groups every buffer by context.
-The profile module keeps profile values in sync with the graph cache.
+Keep cache and notes names short and lowercase.
+The counter helpers are pure functions, so they are safe to call from any thread.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review notes limits each release
-- Document new schema fields
-- Validate editor input early
+- Log every record change
+- Prefer metric defaults
+- Review support limits each release
