@@ -22,21 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up githubfarm metric samples.</summary>
-        public static long PairGithubfarmMetricCount(long[] samples)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a graph summary.</summary>
