@@ -1,7 +1,7 @@
-id,weight,state,score
-1,497,736,32.88
-2,cached,581,244
-3,778,open,223
-4,fallback,832,staging
-5,25,staging,fallback
-6,standard,60.16,53.45
+id,count,owner,score
+1,cached,803,88.22
+2,789,444,834
+3,494,842,edge
+4,1.94,91.17,green
+5,66.69,1,98.35
+6,284,235,127
