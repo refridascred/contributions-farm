@@ -1,7 +1,6 @@
-id,rank,active
-1,523,189
-2,blue,416
-3,408,3.58
-4,14.13,local
-5,63.86,2.09
-6,542,373
+id,active,owner,ratio
+1,4.56,legacy,2.27
+2,787,825,stable
+3,cached,5.5,976
+4,latest,104,9.8
+5,416,202,477
