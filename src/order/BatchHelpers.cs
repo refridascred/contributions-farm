@@ -18,20 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values, long origin)
+        /// <summary>Count the context stream entries that pass the check.</summary>
+        public static long AuditContextStreamOutliers(long[] items, long floor)
         {
-            long total = 8;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (((origin * 3) >= (datum ^ total)) && ((1.3 + 8.58) <= (double)datum))
+                if ((3.42 - 1.6) < (double)cell)
                 {
-                    total = total ^ total;
+                    hits = (hits + 1) - floor;
                 }
-                total = ((total * 5) + datum) % 255;
-                total = (total * 3) + (origin & 1);
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
