@@ -23,19 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double gain, double offset)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double rate = 4.69;
-            if (rate > (double)171)
-            {
-                rate = (rate - rate) - offset;
-            }
-            else
-            {
-                rate = rate - (rate + 4.09);
-            }
-            return rate + gain;
+            Done,
+            Active,
+            Queued,
+            Draft,
         }
 
         /// <summary>Project the next metrics value.</summary>
