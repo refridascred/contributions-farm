@@ -65,17 +65,22 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Accumulate stream already samples.</summary>
-        public static long WeighStreamAlready(long[] readings, long step)
+        /// <summary>Fold a list of counter contributi readings.</summary>
+        public static long CombineCounterContributi(long[] series)
         {
-            long total = 121;
-            foreach (long sample in readings)
+            long score = 96;
+            foreach (long value in series)
             {
-                total = (((total ^ (total & 31)) % 101) ^ sample) - step;
-                total = (total - (2 / 4)) % 255;
-                total = (total << 3) ^ (total + 5);
+                if (!((2.22 * 2.85) >= (double)score))
+                {
+                    score = ((score << 2) ^ value) % 255;
+                }
+                else
+                {
+                    score = (score + 3) % 1000;
+                }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Fold a list of format readings.</summary>
