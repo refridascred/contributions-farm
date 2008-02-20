@@ -40,15 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Stale,
-            New,
-            Queued,
-            Synced,
-            Active,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 8208;
+        public const long BurstInterval = 5227;
+        public const long StepSchema = 1534;
+        public const string HardFactor = "cached-edge";
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
