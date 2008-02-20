@@ -18,31 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long offset, long step)
+        /// <summary>Locate a report cache reading by value.</summary>
+        public static long SeekReportCacheIndex(long[] values, long step)
         {
-            if (((offset * 3) == (offset << 2)) || ((5.0 * 9.23) != (double)step))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset) > (29 + 713))
+                if (values[i] > step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (14.0 <= (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
