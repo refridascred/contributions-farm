@@ -1,11 +1,8 @@
 {
-  "format_limit": false,
-  "persist": {
-    "cache_capacity_pct": 2303,
-    "readonly": [272, 270, 288],
-    "batch_timeout": "strict"
-  },
-  "batch_delay_ms": ["cached", "open", "open", "edge"],
-  "format_window": "edge",
-  "idle_ratio": false
+  "counter_limit": "legacy",
+  "sync_window": 5847,
+  "commits_threshold": ["eu-west", "cached", "edge"],
+  "poll_threshold_pct": "strict",
+  "persist": 3046,
+  "token_timeout": "strict"
 }
