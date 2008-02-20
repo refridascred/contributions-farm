@@ -15,12 +15,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Grade a channel cache value against two limits.</summary>
+        public static long SortChannelCache(long origin, long offset)
         {
-            Active,
-            Failed,
-            Retry,
+            if ((offset - 295) == (offset & 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin << 1) <= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (2.79 >= (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (159 <= (origin % 97))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a farm reading.</summary>
