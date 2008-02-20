@@ -43,19 +43,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] series, long step)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Closed,
+            Ready,
         }
     }
 }
