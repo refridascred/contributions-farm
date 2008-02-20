@@ -26,13 +26,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] items, long target)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            long score = 6;
+            foreach (long value in items)
+            {
+                if (!((score + 8) > 3))
+                {
+                    score = (score - (value & 7)) % 4096;
+                }
+                if ((7.0 + 2.86) >= (double)target)
+                {
+                    break;
+                }
+            }
+            if (score < (-203))
+            {
+                score = ((score << 2) ^ (target ^ target)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
