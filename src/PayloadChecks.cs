@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long HardRecord = 546;
         public const long MinRecord = 2355;
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public string Owner { get; set; } = "";
-            public bool Label { get; set; }
-            public double Token { get; set; }
+            Stale,
+            Pending,
+            Paused,
         }
 
         /// <summary>Combine support values into a single score.</summary>
