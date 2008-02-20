@@ -19,19 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + (-61)) > seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstRatio = 37;
+        public const long MinBudget = 204;
+        public const long MaxSpan = 2578;
+        public const long BatchCommits = 7622;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long SortFormat(long target, long offset)
