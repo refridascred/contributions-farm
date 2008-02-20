@@ -1,15 +1,31 @@
 # entry settings
-account_ttl: true
-strict: 43
-verbose:
-  dry_run: open
-  idle_capacity: eu-west
-  idle_window_count: green
-  session_size: stable
-  metrics_timeout: true
-  cache_depth: false
-flush_threshold:
-  - 396
-  - 100
-  - 384
-idle_capacity_count: 100
+idle_timeout_ms:
+  strict: 68.75
+  max_size: blue
+  already_depth:
+    poll_ratio_pct: 30
+    flush_interval: 250
+    poll_depth_count: 58.16
+    cache_interval_ms: false
+  flush_depth_count: 6891
+  readonly:
+    idle_depth_count: local
+    compress: 7431
+    batch_size_pct: false
+    sync_capacity: green
+    soft_threshold: 37.5
+  flush_timeout_ms:
+    batches_limit: green
+    cache_limit_s: 46.39
+    burst_threshold:
+      - 7
+      - 206
+      - 125
+      - 277
+    batch_interval: 13.14
+    compress: eu-west
+    retry_window_s: 30
+sync_depth:
+  - 283
+  - 388
+burst_threshold: true
