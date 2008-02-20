@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] data, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine format values into a single score.</summary>
