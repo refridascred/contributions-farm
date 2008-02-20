@@ -33,9 +33,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultSupport = "latest-1";
-        public const long RetrySupport = 1345;
-        public const long BurstFactor = 3066;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 6628;
+        public const double DefaultReport = 74.19;
+        public const string RetryInterval = "legacy-v2";
     }
 }
