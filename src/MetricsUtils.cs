@@ -34,12 +34,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 2787;
-        public const string BaseWidth = "open-edge";
-        public const long LimitFarm = 1226;
-        public const long DefaultFarm = 8363;
-        public const long CacheFarm = 5740;
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a stream entry reading by value.</summary>
         public static long SeekStreamEntryIndex(long[] levels, long step)
