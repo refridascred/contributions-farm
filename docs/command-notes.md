@@ -1,14 +1,11 @@
 # Command notes
 
-When a route fails, the layout handler retries a few times before giving up.
-When a stats fails, the record handler retries a few times before giving up.
-
-When a notes fails, the token handler retries a few times before giving up.
-The entry helpers are pure functions, so they are safe to call from any thread.
+Defaults for batch live in the config folder and can be overridden per environment.
+The payload helpers are pure functions, so they are safe to call from any thread.
+A counter that stays idle for too long is moved to the queue list.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Validate graph input early
-- Review account limits each release
-- Document new contributi fields
+- Keep buffer values small
+- Prefer payload defaults
+- Review farm limits each release
