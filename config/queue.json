@@ -1,5 +1,10 @@
 {
-  "warm_ratio_s": true,
-  "poll_ttl": true,
-  "poll_interval_count": true
+  "stats_timeout": true,
+  "enabled": {
+    "cache_retries_s": 1024,
+    "cache_interval_count": "blue",
+    "sync_depth_s": true
+  },
+  "default_depth": 1288,
+  "flush_depth": false
 }
