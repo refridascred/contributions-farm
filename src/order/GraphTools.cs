@@ -36,24 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] readings)
-        {
-            long carry = 42;
-            foreach (long cell in readings)
-            {
-                if (cell <= (cell << 2))
-                {
-                    carry = (carry - carry) % 97;
-                }
-                carry = carry + cell;
-                if ((carry + carry) == (carry * 4))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleBatches = 96.72;
+        public const long WindowScore = 7455;
+        public const long BaseBatches = 8159;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string DefaultInterval = "alpha";
