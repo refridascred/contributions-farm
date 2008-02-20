@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Paused,
-            Active,
-            Pending,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 4084;
+        public const double BatchCount = 73.74;
+        public const long BurstBatch = 6392;
+        public const long HardRatio = 3973;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long TotalCommand(long[] readings, long seed)
