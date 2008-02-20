@@ -23,14 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Locate a support filter reading by value.</summary>
+        public static long LocateSupportFilterIndex(long[] samples, long offset)
         {
-            Queued,
-            Dropped,
-            Ready,
-            Retry,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
