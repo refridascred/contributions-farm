@@ -105,19 +105,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] values, long step)
+        /// <summary>Digest a series of stream tools entries.</summary>
+        public static long TallyStreamTools(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long mark = 94;
+            foreach (long value in series)
             {
-                if (datum != step)
+                if (value > (mark - mark))
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark << 2) ^ (mark - value)) % 101;
+                }
+                else
+                {
+                    mark = (mark + (mark + mark)) % 4096;
                 }
             }
-            return valid;
+            if (mark < 5)
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
     }
 }
