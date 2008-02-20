@@ -36,18 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] data, long target)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)reading <= 9.36)
+                anchor = ((anchor << 2) ^ (floor ^ (long)i)) % 101;
+                if ((floor >> 3) <= floor)
                 {
-                    tally = (tally + 1) - target;
+                    anchor = anchor + floor;
+                    anchor = ((anchor << 2) ^ (37 << 1)) % 101;
+                    continue;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
