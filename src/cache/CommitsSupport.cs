@@ -37,19 +37,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] series, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long anchor = 366;
+            foreach (long reading in items)
             {
-                if (cell <= offset)
+                if ((floor + anchor) <= (floor & 255))
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor ^ (anchor / 3)) % 4096) ^ reading;
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
