@@ -28,13 +28,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] samples, long origin)
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
