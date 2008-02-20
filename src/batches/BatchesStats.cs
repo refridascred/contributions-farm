@@ -46,19 +46,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] samples, long limit)
-        {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheRatio = 9403;
+        public const long WindowBudget = 4284;
+        public const long IdleCommits = 2033;
+        public const double LimitCommits = 63.27;
+        public const string RetryBudget = "stable-1";
     }
 }
