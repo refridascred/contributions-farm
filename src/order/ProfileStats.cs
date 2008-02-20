@@ -46,23 +46,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] values)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long score = 343;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    score = (((score ^ 208) % 4096) ^ (long)i) ^ value;
-                }
-                score = (score << 3) ^ (604 ^ 6);
-            }
-            if (score > 7)
-            {
-                score = score + (score - score);
-            }
-            return score;
+            Ready,
+            Failed,
+            Dropped,
+            New,
+            Stale,
         }
     }
 }
