@@ -72,18 +72,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter session readings against a rule.</summary>
-        public static long MeasureCounterSessionMatches(long[] samples)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            double mean = (bias + 0.94) / 3.0;
+            if (mean > ratio)
             {
-                if (sample <= (matches - matches))
-                {
-                    matches = matches + 1;
-                }
+                mean = mean + 1.2;
             }
-            return matches;
+            else
+            {
+                mean = mean + (mean - mean);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - ratio) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Check that every metric profile entry stays within the limit.</summary>
