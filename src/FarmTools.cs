@@ -25,9 +25,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 1799;
-        public const double DefaultCount = 61.1;
-        public const long IdleTimeout = 2146;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 6292;
+        public const double BurstWindow = 76.57;
+        public const double HardWindow = 17.6;
     }
 }
