@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] values, long target)
         {
-            Ready,
-            Synced,
-            Closed,
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a graph summary.</summary>
