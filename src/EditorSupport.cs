@@ -62,11 +62,22 @@ namespace Common.Utilities
         public const string LimitCluster = "legacy";
         public const double MaxRatio = 92.75;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Measure how many command contributi samples are out of range.</summary>
+        public static long TallyCommandContributiOutliers(long[] items, long limit)
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((tally - sample) > (tally & 127))
+                {
+                    tally = (tally + 3) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
