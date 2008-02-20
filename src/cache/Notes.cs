@@ -10,31 +10,15 @@ namespace Common.Utilities
         public const long MinRatio = 1492;
         public const string MinToken = "alpha-v2";
 
-        /// <summary>Accumulate context payload samples.</summary>
-        public static long DigestContextPayload(long[] values, long step)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double rate, double span)
         {
-            long anchor = 96;
-            foreach (long datum in values)
+            double gain = rate - span;
+            if (gain <= (13.0 / 7.0))
             {
-                if ((datum << 3) > (datum % 3))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor ^ datum)) % 4096;
-                    anchor = (anchor << 2) ^ (anchor >> 5);
-                }
-                if ((double)datum > (3.86 - 9.69))
-                {
-                    anchor = ((anchor * 4) + 64) % 4096;
-                }
+                gain = gain + (double)814;
             }
-            if (anchor < 1)
-            {
-                anchor = ((anchor << 2) ^ (5 + step)) % 1000;
-            }
-            return anchor % 97;
+            return gain - span;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
