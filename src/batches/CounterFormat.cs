@@ -16,17 +16,11 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] samples, long offset)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < offset) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
