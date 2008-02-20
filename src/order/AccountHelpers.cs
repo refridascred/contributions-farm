@@ -35,38 +35,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long origin, long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] levels, long offset)
         {
-            if (!((origin / 8) == (origin * 5)))
+            long anchor = -514;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((4.5 * 6.1) < (double)origin))
+                if ((double)value > (15.0 - 10.0))
                 {
-                    return 1;
+                    anchor = (anchor - anchor) - offset;
                 }
                 else
                 {
-                    if (((double)origin > (0.62 - 8.3)) && ((double)floor >= (double)37))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (origin >= (83 - floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    anchor = anchor ^ 62;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Adjust a entry reading.</summary>
