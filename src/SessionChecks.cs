@@ -21,19 +21,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a order notes figure with a bias.</summary>
-        public static double ScaleOrderNotes(double ratio, double bias)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] items)
         {
-            double mean = (double)(8 ^ 19);
-            if (mean >= ratio)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean + (ratio + ratio)) + bias;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + ratio) - (double)(long)i;
-            }
-            return mean + mean;
+            return hits;
         }
 
         /// <summary>Audit notes layout readings against a rule.</summary>
