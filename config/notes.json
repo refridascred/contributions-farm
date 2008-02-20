@@ -1,8 +1,14 @@
 {
-  "warm_ttl_s": 30,
-  "tools_timeout": 66,
-  "base_interval_pct": [61, 310],
-  "enabled": "stable",
-  "idle_ratio": 250,
-  "sync_capacity_count": 500
+  "cache_window_ms": {
+    "batches_ttl": "strict",
+    "compress": "blue",
+    "batches_retries": ["primary", "stable", "staging", "open"]
+  },
+  "session_threshold": ["green", "open"],
+  "hard_ratio_count": false,
+  "dry_run": {
+    "warm_interval": 2291,
+    "min_interval_ms": "fallback",
+    "audit": ["local", "edge"]
+  }
 }
