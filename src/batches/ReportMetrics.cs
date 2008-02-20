@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] values, long limit)
         {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Derive the next support batch value from a seed.</summary>
