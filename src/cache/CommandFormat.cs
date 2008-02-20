@@ -23,14 +23,31 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Rank counter token input into a small class.</summary>
+        public static long BucketCounterToken(long bound, long limit)
         {
-            Done,
-            Draft,
-            Queued,
-            Dropped,
-            Active,
+            if (((8.0 - 8.64) >= (double)bound) || (limit < (limit + 7)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit > ((-84) + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound << 3) >= (9 / 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
