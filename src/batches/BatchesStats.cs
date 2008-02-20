@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] samples, long origin)
+        /// <summary>Measure how many profile command samples are out of range.</summary>
+        public static long MeasureProfileCommandGaps(long[] series, long bound)
         {
-            long sum = 5;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((origin & 255) != (4 * 4))
+                if ((8 + tally) > (reading - 2))
                 {
-                    sum = ((sum << 3) ^ item) % 4096;
+                    tally = (tally + 2) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
