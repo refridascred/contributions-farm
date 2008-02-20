@@ -47,11 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double bias, double offset)
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            double bias2 = (offset - bias) + offset;
+            return bias2 + (double)83;
         }
     }
 }
