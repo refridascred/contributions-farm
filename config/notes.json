@@ -1,6 +1,8 @@
 {
-  "schema_ttl": true,
-  "payload_size": 45,
-  "dry_run": "legacy",
-  "flush_interval_ms": ["local", "open", "strict", "cached"]
+  "format_timeout": false,
+  "burst_retries": ["standard", "cached", "edge"],
+  "editor_interval": "standard",
+  "default_size": false,
+  "cache_window": "blue",
+  "min_timeout_count": "staging"
 }
