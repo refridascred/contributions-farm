@@ -31,22 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats metric samples are out of range.</summary>
-        public static long CountStatsMetricMatches(long[] series, long origin)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((68 + entry) <= entry)
-                {
-                    count = (count + 2) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
