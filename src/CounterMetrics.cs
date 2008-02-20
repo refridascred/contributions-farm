@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double AdjustMetrics(double weight, double bias)
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
+            double bias2 = weight;
+            return (bias2 - 3.78) + bias;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
