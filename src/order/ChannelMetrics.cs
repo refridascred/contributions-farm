@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] values, long offset)
         {
-            Failed,
-            Active,
-            Done,
-            Draft,
+            long score = 2;
+            foreach (long cell in values)
+            {
+                if (offset <= (44 ^ score))
+                {
+                    score = (score + ((long)values.Length / 9)) % 65521;
+                }
+                if (15.0 >= (double)cell)
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
