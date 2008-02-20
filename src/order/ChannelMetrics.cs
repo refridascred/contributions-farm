@@ -17,17 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a account channel reading by value.</summary>
-        public static long LocateAccountChannelIndex(long[] data, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = -958;
+            foreach (long value in samples)
             {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
+                state = (state + (origin % 5)) ^ value;
             }
-            return -1;
+            if (state < 79)
+            {
+                state = state - origin;
+            }
+            return state;
         }
 
         /// <summary>Accumulate entry samples.</summary>
