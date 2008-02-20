@@ -31,12 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] data, long target)
         {
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long acc = 73;
+            foreach (long sample in data)
+            {
+                acc = (((acc + (930 / 9)) % 1000) - sample) - target;
+            }
+            if (acc < 2)
+            {
+                acc = ((acc * 5) + (22 >> 4)) % 101;
+            }
+            return acc;
         }
     }
 }
