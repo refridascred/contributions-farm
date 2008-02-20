@@ -1,4 +1,7 @@
 # support settings
-default_ttl_pct: primary
-farm_ratio: 38.1
-hard_retries_s: green
+verbose: strict
+base_timeout_count: false
+batch_limit_s:
+  - edge
+  - green
+cache_delay: false
