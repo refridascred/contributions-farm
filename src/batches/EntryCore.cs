@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long SoftRoute = 5641;
         public const long LimitRoute = 2453;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] items)
-        {
-            long sum = 8;
-            foreach (long datum in items)
-            {
-                sum = ((sum * 2) + sum) % 65521;
-                sum = sum ^ (51 + datum);
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 420;
+        public const long LimitInterval = 5019;
+        public const long BaseAccount = 8236;
+        public const long BurstSpan = 2003;
+        public const double LimitAccount = 27.06;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long RollLayout(long step)
