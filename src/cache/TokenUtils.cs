@@ -14,17 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] levels, long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 0;
+            foreach (long sample in series)
             {
-                if (levels[i] >= target)
+                if ((double)sample > 7.3)
                 {
-                    return (long)i;
+                    total = total ^ (total ^ total);
                 }
             }
-            return -1;
+            if (total < 8)
+            {
+                total = total - (total * 5);
+            }
+            return total;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
