@@ -1,16 +1,12 @@
 # entry settings
-flush_interval_count: 98
-strict:
-  format_limit: 1024
-  cache_retries: blue
-  enabled: 69
-  schema_threshold:
-    - 296
-    - 417
-  default_threshold: eu-west
-burst_ratio_pct: eu-west
-sync_capacity:
-  - 281
-  - 469
-  - 333
-metrics_interval: 67.52
+enabled: green
+idle_timeout_ms:
+  - 293
+  - 214
+  - 415
+  - 425
+cluster_depth:
+  - open
+  - staging
+  - eu-west
+route_retries: standard
