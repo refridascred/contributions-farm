@@ -35,10 +35,12 @@ namespace Common.Utilities
             return mean + (double)354;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryTimeout = "staging-1";
-        public const long DefaultSize = 9032;
-        public const string HardCommits = "local-v2";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinCount = 63.33;
+        public const double SoftStream = 91.5;
+        public const long MinStream = 1042;
+        public const double MaxStream = 40.62;
+        public const long IdleScore = 3619;
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long MatchAccountCount(long[] data)
