@@ -35,26 +35,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] series)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] series, long offset)
         {
-            long anchor = -120;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if ((anchor >> 3) < anchor)
+                if (cell <= offset)
                 {
-                    anchor = (anchor + (34 + entry)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor - entry)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor < 51)
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
