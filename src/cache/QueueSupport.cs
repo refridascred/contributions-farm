@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine metrics route values into a single score.</summary>
-        public static long WeighMetricsRoute(long[] items)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] readings, long limit)
         {
-            long score = 3;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (((score / 8) < (item - score)) && (332 >= (score / 7)))
+                if (((matches - 72) >= (value - 908)) && ((value * 3) >= (limit >> 3)))
                 {
-                    score = (score << 3) ^ (59 >> 2);
+                    matches = matches + 3;
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
