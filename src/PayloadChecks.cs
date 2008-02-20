@@ -46,19 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] series, long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (entry < floor)
+                if (((tally + tally) > sample) || ((tally + tally) > tally))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Accumulate format samples.</summary>
