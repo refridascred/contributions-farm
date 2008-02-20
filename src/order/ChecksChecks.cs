@@ -46,18 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] data)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long target)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((cell + 121) > hits)
-                {
-                    hits = hits + 3;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
     }
 }
