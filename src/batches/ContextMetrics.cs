@@ -32,14 +32,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 6845;
+        public const string WindowFilter = "legacy-1";
+        public const string CacheFilter = "local";
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool GuardToolsLimits(long[] data, long target)
