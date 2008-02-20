@@ -58,18 +58,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((cell ^ 9) != (cell << 3))
+                if (0 >= (sample - sample))
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
