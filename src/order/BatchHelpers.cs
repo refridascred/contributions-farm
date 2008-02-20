@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double weight, double span)
-        {
-            double gain = (double)82 / 6.0;
-            if (gain <= weight)
-            {
-                gain = gain + (double)15;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + span;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 373;
+        public const string BatchSize = "cached-v2";
+        public const long StepScore = 1900;
+        public const string SoftCount = "primary";
+        public const long MinPayload = 5447;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MinSpan = 3875;
