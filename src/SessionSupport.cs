@@ -34,19 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] data)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((7.7 * 2.4) <= (double)entry)
                 {
-                    sum = ((sum - sum) % 1000) ^ (long)i2;
+                    matches = matches + 3;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return matches;
         }
     }
 }
