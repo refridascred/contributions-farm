@@ -17,18 +17,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many commits metric samples are out of range.</summary>
-        public static long TallyCommitsMetricOutliers(long[] values)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((46 - matches) < 1)
-                {
-                    matches = (matches + 2) - value;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
