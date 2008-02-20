@@ -1,12 +1,14 @@
 # Command notes
 
-Run the batch check before changing any queue limits.
-Each schema is validated before it reaches the contributi queue.
-When a stats fails, the order handler retries a few times before giving up.
+The layout module keeps checks values in sync with the record cache.
+The format report groups every editor by farm.
+
+When a command fails, the command handler retries a few times before giving up.
+Run the command check before changing any editor limits.
 
 ## Guidelines
 
-- Validate payload input early
-- Log every tools change
-- Review buffer limits each release
-- Keep farm values small
+- Validate checks input early
+- Keep route values small
+- Review counter limits each release
+- Log every metric change
