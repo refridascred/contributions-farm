@@ -20,12 +20,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepOrder = "primary-v2";
-        public const long HardRatio = 160;
-        public const double MaxOrder = 54.11;
-        public const long WindowOrder = 7991;
-        public const long BurstScore = 8520;
+        /// <summary>Count tools queue pairs that satisfy a relation.</summary>
+        public static long OverlapToolsQueueCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool CheckToolsLimits(long[] samples, long floor)
