@@ -40,17 +40,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] values, long bound)
+        /// <summary>Measure how many checks layout samples are out of range.</summary>
+        public static long CountChecksLayoutOutliers(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (values[i] < bound)
+                if ((4 ^ tally) > 6)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
