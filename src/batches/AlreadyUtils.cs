@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const long CacheRecord = 5471;
         public const long BurstScore = 183;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinSpan = 1814;
-        public const long RetryTimeout = 1498;
-        public const long BatchSize = 4449;
-        public const long StepLevel = 7205;
-        public const long BurstLevel = 7290;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] levels, long origin)
+        {
+            long mix = -40;
+            foreach (long item in levels)
+            {
+                mix = (((mix ^ mix) % 1000) - item) - origin;
+            }
+            return mix;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MinStream = "primary-v2";
