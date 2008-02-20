@@ -43,12 +43,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
     }
 }
