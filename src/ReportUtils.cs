@@ -58,22 +58,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of graph channel readings.</summary>
-        public static long TotalGraphChannel(long[] values, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] values)
         {
-            long sum = 20;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (((double)sum > 8.69) && ((cell + sum) >= (sum * 4)))
+                if (datum > seen)
                 {
-                    sum = ((sum << 3) ^ cell) + step;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (sum >> 2);
+                    seen = seen + 2;
                 }
             }
-            return sum % 1000;
+            return seen;
         }
     }
 }
