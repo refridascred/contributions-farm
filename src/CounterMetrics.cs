@@ -56,12 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] series, long step)
         {
-            Done,
-            Queued,
-            Active,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
