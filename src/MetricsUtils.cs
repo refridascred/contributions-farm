@@ -62,15 +62,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 1754;
+        public const long RetrySize = 9456;
+        public const long BaseWindow = 6711;
     }
 }
