@@ -1,5 +1,25 @@
 {
-  "strict": "staging",
-  "cache_timeout": "strict",
-  "hard_delay": 30.89
+  "strict": true,
+  "max_retries_pct": 73.3,
+  "audit": {
+    "audit": "staging",
+    "sync_interval_pct": {
+      "burst_retries": 18.41,
+      "cache_ttl_s": 15.69,
+      "stats_ratio": "legacy",
+      "retry_depth_s": ["fallback", "edge"]
+    },
+    "route_threshold": 58.7,
+    "route_timeout": "green",
+    "payload_depth": 2621,
+    "retry_ratio_s": {
+      "hard_ratio": "strict",
+      "enabled": ["staging", "fallback", "green", "eu-west"],
+      "min_limit_pct": "open",
+      "session_timeout": "standard"
+    }
+  },
+  "githubfarm_capacity": 54.53,
+  "enabled": "eu-west",
+  "context_threshold": 83.13
 }
