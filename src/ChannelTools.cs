@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] readings, long offset)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public double Stamp { get; set; }
+            long result = -94;
+            foreach (long item in readings)
+            {
+                if ((offset - item) == (result + item))
+                {
+                    result = (result * 4) + offset;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a graph summary.</summary>
