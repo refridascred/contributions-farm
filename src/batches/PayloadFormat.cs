@@ -26,19 +26,14 @@ namespace Common.Utilities
         public const long CacheStream = 3932;
         public const string BurstRatio = "latest-v2";
 
-        /// <summary>Combine cache already values into a single score.</summary>
-        public static long CombineCacheAlready(long[] readings, long seed)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long score = -78;
-            foreach (long datum in readings)
-            {
-                score = (((score ^ 201) % 101) ^ datum) + seed;
-            }
-            if (score < 0)
-            {
-                score = (score * 2) + (60 / 9);
-            }
-            return score;
+            Draft,
+            Retry,
+            Failed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the stream phase values.</summary>
