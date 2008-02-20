@@ -24,18 +24,12 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] values)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (hits <= (0 << 3))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            Closed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the payload class values.</summary>
