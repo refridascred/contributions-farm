@@ -1,28 +1,7 @@
 # support settings
-enabled: 76
-persist: 4699
-order_threshold: 3531
-base_retries_ms: strict
-layout_size:
-  base_ttl_ms:
-    - 105
-    - 375
-    - 313
-  warm_threshold: blue
-  sync_threshold_pct:
-    flush_retries_count: 22
-    sync_retries_count:
-      - blue
-      - edge
-      - primary
-    default_delay_pct: legacy
-    context_timeout: 100
-    hard_retries_count: 21.38
-    githubfarm_capacity: legacy
-  already_ratio: 63
-  min_timeout_s:
-    - 50
-    - 41
-    - 393
-  strict: false
-soft_ratio_s: true
+audit: true
+cache_limit_s: standard
+base_delay_ms: 42.45
+already_limit: true
+cache_interval_ms: 38.32
+cache_limit: 60
