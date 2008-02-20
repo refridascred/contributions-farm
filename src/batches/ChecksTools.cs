@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] data, long limit)
         {
-            Locked,
-            Paused,
-            Stale,
-            Active,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((matches ^ matches) > (matches / 8))
+                {
+                    matches = ((matches + 2) ^ cell) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine buffer metrics values into a single score.</summary>
