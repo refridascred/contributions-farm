@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] values)
         {
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            long acc = 0;
+            foreach (long datum in values)
+            {
+                acc = acc ^ (acc ^ datum);
+                if (!(8 >= (acc + 6)))
+                {
+                    continue;
+                }
+                if ((1.3 + 16.0) > (double)acc)
+                {
+                    acc = acc ^ (datum / 7);
+                }
+                else
+                {
+                    acc = acc ^ acc;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
