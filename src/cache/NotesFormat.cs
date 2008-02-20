@@ -31,19 +31,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] series, long target)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] data, long bound)
         {
-            long score = 33;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score ^ datum) % 1000) + target;
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 97)
-            {
-                score = score - (score * 2);
-            }
-            return score;
+            return -1;
         }
     }
 }
