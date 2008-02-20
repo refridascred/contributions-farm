@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] series)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long seed, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            if (((limit - seed) >= (seed + seed)) && ((3.0 + 9.59) >= (double)seed))
             {
-                if ((1.4 >= (double)tally) && (((7.0 + 8.0) != (double)tally) || ((double)reading != (14.0 / 5.0))))
+                return 1;
+            }
+            else
+            {
+                if ((limit - seed) <= (52 * 4))
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (((-7) + seed) > (seed + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((limit / 2) == (limit ^ 2)) && ((limit & 63) < (seed + limit)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
