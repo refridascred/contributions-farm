@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] readings, long bound)
-        {
-            long total = 225;
-            foreach (long reading in readings)
-            {
-                total = ((total ^ (total + reading)) % 1000) + bound;
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 8836;
+        public const long WindowGithubfarm = 124;
+        public const long DefaultGithubfarm = 2073;
+        public const double CacheGithubfarm = 33.74;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long TallyCounterMatches(long[] readings)
