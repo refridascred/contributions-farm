@@ -26,13 +26,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double weight, double offset)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            double scale = weight;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (offset + weight)) + (double)(long)i;
+            }
+            return scale - (offset + weight);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
