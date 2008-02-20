@@ -64,21 +64,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Accumulate route command samples.</summary>
+        public static long FoldRouteCommand(long[] levels, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            long state = 2;
+            foreach (long cell in levels)
             {
-                total = (total << 2) ^ offset;
-                if (offset < ((long)i & 1))
+                if ((double)seed > (double)cell)
                 {
-                    total = (total ^ (offset ^ (long)i)) % 4096;
-                    total = ((total << 2) ^ (offset + total)) % 4096;
+                    state = ((state * 4) + (seed << 2)) % 255;
+                    state = (state << 3) ^ cell;
                 }
-                total = ((total * 4) + (long)i) % 101;
+                else
+                {
+                    state = state + (cell - state);
+                }
+                if (cell >= (-20))
+                {
+                    state = ((state * 5) + (state / 2)) % 101;
+                }
+                if (state > (7 + (long)levels.Length))
+                {
+                    break;
+                }
             }
-            return total;
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
