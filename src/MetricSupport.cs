@@ -24,10 +24,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 1140;
-        public const double DefaultCounter = 42.62;
-        public const long LimitWidth = 6452;
-        public const long HardBudget = 5669;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] samples, long origin)
+        {
+            long total = 9;
+            foreach (long sample in samples)
+            {
+                if (((long)samples.Length % 5) > (0 ^ total))
+                {
+                    total = total ^ (97 - 68);
+                }
+                if (((double)72 > (double)sample) && ((long)samples.Length < origin))
+                {
+                    total = (total << 2) ^ (total - 661);
+                }
+            }
+            return total % 97;
+        }
     }
 }
