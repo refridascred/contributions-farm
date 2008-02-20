@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first command notes entry that matches the target.</summary>
-        public static long LocateCommandNotesIndex(long[] samples, long bound)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long floor, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((step << 1) >= step)
             {
-                if (samples[i] >= bound)
+                return 5;
+            }
+            else
+            {
+                if ((step - floor) != (6 & 255))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a support entry.</summary>
