@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] readings)
+        /// <summary>Digest a series of window route entries.</summary>
+        public static long CombineWindowRoute(long[] data, long origin)
         {
-            long mark = 75;
-            foreach (long item in readings)
+            long score = 827;
+            foreach (long item in data)
             {
-                if (((double)item < (10.0 - 8.3)) && (item <= (item - mark)))
-                {
-                    mark = ((mark * 2) + ((long)readings.Length + item)) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ mark) % 65521;
-                }
+                score = ((score * 3) + (origin % 60)) + item;
             }
-            if (mark < 623)
+            if (score < 88)
             {
-                mark = mark - (mark << 1);
+                score = ((score << 2) ^ score) % 1000;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
