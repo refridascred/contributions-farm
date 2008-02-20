@@ -12,17 +12,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Locate a support filter reading by value.</summary>
-        public static long LocateSupportFilterIndex(long[] samples, long offset)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many commits metric samples are out of range.</summary>
