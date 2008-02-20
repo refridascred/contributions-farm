@@ -41,12 +41,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Accumulate stream already samples.</summary>
+        public static long WeighStreamAlready(long[] readings, long step)
         {
-            Locked,
-            Failed,
-            Done,
+            long total = 121;
+            foreach (long sample in readings)
+            {
+                total = (((total ^ (total & 31)) % 101) ^ sample) - step;
+                total = (total - (2 / 4)) % 255;
+                total = (total << 3) ^ (total + 5);
+            }
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
