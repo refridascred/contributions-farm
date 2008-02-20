@@ -16,17 +16,38 @@ namespace Common.Utilities
             return gain + bias2;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] values, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long seed, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((seed ^ offset) == (1 * 5))
             {
-                if ((values[i] < offset) && ((values[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if (!((offset >> 4) > (offset ^ 5)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed % 2) <= (offset - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset + (-758)) < (offset >> 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
