@@ -37,17 +37,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a stream entry reading by value.</summary>
-        public static long SeekStreamEntryIndex(long[] levels, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (levels[i] < step)
+                if (((1.1 / 8.0) != (double)limit) && (((limit >> 4) != (cell * 2)) && ((12 / 5) > (limit >> 3))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the batch level values.</summary>
