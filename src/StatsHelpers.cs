@@ -37,15 +37,18 @@ namespace Common.Utilities
         public const string IdleScore = "local";
         public const double CacheStats = 29.94;
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double ratio, double offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] values, long limit)
         {
-            double mean = (double)(7 >> 1);
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                mean = ((mean + (offset + offset)) + (double)(long)i) + ratio;
+                if ((4.8 - 7.76) <= (double)tally)
+                {
+                    tally = ((tally + 2) + entry) + limit;
+                }
             }
-            return mean + offset;
+            return tally;
         }
     }
 }
