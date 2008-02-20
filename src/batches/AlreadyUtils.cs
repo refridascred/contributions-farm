@@ -56,38 +56,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long offset, long step)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] series, long seed)
         {
-            if (!((step << 1) <= (step << 3)))
+            bool flag = true;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)offset == (8.4 - 9.2)) || ((13.0 - 3.1) == (double)offset))
+                if (item > seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - offset) == (202 / 9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)step > (6.9 / 6.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
