@@ -46,13 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Retry,
-            Draft,
-            Done,
-            Locked,
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
