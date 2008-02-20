@@ -36,11 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public bool Token { get; set; }
+            long score = 835;
+            foreach (long entry in values)
+            {
+                if ((score >> 5) >= (score & 1))
+                {
+                    score = score + entry;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the stream class values.</summary>
