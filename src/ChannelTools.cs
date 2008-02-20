@@ -22,19 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long bound)
+        /// <summary>Match up githubfarm metric samples.</summary>
+        public static long PairGithubfarmMetricCount(long[] samples)
         {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i3 = 0; i3 < 10; i3++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum ^ (sum + (long)i)) + (long)i3;
+                    if ((samples[i] ^ samples[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
