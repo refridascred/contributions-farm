@@ -86,32 +86,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long seed, long bound)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] series, long floor)
         {
-            long prev = seed + bound;
-            if ((902 >= (seed >> 1)) || ((bound - seed) == (prev - prev)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((26 + seed) >= seed)
+                if ((series[i] > floor) && ((series[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed != (16.0 * 11.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
