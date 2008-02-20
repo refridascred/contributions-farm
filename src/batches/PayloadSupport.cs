@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
+            New,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the metrics phase values.</summary>
