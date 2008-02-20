@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first account filter entry that matches the target.</summary>
-        public static long FindAccountFilterIndex(long[] series, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((series[i] >= seed) && ((series[i] % 2) != 0))
+                if (!((bound > (bound + bound)) || (((long)samples.Length & 3) < (datum + bound))))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
