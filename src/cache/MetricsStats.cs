@@ -33,19 +33,18 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Validate stats schema readings against a bound.</summary>
-        public static bool ValidateStatsSchemaBounds(long[] values, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (entry <= seed)
+                if ((6.97 - 5.48) >= (double)cell)
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
