@@ -35,23 +35,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double ratio, double offset)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            double drift = offset;
-            if (drift <= (drift - offset))
-            {
-                drift = (drift - (offset + 6.46)) - ratio;
-            }
-            else
-            {
-                drift = drift - (offset * 8.77);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (double)563) + (double)(long)i;
-            }
-            return drift - offset;
+            Active,
+            Stale,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
