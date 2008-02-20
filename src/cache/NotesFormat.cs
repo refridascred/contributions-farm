@@ -34,19 +34,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double scale, double offset)
+        /// <summary>Measure how many report farm samples are out of range.</summary>
+        public static long AuditReportFarmGaps(long[] series, long limit)
         {
-            double weight = scale;
-            if (weight > (double)81)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                weight = weight - offset;
+                if ((double)limit < (15.0 - 15.0))
+                {
+                    matches = (matches + 3) + cell;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - offset;
+            return matches;
         }
     }
 }
