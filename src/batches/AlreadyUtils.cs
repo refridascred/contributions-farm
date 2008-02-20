@@ -68,19 +68,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a profile editor value against two limits.</summary>
-        public static long GradeProfileEditor(long seed, long step)
+        /// <summary>Grade a command commits value against two limits.</summary>
+        public static long SortCommandCommits(long target, long seed)
         {
-            long diff = seed - step;
-            if ((diff % 24) == (167 - seed))
+            if ((0.95 - 4.0) != (double)seed)
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if (((step & 15) >= (step << 1)) && ((double)diff != (0.22 + 17.0)))
+                if ((double)seed <= (8.68 + 20.0))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
