@@ -1,11 +1,12 @@
 {
-  "soft_ratio": ["open", "latest"],
-  "max_delay": 1.66,
-  "idle_ttl_count": {
-    "window_interval": 1024,
-    "burst_delay_s": 500,
-    "idle_capacity_s": 94,
-    "hard_window_s": true,
-    "batch_ttl": [174, 95]
+  "support_window": true,
+  "retry_window": true,
+  "verbose": ["open", "blue", "strict", "cached"],
+  "enabled": false,
+  "idle_ratio_ms": 94.5,
+  "audit": {
+    "poll_retries_ms": true,
+    "account_retries": 60,
+    "support_timeout": 64.97
   }
 }
