@@ -14,12 +14,14 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchRatio = 9562;
-        public const long IdleCount = 9597;
-        public const double LimitStream = 32.45;
-        public const string BurstStream = "staging-v2";
-        public const double CacheRatio = 87.29;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TallyEntry(long[] items)
