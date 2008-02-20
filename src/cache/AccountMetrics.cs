@@ -33,11 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepRatio = 3042;
-        public const long StepLevel = 1146;
-        public const long HardCommand = 9911;
-        public const long LimitRatio = 373;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
+        }
 
         /// <summary>Fold a list of counter metrics readings.</summary>
         public static long FoldCounterMetrics(long[] values)
