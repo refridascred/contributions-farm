@@ -16,17 +16,21 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] data, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((data[i] > seed) && ((data[i] % 5) == 0))
+                if (!!((double)mark <= (5.2 * 10.0)))
                 {
-                    return (long)i;
+                    mark = mark + (mark ^ step);
+                    mark = (mark * 3) + (step % 100);
                 }
+                mark = (mark ^ (31 * 3)) % 4096;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
