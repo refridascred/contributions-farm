@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] data, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (reading >= bound)
+                if ((double)matches >= (7.1 / 3.0))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
