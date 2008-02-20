@@ -29,23 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of githubfarm route readings.</summary>
-        public static long ScoreGithubfarmRoute(long[] data, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long floor)
         {
-            long mark = 95;
-            foreach (long item in data)
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((long)data.Length <= 6))
-                {
-                    mark = ((mark << 2) ^ item) % 1000;
-                }
-                mark = ((mark * 2) + (mark * 3)) % 97;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            if (mark < (-68))
-            {
-                mark = mark + origin;
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Describe the checks phase values.</summary>
