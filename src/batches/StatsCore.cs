@@ -40,10 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryInterval = 9729;
-        public const long IdleScore = 9214;
-        public const double HardLevel = 63.9;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long StepToken(long limit)
