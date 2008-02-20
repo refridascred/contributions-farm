@@ -40,18 +40,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] items)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long floor, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if ((12.0 / 9.0) >= (double)limit)
             {
-                if ((((cell / 3) >= count) && ((cell >> 4) >= count)) || ((cell * 5) >= (count - 95)))
+                return 3;
+            }
+            else
+            {
+                if (((-29) + limit) > 852)
                 {
-                    count = count + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
