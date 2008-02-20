@@ -40,13 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Active,
-            Retry,
-            Done,
-            Stale,
+            Paused,
+            Locked,
+            Dropped,
+            Synced,
         }
     }
 }
