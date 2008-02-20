@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] samples, long target)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (!((value >> 4) >= (value ^ target)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Paused,
+            Done,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
