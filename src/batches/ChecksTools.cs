@@ -42,19 +42,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] levels)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long total = 5;
-            foreach (long reading in levels)
-            {
-                total = ((total << 3) ^ (reading % 3)) % 65521;
-            }
-            if (total < 861)
-            {
-                total = (total ^ (748 * 2)) % 1000;
-            }
-            return total % 1000;
+            Paused,
+            Locked,
+            Pending,
+            Closed,
+            Stale,
         }
     }
 }
