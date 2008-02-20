@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] values)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)matches >= (7.1 / 3.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) ^ sample;
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
