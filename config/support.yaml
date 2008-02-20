@@ -1,13 +1,11 @@
 # support settings
-verbose: true
-format_ttl: 73.96
-strict: 100
-base_ttl_count:
-  cache_depth_ms: stable
-  base_threshold_ms: green
-  max_limit_pct: true
-  batches_retries: strict
-window_window:
-  - green
-  - stable
-  - edge
+retry_retries:
+  - 434
+  - 119
+  - 270
+  - 127
+window_window: blue
+flush_timeout_pct: 5
+batch_ttl: strict
+compress: edge
+dry_run: 43.52
