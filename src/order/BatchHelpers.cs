@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCount = 2377;
-        public const long BurstRatio = 5998;
-        public const long BatchLevel = 8105;
-        public const long MaxFactor = 9080;
-        public const double HardCounter = 45.64;
+        /// <summary>Find the first account filter entry that matches the target.</summary>
+        public static long FindAccountFilterIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordRange(long[] items, long floor)
