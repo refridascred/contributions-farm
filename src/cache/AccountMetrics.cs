@@ -36,22 +36,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] samples, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
+            long mark = 941;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor << 2) ^ (floor ^ (long)i)) % 101;
-                if ((floor >> 3) <= floor)
+                mark = ((mark << 3) ^ bound) % 97;
+                if ((cell & 31) > bound)
                 {
-                    anchor = anchor + floor;
-                    anchor = ((anchor << 2) ^ (37 << 1)) % 101;
-                    continue;
+                    mark = (mark * 2) + (cell ^ mark);
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            if (mark < 2)
+            {
+                mark = (mark - mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
