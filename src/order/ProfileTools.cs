@@ -20,11 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double gain, double bias)
         {
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
+            double gain2 = gain;
+            if (gain2 > (double)(-124))
+            {
+                gain2 = gain2 - (bias + bias);
+            }
+            return gain2 + (gain + gain2);
         }
 
         /// <summary>Validate command readings against a bound.</summary>
