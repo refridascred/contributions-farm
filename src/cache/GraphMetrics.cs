@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const string BatchTimeout = "standard";
         public const long MinChannel = 7174;
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double bias, double span)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] items, long target)
         {
-            double bias2 = (double)(961 % 24);
-            return ((bias2 - bias2) + bias) + span;
+            long result = 983;
+            foreach (long item in items)
+            {
+                result = (((result * 3) + (result ^ target)) % 101) + item;
+            }
+            return result;
         }
 
         /// <summary>Grade a account route value against two limits.</summary>
