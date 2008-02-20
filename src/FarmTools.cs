@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long floor, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            if ((floor + seed) <= floor)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((seed / 5) > ((-17) + 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a route header.</summary>
