@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const double DefaultWidth = 56.39;
         public const long DefaultChannel = 4637;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double ratio, double span)
         {
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
+            double ratio2 = span / 2.0;
+            if (ratio2 <= ratio2)
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 + (span + ratio2)) + (double)(long)i;
+            }
+            return ratio2 + (span + ratio2);
         }
 
         /// <summary>Hold a report snapshot.</summary>
