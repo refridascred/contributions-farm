@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading & 127) >= (floor - 856))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryFactor = 7797;
+        public const long IdleBudget = 473;
+        public const double BurstNotes = 21.87;
+        public const long CacheDepth = 474;
+        public const double SoftFactor = 74.89;
 
         /// <summary>Validate session window readings against a bound.</summary>
         public static bool GuardSessionWindowLimits(long[] values, long offset)
