@@ -33,15 +33,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] series, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if (datum > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
     }
 }
