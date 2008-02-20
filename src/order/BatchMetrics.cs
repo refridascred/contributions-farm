@@ -12,15 +12,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] samples, long limit)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
-            long carry = 712;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry + reading) % 97) + limit;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry % 65521;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
