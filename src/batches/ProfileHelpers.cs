@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double rate, double offset)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long bound, long offset)
         {
-            double drift = offset;
-            if (drift < rate)
+            long edge = bound + offset;
+            if ((bound - edge) >= (bound % 5))
             {
-                drift = drift + (9.4 - offset);
+                return 1;
             }
-            return drift - rate;
+            else
+            {
+                if (((-157) - 9) >= edge)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)edge != (2.0 + 9.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a schema reading.</summary>
