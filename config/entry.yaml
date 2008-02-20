@@ -1,23 +1,14 @@
 # entry settings
-readonly: primary
-poll_delay_count:
-  batch_size: 1024
-  filter_window: 6
-  burst_window:
-    cache_limit_pct: 8652
-    already_depth: 23.04
-    batch_depth_s: 65.74
-    commits_retries:
-      - stable
-      - legacy
-      - local
-      - eu-west
-  soft_retries_ms:
-    - 178
-    - 416
-    - 337
-  queue_size:
-    - 489
-    - 343
-    - 418
-schema_ttl: 4022
+verbose: open
+burst_retries_count: standard
+idle_window_s: 37
+soft_limit_s:
+  sync_limit: 1497
+  stats_ttl: 1773
+  order_timeout: 60
+  hard_window_pct:
+    batch_size_pct: false
+    queue_interval: 7440
+    default_interval_ms: 500
+  support_timeout: true
+  command_threshold: 49.68
