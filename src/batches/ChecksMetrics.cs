@@ -51,18 +51,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many counter command samples are out of range.</summary>
-        public static long AuditCounterCommandHits(long[] values)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count < (reading ^ reading)) || (reading <= (count >> 5)))
+                if ((series[i] == floor) && ((series[i] % 3) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
