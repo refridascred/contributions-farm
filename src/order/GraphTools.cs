@@ -67,10 +67,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 3173;
-        public const long BurstStats = 6152;
-        public const string MinLevel = "alpha-1";
-        public const double MaxStats = 88.16;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+        }
     }
 }
