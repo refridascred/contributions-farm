@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long CacheRecord = 5471;
         public const long BurstScore = 183;
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double rate, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 <= rate)
-            {
-                bias2 = bias2 + bias2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 + (bias2 * 6.88);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinSpan = 1814;
+        public const long RetryTimeout = 1498;
+        public const long BatchSize = 4449;
+        public const long StepLevel = 7205;
+        public const long BurstLevel = 7290;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MinStream = "primary-v2";
