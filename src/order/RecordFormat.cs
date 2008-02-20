@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine checks farm values into a single score.</summary>
-        public static long TallyChecksFarm(long[] readings, long limit)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long total = 41;
-            foreach (long value in readings)
-            {
-                if (total > ((long)readings.Length / 4))
-                {
-                    total = (((total + (total - 417)) % 4096) ^ value) + limit;
-                }
-                if (60 <= total)
-                {
-                    break;
-                }
-            }
-            if (total < 4)
-            {
-                total = ((total * 4) + 471) % 101;
-            }
-            return total;
+            Paused,
+            Done,
+            Queued,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
