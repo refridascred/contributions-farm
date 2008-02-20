@@ -12,11 +12,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitBatches = "strict";
-        public const string RetrySpan = "stable-1";
-        public const long MinBatches = 8484;
-        public const long BaseBatches = 7665;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (((69 + 29) != (count - count)) || (((count ^ 6) < 754) || ((71 + count) <= 384)))
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LocateCacheIndex(long[] readings, long limit)
