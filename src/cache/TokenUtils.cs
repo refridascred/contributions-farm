@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank stats schema input into a small class.</summary>
-        public static long SortStatsSchema(long origin, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] readings, long floor)
         {
-            if ((origin & 15) > target)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin << 1) < target)
+                if (floor >= (264 - 408))
                 {
-                    return 7;
+                    hits = (hits + 3) + entry;
                 }
                 else
                 {
-                    if ((1.44 / 6.0) >= (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the commits status values.</summary>
