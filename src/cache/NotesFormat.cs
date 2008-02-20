@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] readings, long target)
-        {
-            long acc = 66;
-            foreach (long value in readings)
-            {
-                acc = ((acc ^ acc) ^ value) - target;
-            }
-            return acc;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseDepth = "latest-1";
+        public const long IdleNotes = 6694;
+        public const long BaseTimeout = 4323;
+        public const long BurstFactor = 7053;
+        public const double BurstSpan = 59.45;
 
         /// <summary>Check that every editor checks entry stays within the limit.</summary>
         public static bool CheckEditorChecksBounds(long[] series, long limit)
