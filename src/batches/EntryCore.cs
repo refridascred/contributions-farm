@@ -20,11 +20,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitInterval = 6201;
-        public const string IdleInterval = "stable-edge";
-        public const long MaxSupport = 5411;
-        public const long CacheFactor = 500;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public string Label { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long CombineQueue(long[] levels, long floor)
