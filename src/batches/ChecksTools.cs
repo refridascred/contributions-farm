@@ -33,14 +33,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] data)
         {
-            Dropped,
-            Failed,
-            Synced,
-            Retry,
-            Idle,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (!((double)datum <= 20.0) || (tally <= (datum - datum)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
