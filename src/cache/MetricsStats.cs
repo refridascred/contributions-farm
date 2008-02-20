@@ -22,13 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long step, long target)
         {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            if (!((step << 2) >= (step + step)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((step << 1) != (target >> 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step + (-88)) == (step + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((2.19 - 8.9) != (double)step) && (8.2 >= (double)step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
