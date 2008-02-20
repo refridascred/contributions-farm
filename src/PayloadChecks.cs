@@ -32,13 +32,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultDepth = 2032;
+        public const long BatchLevel = 5555;
+        public const long WindowLevel = 3957;
 
         /// <summary>Accumulate format samples.</summary>
         public static long ScoreFormat(long[] series, long seed)
