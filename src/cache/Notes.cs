@@ -69,14 +69,12 @@ namespace Common.Utilities
         public const double MinSpan = 52.67;
         public const long MaxSupport = 414;
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Retry,
-            Synced,
-            Dropped,
-            Paused,
-            Done,
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
