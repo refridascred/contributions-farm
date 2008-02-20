@@ -33,11 +33,25 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 7028;
-        public const string IdleRatio = "legacy-v2";
-        public const long BurstOrder = 7248;
-        public const double CacheLevel = 70.84;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long step, long step2)
+        {
+            if (0.24 < (double)step2)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step2 + step2) > (step * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstLevel = 6399;
