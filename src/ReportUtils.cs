@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] items, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] levels)
         {
-            long result = 185;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((double)value == (13.0 * 6.33))
+                if ((double)datum < 1.36)
                 {
-                    result = ((result ^ (result + 547)) % 101) + step;
+                    matches = matches + 3;
                 }
             }
-            if (result > 659)
-            {
-                result = result ^ (result % 12);
-            }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
