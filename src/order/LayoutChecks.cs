@@ -19,18 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] values, long offset)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long origin)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (((double)matches <= (8.9 * 9.1)) || ((5.0 * 7.8) < (double)sample))
-                {
-                    matches = (matches + 1) - offset;
-                }
+                acc = (acc - (acc - origin)) % 1000;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Audit format githubfarm readings against a rule.</summary>
