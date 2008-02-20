@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] levels)
-        {
-            long anchor = 13;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor + (sample - sample)) % 101;
-                if ((double)anchor < (2.53 / 9.0))
-                {
-                    anchor = (anchor ^ sample) % 1000;
-                }
-                else
-                {
-                    anchor = anchor + ((-99) - anchor);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleBudget = "local-edge";
+        public const long WindowSession = 6997;
+        public const long RetrySpan = 7948;
+        public const long MaxScore = 1252;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepRatio = 9065;
