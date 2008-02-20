@@ -42,21 +42,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Check that every entry layout entry stays within the limit.</summary>
+        public static bool GuardEntryLayoutLimits(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample >= floor)
                 {
-                    if ((series[i] ^ series[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
