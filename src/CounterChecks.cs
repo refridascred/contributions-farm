@@ -38,12 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] items)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((8 & 1) <= (hits % 24))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many format batch samples are out of range.</summary>
