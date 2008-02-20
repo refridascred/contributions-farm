@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] levels, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values, long floor)
         {
-            long state = 973;
-            foreach (long sample in levels)
+            long total = 328;
+            foreach (long item in values)
             {
-                if (((double)sample > 9.0) || ((state % 12) >= (83 + state)))
+                if (floor > (797 % 10))
                 {
-                    state = (state + (state / 6)) % 4096;
+                    total = total + (537 % 2);
                 }
                 else
                 {
-                    state = state - (bound - sample);
+                    total = (total - (floor + item)) % 255;
                 }
             }
-            return state;
+            return total % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
