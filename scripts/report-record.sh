@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=402
+RECORD_LIMIT=113
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-open}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
+for item in open fallback primary edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
