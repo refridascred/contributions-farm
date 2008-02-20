@@ -50,11 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowTimeout = 9769;
-        public const long DefaultAccount = 2570;
-        public const double HardCount = 80.21;
-        public const string IdleAccount = "legacy-1";
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] items)
+        {
+            long total = 99;
+            foreach (long value in items)
+            {
+                if ((value & 127) >= (value - value))
+                {
+                    total = ((total << 2) ^ (total << 1)) % 4096;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double AdjustPayload(double ratio, double offset)
