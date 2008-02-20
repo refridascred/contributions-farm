@@ -20,12 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 4507;
-        public const long MaxMetrics = 6525;
-        public const long LimitInterval = 6891;
-        public const long RetryScore = 2721;
-        public const long CacheMetrics = 9976;
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
+        {
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long CombineEntry(long[] values)
