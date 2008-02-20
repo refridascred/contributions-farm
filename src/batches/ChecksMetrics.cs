@@ -35,12 +35,10 @@ namespace Common.Utilities
         public const long BatchQueue = 6782;
         public const double IdleFactor = 58.41;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public long Size { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "strict-1";
+        public const string RetryPayload = "stable-edge";
+        public const long BurstBudget = 2510;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MinFilter = 9176;
