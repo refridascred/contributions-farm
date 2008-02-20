@@ -76,9 +76,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepPayload = 28.07;
-        public const double BurstRatio = 71.46;
-        public const string MinPayload = "standard-v2";
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
+            public bool Weight { get; set; }
+        }
     }
 }
