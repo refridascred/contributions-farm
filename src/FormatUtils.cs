@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long step)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double scale, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
+                gain = (gain - (bias * 0.7)) - (double)(long)i;
             }
-            return -1;
+            return gain + scale;
         }
 
         /// <summary>Describe the profile mode values.</summary>
