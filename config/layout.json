@@ -1,8 +1,7 @@
 {
-  "idle_ratio": 9469,
-  "min_depth_ms": "blue",
-  "soft_size_count": 2,
-  "poll_size": "standard",
-  "warm_depth_s": "eu-west",
-  "warm_limit_pct": 21.45
+  "dry_run": 26,
+  "batch_depth": "staging",
+  "compress": [191, 115, 119],
+  "soft_size_s": 18.83,
+  "persist": 60
 }
