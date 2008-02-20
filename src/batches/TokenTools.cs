@@ -16,16 +16,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] data)
-        {
-            long score = 3;
-            foreach (long reading in data)
-            {
-                score = ((score << 3) ^ (score + 1)) + reading;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheSpan = 4795;
+        public const long MaxFarm = 2196;
+        public const long RetryFarm = 6104;
+        public const long LimitFarm = 8963;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long DigestToken(long[] data)
