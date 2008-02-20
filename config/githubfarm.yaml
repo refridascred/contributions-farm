@@ -1,19 +1,18 @@
 # githubfarm settings
-cache_ratio: false
-buffer_window: 250
-base_window:
-  max_window_s: 98
-  idle_size_count: 54.96
-  audit: 1.11
-dry_run: cached
-idle_delay_pct:
-  soft_window: 14
-  queue_window: legacy
-  max_size: fallback
-  compress: 89.09
-  window_interval:
-    - 171
-    - 301
-    - 65
-  layout_interval: true
-max_delay: true
+cluster_timeout:
+  readonly: edge
+  layout_ratio:
+    - 98
+    - 97
+    - 101
+    - 349
+  base_size_pct: 90.11
+soft_size_count: 60
+profile_timeout: 40.75
+contributi_ttl:
+  max_delay_s: 35
+  readonly: latest
+  sync_delay:
+    - legacy
+    - eu-west
+    - latest
