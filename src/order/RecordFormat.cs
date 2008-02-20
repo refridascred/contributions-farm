@@ -37,11 +37,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Match up filter order samples.</summary>
