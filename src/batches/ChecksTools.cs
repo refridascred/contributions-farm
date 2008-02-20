@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank tools notes input into a small class.</summary>
-        public static long BucketToolsNotes(long target, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] series, long seed)
         {
-            if ((bound ^ bound) != (target >> 5))
+            long seen = 0;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + 1) < bound)
+                if ((seen > (seed << 3)) || (entry > (entry << 2)))
                 {
-                    return 1;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((bound <= (target & 31)) || ((target % 3) != (target % 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the profile mode values.</summary>
