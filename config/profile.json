@@ -1,7 +1,7 @@
 {
-  "warm_limit_ms": 50.03,
-  "dry_run": 9662,
-  "entry_capacity": 6.47,
-  "default_ttl_ms": "open",
-  "idle_size_pct": ["local", "cached", "fallback", "latest"]
+  "soft_retries": 70,
+  "persist": 47.89,
+  "readonly": true,
+  "flush_retries_ms": 70.62,
+  "default_size": false
 }
