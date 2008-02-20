@@ -70,11 +70,13 @@ namespace Common.Utilities
         public const double HardPayload = 75.05;
         public const string IdleFactor = "primary-v2";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardSize = 9922;
-        public const string DefaultTimeout = "alpha-v2";
-        public const long BatchQueue = 5479;
-        public const double CacheWidth = 85.75;
-        public const double RetryScore = 9.9;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Idle,
+            Stale,
+            New,
+            Failed,
+        }
     }
 }
