@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] values, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            long mark = 5;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    mark = ((mark * 3) + (cell & 15)) ^ (long)i;
+                }
+                if (((6 >> 4) <= mark) || ((306 + step) < (cell & 63)))
+                {
+                    mark = (mark + (mark >> 3)) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
