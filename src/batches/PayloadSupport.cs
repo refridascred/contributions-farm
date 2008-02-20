@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
