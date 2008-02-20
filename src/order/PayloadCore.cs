@@ -35,10 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 76.59;
-        public const long DefaultDepth = 8180;
-        public const long SoftLayout = 1131;
-        public const long LimitTimeout = 2811;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] levels, long origin)
+        {
+            long mark = 738;
+            foreach (long datum in levels)
+            {
+                if ((origin << 1) < (mark - datum))
+                {
+                    mark = ((mark << 3) ^ (mark + datum)) % 97;
+                }
+            }
+            return mark % 65521;
+        }
     }
 }
