@@ -56,21 +56,11 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Match up stream tools samples.</summary>
-        public static long PairStreamToolsCount(long[] data)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double ratio = (double)(645 + 667);
+            return (ratio + scale) + floor;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
