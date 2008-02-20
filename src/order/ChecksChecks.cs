@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Rank schema buffer input into a small class.</summary>
+        public static long GradeSchemaBuffer(long floor, long floor2)
         {
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
-            public long Label { get; set; }
+            if (((12.0 * 1.0) >= (double)floor) && ((floor & 7) == (floor % 60)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((4.6 * 3.4) == (double)floor) && ((double)floor2 >= (3.84 / 6.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Grade a metrics order value against two limits.</summary>
