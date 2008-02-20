@@ -94,10 +94,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 44.39;
-        public const double SoftSpan = 44.29;
-        public const long MinProfile = 6274;
-        public const long BurstInterval = 348;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            New,
+            Dropped,
+            Failed,
+        }
     }
 }
