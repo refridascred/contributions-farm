@@ -34,12 +34,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetrySpan = 821;
+        public const long IdleProfile = 1095;
+        public const long CacheWidth = 2725;
+        public const long LimitProfile = 8205;
+        public const long LimitInterval = 8484;
     }
 }
