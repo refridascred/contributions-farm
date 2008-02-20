@@ -21,11 +21,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Count the tools stream entries that pass the check.</summary>
+        public static long MeasureToolsStreamHits(long[] values, long origin)
         {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!((double)9 < (double)origin) && !((double)hits != (7.69 - 16.0)))
+                {
+                    hits = (hits + 1) - value;
+                }
+            }
+            return hits;
         }
     }
 }
