@@ -21,25 +21,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long floor, long limit)
-        {
-            if ((12.0 / 9.0) >= (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((-29) + limit) > 852)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "standard-edge";
+        public const long MaxChannel = 2004;
+        public const long HardChannel = 9499;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BatchLayout = 76.59;
