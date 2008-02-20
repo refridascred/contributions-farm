@@ -15,25 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long floor, long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long slot = floor - bound;
-            if (floor > (bound & 15))
-            {
-                return 8;
-            }
-            else
-            {
-                if (446 > (bound - slot))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Locate a session profile reading by value.</summary>
