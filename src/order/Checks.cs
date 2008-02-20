@@ -20,14 +20,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] items)
         {
-            Paused,
-            Pending,
-            New,
-            Done,
-            Closed,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (((double)tally != (1.14 + 9.2)) || (tally >= item))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
