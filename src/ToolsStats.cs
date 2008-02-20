@@ -35,19 +35,12 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] values, long origin)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long sum = 88;
-            foreach (long value in values)
-            {
-                if (((double)sum <= 4.4) && ((origin + value) > sum))
-                {
-                    sum = (sum ^ (origin - sum)) % 1000;
-                }
-                sum = sum - ((-36) + sum);
-            }
-            return sum;
+            public long Token { get; set; }
+            public bool Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the order class values.</summary>
