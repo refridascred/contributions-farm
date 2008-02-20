@@ -50,25 +50,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long bound, long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long limit)
         {
-            long lane = bound + seed;
-            if ((lane - seed) == (lane ^ lane))
+            long score = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((lane * 2) == (lane + bound)) && (((-11) % 12) > lane))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 1;
+                    score = ((score + limit) % 4096) - (long)i2;
                 }
-                else
-                {
-                    return 5;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
