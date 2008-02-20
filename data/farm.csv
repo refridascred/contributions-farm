@@ -1,6 +1,11 @@
-id,ratio
-1,434
-2,strict
-3,90.06
-4,1.07
-5,904
+id,rank,level,count
+1,673,19.58,11.0
+2,157,13,strict
+3,358,strict,843
+4,eu-west,79.99,909
+5,150,805,open
+6,legacy,970,43.18
+7,fallback,370,751
+8,997,380,32.12
+9,edge,14.35,strict
+10,green,440,28.61
