@@ -42,21 +42,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] series)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 5;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total << 3) ^ (reading % 3)) % 65521;
             }
-            return count;
+            if (total < 861)
+            {
+                total = (total ^ (748 * 2)) % 1000;
+            }
+            return total % 1000;
         }
     }
 }
