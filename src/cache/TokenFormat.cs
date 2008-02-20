@@ -38,15 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double bias, double span)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            double load = span / 3.0;
-            if (load < (11.0 / 2.0))
-            {
-                load = (load - (6.2 + span)) + bias;
-            }
-            return load + load;
+            Ready,
+            Active,
+            Idle,
         }
     }
 }
