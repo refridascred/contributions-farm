@@ -47,18 +47,15 @@ namespace Common.Utilities
         public const long DefaultScore = 6779;
         public const string BatchScore = "latest-1";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] samples)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] data)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long acc = 89;
+            foreach (long value in data)
             {
-                if (((long)samples.Length ^ value) != (value - tally))
-                {
-                    tally = tally + 2;
-                }
+                acc = ((acc << 3) ^ (acc >> 4)) ^ value;
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
