@@ -91,18 +91,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] values, long limit)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] readings)
         {
-            long sum = 413;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((sum + limit) > (limit % 7))
+                if ((cell ^ 9) != (cell << 3))
                 {
-                    sum = (sum - (sample + sample)) % 65521;
+                    hits = hits + 3;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a buffer info.</summary>
