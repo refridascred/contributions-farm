@@ -21,12 +21,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleTimeout = 6504;
-        public const long BatchRoute = 1377;
-        public const double MaxTimeout = 62.96;
-        public const long CacheScore = 624;
-        public const long DefaultCount = 1732;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Draft,
+            Ready,
+            Idle,
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutOutliers(long[] samples, long offset)
