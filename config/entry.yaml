@@ -1,5 +1,7 @@
 # entry settings
-burst_interval_count: blue
-metric_ttl: 250
-retry_ttl: 30
-counter_ratio: true
+flush_limit_s: 6042
+min_threshold_count: 16.0
+audit: false
+idle_interval_ms: false
+order_interval: open
+soft_timeout_pct: fallback
