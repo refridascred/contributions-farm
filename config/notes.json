@@ -1,6 +1,6 @@
 {
-  "editor_retries": false,
-  "sync_capacity_ms": true,
-  "min_limit_pct": true,
-  "idle_timeout_count": true
+  "poll_window": 63,
+  "poll_limit_ms": 96.73,
+  "warm_ratio": 5710,
+  "idle_ratio": 72.31
 }
