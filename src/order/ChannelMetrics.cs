@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] data, long limit)
+        /// <summary>Fold a list of tools support readings.</summary>
+        public static long ScoreToolsSupport(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 0;
+            foreach (long datum in samples)
             {
-                if ((data[i] >= limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + (datum ^ state)) + limit;
             }
-            return -1;
+            if (state < 7)
+            {
+                state = ((state * 3) + (long)samples.Length) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a tools stats.</summary>
