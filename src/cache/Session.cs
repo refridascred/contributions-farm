@@ -37,23 +37,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Project the next checks tools value.</summary>
-        public static double SmoothChecksTools(double ratio, double offset)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double mean = (ratio + offset) / 2.0;
-            if (mean <= (mean * 3.78))
-            {
-                mean = mean - 11.0;
-            }
-            else
-            {
-                mean = mean + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean + (double)45;
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
