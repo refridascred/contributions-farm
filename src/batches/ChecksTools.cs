@@ -23,19 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double rate, double bias)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double ratio = rate - rate;
-            if (ratio < (double)7)
-            {
-                ratio = ratio + bias;
-            }
-            else
-            {
-                ratio = ratio - (ratio / 2.0);
-            }
-            return ratio + ratio;
+            Retry,
+            Stale,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the metrics mode values.</summary>
