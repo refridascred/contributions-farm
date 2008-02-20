@@ -1,7 +1,12 @@
 {
-  "command_capacity": true,
-  "compress": ["cached", "fallback"],
-  "hard_depth_s": 100,
-  "enabled": [74, 103],
-  "metrics_threshold": ["local", "strict"]
+  "support_ttl": "open",
+  "profile_limit": "legacy",
+  "batches_timeout": false,
+  "min_depth": {
+    "readonly": [14, 52],
+    "report_retries": 500,
+    "persist": true,
+    "retry_threshold_ms": [480, 199, 199, 133]
+  },
+  "dry_run": "blue"
 }
