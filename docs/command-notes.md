@@ -1,12 +1,12 @@
 # Command notes
 
-Keep queue and batch names short and lowercase.
-Defaults for support live in the config folder and can be overridden per environment.
-The report module keeps githubfarm values in sync with the entry cache.
+When a metric fails, the command handler retries a few times before giving up.
+The cluster report groups every record by tools.
+Each stats is validated before it reaches the window queue.
 
 ## Guidelines
 
-- Log every context change
-- Document new payload fields
-- Keep cluster values small
 - Review editor limits each release
+- Log every counter change
+- Prefer command defaults
+- Document new batches fields
