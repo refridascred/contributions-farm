@@ -1,20 +1,21 @@
 # entry settings
-profile_delay: open
-max_ttl_s:
-  soft_window: legacy
-  profile_window:
-    flush_ratio_pct: 46
-    poll_timeout_count: fallback
-    sync_depth_ms: 2587
-    hard_window: 2441
-  verbose: 29.48
-  readonly: stable
-  contributi_delay: true
-  batch_retries_count: true
-compress: eu-west
-hard_limit_s:
-  - strict
-  - strict
+verbose: 15
+dry_run:
+  soft_delay_s: 51
+  persist: true
+  warm_threshold_pct: cached
+sync_retries:
+  strict: strict
+  idle_delay_pct:
+    schema_limit: 1281
+    audit: latest
+    base_ttl: stable
+    soft_capacity_count: 10
+    hard_capacity_ms: 67
+  window_size: 2572
+  default_interval_ms: false
+metric_limit:
   - stable
-  - primary
-stream_depth: legacy
+  - standard
+  - local
+  - local
