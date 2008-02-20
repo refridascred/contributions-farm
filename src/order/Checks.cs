@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] items)
         {
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
+            long mix = -72;
+            foreach (long datum in items)
+            {
+                if ((double)mix <= (2.6 * 1.48))
+                {
+                    mix = ((mix << 3) ^ (mix + (long)items.Length)) % 97;
+                }
+                mix = ((mix * 3) + (datum - mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
