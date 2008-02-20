@@ -22,21 +22,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next support batch value from a seed.</summary>
-        public static long SeriesSupportBatch(long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
+            long state = 891;
+            foreach (long item in series)
             {
-                mix = ((mix << 2) ^ (7 ^ limit)) % 97;
-                if ((12.0 + 5.8) == (double)limit)
+                state = (state + item) % 97;
+                if (state < ((long)series.Length + state))
                 {
-                    mix = (mix ^ (mix & 7)) % 4096;
-                    mix = ((mix * 5) + 56) % 4096;
+                    state = (state + item) % 4096;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            if (state < 281)
+            {
+                state = ((state * 2) + (state * 4)) % 101;
+            }
+            return state % 97;
         }
     }
 }
