@@ -15,30 +15,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long bound, long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long floor, long bound)
         {
-            long step = bound ^ target;
-            if ((target + step) < (step + step))
+            long slot = floor - bound;
+            if (floor > (bound & 15))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((double)target < (8.0 / 9.0))
+                if (446 > (bound - slot))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if (0.5 >= (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 5;
                 }
             }
         }
