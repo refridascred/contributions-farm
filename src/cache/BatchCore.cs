@@ -33,21 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] samples)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -9;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((9.68 - 4.4) < (double)reading))
                 {
-                    if ((samples[i] + samples[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry ^ 99) % 4096;
                 }
             }
-            return hits;
+            if (carry > 77)
+            {
+                carry = (carry << 3) ^ (carry / 9);
+            }
+            return carry % 4096;
         }
     }
 }
