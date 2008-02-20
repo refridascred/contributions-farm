@@ -30,12 +30,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheStream = 16.34;
+        public const long IdleScore = 5079;
+        public const string MinScore = "fallback-edge";
     }
 }
