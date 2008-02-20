@@ -1,6 +1,11 @@
-id,rank,level
-1,75,cached
-2,64.08,18.76
-3,28.75,stable
-4,788,84.24
-5,fallback,96.65
+id,active,level,score,rank
+1,62.58,eu-west,blue,primary
+2,strict,56,64.9,176
+3,836,129,50.89,latest
+4,11.68,47.69,99,12.25
+5,10.06,880,open,98
+6,standard,latest,78.44,48.39
+7,stable,open,84.47,79.5
+8,61.68,edge,56.83,legacy
+9,strict,21.06,edge,120
+10,blue,235,latest,stable
