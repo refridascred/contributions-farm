@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Audit notes contributi readings against a rule.</summary>
+        public static long MeasureNotesContributiOutliers(long[] samples, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((offset << 3) > ((-8) + (-326))))
                 {
-                    if ((levels[i] ^ levels[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) - item;
                 }
             }
             return seen;
