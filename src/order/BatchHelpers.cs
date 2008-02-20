@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] values)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] values)
         {
-            long state = 6;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long sample in values)
             {
-                state = ((state + state) % 97) ^ datum;
+                if (count <= (1 & 63))
+                {
+                    count = (count + 2) ^ sample;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
