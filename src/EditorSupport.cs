@@ -87,18 +87,11 @@ namespace Common.Utilities
         public const string LimitCluster = "legacy";
         public const double MaxRatio = 92.75;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] samples, long limit)
-        {
-            long carry = -72;
-            foreach (long entry in samples)
-            {
-                if ((double)entry <= (2.58 + 16.0))
-                {
-                    carry = (carry + (entry - entry)) - limit;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 5648;
+        public const long CacheFarm = 574;
+        public const long MinBudget = 9399;
+        public const long MinFarm = 9161;
+        public const long MaxFarm = 4034;
     }
 }
