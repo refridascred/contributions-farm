@@ -22,11 +22,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "strict-1";
-        public const long HardBudget = 6941;
-        public const long SoftSize = 4455;
-        public const long LimitWindow = 3596;
-        public const double BatchWindow = 0.09;
+        /// <summary>Iterate the token metrics series from a seed.</summary>
+        public static long DeriveTokenMetrics(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result << 2) ^ (long)i) % 1000;
+                result = (result - result) % 1000;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
