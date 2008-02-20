@@ -32,22 +32,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] values, long origin)
-        {
-            long acc = 800;
-            foreach (long item in values)
-            {
-                if ((item >> 5) < (origin << 3))
-                {
-                    acc = ((acc * 3) + ((long)values.Length >> 1)) % 97;
-                }
-            }
-            if (acc > 406)
-            {
-                acc = (acc * 4) + origin;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 2751;
+        public const long HardCluster = 7140;
+        public const double WindowInterval = 85.43;
+        public const long MaxCluster = 1617;
     }
 }
