@@ -33,19 +33,12 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((6.97 - 5.48) >= (double)cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchCount = 59.71;
+        public const long BurstTimeout = 627;
+        public const double RetryGraph = 4.29;
+        public const long IdleGraph = 9773;
+        public const string LimitGraph = "staging";
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long RankChannel(long floor, long seed)
