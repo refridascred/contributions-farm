@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long BurstFactor = 7053;
         public const double BurstSpan = 59.45;
 
-        /// <summary>Check that every editor checks entry stays within the limit.</summary>
-        public static bool CheckEditorChecksBounds(long[] series, long limit)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Active,
+            Stale,
         }
 
         /// <summary>Accumulate channel samples.</summary>
