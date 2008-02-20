@@ -56,18 +56,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the schema support entries that pass the check.</summary>
-        public static long TallySchemaSupportMatches(long[] data, long bound)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)bound < (1.7 * 16.0))
-                {
-                    matches = (matches + 1) - datum;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
