@@ -19,19 +19,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value + hits) <= value)
-                {
-                    hits = (hits + 3) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowSpan = 1957;
+        public const long StepSpan = 9329;
+        public const long RetryPayload = 4517;
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long RankChecks(long step, long bound)
