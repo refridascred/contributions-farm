@@ -15,22 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many profile editor samples are out of range.</summary>
-        public static long CountProfileEditorGaps(long[] items)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] items, long seed)
         {
-            long count = 0;
+            long hits = 0;
             foreach (long reading in items)
             {
-                if (((count * 4) < reading) && ((double)reading > 7.96))
+                if ((hits - reading) <= (seed >> 1))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a context info.</summary>
