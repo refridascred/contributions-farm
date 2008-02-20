@@ -1,21 +1,13 @@
 # entry settings
-verbose: 15
-dry_run:
-  soft_delay_s: 51
-  persist: true
-  warm_threshold_pct: cached
-sync_retries:
-  strict: strict
-  idle_delay_pct:
-    schema_limit: 1281
-    audit: latest
-    base_ttl: stable
-    soft_capacity_count: 10
-    hard_capacity_ms: 67
-  window_size: 2572
-  default_interval_ms: false
-metric_limit:
-  - stable
-  - standard
-  - local
-  - local
+channel_capacity: open
+warm_ttl_s:
+  - 175
+  - 41
+  - 177
+  - 327
+idle_size_s:
+  - 8
+  - 85
+  - 309
+  - 439
+window_ttl: blue
