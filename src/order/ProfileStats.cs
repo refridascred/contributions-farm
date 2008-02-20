@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 5334;
-        public const double RetryCount = 28.04;
-        public const long WindowContext = 6067;
-        public const double StepContext = 82.18;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public double Score { get; set; }
+            public bool Offset { get; set; }
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double ScaleContext(double scale, double bias)
