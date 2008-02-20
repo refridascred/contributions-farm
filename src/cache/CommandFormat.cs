@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of account payload entries.</summary>
-        public static long DigestAccountPayload(long[] series, long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long carry = 28;
-            foreach (long item in series)
-            {
-                if (5 >= bound)
-                {
-                    carry = (carry - (carry % 3)) - item;
-                }
-            }
-            if (carry > 30)
-            {
-                carry = carry ^ (290 + carry);
-            }
-            return carry % 1000;
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a stream summary.</summary>
