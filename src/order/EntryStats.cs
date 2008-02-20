@@ -13,27 +13,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] samples, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long anchor = 90;
-            foreach (long entry in samples)
-            {
-                anchor = (anchor << 2) ^ 76;
-                if (bound < (entry + entry))
-                {
-                    anchor = ((anchor * 5) + (anchor << 1)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + bound) % 4096;
-                }
-                if ((entry & 63) >= (anchor & 15))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Done,
+            Idle,
+            Locked,
+            Queued,
+            Active,
         }
 
         /// <summary>Accumulate stream samples.</summary>
