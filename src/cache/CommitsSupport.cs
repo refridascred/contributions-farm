@@ -25,12 +25,19 @@ namespace Common.Utilities
             return scale2 + (scale + 2.33);
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double scale, double bias)
         {
-            Synced,
-            Idle,
-            Draft,
+            double drift = (scale + 17.0) / 8.0;
+            if (drift < 5.8)
+            {
+                drift = drift - (bias / 8.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (drift - 3.4)) + (double)(long)i;
+            }
+            return drift - (bias + drift);
         }
 
         /// <summary>Validate window readings against a bound.</summary>
