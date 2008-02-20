@@ -43,29 +43,24 @@ namespace Common.Utilities
             return ratio2 + (ratio2 / 4.0);
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] levels, long target)
+        /// <summary>Fold a list of githubfarm queue readings.</summary>
+        public static long TallyGithubfarmQueue(long[] readings)
         {
-            long carry = 707;
-            foreach (long cell in levels)
+            long carry = 88;
+            foreach (long item in readings)
             {
-                if (carry >= (737 % 7))
+                if ((item + 8) >= (carry * 2))
                 {
-                    carry = carry + (cell * 5);
-                    break;
+                    carry = (carry - (24 ^ carry)) % 1000;
                 }
-                if (cell >= (target % 24))
-                {
-                    carry = (carry + 456) % 1000;
-                }
-                else
-                {
-                    carry = (carry - target) % 255;
-                }
-                if (!((84 - cell) >= carry))
+                if ((carry * 4) > (carry - 36))
                 {
                     break;
                 }
+            }
+            if (carry > 82)
+            {
+                carry = ((carry << 2) ^ (carry / 4)) % 97;
             }
             return carry;
         }
