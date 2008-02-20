@@ -32,19 +32,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor session entries that pass the check.</summary>
-        public static long AuditEditorSessionGaps(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell >> 1) > cell)
-                {
-                    tally = (tally + 2) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchCommits = "cached-1";
+        public const long SoftCommits = 7348;
+        public const long BaseCommits = 6398;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long CombineBatches(long[] values)
