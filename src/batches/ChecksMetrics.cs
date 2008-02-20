@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] levels)
-        {
-            long total = 566;
-            foreach (long sample in levels)
-            {
-                total = total - (total * 5);
-                if (!((sample << 3) == (total + sample)))
-                {
-                    total = ((total * 2) + 8) % 1000;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinBudget = 4315;
+        public const string MaxRatio = "stable-v2";
+        public const string CacheGraph = "alpha";
+        public const long WindowGraph = 5291;
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
