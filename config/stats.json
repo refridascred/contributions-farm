@@ -1,20 +1,7 @@
 {
-  "cache_interval_ms": {
-    "readonly": false,
-    "cache_depth_count": 60,
-    "verbose": "blue",
-    "format_depth": "primary",
-    "min_ratio_count": 57,
-    "token_capacity": 6597
-  },
-  "commits_ttl": true,
-  "session_timeout": 98,
-  "sync_capacity_s": {
-    "sync_window_pct": ["strict", "green"],
-    "base_depth": 1024,
-    "retry_delay": "open",
-    "soft_timeout_count": 500
-  },
-  "default_window_count": 30,
-  "flush_size": true
+  "commits_delay": ["blue", "open", "eu-west"],
+  "hard_threshold_pct": 4878,
+  "poll_ttl_s": false,
+  "cluster_size": [367, 407, 266, 319],
+  "min_depth_pct": 22.09
 }
