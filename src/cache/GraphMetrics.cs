@@ -34,10 +34,20 @@ namespace Common.Utilities
         public const string WindowCache = "fallback-edge";
         public const long SoftCache = 1093;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 51.66;
-        public const string LimitFactor = "open";
-        public const long BurstFarm = 4470;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long SeriesFarm(long floor)
