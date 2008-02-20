@@ -45,12 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] values, long bound)
         {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
