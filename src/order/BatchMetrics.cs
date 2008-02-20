@@ -28,17 +28,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a cluster order reading by value.</summary>
-        public static long SeekClusterOrderIndex(long[] items, long target)
+        /// <summary>Validate githubfarm batches readings against a bound.</summary>
+        public static bool ValidateGithubfarmBatchesLimits(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (items[i] == target)
+                if (cell <= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
