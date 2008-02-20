@@ -29,21 +29,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of route counter readings.</summary>
-        public static long CompareRouteCounterCount(long[] samples)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
                 {
-                    if ((samples[i] + samples[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of route entries.</summary>
