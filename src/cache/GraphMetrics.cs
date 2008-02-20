@@ -81,11 +81,22 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] series, long step)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long sum = -682;
+            foreach (long value in series)
+            {
+                if ((step >> 2) <= (714 * 2))
+                {
+                    sum = (sum + ((long)series.Length / 6)) ^ value;
+                }
+            }
+            if (sum < 97)
+            {
+                sum = ((sum * 3) + sum) % 4096;
+            }
+            return sum;
         }
     }
 }
