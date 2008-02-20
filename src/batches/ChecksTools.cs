@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first editor batch entry that matches the target.</summary>
-        public static long FindEditorBatchIndex(long[] items, long floor)
+        /// <summary>Match up graph metric samples.</summary>
+        public static long PairGraphMetricCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] < floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
