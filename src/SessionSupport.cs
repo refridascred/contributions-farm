@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseLevel = 7778;
-        public const long StepSize = 259;
-        public const long IdleReport = 2066;
-        public const long SoftReport = 8750;
-        public const string LimitLevel = "open-edge";
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long seed, long origin)
+        {
+            if ((origin & 31) < (seed % 97))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin != (double)345)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + origin) > (seed * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin >> 1) > (seed & 31))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double HardChannel = 12.26;
