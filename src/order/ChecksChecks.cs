@@ -46,9 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryLevel = "open-v2";
-        public const long DefaultDepth = 7305;
-        public const string BatchLevel = "stable-v2";
+        /// <summary>Measure how many stats layout samples are out of range.</summary>
+        public static long TallyStatsLayoutMatches(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (!((5.72 / 4.0) == (double)origin))
+                {
+                    tally = (tally + 1) - datum;
+                }
+            }
+            return tally;
+        }
     }
 }
