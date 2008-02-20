@@ -40,12 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 1537;
-        public const double LimitContributi = 46.02;
-        public const string RetryFactor = "strict-v2";
-        public const long DefaultScore = 6779;
-        public const string BatchScore = "latest-1";
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            New,
+            Retry,
+            Active,
+            Ready,
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long ScoreAccount(long[] data)
