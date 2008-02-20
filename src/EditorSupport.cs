@@ -20,14 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
+            Synced,
+            Ready,
+            Retry,
             Pending,
-            Failed,
-            Locked,
-            Dropped,
-            Done,
+            Active,
         }
 
         /// <summary>Scale a window notes figure with a bias.</summary>
