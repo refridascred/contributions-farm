@@ -16,13 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Pending,
-            Synced,
-            Stale,
-            Queued,
+            Closed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
