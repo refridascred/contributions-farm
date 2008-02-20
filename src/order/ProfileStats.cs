@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit contributi queue readings against a rule.</summary>
-        public static long MeasureContributiQueueGaps(long[] levels, long origin)
+        /// <summary>Count the context schema entries that pass the check.</summary>
+        public static long TallyContextSchemaGaps(long[] samples, long offset)
         {
             long seen = 0;
-            foreach (long item in levels)
+            foreach (long value in samples)
             {
-                if ((double)origin <= (double)seen)
+                if (!((double)seen == (double)value))
                 {
-                    seen = (seen + 3) - item;
+                    seen = (seen + 3) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
