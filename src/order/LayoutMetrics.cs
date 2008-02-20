@@ -19,31 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long limit, long target)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double weight, double offset)
         {
-            if ((double)limit >= 0.9)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((limit - 617) <= target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target <= (9.0 * 8.2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            double ratio = offset;
+            return (ratio + ratio) + weight;
         }
 
         /// <summary>Fold a list of record notes readings.</summary>
