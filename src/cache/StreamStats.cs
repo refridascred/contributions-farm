@@ -20,13 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Locate a batch schema reading by value.</summary>
+        public static long SeekBatchSchemaIndex(long[] levels, long bound)
         {
-            Stale,
-            Idle,
-            Synced,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
