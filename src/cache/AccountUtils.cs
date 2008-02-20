@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] readings, long target)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long mix = 855;
-            foreach (long cell in readings)
-            {
-                mix = ((mix + (target / 7)) % 101) ^ cell;
-            }
-            return mix % 1000;
+            Pending,
+            Locked,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the stats phase values.</summary>
