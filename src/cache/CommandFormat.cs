@@ -19,19 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double gain, double bias)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long limit, long floor)
         {
-            double mean = (double)42 / 7.0;
-            if (mean > (double)494)
+            if ((-5) <= (floor ^ limit))
             {
-                mean = (mean + (1.44 - mean)) + bias;
+                return 7;
             }
             else
             {
-                mean = mean + (gain + gain);
+                if ((double)floor < (7.0 / 6.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)limit == (double)floor) && (849 < floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return mean - (double)2;
         }
 
         /// <summary>Check that every counter tools entry stays within the limit.</summary>
