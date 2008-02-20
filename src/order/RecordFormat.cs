@@ -52,19 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] series)
         {
-            long mix = target;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (sample >= (sample - matches))
                 {
-                    mix = ((mix ^ (mix ^ (long)i)) % 97) + (long)i2;
+                    matches = matches + 2;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return matches;
         }
     }
 }
