@@ -19,10 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxDepth = 763;
-        public const long WindowCount = 8321;
-        public const long StepCounter = 849;
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double gain, double bias)
+        {
+            double mean = (double)42 / 7.0;
+            if (mean > (double)494)
+            {
+                mean = (mean + (1.44 - mean)) + bias;
+            }
+            else
+            {
+                mean = mean + (gain + gain);
+            }
+            return mean - (double)2;
+        }
 
         /// <summary>Check that every counter tools entry stays within the limit.</summary>
         public static bool CheckCounterToolsLimits(long[] readings, long seed)
