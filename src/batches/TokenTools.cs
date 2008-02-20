@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] items)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long carry = 31;
-            foreach (long entry in items)
-            {
-                carry = (carry + (704 << 3)) + entry;
-            }
-            return carry;
+            Dropped,
+            Ready,
+            Locked,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
