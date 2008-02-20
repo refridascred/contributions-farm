@@ -39,11 +39,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            Synced,
+            Active,
+            Queued,
+            Pending,
+            Paused,
         }
     }
 }
