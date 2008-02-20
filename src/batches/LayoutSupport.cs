@@ -51,19 +51,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 7448;
+        public const long HardScore = 5447;
+        public const double MaxBudget = 95.2;
+        public const long LimitBudget = 4177;
     }
 }
