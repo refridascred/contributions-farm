@@ -30,26 +30,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] values)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long seed)
         {
-            long state = 54;
-            foreach (long sample in values)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((sample - 2) <= (sample >> 5))
-                {
-                    state = (state - (state >> 1)) % 97;
-                }
-                else
-                {
-                    state = ((state * 5) + (sample % 64)) % 255;
-                }
+                acc = (acc * 5) + 9;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            if (state > 6)
-            {
-                state = (state ^ (state + state)) % 97;
-            }
-            return state % 1000;
+            return acc;
         }
 
         /// <summary>Derive the next window checks value from a seed.</summary>
