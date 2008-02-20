@@ -1,11 +1,8 @@
 # githubfarm settings
-hard_size_pct:
-  - 432
-  - 101
-  - 302
-  - 398
-burst_limit: 4746
-flush_depth: cached
-checks_window: 9.69
-filter_timeout: 23.76
-hard_limit_ms: 73
+enabled: 2.5
+soft_window_s:
+  - strict
+  - local
+  - primary
+compress: cached
+idle_limit: 8777
