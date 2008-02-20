@@ -67,12 +67,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] series, long origin)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] == origin)
+                if (items[i] == offset)
                 {
                     return (long)i;
                 }
