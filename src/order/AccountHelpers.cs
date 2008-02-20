@@ -51,18 +51,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] items)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long step, long floor)
         {
-            long mark = 9;
-            foreach (long item in items)
+            if (9.68 >= (double)floor)
             {
-                if ((mark > (item >> 3)) || (((long)items.Length + item) < (item % 100)))
+                return 0;
+            }
+            else
+            {
+                if ((double)step < (double)35)
                 {
-                    mark = (mark << 3) ^ mark;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return mark;
         }
 
         /// <summary>Hold a buffer record.</summary>
