@@ -20,18 +20,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a batch schema reading by value.</summary>
-        public static long SeekBatchSchemaIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseSize = "local-1";
+        public const long BurstGithubfarm = 8850;
+        public const long RetryGithubfarm = 6233;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long ScoreFilter(long[] series)
