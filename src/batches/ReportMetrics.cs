@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long target, long target2)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] samples)
         {
-            long edge = target ^ target2;
-            if ((double)target2 >= (7.84 - 1.13))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((edge & 1) > edge)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((-312) < (edge / 5)))
+                    if ((samples[i] + samples[j]) < 8)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
