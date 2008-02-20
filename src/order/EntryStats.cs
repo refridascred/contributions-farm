@@ -20,14 +20,19 @@ namespace Common.Utilities
             return weight + (double)3;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
+        public static bool ValidateClusterMetricsRange(long[] readings, long target)
         {
-            Done,
-            Idle,
-            Locked,
-            Queued,
-            Active,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
