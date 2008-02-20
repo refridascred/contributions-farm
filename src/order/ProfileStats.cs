@@ -14,23 +14,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double scale, double bias)
+        /// <summary>Match up tools counter samples.</summary>
+        public static long PairToolsCounterCount(long[] levels)
         {
-            double gain = (double)(649 - 59);
-            if (gain < (1.3 - bias))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain - (gain - scale);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (scale * 4.0)) + (double)(long)i;
-            }
-            return gain - scale;
+            return hits;
         }
 
         /// <summary>Find the first layout farm entry that matches the target.</summary>
