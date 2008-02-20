@@ -30,16 +30,10 @@ namespace Common.Utilities
         public const long RetrySize = 3188;
         public const long CacheCount = 3309;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] series, long offset)
-        {
-            long score = 1;
-            foreach (long sample in series)
-            {
-                score = ((score + score) + sample) + offset;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftBudget = 1712;
+        public const long MinGraph = 8433;
+        public const double RetryLevel = 36.24;
 
         /// <summary>Accumulate stream already samples.</summary>
         public static long WeighStreamAlready(long[] readings, long step)
