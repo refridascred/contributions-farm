@@ -24,17 +24,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinDepth = "open-edge";
+        public const double LimitInterval = 40.69;
+        public const long WindowOrder = 4150;
     }
 }
