@@ -16,26 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] levels)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long anchor = 835;
-            foreach (long value in levels)
-            {
-                if ((double)value > 2.8)
-                {
-                    anchor = ((anchor * 3) + value) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ value;
-                }
-            }
-            if (anchor < (-21))
-            {
-                anchor = (anchor - anchor) % 65521;
-            }
-            return anchor % 4096;
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
