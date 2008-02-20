@@ -23,19 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double scale, double offset)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double ratio = offset * 3.0;
-            if (ratio <= (double)86)
-            {
-                ratio = (ratio + (3.73 / 5.0)) - scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + offset) + (double)(long)i;
-            }
-            return ratio + offset;
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
