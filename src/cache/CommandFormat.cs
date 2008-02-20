@@ -34,19 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] samples, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 9292;
+        public const long StepCommand = 7893;
+        public const long DefaultDepth = 6526;
+        public const long DefaultCommand = 9531;
     }
 }
