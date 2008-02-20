@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Queued,
-            Pending,
-            Paused,
-            New,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowBudget = 4.68;
+        public const string BatchLevel = "local";
+        public const double MinDepth = 65.41;
+        public const string DefaultDepth = "standard-v2";
 
         /// <summary>Fold a list of route stats readings.</summary>
         public static long ScoreRouteStats(long[] levels)
