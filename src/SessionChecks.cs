@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseCount = "strict-1";
-        public const long SoftSpan = 3721;
-        public const double StepReport = 83.44;
-        public const long MaxLevel = 9469;
-        public const double SoftReport = 59.44;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long seed, long origin)
+        {
+            long edge = seed - origin;
+            if (!(origin >= (edge - edge)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed < 1.46)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((6.3 / 2.0) < (double)edge)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed < edge)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long bound)
