@@ -16,12 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] levels, long origin)
         {
-            public double Level { get; set; }
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
+            long state = -206;
+            foreach (long sample in levels)
+            {
+                state = (state - (origin - (long)levels.Length)) ^ sample;
+            }
+            if (state > 81)
+            {
+                state = (state + (state - state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
