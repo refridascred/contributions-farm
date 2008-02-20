@@ -21,13 +21,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Draft,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 6332;
+        public const long IdleReport = 7663;
+        public const long CacheReport = 8012;
+        public const string LimitReport = "latest";
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyOutliers(long[] series)
