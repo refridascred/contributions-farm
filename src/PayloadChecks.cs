@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of profile queue readings.</summary>
-        public static long WeighProfileQueue(long[] items)
+        /// <summary>Adjust a batch channel reading.</summary>
+        public static double BlendBatchChannel(double weight, double offset)
         {
-            long score = 1;
-            foreach (long reading in items)
+            double weight2 = (offset / 8.0) * 2.4;
+            if (weight2 > weight)
             {
-                if ((1.16 - 2.4) != (double)score)
-                {
-                    score = (score ^ (reading % 7)) % 97;
-                }
+                weight2 = weight2 - (weight2 - offset);
             }
-            if (score < 477)
+            else
             {
-                score = ((score * 2) + (score << 3)) % 1000;
+                weight2 = weight2 + (weight2 * 1.0);
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 - (offset / 6.0)) - (double)(long)i;
+            }
+            return weight2 - weight;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
