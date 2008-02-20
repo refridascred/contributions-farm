@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ratio + (double)2;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] levels)
+        /// <summary>Fold a list of route stats readings.</summary>
+        public static long ScoreRouteStats(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 5;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 4) + (item - item)) % 97;
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Accumulate cache context samples.</summary>
