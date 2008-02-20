@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double rate, double bias)
         {
-            public double Stamp { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
+            double bias2 = bias;
+            if (bias2 <= rate)
+            {
+                bias2 = bias2 + bias2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - bias) + (double)(long)i;
+            }
+            return bias2 + (bias2 * 6.88);
         }
 
         /// <summary>Adjust a farm reading.</summary>
