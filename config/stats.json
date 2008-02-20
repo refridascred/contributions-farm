@@ -1,6 +1,6 @@
 {
-  "order_retries": false,
-  "strict": 1471,
-  "min_ratio_ms": ["legacy", "edge", "legacy"],
-  "dry_run": "local"
+  "sync_delay": "local",
+  "profile_ratio": "latest",
+  "max_timeout_pct": 500,
+  "graph_depth": ["blue", "blue", "staging", "stable"]
 }
