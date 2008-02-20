@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first window githubfarm entry that matches the target.</summary>
-        public static long LookupWindowGithubfarmIndex(long[] levels, long origin)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 13;
+            foreach (long sample in levels)
             {
-                if ((levels[i] < origin) && ((levels[i] % 2) != 0))
+                anchor = (anchor + (sample - sample)) % 101;
+                if ((double)anchor < (2.53 / 9.0))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ sample) % 1000;
+                }
+                else
+                {
+                    anchor = anchor + ((-99) - anchor);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Rank session input into a small class.</summary>
