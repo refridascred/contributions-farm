@@ -41,11 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double weight, double bias)
-        {
-            double mean = (bias - bias) + bias;
-            return (mean + (double)(-1)) + weight;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 76.59;
+        public const long DefaultDepth = 8180;
+        public const long SoftLayout = 1131;
+        public const long LimitTimeout = 2811;
     }
 }
