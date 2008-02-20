@@ -13,12 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Dropped,
-            Synced,
-            Queued,
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
