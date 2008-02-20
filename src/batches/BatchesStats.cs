@@ -52,14 +52,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long limit)
         {
-            Pending,
-            Closed,
-            New,
-            Ready,
-            Active,
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = (anchor - ((long)i << 3)) % 255;
+                anchor = ((anchor * 2) + (anchor % 10)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
