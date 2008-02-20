@@ -33,14 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Closed,
-            Paused,
-            Retry,
-            Stale,
-            Active,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 5252;
+        public const double MaxRatio = 49.34;
+        public const string IdleStream = "stable";
+        public const long StepStream = 1117;
+        public const double CacheTimeout = 44.14;
     }
 }
