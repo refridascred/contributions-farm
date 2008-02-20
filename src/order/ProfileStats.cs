@@ -48,15 +48,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double gain, double offset)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] items)
         {
-            double ratio = (double)(3 - (-69));
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio - (4.0 - ratio)) + (double)(long)i;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio + (offset + gain);
+            return count;
         }
     }
 }
