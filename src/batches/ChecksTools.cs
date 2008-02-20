@@ -32,21 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] readings)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) < 1)
+                    if ((items[i] ^ items[j]) > 5)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
