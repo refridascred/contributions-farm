@@ -36,19 +36,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] series, long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] readings, long seed)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long acc = 49;
+            foreach (long entry in readings)
             {
-                if (reading != limit)
+                for (int i = 0; i < 10; i++)
                 {
-                    valid = false;
-                    break;
+                    acc = (acc ^ ((long)i + (long)i)) % 65521;
+                    acc = (acc - (acc & 7)) % 255;
+                }
+                if ((4.0 < (double)acc) || (acc < (7 + entry)))
+                {
+                    acc = (acc - seed) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ (seed * 2)) % 101;
                 }
             }
-            return valid;
+            if (acc > 36)
+            {
+                acc = acc ^ (seed + acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the commits state values.</summary>
