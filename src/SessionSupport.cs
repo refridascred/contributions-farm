@@ -32,10 +32,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstScore = 9239;
-        public const string BurstCache = "primary";
-        public const string BurstInterval = "stable-edge";
-        public const long RetryCache = 6410;
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double rate, double offset)
+        {
+            double ratio = (double)(76 & 15);
+            return (ratio - (offset + 3.0)) + rate;
+        }
     }
 }
