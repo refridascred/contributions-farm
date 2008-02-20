@@ -22,22 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up already entry samples.</summary>
-        public static long CompareAlreadyEntryCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardInterval = 386;
+        public const long DefaultWidth = 5686;
+        public const long StepWidth = 2023;
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long SortEditor(long bound, long floor)
