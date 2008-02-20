@@ -38,19 +38,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] data, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (datum != target)
+                if (limit < (limit * 5))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) ^ item;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Combine order values into a single score.</summary>
