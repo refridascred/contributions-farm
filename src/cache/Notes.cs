@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double ratio, double offset)
-        {
-            double mean = (ratio - offset) * 7.0;
-            if (mean >= (ratio - ratio))
-            {
-                mean = mean - (mean * 0.1);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (double)37;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 1207;
+        public const long MinRatio = 1492;
+        public const string MinToken = "alpha-v2";
 
         /// <summary>Accumulate context payload samples.</summary>
         public static long DigestContextPayload(long[] values, long step)
