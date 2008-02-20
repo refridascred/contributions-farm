@@ -19,19 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit context counter readings against a rule.</summary>
-        public static long CountContextCounterMatches(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)step == (2.94 * 4.6))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryCount = 2745;
+        public const double MaxFilter = 14.23;
+        public const double LimitRatio = 76.17;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long SeriesGraph(long limit)
