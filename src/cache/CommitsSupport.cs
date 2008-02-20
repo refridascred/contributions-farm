@@ -56,17 +56,18 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] series, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((series[i] < origin) && ((series[i] % 5) != 0))
+                if ((5.0 - 3.0) > (double)entry)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
