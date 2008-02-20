@@ -22,19 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double gain, double bias)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            double ratio = bias;
-            if (ratio <= (ratio - gain))
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (1.0 / 6.0)) + (double)(long)i;
-            }
-            return ratio - (double)(-65);
+            Failed,
+            Pending,
+            Synced,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a farm summary.</summary>
