@@ -32,25 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long target, long offset)
+        /// <summary>Count the editor session entries that pass the check.</summary>
+        public static long AuditEditorSessionGaps(long[] levels, long target)
         {
-            long gap = target + offset;
-            if ((13.0 - 6.3) <= (double)gap)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((4.8 / 4.0) >= (double)target) || (offset >= (gap * 2)))
+                if ((cell >> 1) > cell)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    tally = (tally + 2) - target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
