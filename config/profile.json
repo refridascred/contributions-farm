@@ -1,7 +1,21 @@
 {
-  "burst_size_ms": 30.35,
-  "max_depth_ms": 93,
-  "persist": 58,
-  "idle_timeout_count": "cached",
-  "min_depth_count": 30
+  "schema_capacity": "open",
+  "dry_run": [3, 408, 74],
+  "base_limit_ms": false,
+  "poll_depth_count": "legacy",
+  "warm_retries": false,
+  "default_retries_pct": {
+    "compress": 12.35,
+    "flush_timeout_count": 30,
+    "flush_interval_ms": {
+      "idle_ratio": false,
+      "strict": "open",
+      "base_ttl_count": "eu-west",
+      "window_capacity": "legacy",
+      "already_delay": "primary",
+      "sync_timeout": 100
+    },
+    "warm_interval": false,
+    "soft_delay": 85.83
+  }
 }
