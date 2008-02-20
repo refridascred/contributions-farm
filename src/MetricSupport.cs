@@ -15,13 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Idle,
-            Synced,
-            Draft,
-            Paused,
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
