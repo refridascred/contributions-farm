@@ -1,8 +1,8 @@
 {
-  "token_limit": "open",
-  "counter_ratio": [32, 496, 150, 27],
-  "sync_timeout": "staging",
-  "filter_threshold": "open",
-  "context_window": "strict",
-  "persist": 32
+  "readonly": 27.02,
+  "dry_run": 43,
+  "sync_interval": 78.12,
+  "batches_threshold": 15.05,
+  "token_delay": 64.29,
+  "compress": 934
 }
