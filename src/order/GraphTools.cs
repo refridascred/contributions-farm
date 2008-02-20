@@ -36,38 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long step, long target)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            if ((step <= (step ^ step)) || ((step + step) < 660))
-            {
-                return 2;
-            }
-            else
-            {
-                if (7 < (step - target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((-4) - 83) > step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step >> 2) < (step * 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
