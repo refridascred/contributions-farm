@@ -55,14 +55,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Iterate the stats batch series from a seed.</summary>
+        public static long StepStatsBatch(long seed)
         {
-            Idle,
-            Retry,
-            Draft,
-            Done,
-            Ready,
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = (carry * 5) + (1 + (long)i2);
+                }
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the already mode values.</summary>
