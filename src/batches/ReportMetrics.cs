@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
