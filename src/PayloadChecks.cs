@@ -37,18 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] items, long floor)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((sample <= (sample ^ hits)) && (15.0 >= (double)sample))
-                {
-                    hits = (hits + 3) - floor;
-                }
-            }
-            return hits;
+            Dropped,
+            Closed,
+            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the command mode values.</summary>
