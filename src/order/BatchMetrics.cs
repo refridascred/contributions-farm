@@ -29,20 +29,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state * 5) + state) % 97;
-                if ((state - target) >= state)
-                {
-                    state = state ^ target;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public double Score { get; set; }
+            public double Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
