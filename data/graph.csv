@@ -1,7 +1,10 @@
-id,ratio,owner,state
-1,open,230,78.42
-2,547,413,primary
-3,86.31,12.73,131
-4,30.5,edge,fallback
-5,legacy,97.44,75.56
-6,14.78,staging,842
+id,state
+1,903
+2,613
+3,latest
+4,68.67
+5,65.72
+6,eu-west
+7,51.22
+8,64.47
+9,edge
