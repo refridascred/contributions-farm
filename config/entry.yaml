@@ -1,5 +1,9 @@
 # entry settings
-min_capacity_ms: 500
-queue_depth: stable
-idle_ttl: staging
-retry_ratio_pct: 1095
+cache_interval_s: 12.98
+verbose: eu-west
+soft_size: 37.58
+account_delay:
+  - staging
+  - blue
+  - eu-west
+  - standard
