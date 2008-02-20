@@ -29,17 +29,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long step)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Classify a tools session pair into a bucket.</summary>
