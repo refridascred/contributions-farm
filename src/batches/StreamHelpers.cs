@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleTimeout = 3280;
-        public const long SoftRatio = 1269;
-        public const double LimitRatio = 57.89;
-        public const string IdleFactor = "latest-v2";
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Idle,
+            New,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Validate contributi checks readings against a bound.</summary>
         public static bool ValidateContributiChecksRange(long[] data, long seed)
