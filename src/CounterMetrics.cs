@@ -18,31 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long origin, long limit)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] samples)
         {
-            if ((7.29 * 13.0) > (double)origin)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit <= (origin - limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + limit) == (33 ^ limit))
+                    if ((samples[i] + samples[j]) != 20)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
