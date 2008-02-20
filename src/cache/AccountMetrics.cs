@@ -63,26 +63,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine githubfarm stats values into a single score.</summary>
-        public static long TotalGithubfarmStats(long[] levels, long step)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long limit, long origin)
         {
-            long state = 3;
-            foreach (long entry in levels)
+            if ((origin % 2) > limit)
             {
-                if ((step - 76) >= 6)
+                return 1;
+            }
+            else
+            {
+                if ((limit - limit) >= (origin / 5))
                 {
-                    state = ((state * 3) + (step - entry)) % 4096;
+                    return 5;
                 }
-                if (step <= (state ^ entry))
+                else
                 {
-                    break;
+                    if ((origin - origin) < limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (state < (-7))
-            {
-                state = (state ^ (971 & 63)) % 101;
-            }
-            return state;
         }
     }
 }
