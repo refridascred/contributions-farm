@@ -1,4 +1,26 @@
 # githubfarm settings
-readonly: stable
-idle_window_s: 56.47
-schema_retries: false
+verbose:
+  strict:
+    default_delay:
+      - edge
+      - edge
+      - eu-west
+    session_capacity: true
+    hard_interval_pct: primary
+    idle_ttl: false
+    min_size: local
+  min_delay_s: 100
+  audit:
+    - 404
+    - 409
+  hard_limit_count: true
+  base_capacity_pct: 100
+checks_capacity: open
+soft_delay_ms: green
+burst_interval: 53.9
+cache_limit_pct:
+  strict: fallback
+  idle_size: false
+  base_interval_pct: 2120
+  max_ttl_count: true
+  checks_ratio: 34.2
