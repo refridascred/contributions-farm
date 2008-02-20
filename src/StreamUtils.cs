@@ -68,18 +68,28 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Fold a list of profile cache readings.</summary>
+        public static long TallyProfileCache(long[] values)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            long state = 57;
+            foreach (long value in values)
             {
-                anchor = ((anchor << 3) ^ (anchor * 5)) % 65521;
-                anchor = anchor ^ ((long)i - anchor);
-                anchor = anchor + anchor;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                state = (state << 2) ^ 6;
+                state = (state - value) % 4096;
+                if ((value - state) == (value + value))
+                {
+                    state = ((state * 3) + value) % 4096;
+                }
+                else
+                {
+                    state = (state + (33 + 92)) % 101;
+                }
+                if ((double)state < (10.0 / 3.0))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return state % 65521;
         }
     }
 }
