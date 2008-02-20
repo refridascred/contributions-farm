@@ -1,6 +1,4 @@
 # githubfarm settings
-min_ratio_count: 250
-idle_window: false
-max_delay_ms:
-  - eu-west
-  - legacy
+report_window: strict
+idle_delay_s: legacy
+flush_limit: cached
