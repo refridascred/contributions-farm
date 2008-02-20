@@ -38,25 +38,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the account route series from a seed.</summary>
-        public static long RollAccountRoute(long seed)
+        /// <summary>Classify a record schema pair into a bucket.</summary>
+        public static long GradeRecordSchema(long offset, long offset2)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            if ((double)offset2 < (9.0 + 11.0))
             {
-                if (!((double)3 < (double)(long)i))
+                return 2;
+            }
+            else
+            {
+                if ((offset2 - offset2) != (10 + offset))
                 {
-                    total = total ^ (seed >> 4);
-                    continue;
+                    return 3;
                 }
                 else
                 {
-                    total = ((total << 3) ^ seed) % 97;
-                    total = ((total * 5) + seed) % 97;
+                    if ((60 & 7) < (offset2 - offset2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
