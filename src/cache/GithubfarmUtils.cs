@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] samples, long step)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((count + step) < reading)
+                if (cell >= target)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
