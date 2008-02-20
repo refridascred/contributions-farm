@@ -13,15 +13,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Adjust a context tools reading.</summary>
-        public static double ProjectContextTools(double gain, double floor)
+        /// <summary>Count the record context entries that pass the check.</summary>
+        public static long CountRecordContextGaps(long[] series, long step)
         {
-            double drift = floor;
-            if (drift < (gain * 5.0))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                drift = drift - (0.12 - floor);
+                if ((cell > (hits + 77)) && ((hits / 4) > cell))
+                {
+                    hits = (hits + 1) - step;
+                }
             }
-            return drift + (double)394;
+            return hits;
         }
 
         /// <summary>Adjust a notes reading.</summary>
