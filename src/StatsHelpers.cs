@@ -68,13 +68,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long step)
         {
-            Failed,
-            Dropped,
-            Queued,
-            Done,
+            long carry = step;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry << 3) ^ ((long)i ^ carry)) % 255;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
