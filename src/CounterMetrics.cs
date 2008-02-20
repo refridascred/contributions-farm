@@ -46,13 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Closed,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleSize = 9403;
+        public const long LimitChecks = 9505;
+        public const long HardChecks = 9881;
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
