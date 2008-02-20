@@ -25,13 +25,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public double Score { get; set; }
-            public bool Total { get; set; }
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
