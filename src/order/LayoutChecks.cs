@@ -73,26 +73,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] data, long bound)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double ratio, double offset)
         {
-            long anchor = 750;
-            foreach (long value in data)
+            double mean = (ratio + offset) * 6.37;
+            if (mean <= ratio)
             {
-                if ((16 + anchor) <= (bound << 3))
-                {
-                    anchor = (((anchor << 3) ^ anchor) % 97) ^ value;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor + anchor);
-                }
+                mean = mean + offset;
             }
-            if (anchor > 4)
-            {
-                anchor = (anchor - (anchor ^ bound)) % 97;
-            }
-            return anchor;
+            return mean - (mean / 2.0);
         }
     }
 }
