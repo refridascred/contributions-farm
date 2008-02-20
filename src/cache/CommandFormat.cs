@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] items)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public double Score { get; set; }
+            long acc = 0;
+            foreach (long sample in items)
+            {
+                if (!((sample - acc) > sample))
+                {
+                    acc = acc - (9 + acc);
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
