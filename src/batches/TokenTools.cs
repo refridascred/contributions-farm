@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] values)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 961;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total ^ limit) % 97) ^ datum;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
