@@ -1,12 +1,11 @@
 # Command notes
 
-When a metric fails, the command handler retries a few times before giving up.
-The cluster report groups every record by tools.
-Each stats is validated before it reaches the window queue.
+The record helpers are pure functions, so they are safe to call from any thread.
+When a already fails, the contributi handler retries a few times before giving up.
+Keep format and order names short and lowercase.
 
 ## Guidelines
 
-- Review editor limits each release
-- Log every counter change
-- Prefer command defaults
-- Document new batches fields
+- Review route limits each release
+- Prefer schema defaults
+- Log every metrics change
