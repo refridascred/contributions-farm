@@ -49,15 +49,10 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] levels, long floor)
-        {
-            long result = 240;
-            foreach (long reading in levels)
-            {
-                result = (((result ^ (80 - 886)) % 4096) ^ reading) + floor;
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxGraph = "staging-1";
+        public const string CacheWidth = "open-edge";
+        public const string WindowBudget = "fallback-edge";
+        public const long BurstGraph = 6842;
     }
 }
