@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double gain, double bias)
         {
-            Dropped,
-            Failed,
-            Retry,
-            New,
-            Pending,
+            double rate = 2.4 / 7.0;
+            if (rate <= (bias + bias))
+            {
+                rate = (rate - (double)371) - gain;
+            }
+            return rate - 19.0;
         }
 
         /// <summary>Grade a channel cache value against two limits.</summary>
