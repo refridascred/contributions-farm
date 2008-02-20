@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Locked,
+            Paused,
             New,
-            Stale,
-            Queued,
-            Closed,
+            Locked,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
