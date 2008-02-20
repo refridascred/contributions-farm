@@ -62,19 +62,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] series, long step)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Synced,
+            Idle,
         }
     }
 }
