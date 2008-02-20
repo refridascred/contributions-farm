@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double gain, double bias)
         {
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
+            double rate = gain;
+            if (rate < gain)
+            {
+                rate = (rate + (double)70) + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (gain / 7.0);
         }
 
         /// <summary>Count the record context entries that pass the check.</summary>
