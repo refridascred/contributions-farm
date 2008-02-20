@@ -1,8 +1,5 @@
 {
-  "min_ttl_ms": [334, 248, 250, 6],
-  "hard_retries_ms": "open",
-  "max_retries_pct": false,
-  "contributi_retries": "local",
-  "poll_ratio": true,
-  "queue_threshold": 9536
+  "tools_size": 45.35,
+  "soft_ttl_count": "open",
+  "batches_threshold": "blue"
 }
