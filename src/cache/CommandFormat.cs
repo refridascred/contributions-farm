@@ -39,14 +39,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double ratio, double span)
         {
-            Locked,
-            New,
-            Failed,
-            Queued,
-            Ready,
+            double drift = ratio / 7.0;
+            if (drift > 3.67)
+            {
+                drift = (drift - (ratio * 2.84)) - span;
+            }
+            return drift + drift;
         }
     }
 }
