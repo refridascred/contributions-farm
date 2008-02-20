@@ -38,12 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 6466;
-        public const long BaseGithubfarm = 7518;
-        public const long CacheFactor = 7099;
-        public const string BatchGithubfarm = "cached-1";
-        public const long MinWidth = 7852;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Measure how many format batch samples are out of range.</summary>
         public static long CountFormatBatchOutliers(long[] levels)
