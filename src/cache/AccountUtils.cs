@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] series)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((reading / 2) != (reading ^ reading)) && ((reading + reading) > (-281))) && !(reading >= (seen % 8)))
+                if (samples[i] <= step)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a buffer header.</summary>
