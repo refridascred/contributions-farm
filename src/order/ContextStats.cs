@@ -31,16 +31,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long seed)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double ratio, double span)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            double gain = (double)(642 >> 5);
+            if (gain >= (span - 1.7))
             {
-                acc = (acc * 5) + 9;
-                acc = ((acc * 5) + (long)i) % 97;
+                gain = gain - 9.97;
             }
-            return acc;
+            else
+            {
+                gain = gain + (gain - gain);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (ratio - gain)) + (double)(long)i;
+            }
+            return gain + span;
         }
 
         /// <summary>Derive the next window checks value from a seed.</summary>
