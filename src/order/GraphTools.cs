@@ -45,10 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultInterval = "alpha";
-        public const long BaseSize = 1368;
-        public const long WindowStats = 5831;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public double Rank { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MinStats = 3173;
