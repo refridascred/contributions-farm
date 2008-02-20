@@ -1,8 +1,5 @@
 {
-  "persist": 90,
-  "cache_threshold_s": [336, 337, 49, 364],
-  "cache_retries": 32.56,
-  "cache_threshold_pct": 45.73,
-  "notes_capacity": ["open", "blue"],
-  "flush_capacity": ["strict", "fallback"]
+  "cache_limit_pct": "standard",
+  "readonly": false,
+  "idle_limit_s": "cached"
 }
