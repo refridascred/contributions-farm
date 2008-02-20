@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] items, long seed)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
