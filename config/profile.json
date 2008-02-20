@@ -1,13 +1,8 @@
 {
-  "soft_size_ms": "eu-west",
-  "sync_delay_pct": "green",
-  "min_depth": "green",
-  "min_retries": "fallback",
-  "audit": {
-    "persist": false,
-    "token_threshold": 51,
-    "channel_delay": "edge",
-    "idle_window_ms": 100,
-    "base_window": "cached"
-  }
+  "readonly": 28.66,
+  "base_window_ms": 500,
+  "batches_window": 40,
+  "flush_ttl": [445, 298, 188],
+  "persist": ["staging", "primary", "green"],
+  "burst_depth_count": 250
 }
