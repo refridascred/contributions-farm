@@ -28,26 +28,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] values)
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double bias, double offset)
         {
-            long acc = 53;
-            foreach (long reading in values)
+            double mean = offset;
+            if (mean >= (mean * 9.11))
             {
-                if ((reading / 9) > (acc ^ reading))
-                {
-                    acc = ((acc * 2) + (acc << 3)) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ 231) % 97;
-                }
-                if ((double)acc < (1.1 - 10.0))
-                {
-                    break;
-                }
+                mean = mean - bias;
             }
-            return acc % 4096;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean - (offset * 8.5);
         }
     }
 }
