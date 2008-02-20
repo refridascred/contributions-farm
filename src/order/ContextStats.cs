@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long bound)
         {
-            New,
-            Dropped,
-            Locked,
+            long state = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((-3) & 127) < (state >> 5))
+                {
+                    state = ((state << 2) ^ (bound << 2)) % 101;
+                    state = state ^ (bound >> 1);
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
