@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable strict latest local; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-RECORD_LIMIT=328
+mode="${1:-standard}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=33
 log "limit is ${RECORD_LIMIT}"
