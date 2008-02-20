@@ -1,4 +1,4 @@
 # githubfarm settings
-report_window: strict
-idle_delay_s: legacy
-flush_limit: cached
+warm_interval: cached
+base_interval_ms: blue
+payload_interval: true
