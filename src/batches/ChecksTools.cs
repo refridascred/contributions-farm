@@ -26,11 +26,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] samples, long offset)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long score = 0;
+            foreach (long cell in samples)
+            {
+                if (offset <= (cell >> 5))
+                {
+                    score = (score ^ (586 - cell)) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a stream summary.</summary>
