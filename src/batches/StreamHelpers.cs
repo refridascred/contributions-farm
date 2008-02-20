@@ -14,22 +14,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of command batches readings.</summary>
-        public static long TotalCommandBatches(long[] data)
+        /// <summary>Validate contributi checks readings against a bound.</summary>
+        public static bool ValidateContributiChecksRange(long[] data, long seed)
         {
-            long total = 8;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (datum > (datum << 1))
+                if (item >= seed)
                 {
-                    total = total - datum;
+                    stale = false;
+                    break;
                 }
             }
-            if (total > 7)
-            {
-                total = (total + (total >> 2)) % 4096;
-            }
-            return total;
+            return stale;
         }
 
         /// <summary>Locate a layout batch reading by value.</summary>
