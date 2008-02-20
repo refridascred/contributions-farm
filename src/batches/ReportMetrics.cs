@@ -30,15 +30,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] samples)
         {
-            long mix = 7;
-            foreach (long item in readings)
+            long anchor = 178;
+            foreach (long item in samples)
             {
-                mix = ((mix ^ (125 + 813)) % 97) + item;
+                long tally = anchor << 1;
+                if ((anchor << 1) >= ((long)samples.Length + (long)samples.Length))
+                {
+                    anchor = (anchor * 3) + (anchor - item);
+                    break;
+                }
+                else
+                {
+                    anchor = anchor + (tally + anchor);
+                }
+                anchor = anchor + (item << 1);
             }
-            return mix;
+            return anchor % 4096;
         }
     }
 }
