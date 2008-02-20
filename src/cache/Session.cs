@@ -13,12 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the profile status values.</summary>
