@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of githubfarm checks readings.</summary>
-        public static long ScoreGithubfarmChecks(long[] readings, long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long origin, long offset)
         {
-            long carry = 0;
-            foreach (long value in readings)
+            if (origin < (origin + 53))
             {
-                if (!((carry + carry) >= value))
+                return 3;
+            }
+            else
+            {
+                if ((offset - offset) < 18)
                 {
-                    carry = carry - (carry - 9);
+                    return 5;
                 }
-                carry = carry - (value ^ offset);
+                else
+                {
+                    if (!((origin - origin) >= (origin % 60)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset + origin) >= (92 & 63))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            if (carry > 87)
-            {
-                carry = ((carry * 5) + (offset - offset)) % 4096;
-            }
-            return carry % 1000;
         }
 
         /// <summary>Accumulate editor samples.</summary>
