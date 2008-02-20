@@ -48,13 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Region { get; set; }
+            Active,
+            Synced,
+            Idle,
         }
 
         /// <summary>Derive the next account stream value from a seed.</summary>
