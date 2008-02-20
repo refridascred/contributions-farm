@@ -1,12 +1,11 @@
 # support settings
-audit:
-  - strict
-  - staging
-  - latest
-enabled: local
-burst_window_ms: standard
-compress: latest
 persist:
-  - staging
-  - edge
   - standard
+  - latest
+readonly: latest
+poll_retries_pct: primary
+cache_retries_ms:
+  - local
+  - strict
+  - cached
+  - staging
