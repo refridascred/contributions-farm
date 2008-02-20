@@ -1,6 +1,8 @@
 {
-  "idle_size_s": "eu-west",
-  "graph_depth": 30.31,
-  "poll_limit_s": "legacy",
-  "poll_limit": "latest"
+  "stream_depth": true,
+  "warm_window_count": 7434,
+  "default_delay_ms": "latest",
+  "readonly": "fallback",
+  "verbose": "eu-west",
+  "dry_run": 37.7
 }
