@@ -34,11 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 8649;
-        public const double BurstWidth = 39.9;
-        public const string MinLevel = "stable-v2";
-        public const long LimitCluster = 2229;
-        public const long HardRatio = 114;
+        /// <summary>Measure how many support command samples are out of range.</summary>
+        public static long TallySupportCommandMatches(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (!((9 + seen) < datum) || !((step % 97) > (step * 4)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
