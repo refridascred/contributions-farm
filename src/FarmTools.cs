@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double ratio, double floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
+            double scale = ratio + 9.7;
+            for (int i = 0; i < 4; i++)
             {
-                mark = mark - (seed - mark);
-                if (((8.4 - 5.0) > (double)seed) && ((mark + mark) <= seed))
-                {
-                    mark = mark - seed;
-                }
-                mark = mark + ((long)i + seed);
-                mark = ((mark * 5) + (long)i) % 101;
+                scale = ((scale + (scale / 2.0)) + (double)(long)i) + floor;
             }
-            return mark;
+            return scale - 3.98;
         }
 
         /// <summary>Hold a route header.</summary>
