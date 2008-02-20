@@ -28,11 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryDepth = 5327;
-        public const long IdleReport = 1759;
-        public const long StepReport = 8081;
-        public const long StepFactor = 7239;
-        public const long SoftReport = 2584;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum & 63) < 5)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
