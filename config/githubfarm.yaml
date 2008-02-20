@@ -1,4 +1,7 @@
 # githubfarm settings
-warm_interval: cached
-base_interval_ms: blue
-payload_interval: true
+base_threshold_s: open
+stream_limit:
+  - 231
+  - 292
+  - 245
+sync_interval: true
