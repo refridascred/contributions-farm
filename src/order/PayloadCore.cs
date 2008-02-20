@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long BurstCommand = 1245;
         public const double IdleLevel = 49.22;
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            Locked,
+            Retry,
+            Draft,
+            Stale,
         }
 
         /// <summary>Hold a context snapshot.</summary>
