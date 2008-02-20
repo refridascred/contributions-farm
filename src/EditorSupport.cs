@@ -32,12 +32,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Fold a list of stream metrics readings.</summary>
+        public static long WeighStreamMetrics(long[] samples)
         {
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
+            long carry = 51;
+            foreach (long item in samples)
+            {
+                carry = (((carry << 3) ^ (carry - 34)) % 97) - item;
+            }
+            return carry;
         }
 
         /// <summary>Define already limits and defaults.</summary>
