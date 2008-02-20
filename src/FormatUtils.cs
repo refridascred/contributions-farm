@@ -78,9 +78,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 4989;
-        public const long MinRoute = 262;
-        public const string BaseRoute = "cached-edge";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepPayload = 28.07;
+        public const double BurstRatio = 71.46;
+        public const string MinPayload = "standard-v2";
     }
 }
