@@ -69,17 +69,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 8196;
+        public const long CacheReport = 4933;
+        public const long StepScore = 5532;
+        public const long RetryFactor = 5810;
     }
 }
