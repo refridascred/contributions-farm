@@ -1,5 +1,5 @@
 {
-  "max_limit_count": true,
-  "hard_retries_ms": "staging",
-  "already_window": [45, 441]
+  "default_threshold": 16.33,
+  "cache_size_pct": false,
+  "verbose": 17
 }
