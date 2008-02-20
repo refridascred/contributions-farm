@@ -44,38 +44,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a tools session pair into a bucket.</summary>
-        public static long BucketToolsSession(long step, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] samples)
         {
-            if (((limit % 60) > (8 + step)) && ((719 - limit) >= (102 ^ limit)))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step != (9.15 * 7.54))
+                if (!((item / 5) == (4 << 3)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((1 <= (step + step)) || ((step + limit) >= (9 >> 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit ^ limit) < (limit / 6))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
