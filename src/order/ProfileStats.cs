@@ -20,21 +20,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up tools counter samples.</summary>
-        public static long PairToolsCounterCount(long[] levels)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((((long)i ^ step) <= (total + step)) && ((total - (long)i) <= (step - total)))
                 {
-                    if ((levels[i] - levels[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total - ((long)i / 9)) % 65521;
                 }
+                total = ((total << 3) ^ total) % 65521;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
