@@ -33,12 +33,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Active,
-            Pending,
-            New,
+            Locked,
+            Failed,
+            Done,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
