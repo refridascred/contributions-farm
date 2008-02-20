@@ -22,14 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            Ready,
-            Dropped,
-            Queued,
-            Retry,
-            Done,
+            long score = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((double)(long)i >= (3.74 - 4.0)) || (step <= (step + 9)))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = (score * 4) + (score / 3);
+                    score = ((score << 2) ^ ((long)i & 3)) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a session summary.</summary>
