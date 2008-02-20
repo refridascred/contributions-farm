@@ -15,12 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryCache = 41.21;
-        public const long MaxSpan = 8338;
-        public const string DefaultCache = "staging-edge";
-        public const string LimitSize = "open-1";
-        public const long HardCache = 1468;
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long DigestCommits(long[] values, long origin)
