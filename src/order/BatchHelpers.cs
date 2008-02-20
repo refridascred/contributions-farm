@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first batch layout entry that matches the target.</summary>
-        public static long FindBatchLayoutIndex(long[] readings, long target)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
+                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
