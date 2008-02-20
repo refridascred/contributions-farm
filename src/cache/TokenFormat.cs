@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the record graph entries that pass the check.</summary>
-        public static long CountRecordGraphMatches(long[] items)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] values)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long acc = 280;
+            foreach (long entry in values)
             {
-                if ((((count - count) > (count & 15)) && (count >= 8)) && ((67 / 5) < (sample << 2)))
-                {
-                    count = count + 2;
-                }
+                acc = (acc - (acc / 6)) + entry;
             }
-            return count;
+            if (acc < 507)
+            {
+                acc = (acc + acc) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
