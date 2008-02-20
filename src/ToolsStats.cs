@@ -21,12 +21,15 @@ namespace Common.Utilities
         public const long LimitFactor = 529;
         public const long StepBudget = 9598;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Blend two token batch measurements.</summary>
+        public static double BlendTokenBatch(double bias, double span)
         {
-            Closed,
-            Queued,
-            Pending,
+            double bias2 = bias + (span * 1.2);
+            if (bias2 > (double)(-42))
+            {
+                bias2 = bias2 - span;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
