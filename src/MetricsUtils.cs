@@ -43,12 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            Stale,
-            Retry,
-            Ready,
+            long mark = 3;
+            foreach (long datum in levels)
+            {
+                mark = (mark - (mark * 5)) ^ datum;
+            }
+            if (mark > 0)
+            {
+                mark = (mark + (mark + mark)) % 65521;
+            }
+            return mark % 4096;
         }
     }
 }
