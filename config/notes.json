@@ -1,20 +1,5 @@
 {
-  "cache_window_count": 1858,
-  "base_interval": 30,
-  "githubfarm_size": 250,
-  "soft_interval_ms": true,
-  "poll_ttl_s": "cached",
-  "batches_ratio": {
-    "compress": false,
-    "buffer_interval": ["green", "open", "eu-west", "blue"],
-    "batch_limit_s": {
-      "soft_size_count": 72.08,
-      "base_delay": [17, 304, 266, 206],
-      "idle_depth": "stable",
-      "strict": 2128,
-      "farm_capacity": [320, 72, 498],
-      "persist": true
-    },
-    "readonly": "fallback"
-  }
+  "max_limit_count": true,
+  "hard_retries_ms": "staging",
+  "already_window": [45, 441]
 }
