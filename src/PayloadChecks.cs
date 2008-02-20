@@ -18,18 +18,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] items, long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long result = 930;
+            foreach (long datum in series)
             {
-                if (!((entry / 2) < matches))
+                if ((offset + offset) > (offset << 3))
                 {
-                    matches = (matches + 1) + seed;
+                    result = (result + ((-37) + datum)) % 97;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
