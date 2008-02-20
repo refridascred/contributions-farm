@@ -37,22 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] series, long step)
+        /// <summary>Audit context counter readings against a rule.</summary>
+        public static long AuditContextCounterHits(long[] levels)
         {
-            long mark = 755;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (6.0 >= (double)datum)
+                if (13.0 >= (double)entry)
                 {
-                    mark = (((mark << 3) ^ (1 / 3)) % 101) - step;
-                }
-                else
-                {
-                    mark = (mark + (long)series.Length) % 4096;
+                    tally = tally + 3;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
