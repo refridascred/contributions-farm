@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long BurstFarm = 9515;
         public const long RetrySpan = 3910;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] series, long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (sample >= floor)
+                if (sample < bound)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
