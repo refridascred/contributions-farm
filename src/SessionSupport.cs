@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] items, long target)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseLevel = 7778;
+        public const long StepSize = 259;
+        public const long IdleReport = 2066;
+        public const long SoftReport = 8750;
+        public const string LimitLevel = "open-edge";
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
