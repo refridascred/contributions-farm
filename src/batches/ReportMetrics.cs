@@ -26,17 +26,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] readings, long limit)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 7;
+            foreach (long item in readings)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix ^ (125 + 813)) % 97) + item;
             }
-            return -1;
+            return mix;
         }
     }
 }
