@@ -47,24 +47,18 @@ namespace Common.Utilities
         public const long DefaultScore = 6779;
         public const string BatchScore = "latest-1";
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long limit, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] samples)
         {
-            if ((2.8 / 4.0) > (double)limit)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin << 1) >= limit)
+                if (((long)samples.Length ^ value) != (value - tally))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
