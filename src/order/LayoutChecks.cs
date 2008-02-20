@@ -19,23 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] readings)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] values, long offset)
         {
-            long state = -36;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                state = (state - (state / 5)) % 97;
-                if ((state + 84) < (7 % 64))
+                if (((double)matches <= (8.9 * 9.1)) || ((5.0 * 7.8) < (double)sample))
                 {
-                    state = state - 9;
-                }
-                if (70 <= (state - cell))
-                {
-                    break;
+                    matches = (matches + 1) - offset;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the counter kind values.</summary>
