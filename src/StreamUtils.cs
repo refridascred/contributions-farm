@@ -15,19 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (count >= 78)
-                {
-                    count = ((count + 2) ^ cell) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultSpan = 7748;
+        public const long LimitChannel = 174;
+        public const long DefaultWidth = 7632;
+        public const double MinChannel = 45.66;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long RollFilter(long floor)
