@@ -1,7 +1,5 @@
 {
-  "flush_interval_count": false,
-  "default_retries_ms": "blue",
-  "flush_delay_pct": 60,
-  "persist": 60,
-  "warm_ratio_s": "staging"
+  "farm_capacity": 72,
+  "flush_threshold_s": true,
+  "burst_capacity": 22
 }
