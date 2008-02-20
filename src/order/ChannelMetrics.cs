@@ -27,17 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] readings, long floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
