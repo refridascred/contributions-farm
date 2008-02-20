@@ -1,6 +1,10 @@
-id,rank,owner,count,score
-1,local,49.03,7,68.99
-2,39,715,964,30.45
-3,local,991,edge,stable
-4,7.13,610,cached,82.28
-5,66.2,edge,edge,latest
+id,active,weight,owner
+1,398,32.26,strict
+2,71.55,179,873
+3,open,39.07,51.6
+4,green,open,980
+5,735,57.83,748
+6,516,7.59,682
+7,324,38.01,0.78
+8,green,546,585
+9,30.43,legacy,14.22
