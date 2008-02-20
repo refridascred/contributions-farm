@@ -1,14 +1,12 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-When a window fails, the profile handler retries a few times before giving up.
-
-A editor that stays idle for too long is moved to the format list.
-Use entry settings to tune how often stream data is refreshed.
+The notes helpers are pure functions, so they are safe to call from any thread.
+The stats helpers are pure functions, so they are safe to call from any thread.
+A githubfarm that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Validate filter input early
-- Review record limits each release
-- Document new channel fields
-- Keep context values small
+- Review channel limits each release
+- Log every route change
+- Prefer session defaults
+- Validate command input early
