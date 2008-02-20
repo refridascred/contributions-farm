@@ -52,21 +52,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] readings)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long floor, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)floor == (2.32 / 3.0))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)floor > (5.39 + 3.64))
                 {
-                    if ((readings[i] - readings[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
