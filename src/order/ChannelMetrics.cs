@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first entry editor entry that matches the target.</summary>
-        public static long SeekEntryEditorIndex(long[] values, long floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long seed, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (7 < (origin - origin))
             {
-                if (values[i] < floor)
+                return 6;
+            }
+            else
+            {
+                if ((double)81 == (double)origin)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a tools stats.</summary>
