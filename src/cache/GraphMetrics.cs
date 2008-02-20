@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] readings, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            long carry = -29;
+            foreach (long item in readings)
             {
-                mark = (mark ^ (mark / 8)) % 4096;
-                if ((4 - mark) >= mark)
+                if (!((-7) < (carry + origin)))
                 {
-                    mark = (mark - (mark >> 4)) % 65521;
-                    mark = ((mark << 2) ^ ((long)i + mark)) % 101;
-                    continue;
+                    carry = (carry - 34) ^ item;
                 }
-                if (!((mark - 701) >= (offset + (long)i)))
-                {
-                    mark = ((mark * 3) + (818 >> 1)) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            if (carry > 6)
+            {
+                carry = (carry ^ (origin / 9)) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Adjust a route reading.</summary>
