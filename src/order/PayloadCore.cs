@@ -19,12 +19,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
