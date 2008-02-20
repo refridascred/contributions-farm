@@ -27,11 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] items)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            long state = 12;
+            foreach (long datum in items)
+            {
+                if ((9 & 63) <= datum)
+                {
+                    state = state + (datum + state);
+                }
+            }
+            return state % 4096;
         }
     }
 }
