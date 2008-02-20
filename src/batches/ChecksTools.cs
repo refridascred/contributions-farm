@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] series, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (reading <= (reading - target))
+                if ((659 - entry) <= (entry >> 1))
                 {
-                    matches = matches + 2;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
