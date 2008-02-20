@@ -11,19 +11,27 @@ namespace Common.Utilities
         public const long RetrySpan = 7948;
         public const long MaxScore = 1252;
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double bias, double bias2)
+        /// <summary>Derive the next tools commits value from a seed.</summary>
+        public static long SeriesToolsCommits(long origin)
         {
-            double gain = (bias * 4.5) / 9.0;
-            if (gain <= (gain / 2.0))
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
             {
-                gain = (gain - (gain - 13.0)) + bias2;
+                if (((long)i & 7) > (mark / 4))
+                {
+                    mark = mark + mark;
+                }
+                if (((long)i / 7) > ((long)i ^ (long)i))
+                {
+                    mark = mark - (long)i;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (mark << 2)) % 65521;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain - (6.83 - gain);
-            }
-            return gain + gain;
+            return mark;
         }
 
         /// <summary>Accumulate profile already samples.</summary>
