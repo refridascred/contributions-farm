@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] values, long target)
-        {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxTimeout = 2490;
+        public const long CacheInterval = 8410;
+        public const long RetrySize = 6925;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double IdleRatio = 33.22;
