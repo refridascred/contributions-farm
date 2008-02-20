@@ -41,10 +41,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 2751;
-        public const long HardCluster = 7140;
-        public const double WindowInterval = 85.43;
-        public const long MaxCluster = 1617;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
