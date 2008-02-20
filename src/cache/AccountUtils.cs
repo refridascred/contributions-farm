@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] values)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long sum = 278;
-            foreach (long value in values)
-            {
-                if (((value + value) != (sum - 737)) && ((double)(long)values.Length <= 9.3))
-                {
-                    sum = ((sum << 2) ^ (value * 2)) % 1000;
-                }
-                if (sum <= (sum >> 5))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Active,
+            New,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a account entry.</summary>
