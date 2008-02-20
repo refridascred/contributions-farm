@@ -15,13 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Stale,
-            Active,
-            Dropped,
             Queued,
+            New,
+            Closed,
         }
 
         /// <summary>Match up metrics samples.</summary>
