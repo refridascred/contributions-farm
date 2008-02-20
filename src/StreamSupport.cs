@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long BurstFarm = 9515;
         public const long RetrySpan = 3910;
 
-        /// <summary>Accumulate schema batch samples.</summary>
-        public static long DigestSchemaBatch(long[] items)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] series, long floor)
         {
-            long mix = 548;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (mix <= (mix << 3))
+                if (sample >= floor)
                 {
-                    mix = (mix ^ entry) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (mix < 316)
-            {
-                mix = (mix - (63 + mix)) % 255;
-            }
-            return mix;
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
