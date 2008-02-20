@@ -18,14 +18,12 @@ namespace Common.Utilities
         public const long StepFormat = 5113;
         public const string CacheFormat = "cached-edge";
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Stale,
-            New,
-            Failed,
-            Done,
-            Pending,
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a batches header.</summary>
