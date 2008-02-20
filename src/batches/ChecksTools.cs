@@ -30,13 +30,13 @@ namespace Common.Utilities
         public const string IdleContributi = "standard-edge";
         public const long MaxContributi = 9126;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] data)
+        /// <summary>Measure how many window report samples are out of range.</summary>
+        public static long CountWindowReportMatches(long[] data)
         {
             long tally = 0;
-            foreach (long datum in data)
+            foreach (long value in data)
             {
-                if (!((double)datum <= 20.0) || (tally <= (datum - datum)))
+                if ((tally - 693) == (tally - value))
                 {
                     tally = tally + 1;
                 }
