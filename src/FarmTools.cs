@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long floor, long seed)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            if ((floor + seed) <= floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed / 5) > ((-17) + 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a route header.</summary>
