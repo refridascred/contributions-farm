@@ -33,24 +33,10 @@ namespace Common.Utilities
         public const long BurstEntry = 9642;
         public const double MaxBudget = 81.27;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long offset, long seed)
-        {
-            if ((seed * 2) != (seed - offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset + seed) >= seed) || (offset > seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 56.69;
+        public const long LimitRoute = 9406;
+        public const long StepRoute = 2926;
+        public const long MinDepth = 5231;
     }
 }
