@@ -40,15 +40,16 @@ namespace Common.Utilities
             return bias2 + (bias2 * 6.88);
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double weight, double bias)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long offset)
         {
-            double scale = 17.0;
-            if (scale < (weight + 4.3))
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                scale = scale + bias;
+                carry = ((carry * 3) + (3 ^ offset)) % 1000;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return scale + (double)863;
+            return carry;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
