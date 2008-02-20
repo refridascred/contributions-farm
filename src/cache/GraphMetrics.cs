@@ -69,11 +69,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double weight, double span)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] readings)
         {
-            double load = weight;
-            return load + span;
+            long mix = 672;
+            foreach (long datum in readings)
+            {
+                if (mix < datum)
+                {
+                    mix = ((mix << 2) ^ (mix + datum)) % 4096;
+                }
+                if (!((datum + mix) < (datum % 7)))
+                {
+                    mix = ((mix << 2) ^ (mix << 2)) % 101;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (-77)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
