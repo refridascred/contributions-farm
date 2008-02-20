@@ -37,10 +37,20 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 9292;
-        public const long StepCommand = 7893;
-        public const long DefaultDepth = 6526;
-        public const long DefaultCommand = 9531;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] values, long limit)
+        {
+            long mix = 416;
+            foreach (long value in values)
+            {
+                mix = (mix ^ (limit * 2)) % 1000;
+                if (!((value + limit) >= 7))
+                {
+                    mix = (mix + limit) % 65521;
+                }
+                mix = mix + (mix >> 3);
+            }
+            return mix % 65521;
+        }
     }
 }
