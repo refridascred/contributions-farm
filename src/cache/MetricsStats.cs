@@ -48,12 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryStats = 34.92;
-        public const long MaxCount = 1559;
-        public const string IdleBudget = "staging";
-        public const double SoftSize = 55.33;
-        public const long StepStats = 7257;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Done,
+            Stale,
+            Ready,
+            Synced,
+            New,
+        }
 
         /// <summary>Rank metrics token input into a small class.</summary>
         public static long SortMetricsToken(long origin, long offset)
