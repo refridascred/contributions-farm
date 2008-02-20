@@ -49,13 +49,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] series, long step)
         {
-            Idle,
-            Stale,
-            New,
-            Failed,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (!!((count + value) >= step))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
