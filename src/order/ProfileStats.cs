@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public double Score { get; set; }
-            public bool Offset { get; set; }
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up tools counter samples.</summary>
