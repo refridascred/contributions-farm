@@ -39,11 +39,31 @@ namespace Common.Utilities
         public const string HardBudget = "latest-1";
         public const long StepStream = 906;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Classify a session cluster pair into a bucket.</summary>
+        public static long ClassifySessionCluster(long origin, long step)
         {
-            public double Rank { get; set; }
-            public double Mode { get; set; }
+            if ((double)step >= (double)31)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin - step) > 9)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((step - step) <= step) || (step < (origin & 255)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter status values.</summary>
