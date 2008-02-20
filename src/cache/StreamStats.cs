@@ -31,40 +31,12 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 8850;
         public const long RetryGithubfarm = 6233;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long limit, long limit2)
-        {
-            long slot = limit - limit2;
-            if ((limit + 4) < ((-2) % 24))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((3 >> 3) <= (limit2 << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (slot > (limit + slot))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((720 % 3) <= (limit2 - slot))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchScore = 9558;
+        public const string CacheRatio = "open-v2";
+        public const long WindowSpan = 9245;
+        public const long CacheNotes = 3081;
+        public const long WindowFactor = 4578;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
