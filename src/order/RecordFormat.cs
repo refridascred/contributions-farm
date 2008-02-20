@@ -33,14 +33,19 @@ namespace Common.Utilities
         public const double SoftSize = 47.33;
         public const double BurstRatio = 70.97;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] series, long offset)
         {
-            Pending,
-            New,
-            Done,
-            Queued,
-            Stale,
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
