@@ -40,11 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] items)
         {
-            public bool Level { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((double)hits >= (double)entry)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
