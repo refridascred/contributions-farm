@@ -60,18 +60,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] readings)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((3.0 + 2.6) > (double)seen) || !((8 % 3) <= (seen & 255)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) ^ datum;
+                    if ((samples[i] + samples[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Blend two filter measurements.</summary>
