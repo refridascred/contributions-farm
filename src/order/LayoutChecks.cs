@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] items, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] levels, long target)
         {
-            long mark = 533;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                mark = (((mark << 3) ^ (637 + seed)) % 65521) - value;
+                if (seen > (item % 5))
+                {
+                    seen = (seen + 1) - target;
+                }
             }
-            if (mark < 3)
-            {
-                mark = ((mark * 5) + (mark & 7)) % 97;
-            }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Accumulate order samples.</summary>
