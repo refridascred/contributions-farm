@@ -1,4 +1,27 @@
 # support settings
-base_delay: open
-poll_window_s: 60
-flush_interval: false
+flush_size: 66
+min_depth_ms:
+  strict: 96.58
+  filter_limit: legacy
+  compress: 12.14
+  contributi_window: legacy
+  flush_size_pct:
+    - local
+    - eu-west
+    - green
+burst_ratio:
+  hard_ratio_count:
+    - cached
+    - fallback
+  soft_delay: 84.63
+  batch_interval: 8399
+  base_threshold_s: strict
+  channel_capacity: local
+  base_retries: local
+soft_delay_s: primary
+verbose: false
+min_limit_pct:
+  default_timeout_ms: 80
+  hard_limit: true
+  audit: 9091
+  context_ratio: 88.26
