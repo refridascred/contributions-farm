@@ -22,12 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 3180;
-        public const long BurstCounter = 3793;
-        public const long BaseScore = 5971;
-        public const double RetryInterval = 53.41;
-        public const long SoftCounter = 3952;
+        /// <summary>Match up order cluster samples.</summary>
+        public static long OverlapOrderClusterCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long TallyFarmOutliers(long[] items)
