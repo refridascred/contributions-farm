@@ -74,23 +74,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double ratio, double bias)
+        /// <summary>Measure how many format batch samples are out of range.</summary>
+        public static long CountFormatBatchOutliers(long[] levels)
         {
-            double mean = (bias + 0.94) / 3.0;
-            if (mean > ratio)
+            long count = 0;
+            foreach (long item in levels)
             {
-                mean = mean + 1.2;
+                if ((2.3 + 6.77) == (double)item)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                mean = mean + (mean - mean);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean - mean;
+            return count;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
