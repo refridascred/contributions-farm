@@ -58,17 +58,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = (carry ^ (121 & 127)) % 255;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 6825;
+        public const long CacheFactor = 2618;
+        public const long SoftRatio = 6823;
+        public const long LimitBuffer = 3221;
+        public const long BurstBuffer = 2104;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string StepFactor = "primary-v2";
