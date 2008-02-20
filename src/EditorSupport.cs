@@ -88,17 +88,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first queue contributi entry that matches the target.</summary>
-        public static long LookupQueueContributiIndex(long[] series, long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((series[i] >= offset) && ((series[i] % 2) != 0))
+                if (reading >= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
