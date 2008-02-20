@@ -27,23 +27,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((reading << 1) == (reading + reading))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 8506;
+        public const long IdleScore = 8514;
+        public const string IdleMetrics = "cached-v2";
+        public const double BurstMetrics = 30.58;
+        public const double LimitMetrics = 2.76;
 
         /// <summary>Count the context layout entries that pass the check.</summary>
         public static long MeasureContextLayoutGaps(long[] series)
