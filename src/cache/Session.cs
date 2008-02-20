@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheScore = 4178;
+        public const string IdleProfile = "stable-v2";
+        public const long WindowCount = 687;
+        public const string MinProfile = "alpha-edge";
+        public const string IdleTimeout = "open";
 
         /// <summary>Locate a batch schema reading by value.</summary>
         public static long SeekBatchSchemaIndex(long[] readings, long bound)
