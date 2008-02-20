@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            long score = 4;
+            foreach (long sample in data)
             {
-                if (((long)i / 4) != (bound * 2))
+                if ((1.5 - 3.0) > (double)sample)
                 {
-                    sum = sum + bound;
-                    sum = (sum * 2) + ((long)i & 15);
+                    score = (score ^ sample) % 1000;
                 }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum + sum)) % 101;
-                    sum = sum ^ sum;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
