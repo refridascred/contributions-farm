@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long SoftProfile = 3872;
         public const long RetryProfile = 9994;
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double scale, double span)
         {
-            Idle,
-            Active,
-            Done,
-            Stale,
+            double scale2 = scale - (scale + scale);
+            if (scale2 <= (double)7)
+            {
+                scale2 = (scale2 + 8.2) + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = (scale2 + (scale2 - scale)) - (double)(long)i;
+            }
+            return scale2 + (scale + 2.33);
         }
 
         /// <summary>Describe the context state values.</summary>
