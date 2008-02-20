@@ -53,19 +53,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] readings)
         {
-            long anchor = 5;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor + anchor) % 65521) + item;
+                if (((3.0 + 2.6) > (double)seen) || !((8 % 3) <= (seen & 255)))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
             }
-            if (anchor < 33)
-            {
-                anchor = (anchor << 2) ^ (anchor + 6);
-            }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Blend two filter measurements.</summary>
