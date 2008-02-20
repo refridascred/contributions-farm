@@ -36,19 +36,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] values, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (cell >= floor)
+                if (((item & 63) > (hits - item)) && ((hits & 31) > (item * 2)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a format info.</summary>
