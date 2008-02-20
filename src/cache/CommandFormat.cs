@@ -13,32 +13,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long bound, long offset)
-        {
-            if ((bound + offset) < offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((751 <= (bound % 8)) && ((19 << 3) > (offset + bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound ^ offset) < (offset * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheRatio = 1277;
+        public const long MinSchema = 6836;
+        public const double CacheSchema = 39.42;
+        public const long MinWidth = 1331;
 
         /// <summary>Count tools queue pairs that satisfy a relation.</summary>
         public static long OverlapToolsQueueCount(long[] items)
