@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public double Label { get; set; }
-            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
