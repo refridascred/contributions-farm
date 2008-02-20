@@ -32,18 +32,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the token cluster entries that pass the check.</summary>
-        public static long MeasureTokenClusterHits(long[] levels)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((tally % 5) == ((-73) * 3))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
+            Idle,
+            Failed,
+            Done,
+            Closed,
         }
     }
 }
