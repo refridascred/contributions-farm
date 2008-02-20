@@ -1,6 +1,6 @@
 {
-  "base_window_count": [107, 391, 453, 180],
-  "max_limit": true,
-  "command_limit": ["fallback", "stable", "latest"],
-  "poll_delay_count": "staging"
+  "githubfarm_ratio": [195, 172, 319, 353],
+  "already_capacity": 1076,
+  "dry_run": true,
+  "batches_ratio": "fallback"
 }
