@@ -1,13 +1,18 @@
 # entry settings
-channel_capacity: open
-warm_ttl_s:
-  - 175
-  - 41
-  - 177
-  - 327
-idle_size_s:
-  - 8
-  - 85
-  - 309
-  - 439
-window_ttl: blue
+audit: staging
+batch_ratio: 2616
+metrics_ratio:
+  readonly:
+    compress: 20.93
+    session_interval: 500
+    route_retries: 28.95
+    poll_depth: 250
+    warm_ttl_ms: 1024
+    batch_delay: strict
+  idle_limit_ms: false
+  retry_limit_s:
+    dry_run: local
+    poll_ratio: 38
+    compress: 100
+    max_depth_count: 100
+    soft_retries: 89.95
