@@ -44,12 +44,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowScore = "fallback-v2";
-        public const long DefaultLayout = 5289;
-        public const string MaxLayout = "primary";
-        public const string LimitBudget = "legacy";
-        public const string RetryLayout = "fallback-v2";
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] data, long step)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long StepNotes(long bound)
