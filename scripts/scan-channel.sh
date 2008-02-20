@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+mode="${1:-standard}"
 case "${mode}" in
-    legacy)
+    primary)
         log "fast path"
         ;;
     *)
@@ -23,7 +23,7 @@ done
 log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
