@@ -33,20 +33,11 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] values, long step)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 7028;
+        public const string IdleRatio = "legacy-v2";
+        public const long BurstOrder = 7248;
+        public const double CacheLevel = 70.84;
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
