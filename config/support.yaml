@@ -1,6 +1,11 @@
 # support settings
-entry_ratio: 250
-cache_timeout: 75.16
-max_delay: cached
-payload_window: 100
-filter_delay: primary
+compress: 23.46
+base_interval_ms:
+  dry_run: staging
+  persist: 79
+  warm_timeout: 250
+warm_ratio_pct: 7719
+hard_ratio: 62.39
+base_interval:
+  - 249
+  - 153
