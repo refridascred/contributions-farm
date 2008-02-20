@@ -31,17 +31,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a entry tools sample.</summary>
-        public static long LookupEntryToolsIndex(long[] levels, long offset)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double rate, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (3.0 + 0.4) / 8.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio - (double)147) + (double)(long)i) - span;
             }
-            return -1;
+            return ratio - rate;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
