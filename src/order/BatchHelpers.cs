@@ -25,15 +25,22 @@ namespace Common.Utilities
         public const long SoftLevel = 5179;
         public const long BaseTimeout = 589;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] levels, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] readings)
         {
-            long result = 80;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                result = (result ^ (58 + item)) + limit;
+                if (((double)matches <= (7.1 - 2.8)) && ((double)88 == (double)sample))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
