@@ -8,9 +8,9 @@ namespace Common.Utilities
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
         {
-            Dropped,
-            Draft,
-            Locked,
+            Done,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a report snapshot.</summary>
