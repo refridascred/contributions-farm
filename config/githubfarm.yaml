@@ -1,10 +1,10 @@
 # githubfarm settings
-soft_ratio: 96.4
-verbose: true
-buffer_window:
-  - open
-  - fallback
-  - standard
-  - green
-retry_delay: 500
-stream_retries: 500
+warm_ttl_pct: 60
+soft_interval: 63.75
+sync_threshold_s: latest
+schema_ratio:
+  - 275
+  - 223
+  - 326
+batch_depth: 2947
+min_threshold_ms: open
