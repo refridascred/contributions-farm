@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] levels)
-        {
-            long result = 234;
-            foreach (long sample in levels)
-            {
-                result = ((result * 4) + (-3)) % 65521;
-                result = (result + (sample << 1)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 7722;
+        public const long StepInterval = 5026;
+        public const double BatchChannel = 59.39;
+        public const long BaseLevel = 1372;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long FindAccountIndex(long[] samples, long floor)
