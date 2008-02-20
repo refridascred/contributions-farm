@@ -51,18 +51,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] series, long step)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!!((count + value) >= step))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
     }
 }
