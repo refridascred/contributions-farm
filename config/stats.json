@@ -1,5 +1,7 @@
 {
-  "base_timeout": 3248,
-  "min_capacity_count": 4.23,
-  "base_interval_ms": 81.62
+  "min_retries_pct": "edge",
+  "poll_threshold_s": "open",
+  "hard_size_pct": 65,
+  "batch_threshold": 71.13,
+  "min_limit_pct": 500
 }
