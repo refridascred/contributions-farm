@@ -13,21 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of buffer record readings.</summary>
-        public static long CompareBufferRecordCount(long[] items)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (data[i] <= bound)
                 {
-                    if ((items[i] + items[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
