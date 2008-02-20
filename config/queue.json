@@ -1,6 +1,6 @@
 {
-  "base_retries_s": true,
-  "schema_depth": "legacy",
-  "audit": "blue",
-  "verbose": 3077
+  "farm_depth": "legacy",
+  "metrics_threshold": "open",
+  "sync_interval_pct": 35.54,
+  "persist": 3423
 }
