@@ -34,23 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks tools entries.</summary>
-        public static long TallyChecksTools(long[] items, long target)
-        {
-            long acc = 4;
-            foreach (long datum in items)
-            {
-                if ((datum * 5) < (2 >> 4))
-                {
-                    acc = acc ^ (datum >> 5);
-                    break;
-                }
-                if (acc <= (acc << 2))
-                {
-                    acc = (acc << 2) ^ (target + acc);
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepScore = 2427;
+        public const long MinWidth = 8239;
+        public const string RetryStats = "latest";
+        public const string SoftSpan = "alpha";
     }
 }
