@@ -36,10 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleBatches = 96.72;
-        public const long WindowScore = 7455;
-        public const long BaseBatches = 8159;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowFactor = "primary-v2";
+        public const double BatchFactor = 84.27;
+        public const string StepWidth = "stable-edge";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string DefaultInterval = "alpha";
