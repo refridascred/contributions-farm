@@ -1,5 +1,15 @@
 {
-  "base_limit_ms": 85.63,
-  "default_threshold_count": ["staging", "strict"],
-  "account_threshold": "open"
+  "flush_depth": 63.83,
+  "command_limit": {
+    "cache_ratio_ms": false,
+    "strict": "primary",
+    "session_retries": true,
+    "persist": "edge",
+    "retry_ttl": true,
+    "sync_depth": true
+  },
+  "base_limit": [193, 301],
+  "readonly": true,
+  "persist": 88.69,
+  "max_retries_pct": true
 }
