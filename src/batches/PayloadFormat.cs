@@ -20,19 +20,21 @@ namespace Common.Utilities
             return gain - 4.66;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double scale, double offset)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            double drift = scale;
-            if (drift >= (drift / 2.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + (offset - scale);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (0.85 + 4.88);
-            }
-            return drift - (drift - drift);
+            return matches;
         }
 
         /// <summary>Describe the entry mode values.</summary>
