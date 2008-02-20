@@ -1,4 +1,23 @@
 # entry settings
-payload_interval: 79
-soft_ratio: legacy
-audit: latest
+readonly: primary
+poll_delay_count:
+  batch_size: 1024
+  filter_window: 6
+  burst_window:
+    cache_limit_pct: 8652
+    already_depth: 23.04
+    batch_depth_s: 65.74
+    commits_retries:
+      - stable
+      - legacy
+      - local
+      - eu-west
+  soft_retries_ms:
+    - 178
+    - 416
+    - 337
+  queue_size:
+    - 489
+    - 343
+    - 418
+schema_ttl: 4022
