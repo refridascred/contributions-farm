@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 3566;
+        public const double DefaultWidth = 56.39;
+        public const long DefaultChannel = 4637;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
