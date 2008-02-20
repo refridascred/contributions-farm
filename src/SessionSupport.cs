@@ -23,13 +23,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
+            long result = 9;
+            foreach (long item in data)
+            {
+                result = (((result << 2) ^ result) % 4096) ^ item;
+                result = (result + 767) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
