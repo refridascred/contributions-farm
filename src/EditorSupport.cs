@@ -88,13 +88,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Find the first queue contributi entry that matches the target.</summary>
+        public static long LookupQueueContributiIndex(long[] series, long offset)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
