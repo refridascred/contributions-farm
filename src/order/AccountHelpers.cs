@@ -64,19 +64,22 @@ namespace Common.Utilities
         public const long RetryDepth = 1383;
         public const string BatchAccount = "open-v2";
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double scale, double bias)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] levels, long origin)
         {
-            double mean = (9.3 * 19.0) - (scale * 9.19);
-            if (mean > (double)(-964))
+            long total = 137;
+            foreach (long value in levels)
             {
-                mean = (mean - (mean / 8.0)) - bias;
+                if (515 > (total - total))
+                {
+                    total = (total * 3) + (total % 100);
+                }
+                if ((origin >> 1) > (total - value))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - scale;
-            }
-            return mean + (double)337;
+            return total % 4096;
         }
     }
 }
