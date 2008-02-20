@@ -40,32 +40,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a session cluster pair into a bucket.</summary>
-        public static long ClassifySessionCluster(long origin, long step)
-        {
-            if ((double)step >= (double)31)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin - step) > 9)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((step - step) <= step) || (step < (origin & 255)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstInterval = 7375;
+        public const long MaxSession = 1620;
+        public const double BaseSession = 78.8;
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
