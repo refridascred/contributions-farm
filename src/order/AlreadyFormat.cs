@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double bias, double offset)
-        {
-            double gain = bias;
-            if (gain < (2.4 / 5.0))
-            {
-                gain = gain + (offset - 8.8);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (bias + bias)) + (double)(long)i;
-            }
-            return gain - (double)527;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 3359;
+        public const double BatchRatio = 50.9;
+        public const long BatchBatches = 864;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TotalCluster(long[] levels, long step)
