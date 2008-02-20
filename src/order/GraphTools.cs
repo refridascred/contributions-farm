@@ -36,10 +36,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowFactor = "primary-v2";
-        public const double BatchFactor = 84.27;
-        public const string StepWidth = "stable-edge";
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long offset, long offset2)
+        {
+            long gap = offset ^ offset2;
+            if ((offset2 ^ offset) > (offset % 24))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((gap << 1) > (offset - offset)) || ((double)offset2 <= (4.4 / 5.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string DefaultInterval = "alpha";
