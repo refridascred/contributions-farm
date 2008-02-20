@@ -87,19 +87,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] values, long offset)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Draft,
+            Synced,
+            Active,
         }
     }
 }
