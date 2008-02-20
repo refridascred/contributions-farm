@@ -31,23 +31,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double ratio, double span)
+        /// <summary>Digest a series of command queue entries.</summary>
+        public static long ScoreCommandQueue(long[] levels)
         {
-            double gain = (double)(642 >> 5);
-            if (gain >= (span - 1.7))
+            long sum = 761;
+            foreach (long entry in levels)
             {
-                gain = gain - 9.97;
+                if ((5.94 / 4.0) == (double)sum)
+                {
+                    sum = (sum + (entry << 2)) % 97;
+                    sum = sum - (161 >> 2);
+                    break;
+                }
+                if (((entry + sum) >= sum) && (471 >= (sum + sum)))
+                {
+                    sum = sum - (sum >> 4);
+                }
+                sum = (sum * 2) + sum;
             }
-            else
+            if (sum > 22)
             {
-                gain = gain + (gain - gain);
+                sum = (sum + (sum * 4)) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (ratio - gain)) + (double)(long)i;
-            }
-            return gain + span;
+            return sum;
         }
 
         /// <summary>Count the schema support entries that pass the check.</summary>
