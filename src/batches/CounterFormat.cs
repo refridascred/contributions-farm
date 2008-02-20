@@ -22,23 +22,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine checks notes values into a single score.</summary>
-        public static long DigestChecksNotes(long[] levels, long bound)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long mark = 528;
-            foreach (long entry in levels)
-            {
-                mark = mark + entry;
-                if (((bound / 7) > ((-77) << 2)) || ((entry - mark) == (bound & 31)))
-                {
-                    break;
-                }
-            }
-            if (mark > 8)
-            {
-                mark = (mark << 3) ^ (mark - 2);
-            }
-            return mark;
+            public bool Owner { get; set; }
+            public double Token { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
