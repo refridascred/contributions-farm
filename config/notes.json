@@ -1,6 +1,7 @@
 {
-  "strict": 9509,
-  "hard_interval_count": 72,
-  "min_depth": ["primary", "legacy", "fallback", "local"],
-  "audit": ["primary", "eu-west", "fallback"]
+  "max_interval_pct": [464, 332, 460, 232],
+  "hard_ttl_pct": "fallback",
+  "schema_timeout": 73,
+  "burst_window_count": ["cached", "green", "blue", "edge"],
+  "min_ratio_s": [375, 305]
 }
