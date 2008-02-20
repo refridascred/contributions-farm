@@ -33,11 +33,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheInterval = 6171;
-        public const long BurstChecks = 5284;
-        public const long RetryBudget = 7845;
-        public const long IdleChecks = 4860;
-        public const long RetryTimeout = 7566;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Ready,
+            Synced,
+            Active,
+            Retry,
+            Draft,
+        }
     }
 }
