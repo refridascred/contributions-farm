@@ -38,19 +38,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] values, long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] items, long limit)
         {
-            bool found = true;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (entry <= step)
+                if (sample < limit)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Hold a session record.</summary>
