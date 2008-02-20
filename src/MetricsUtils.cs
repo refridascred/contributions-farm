@@ -51,19 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two support counter measurements.</summary>
-        public static double ProjectSupportCounter(double gain, double span)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] readings)
         {
-            double ratio = span;
-            if (ratio <= (4.77 * 5.49))
+            long mark = 521;
+            foreach (long datum in readings)
             {
-                ratio = ratio + (gain / 8.0);
+                if ((datum + mark) > (datum * 4))
+                {
+                    mark = (mark << 3) ^ mark;
+                }
+                if ((mark - datum) <= mark)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - span) - (double)(long)i;
-            }
-            return ratio + (double)152;
+            return mark;
         }
     }
 }
