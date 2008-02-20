@@ -40,14 +40,13 @@ namespace Common.Utilities
             return bias2 + (bias2 * 6.88);
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Retry,
-            Closed,
+            Queued,
             Dropped,
             Paused,
-            Draft,
+            Done,
         }
 
         /// <summary>Hold a stream info.</summary>
