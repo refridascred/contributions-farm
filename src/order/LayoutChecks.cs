@@ -89,13 +89,39 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long offset, long floor)
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
+            long step = offset ^ floor;
+            if ((-6) < (step ^ step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step > (floor + floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor / 8) == (floor - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor < (step & 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
