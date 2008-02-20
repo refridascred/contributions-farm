@@ -64,11 +64,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long offset)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long total = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                total = (total << 2) ^ offset;
+                if (offset < ((long)i & 1))
+                {
+                    total = (total ^ (offset ^ (long)i)) % 4096;
+                    total = ((total << 2) ^ (offset + total)) % 4096;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
