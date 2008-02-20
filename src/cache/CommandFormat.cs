@@ -23,16 +23,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a commits format counter forward.</summary>
-        public static long StepCommitsFormat(long floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                sum = ((sum * 2) + (sum % 12)) % 101;
-                sum = ((sum * 4) + (long)i) % 65521;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
