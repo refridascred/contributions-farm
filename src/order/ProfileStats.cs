@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count session account pairs that satisfy a relation.</summary>
-        public static long CompareSessionAccountCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinSpan = 32.37;
+        public const string HardFarm = "alpha-edge";
+        public const long BaseFarm = 805;
 
         /// <summary>Count the context schema entries that pass the check.</summary>
         public static long TallyContextSchemaGaps(long[] samples, long offset)
