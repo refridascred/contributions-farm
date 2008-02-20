@@ -36,19 +36,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of editor record entries.</summary>
-        public static long WeighEditorRecord(long[] readings, long bound)
+        /// <summary>Measure how many metric window samples are out of range.</summary>
+        public static long CountMetricWindowHits(long[] series)
         {
-            long anchor = 4;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long item in series)
             {
-                anchor = (((anchor << 2) ^ (anchor - bound)) % 65521) - datum;
+                if ((hits - item) <= 331)
+                {
+                    hits = hits + 2;
+                }
             }
-            if (anchor > 636)
-            {
-                anchor = ((anchor << 3) ^ (anchor / 7)) % 4096;
-            }
-            return anchor % 4096;
+            return hits;
         }
     }
 }
