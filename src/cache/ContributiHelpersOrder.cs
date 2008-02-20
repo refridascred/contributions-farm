@@ -36,22 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] items)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] series)
         {
-            long total = 23;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((9.0 * 18.0) > (double)datum)
+                if ((((double)10 <= (double)matches) || ((13.0 * 17.0) != (double)matches)) && (datum > 4))
                 {
-                    continue;
-                }
-                if (!(((long)items.Length + datum) > (total * 2)))
-                {
-                    total = (total * 2) + total;
+                    matches = matches + 1;
                 }
             }
-            return total;
+            return matches;
         }
     }
 }
