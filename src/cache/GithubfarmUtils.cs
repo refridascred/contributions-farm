@@ -16,10 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 2705;
-        public const long MaxSchema = 6543;
-        public const string DefaultTimeout = "alpha-edge";
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Draft,
+            Done,
+            Synced,
+        }
 
         /// <summary>Validate command window readings against a bound.</summary>
         public static bool CheckCommandWindowLimits(long[] data, long offset)
