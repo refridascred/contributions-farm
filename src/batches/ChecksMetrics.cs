@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long limit, long target)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double bias, double span)
         {
-            if (limit >= (limit + limit))
+            double gain = (double)(78 * 4);
+            if (gain <= gain)
             {
-                return 1;
+                gain = gain + (gain / 7.0);
             }
             else
             {
-                if (!((target + target) <= (limit + target)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
+                gain = gain + span;
             }
+            return gain - bias;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
