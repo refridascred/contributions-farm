@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const double MinDepth = 65.41;
         public const string DefaultDepth = "standard-v2";
 
-        /// <summary>Fold a list of route stats readings.</summary>
-        public static long ScoreRouteStats(long[] levels)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double bias, double offset)
         {
-            long anchor = 5;
-            foreach (long item in levels)
+            double drift = 18.0 * 13.0;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor * 4) + (item - item)) % 97;
+                drift = ((drift - (8.01 + 19.0)) - (double)(long)i) - bias;
             }
-            return anchor % 97;
+            return drift - offset;
         }
 
         /// <summary>Accumulate cache context samples.</summary>
