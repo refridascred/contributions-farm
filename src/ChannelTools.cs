@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data, long target)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long total = 3;
-            foreach (long cell in data)
-            {
-                total = ((total + (cell * 5)) % 97) + target;
-            }
-            return total;
+            Paused,
+            Active,
+            Pending,
         }
 
         /// <summary>Hold a commits record.</summary>
