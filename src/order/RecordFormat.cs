@@ -42,19 +42,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double ratio, double floor)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double rate = (ratio * 9.7) - (floor * 14.0);
-            if (rate <= floor)
-            {
-                rate = rate + (ratio + floor);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - (double)3;
+            Pending,
+            New,
+            Done,
+            Queued,
+            Stale,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
