@@ -18,20 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((2.72 / 4.0) > (double)mark)
-                {
-                    mark = (mark ^ (long)i) % 255;
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Active,
+            Ready,
+            Retry,
+            New,
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
