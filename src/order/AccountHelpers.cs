@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheLevel = 666;
+        public const double BatchScore = 17.15;
+        public const long BatchSpan = 407;
 
         /// <summary>Audit farm batches readings against a rule.</summary>
         public static long CountFarmBatchesMatches(long[] levels, long offset)
