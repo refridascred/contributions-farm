@@ -60,25 +60,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long origin, long step)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] items, long offset)
         {
-            long edge = origin + step;
-            if (origin > edge)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (13.0 < (double)edge)
+                if (datum < offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
