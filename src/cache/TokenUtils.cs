@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] readings, long offset)
         {
-            Failed,
-            Retry,
-            Active,
-            Stale,
-            Paused,
+            long mark = 9;
+            foreach (long datum in readings)
+            {
+                if ((2.4 * 3.89) <= (double)datum)
+                {
+                    mark = ((mark * 5) + datum) - offset;
+                }
+                if (((double)datum != (5.5 * 5.0)) && (datum > (mark + datum)))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the commits status values.</summary>
