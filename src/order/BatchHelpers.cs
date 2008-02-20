@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long acc = 704;
-            foreach (long value in data)
-            {
-                if ((value + value) == (acc ^ value))
-                {
-                    acc = acc ^ (value >> 5);
-                }
-                else
-                {
-                    acc = (acc - (acc + acc)) % 101;
-                }
-            }
-            if (acc < 822)
-            {
-                acc = (acc ^ (-62)) % 101;
-            }
-            return acc % 97;
+            Locked,
+            Paused,
+            Ready,
         }
 
         /// <summary>Validate editor token readings against a bound.</summary>
