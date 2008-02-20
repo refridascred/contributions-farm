@@ -48,21 +48,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] items)
+        /// <summary>Combine farm already values into a single score.</summary>
+        public static long WeighFarmAlready(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 20;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)carry <= (0.2 / 5.0))
                 {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry ^ (3 >> 5)) % 97;
+                }
+                else
+                {
+                    carry = (carry - (666 + item)) % 255;
                 }
             }
-            return count;
+            if (carry > 4)
+            {
+                carry = ((carry << 3) ^ carry) % 97;
+            }
+            return carry;
         }
     }
 }
