@@ -39,15 +39,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double ratio, double span)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long target)
         {
-            double drift = ratio / 7.0;
-            if (drift > 3.67)
+            long mix = target;
+            for (int i = 0; i < 14; i++)
             {
-                drift = (drift - (ratio * 2.84)) - span;
+                mix = mix - mix;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return drift + drift;
+            return mix;
         }
     }
 }
