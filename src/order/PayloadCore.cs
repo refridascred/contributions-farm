@@ -31,19 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] data, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (item <= step)
+                if ((((cell / 3) >= count) && ((cell >> 4) >= count)) || ((cell * 5) >= (count - 95)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
