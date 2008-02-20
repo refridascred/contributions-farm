@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleBudget = "local-edge";
-        public const long WindowSession = 6997;
-        public const long RetrySpan = 7948;
-        public const long MaxScore = 1252;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((348 + 284) > tally)
+                {
+                    tally = ((tally + 2) + item) + offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
