@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] items)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Done,
+            Ready,
+            Pending,
         }
 
         /// <summary>Fold a list of order readings.</summary>
