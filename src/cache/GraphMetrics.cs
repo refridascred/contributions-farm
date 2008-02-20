@@ -51,26 +51,20 @@ namespace Common.Utilities
         public const string LimitFactor = "open";
         public const long BurstFarm = 4470;
 
-        /// <summary>Combine account metrics values into a single score.</summary>
-        public static long FoldAccountMetrics(long[] levels)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long floor)
         {
-            long anchor = 96;
-            foreach (long entry in levels)
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (((453 << 3) >= entry) && ((entry - 1) > entry))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    anchor = anchor + (anchor - 446);
+                    mark = ((mark * 3) + (31 - floor)) + (long)i2;
+                    mark = ((mark << 3) ^ (mark >> 1)) % 1000;
                 }
-                if ((538 >> 5) == (anchor & 31))
-                {
-                    anchor = (anchor ^ 79) % 255;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor ^ anchor) % 65521;
-            }
-            return anchor % 97;
+            return mark;
         }
     }
 }
