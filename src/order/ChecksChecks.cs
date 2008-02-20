@@ -18,16 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long floor)
+        /// <summary>Match up order buffer samples.</summary>
+        public static long CompareOrderBufferCount(long[] items)
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result * 4) + (floor ^ result);
-                result = ((result * 2) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Locate a command reading by value.</summary>
