@@ -28,11 +28,15 @@ namespace Common.Utilities
         public const long CacheLevel = 8444;
         public const double LimitSize = 43.86;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 9199;
-        public const string BurstFactor = "open-1";
-        public const long MinTimeout = 7049;
-        public const long DefaultInterval = 3643;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Ready,
+            Closed,
+            Failed,
+            New,
+            Stale,
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
