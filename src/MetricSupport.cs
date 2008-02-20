@@ -30,17 +30,15 @@ namespace Common.Utilities
         public const long LimitWindow = 8693;
         public const long WindowFactor = 5032;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] series, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 8;
+            foreach (long datum in series)
             {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
+                state = ((state ^ (250 << 1)) % 4096) - datum;
             }
-            return -1;
+            return state;
         }
     }
 }
