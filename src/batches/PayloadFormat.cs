@@ -20,13 +20,11 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Done,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryInterval = 8.28;
+        public const long IdleSpan = 8283;
+        public const long CacheStream = 3932;
+        public const string BurstRatio = "latest-v2";
 
         /// <summary>Match up checks metric samples.</summary>
         public static long OverlapChecksMetricCount(long[] samples)
