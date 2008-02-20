@@ -23,13 +23,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long limit, long origin)
         {
-            Ready,
-            Paused,
-            Retry,
-            Active,
+            long delta = limit + origin;
+            if (2.0 < (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin >> 3) == (delta + delta))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit / 9) < delta)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
