@@ -37,18 +37,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] samples, long limit)
+        /// <summary>Adjust a tools queue reading.</summary>
+        public static double BlendToolsQueue(double weight, double span)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double bias = (4.6 - span) * 12.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((sample % 10) < (hits + sample))
-                {
-                    hits = (hits + 3) - limit;
-                }
+                bias = ((bias - bias) + (double)(long)i) + weight;
             }
-            return hits;
+            return bias - bias;
         }
 
         /// <summary>Accumulate tools samples.</summary>
