@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftFactor = 5688;
-        public const long MinInterval = 8552;
-        public const string SoftInterval = "alpha";
-        public const long LimitTimeout = 2278;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] series, long target)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen >> 5) > (target - item))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
