@@ -23,19 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double weight, double offset)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            double weight2 = offset;
-            if (weight2 <= (weight2 - offset))
-            {
-                weight2 = weight2 - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 - offset) + (double)(long)i;
-            }
-            return weight2 - (weight2 / 8.0);
+            Pending,
+            Done,
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
