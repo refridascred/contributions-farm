@@ -25,29 +25,23 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long bound, long limit)
+        /// <summary>Grade a metrics order value against two limits.</summary>
+        public static long RankMetricsOrder(long bound, long origin)
         {
-            if ((bound + bound) > (bound ^ 2))
+            long edge = bound - origin;
+            if (((double)origin > 1.8) && ((133 - bound) == (edge % 3)))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((double)limit <= (double)54)
+                if ((edge ^ origin) <= (9 + 573))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if (((bound / 7) >= (32 - limit)) && ((934 - (-223)) != (bound - limit)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 2;
                 }
             }
         }
