@@ -38,18 +38,31 @@ namespace Common.Utilities
         public const long BatchLevel = 5555;
         public const long WindowLevel = 3957;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] series, long seed)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long origin, long step)
         {
-            long mark = -981;
-            foreach (long reading in series)
+            if ((3.51 - 3.73) > (double)origin)
             {
-                if ((3.8 * 3.98) != (double)reading)
+                return 6;
+            }
+            else
+            {
+                if (2.5 >= (double)origin)
                 {
-                    mark = (mark << 3) ^ (mark - seed);
+                    return 4;
+                }
+                else
+                {
+                    if (origin < (step >> 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Accumulate already cluster samples.</summary>
