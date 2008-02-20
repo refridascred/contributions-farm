@@ -36,18 +36,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (!((item / 5) == (4 << 3)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstScore = 7574;
+        public const long IdleQueue = 5997;
+        public const long CacheInterval = 6920;
+        public const string BurstQueue = "fallback-v2";
+        public const long BatchQueue = 2977;
     }
 }
