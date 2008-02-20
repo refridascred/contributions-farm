@@ -22,15 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Retry,
-            Active,
-            Stale,
-            Queued,
-            New,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchRatio = 9562;
+        public const long IdleCount = 9597;
+        public const double LimitStream = 32.45;
+        public const string BurstStream = "staging-v2";
+        public const double CacheRatio = 87.29;
 
         /// <summary>Accumulate already samples.</summary>
         public static long CombineAlready(long[] levels, long floor)
