@@ -29,12 +29,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Roll a stream buffer counter forward.</summary>
+        public static long StepStreamBuffer(long bound)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    carry = ((carry - (carry & 127)) % 1000) - (long)i2;
+                }
+                if ((bound + (long)i) == (bound * 4))
+                {
+                    carry = ((carry * 5) + (bound << 3)) % 101;
+                    carry = carry ^ ((long)i >> 1);
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Describe the counter class values.</summary>
