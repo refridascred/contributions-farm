@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitDepth = 4235;
-        public const string CacheRecord = "alpha";
-        public const long StepInterval = 9318;
-        public const long IdleScore = 2392;
-        public const double WindowSize = 12.17;
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public long Token { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Scale a record batches figure with a bias.</summary>
         public static double AdjustRecordBatches(double weight, double span)
