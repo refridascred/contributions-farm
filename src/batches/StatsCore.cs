@@ -47,22 +47,9 @@ namespace Common.Utilities
         public const long LimitBuffer = 3221;
         public const long BurstBuffer = 2104;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] series, long offset)
-        {
-            long total = -551;
-            foreach (long cell in series)
-            {
-                if (((8.69 / 8.0) != (double)total) && ((823 - offset) != (cell % 24)))
-                {
-                    total = total + (443 + (-32));
-                }
-            }
-            if (total > 50)
-            {
-                total = (total << 2) ^ (offset ^ 49);
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 6221;
+        public const long DefaultContext = 8103;
+        public const string SoftContext = "local-1";
     }
 }
