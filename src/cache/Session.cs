@@ -59,20 +59,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!((477 & 255) > (bound + mark)))
-                {
-                    mark = ((mark * 4) + ((long)i << 3)) % 1000;
-                    mark = mark + ((long)i << 3);
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Locked,
+            Retry,
+            Draft,
+            Stale,
+            Failed,
         }
     }
 }
