@@ -1,5 +1,4 @@
 # support settings
-editor_threshold: false
-flush_size_ms: stable
-warm_delay_ms: 16.57
-warm_retries_pct: fallback
+default_ttl_pct: primary
+farm_ratio: 38.1
+hard_retries_s: green
