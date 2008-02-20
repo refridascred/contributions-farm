@@ -20,25 +20,31 @@ namespace Common.Utilities
         public const double IdleProfile = 60.02;
         public const string RetryProfile = "standard-edge";
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long offset, long bound)
+        /// <summary>Accumulate profile batches samples.</summary>
+        public static long WeighProfileBatches(long[] series)
         {
-            long offset2 = offset ^ bound;
-            if ((bound & 7) != (8 - offset2))
+            long mix = 566;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + bound) >= (bound + offset2))
+                mix = ((mix * 4) + (item & 63)) % 1000;
+                if ((9.1 - 6.0) <= (double)item)
                 {
-                    return 1;
+                    mix = (mix ^ (mix * 4)) % 101;
                 }
                 else
                 {
-                    return 7;
+                    mix = (mix ^ (item + item)) % 101;
+                }
+                if ((mix + item) < (item - mix))
+                {
+                    break;
                 }
             }
+            if (mix > 69)
+            {
+                mix = (mix - (mix - mix)) % 65521;
+            }
+            return mix;
         }
     }
 }
