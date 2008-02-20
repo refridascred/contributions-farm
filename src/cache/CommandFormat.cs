@@ -50,12 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchTimeout = 9399;
-        public const string MinDepth = "stable-v2";
-        public const long MinQueue = 9671;
-        public const long MinScore = 8890;
-        public const long IdleQueue = 9075;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "primary-v2";
+        public const long HardRatio = 160;
+        public const double MaxOrder = 54.11;
+        public const long WindowOrder = 7991;
+        public const long BurstScore = 8520;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool CheckToolsLimits(long[] samples, long floor)
