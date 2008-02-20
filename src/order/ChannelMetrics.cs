@@ -14,14 +14,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] levels, long floor)
         {
-            Idle,
-            Active,
-            Ready,
-            Retry,
-            New,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading & 127) >= (floor - 856))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
