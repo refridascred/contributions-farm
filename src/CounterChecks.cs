@@ -91,19 +91,17 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Check that every metric profile entry stays within the limit.</summary>
-        public static bool VerifyMetricProfileLimits(long[] readings, long step)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long seed)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (item > step)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = mark ^ (mark % 2);
+                mark = ((mark * 5) + (seed / 8)) % 101;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
