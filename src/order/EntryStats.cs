@@ -46,19 +46,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate token commits readings against a bound.</summary>
-        public static bool GuardTokenCommitsLimits(long[] samples, long floor)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Mode { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
