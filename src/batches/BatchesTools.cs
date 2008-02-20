@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] readings)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((long)readings.Length - (-173)) < (datum + tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next token value.</summary>
