@@ -1,5 +1,12 @@
 {
-  "cache_size_count": "cached",
-  "sync_limit_count": 100,
-  "soft_delay_pct": "edge"
+  "flush_capacity_ms": {
+    "audit": [262, 110],
+    "dry_run": 58.84,
+    "strict": [23, 369, 138, 447]
+  },
+  "min_depth": [405, 440, 239],
+  "flush_window_ms": [99, 46, 276, 375],
+  "sync_ttl_s": 100,
+  "compress": [8, 13],
+  "verbose": [28, 206, 384, 475]
 }
