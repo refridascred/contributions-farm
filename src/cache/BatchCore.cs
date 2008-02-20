@@ -44,11 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleTimeout = 8109;
-        public const string BaseSpan = "staging";
-        public const long RetryTimeout = 4550;
-        public const long SoftDepth = 400;
-        public const long BatchCount = 1405;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftMetric = "primary-edge";
+        public const long LimitCount = 8413;
+        public const long IdleScore = 1575;
+        public const string MinMetric = "cached-v2";
+        public const string MaxMetric = "fallback-edge";
     }
 }
