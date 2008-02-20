@@ -1,4 +1,5 @@
 # support settings
-layout_ratio: 1524
-metric_interval: 77.54
-queue_interval: 250
+stats_size: true
+burst_capacity_pct: 91.73
+flush_ttl_count: true
+cache_interval_s: 24.99
