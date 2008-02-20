@@ -31,11 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] data, long step)
         {
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
