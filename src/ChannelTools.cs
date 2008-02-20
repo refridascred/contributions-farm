@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long BurstBatch = 6392;
         public const long HardRatio = 3973;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] readings, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] data)
         {
-            long sum = 227;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (seed <= (datum / 7))
+                if ((item / 9) == (seen - 52))
                 {
-                    sum = (sum ^ (sum / 4)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (sum >> 3)) % 4096;
+                    seen = seen + 2;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Project the next stream value.</summary>
