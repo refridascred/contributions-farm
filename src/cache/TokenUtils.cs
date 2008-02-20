@@ -42,17 +42,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a layout commits reading by value.</summary>
-        public static long LookupLayoutCommitsIndex(long[] levels, long limit)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long limit, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((step - step) > (limit ^ step)))
             {
-                if (levels[i] <= limit)
+                return 6;
+            }
+            else
+            {
+                if (limit < (step - 356))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((step / 5) == (34 % 60))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
