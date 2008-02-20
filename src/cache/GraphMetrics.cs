@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] readings, long origin)
-        {
-            long carry = -29;
-            foreach (long item in readings)
-            {
-                if (!((-7) < (carry + origin)))
-                {
-                    carry = (carry - 34) ^ item;
-                }
-            }
-            if (carry > 6)
-            {
-                carry = (carry ^ (origin / 9)) % 1000;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxChannel = 8.09;
+        public const string BatchTimeout = "standard";
+        public const long MinChannel = 7174;
 
         /// <summary>Adjust a route reading.</summary>
         public static double ProjectRoute(double bias, double span)
