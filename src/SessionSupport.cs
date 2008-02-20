@@ -27,12 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long step)
         {
-            Stale,
-            Dropped,
-            Ready,
+            long sum = step;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = ((sum - sum) % 1000) ^ (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
