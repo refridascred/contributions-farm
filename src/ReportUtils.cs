@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long bound, long origin)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            if ((origin & 3) <= (bound / 8))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin - origin) > (origin & 127))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((69 - origin) == (origin + origin)) || ((origin % 3) <= (origin + 73)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Queued,
+            Pending,
+            New,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
