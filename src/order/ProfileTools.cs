@@ -36,31 +36,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] readings, long seed)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            long acc = 49;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc ^ ((long)i + (long)i)) % 65521;
-                    acc = (acc - (acc & 7)) % 255;
-                }
-                if ((4.0 < (double)acc) || (acc < (7 + entry)))
-                {
-                    acc = (acc - seed) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ (seed * 2)) % 101;
+                    if ((data[i] - data[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc > 36)
-            {
-                acc = acc ^ (seed + acc);
-            }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Describe the commits state values.</summary>
