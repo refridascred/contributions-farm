@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                state = state ^ bound;
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            New,
+            Synced,
+            Stale,
+            Draft,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
