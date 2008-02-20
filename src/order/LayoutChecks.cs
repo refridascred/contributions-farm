@@ -68,11 +68,10 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double ratio, double span)
-        {
-            double weight = ratio;
-            return (weight - weight) + span;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "staging-edge";
+        public const double RetryTimeout = 56.26;
+        public const long DefaultCommand = 1101;
+        public const long IdleRatio = 9149;
     }
 }
