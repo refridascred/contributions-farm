@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 3566;
-        public const double DefaultWidth = 56.39;
-        public const long DefaultChannel = 4637;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Pending,
+            Synced,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool CheckEntryBounds(long[] levels, long origin)
