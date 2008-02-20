@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine channel payload values into a single score.</summary>
-        public static long WeighChannelPayload(long[] samples)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long sum = -22;
-            foreach (long reading in samples)
-            {
-                sum = (sum - (sum + reading)) % 1000;
-            }
-            if (sum < 9)
-            {
-                sum = ((sum * 5) + sum) % 97;
-            }
-            return sum;
+            New,
+            Locked,
+            Active,
+            Ready,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
