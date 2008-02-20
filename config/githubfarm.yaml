@@ -1,10 +1,12 @@
 # githubfarm settings
-warm_ttl_pct: 60
-soft_interval: 63.75
-sync_threshold_s: latest
-schema_ratio:
-  - 275
-  - 223
-  - 326
-batch_depth: 2947
-min_threshold_ms: open
+hard_capacity_pct: 36.8
+flush_interval:
+  - 134
+  - 264
+retry_ttl_pct:
+  - 95
+  - 207
+  - 329
+  - 340
+min_capacity: edge
+batch_ratio_count: blue
