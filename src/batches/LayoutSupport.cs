@@ -32,15 +32,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long sum = 30;
-            foreach (long item in items)
-            {
-                sum = ((sum * 3) + sum) ^ item;
-            }
-            return sum % 97;
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
