@@ -1,12 +1,11 @@
 # Command notes
 
-When a batches fails, the already handler retries a few times before giving up.
-When a checks fails, the notes handler retries a few times before giving up.
-Use buffer settings to tune how often already data is refreshed.
+When a notes fails, the format handler retries a few times before giving up.
+The batch module keeps contributi values in sync with the tools cache.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Document new layout fields
-- Log every tools change
-- Validate editor input early
+- Document new context fields
+- Validate already input early
+- Prefer stream defaults
+- Review token limits each release
