@@ -24,22 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count editor route pairs that satisfy a relation.</summary>
-        public static long OverlapEditorRouteCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepRatio = 9065;
+        public const string CacheProfile = "open-1";
+        public const long MinProfile = 2462;
+        public const string IdleProfile = "primary-1";
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmBounds(long[] readings, long origin)
