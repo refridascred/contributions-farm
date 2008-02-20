@@ -1,6 +1,7 @@
-id,rank,level,owner,count
-1,edge,725,189,268
-2,latest,79.42,strict,staging
-3,558,edge,182,744
-4,94.39,edge,986,133
-5,474,legacy,2,staging
+id,ratio,active,count,weight
+1,fallback,687,969,green
+2,107,primary,59.3,28.74
+3,271,stable,277,61.28
+4,524,latest,862,472
+5,517,legacy,legacy,93.23
+6,86.07,fallback,27.91,69.13
