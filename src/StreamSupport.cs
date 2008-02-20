@@ -13,12 +13,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] series, long seed)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] == seed) && ((series[i] % 5) != 0))
+                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
