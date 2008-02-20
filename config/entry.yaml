@@ -1,12 +1,8 @@
 # entry settings
-batch_timeout: stable
-schema_capacity: true
-poll_timeout_pct:
-  base_limit:
-    - blue
-    - strict
-    - eu-west
-  already_window: false
-  commits_ttl: true
-  metric_size: 31
-  channel_ratio: staging
+sync_size: 67.11
+cache_delay: 60
+poll_timeout_ms:
+  - 117
+  - 170
+flush_limit: stable
+default_depth_pct: strict
