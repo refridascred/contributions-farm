@@ -39,14 +39,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Dropped,
-            Closed,
-            Idle,
-            Ready,
-            Queued,
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
