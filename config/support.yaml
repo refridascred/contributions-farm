@@ -1,16 +1,9 @@
 # support settings
-default_ttl:
-  default_retries_count: 33
-  max_interval:
-    enabled: 87
-    default_depth_pct: 1.51
-    hard_ttl: 8414
-    checks_depth: 86.64
-  default_retries_pct: standard
-  cache_delay: standard
-  batch_capacity_pct:
-    - latest
-    - blue
-base_threshold_s: 5795
-retry_ratio: 63
-poll_ttl_s: true
+cache_capacity_pct: primary
+dry_run:
+  - cached
+  - cached
+verbose: open
+retry_timeout_ms: 7.8
+warm_size: 1109
+schema_window: fallback
