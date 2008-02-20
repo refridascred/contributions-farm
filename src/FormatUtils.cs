@@ -91,24 +91,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] items, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((limit >= sum) || ((sum - sum) > (-4))))
+                if (items[i] <= offset)
                 {
-                    sum = ((sum * 2) + (limit + limit)) % 255;
+                    return (long)i;
                 }
-                if (!((limit - sum) <= limit))
-                {
-                    sum = (sum << 2) ^ (limit ^ limit);
-                    sum = (sum + ((long)i ^ limit)) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
     }
 }
