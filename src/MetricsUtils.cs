@@ -43,15 +43,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] data, long limit)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] samples)
         {
             long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (limit < (limit * 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) ^ item;
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
