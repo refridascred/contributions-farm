@@ -1,11 +1,12 @@
 # Command notes
 
-Run the report check before changing any cache limits.
-Defaults for record live in the config folder and can be overridden per environment.
-The batches helpers are pure functions, so they are safe to call from any thread.
+Run the batch check before changing any queue limits.
+Each schema is validated before it reaches the contributi queue.
+When a stats fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review report limits each release
-- Prefer context defaults
-- Log every cluster change
+- Validate payload input early
+- Log every tools change
+- Review buffer limits each release
+- Keep farm values small
