@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many channel token samples are out of range.</summary>
-        public static long AuditChannelTokenMatches(long[] items, long offset)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset ^ 168) > offset)
+                if ((data[i] > origin) && ((data[i] % 3) == 0))
                 {
-                    hits = (hits + 3) + datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
