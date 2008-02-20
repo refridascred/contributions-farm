@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowBudget = 4.68;
-        public const string BatchLevel = "local";
-        public const double MinDepth = 65.41;
-        public const string DefaultDepth = "standard-v2";
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] samples, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (floor >= (cell % 7))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a context reading.</summary>
         public static double SmoothContext(double bias, double offset)
