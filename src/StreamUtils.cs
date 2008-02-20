@@ -15,12 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Total { get; set; }
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
