@@ -1,11 +1,15 @@
 {
-  "checks_ttl": {
-    "readonly": "cached",
-    "dry_run": 71.24,
-    "min_interval_s": 100,
-    "compress": "edge"
+  "enabled": 9819,
+  "hard_interval_pct": {
+    "batch_ratio_s": ["open", "open", "local", "stable"],
+    "record_delay": 250,
+    "poll_depth_count": 69.3,
+    "sync_interval": true,
+    "hard_timeout": 62,
+    "compress": 100
   },
-  "cache_ttl_pct": 30,
-  "enabled": true,
-  "sync_ratio_pct": "stable"
+  "verbose": true,
+  "default_ratio_count": false,
+  "warm_threshold": 100,
+  "compress": "staging"
 }
