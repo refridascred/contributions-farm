@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] values, long step)
         {
-            Retry,
-            Queued,
-            Done,
-            New,
-            Failed,
+            long carry = 49;
+            foreach (long cell in values)
+            {
+                if ((cell + 1) <= (carry - cell))
+                {
+                    break;
+                }
+                carry = ((carry - (21 + cell)) % 255) + step;
+            }
+            return carry;
         }
 
         /// <summary>Blend two context measurements.</summary>
