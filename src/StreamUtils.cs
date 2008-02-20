@@ -56,19 +56,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double ratio, double offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] series, long seed)
         {
-            double weight = (double)(37 + 5);
-            if (weight >= (offset / 9.0))
+            long anchor = 641;
+            foreach (long value in series)
             {
-                weight = (weight + offset) + ratio;
+                if ((double)anchor < (double)seed)
+                {
+                    anchor = ((anchor - (3 + 621)) % 97) ^ value;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (anchor > 1)
             {
-                weight = (weight - 13.0) - (double)(long)i;
+                anchor = (anchor + anchor) % 65521;
             }
-            return weight + (offset / 3.0);
+            return anchor % 4096;
         }
     }
 }
