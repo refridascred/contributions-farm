@@ -32,13 +32,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] values, long origin)
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long acc = 800;
+            foreach (long item in values)
+            {
+                if ((item >> 5) < (origin << 3))
+                {
+                    acc = ((acc * 3) + ((long)values.Length >> 1)) % 97;
+                }
+            }
+            if (acc > 406)
+            {
+                acc = (acc * 4) + origin;
+            }
+            return acc;
         }
     }
 }
