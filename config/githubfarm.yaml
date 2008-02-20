@@ -1,12 +1,6 @@
 # githubfarm settings
-hard_capacity_pct: 36.8
-flush_interval:
-  - 134
-  - 264
-retry_ttl_pct:
-  - 95
-  - 207
-  - 329
-  - 340
-min_capacity: edge
-batch_ratio_count: blue
+min_ratio_count: 250
+idle_window: false
+max_delay_ms:
+  - eu-west
+  - legacy
