@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] data, long target)
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
+            long total = 3;
+            foreach (long cell in data)
             {
-                total = (total << 3) ^ (total + 5);
-                total = ((total * 4) + (long)i) % 4093;
+                total = ((total + (cell * 5)) % 97) + target;
             }
             return total;
         }
