@@ -25,18 +25,30 @@ namespace Common.Utilities
             return scale2 + (scale + 2.33);
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] samples)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] series, long step)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long carry = 60;
+            foreach (long item in series)
             {
-                if ((7.0 - 0.72) < (double)reading)
+                if ((step - step) == (step % 16))
                 {
-                    count = count + 2;
+                    carry = carry - (item & 15);
+                }
+                else
+                {
+                    carry = (carry + (step - carry)) % 1000;
+                }
+                if ((double)517 >= (double)step)
+                {
+                    break;
                 }
             }
-            return count;
+            if (carry < (-470))
+            {
+                carry = carry - (67 - step);
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the schema status values.</summary>
