@@ -45,39 +45,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long floor, long step)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] items, long offset)
         {
-            long step2 = floor ^ step;
-            if (1.81 <= (double)floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor - 93) <= 19)
+                if (items[i] == offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step2 - 66) >= (step2 % 24))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor << 2) > (floor % 60))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
