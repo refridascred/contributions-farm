@@ -35,18 +35,17 @@ namespace Common.Utilities
         public const long RetrySize = 5870;
         public const long HardDepth = 9468;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] levels, long floor)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor + matches) < matches)
+                if (readings[i] <= seed)
                 {
-                    matches = (matches + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
