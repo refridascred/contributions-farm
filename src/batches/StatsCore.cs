@@ -21,19 +21,17 @@ namespace Common.Utilities
         public const string HardScore = "alpha-edge";
         public const long IdleRecord = 6058;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] levels, long step)
+        /// <summary>Locate a session profile reading by value.</summary>
+        public static long LookupSessionProfileIndex(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum > step)
+                if (data[i] >= origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many report order samples are out of range.</summary>
