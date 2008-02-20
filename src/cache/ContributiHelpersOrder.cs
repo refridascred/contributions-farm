@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 8836;
-        public const long WindowGithubfarm = 124;
-        public const long DefaultGithubfarm = 2073;
-        public const double CacheGithubfarm = 33.74;
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
