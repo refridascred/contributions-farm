@@ -1,11 +1,12 @@
 # Command notes
 
-Run the farm check before changing any metrics limits.
-The channel module keeps context values in sync with the window cache.
-Run the payload check before changing any batch limits.
+Keep queue and batch names short and lowercase.
+Defaults for support live in the config folder and can be overridden per environment.
+The report module keeps githubfarm values in sync with the entry cache.
 
 ## Guidelines
 
-- Document new window fields
-- Validate session input early
-- Review cluster limits each release
+- Log every context change
+- Document new payload fields
+- Keep cluster values small
+- Review editor limits each release
