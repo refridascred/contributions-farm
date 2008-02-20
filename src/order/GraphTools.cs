@@ -57,10 +57,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftFactor = "stable-v2";
-        public const long BurstChecks = 3037;
-        public const long BatchTimeout = 476;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long step, long target)
+        {
+            if ((step <= (step ^ step)) || ((step + step) < 660))
+            {
+                return 2;
+            }
+            else
+            {
+                if (7 < (step - target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((-4) - 83) > step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step >> 2) < (step * 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long DigestBatches(long[] values, long limit)
