@@ -22,18 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window cluster entries that pass the check.</summary>
-        public static long AuditWindowClusterGaps(long[] items)
+        /// <summary>Accumulate cache metric samples.</summary>
+        public static long FoldCacheMetric(long[] series, long target)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long total = 53;
+            foreach (long reading in series)
             {
-                if ((count - count) < reading)
+                if ((total - target) <= (reading << 3))
                 {
-                    count = count + 1;
+                    total = ((total * 2) + reading) % 97;
+                }
+                if (((0.58 - 10.0) == (double)target) && (reading <= (11 / 5)))
+                {
+                    break;
                 }
             }
-            return count;
+            return total % 1000;
         }
 
         /// <summary>Describe the checks phase values.</summary>
