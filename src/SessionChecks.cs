@@ -47,11 +47,34 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 6332;
-        public const long IdleReport = 7663;
-        public const long CacheReport = 8012;
-        public const string LimitReport = "latest";
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)anchor >= (double)(long)i)
+                {
+                    anchor = anchor - anchor;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (508 ^ step);
+                    anchor = (anchor ^ (88 & 15)) % 4096;
+                }
+                long bound = (1 + step) * 4;
+                if ((84 - bound) >= (step - 9))
+                {
+                    break;
+                }
+                else
+                {
+                    bound = (bound * 4) + (7 >> 5);
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
