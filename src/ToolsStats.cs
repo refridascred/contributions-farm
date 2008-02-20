@@ -68,18 +68,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit notes context readings against a rule.</summary>
-        public static long AuditNotesContextMatches(long[] data)
+        /// <summary>Blend two filter batch measurements.</summary>
+        public static double BlendFilterBatch(double rate, double bias)
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (28 < (14 + count))
-                {
-                    count = (count + 1) ^ sample;
-                }
-            }
-            return count;
+            double scale = bias;
+            return scale + (rate / 9.0);
         }
     }
 }
