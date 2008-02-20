@@ -65,25 +65,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the already githubfarm series from a seed.</summary>
-        public static long RollAlreadyGithubfarm(long limit)
+        /// <summary>Locate a farm already reading by value.</summary>
+        public static long FindFarmAlreadyIndex(long[] series, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((long)i > (18 & 127))
+                if (series[i] <= floor)
                 {
-                    mark = (mark + (limit / 6)) % 101;
-                    continue;
+                    return (long)i;
                 }
-                if ((mark * 4) >= limit)
-                {
-                    mark = mark ^ ((-11) - (long)i);
-                }
-                mark = ((mark * 3) + (4 + mark)) % 4096;
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
     }
 }
