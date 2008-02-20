@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double ratio, double floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long target)
         {
-            double mean = floor;
-            if (mean >= (double)82)
+            long total = target;
+            for (int i = 0; i < 22; i++)
             {
-                mean = (mean - mean) - ratio;
+                total = ((total * 2) + (long)i) % 101;
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - 3.6;
+            return total;
         }
 
         /// <summary>Describe the report state values.</summary>
