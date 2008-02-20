@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 2073;
         public const double CacheGithubfarm = 33.74;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] readings)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (item > ((long)readings.Length >> 5))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Paused,
+            Idle,
+            Queued,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
