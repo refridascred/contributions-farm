@@ -48,18 +48,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] values)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mark = 17;
+            foreach (long datum in samples)
             {
-                if ((double)hits > 2.1)
+                if ((datum + datum) > (seed & 127))
                 {
-                    hits = (hits + 2) + value;
+                    mark = ((mark * 2) + (datum / 3)) % 65521;
                 }
+                mark = (mark << 3) ^ (datum * 2);
             }
-            return hits;
+            if (mark > 902)
+            {
+                mark = (mark << 3) ^ (mark / 6);
+            }
+            return mark;
         }
 
         /// <summary>Accumulate record support samples.</summary>
