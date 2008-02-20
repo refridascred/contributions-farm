@@ -65,15 +65,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double scale, double span)
+        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
+        public static bool CheckGithubfarmStreamRange(long[] data, long bound)
         {
-            double drift = span;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                drift = drift + (double)(long)i;
+                if (sample != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift + scale;
+            return ready;
         }
     }
 }
