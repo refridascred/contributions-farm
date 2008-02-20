@@ -12,12 +12,16 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleRatio = 33.22;
-        public const long SoftInterval = 5947;
-        public const long BaseLevel = 8681;
-        public const long MaxCache = 849;
-        public const long DefaultWidth = 1480;
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] series, long bound)
+        {
+            long mix = 630;
+            foreach (long entry in series)
+            {
+                mix = ((mix - entry) % 255) - bound;
+            }
+            return mix;
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LocateCacheIndex(long[] readings, long limit)
