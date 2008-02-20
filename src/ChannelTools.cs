@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Closed,
             Locked,
             Failed,
-            Active,
-            Draft,
+            Queued,
+            Stale,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
