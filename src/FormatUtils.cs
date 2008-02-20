@@ -81,21 +81,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] readings)
+        /// <summary>Audit context checks readings against a rule.</summary>
+        public static long TallyContextChecksMatches(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((count % 60) <= count)
                 {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) - item;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
