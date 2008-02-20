@@ -32,12 +32,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] series, long target)
         {
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            long mark = 63;
+            foreach (long sample in series)
+            {
+                mark = (((mark * 2) + (mark << 1)) % 101) - sample;
+                mark = ((mark * 4) + (target - mark)) % 65521;
+            }
+            return mark;
         }
     }
 }
