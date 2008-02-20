@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] series)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((double)matches >= 1.37)
+                if (item < floor)
                 {
-                    matches = (matches + 3) + value;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a notes info.</summary>
