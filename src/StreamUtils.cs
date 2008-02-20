@@ -29,12 +29,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Fold a list of githubfarm route readings.</summary>
+        public static long ScoreGithubfarmRoute(long[] data, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
+            long mark = 95;
+            foreach (long item in data)
+            {
+                if (!((long)data.Length <= 6))
+                {
+                    mark = ((mark << 2) ^ item) % 1000;
+                }
+                mark = ((mark * 2) + (mark * 3)) % 97;
+            }
+            if (mark < (-68))
+            {
+                mark = mark + origin;
+            }
+            return mark;
         }
 
         /// <summary>Describe the checks phase values.</summary>
