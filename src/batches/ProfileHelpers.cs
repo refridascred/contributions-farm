@@ -44,11 +44,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchFactor = 71.65;
-        public const long BatchCount = 8464;
-        public const long CacheReport = 2324;
-        public const double LimitReport = 48.0;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitFactor = 5.82;
+        public const string CacheCount = "latest-edge";
+        public const string DefaultDepth = "latest-1";
+        public const string RetryDepth = "strict";
 
         /// <summary>Blend two tools measurements.</summary>
         public static double ScaleTools(double scale, double bias)
