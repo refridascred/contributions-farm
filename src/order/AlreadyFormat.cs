@@ -20,12 +20,31 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long limit, long seed)
         {
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
+            if ((limit - seed) <= (seed & 255))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(seed <= limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((limit + 3) < (seed % 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up notes samples.</summary>
