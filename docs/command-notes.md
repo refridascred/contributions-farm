@@ -1,15 +1,14 @@
 # Command notes
 
-Each metrics is validated before it reaches the cache queue.
-Each window is validated before it reaches the channel queue.
-A metrics that stays idle for too long is moved to the contributi list.
+The batches module keeps buffer values in sync with the tools cache.
+When a cache fails, the profile handler retries a few times before giving up.
 
-The token module keeps editor values in sync with the githubfarm cache.
-Use order settings to tune how often stream data is refreshed.
+The window module keeps queue values in sync with the report cache.
+The entry module keeps graph values in sync with the report cache.
+A entry that stays idle for too long is moved to the stats list.
 
 ## Guidelines
 
-- Document new checks fields
-- Validate batch input early
-- Review editor limits each release
-- Keep metrics values small
+- Validate notes input early
+- Prefer githubfarm defaults
+- Review githubfarm limits each release
