@@ -38,18 +38,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] levels, long limit)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] series, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count <= (long)levels.Length)
+                if (series[i] >= step)
                 {
-                    count = ((count + 2) + reading) - limit;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
