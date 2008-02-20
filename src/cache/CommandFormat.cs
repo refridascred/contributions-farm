@@ -13,11 +13,31 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long bound, long offset)
         {
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
+            if ((bound + offset) < offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((751 <= (bound % 8)) && ((19 << 3) > (offset + bound)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound ^ offset) < (offset * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count tools queue pairs that satisfy a relation.</summary>
