@@ -57,14 +57,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
             Retry,
-            Ready,
-            Pending,
-            Dropped,
+            Done,
             Stale,
+            Idle,
+            Ready,
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
