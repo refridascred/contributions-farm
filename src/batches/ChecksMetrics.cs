@@ -17,17 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] readings, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((readings[i] < floor) && ((readings[i] % 3) != 0))
+                if (cell >= target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Accumulate tools queue samples.</summary>
