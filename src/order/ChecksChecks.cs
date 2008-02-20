@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] items, long offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 21;
+            foreach (long datum in series)
             {
-                if (items[i] == offset)
+                if ((double)mix > (10.0 * 3.72))
                 {
-                    return (long)i;
+                    mix = (((mix << 3) ^ (target >> 5)) % 101) + datum;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Rank already input into a small class.</summary>
