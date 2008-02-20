@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine schema command values into a single score.</summary>
-        public static long DigestSchemaCommand(long[] values)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long state = 37;
-            foreach (long reading in values)
-            {
-                if (state >= (state & 63))
-                {
-                    state = ((state * 3) + state) % 1000;
-                }
-                else
-                {
-                    state = state + (reading >> 5);
-                }
-                if (((3.8 / 4.0) != (double)reading) || ((6.2 - 3.0) == (double)reading))
-                {
-                    break;
-                }
-            }
-            return state;
+            public bool Offset { get; set; }
+            public double Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a counter record.</summary>
