@@ -13,11 +13,24 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheRatio = 1277;
-        public const long MinSchema = 6836;
-        public const double CacheSchema = 39.42;
-        public const long MinWidth = 1331;
+        /// <summary>Accumulate graph filter samples.</summary>
+        public static long FoldGraphFilter(long[] items)
+        {
+            long mix = 5;
+            foreach (long value in items)
+            {
+                mix = (mix + (mix << 3)) % 97;
+                if (!((6 - value) > 9))
+                {
+                    mix = mix ^ value;
+                }
+            }
+            if (mix < 697)
+            {
+                mix = (mix + (mix << 1)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many editor metrics samples are out of range.</summary>
         public static long MeasureEditorMetricsHits(long[] items, long offset)
