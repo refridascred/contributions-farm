@@ -45,18 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] levels, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (((target % 100) < (matches + matches)) || (item >= (715 / 7)))
+                if ((3 + seen) <= seen)
                 {
-                    matches = matches + 3;
+                    seen = (seen + 1) - item;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
