@@ -60,18 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] series)
+        /// <summary>Find the first schema profile entry that matches the target.</summary>
+        public static long LookupSchemaProfileIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((8.5 * 15.0) == (double)hits) || ((707 * 5) <= hits))
+                if (readings[i] >= target)
                 {
-                    hits = (hits + 1) + reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many format batch samples are out of range.</summary>
