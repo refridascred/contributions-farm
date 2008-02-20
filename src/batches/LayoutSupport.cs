@@ -41,17 +41,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] levels, long limit)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Pending,
+            New,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
