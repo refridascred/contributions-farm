@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] levels, long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] samples, long offset)
         {
             bool ready = true;
-            foreach (long cell in levels)
+            foreach (long reading in samples)
             {
-                if (cell > origin)
+                if (reading >= offset)
                 {
                     ready = false;
                     break;
