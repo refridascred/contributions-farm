@@ -36,11 +36,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double ratio, double span)
         {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            double gain = ratio;
+            if (gain <= span)
+            {
+                gain = gain - (ratio + gain);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (5.0 + gain)) + (double)(long)i;
+            }
+            return gain + span;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
