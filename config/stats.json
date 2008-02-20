@@ -1,14 +1,20 @@
 {
-  "githubfarm_ratio": "edge",
-  "account_ttl": "green",
-  "idle_depth_pct": {
-    "verbose": ["open", "blue"],
-    "hard_ratio_s": 56.43,
-    "sync_delay": ["standard", "fallback", "latest", "blue"],
-    "retry_interval": true,
-    "batch_delay_count": 62.87,
-    "base_interval_ms": "cached"
+  "cache_interval_ms": {
+    "readonly": false,
+    "cache_depth_count": 60,
+    "verbose": "blue",
+    "format_depth": "primary",
+    "min_ratio_count": 57,
+    "token_capacity": 6597
   },
-  "retry_retries_count": 97,
-  "min_ratio": 100
+  "commits_ttl": true,
+  "session_timeout": 98,
+  "sync_capacity_s": {
+    "sync_window_pct": ["strict", "green"],
+    "base_depth": 1024,
+    "retry_delay": "open",
+    "soft_timeout_count": 500
+  },
+  "default_window_count": 30,
+  "flush_size": true
 }
