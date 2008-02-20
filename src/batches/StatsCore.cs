@@ -56,9 +56,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 3368;
-        public const long RetryCount = 5880;
-        public const double HardSchema = 6.67;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitSession = 36.31;
+        public const long SoftSize = 26;
+        public const double StepSession = 7.92;
+        public const long MinSession = 617;
     }
 }
