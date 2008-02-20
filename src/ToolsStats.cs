@@ -44,18 +44,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] levels, long offset)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long anchor = 7;
-            foreach (long reading in levels)
-            {
-                if ((reading * 5) < (offset >> 2))
-                {
-                    anchor = (anchor << 2) ^ (reading + offset);
-                }
-            }
-            return anchor % 65521;
+            Queued,
+            Pending,
+            Synced,
         }
 
         /// <summary>Blend two schema measurements.</summary>
