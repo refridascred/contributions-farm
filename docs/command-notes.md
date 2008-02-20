@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-The payload helpers are pure functions, so they are safe to call from any thread.
-A counter that stays idle for too long is moved to the queue list.
+When a batches fails, the already handler retries a few times before giving up.
+When a checks fails, the notes handler retries a few times before giving up.
+Use buffer settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Keep buffer values small
-- Prefer payload defaults
-- Review farm limits each release
+- Prefer stats defaults
+- Document new layout fields
+- Log every tools change
+- Validate editor input early
