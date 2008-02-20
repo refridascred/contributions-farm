@@ -33,18 +33,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] samples)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (0.67 > (double)tally)
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
+            Active,
+            Done,
+            Retry,
+            Locked,
+            Closed,
         }
     }
 }
