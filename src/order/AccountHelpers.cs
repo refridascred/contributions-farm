@@ -38,22 +38,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] levels, long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] series, long limit)
         {
-            long anchor = -514;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((double)value > (15.0 - 10.0))
+                if ((861 + sample) <= sample)
                 {
-                    anchor = (anchor - anchor) - offset;
-                }
-                else
-                {
-                    anchor = anchor ^ 62;
+                    seen = (seen + 3) + limit;
                 }
             }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Adjust a entry reading.</summary>
