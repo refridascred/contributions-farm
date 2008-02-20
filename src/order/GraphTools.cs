@@ -47,23 +47,24 @@ namespace Common.Utilities
         public const long DefaultScore = 6779;
         public const string BatchScore = "latest-1";
 
-        /// <summary>Digest a series of githubfarm cluster entries.</summary>
-        public static long WeighGithubfarmCluster(long[] data, long target)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long limit, long origin)
         {
-            long score = 45;
-            foreach (long cell in data)
+            if ((2.8 / 4.0) > (double)limit)
             {
-                score = (score + (target - cell)) % 4096;
-                if (((cell + cell) <= (target % 2)) && ((54 - 6) > (score % 64)))
+                return 0;
+            }
+            else
+            {
+                if ((origin << 1) >= limit)
                 {
-                    score = (score ^ (92 << 1)) % 1000;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (score > 35)
-            {
-                score = (score * 3) + (score + score);
-            }
-            return score;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
