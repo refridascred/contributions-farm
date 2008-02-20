@@ -1,15 +1,6 @@
 {
-  "readonly": false,
-  "default_ttl_pct": ["latest", "legacy", "standard"],
-  "base_retries": 10,
-  "burst_size_count": 9018,
-  "warm_timeout": false,
-  "tools_retries": {
-    "account_ttl": "cached",
-    "retry_ratio_count": 60,
-    "max_depth_pct": false,
-    "max_timeout_s": "local",
-    "token_interval": 33,
-    "hard_size": true
-  }
+  "sync_depth_count": true,
+  "sync_ratio": "legacy",
+  "tools_depth": "standard",
+  "cache_delay_ms": [181, 236]
 }
