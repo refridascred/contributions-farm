@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            public bool Region { get; set; }
             public long Offset { get; set; }
-            public long Size { get; set; }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
