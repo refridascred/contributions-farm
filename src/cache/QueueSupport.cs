@@ -26,29 +26,35 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long offset, long step)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long step, long bound)
         {
-            long prev = offset - step;
-            if ((step ^ offset) <= prev)
+            if ((step - bound) == (3 - 826))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((15.0 * 9.3) == (double)step)
+                if ((double)bound == (double)step)
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if ((offset << 1) == (offset ^ step))
+                    if ((step & 15) > (bound / 5))
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        return 4;
+                        if (step >= (380 - 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
