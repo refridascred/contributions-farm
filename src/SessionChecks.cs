@@ -31,25 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long floor, long step)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double scale, double span)
         {
-            long diff = floor + step;
-            if ((5 & 1) != (47 + diff))
+            double gain = (double)62 * 6.8;
+            if (gain > 7.36)
             {
-                return 3;
+                gain = (gain + span) + scale;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((diff * 2) != (floor * 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
+                gain = gain - (double)(long)i;
             }
+            return gain + (double)643;
         }
 
         /// <summary>Match up stream layout samples.</summary>
