@@ -1,8 +1,5 @@
 # support settings
-verbose: stable
-already_retries:
-  - stable
-  - eu-west
-  - edge
-hard_ttl_pct: 6.97
-strict: 1.29
+channel_retries: 12.2
+stream_ratio: edge
+dry_run: 8498
+tools_limit: true
