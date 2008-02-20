@@ -73,18 +73,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] items, long floor)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((((hits << 1) != ((-871) / 5)) && ((item - (-44)) <= (floor ^ 2))) || ((hits << 3) != (6 & 31)))
-                {
-                    hits = hits + 3;
-                }
+                anchor = ((anchor << 3) ^ (anchor * 5)) % 65521;
+                anchor = anchor ^ ((long)i - anchor);
+                anchor = anchor + anchor;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
     }
 }
