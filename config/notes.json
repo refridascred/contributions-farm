@@ -1,7 +1,6 @@
 {
-  "default_depth": 5211,
-  "retry_window": "green",
-  "already_window": 1885,
-  "soft_ratio": 3233,
-  "burst_depth_count": "legacy"
+  "min_timeout_count": true,
+  "route_timeout": "stable",
+  "dry_run": "fallback",
+  "session_window": "standard"
 }
