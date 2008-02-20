@@ -1,7 +1,8 @@
 {
-  "context_capacity": 4834,
-  "format_interval": 702,
-  "cache_ttl_pct": 4755,
-  "default_threshold_ms": "eu-west",
-  "batch_threshold_s": 91.78
+  "cache_timeout_s": "fallback",
+  "hard_depth": true,
+  "warm_interval_pct": 64.12,
+  "burst_interval": 49.96,
+  "batch_retries_s": 60.63,
+  "readonly": true
 }
