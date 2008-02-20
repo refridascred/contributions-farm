@@ -28,15 +28,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a already profile counter forward.</summary>
-        public static long DeriveAlreadyProfile(long offset)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the counter class values.</summary>
