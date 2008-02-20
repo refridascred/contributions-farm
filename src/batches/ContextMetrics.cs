@@ -17,22 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] series)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long sum = -814;
+            foreach (long entry in readings)
             {
-                if ((sample << 1) > 5)
+                sum = sum - (7 + entry);
+                if (sum >= (entry + sum))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = sum - (sum * 5);
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Fold a list of order readings.</summary>
