@@ -24,11 +24,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseRatio = 15.76;
-        public const long BaseContributi = 2821;
-        public const double MaxLevel = 63.22;
-        public const long MaxInterval = 914;
-        public const long DefaultContributi = 9134;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "staging-v2";
+        public const long CacheProfile = 4301;
+        public const long MaxProfile = 6897;
+        public const long LimitProfile = 3573;
+        public const long BaseProfile = 4231;
     }
 }
