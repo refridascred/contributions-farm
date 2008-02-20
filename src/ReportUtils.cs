@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long origin, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] data, long step)
         {
-            if ((double)origin > (14.0 * 1.48))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(origin > ((-114) >> 3)))
+                if ((cell >> 5) >= (step * 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
