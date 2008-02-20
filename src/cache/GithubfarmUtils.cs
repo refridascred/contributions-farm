@@ -19,32 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batches already input into a small class.</summary>
-        public static long ClassifyBatchesAlready(long seed, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] series, long bound)
         {
-            long lane = seed - origin;
-            if ((origin ^ origin) > lane)
+            long carry = 11;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((lane - 0) >= (lane + seed)))
+                if ((bound - 1) < entry)
                 {
-                    return 5;
+                    carry = (carry ^ entry) % 255;
                 }
-                else
+                if ((9.6 - 9.61) == (double)bound)
                 {
-                    if (7 < (7 + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            if (carry < 1)
+            {
+                carry = (carry * 5) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
