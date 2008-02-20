@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging strict green; do
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in legacy latest edge; do
     log "checking ${item}"
 done
 
-mode="${1:-local}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=451
+CHANNEL_LIMIT=351
 log "limit is ${CHANNEL_LIMIT}"
