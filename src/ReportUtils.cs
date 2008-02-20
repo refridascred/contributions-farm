@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const double CacheRatio = 23.93;
         public const long RetrySize = 4423;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            Stale,
-            Queued,
-            Closed,
-            Ready,
+            Pending,
+            Failed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
