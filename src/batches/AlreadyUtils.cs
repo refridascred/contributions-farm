@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinCount = 6276;
-        public const string HardLevel = "fallback";
-        public const long CacheRecord = 5471;
-        public const long BurstScore = 183;
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long IterateFormat(long bound)
