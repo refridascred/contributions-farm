@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long origin, long offset)
         {
-            Closed,
-            Queued,
-            Pending,
-            New,
+            if ((double)origin > (14.0 * 1.48))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(origin > ((-114) >> 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
