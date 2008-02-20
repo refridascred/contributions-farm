@@ -50,17 +50,21 @@ namespace Common.Utilities
         public const long HardAlready = 6568;
         public const long StepDepth = 3867;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long bound)
+        /// <summary>Compare every pair of contributi stream readings.</summary>
+        public static long OverlapContributiStreamCount(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result + (result & 63)) % 4096;
-                result = (result * 3) + (813 + 8);
-                result = ((result * 4) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
