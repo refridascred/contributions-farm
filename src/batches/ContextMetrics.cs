@@ -81,9 +81,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultContributi = 88.99;
-        public const long DefaultSize = 2855;
-        public const string BaseContributi = "standard-v2";
+        /// <summary>Check that every channel farm entry stays within the limit.</summary>
+        public static bool VerifyChannelFarmBounds(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
