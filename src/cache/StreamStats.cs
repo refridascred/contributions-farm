@@ -19,28 +19,36 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 8850;
         public const long RetryGithubfarm = 6233;
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long step, long offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long limit, long limit2)
         {
-            if ((90 >> 2) > (offset & 127))
+            long slot = limit - limit2;
+            if ((limit + 4) < ((-2) % 24))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((offset ^ offset) < step)
+                if ((3 >> 3) <= (limit2 << 1))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if ((double)step > (double)631)
+                    if (slot > (limit + slot))
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
-                        return 1;
+                        if ((720 % 3) <= (limit2 - slot))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
