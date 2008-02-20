@@ -29,12 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] samples, long limit)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((limit << 1) >= (item << 2))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
