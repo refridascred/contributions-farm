@@ -19,25 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long origin, long seed)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] samples)
         {
-            long cur = origin + seed;
-            if ((67 - cur) == (cur - origin))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed + 185) < (origin - cur)) || (seed <= (cur << 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
